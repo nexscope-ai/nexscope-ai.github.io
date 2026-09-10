@@ -19,54 +19,54 @@ const NEXSCOPE_URL =
 const stories = [
   {
     id: '01',
-    category: 'AI 电商',
+    category: 'AI Commerce',
     date: '2026.09.08',
     source: 'Mastercard',
     sourceUrl:
       'https://www.mastercard.com/global/en/news-and-trends/stories/2026/future-of-shopping-and-payments.html',
-    title: 'AI Agent 正从“帮你选”走向“替你买”',
+    title: 'AI agents are moving from “help me choose” to “buy it for me”',
     summary:
-      '支付网络开始为代理式交易建立信任、授权与安全边界。对卖家而言，商品数据是否结构化、可发现、可被 AI 准确理解，正在成为新的流量入口。',
-    signal: '高增长信号',
+      'Payment networks are building the trust, authorization, and security rails for agent-led transactions. For sellers, structured product data that AI can discover and understand is becoming a new traffic channel.',
+    signal: 'High-growth signal',
     featured: true,
   },
   {
     id: '02',
-    category: '行业报告',
+    category: 'Industry Report',
     date: '2026.08.29',
-    source: '中国网信网',
+    source: 'CAC China',
     sourceUrl: 'https://www.cac.gov.cn/2026-08/29/c_1789665114197079.htm',
-    title: '新电商进入“数据 × 内容 × AI”深度融合期',
+    title: 'New commerce enters the “data × content × AI” era',
     summary:
-      '《中国新电商发展报告（2026）》聚焦制度规范、多元业态与区域格局。热点不再只看声量，更要连接商品、市场与内容数据。',
-    signal: '结构性机会',
+      'China’s 2026 New Ecommerce Development Report highlights new business models, regional shifts, and industry standards. Trend analysis now needs to connect attention with product, market, and content data.',
+    signal: 'Structural opportunity',
   },
   {
     id: '03',
-    category: 'AI 电商',
+    category: 'AI Commerce',
     date: '2026.03.24',
     source: 'OpenAI',
     sourceUrl: 'https://openai.com/index/powering-product-discovery-in-chatgpt/',
-    title: '对话式商品发现，正在重写品牌的首屏',
+    title: 'Conversational product discovery is rewriting the storefront',
     summary:
-      '购物搜索变得更可视化、更有上下文。传统关键词排名之外，产品属性、评价信号与可信数据将共同影响 AI 推荐。',
-    signal: '新流量入口',
+      'Shopping search is becoming more visual and contextual. Beyond keyword rank, product attributes, review signals, and trustworthy data will influence what AI recommends.',
+    signal: 'New traffic channel',
   },
   {
     id: '04',
-    category: '增长策略',
+    category: 'Growth Strategy',
     date: '2026.01.11',
     source: 'Google',
     sourceUrl:
       'https://blog.google/products/ads-commerce/agentic-commerce-ai-tools-protocol-retailers-platforms/',
-    title: 'UCP 让商品更容易进入 AI 购物链路',
+    title: 'UCP makes products easier to discover and buy through AI',
     summary:
-      'Google 联合零售生态推出通用商业协议，商品发现、结账和售后将更容易被代理调用。卖家需要提前整理可供机器理解的数据资产。',
-    signal: '基础设施',
+      'Google and its retail partners introduced a common protocol for product discovery, checkout, and post-purchase support. Sellers need product data that machines can reliably understand.',
+    signal: 'Infrastructure shift',
   },
 ];
 
-const filters = ['全部', 'AI 电商', '行业报告', '增长策略'];
+const filters = ['All', 'AI Commerce', 'Industry Report', 'Growth Strategy'];
 const tickerItems = [
   'Agentic commerce',
   'AI-native product discovery',
@@ -76,25 +76,25 @@ const tickerItems = [
 ];
 
 export default function Home() {
-  const [activeFilter, setActiveFilter] = useState('全部');
+  const [activeFilter, setActiveFilter] = useState('All');
 
   return (
     <main className="site-shell">
-      <nav className="nav" aria-label="主导航">
+      <nav className="nav" aria-label="Primary navigation">
         <div className="container nav-inner">
-          <a className="brand" href="#top" aria-label="电商热点雷达首页">
+          <a className="brand" href="#top" aria-label="Commerce Signal Radar home">
             <span className="brand-mark">N</span>
-            <span>电商热点雷达</span>
+            <span>Commerce Signal Radar</span>
           </a>
 
           <div className="nav-links">
-            <a href="#signals">趋势信号</a>
-            <a href="#playbook">行动路径</a>
-            <a href="#about">关于本页</a>
+            <a href="#signals">Trend Signals</a>
+            <a href="#playbook">Playbook</a>
+            <a href="#about">About</a>
           </div>
 
           <a className="nav-cta" href={NEXSCOPE_URL} target="_blank" rel="noreferrer">
-            去 Nexscope <ArrowUpRight size={15} aria-hidden="true" />
+            Explore Nexscope <ArrowUpRight size={15} aria-hidden="true" />
           </a>
         </div>
       </nav>
@@ -104,38 +104,38 @@ export default function Home() {
           <div>
             <p className="eyebrow">
               <span className="live-dot" aria-hidden="true" />
-              2026 电商信号 / 第 37 周
+              2026 Commerce Signals / Week 37
             </p>
             <h1>
-              热点很多。
+              Plenty of hype.
               <br />
-              <span className="highlight">机会</span>很少。
+              Few real <span className="highlight">opportunities.</span>
             </h1>
             <p className="hero-copy">
-              我们把近期电商热点翻译成卖家真正能用的增长信号：发生了什么、为什么重要，以及下一步该验证什么。
+              We translate the latest ecommerce headlines into growth signals sellers can use: what changed, why it matters, and what to validate next.
             </p>
             <div className="hero-actions">
               <a className="button-primary" href="#signals">
-                查看本周信号 <ArrowDownRight size={18} aria-hidden="true" />
+                See this week’s signals <ArrowDownRight size={18} aria-hidden="true" />
               </a>
               <a className="text-link" href={NEXSCOPE_URL} target="_blank" rel="noreferrer">
-                用真实电商数据验证 <ArrowUpRight size={16} aria-hidden="true" />
+                Validate with real commerce data <ArrowUpRight size={16} aria-hidden="true" />
               </a>
             </div>
           </div>
 
-          <aside className="signal-panel" aria-label="本周趋势信号强度">
+          <aside className="signal-panel" aria-label="This week’s trend signal strength">
             <div className="panel-top">
               <div className="panel-label">
                 <span>Signal intensity</span>
                 <BarChart3 size={17} aria-hidden="true" />
               </div>
               <div className="score">89</div>
-              <p className="score-title">AI 购物代理成为本周最强电商变量</p>
+              <p className="score-title">AI shopping agents are this week’s strongest commerce signal</p>
             </div>
             <div className="panel-bottom">
-              <p className="score-note">机会窗口：商品发现、结构化数据、对话式转化</p>
-              <div className="meter" aria-label="信号强度 89%">
+              <p className="score-note">Opportunity window: product discovery, structured data, conversational conversion</p>
+              <div className="meter" aria-label="Signal strength 89%">
                 {Array.from({ length: 10 }).map((_, index) => (
                   <span key={index} className={index < 9 ? 'active' : ''} />
                 ))}
@@ -145,7 +145,7 @@ export default function Home() {
         </div>
       </header>
 
-      <div className="ticker" aria-label="热门话题">
+      <div className="ticker" aria-label="Trending topics">
         <div className="ticker-track">
           {[...tickerItems, ...tickerItems].map((item, index) => (
             <span className="ticker-item" key={`${item}-${index}`}>
@@ -159,15 +159,15 @@ export default function Home() {
         <div className="container">
           <div className="section-head">
             <div>
-              <p className="kicker">01 / 本周雷达</p>
-              <h2 className="section-title">正在改变电商增长的 4 个信号</h2>
+              <p className="kicker">01 / This week’s radar</p>
+              <h2 className="section-title">Four signals reshaping ecommerce growth</h2>
             </div>
             <p className="section-intro">
-              不是所有热搜都值得追。以下信号同时满足三个条件：正在发生、影响交易链路、卖家现在就能行动。
+              Not every headline deserves a strategy. These signals are happening now, changing the path to purchase, and actionable for sellers today.
             </p>
           </div>
 
-          <div className="filter-row" role="group" aria-label="筛选趋势">
+          <div className="filter-row" role="group" aria-label="Filter trends">
             {filters.map((filter) => (
               <button
                 className={`filter-button ${activeFilter === filter ? 'active' : ''}`}
@@ -183,7 +183,7 @@ export default function Home() {
 
           <div className="stories-grid">
             {stories.map((story) => {
-              const isVisible = activeFilter === '全部' || activeFilter === story.category;
+              const isVisible = activeFilter === 'All' || activeFilter === story.category;
               return (
                 <article
                   className={`story-card ${story.featured ? 'featured' : ''} ${isVisible ? '' : 'hidden'}`}
@@ -196,7 +196,7 @@ export default function Home() {
                       href={story.sourceUrl}
                       target="_blank"
                       rel="noreferrer"
-                      aria-label={`查看来源：${story.source}`}
+                      aria-label={`View source: ${story.source}`}
                     >
                       {story.source} <ExternalLink size={12} aria-hidden="true" />
                     </a>
@@ -221,10 +221,10 @@ export default function Home() {
         <div className="container">
           <div className="action-grid">
             <div className="action-copy">
-              <p className="kicker">02 / 从热点到增长</p>
-              <h2 className="section-title">看见趋势，只是第一步。</h2>
+              <p className="kicker">02 / From signal to growth</p>
+              <h2 className="section-title">Spotting the trend is only step one.</h2>
               <p>
-                真正的机会需要用市场数据验证，再把洞察变成能投放、能转化的内容。Nexscope 把这条链路放进同一个工作流。
+                Real opportunities need market validation. Then the insight has to become creative you can test and scale. Nexscope connects the entire workflow.
               </p>
             </div>
 
@@ -232,42 +232,42 @@ export default function Home() {
               <div className="step">
                 <span className="step-number">01</span>
                 <div>
-                  <h3>发现机会</h3>
-                  <p>从热点、类目与平台变化里找到值得继续研究的方向。</p>
+                  <h3>Discover opportunities</h3>
+                  <p>Turn category shifts, platform updates, and market buzz into research directions.</p>
                 </div>
                 <span className="step-icon"><Search size={18} aria-hidden="true" /></span>
               </div>
               <div className="step">
                 <span className="step-number">02</span>
                 <div>
-                  <h3>验证需求</h3>
-                  <p>连接 Amazon、TikTok Shop、Google Trends 等数据，判断需求与竞争。</p>
+                  <h3>Validate demand</h3>
+                  <p>Use Amazon, TikTok Shop, Google Trends, and other data to assess demand and competition.</p>
                 </div>
                 <span className="step-icon"><Database size={18} aria-hidden="true" /></span>
               </div>
               <div className="step">
                 <span className="step-number">03</span>
                 <div>
-                  <h3>生成内容</h3>
-                  <p>把产品素材转成适合社媒测试的 UGC 风格短视频。</p>
+                  <h3>Create content</h3>
+                  <p>Turn product assets into UGC-style videos ready for social testing.</p>
                 </div>
                 <span className="step-icon"><PlayCircle size={18} aria-hidden="true" /></span>
               </div>
             </div>
           </div>
 
-          <div className="insight-strip" aria-label="Nexscope 能力概览">
+          <div className="insight-strip" aria-label="Nexscope capabilities overview">
             <div className="insight-stat">
               <strong>10+</strong>
-              <span>覆盖主流电商与市场平台的数据入口</span>
+              <span>Data access across leading marketplaces and commerce platforms</span>
             </div>
             <div className="insight-stat">
               <strong>Data + Creative</strong>
-              <span>从选品研究、关键词洞察到 UGC 视频生成</span>
+              <span>From product research and keywords to UGC video generation</span>
             </div>
             <div className="insight-stat">
               <strong>API · MCP</strong>
-              <span>可接入 ChatGPT、Claude 与自有 AI 工作流</span>
+              <span>Connect with ChatGPT, Claude, and your own AI workflows</span>
             </div>
           </div>
         </div>
@@ -278,13 +278,13 @@ export default function Home() {
           <div className="cta-card">
             <div className="cta-content">
               <p className="kicker">Ready when you are</p>
-              <h2>别猜下一个爆品。<br />让数据先说话。</h2>
+              <h2>Don’t guess the next winner.<br />Let the data speak.</h2>
               <p>
-                使用 Nexscope 连接真实电商数据，研究产品、市场、竞品与关键词；找到机会后，继续生成可测试的电商创意。
+                Connect Nexscope to real ecommerce data to research products, markets, competitors, and keywords—then turn the opportunity into test-ready creative.
               </p>
               <div className="cta-actions">
                 <a className="button-dark" href={NEXSCOPE_URL} target="_blank" rel="noreferrer">
-                  免费体验 Nexscope <ArrowRight size={18} aria-hidden="true" />
+                  Try Nexscope for free <ArrowRight size={18} aria-hidden="true" />
                 </a>
                 <a
                   className="mini-cta"
@@ -292,7 +292,7 @@ export default function Home() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  查看数据能力 <Sparkles size={17} aria-hidden="true" />
+                  Explore data capabilities <Sparkles size={17} aria-hidden="true" />
                 </a>
               </div>
             </div>
@@ -304,10 +304,10 @@ export default function Home() {
         <div className="container footer-inner">
           <a className="brand" href="#top">
             <span className="brand-mark">N</span>
-            <span>电商热点雷达</span>
+            <span>Commerce Signal Radar</span>
           </a>
           <p className="footer-note">
-            热点信息来自公开资料，仅用于趋势研判，不构成经营或投资建议。由 Nexscope 数据能力支持。
+            Signals are based on public sources and provided for trend analysis only—not business or investment advice. Powered by Nexscope data capabilities.
           </p>
         </div>
       </footer>
