@@ -15,6 +15,17 @@ export type Trend = {
   whyItMatters: string[];
   actions: string[];
   nexscopePrompt: string;
+  mapTitle: string;
+  mapSummary: string;
+  marketNodes: MarketNode[];
+};
+
+export type MarketNode = {
+  city: string;
+  region: string;
+  latitude: number;
+  longitude: number;
+  role: string;
 };
 
 export const trends: Trend[] = [
@@ -49,6 +60,32 @@ export const trends: Trend[] = [
     ],
     nexscopePrompt:
       'Analyze fast-growing products in my category and show the product attributes, pricing signals, and customer pain points that could influence an AI shopping recommendation.',
+    mapTitle: 'Where agent-led commerce may surface first',
+    mapSummary:
+      'An editorial watch map for payment infrastructure, cross-border adoption, and APAC commerce operations.',
+    marketNodes: [
+      {
+        city: 'New York',
+        region: 'North America',
+        latitude: 40.71,
+        longitude: -74.01,
+        role: 'Payment infrastructure',
+      },
+      {
+        city: 'London',
+        region: 'Europe',
+        latitude: 51.51,
+        longitude: -0.13,
+        role: 'Cross-border adoption',
+      },
+      {
+        city: 'Singapore',
+        region: 'Southeast Asia',
+        latitude: 1.35,
+        longitude: 103.82,
+        role: 'Commerce operations',
+      },
+    ],
   },
   {
     id: '02',
@@ -79,6 +116,39 @@ export const trends: Trend[] = [
     ],
     nexscopePrompt:
       'Compare recent demand, competition, pricing, and review signals for three products in my target category, then rank the opportunities by evidence strength.',
+    mapTitle: 'China’s data, content, and commerce corridor',
+    mapSummary:
+      'Monitoring nodes for policy direction, platform ecosystems, merchant operations, and cross-border spillover.',
+    marketNodes: [
+      {
+        city: 'Beijing',
+        region: 'North China',
+        latitude: 39.9,
+        longitude: 116.4,
+        role: 'Policy and standards',
+      },
+      {
+        city: 'Hangzhou',
+        region: 'East China',
+        latitude: 30.27,
+        longitude: 120.15,
+        role: 'Platform ecosystem',
+      },
+      {
+        city: 'Shenzhen',
+        region: 'South China',
+        latitude: 22.54,
+        longitude: 114.06,
+        role: 'Merchant operations',
+      },
+      {
+        city: 'Singapore',
+        region: 'Southeast Asia',
+        latitude: 1.35,
+        longitude: 103.82,
+        role: 'Cross-border signal',
+      },
+    ],
   },
   {
     id: '03',
@@ -110,6 +180,32 @@ export const trends: Trend[] = [
     ],
     nexscopePrompt:
       'Check the AI visibility of my product category, identify recurring comparison criteria, and show which competing products are most often positioned as strong options.',
+    mapTitle: 'Markets to monitor for conversational discovery',
+    mapSummary:
+      'A watch map for launch activity and shopper adoption across North America, Europe, and Asia-Pacific.',
+    marketNodes: [
+      {
+        city: 'San Francisco',
+        region: 'North America',
+        latitude: 37.77,
+        longitude: -122.42,
+        role: 'Product launch signal',
+      },
+      {
+        city: 'London',
+        region: 'Europe',
+        latitude: 51.51,
+        longitude: -0.13,
+        role: 'Shopper behavior',
+      },
+      {
+        city: 'Sydney',
+        region: 'Asia-Pacific',
+        latitude: -33.87,
+        longitude: 151.21,
+        role: 'Adoption watch',
+      },
+    ],
   },
   {
     id: '04',
@@ -141,6 +237,39 @@ export const trends: Trend[] = [
     ],
     nexscopePrompt:
       'Audit the market data and listing structure for my target products, then identify missing attributes and information gaps that could reduce discoverability in AI shopping experiences.',
+    mapTitle: 'The emerging UCP adoption landscape',
+    mapSummary:
+      'Monitoring nodes for protocol development, retail adoption, and high-scale mobile commerce markets.',
+    marketNodes: [
+      {
+        city: 'Mountain View',
+        region: 'North America',
+        latitude: 37.39,
+        longitude: -122.08,
+        role: 'Protocol development',
+      },
+      {
+        city: 'Toronto',
+        region: 'North America',
+        latitude: 43.65,
+        longitude: -79.38,
+        role: 'Retail adoption',
+      },
+      {
+        city: 'London',
+        region: 'Europe',
+        latitude: 51.51,
+        longitude: -0.13,
+        role: 'Commerce ecosystem',
+      },
+      {
+        city: 'New Delhi',
+        region: 'South Asia',
+        latitude: 28.61,
+        longitude: 77.21,
+        role: 'Mobile commerce scale',
+      },
+    ],
   },
 ];
 

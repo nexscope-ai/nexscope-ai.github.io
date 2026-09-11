@@ -9,6 +9,7 @@ import {
   ExternalLink,
   Radar,
 } from 'lucide-react';
+import { TrendMap } from '@/components/trend-map';
 import { getTrendBySlug, trends } from '@/lib/trends';
 
 type TrendPageProps = {
@@ -32,6 +33,16 @@ export async function generateMetadata({
   return {
     title: `${trend.title} | Commerce Radar by Nexscope`,
     description: trend.summary,
+    alternates: {
+      canonical: `/trends/${trend.slug}/`,
+    },
+    openGraph: {
+      type: 'article',
+      url: `/trends/${trend.slug}/`,
+      title: trend.title,
+      description: trend.summary,
+      publishedTime: trend.date.replaceAll('.', '-'),
+    },
   };
 }
 
@@ -44,9 +55,35 @@ export default async function TrendPage({ params }: TrendPageProps) {
   const trendIndex = trends.findIndex((item) => item.slug === trend.slug);
   const nextTrend = trends[(trendIndex + 1) % trends.length];
   const nexscopeUrl = `https://www.nexscope.ai/?utm_source=commerce-radar&utm_medium=content&utm_campaign=trend-insights&utm_content=${trend.slug}`;
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: trend.title,
+    description: trend.summary,
+    datePublished: trend.date.replaceAll('.', '-'),
+    dateModified: trend.date.replaceAll('.', '-'),
+    mainEntityOfPage: `https://nexscope-ai.github.io/trends/${trend.slug}/`,
+    author: {
+      '@type': 'Organization',
+      name: 'Nexscope',
+      url: 'https://www.nexscope.ai/',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Nexscope',
+      url: 'https://www.nexscope.ai/',
+    },
+    citation: trend.sourceUrl,
+  };
 
   return (
     <main className="site-shell detail-shell">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(articleJsonLd).replaceAll('<', '\\u003c'),
+        }}
+      />
       <nav className="nav" aria-label="Primary navigation">
         <div className="container nav-inner">
           <Link className="brand" href="/" aria-label="Commerce Radar home">
@@ -59,7 +96,7 @@ export default async function TrendPage({ params }: TrendPageProps) {
 
           <div className="nav-links detail-nav-links">
             <Link href="/#signals">All Signals</Link>
-            <Link href="/#playbook">Playbook</Link>
+            <Link href="/#method">Method</Link>
           </div>
 
           <a
@@ -119,9 +156,10 @@ export default async function TrendPage({ params }: TrendPageProps) {
           <aside className="detail-index" aria-label="Article sections">
             <span>In this signal</span>
             <a href="#what-changed">01 — What changed</a>
-            <a href="#why-it-matters">02 — Why it matters</a>
-            <a href="#what-to-do">03 — What to do now</a>
-            <a href="#nexscope-workflow">04 — Nexscope workflow</a>
+            <a href="#market-map">02 — Market map</a>
+            <a href="#why-it-matters">03 — Why it matters</a>
+            <a href="#what-to-do">04 — What to do now</a>
+            <a href="#nexscope-workflow">05 — Nexscope workflow</a>
           </aside>
 
           <div className="detail-body">
@@ -138,8 +176,16 @@ export default async function TrendPage({ params }: TrendPageProps) {
               </ul>
             </section>
 
+            <section className="detail-section map-section" id="market-map">
+              <TrendMap
+                title={trend.mapTitle}
+                summary={trend.mapSummary}
+                nodes={trend.marketNodes}
+              />
+            </section>
+
             <section className="detail-section" id="why-it-matters">
-              <p className="kicker">02 / Why it matters</p>
+              <p className="kicker">03 / Why it matters</p>
               <h2>The opportunity for ecommerce teams.</h2>
               {trend.whyItMatters.map((paragraph) => (
                 <p className="article-copy" key={paragraph}>
@@ -149,7 +195,7 @@ export default async function TrendPage({ params }: TrendPageProps) {
             </section>
 
             <section className="detail-section" id="what-to-do">
-              <p className="kicker">03 / What to do now</p>
+              <p className="kicker">04 / What to do now</p>
               <h2>Turn the signal into a test.</h2>
               <ol className="action-list">
                 {trend.actions.map((action, index) => (

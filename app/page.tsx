@@ -1,12 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import Link from 'next/link';
 import {
   ArrowRight,
   ArrowUpRight,
   BarChart3,
-  Check,
   Database,
   ExternalLink,
   PlayCircle,
@@ -15,6 +14,12 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { filters, trends } from '@/lib/trends';
+
+const CommerceGlobe = lazy(() =>
+  import('@/components/commerce-globe').then((module) => ({
+    default: module.CommerceGlobe,
+  })),
+);
 
 const NEXSCOPE_URL =
   'https://www.nexscope.ai/?utm_source=commerce-radar&utm_medium=content&utm_campaign=trend-insights';
@@ -27,7 +32,7 @@ export default function Home() {
 
   return (
     <main className="site-shell">
-      <nav className="nav" aria-label="Primary navigation">
+      <nav className="nav radar-nav" aria-label="Primary navigation">
         <div className="container nav-inner">
           <a className="brand" href="#top" aria-label="Commerce Radar home">
             <span className="brand-mark">N</span>
@@ -54,25 +59,41 @@ export default function Home() {
         </div>
       </nav>
 
-      <header className="hero" id="top">
-        <div className="container hero-grid">
-          <div className="hero-copy-block">
+      <header className="situation-hero" id="top">
+        <div className="container situation-grid">
+          <div className="situation-copy">
             <p className="eyebrow">
               <span className="live-dot" aria-hidden="true" />
-              Weekly commerce intelligence · Week 37
+              Global commerce situation · Week 37
             </p>
-            <h1>The ecommerce shifts worth acting on.</h1>
+            <h1>See where commerce is shifting.</h1>
             <p className="hero-copy">
-              A focused briefing on the market, platform, and AI changes shaping
-              how products are discovered, evaluated, and bought.
+              Track the platform, market, and AI signals changing how products
+              are discovered and bought. Select a node to open its full
+              briefing.
             </p>
+
+            <div className="situation-metrics" aria-label="Radar summary">
+              <div>
+                <strong>04</strong>
+                <span>active signals</span>
+              </div>
+              <div>
+                <strong>04</strong>
+                <span>regions monitored</span>
+              </div>
+              <div>
+                <strong>89</strong>
+                <span>peak signal score</span>
+              </div>
+            </div>
+
             <div className="hero-actions">
               <a className="button-primary" href="#signals">
-                Review this week’s signals
-                <ArrowRight size={17} aria-hidden="true" />
+                Review all signals <ArrowRight size={17} aria-hidden="true" />
               </a>
               <a
-                className="button-secondary"
+                className="button-secondary dark-secondary"
                 href={NEXSCOPE_URL}
                 target="_blank"
                 rel="noreferrer"
@@ -80,83 +101,23 @@ export default function Home() {
                 Validate with Nexscope
               </a>
             </div>
-            <div className="trust-line" aria-label="Editorial method">
-              <span>
-                <Check size={14} aria-hidden="true" /> Public sources
-              </span>
-              <span>
-                <Check size={14} aria-hidden="true" /> Actionable analysis
-              </span>
-              <span>
-                <Check size={14} aria-hidden="true" /> Updated weekly
-              </span>
-            </div>
           </div>
 
-          <aside className="brief-panel" aria-label="This week at a glance">
-            <div className="brief-header">
-              <div>
-                <p className="panel-kicker">This week at a glance</p>
-                <h2>AI moves closer to the checkout</h2>
+          <Suspense
+            fallback={
+              <div className="globe-panel globe-loading">
+                <span>Loading global signal map…</span>
               </div>
-              <span className="week-chip">Sep 08—11</span>
-            </div>
-
-            <div className="lead-score-row">
-              <div className="lead-score">
-                <strong>89</strong>
-                <span>/ 100</span>
-              </div>
-              <div className="score-context">
-                <span>Signal strength</span>
-                <div className="score-track" aria-label="Signal strength 89%">
-                  <span style={{ width: '89%' }} />
-                </div>
-                <p>Strong enough to test now</p>
-              </div>
-            </div>
-
-            <div className="brief-table">
-              <div>
-                <span>Primary shift</span>
-                <strong>Agent-led transactions</strong>
-              </div>
-              <div>
-                <span>Seller impact</span>
-                <strong>Product data visibility</strong>
-              </div>
-              <div>
-                <span>Action window</span>
-                <strong>Now → 90 days</strong>
-              </div>
-            </div>
-
-            <Link
-              className="brief-link"
-              href="/trends/ai-agents-move-to-checkout"
-            >
-              Read the lead signal <ArrowRight size={16} aria-hidden="true" />
-            </Link>
-          </aside>
+            }
+          >
+            <CommerceGlobe />
+          </Suspense>
         </div>
 
-        <div className="container radar-stats" aria-label="Radar summary">
-          <div>
-            <strong>04</strong>
-            <span>signals reviewed</span>
-          </div>
-          <div>
-            <strong>04</strong>
-            <span>primary sources</span>
-          </div>
-          <div>
-            <strong>89</strong>
-            <span>highest signal score</span>
-          </div>
-          <div>
-            <strong>Weekly</strong>
-            <span>editorial cadence</span>
-          </div>
+        <div className="container situation-foot">
+          <span>Public-source intelligence</span>
+          <span>Updated weekly</span>
+          <span>Drag the globe or select a market node</span>
         </div>
       </header>
 
