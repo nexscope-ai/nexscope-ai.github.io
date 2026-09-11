@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import {
   ArrowLeft,
@@ -99,17 +98,17 @@ export default async function GuidePage({ params }: GuidePageProps) {
       />
       <nav className="nav" aria-label="Primary navigation">
         <div className="container nav-inner">
-          <Link
+          <a
             className="brand"
             href="/"
             aria-label="Nexscope Commerce Guides home"
           >
             <NexscopeLogo />
-          </Link>
+          </a>
 
           <div className="nav-links detail-nav-links">
-            <Link href="/#guides">All Guides</Link>
-            <Link href="/#method">Method</Link>
+            <a href="/#guides">All Guides</a>
+            <a href="/#method">Method</a>
           </div>
 
           <a
@@ -125,9 +124,9 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
       <header className="detail-hero">
         <div className="container">
-          <Link className="back-link" href="/#guides">
+          <a className="back-link" href="/#guides">
             <ArrowLeft size={16} aria-hidden="true" /> Back to all guides
-          </Link>
+          </a>
 
           <div className="detail-hero-grid">
             <div>
@@ -171,11 +170,17 @@ export default async function GuidePage({ params }: GuidePageProps) {
         <div className="container detail-layout">
           <aside className="detail-index" aria-label="Guide sections">
             <span>In this guide</span>
-            <a href="#the-problem">01 — The problem</a>
-            <a href="#market-lens">02 — Market lens</a>
-            <a href="#data-answers">03 — What data can answer</a>
-            <a href="#practical-workflow">04 — Practical workflow</a>
-            <a href="#nexscope-apis">05 — Nexscope APIs</a>
+            <a href={`/guides/${guide.slug}/#the-problem`}>01 — The problem</a>
+            <a href={`/guides/${guide.slug}/#market-lens`}>02 — Market lens</a>
+            <a href={`/guides/${guide.slug}/#data-answers`}>
+              03 — What data can answer
+            </a>
+            <a href={`/guides/${guide.slug}/#practical-workflow`}>
+              04 — Practical workflow
+            </a>
+            <a href={`/guides/${guide.slug}/#nexscope-apis`}>
+              05 — Nexscope APIs
+            </a>
           </aside>
 
           <div className="detail-body">
@@ -273,10 +278,10 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
             <footer className="next-signal">
               <span>Next guide</span>
-              <Link href={`/guides/${nextGuide.slug}`}>
+              <a href={`/guides/${nextGuide.slug}/`}>
                 <strong>{nextGuide.title}</strong>
                 <ArrowRight size={24} aria-hidden="true" />
-              </Link>
+              </a>
             </footer>
           </div>
         </div>
@@ -284,13 +289,13 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
       <footer className="footer detail-footer">
         <div className="container footer-inner">
-          <Link
+          <a
             className="brand"
             href="/"
             aria-label="Nexscope Commerce Guides home"
           >
             <NexscopeLogo />
-          </Link>
+          </a>
           <p className="footer-note">
             Capabilities are matched to Nexscope&apos;s current public API
             catalog. The linked documentation remains the source of truth for

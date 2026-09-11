@@ -1,7 +1,6 @@
 'use client';
 
 import { lazy, Suspense, useState } from 'react';
-import Link from 'next/link';
 import {
   ArrowRight,
   ArrowUpRight,
@@ -172,7 +171,7 @@ export default function Home() {
                       {guide.id} / {guide.date}
                     </p>
                     <h3>
-                      <Link href={`/guides/${guide.slug}`}>{guide.title}</Link>
+                      <a href={`/guides/${guide.slug}/`}>{guide.title}</a>
                     </h3>
                     <p className="story-summary">{guide.summary}</p>
                   </div>
@@ -182,9 +181,9 @@ export default function Home() {
                       <span className="live-dot" aria-hidden="true" />{' '}
                       Capability-backed
                     </span>
-                    <Link className="read-more" href={`/guides/${guide.slug}`}>
+                    <a className="read-more" href={`/guides/${guide.slug}/`}>
                       Open guide <ArrowRight size={15} aria-hidden="true" />
-                    </Link>
+                    </a>
                   </footer>
                 </article>
               ))}

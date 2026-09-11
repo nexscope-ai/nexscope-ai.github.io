@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
 import { ArrowRight, Rotate3D } from 'lucide-react';
 import * as THREE from 'three';
 import { feature } from 'topojson-client';
@@ -328,9 +327,9 @@ export function CommerceGlobe() {
         </div>
         <p>{selected.city}</p>
         <h2>{selected.signal}</h2>
-        <Link href={`/guides/${selected.slug}`}>
+        <a href={`/guides/${selected.slug}/`}>
           Open guide <ArrowRight size={14} aria-hidden="true" />
-        </Link>
+        </a>
       </div>
 
       <div className="globe-node-list" aria-label="Select a decision guide">
