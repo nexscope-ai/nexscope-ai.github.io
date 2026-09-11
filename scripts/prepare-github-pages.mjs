@@ -1,20 +1,23 @@
-import { copyFile, mkdir, readdir } from 'node:fs/promises';
+import { copyFile, mkdir } from 'node:fs/promises';
 
-const guidesDirectory = new URL('../dist/client/guides/', import.meta.url);
-const entries = await readdir(guidesDirectory, { withFileTypes: true });
+const clientDirectory = new URL('../dist/client/', import.meta.url);
+const routeSlugs = [
+  'ecommerce-product-demand-validation',
+  'shopify-competitor-product-research',
+  'ecommerce-seo-ai-search-visibility',
+  'amazon-review-customer-insights',
+  '1688-supplier-product-sourcing',
+];
 
 await Promise.all(
-  entries
-    .filter((entry) => entry.isFile() && entry.name.endsWith('.html'))
-    .map(async (entry) => {
-      const slug = entry.name.slice(0, -'.html'.length);
-      const routeDirectory = new URL(`${slug}/`, guidesDirectory);
-      await mkdir(routeDirectory, { recursive: true });
-      await copyFile(
-        new URL(entry.name, guidesDirectory),
-        new URL('index.html', routeDirectory),
-      );
-    }),
+  routeSlugs.map(async (slug) => {
+    const routeDirectory = new URL(`${slug}/`, clientDirectory);
+    await mkdir(routeDirectory, { recursive: true });
+    await copyFile(
+      new URL(`${slug}.html`, clientDirectory),
+      new URL('index.html', routeDirectory),
+    );
+  }),
 );
 
 await copyFile(

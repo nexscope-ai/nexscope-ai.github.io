@@ -1,8 +1,7 @@
 'use client';
 
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense } from 'react';
 import {
-  ArrowRight,
   ArrowUpRight,
   BarChart3,
   Database,
@@ -11,7 +10,6 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { NexscopeLogo } from '@/components/nexscope-logo';
-import { guideFilters, guides } from '@/lib/guides';
 
 const CommerceGlobe = lazy(() =>
   import('@/components/commerce-globe').then((module) => ({
@@ -21,32 +19,14 @@ const CommerceGlobe = lazy(() =>
 
 const NEXSCOPE_URL =
   'https://www.nexscope.ai/apis?utm_source=github.io&utm_medium=referral&utm_campaign=commerce-radar&co-from=github.io';
-const API_COUNT = new Set(
-  guides.flatMap((guide) => guide.apiCapabilities.map((api) => api.slug)),
-).size;
 
 export default function Home() {
-  const [activeFilter, setActiveFilter] = useState('All');
-  const visibleGuides = guides.filter(
-    (guide) => activeFilter === 'All' || guide.category === activeFilter,
-  );
-
   return (
     <main className="site-shell">
       <nav className="nav radar-nav" aria-label="Primary navigation">
         <div className="container nav-inner">
-          <a
-            className="brand"
-            href="#top"
-            aria-label="Nexscope Commerce Guides home"
-          >
+          <div className="brand" aria-label="Nexscope Commerce Intelligence">
             <NexscopeLogo dark />
-          </a>
-
-          <div className="nav-links">
-            <a href="#guides">Guides</a>
-            <a href="#method">Method</a>
-            <a href="#workflow">Workflow</a>
           </div>
 
           <a
@@ -65,40 +45,38 @@ export default function Home() {
           <div className="situation-copy">
             <p className="eyebrow">
               <span className="live-dot" aria-hidden="true" />
-              Ecommerce decision radar · 5 practical guides
+              Global ecommerce intelligence
             </p>
             <h1>Turn ecommerce uncertainty into evidence.</h1>
             <p className="hero-copy">
-              Five practical guides built around recurring seller questions and
-              the live Nexscope APIs that can help answer them.
+              Research product demand, market competition, customer language,
+              supplier signals, and AI visibility with structured commerce data.
             </p>
 
-            <div className="situation-metrics" aria-label="Guide summary">
+            <div className="situation-metrics" aria-label="Platform summary">
               <div>
-                <strong>{String(guides.length).padStart(2, '0')}</strong>
-                <span>decision guides</span>
+                <strong>API</strong>
+                <span>structured commerce data</span>
               </div>
               <div>
-                <strong>{String(API_COUNT).padStart(2, '0')}</strong>
-                <span>live API capabilities</span>
+                <strong>MCP</strong>
+                <span>agent-ready access</span>
               </div>
               <div>
-                <strong>05</strong>
-                <span>problem areas</span>
+                <strong>REST</strong>
+                <span>workflow integration</span>
               </div>
             </div>
 
             <div className="hero-actions">
-              <a className="button-primary" href="#guides">
-                Explore the guides <ArrowRight size={17} aria-hidden="true" />
-              </a>
               <a
-                className="button-secondary dark-secondary"
+                className="button-primary"
                 href={NEXSCOPE_URL}
                 target="_blank"
                 rel="noreferrer"
               >
-                Explore Nexscope APIs
+                Explore Nexscope APIs{' '}
+                <ArrowUpRight size={17} aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -106,7 +84,7 @@ export default function Home() {
           <Suspense
             fallback={
               <div className="globe-panel globe-loading">
-                <span>Loading decision guide map…</span>
+                <span>Loading commerce intelligence map…</span>
               </div>
             }
           >
@@ -115,89 +93,18 @@ export default function Home() {
         </div>
 
         <div className="container situation-foot">
-          <span>Built from recurring merchant questions</span>
-          <span>{API_COUNT} verified API capabilities</span>
-          <span>Drag the globe or select a guide</span>
+          <span>Product and market intelligence</span>
+          <span>API · MCP · Skills</span>
+          <span>Drag the globe or select a market node</span>
         </div>
       </header>
-
-      <section className="section signals-section" id="guides">
-        <div className="container">
-          <div className="section-head">
-            <div>
-              <p className="kicker">Seller decision guides</p>
-              <h2 className="section-title">
-                Start with the question blocking your next move.
-              </h2>
-            </div>
-            <p className="section-intro">
-              Each guide connects a recurring ecommerce problem to a practical
-              research workflow and the exact live Nexscope APIs that support
-              it.
-            </p>
-          </div>
-
-          <fieldset className="filter-row">
-            <legend className="sr-only">Filter guides</legend>
-            {guideFilters.map((filter) => (
-              <button
-                className={`filter-button ${activeFilter === filter ? 'active' : ''}`}
-                key={filter}
-                type="button"
-                onClick={() => setActiveFilter(filter)}
-                aria-pressed={activeFilter === filter}
-              >
-                {filter}
-              </button>
-            ))}
-          </fieldset>
-
-          {visibleGuides.length > 0 ? (
-            <div className="stories-grid">
-              {visibleGuides.map((guide, index) => (
-                <article
-                  className={`story-card ${index === 0 ? 'featured' : ''}`}
-                  key={guide.id}
-                >
-                  <div className="card-topline">
-                    <span className="category-label">{guide.category}</span>
-                    <span className="card-score">
-                      {guide.apiCapabilities.length} APIs
-                    </span>
-                  </div>
-
-                  <div className="card-body">
-                    <p className="card-index">
-                      {guide.id} / {guide.date}
-                    </p>
-                    <h3>
-                      <a href={`/guides/${guide.slug}/`}>{guide.title}</a>
-                    </h3>
-                    <p className="story-summary">{guide.summary}</p>
-                  </div>
-
-                  <footer className="card-footer">
-                    <span className="source-link">
-                      <span className="live-dot" aria-hidden="true" />{' '}
-                      Capability-backed
-                    </span>
-                    <a className="read-more" href={`/guides/${guide.slug}/`}>
-                      Open guide <ArrowRight size={15} aria-hidden="true" />
-                    </a>
-                  </footer>
-                </article>
-              ))}
-            </div>
-          ) : null}
-        </div>
-      </section>
 
       <section className="section method-section" id="method">
         <div className="container method-grid">
           <div className="method-copy">
-            <p className="kicker">Our method</p>
+            <p className="kicker">Research model</p>
             <h2 className="section-title">
-              Every guide connects three layers.
+              Turn a question into a verifiable workflow.
             </h2>
             <p>
               Start with the blocked decision, identify the evidence that can
@@ -304,16 +211,12 @@ export default function Home() {
 
       <footer className="footer">
         <div className="container footer-inner">
-          <a
-            className="brand"
-            href="#top"
-            aria-label="Nexscope Commerce Guides home"
-          >
+          <div className="brand" aria-label="Nexscope Commerce Intelligence">
             <NexscopeLogo />
-          </a>
+          </div>
           <p className="footer-note">
-            Guides distinguish verified API capabilities from checks that still
-            require first-party analytics or manual validation.
+            Capability descriptions are based on the current public Nexscope API
+            catalog and should be verified before implementation.
           </p>
           <a
             className="footer-link"

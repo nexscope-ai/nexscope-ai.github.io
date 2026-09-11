@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, Rotate3D } from 'lucide-react';
+import { Rotate3D } from 'lucide-react';
 import * as THREE from 'three';
 import { feature } from 'topojson-client';
 import landData from 'world-atlas/land-110m.json';
@@ -15,7 +15,6 @@ type RadarNode = {
   apiCount: number;
   latitude: number;
   longitude: number;
-  slug: string;
 };
 
 const radarNodes: RadarNode[] = guides.map((guide) => ({
@@ -26,7 +25,6 @@ const radarNodes: RadarNode[] = guides.map((guide) => ({
   apiCount: guide.apiCapabilities.length,
   latitude: guide.marketNodes[0].latitude,
   longitude: guide.marketNodes[0].longitude,
-  slug: guide.slug,
 }));
 
 function toGlobePosition(longitude: number, latitude: number, radius: number) {
@@ -307,7 +305,7 @@ export function CommerceGlobe() {
   return (
     <section
       className="globe-panel"
-      aria-label="Global ecommerce decision guide map"
+      aria-label="Global ecommerce intelligence map"
     >
       <div className="globe-stage" ref={stageRef}>
         <div className="globe-fallback" aria-hidden="true">
@@ -317,7 +315,8 @@ export function CommerceGlobe() {
       </div>
 
       <div className="globe-status">
-        <span className="live-dot" aria-hidden="true" /> Decision guide map
+        <span className="live-dot" aria-hidden="true" /> Commerce intelligence
+        map
       </div>
 
       <div className="globe-focus" aria-live="polite">
@@ -327,12 +326,10 @@ export function CommerceGlobe() {
         </div>
         <p>{selected.city}</p>
         <h2>{selected.signal}</h2>
-        <a href={`/guides/${selected.slug}/`}>
-          Open guide <ArrowRight size={14} aria-hidden="true" />
-        </a>
+        <span className="globe-focus-label">Research lens</span>
       </div>
 
-      <div className="globe-node-list" aria-label="Select a decision guide">
+      <div className="globe-node-list" aria-label="Select a market lens">
         {radarNodes.map((node, index) => (
           <button
             type="button"

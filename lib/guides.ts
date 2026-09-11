@@ -554,15 +554,6 @@ export const guides: Guide[] = [
   },
 ];
 
-export const guideFilters = [
-  'All',
-  'Product Research',
-  'Shopify Intelligence',
-  'SEO & AI Visibility',
-  'Customer Insights',
-  'Sourcing',
-];
-
 export function getGuideBySlug(slug: string) {
   return guides.find((guide) => guide.slug === slug);
 }

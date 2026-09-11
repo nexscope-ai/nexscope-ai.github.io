@@ -417,13 +417,14 @@ button:focus-visible {
   letter-spacing: -0.025em;
 }
 
-.globe-focus a {
+.globe-focus-label {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
   color: #c4b5fd;
   font-size: 0.76rem;
   font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .globe-node-list {
