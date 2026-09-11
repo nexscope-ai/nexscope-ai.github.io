@@ -121,41 +121,14 @@ button:focus-visible {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
 }
 
-.brand-mark {
-  display: grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  border-radius: 9px;
-  background: #7c3aed;
-  color: #ffffff;
-  font-size: 0.9rem;
-  font-weight: 800;
-  box-shadow: 0 1px 2px rgba(76, 29, 149, 0.18);
-}
-
-.brand-copy {
-  display: grid;
-  line-height: 1.05;
-}
-
-.brand-copy strong {
-  color: #0f172a;
-  font-size: 0.9rem;
-  font-weight: 750;
-  letter-spacing: -0.02em;
-}
-
-.brand-copy small {
-  margin-top: 4px;
-  color: #94a3b8;
-  font-size: 0.64rem;
-  font-weight: 650;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+.nexscope-logo {
+  display: block;
+  width: 165px;
+  height: 32px;
+  object-fit: contain;
+  object-position: left center;
 }
 
 .nav-links {
@@ -232,11 +205,6 @@ button:focus-visible {
   background: rgba(8, 13, 28, 0.94);
 }
 
-.radar-nav .brand-copy strong {
-  color: #ffffff;
-}
-
-.radar-nav .brand-copy small,
 .radar-nav .nav-links {
   color: #8994b1;
 }
@@ -1787,8 +1755,9 @@ button:focus-visible {
     display: none;
   }
 
-  .brand-copy small {
-    display: none;
+  .nexscope-logo {
+    width: 142px;
+    height: auto;
   }
 
   .nav-cta {

@@ -9,6 +9,7 @@ import {
   ExternalLink,
   Radar,
 } from 'lucide-react';
+import { NexscopeLogo } from '@/components/nexscope-logo';
 import { TrendMap } from '@/components/trend-map';
 import { getTrendBySlug, trends } from '@/lib/trends';
 
@@ -87,11 +88,7 @@ export default async function TrendPage({ params }: TrendPageProps) {
       <nav className="nav" aria-label="Primary navigation">
         <div className="container nav-inner">
           <Link className="brand" href="/" aria-label="Commerce Radar home">
-            <span className="brand-mark">N</span>
-            <span className="brand-copy">
-              <strong>Commerce Radar</strong>
-              <small>by Nexscope</small>
-            </span>
+            <NexscopeLogo />
           </Link>
 
           <div className="nav-links detail-nav-links">
@@ -239,11 +236,7 @@ export default async function TrendPage({ params }: TrendPageProps) {
       <footer className="footer detail-footer">
         <div className="container footer-inner">
           <Link className="brand" href="/" aria-label="Commerce Radar home">
-            <span className="brand-mark">N</span>
-            <span className="brand-copy">
-              <strong>Commerce Radar</strong>
-              <small>by Nexscope</small>
-            </span>
+            <NexscopeLogo />
           </Link>
           <p className="footer-note">
             Signals are based on public sources and provided for trend analysis

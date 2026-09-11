@@ -13,6 +13,7 @@ import {
   Search,
   Sparkles,
 } from 'lucide-react';
+import { NexscopeLogo } from '@/components/nexscope-logo';
 import { filters, trends } from '@/lib/trends';
 
 const CommerceGlobe = lazy(() =>
@@ -35,11 +36,7 @@ export default function Home() {
       <nav className="nav radar-nav" aria-label="Primary navigation">
         <div className="container nav-inner">
           <a className="brand" href="#top" aria-label="Commerce Radar home">
-            <span className="brand-mark">N</span>
-            <span className="brand-copy">
-              <strong>Commerce Radar</strong>
-              <small>by Nexscope</small>
-            </span>
+            <NexscopeLogo dark />
           </a>
 
           <div className="nav-links">
@@ -309,12 +306,8 @@ export default function Home() {
 
       <footer className="footer">
         <div className="container footer-inner">
-          <a className="brand" href="#top">
-            <span className="brand-mark">N</span>
-            <span className="brand-copy">
-              <strong>Commerce Radar</strong>
-              <small>by Nexscope</small>
-            </span>
+          <a className="brand" href="#top" aria-label="Commerce Radar home">
+            <NexscopeLogo />
           </a>
           <p className="footer-note">
             Analysis is based on public sources and is provided for research—not
