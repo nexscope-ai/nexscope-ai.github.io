@@ -54,7 +54,7 @@ export default async function TrendPage({ params }: TrendPageProps) {
 
   const trendIndex = trends.findIndex((item) => item.slug === trend.slug);
   const nextTrend = trends[(trendIndex + 1) % trends.length];
-  const nexscopeUrl = `https://www.nexscope.ai/apis?utm_source=github.io&utm_medium=referral&utm_campaign=commerce-radar&utm_content=${trend.slug}`;
+  const nexscopeUrl = `https://www.nexscope.ai/apis?utm_source=github.io&utm_medium=referral&utm_campaign=commerce-radar&utm_content=${trend.slug}&co-from=github.io`;
   const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',

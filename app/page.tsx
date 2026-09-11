@@ -22,7 +22,7 @@ const CommerceGlobe = lazy(() =>
 );
 
 const NEXSCOPE_URL =
-  'https://www.nexscope.ai/apis?utm_source=github.io&utm_medium=referral&utm_campaign=commerce-radar';
+  'https://www.nexscope.ai/apis?utm_source=github.io&utm_medium=referral&utm_campaign=commerce-radar&co-from=github.io';
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState('All');
