@@ -1,5 +1,4 @@
 import { copyFile, mkdir, readdir } from 'node:fs/promises';
-import { join } from 'node:path';
 
 const trendsDirectory = new URL('../dist/client/trends/', import.meta.url);
 const entries = await readdir(trendsDirectory, { withFileTypes: true });

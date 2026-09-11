@@ -26,11 +26,11 @@ export async function generateMetadata({
   const trend = getTrendBySlug(slug);
 
   if (!trend) {
-    return { title: 'Signal not found | Commerce Signal Radar' };
+    return { title: 'Signal not found | Commerce Radar by Nexscope' };
   }
 
   return {
-    title: `${trend.title} | Commerce Signal Radar`,
+    title: `${trend.title} | Commerce Radar by Nexscope`,
     description: trend.summary,
   };
 }
@@ -49,13 +49,12 @@ export default async function TrendPage({ params }: TrendPageProps) {
     <main className="site-shell detail-shell">
       <nav className="nav" aria-label="Primary navigation">
         <div className="container nav-inner">
-          <Link
-            className="brand"
-            href="/"
-            aria-label="Commerce Signal Radar home"
-          >
+          <Link className="brand" href="/" aria-label="Commerce Radar home">
             <span className="brand-mark">N</span>
-            <span>Commerce Signal Radar</span>
+            <span className="brand-copy">
+              <strong>Commerce Radar</strong>
+              <small>by Nexscope</small>
+            </span>
           </Link>
 
           <div className="nav-links detail-nav-links">
@@ -69,7 +68,7 @@ export default async function TrendPage({ params }: TrendPageProps) {
             target="_blank"
             rel="noreferrer"
           >
-            Explore Nexscope <ArrowUpRight size={15} aria-hidden="true" />
+            Open Nexscope <ArrowUpRight size={15} aria-hidden="true" />
           </a>
         </div>
       </nav>
@@ -193,14 +192,25 @@ export default async function TrendPage({ params }: TrendPageProps) {
 
       <footer className="footer detail-footer">
         <div className="container footer-inner">
-          <Link className="brand" href="/">
+          <Link className="brand" href="/" aria-label="Commerce Radar home">
             <span className="brand-mark">N</span>
-            <span>Commerce Signal Radar</span>
+            <span className="brand-copy">
+              <strong>Commerce Radar</strong>
+              <small>by Nexscope</small>
+            </span>
           </Link>
           <p className="footer-note">
             Signals are based on public sources and provided for trend analysis
             only—not business or investment advice.
           </p>
+          <a
+            className="footer-link"
+            href={nexscopeUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            nexscope.ai <ArrowUpRight size={14} aria-hidden="true" />
+          </a>
         </div>
       </footer>
     </main>

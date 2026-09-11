@@ -2,12 +2,14 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Commerce Signal Radar | From Trends to Growth Opportunities',
+  title: 'Commerce Radar by Nexscope | Ecommerce Signals',
   description:
-    'Track the latest ecommerce signals and turn platform shifts, AI shopping, and growth trends into actionable opportunities.',
+    'A focused briefing on the ecommerce, platform, and AI shifts worth acting on—powered by Nexscope.',
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body>{children}</body>
