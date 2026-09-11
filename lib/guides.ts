@@ -14,6 +14,11 @@ export type ApiCapability = {
   outputs: string[];
 };
 
+export type GuideFaq = {
+  question: string;
+  answer: string;
+};
+
 export type { MarketNode } from '@/lib/market-coverage';
 
 export type Guide = {
@@ -28,6 +33,13 @@ export type Guide = {
   date: string;
   title: string;
   summary: string;
+  seoTitle: string;
+  metaDescription: string;
+  lastReviewed: string;
+  directAnswer: string;
+  keyTakeaways: string[];
+  faqs: GuideFaq[];
+  evidenceNote: string;
   signal: string;
   readingTime: string;
   featured?: boolean;
@@ -53,6 +65,41 @@ export const guides: Guide[] = [
     title: 'How to validate ecommerce product demand before you invest',
     summary:
       'A practical product-research workflow for comparing demand, competition, pricing, reviews, and growth signals before committing inventory or advertising budget.',
+    seoTitle: 'Ecommerce Product Demand Validation: Data-First Guide',
+    metaDescription:
+      'Learn how to validate ecommerce product demand using market size, sales estimates, pricing, reviews, competition, and Google Trends before investing.',
+    lastReviewed: 'September 11, 2026',
+    directAnswer:
+      'To validate ecommerce product demand, combine market demand, seller concentration, product economics, review barriers, historical pricing, and search-interest direction. Do not treat one sales estimate or trend chart as proof; define entry thresholds before ordering inventory.',
+    keyTakeaways: [
+      'Screen the market before comparing individual listings.',
+      'Require multiple independent demand and competition signals.',
+      'Turn the shortlist into a small, measurable validation test.',
+    ],
+    faqs: [
+      {
+        question: 'What data should I check before selling a product?',
+        answer:
+          'Check market size, seller and brand concentration, price range, margin potential, sales history, review depth, listing quality, search-interest direction, and evidence that newer products can enter the market. Define acceptable thresholds before choosing a candidate.',
+      },
+      {
+        question: 'Is Google Trends enough to validate product demand?',
+        answer:
+          'No. Google Trends shows relative search-interest direction, not marketplace sales or profit. Use it alongside product sales estimates, price history, seller density, reviews, conversion signals, and your own unit economics.',
+      },
+      {
+        question: 'How do I separate high demand from high competition?',
+        answer:
+          'Compare demand with concentration and entry barriers. A market is more testable when demand is meaningful, revenue is not locked by a few brands, review counts are reachable, and recent products show traction at a viable price.',
+      },
+      {
+        question: 'When is a product ready for a small test?',
+        answer:
+          'A product is ready when it meets your written thresholds for demand, margin, review barrier, price, and differentiation, and no single metric carries the thesis. Start with the smallest test that can validate customer response and unit economics.',
+      },
+    ],
+    evidenceNote:
+      'API availability and fields were reviewed against Nexscope’s public catalog on September 11, 2026. Marketplace estimates are directional and should be tested against first-party sales, advertising, and cost data.',
     signal: 'Validate before you buy',
     readingTime: '7 min read',
     featured: true,
@@ -153,6 +200,41 @@ export const guides: Guide[] = [
     title: 'How to research Shopify stores, products, and competitors',
     summary:
       'Use external Shopify market signals to benchmark products and stores by pricing, weekly sales, ads, traffic, assortment, and growth—without confusing competitor estimates with your own analytics.',
+    seoTitle: 'Shopify Competitor Research: Products, Stores & Ads',
+    metaDescription:
+      'Research Shopify competitors by product, price, weekly sales, ads, traffic, assortment, and country using a repeatable data-backed workflow.',
+    lastReviewed: 'September 11, 2026',
+    directAnswer:
+      'Start Shopify competitor research with a comparable peer set defined by country, category, price band, and store age. Compare weekly product sales, revenue trend, ad activity, assortment, estimated traffic and orders, and social reach, then turn differences into testable hypotheses.',
+    keyTakeaways: [
+      'Compare like-for-like stores instead of collecting famous examples.',
+      'Separate external market estimates from your first-party analytics.',
+      'Translate every benchmark into a price, assortment, or creative test.',
+    ],
+    faqs: [
+      {
+        question: 'How can I find relevant Shopify competitors?',
+        answer:
+          'Define the market first: category, customer, country, price band, assortment size, and store maturity. Then filter products and stores that match those conditions instead of relying only on brand recognition or search rankings.',
+      },
+      {
+        question: 'Which Shopify competitor metrics matter most?',
+        answer:
+          'Useful metrics include product price, weekly sales and revenue direction, listing date, store competition, ad activity, assortment size, estimated visits and orders, store age, social reach, and shipping country. Their value comes from comparing a consistent peer set over time.',
+      },
+      {
+        question: 'Are competitor traffic and order estimates exact?',
+        answer:
+          'No. External traffic, order, and sales figures are estimates. Use them for relative benchmarking and hypothesis generation, while treating Shopify Analytics, ad platforms, and your own measurement stack as the source of truth for your business.',
+      },
+      {
+        question: 'How often should competitor research be updated?',
+        answer:
+          'Update fast-moving product and ad signals weekly, and review broader assortment, pricing, and store benchmarks monthly. Keep the same peer definitions so changes are comparable rather than anecdotal.',
+      },
+    ],
+    evidenceNote:
+      'API availability and fields were reviewed against Nexscope’s public catalog on September 11, 2026. Shopify competitor metrics are external estimates for benchmarking, not a replacement for first-party store analytics.',
     signal: 'Build a market benchmark',
     readingTime: '6 min read',
     keywords: [
@@ -215,6 +297,41 @@ export const guides: Guide[] = [
     title: 'How to diagnose ecommerce SEO and AI search visibility',
     summary:
       'Separate technical indexation checks from regional demand and AI-discovery research, then inspect how commercial queries appear in Google AI Mode.',
+    seoTitle: 'Ecommerce SEO & AI Search Visibility Audit Guide',
+    metaDescription:
+      'Diagnose ecommerce SEO and AI search visibility with Search Console checks, Google AI Mode results, regional demand data, and a repeatable audit.',
+    lastReviewed: 'September 11, 2026',
+    directAnswer:
+      'Start by separating technical indexation, search demand, and AI-answer visibility. Use Search Console and a crawler for crawl or index issues, Google Trends for regional interest, and Google AI Mode results to inspect citations, product cards, and answer patterns.',
+    keyTakeaways: [
+      'Fix crawl and indexation issues before diagnosing content demand.',
+      'Use the same commercial query set for repeatable AI visibility checks.',
+      'Keep regional Trends evidence separate from AI Mode snapshots.',
+    ],
+    faqs: [
+      {
+        question: 'Is AI search optimization different from SEO?',
+        answer:
+          'The foundations are the same: crawlable pages, clear text, useful content, accurate structured data, internal links, and trustworthy evidence. AI visibility adds a measurement layer for citations, answer patterns, shopping elements, and product cards; it does not replace technical SEO.',
+      },
+      {
+        question: 'How do I check whether a product appears in Google AI Mode?',
+        answer:
+          'Create a stable set of commercial queries and record the answer text, cited domains, shopping elements, and product cards returned for each query. Save dated snapshots and repeat the same checks after meaningful site or market changes.',
+      },
+      {
+        question: 'Can Google Trends diagnose an indexing problem?',
+        answer:
+          'No. Google Trends measures relative search interest. Use Google Search Console and a technical crawler to diagnose crawlability, canonical selection, redirects, robots directives, rendering, structured data, and indexing status.',
+      },
+      {
+        question: 'Which ecommerce pages should be audited first?',
+        answer:
+          'Prioritize revenue-critical category and product pages, pages losing clicks or impressions, important pages excluded from indexing, and pages targeting queries where competitors or marketplaces dominate AI citations and shopping results.',
+      },
+    ],
+    evidenceNote:
+      'The SEO framework follows current Google Search guidance: AI search features use the same core eligibility and quality principles as Search, with no special AI schema required. Nexscope API fields were reviewed on September 11, 2026.',
     signal: 'Measure discovery, then diagnose',
     readingTime: '7 min read',
     keywords: [
@@ -281,6 +398,42 @@ export const guides: Guide[] = [
     title: 'How to turn Amazon reviews into customer insights',
     summary:
       'Move beyond average star ratings by separating recurring complaints, positive outcomes, purchase objections, and product-improvement opportunities.',
+    seoTitle: 'Amazon Review Analysis for Customer Insights',
+    metaDescription:
+      'Turn Amazon reviews into customer insights by finding repeated complaints, objections, desired outcomes, and product opportunities across marketplaces.',
+    lastReviewed: 'September 11, 2026',
+    directAnswer:
+      'Analyze Amazon reviews by rating, recency, verified-purchase status, helpfulness, and theme. A useful insight is a repeated customer statement tied to traceable evidence and a specific product, listing, support, or creative action.',
+    keyTakeaways: [
+      'Balance negative, positive, recent, and verified review evidence.',
+      'Preserve source examples behind every synthesized theme.',
+      'Connect each repeated theme to a concrete business action.',
+    ],
+    faqs: [
+      {
+        question: 'How many Amazon reviews are needed for useful analysis?',
+        answer:
+          'There is no universal minimum. Sample enough reviews to cover different ratings, dates, verified purchases, and recurring themes. Stop treating a theme as anecdotal only when repeated evidence appears across multiple products or time periods.',
+      },
+      {
+        question:
+          'Should positive and negative reviews be analyzed separately?',
+        answer:
+          'Yes. Negative reviews reveal defects, objections, and unmet expectations; positive reviews reveal desired outcomes, proof points, and customer language. Compare both before deciding whether a theme is a product problem or a market-wide expectation.',
+      },
+      {
+        question: 'How do I turn review themes into product actions?',
+        answer:
+          'Link each theme to a decision owner and an action: product specification, quality control, packaging, listing proof, FAQ, support response, or creative angle. Retain representative review examples so the action remains auditable.',
+      },
+      {
+        question: 'Can review sentiment alone guide a product decision?',
+        answer:
+          'No. Sentiment is a summary signal and can hide topic frequency, severity, recency, and selection bias. Review the underlying text and combine it with returns, support cases, sales, pricing, and competitive data.',
+      },
+    ],
+    evidenceNote:
+      'API availability and marketplace coverage were reviewed against Nexscope’s public catalog on September 11, 2026. Review themes summarize observed language and should be checked against the underlying review text.',
     signal: 'Read the market in customer language',
     readingTime: '6 min read',
     keywords: [
@@ -347,6 +500,41 @@ export const guides: Guide[] = [
     title: 'How to find and compare 1688 suppliers with product data',
     summary:
       'Search by keyword or image, compare wholesale and dropship pricing, minimum order quantity, sales, supplier identity, and delivery signals before contacting a factory.',
+    seoTitle: '1688 Supplier Sourcing: Search, Compare & Verify',
+    metaDescription:
+      'Find and compare 1688 suppliers by keyword or image using pricing, MOQ, sales, supplier identity, service, and dispatch signals before outreach.',
+    lastReviewed: 'September 11, 2026',
+    directAnswer:
+      'Search 1688 by both keyword and image, then compare wholesale and dropship price, minimum order quantity, quantity tiers, sales evidence, supplier identity, service, and dispatch signals. A shortlist is not supplier verification; samples, company checks, compliance, and commercial terms remain required.',
+    keyTakeaways: [
+      'Use keyword and image search to reduce naming and translation gaps.',
+      'Compare landed economics and order thresholds, not headline price.',
+      'Verify the supplier, sample, compliance, capacity, and terms offline.',
+    ],
+    faqs: [
+      {
+        question: 'How do I find the same product on 1688?',
+        answer:
+          'Run both a descriptive keyword search and an image search. Compare materials, dimensions, variant images, minimum order quantity, seller identity, and dispatch information because a visual match alone does not prove the products are equivalent.',
+      },
+      {
+        question: 'What matters more than the lowest visible price?',
+        answer:
+          'Check the quantity tier behind the price, minimum order quantity, dropship price, packaging, customization, service, dispatch, payment and shipping terms, quality evidence, and total landed cost. The lowest headline price may not apply to your order.',
+      },
+      {
+        question: 'How can supplier products be compared at scale?',
+        answer:
+          'Normalize price tiers, MOQ, units sold, estimated sales, repurchase signals, supplier type, verification, service, and dispatch fields. Apply written thresholds first, then manually review the smaller shortlist.',
+      },
+      {
+        question: 'What should be verified before placing an order?',
+        answer:
+          'Verify product specifications, samples, company identity, manufacturing or trading role, capacity, quality process, required compliance, intellectual-property risk, payment terms, delivery terms, and dispute handling before committing funds.',
+      },
+    ],
+    evidenceNote:
+      'API availability and fields were reviewed against Nexscope’s public catalog on September 11, 2026. Product and supplier signals support shortlisting only; procurement, legal, quality, and compliance checks remain the buyer’s responsibility.',
     signal: 'Connect demand to supply',
     readingTime: '7 min read',
     keywords: [

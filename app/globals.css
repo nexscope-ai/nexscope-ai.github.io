@@ -1892,6 +1892,50 @@ button:focus-visible {
   margin: 0 0 20px;
 }
 
+.answer-card {
+  overflow: hidden;
+  border: 1px solid #ddd6fe;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #faf8ff 0%, #f5f3ff 100%);
+}
+
+.answer-card > p {
+  margin: 0;
+  padding: 27px 28px;
+  color: #312e81;
+  font-size: 1.06rem;
+  font-weight: 620;
+  line-height: 1.75;
+}
+
+.answer-takeaways {
+  display: grid;
+  margin: 0;
+  border-top: 1px solid #ddd6fe;
+  padding: 0;
+  list-style: none;
+}
+
+.answer-takeaways li {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  align-items: start;
+  gap: 12px;
+  padding: 15px 28px;
+  color: #475569;
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+
+.answer-takeaways li + li {
+  border-top: 1px solid #e9e5ff;
+}
+
+.answer-takeaways svg {
+  margin-top: 2px;
+  color: #0f8f78;
+}
+
 .map-section {
   scroll-margin-top: 92px;
 }
@@ -2150,6 +2194,63 @@ button:focus-visible {
   color: #475569;
   font-size: 0.63rem;
   font-weight: 650;
+}
+
+.evidence-note {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+  border-left: 3px solid #8b5cf6;
+  background: #f8fafc;
+  padding: 18px 20px;
+}
+
+.evidence-note > span {
+  color: #6d28d9;
+  font-size: 0.67rem;
+  font-weight: 750;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.evidence-note p {
+  margin: 0;
+  color: #475569;
+  font-size: 0.78rem;
+  line-height: 1.65;
+}
+
+.evidence-note small {
+  color: #94a3b8;
+  font-size: 0.67rem;
+}
+
+.faq-list {
+  display: grid;
+  margin: 0;
+  border-top: 1px solid var(--border);
+}
+
+.faq-item {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.8fr) minmax(0, 1.2fr);
+  gap: 32px;
+  border-bottom: 1px solid var(--border);
+  padding: 23px 0;
+}
+
+.faq-item dt {
+  color: #0f172a;
+  font-size: 0.9rem;
+  font-weight: 720;
+  line-height: 1.5;
+}
+
+.faq-item dd {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.84rem;
+  line-height: 1.72;
 }
 
 .prompt-card {
@@ -2575,6 +2676,16 @@ button:focus-visible {
 
   .api-capability-list {
     grid-template-columns: 1fr;
+  }
+
+  .answer-card > p,
+  .answer-takeaways li {
+    padding-inline: 20px;
+  }
+
+  .faq-item {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 }
 

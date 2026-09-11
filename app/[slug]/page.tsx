@@ -36,19 +36,40 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${guide.title} | Nexscope Commerce Intelligence`,
-    description: guide.summary,
+    title: guide.seoTitle,
+    description: guide.metaDescription,
     keywords: guide.keywords,
+    authors: [{ name: 'Nexscope', url: 'https://www.nexscope.ai/' }],
+    creator: 'Nexscope',
+    publisher: 'Nexscope',
+    category: guide.category,
     alternates: {
       canonical: `/${guide.slug}/`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-snippet': -1,
+        'max-image-preview': 'large',
+        'max-video-preview': -1,
+      },
     },
     openGraph: {
       type: 'article',
       url: `/${guide.slug}/`,
-      title: guide.title,
-      description: guide.summary,
+      siteName: 'Commerce Signal Radar by Nexscope',
+      title: guide.seoTitle,
+      description: guide.metaDescription,
       publishedTime: guide.date.replaceAll('.', '-'),
       modifiedTime: guide.date.replaceAll('.', '-'),
+    },
+    twitter: {
+      card: 'summary',
+      title: guide.seoTitle,
+      description: guide.metaDescription,
     },
   };
 }
@@ -60,28 +81,66 @@ export default async function GuidePage({ params }: GuidePageProps) {
   if (!guide) notFound();
 
   const nexscopeUrl = trackedDocsUrl(guide.slug);
+  const pageUrl = `https://nexscope-ai.github.io/${guide.slug}/`;
   const articleJsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'TechArticle',
-    headline: guide.title,
-    description: guide.summary,
-    keywords: guide.keywords.join(', '),
-    datePublished: guide.date.replaceAll('.', '-'),
-    dateModified: guide.date.replaceAll('.', '-'),
-    mainEntityOfPage: `https://nexscope-ai.github.io/${guide.slug}/`,
-    author: {
-      '@type': 'Organization',
-      name: 'Nexscope',
-      url: 'https://www.nexscope.ai/',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Nexscope',
-      url: 'https://www.nexscope.ai/',
-    },
-    citation: guide.apiCapabilities.map(
-      (api) => `${NEXSCOPE_APIS}/${api.slug}`,
-    ),
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': pageUrl,
+        url: pageUrl,
+        name: guide.seoTitle,
+        description: guide.metaDescription,
+        inLanguage: 'en',
+        mainEntity: { '@id': `${pageUrl}#article` },
+      },
+      {
+        '@type': 'TechArticle',
+        '@id': `${pageUrl}#article`,
+        headline: guide.title,
+        description: guide.metaDescription,
+        abstract: guide.directAnswer,
+        keywords: guide.keywords.join(', '),
+        inLanguage: 'en',
+        isAccessibleForFree: true,
+        datePublished: guide.date.replaceAll('.', '-'),
+        dateModified: guide.date.replaceAll('.', '-'),
+        mainEntityOfPage: { '@id': pageUrl },
+        author: {
+          '@type': 'Organization',
+          name: 'Nexscope',
+          url: 'https://www.nexscope.ai/',
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Nexscope',
+          url: 'https://www.nexscope.ai/',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://nexscope-ai.github.io/logo.png',
+          },
+        },
+        about: guide.keywords.map((name) => ({
+          '@type': 'Thing',
+          name,
+        })),
+        citation: guide.apiCapabilities.map(
+          (api) => `${NEXSCOPE_APIS}/${api.slug}`,
+        ),
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `${pageUrl}#faq`,
+        mainEntity: guide.faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.answer,
+          },
+        })),
+      },
+    ],
   };
 
   return (
@@ -153,20 +212,40 @@ export default async function GuidePage({ params }: GuidePageProps) {
         <div className="container detail-layout">
           <aside className="detail-index" aria-label="Guide sections">
             <span>In this guide</span>
-            <a href={`/${guide.slug}/#the-problem`}>01 — The problem</a>
-            <a href={`/${guide.slug}/#market-lens`}>02 — Market lens</a>
+            <a href={`/${guide.slug}/#direct-answer`}>01 — Direct answer</a>
+            <a href={`/${guide.slug}/#the-problem`}>02 — The problem</a>
+            <a href={`/${guide.slug}/#market-lens`}>03 — Market lens</a>
             <a href={`/${guide.slug}/#data-answers`}>
-              03 — What data can answer
+              04 — What data can answer
             </a>
             <a href={`/${guide.slug}/#practical-workflow`}>
-              04 — Practical workflow
+              05 — Practical workflow
             </a>
-            <a href={`/${guide.slug}/#nexscope-apis`}>05 — Nexscope APIs</a>
+            <a href={`/${guide.slug}/#nexscope-apis`}>06 — Nexscope APIs</a>
+            <a href={`/${guide.slug}/#frequently-asked-questions`}>
+              07 — Common questions
+            </a>
           </aside>
 
           <div className="detail-body">
+            <section className="detail-section" id="direct-answer">
+              <p className="kicker">01 / Direct answer</p>
+              <h2>The short answer.</h2>
+              <div className="answer-card">
+                <p>{guide.directAnswer}</p>
+                <ul className="answer-takeaways">
+                  {guide.keyTakeaways.map((item) => (
+                    <li key={item}>
+                      <CheckCircle2 size={18} aria-hidden="true" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+
             <section className="detail-section" id="the-problem">
-              <p className="kicker">01 / The problem</p>
+              <p className="kicker">02 / The problem</p>
               <h2>Why this decision is difficult.</h2>
               <ul className="signal-list">
                 {guide.problemPoints.map((item) => (
@@ -189,7 +268,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
             </section>
 
             <section className="detail-section" id="data-answers">
-              <p className="kicker">03 / What data can answer</p>
+              <p className="kicker">04 / What data can answer</p>
               <h2>Use evidence that matches the question.</h2>
               {guide.dataAnswers.map((paragraph) => (
                 <p className="article-copy" key={paragraph}>
@@ -199,7 +278,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
             </section>
 
             <section className="detail-section" id="practical-workflow">
-              <p className="kicker">04 / Practical workflow</p>
+              <p className="kicker">05 / Practical workflow</p>
               <h2>Move from uncertainty to a bounded test.</h2>
               <ol className="action-list">
                 {guide.workflow.map((action, index) => (
@@ -213,7 +292,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
             </section>
 
             <section className="detail-section" id="nexscope-apis">
-              <p className="kicker">05 / Nexscope APIs</p>
+              <p className="kicker">06 / Nexscope APIs</p>
               <h2>The live capabilities behind this workflow.</h2>
               <div className="api-capability-list">
                 {guide.apiCapabilities.map((api, index) => (
@@ -240,6 +319,24 @@ export default async function GuidePage({ params }: GuidePageProps) {
                   </a>
                 ))}
               </div>
+              <aside className="evidence-note" aria-label="Evidence and scope">
+                <span>Evidence &amp; scope</span>
+                <p>{guide.evidenceNote}</p>
+                <small>Last reviewed {guide.lastReviewed}</small>
+              </aside>
+            </section>
+
+            <section className="detail-section" id="frequently-asked-questions">
+              <p className="kicker">07 / Common questions</p>
+              <h2>Frequently asked questions.</h2>
+              <dl className="faq-list">
+                {guide.faqs.map((faq) => (
+                  <div className="faq-item" key={faq.question}>
+                    <dt>{faq.question}</dt>
+                    <dd>{faq.answer}</dd>
+                  </div>
+                ))}
+              </dl>
             </section>
 
             <section className="prompt-card">
