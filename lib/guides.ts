@@ -1,3 +1,12 @@
+import {
+  amazonReviewMarkets,
+  productDemandMarkets,
+  searchVisibilityMarkets,
+  shopifyFilterMarkets,
+  sourcingValidationMarkets,
+  type MarketNode,
+} from '@/lib/market-coverage';
+
 export type ApiCapability = {
   slug: string;
   name: string;
@@ -5,13 +14,7 @@ export type ApiCapability = {
   outputs: string[];
 };
 
-export type MarketNode = {
-  city: string;
-  region: string;
-  latitude: number;
-  longitude: number;
-  role: string;
-};
+export type { MarketNode } from '@/lib/market-coverage';
 
 export type Guide = {
   id: string;
@@ -36,6 +39,8 @@ export type Guide = {
   apiCapabilities: ApiCapability[];
   mapTitle: string;
   mapSummary: string;
+  mapBadge: string;
+  mapDisclaimer: string;
   marketNodes: MarketNode[];
 };
 
@@ -132,39 +137,13 @@ export const guides: Guide[] = [
         ],
       },
     ],
-    mapTitle: 'Markets to compare before choosing a product',
+    mapTitle: '18 demand regions, with coverage shown by signal',
     mapSummary:
-      'Use the same product thesis across several commercial regions to separate local opportunity from global noise.',
-    marketNodes: [
-      {
-        city: 'Seattle',
-        region: 'United States',
-        latitude: 47.61,
-        longitude: -122.33,
-        role: 'Marketplace demand benchmark',
-      },
-      {
-        city: 'London',
-        region: 'United Kingdom',
-        latitude: 51.51,
-        longitude: -0.13,
-        role: 'Price and competition comparison',
-      },
-      {
-        city: 'Berlin',
-        region: 'Germany',
-        latitude: 52.52,
-        longitude: 13.41,
-        role: 'Regional search-interest check',
-      },
-      {
-        city: 'Tokyo',
-        region: 'Japan',
-        latitude: 35.68,
-        longitude: 139.69,
-        role: 'Localization stress test',
-      },
-    ],
+      'Google Trends provides the shared 18-region demand layer. Amazon coverage is narrower and is labeled separately for discovery, catalog, sales, and price-history research.',
+    mapBadge: '18 explicit Trend regions',
+    mapDisclaimer:
+      'Coverage varies by API. The map labels the strongest verified signal available for each region; it does not imply every Amazon endpoint is available in all 18 regions.',
+    marketNodes: productDemandMarkets,
   },
   {
     id: '02',
@@ -220,39 +199,13 @@ export const guides: Guide[] = [
         ],
       },
     ],
-    mapTitle: 'A cross-market Shopify comparison lens',
+    mapTitle: 'Country filters for consistent Shopify comparisons',
     mapSummary:
-      'Benchmark stores within comparable countries and customer contexts instead of mixing unlike markets.',
-    marketNodes: [
-      {
-        city: 'New York',
-        region: 'United States',
-        latitude: 40.71,
-        longitude: -74.01,
-        role: 'Large DTC comparison set',
-      },
-      {
-        city: 'London',
-        region: 'United Kingdom',
-        latitude: 51.51,
-        longitude: -0.13,
-        role: 'Localized pricing benchmark',
-      },
-      {
-        city: 'Toronto',
-        region: 'Canada',
-        latitude: 43.65,
-        longitude: -79.38,
-        role: 'Cross-border store comparison',
-      },
-      {
-        city: 'Sydney',
-        region: 'Australia',
-        latitude: -33.87,
-        longitude: 151.21,
-        role: 'Shipping-market comparison',
-      },
-    ],
+      'Shopify product and store research accepts a country-code filter. These 18 markets are practical comparison examples, not a closed platform coverage list.',
+    mapBadge: 'Open country filter',
+    mapDisclaimer:
+      'The public Shopify API contract accepts a country code but does not publish a fixed country enum. These markers are filter examples and research contexts, not guaranteed exhaustive coverage.',
+    marketNodes: shopifyFilterMarkets,
   },
   {
     id: '03',
@@ -261,7 +214,7 @@ export const guides: Guide[] = [
     date: '2026.09.11',
     title: 'How to diagnose ecommerce SEO and AI search visibility',
     summary:
-      'Separate technical indexation checks from demand and AI-discovery research, then measure how products appear across Google AI Mode and AI product recommendations.',
+      'Separate technical indexation checks from regional demand and AI-discovery research, then inspect how commercial queries appear in Google AI Mode.',
     signal: 'Measure discovery, then diagnose',
     readingTime: '7 min read',
     keywords: [
@@ -276,30 +229,19 @@ export const guides: Guide[] = [
       'No external market API can prove why Google did not index a page. Canonicals, robots rules, redirects, rendering, and crawl errors require Google Search Console and a technical crawler.',
     ],
     dataAnswers: [
-      'Product AI visibility data can show rankings, recommendation status, cited sources, product matches, and competitor presence for monitored prompts and products.',
-      'Google AI Mode results can reveal answer text, cited domains, shopping elements, product cards, and the sources surfaced for commercial queries.',
+      'Google AI Mode results can reveal answer text, cited domains, shopping elements, product cards, and the sources surfaced for a commercial query.',
       'Google Trends adds interest-over-time and regional context. It helps distinguish weak demand from weak visibility, but it is not a substitute for Search Console clicks, impressions, or indexing reports.',
+      'The current Google AI Mode API accepts a keyword but does not publish a region selector. Treat each response as a discovery snapshot and keep regional demand analysis separate.',
     ],
     workflow: [
       'Use Search Console and a technical crawler first to verify indexation, canonical selection, robots directives, redirects, rendering, structured data, and crawl errors.',
       'Build a stable query set around category terms, product problems, comparisons, and purchase questions in each target market.',
-      'Compare search-interest direction with Google AI Mode answers, citations, product cards, and product-level AI visibility over time.',
+      'Compare search-interest direction with Google AI Mode answers, citations, and product cards. Save dated snapshots if you need to compare changes over time.',
       'Turn gaps into specific tests for page structure, product evidence, FAQs, entity clarity, and third-party mentions, then remeasure the same query set.',
     ],
     nexscopePrompt:
-      'Measure AI search visibility for my products and commercial query set. Compare rankings, recommendations, citations, competitors, Google AI Mode answers, product cards, and search-interest direction, then separate content opportunities from technical SEO checks I must verify elsewhere.',
+      'Inspect Google AI Mode results for my commercial query set. Compare answers, citations, shopping elements, product cards, and regional search-interest direction, then separate content opportunities from technical SEO checks I must verify elsewhere.',
     apiCapabilities: [
-      {
-        slug: 'product-ai-visibility',
-        name: 'Product AI Visibility API',
-        description:
-          'Track how products appear in AI recommendations, including position, cited sources, matched products, and competitor visibility.',
-        outputs: [
-          'AI rankings',
-          'Recommendation status',
-          'Citations and competitors',
-        ],
-      },
       {
         slug: 'google-ai-mode-search',
         name: 'Google AI Mode Search API',
@@ -323,39 +265,13 @@ export const guides: Guide[] = [
         ],
       },
     ],
-    mapTitle: 'Search contexts to test consistently',
+    mapTitle: '18 explicit regions for demand context',
     mapSummary:
-      'Run the same intent framework with localized queries because AI answers, sources, products, and demand differ by market.',
-    marketNodes: [
-      {
-        city: 'San Francisco',
-        region: 'United States',
-        latitude: 37.77,
-        longitude: -122.42,
-        role: 'AI discovery benchmark',
-      },
-      {
-        city: 'New York',
-        region: 'United States',
-        latitude: 40.71,
-        longitude: -74.01,
-        role: 'Commercial query context',
-      },
-      {
-        city: 'London',
-        region: 'United Kingdom',
-        latitude: 51.51,
-        longitude: -0.13,
-        role: 'Localized citation comparison',
-      },
-      {
-        city: 'Tokyo',
-        region: 'Japan',
-        latitude: 35.68,
-        longitude: 139.69,
-        role: 'Japanese query context',
-      },
-    ],
+      'Use regional Google Trends data to establish demand context, then inspect Google AI Mode separately for the same commercial intent.',
+    mapBadge: '18 explicit Trend regions',
+    mapDisclaimer:
+      'These are Google Trends regions. The current Google AI Mode Search API accepts a keyword but does not publish a region selector, so this map does not claim region-specific AI Mode coverage.',
+    marketNodes: searchVisibilityMarkets,
   },
   {
     id: '04',
@@ -415,39 +331,13 @@ export const guides: Guide[] = [
         ],
       },
     ],
-    mapTitle: 'Review language changes across markets',
+    mapTitle: '15 verified Amazon review regions',
     mapSummary:
-      'Keep marketplace and language context attached to every review theme before applying it to a product decision.',
-    marketNodes: [
-      {
-        city: 'Seattle',
-        region: 'United States',
-        latitude: 47.61,
-        longitude: -122.33,
-        role: 'English review benchmark',
-      },
-      {
-        city: 'London',
-        region: 'United Kingdom',
-        latitude: 51.51,
-        longitude: -0.13,
-        role: 'Regional language comparison',
-      },
-      {
-        city: 'Berlin',
-        region: 'Germany',
-        latitude: 52.52,
-        longitude: 13.41,
-        role: 'German niche analysis',
-      },
-      {
-        city: 'Tokyo',
-        region: 'Japan',
-        latitude: 35.68,
-        longitude: 139.69,
-        role: 'Japanese niche analysis',
-      },
-    ],
+      'Product review retrieval spans 15 Amazon regions. Niche-level review analysis is currently narrower and is labeled separately.',
+    mapBadge: '15 explicit review regions',
+    mapDisclaimer:
+      'Product review coverage is available for the 15 regions shown. Niche review analysis is explicitly available for the United States, Germany, and Japan.',
+    marketNodes: amazonReviewMarkets,
   },
   {
     id: '05',
@@ -518,39 +408,13 @@ export const guides: Guide[] = [
         ],
       },
     ],
-    mapTitle: 'Target markets to validate before supplier outreach',
+    mapTitle: '12 destination contexts to validate after sourcing',
     mapSummary:
-      'Use supplier data to build a shortlist, then verify samples, commercial terms, logistics, and compliance for each destination market.',
-    marketNodes: [
-      {
-        city: 'New York',
-        region: 'United States',
-        latitude: 40.71,
-        longitude: -74.01,
-        role: 'North American demand and compliance',
-      },
-      {
-        city: 'London',
-        region: 'United Kingdom',
-        latitude: 51.51,
-        longitude: -0.13,
-        role: 'UK pricing and delivery economics',
-      },
-      {
-        city: 'Dubai',
-        region: 'United Arab Emirates',
-        latitude: 25.2,
-        longitude: 55.27,
-        role: 'Middle East market requirements',
-      },
-      {
-        city: 'Sydney',
-        region: 'Australia',
-        latitude: -33.87,
-        longitude: 151.21,
-        role: 'Australia logistics and compliance',
-      },
-    ],
+      'Use supplier data to build a shortlist, then validate demand, samples, commercial terms, logistics, and compliance in representative destination markets.',
+    mapBadge: 'Destination contexts',
+    mapDisclaimer:
+      'The sourcing APIs return product, supplier, pricing, MOQ, sales, and dispatch data; they do not expose a destination-market region filter. These 12 markers are validation contexts, not API coverage.',
+    marketNodes: sourcingValidationMarkets,
   },
 ];
 

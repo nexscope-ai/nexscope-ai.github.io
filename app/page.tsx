@@ -95,7 +95,7 @@ export default function Home() {
         <div className="container situation-foot">
           <span>Product and market intelligence</span>
           <span>API · MCP · Skills</span>
-          <span>Drag the globe or select a market node</span>
+          <span>18 explicit search-demand regions</span>
         </div>
       </header>
 

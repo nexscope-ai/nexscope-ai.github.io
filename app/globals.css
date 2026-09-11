@@ -433,23 +433,26 @@ button:focus-visible {
   top: 50%;
   right: 18px;
   display: grid;
-  gap: 7px;
+  width: 252px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
   transform: translateY(-50%);
 }
 
 .globe-node-list button {
   display: grid;
-  width: 126px;
-  min-height: 42px;
-  grid-template-columns: 24px 1fr;
+  width: auto;
+  min-height: 34px;
+  grid-template-columns: 26px 1fr;
   align-items: center;
   border: 1px solid #293453;
   border-radius: 8px;
   background: rgba(8, 13, 28, 0.74);
-  padding: 0 10px;
+  padding: 0 8px;
   color: #8994b1;
   cursor: pointer;
-  font-size: 0.7rem;
+  font-size: 0.64rem;
+  line-height: 1.15;
   text-align: left;
   backdrop-filter: blur(12px);
   transition:
@@ -467,7 +470,7 @@ button:focus-visible {
 
 .globe-node-list button span {
   color: #5eead4;
-  font-size: 0.66rem;
+  font-size: 0.64rem;
   font-weight: 750;
 }
 
@@ -1496,7 +1499,7 @@ button:focus-visible {
 .map-marker text {
   fill: #ffffff;
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 700;
   paint-order: stroke;
   stroke: #0b1124;
@@ -1506,13 +1509,13 @@ button:focus-visible {
 
 .market-node-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .market-node-grid > div {
   display: grid;
-  min-height: 84px;
-  grid-template-columns: 28px 1fr;
+  min-height: 82px;
+  grid-template-columns: 30px 1fr;
   align-items: start;
   gap: 9px;
   border-right: 1px solid var(--border);
@@ -1520,7 +1523,7 @@ button:focus-visible {
   padding: 18px;
 }
 
-.market-node-grid > div:nth-child(even) {
+.market-node-grid > div:nth-child(3n) {
   border-right: 0;
 }
 
@@ -1866,7 +1869,7 @@ button:focus-visible {
   }
 
   .globe-panel {
-    min-height: 570px;
+    min-height: 680px;
     border-radius: 14px;
   }
 
@@ -1875,7 +1878,8 @@ button:focus-visible {
     right: 14px;
     left: 14px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    width: auto;
+    grid-template-columns: repeat(3, 1fr);
     transform: none;
   }
 
@@ -2067,7 +2071,7 @@ button:focus-visible {
   }
 
   .market-node-grid > div,
-  .market-node-grid > div:nth-child(even) {
+  .market-node-grid > div:nth-child(3n) {
     border-right: 0;
   }
 

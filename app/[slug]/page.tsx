@@ -182,6 +182,8 @@ export default async function GuidePage({ params }: GuidePageProps) {
               <TrendMap
                 title={guide.mapTitle}
                 summary={guide.mapSummary}
+                badge={guide.mapBadge}
+                disclaimer={guide.mapDisclaimer}
                 nodes={guide.marketNodes}
               />
             </section>

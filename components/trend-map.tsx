@@ -6,13 +6,21 @@ import type { MarketNode } from '@/lib/guides';
 type TrendMapProps = {
   title: string;
   summary: string;
+  badge: string;
+  disclaimer: string;
   nodes: MarketNode[];
 };
 
 const width = 920;
 const height = 450;
 
-export function TrendMap({ title, summary, nodes }: TrendMapProps) {
+export function TrendMap({
+  title,
+  summary,
+  badge,
+  disclaimer,
+  nodes,
+}: TrendMapProps) {
   const topology = landData as {
     type: 'Topology';
     objects: { land: unknown };
@@ -37,7 +45,7 @@ export function TrendMap({ title, summary, nodes }: TrendMapProps) {
           <h2>{title}</h2>
           <p>{summary}</p>
         </div>
-        <span>Research comparison map</span>
+        <span>{badge}</span>
       </div>
 
       <div className="trend-map-visual">
@@ -47,7 +55,8 @@ export function TrendMap({ title, summary, nodes }: TrendMapProps) {
         >
           <title id="market-map-title">{title}</title>
           <desc id="market-map-description">
-            {summary} Monitoring {nodes.map((node) => node.city).join(', ')}.
+            {summary} Regions shown:{' '}
+            {nodes.map((node) => node.region).join(', ')}.
           </desc>
           <path className="map-ocean" d={path(sphere) ?? undefined} />
           <path className="map-grid" d={path(graticule) ?? undefined} />
@@ -59,12 +68,12 @@ export function TrendMap({ title, summary, nodes }: TrendMapProps) {
               <g
                 className="map-marker"
                 transform={`translate(${point[0]} ${point[1]})`}
-                key={`${node.city}-${node.role}`}
+                key={`${node.code}-${node.role}`}
               >
                 <circle className="map-marker-ring" r="13" />
                 <circle className="map-marker-core" r="5" />
                 <text x="11" y={index % 2 === 0 ? -11 : 20}>
-                  {node.city}
+                  {node.code}
                 </text>
               </g>
             );
@@ -73,22 +82,19 @@ export function TrendMap({ title, summary, nodes }: TrendMapProps) {
       </div>
 
       <div className="market-node-grid">
-        {nodes.map((node, index) => (
-          <div key={`${node.city}-${node.region}`}>
-            <span>{String(index + 1).padStart(2, '0')}</span>
+        {nodes.map((node) => (
+          <div key={`${node.code}-${node.region}`}>
+            <span>{node.code}</span>
             <p>
-              <strong>{node.city}</strong>
-              {node.region}
+              <strong>{node.region}</strong>
+              {node.city}
             </p>
             <small>{node.role}</small>
           </div>
         ))}
       </div>
 
-      <p className="map-disclaimer">
-        Markers are research comparison points, not measured market share,
-        traffic, or API coverage.
-      </p>
+      <p className="map-disclaimer">{disclaimer}</p>
     </div>
   );
 }

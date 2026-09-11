@@ -5,26 +5,26 @@ import { Rotate3D } from 'lucide-react';
 import * as THREE from 'three';
 import { feature } from 'topojson-client';
 import landData from 'world-atlas/land-110m.json';
-import { guides } from '@/lib/guides';
+import { globalSearchMarkets } from '@/lib/market-coverage';
 
 type RadarNode = {
   id: string;
+  code: string;
   city: string;
   region: string;
   signal: string;
-  apiCount: number;
   latitude: number;
   longitude: number;
 };
 
-const radarNodes: RadarNode[] = guides.map((guide) => ({
-  id: guide.id,
-  city: guide.marketNodes[0].city,
-  region: guide.marketNodes[0].region,
-  signal: guide.category,
-  apiCount: guide.apiCapabilities.length,
-  latitude: guide.marketNodes[0].latitude,
-  longitude: guide.marketNodes[0].longitude,
+const radarNodes: RadarNode[] = globalSearchMarkets.map((market, index) => ({
+  id: String(index + 1).padStart(2, '0'),
+  code: market.code,
+  city: market.city,
+  region: market.region,
+  signal: market.role,
+  latitude: market.latitude,
+  longitude: market.longitude,
 }));
 
 function toGlobePosition(longitude: number, latitude: number, radius: number) {
@@ -305,7 +305,7 @@ export function CommerceGlobe() {
   return (
     <section
       className="globe-panel"
-      aria-label="Global ecommerce intelligence map"
+      aria-label="Global ecommerce search-demand coverage map"
     >
       <div className="globe-stage" ref={stageRef}>
         <div className="globe-fallback" aria-hidden="true">
@@ -315,21 +315,20 @@ export function CommerceGlobe() {
       </div>
 
       <div className="globe-status">
-        <span className="live-dot" aria-hidden="true" /> Commerce intelligence
-        map
+        <span className="live-dot" aria-hidden="true" /> 18-region demand map
       </div>
 
       <div className="globe-focus" aria-live="polite">
         <div className="globe-focus-top">
           <span>{selected.region}</span>
-          <strong>{String(selected.apiCount).padStart(2, '0')}</strong>
+          <strong>{selected.code}</strong>
         </div>
         <p>{selected.city}</p>
         <h2>{selected.signal}</h2>
-        <span className="globe-focus-label">Research lens</span>
+        <span className="globe-focus-label">18 explicit Trend regions</span>
       </div>
 
-      <div className="globe-node-list" aria-label="Select a market lens">
+      <div className="globe-node-list" aria-label="Select a supported region">
         {radarNodes.map((node, index) => (
           <button
             type="button"
@@ -338,14 +337,15 @@ export function CommerceGlobe() {
             onClick={() => setActiveNode(index)}
             aria-pressed={activeNode === index}
           >
-            <span>{node.id}</span>
-            {node.city}
+            <span>{node.code}</span>
+            {node.region}
           </button>
         ))}
       </div>
 
       <p className="globe-instruction">
-        <Rotate3D size={14} aria-hidden="true" /> Drag to rotate · select a node
+        <Rotate3D size={14} aria-hidden="true" /> Drag to rotate · select a
+        region
       </p>
     </section>
   );
