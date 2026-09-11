@@ -3,9 +3,9 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://nexscope-ai.github.io'),
-  title: 'Nexscope Commerce Intelligence | Ecommerce Data Workflows',
+  title: 'Commerce Signal Radar | Ecommerce Trends & Market Intelligence',
   description:
-    'Structured ecommerce intelligence for product research, Shopify competitor analysis, SEO and AI search visibility, review analysis, and supplier sourcing.',
+    'Track the ecommerce shifts changing product discovery, advertising measurement, pricing, product feeds, and AI shopping—then investigate them with structured market data.',
   alternates: {
     canonical: '/',
   },
@@ -17,10 +17,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: '/',
-    siteName: 'Nexscope Commerce Intelligence',
-    title: 'Nexscope Commerce Intelligence | Ecommerce Data Workflows',
+    siteName: 'Commerce Signal Radar by Nexscope',
+    title: 'Commerce Signal Radar | Ecommerce Trends & Market Intelligence',
     description:
-      'Structured ecommerce intelligence for product research, Shopify competitor analysis, SEO and AI search visibility, review analysis, and supplier sourcing.',
+      'Current ecommerce signals across AI shopping, product feeds, pricing, attribution, and checkout—connected to structured market data.',
   },
 };
 
