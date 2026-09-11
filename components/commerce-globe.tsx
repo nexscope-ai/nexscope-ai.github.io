@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ArrowRight, Rotate3D } from 'lucide-react';
 import * as THREE from 'three';
 import { feature } from 'topojson-client';
-import countriesData from 'world-atlas/countries-110m.json';
+import landData from 'world-atlas/land-110m.json';
 import { guides } from '@/lib/guides';
 
 type RadarNode = {
@@ -115,24 +115,21 @@ export function CommerceGlobe() {
       opacity: 0.32,
     });
 
-    const topology = countriesData as {
+    const topology = landData as {
       type: 'Topology';
-      objects: { countries: unknown };
+      objects: { land: unknown };
       arcs: unknown;
       transform?: unknown;
     };
-    const countries = feature(
+    const land = feature(
       topology as never,
-      topology.objects.countries as never,
+      topology.objects.land as never,
     ) as unknown as {
-      features: Array<{
-        geometry: { type: string; coordinates: unknown } | null;
-      }>;
+      geometry: { type: string; coordinates: unknown } | null;
     };
 
-    countries.features.forEach((country) => {
-      if (!country.geometry) return;
-      coordinateRings(country.geometry).forEach((ring) => {
+    if (land.geometry) {
+      coordinateRings(land.geometry).forEach((ring) => {
         if (ring.length < 3) return;
         const points = ring.map(([longitude, latitude]) =>
           toGlobePosition(longitude, latitude, 2.012),
@@ -140,7 +137,7 @@ export function CommerceGlobe() {
         const geometry = new THREE.BufferGeometry().setFromPoints(points);
         globe.add(new THREE.Line(geometry, borderMaterial));
       });
-    });
+    }
 
     const markerMeshes: THREE.Mesh[] = [];
     const markerMaterial = new THREE.MeshBasicMaterial({ color: 0xa78bfa });

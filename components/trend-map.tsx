@@ -1,6 +1,6 @@
 import { geoEqualEarth, geoGraticule10, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
-import countriesData from 'world-atlas/countries-110m.json';
+import landData from 'world-atlas/land-110m.json';
 import type { MarketNode } from '@/lib/guides';
 
 type TrendMapProps = {
@@ -13,14 +13,11 @@ const width = 920;
 const height = 450;
 
 export function TrendMap({ title, summary, nodes }: TrendMapProps) {
-  const topology = countriesData as {
+  const topology = landData as {
     type: 'Topology';
-    objects: { countries: unknown };
+    objects: { land: unknown };
   };
-  const countries = feature(
-    topology as never,
-    topology.objects.countries as never,
-  );
+  const land = feature(topology as never, topology.objects.land as never);
   const sphere = { type: 'Sphere' } as const;
   const projection = geoEqualEarth().fitExtent(
     [
@@ -54,10 +51,7 @@ export function TrendMap({ title, summary, nodes }: TrendMapProps) {
           </desc>
           <path className="map-ocean" d={path(sphere) ?? undefined} />
           <path className="map-grid" d={path(graticule) ?? undefined} />
-          <path
-            className="map-country"
-            d={path(countries as never) ?? undefined}
-          />
+          <path className="map-country" d={path(land as never) ?? undefined} />
           {nodes.map((node, index) => {
             const point = projection([node.longitude, node.latitude]);
             if (!point) return null;
