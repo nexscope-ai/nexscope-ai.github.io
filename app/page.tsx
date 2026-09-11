@@ -22,7 +22,7 @@ const CommerceGlobe = lazy(() =>
 );
 
 const NEXSCOPE_URL =
-  'https://www.nexscope.ai/?utm_source=commerce-radar&utm_medium=content&utm_campaign=trend-insights';
+  'https://www.nexscope.ai/apis?utm_source=github.io&utm_medium=referral&utm_campaign=commerce-radar';
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -54,7 +54,7 @@ export default function Home() {
             target="_blank"
             rel="noreferrer"
           >
-            Open Nexscope <ArrowUpRight size={15} aria-hidden="true" />
+            API Docs <ArrowUpRight size={15} aria-hidden="true" />
           </a>
         </div>
       </nav>
@@ -98,7 +98,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Validate with Nexscope
+                Explore Nexscope APIs
               </a>
             </div>
           </div>
@@ -269,7 +269,8 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Explore Nexscope <ArrowUpRight size={17} aria-hidden="true" />
+                Open API documentation{' '}
+                <ArrowUpRight size={17} aria-hidden="true" />
               </a>
             </div>
 
@@ -325,7 +326,7 @@ export default function Home() {
             target="_blank"
             rel="noreferrer"
           >
-            nexscope.ai <ArrowUpRight size={14} aria-hidden="true" />
+            API docs <ArrowUpRight size={14} aria-hidden="true" />
           </a>
         </div>
       </footer>

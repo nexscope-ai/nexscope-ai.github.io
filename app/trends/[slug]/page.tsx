@@ -54,7 +54,7 @@ export default async function TrendPage({ params }: TrendPageProps) {
 
   const trendIndex = trends.findIndex((item) => item.slug === trend.slug);
   const nextTrend = trends[(trendIndex + 1) % trends.length];
-  const nexscopeUrl = `https://www.nexscope.ai/?utm_source=commerce-radar&utm_medium=content&utm_campaign=trend-insights&utm_content=${trend.slug}`;
+  const nexscopeUrl = `https://www.nexscope.ai/apis?utm_source=github.io&utm_medium=referral&utm_campaign=commerce-radar&utm_content=${trend.slug}`;
   const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -105,7 +105,7 @@ export default async function TrendPage({ params }: TrendPageProps) {
             target="_blank"
             rel="noreferrer"
           >
-            Open Nexscope <ArrowUpRight size={15} aria-hidden="true" />
+            API Docs <ArrowUpRight size={15} aria-hidden="true" />
           </a>
         </div>
       </nav>
@@ -220,7 +220,7 @@ export default async function TrendPage({ params }: TrendPageProps) {
                 target="_blank"
                 rel="noreferrer"
               >
-                Validate this opportunity{' '}
+                Open API documentation{' '}
                 <ArrowUpRight size={18} aria-hidden="true" />
               </a>
             </section>
@@ -255,7 +255,7 @@ export default async function TrendPage({ params }: TrendPageProps) {
             target="_blank"
             rel="noreferrer"
           >
-            nexscope.ai <ArrowUpRight size={14} aria-hidden="true" />
+            API docs <ArrowUpRight size={14} aria-hidden="true" />
           </a>
         </div>
       </footer>
