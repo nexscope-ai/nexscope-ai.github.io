@@ -7,27 +7,33 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://nexscope-ai.github.io/trends/ai-agents-move-to-checkout/</loc>
-    <lastmod>2026-09-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://nexscope-ai.github.io/guides/ecommerce-product-demand-validation/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://nexscope-ai.github.io/trends/new-commerce-data-content-ai-era/</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://nexscope-ai.github.io/guides/shopify-competitor-product-research/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://nexscope-ai.github.io/trends/conversational-product-discovery/</loc>
-    <lastmod>2026-03-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://nexscope-ai.github.io/guides/ecommerce-seo-ai-search-visibility/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://nexscope-ai.github.io/trends/ucp-ai-shopping-infrastructure/</loc>
-    <lastmod>2026-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://nexscope-ai.github.io/guides/amazon-review-customer-insights/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://nexscope-ai.github.io/guides/1688-supplier-product-sourcing/</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>

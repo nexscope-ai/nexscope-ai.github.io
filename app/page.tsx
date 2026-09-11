@@ -7,14 +7,12 @@ import {
   ArrowUpRight,
   BarChart3,
   Database,
-  ExternalLink,
-  PlayCircle,
   Radar,
   Search,
   Sparkles,
 } from 'lucide-react';
 import { NexscopeLogo } from '@/components/nexscope-logo';
-import { filters, trends } from '@/lib/trends';
+import { guideFilters, guides } from '@/lib/guides';
 
 const CommerceGlobe = lazy(() =>
   import('@/components/commerce-globe').then((module) => ({
@@ -24,23 +22,30 @@ const CommerceGlobe = lazy(() =>
 
 const NEXSCOPE_URL =
   'https://www.nexscope.ai/apis?utm_source=github.io&utm_medium=referral&utm_campaign=commerce-radar&co-from=github.io';
+const API_COUNT = new Set(
+  guides.flatMap((guide) => guide.apiCapabilities.map((api) => api.slug)),
+).size;
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState('All');
-  const visibleTrends = trends.filter(
-    (trend) => activeFilter === 'All' || trend.category === activeFilter,
+  const visibleGuides = guides.filter(
+    (guide) => activeFilter === 'All' || guide.category === activeFilter,
   );
 
   return (
     <main className="site-shell">
       <nav className="nav radar-nav" aria-label="Primary navigation">
         <div className="container nav-inner">
-          <a className="brand" href="#top" aria-label="Commerce Radar home">
+          <a
+            className="brand"
+            href="#top"
+            aria-label="Nexscope Commerce Guides home"
+          >
             <NexscopeLogo dark />
           </a>
 
           <div className="nav-links">
-            <a href="#signals">Signals</a>
+            <a href="#guides">Guides</a>
             <a href="#method">Method</a>
             <a href="#workflow">Workflow</a>
           </div>
@@ -61,33 +66,32 @@ export default function Home() {
           <div className="situation-copy">
             <p className="eyebrow">
               <span className="live-dot" aria-hidden="true" />
-              Global commerce situation · Week 37
+              Ecommerce decision radar · 5 practical guides
             </p>
-            <h1>See where commerce is shifting.</h1>
+            <h1>Turn ecommerce uncertainty into evidence.</h1>
             <p className="hero-copy">
-              Track the platform, market, and AI signals changing how products
-              are discovered and bought. Select a node to open its full
-              briefing.
+              Five practical guides built around recurring seller questions and
+              the live Nexscope APIs that can help answer them.
             </p>
 
-            <div className="situation-metrics" aria-label="Radar summary">
+            <div className="situation-metrics" aria-label="Guide summary">
               <div>
-                <strong>04</strong>
-                <span>active signals</span>
+                <strong>{String(guides.length).padStart(2, '0')}</strong>
+                <span>decision guides</span>
               </div>
               <div>
-                <strong>04</strong>
-                <span>regions monitored</span>
+                <strong>{String(API_COUNT).padStart(2, '0')}</strong>
+                <span>live API capabilities</span>
               </div>
               <div>
-                <strong>89</strong>
-                <span>peak signal score</span>
+                <strong>05</strong>
+                <span>problem areas</span>
               </div>
             </div>
 
             <div className="hero-actions">
-              <a className="button-primary" href="#signals">
-                Review all signals <ArrowRight size={17} aria-hidden="true" />
+              <a className="button-primary" href="#guides">
+                Explore the guides <ArrowRight size={17} aria-hidden="true" />
               </a>
               <a
                 className="button-secondary dark-secondary"
@@ -103,7 +107,7 @@ export default function Home() {
           <Suspense
             fallback={
               <div className="globe-panel globe-loading">
-                <span>Loading global signal map…</span>
+                <span>Loading decision guide map…</span>
               </div>
             }
           >
@@ -112,31 +116,31 @@ export default function Home() {
         </div>
 
         <div className="container situation-foot">
-          <span>Public-source intelligence</span>
-          <span>Updated weekly</span>
-          <span>Drag the globe or select a market node</span>
+          <span>Built from recurring merchant questions</span>
+          <span>{API_COUNT} verified API capabilities</span>
+          <span>Drag the globe or select a guide</span>
         </div>
       </header>
 
-      <section className="section signals-section" id="signals">
+      <section className="section signals-section" id="guides">
         <div className="container">
           <div className="section-head">
             <div>
-              <p className="kicker">Signal desk</p>
+              <p className="kicker">Seller decision guides</p>
               <h2 className="section-title">
-                What changed—and what to do next
+                Start with the question blocking your next move.
               </h2>
             </div>
             <p className="section-intro">
-              Each briefing connects a verifiable market change to a practical
-              ecommerce decision. No trend-chasing, just evidence and a next
-              step.
+              Each guide connects a recurring ecommerce problem to a practical
+              research workflow and the exact live Nexscope APIs that support
+              it.
             </p>
           </div>
 
           <fieldset className="filter-row">
-            <legend className="sr-only">Filter signals</legend>
-            {filters.map((filter) => (
+            <legend className="sr-only">Filter guides</legend>
+            {guideFilters.map((filter) => (
               <button
                 className={`filter-button ${activeFilter === filter ? 'active' : ''}`}
                 key={filter}
@@ -149,41 +153,37 @@ export default function Home() {
             ))}
           </fieldset>
 
-          {visibleTrends.length > 0 ? (
+          {visibleGuides.length > 0 ? (
             <div className="stories-grid">
-              {visibleTrends.map((story, index) => (
+              {visibleGuides.map((guide, index) => (
                 <article
                   className={`story-card ${index === 0 ? 'featured' : ''}`}
-                  key={story.id}
+                  key={guide.id}
                 >
                   <div className="card-topline">
-                    <span className="category-label">{story.category}</span>
-                    <span className="card-score">Signal {story.score}</span>
+                    <span className="category-label">{guide.category}</span>
+                    <span className="card-score">
+                      {guide.apiCapabilities.length} APIs
+                    </span>
                   </div>
 
                   <div className="card-body">
                     <p className="card-index">
-                      {story.id} / {story.date}
+                      {guide.id} / {guide.date}
                     </p>
                     <h3>
-                      <Link href={`/trends/${story.slug}`}>{story.title}</Link>
+                      <Link href={`/guides/${guide.slug}`}>{guide.title}</Link>
                     </h3>
-                    <p className="story-summary">{story.summary}</p>
+                    <p className="story-summary">{guide.summary}</p>
                   </div>
 
                   <footer className="card-footer">
-                    <a
-                      className="source-link"
-                      href={story.sourceUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={`View source: ${story.source}`}
-                    >
-                      Source: {story.source}
-                      <ExternalLink size={13} aria-hidden="true" />
-                    </a>
-                    <Link className="read-more" href={`/trends/${story.slug}`}>
-                      Read analysis <ArrowRight size={15} aria-hidden="true" />
+                    <span className="source-link">
+                      <span className="live-dot" aria-hidden="true" />{' '}
+                      Capability-backed
+                    </span>
+                    <Link className="read-more" href={`/guides/${guide.slug}`}>
+                      Open guide <ArrowRight size={15} aria-hidden="true" />
                     </Link>
                   </footer>
                 </article>
@@ -198,12 +198,11 @@ export default function Home() {
           <div className="method-copy">
             <p className="kicker">Our method</p>
             <h2 className="section-title">
-              A signal must survive three questions.
+              Every guide connects three layers.
             </h2>
             <p>
-              Headlines earn a place on the radar only when the change is
-              observable, relevant to commerce teams, and specific enough to
-              test.
+              Start with the blocked decision, identify the evidence that can
+              reduce uncertainty, and finish with a bounded next step.
             </p>
           </div>
 
@@ -214,9 +213,9 @@ export default function Home() {
               </span>
               <div>
                 <small>01 · Observe</small>
-                <h3>What actually changed?</h3>
+                <h3>What decision is blocked?</h3>
                 <p>
-                  Start with a named, public source—not a recycled prediction.
+                  Define the commercial question before collecting more data.
                 </p>
               </div>
             </article>
@@ -226,10 +225,10 @@ export default function Home() {
               </span>
               <div>
                 <small>02 · Interpret</small>
-                <h3>Why does it matter?</h3>
+                <h3>Which data can answer it?</h3>
                 <p>
-                  Connect the shift to discovery, conversion, content, or
-                  operations.
+                  Combine relevant signals without pretending one metric is
+                  proof.
                 </p>
               </div>
             </article>
@@ -239,10 +238,10 @@ export default function Home() {
               </span>
               <div>
                 <small>03 · Validate</small>
-                <h3>What can a team test?</h3>
+                <h3>What should happen next?</h3>
                 <p>
-                  Turn the signal into a bounded research question with real
-                  data.
+                  Turn the evidence into a specific, measurable research or
+                  market test.
                 </p>
               </div>
             </article>
@@ -254,11 +253,11 @@ export default function Home() {
         <div className="container">
           <div className="workflow-card">
             <div className="workflow-copy">
-              <p className="kicker">From signal to evidence</p>
-              <h2>Research the opportunity in Nexscope.</h2>
+              <p className="kicker">From question to workflow</p>
+              <h2>Put commerce intelligence to work in Nexscope.</h2>
               <p>
-                Move from a promising headline to product, market, keyword, and
-                creative evidence—all in one commerce intelligence workspace.
+                Research markets, compare evidence, and connect structured
+                ecommerce data to the tools and agents your team already uses.
               </p>
               <a
                 className="button-primary button-on-dark"
@@ -277,8 +276,8 @@ export default function Home() {
                   <Database size={18} aria-hidden="true" />
                 </span>
                 <p>
-                  <strong>Validate demand</strong>Compare product, keyword,
-                  price, and competitor signals.
+                  <strong>Research the market</strong>Query products, stores,
+                  reviews, suppliers, search demand, and AI visibility.
                 </p>
               </div>
               <div>
@@ -286,17 +285,17 @@ export default function Home() {
                   <Sparkles size={18} aria-hidden="true" />
                 </span>
                 <p>
-                  <strong>Find the angle</strong>Turn reviews and market gaps
-                  into a clear content direction.
+                  <strong>Compare the evidence</strong>Turn separate signals
+                  into a traceable decision brief.
                 </p>
               </div>
               <div>
                 <span>
-                  <PlayCircle size={18} aria-hidden="true" />
+                  <Radar size={18} aria-hidden="true" />
                 </span>
                 <p>
-                  <strong>Ship the test</strong>Create UGC-style assets for the
-                  channels where buyers discover.
+                  <strong>Connect your workflow</strong>Use REST APIs, MCP, or
+                  Skills in the environment where your team works.
                 </p>
               </div>
             </div>
@@ -306,12 +305,16 @@ export default function Home() {
 
       <footer className="footer">
         <div className="container footer-inner">
-          <a className="brand" href="#top" aria-label="Commerce Radar home">
+          <a
+            className="brand"
+            href="#top"
+            aria-label="Nexscope Commerce Guides home"
+          >
             <NexscopeLogo />
           </a>
           <p className="footer-note">
-            Analysis is based on public sources and is provided for research—not
-            business or investment advice.
+            Guides distinguish verified API capabilities from checks that still
+            require first-party analytics or manual validation.
           </p>
           <a
             className="footer-link"

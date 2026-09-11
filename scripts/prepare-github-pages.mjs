@@ -1,17 +1,17 @@
 import { copyFile, mkdir, readdir } from 'node:fs/promises';
 
-const trendsDirectory = new URL('../dist/client/trends/', import.meta.url);
-const entries = await readdir(trendsDirectory, { withFileTypes: true });
+const guidesDirectory = new URL('../dist/client/guides/', import.meta.url);
+const entries = await readdir(guidesDirectory, { withFileTypes: true });
 
 await Promise.all(
   entries
     .filter((entry) => entry.isFile() && entry.name.endsWith('.html'))
     .map(async (entry) => {
       const slug = entry.name.slice(0, -'.html'.length);
-      const routeDirectory = new URL(`${slug}/`, trendsDirectory);
+      const routeDirectory = new URL(`${slug}/`, guidesDirectory);
       await mkdir(routeDirectory, { recursive: true });
       await copyFile(
-        new URL(entry.name, trendsDirectory),
+        new URL(entry.name, guidesDirectory),
         new URL('index.html', routeDirectory),
       );
     }),

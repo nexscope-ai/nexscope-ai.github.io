@@ -1,7 +1,7 @@
 import { geoEqualEarth, geoGraticule10, geoPath } from 'd3-geo';
 import { feature } from 'topojson-client';
 import countriesData from 'world-atlas/countries-110m.json';
-import type { MarketNode } from '@/lib/trends';
+import type { MarketNode } from '@/lib/guides';
 
 type TrendMapProps = {
   title: string;
@@ -36,11 +36,11 @@ export function TrendMap({ title, summary, nodes }: TrendMapProps) {
     <div className="trend-map-card">
       <div className="trend-map-head">
         <div>
-          <p className="kicker">02 / Market map</p>
+          <p className="kicker">02 / Market lens</p>
           <h2>{title}</h2>
           <p>{summary}</p>
         </div>
-        <span>Editorial watch map</span>
+        <span>Research comparison map</span>
       </div>
 
       <div className="trend-map-visual">
@@ -92,8 +92,8 @@ export function TrendMap({ title, summary, nodes }: TrendMapProps) {
       </div>
 
       <p className="map-disclaimer">
-        Markers are editorial monitoring points, not measured market share or
-        adoption data.
+        Markers are research comparison points, not measured market share,
+        traffic, or API coverage.
       </p>
     </div>
   );

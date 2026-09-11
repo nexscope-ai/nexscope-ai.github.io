@@ -6,60 +6,29 @@ import { ArrowRight, Rotate3D } from 'lucide-react';
 import * as THREE from 'three';
 import { feature } from 'topojson-client';
 import countriesData from 'world-atlas/countries-110m.json';
+import { guides } from '@/lib/guides';
 
 type RadarNode = {
   id: string;
   city: string;
   region: string;
   signal: string;
-  score: number;
+  apiCount: number;
   latitude: number;
   longitude: number;
   slug: string;
 };
 
-const radarNodes: RadarNode[] = [
-  {
-    id: '01',
-    city: 'San Francisco',
-    region: 'North America',
-    signal: 'Conversational discovery',
-    score: 86,
-    latitude: 37.77,
-    longitude: -122.42,
-    slug: 'conversational-product-discovery',
-  },
-  {
-    id: '02',
-    city: 'Beijing',
-    region: 'Greater China',
-    signal: 'Data × content × AI',
-    score: 82,
-    latitude: 39.9,
-    longitude: 116.4,
-    slug: 'new-commerce-data-content-ai-era',
-  },
-  {
-    id: '03',
-    city: 'London',
-    region: 'Europe',
-    signal: 'Agent-led checkout',
-    score: 89,
-    latitude: 51.51,
-    longitude: -0.13,
-    slug: 'ai-agents-move-to-checkout',
-  },
-  {
-    id: '04',
-    city: 'Singapore',
-    region: 'Southeast Asia',
-    signal: 'AI commerce infrastructure',
-    score: 80,
-    latitude: 1.35,
-    longitude: 103.82,
-    slug: 'ucp-ai-shopping-infrastructure',
-  },
-];
+const radarNodes: RadarNode[] = guides.map((guide) => ({
+  id: guide.id,
+  city: guide.marketNodes[0].city,
+  region: guide.marketNodes[0].region,
+  signal: guide.category,
+  apiCount: guide.apiCapabilities.length,
+  latitude: guide.marketNodes[0].latitude,
+  longitude: guide.marketNodes[0].longitude,
+  slug: guide.slug,
+}));
 
 function toGlobePosition(longitude: number, latitude: number, radius: number) {
   const phi = THREE.MathUtils.degToRad(90 - latitude);
@@ -90,7 +59,7 @@ function coordinateRings(geometry: {
 export function CommerceGlobe() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const stageRef = useRef<HTMLDivElement>(null);
-  const [activeNode, setActiveNode] = useState(2);
+  const [activeNode, setActiveNode] = useState(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -340,7 +309,10 @@ export function CommerceGlobe() {
   const selected = radarNodes[activeNode];
 
   return (
-    <section className="globe-panel" aria-label="Global commerce signal map">
+    <section
+      className="globe-panel"
+      aria-label="Global ecommerce decision guide map"
+    >
       <div className="globe-stage" ref={stageRef}>
         <div className="globe-fallback" aria-hidden="true">
           <Rotate3D size={54} />
@@ -349,22 +321,22 @@ export function CommerceGlobe() {
       </div>
 
       <div className="globe-status">
-        <span className="live-dot" aria-hidden="true" /> Live signal map
+        <span className="live-dot" aria-hidden="true" /> Decision guide map
       </div>
 
       <div className="globe-focus" aria-live="polite">
         <div className="globe-focus-top">
           <span>{selected.region}</span>
-          <strong>{selected.score}</strong>
+          <strong>{String(selected.apiCount).padStart(2, '0')}</strong>
         </div>
         <p>{selected.city}</p>
         <h2>{selected.signal}</h2>
-        <Link href={`/trends/${selected.slug}`}>
-          Open signal <ArrowRight size={14} aria-hidden="true" />
+        <Link href={`/guides/${selected.slug}`}>
+          Open guide <ArrowRight size={14} aria-hidden="true" />
         </Link>
       </div>
 
-      <div className="globe-node-list" aria-label="Select a signal location">
+      <div className="globe-node-list" aria-label="Select a decision guide">
         {radarNodes.map((node, index) => (
           <button
             type="button"
