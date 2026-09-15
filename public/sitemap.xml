@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nexscope-ai.github.io/</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-09-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -39,4 +39,5 @@
   <url><loc>https://nexscope-ai.github.io/amazon-research.html</loc><lastmod>2026-09-14</lastmod></url>
   <url><loc>https://nexscope-ai.github.io/ecommerce-ai-agents.html</loc><lastmod>2026-09-14</lastmod></url>
   <url><loc>https://nexscope-ai.github.io/ai-product-videos.html</loc><lastmod>2026-09-14</lastmod></url>
+  <url><loc>https://nexscope-ai.github.io/radar/</loc><lastmod>2026-09-15</lastmod></url>
 </urlset>
