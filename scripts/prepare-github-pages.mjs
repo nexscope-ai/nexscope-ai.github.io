@@ -2,7 +2,6 @@ import { copyFile, mkdir } from 'node:fs/promises';
 
 const clientDirectory = new URL('../dist/client/', import.meta.url);
 const routeSlugs = [
-  'radar',
   'ecommerce-product-demand-validation',
   'shopify-competitor-product-research',
   'ecommerce-seo-ai-search-visibility',
