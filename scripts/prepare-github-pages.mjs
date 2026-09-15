@@ -1,4 +1,4 @@
-import { copyFile, mkdir } from 'node:fs/promises';
+import { copyFile, mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 
 const clientDirectory = new URL('../dist/client/', import.meta.url);
 const routeSlugs = [
@@ -24,3 +24,18 @@ await copyFile(
   new URL('../public/.nojekyll', import.meta.url),
   new URL('../dist/client/.nojekyll', import.meta.url),
 );
+
+// Include analytics on every exported page, including standalone campaigns.
+async function addAnalytics(directory) {
+  for (const entry of await readdir(directory, { withFileTypes: true })) {
+    const file = new URL(entry.name + (entry.isDirectory() ? '/' : ''), directory);
+    if (entry.isDirectory()) await addAnalytics(file);
+    else if (entry.name.endsWith('.html')) {
+      const html = await readFile(file, 'utf8');
+      if (!html.includes('src="/analytics.js"')) {
+        await writeFile(file, html.replace('</head>', '<script src="/analytics.js" defer></script></head>'));
+      }
+    }
+  }
+}
+await addAnalytics(clientDirectory);
