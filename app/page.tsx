@@ -97,7 +97,6 @@ export default function Home() {
             <a data-track href={docs}>
               API docs
             </a>
-            <a href="/radar/">Commerce Radar</a>
           </div>
           <a className={styles.button} data-track href={explore}>
             Explore Nexscope ↗
@@ -297,14 +296,6 @@ export default function Home() {
               AI content and advertising. Generated outputs can contain errors.
             </p>
           </details>
-          <details>
-            <summary>Where did Commerce Signal Radar go?</summary>
-            <p>
-              The original editorial trend page is still available in{' '}
-              <a href="/radar/">Commerce Radar</a>. It provides context from
-              platform updates, not a live market-price feed.
-            </p>
-          </details>
         </section>
         <section className={`${styles.wrap} ${styles.closing}`}>
           <p>YOUR NEXT MOVE STARTS HERE</p>
@@ -332,7 +323,6 @@ export default function Home() {
           <a data-track href={docs}>
             API docs
           </a>
-          <a href="/radar/">Commerce Radar</a>
           <a href="https://t.me/+r3m0s6Z1CcI2NTZh">Telegram community ↗</a>
         </div>
         <p className={styles.disclosure}>
