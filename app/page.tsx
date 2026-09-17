@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import styles from './home.module.css';
 
 const tracking =
-  '?fpr=van34&co-from=hhw&utm_source=github.io&utm_medium=referral&utm_campaign=homepage';
+  '?co-from=githubIO&utm_source=github.io&utm_medium=referral&utm_campaign=homepage';
 const explore = `https://www.nexscope.ai/apis${tracking}`;
 const docs = `https://www.nexscope.ai/api-docs${tracking}`;
 export const metadata: Metadata = {
@@ -132,7 +132,7 @@ export default function Home() {
               For sellers, developers and creative teams.
               <br />
               Official product platform:{' '}
-              <a href="https://www.nexscope.ai/">nexscope.ai</a>
+              <a href="https://www.nexscope.ai/?co-from=githubIO">nexscope.ai</a>
             </p>
           </div>
           <div
