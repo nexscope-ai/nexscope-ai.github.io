@@ -94,7 +94,7 @@ export default function Home() {
           </a>
           <div className={styles.navlinks}>
             <a href="#solutions">Solutions</a>
-            <a href="/ecommerce-ai-tools/ecommerce-trends/">Ecommerce trends</a>
+            <a href="/ecommerce-ai-tools/">Resources</a>
             <a data-track href={docs}>
               API docs
             </a>
@@ -298,16 +298,22 @@ export default function Home() {
             </p>
           </details>
         </section>
-        <section className={`${styles.wrap} ${styles.section}`} aria-labelledby="trends-heading">
-          <p className={styles.eyebrow}>THE NEXSCOPE JOURNAL</p>
-          <h2 id="trends-heading">A fresh perspective on ecommerce.</h2>
-          <p className={styles.lead}>
-            Explore AI shopping, marketplace intelligence and practical workflows
-            that turn new developments into your next move.
-          </p>
-          <a className={styles.button} href="/ecommerce-ai-tools/ecommerce-trends/">
-            Explore trends & insights ↗
-          </a>
+        <section className={`${styles.wrap} ${styles.section}`} aria-labelledby="resources-heading">
+          <p className={styles.eyebrow}>THE NEXSCOPE RESOURCE LIBRARY</p>
+          <h2 id="resources-heading">Learn it. Check it. Put it to work.</h2>
+          <p className={styles.intro}>Practical guides, inspectable case studies and fresh perspectives for your next ecommerce decision.</p>
+          <div className={styles.cards}>
+            {[
+              { title: 'Practical guides', text: 'Build a competitor shortlist, qualify keywords or turn review insights into a clearer listing.', href: '/ecommerce-ai-tools/guides/', cta: 'Find a workflow' },
+              { title: 'Case studies', text: 'Look inside documented workflows, including the source evidence and the limits of each sample.', href: '/ecommerce-ai-tools/case-studies/', cta: 'Explore the evidence' },
+              { title: 'Trends & insights', text: 'Make sense of AI shopping, marketplace intelligence and the tools changing ecommerce research.', href: '/ecommerce-ai-tools/ecommerce-trends/', cta: 'Read the journal' },
+            ].map((item) => (
+              <article className={styles.card} key={item.href}>
+                <h3>{item.title}</h3><p>{item.text}</p>
+                <a className={styles.textlink} href={item.href}>{item.cta} →</a>
+              </article>
+            ))}
+          </div>
         </section>
         <section className={`${styles.wrap} ${styles.closing}`}>
           <p>YOUR NEXT MOVE STARTS HERE</p>
@@ -332,7 +338,7 @@ export default function Home() {
           <p>Ecommerce intelligence. AI-powered possibilities.</p>
         </div>
         <div className={styles.footerlinks}>
-          <a href="/ecommerce-ai-tools/ecommerce-trends/">Trends & insights</a>
+          <a href="/ecommerce-ai-tools/">Resource library</a>
           <a data-track href={docs}>
             API docs
           </a>
