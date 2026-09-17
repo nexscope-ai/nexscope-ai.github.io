@@ -305,6 +305,8 @@ export default function Home() {
           <div className={styles.cards}>
             {[
               { title: 'Practical guides', text: 'Build a competitor shortlist, qualify keywords or turn review insights into a clearer listing.', href: '/ecommerce-ai-tools/guides/', cta: 'Find a workflow' },
+              { title: 'Amazon price history', text: 'Track price, BSR, rating, seller-count and sales signals without mistaking estimates for seller-account data.', href: '/ecommerce-ai-tools/amazon-price-history/', cta: 'Read the guide' },
+              { title: 'What is an MCP server?', text: 'Understand how AI hosts, clients and ecommerce tools connect—and what to verify before production use.', href: '/ecommerce-ai-tools/what-is-an-mcp-server/', cta: 'Explore MCP' },
               { title: 'Case studies', text: 'Look inside documented workflows, including the source evidence and the limits of each sample.', href: '/ecommerce-ai-tools/case-studies/', cta: 'Explore the evidence' },
               { title: 'Trends & insights', text: 'Make sense of AI shopping, marketplace intelligence and the tools changing ecommerce research.', href: '/ecommerce-ai-tools/ecommerce-trends/', cta: 'Read the journal' },
             ].map((item) => (
