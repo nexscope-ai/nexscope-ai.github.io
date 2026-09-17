@@ -94,6 +94,7 @@ export default function Home() {
           </a>
           <div className={styles.navlinks}>
             <a href="#solutions">Solutions</a>
+            <a href="/ecommerce-ai-tools/ecommerce-trends/">Ecommerce trends</a>
             <a data-track href={docs}>
               API docs
             </a>
@@ -297,6 +298,17 @@ export default function Home() {
             </p>
           </details>
         </section>
+        <section className={`${styles.wrap} ${styles.section}`} aria-labelledby="trends-heading">
+          <p className={styles.eyebrow}>THE NEXSCOPE JOURNAL</p>
+          <h2 id="trends-heading">A fresh perspective on ecommerce.</h2>
+          <p className={styles.lead}>
+            Explore AI shopping, marketplace intelligence and practical workflows
+            that turn new developments into your next move.
+          </p>
+          <a className={styles.button} href="/ecommerce-ai-tools/ecommerce-trends/">
+            Explore trends & insights ↗
+          </a>
+        </section>
         <section className={`${styles.wrap} ${styles.closing}`}>
           <p>YOUR NEXT MOVE STARTS HERE</p>
           <h2>Bring better context to commerce.</h2>
@@ -320,6 +332,7 @@ export default function Home() {
           <p>Ecommerce intelligence. AI-powered possibilities.</p>
         </div>
         <div className={styles.footerlinks}>
+          <a href="/ecommerce-ai-tools/ecommerce-trends/">Trends & insights</a>
           <a data-track href={docs}>
             API docs
           </a>
