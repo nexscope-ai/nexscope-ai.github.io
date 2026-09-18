@@ -262,6 +262,49 @@ export default function Home() {
             </li>
           </ol>
         </section>
+        <section
+          className={`${styles.wrap} ${styles.section}`}
+          aria-labelledby="latest-insights-heading"
+        >
+          <p className={styles.eyebrow}>WHAT&apos;S CHANGING IN AI COMMERCE</p>
+          <h2 id="latest-insights-heading">
+            Prepare for the next discovery surface.
+          </h2>
+          <p className={styles.intro}>
+            Practical, evidence-first guides for the AI shopping topics
+            merchants and builders are researching now.
+          </p>
+          <div className={styles.cards}>
+            {[
+              {
+                title: 'ChatGPT Ads for ecommerce',
+                text: 'Prepare product data, landing pages, creative and measurement before testing conversational advertising.',
+                href: '/ecommerce-ai-tools/ecommerce-trends/chatgpt-ads-for-ecommerce/',
+                cta: 'Open the readiness guide',
+              },
+              {
+                title: 'Google AI Mode shopping',
+                text: 'Align Merchant Center data, product evidence and analytics around complex shopping questions.',
+                href: '/ecommerce-ai-tools/ecommerce-trends/google-ai-mode-shopping/',
+                cta: 'Read the merchant guide',
+              },
+              {
+                title: 'Ecommerce MCP servers',
+                text: 'Connect agents to product, keyword, price and review tools with explicit schemas and safety controls.',
+                href: '/ecommerce-ai-tools/ecommerce-mcp-server/',
+                cta: 'Explore the architecture',
+              },
+            ].map((item) => (
+              <article className={styles.card} key={item.href}>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+                <a className={styles.textlink} href={item.href}>
+                  {item.cta} →
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
         <section className={`${styles.wrap} ${styles.section} ${styles.faq}`}>
           <p className={styles.eyebrow}>GOOD TO KNOW</p>
           <h2>A few things before you start.</h2>
@@ -306,7 +349,7 @@ export default function Home() {
             {[
               { title: 'Practical guides', text: 'Build a competitor shortlist, qualify keywords or turn review insights into a clearer listing.', href: '/ecommerce-ai-tools/guides/', cta: 'Find a workflow' },
               { title: 'Amazon price history', text: 'Track price, BSR, rating, seller-count and sales signals without mistaking estimates for seller-account data.', href: '/ecommerce-ai-tools/amazon-price-history/', cta: 'Read the guide' },
-              { title: 'What is an MCP server?', text: 'Understand how AI hosts, clients and ecommerce tools connect—and what to verify before production use.', href: '/ecommerce-ai-tools/what-is-an-mcp-server/', cta: 'Explore MCP' },
+              { title: 'Measure AI referral traffic', text: 'Track observed AI referrals, landing pages, scroll depth and meaningful conversion events in GA4.', href: '/ecommerce-ai-tools/ai-referral-traffic-ga4/', cta: 'Build the report' },
               { title: 'Case studies', text: 'Look inside documented workflows, including the source evidence and the limits of each sample.', href: '/ecommerce-ai-tools/case-studies/', cta: 'Explore the evidence' },
               { title: 'Trends & insights', text: 'Make sense of AI shopping, marketplace intelligence and the tools changing ecommerce research.', href: '/ecommerce-ai-tools/ecommerce-trends/', cta: 'Read the journal' },
             ].map((item) => (
