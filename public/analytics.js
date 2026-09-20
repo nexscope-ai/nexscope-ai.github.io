@@ -69,5 +69,5 @@
     event.preventDefault();
     document.body.append(panel);
     panel.querySelector('button')?.focus();
-  });
+  }, true);
 })();
