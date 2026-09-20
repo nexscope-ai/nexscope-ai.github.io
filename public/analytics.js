@@ -64,8 +64,8 @@
   }
   if (!consent) document.body.append(panel);
   document.addEventListener('click', (event) => {
-    const trigger = event.target.closest?.('a[href="#analytics-preferences"]');
-    if (!trigger) return;
+    const trigger = event.target.closest?.('a[href]');
+    if (!trigger || trigger.hash !== '#analytics-preferences' || trigger.origin !== location.origin) return;
     event.preventDefault();
     document.body.append(panel);
     panel.querySelector('button')?.focus();
