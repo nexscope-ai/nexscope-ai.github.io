@@ -63,41 +63,11 @@
     panel.append(button);
   }
   if (!consent) document.body.append(panel);
-  // Resource pages have their own footer; the fallback preference row floats
-  // outside its navigation and visually breaks the article layout.
-  // Visitors can still change their choice from the main site's footer.
-  if (location.pathname.startsWith('/ecommerce-ai-tools/')) return;
-  const preferences = document.createElement('button');
-  preferences.type = 'button';
-  preferences.textContent = 'Analytics preferences';
-  preferences.className = 'nexscope-analytics-preferences';
-  const preferenceStyles = document.createElement('style');
-  preferenceStyles.textContent = `
-    .nexscope-analytics-preferences {
-      display: inline-flex; align-items: center; min-height: 44px;
-      margin: 0; padding: 6px 0; border: 0; border-radius: 2px;
-      background: transparent; color: #686571; font: 12px/1.5 Arial, sans-serif;
-      cursor: pointer; text-underline-offset: 4px;
-    }
-    .nexscope-analytics-preferences:hover { color: #6250e9; text-decoration: underline; }
-    .nexscope-analytics-preferences:focus-visible { outline: 2px solid #6250e9; outline-offset: 4px; }
-    .nexscope-analytics-preferences-row { flex-basis: 100%; margin: 0; }
-  `;
-  document.head.append(preferenceStyles);
-  preferences.onclick = () => document.body.append(panel);
-  const row = document.createElement('div');
-  row.className = 'nexscope-analytics-preferences-row';
-  function mountPreferences() {
-    if (preferences.isConnected) return;
-    const footer = document.querySelector('footer');
-    const footerLinks = footer?.querySelector('[class*="footerlinks"], .footer-links');
-    if (footerLinks) footerLinks.append(preferences);
-    else {
-      row.append(preferences);
-      (footer || document.body).append(row);
-    }
-  }
-  mountPreferences();
-  // Static pages may hydrate after this deferred script and replace footer nodes.
-  new MutationObserver(mountPreferences).observe(document.body, { childList: true, subtree: true });
+  document.addEventListener('click', (event) => {
+    const trigger = event.target.closest?.('a[href="#analytics-preferences"]');
+    if (!trigger) return;
+    event.preventDefault();
+    document.body.append(panel);
+    panel.querySelector('button')?.focus();
+  });
 })();

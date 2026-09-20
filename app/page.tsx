@@ -346,6 +346,7 @@ export default function Home() {
             API docs
           </a>
           <a href="https://t.me/+r3m0s6Z1CcI2NTZh">Telegram community ↗</a>
+          <a href="#analytics-preferences">Privacy</a>
         </div>
         <p className={styles.disclosure}>
           Some links include referral tracking. The referrer may earn a
