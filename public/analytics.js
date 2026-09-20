@@ -63,6 +63,10 @@
     panel.append(button);
   }
   if (!consent) document.body.append(panel);
+  // Resource pages have their own footer; the fallback preference row floats
+  // outside its navigation and visually breaks the article layout.
+  // Visitors can still change their choice from the main site's footer.
+  if (location.pathname.startsWith('/ecommerce-ai-tools/')) return;
   const preferences = document.createElement('button');
   preferences.type = 'button';
   preferences.textContent = 'Analytics preferences';
