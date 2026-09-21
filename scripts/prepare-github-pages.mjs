@@ -1,4 +1,4 @@
-import { copyFile, mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
+import { copyFile, mkdir, readdir, readFile, unlink, writeFile } from 'node:fs/promises';
 
 const clientDirectory = new URL('../dist/client/', import.meta.url);
 const routeSlugs = [
@@ -24,6 +24,20 @@ await copyFile(
   new URL('../public/.nojekyll', import.meta.url),
   new URL('../dist/client/.nojekyll', import.meta.url),
 );
+
+// Vinext exports a /name.html page route as name.html.html. Publish it at its
+// established URL instead so existing links, canonicals and search signals stay put.
+const campaignRoutes = [
+  'amazon-research',
+  'ecommerce-ai-agents',
+  'ai-product-videos',
+  'ai-video-generator',
+];
+await Promise.all(campaignRoutes.map(async (slug) => {
+  const exportedPage = new URL(`${slug}.html.html`, clientDirectory);
+  await copyFile(exportedPage, new URL(`${slug}.html`, clientDirectory));
+  await unlink(exportedPage);
+}));
 
 // Include analytics on every exported page, including standalone campaigns.
 async function addAnalytics(directory) {
