@@ -310,6 +310,9 @@ export default function Home() {
               { title: 'Case studies', text: 'Look inside documented workflows, including the source evidence and the limits of each sample.', href: '/ecommerce-ai-tools/case-studies/', cta: 'Explore the evidence' },
               { title: 'Trends & insights', text: 'Make sense of AI shopping, marketplace intelligence and the tools changing ecommerce research.', href: '/ecommerce-ai-tools/ecommerce-trends/', cta: 'Read the journal' },
               { title: 'ChatGPT Images 2.5 guide', text: 'Learn a source-backed product photo editing workflow, factual QA checks and how to hand off a still for video.', href: '/ecommerce-ai-tools/ecommerce-trends/chatgpt-images-2-5-ecommerce-product-photos/', cta: 'Read the new article' },
+              { title: 'Amazon review insights', text: 'Turn customer complaints, recurring praise and competitor review evidence into clearer product and listing decisions.', href: '/amazon-review-customer-insights/', cta: 'Analyze review signals' },
+              { title: 'Shopify competitor research', text: 'Compare products, stores and advertising signals with a repeatable, evidence-led research workflow.', href: '/shopify-competitor-product-research/', cta: 'Research competitors' },
+              { title: 'Ecommerce SEO & AI visibility', text: 'Audit technical SEO, answer readiness and AI-search evidence across the pages that matter most.', href: '/ecommerce-seo-ai-search-visibility/', cta: 'Improve visibility' },
             ].map((item) => (
               <article className={styles.card} key={item.href}>
                 <h3>{item.title}</h3><p>{item.text}</p>
