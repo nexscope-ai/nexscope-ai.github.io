@@ -7,13 +7,14 @@ const allowed = [
   'utm_content',
   'utm_term',
 ];
-for (const link of document.querySelectorAll('a[href]')) {
+document.addEventListener('click', (event) => {
+  const link = event.target.closest?.('a[href]');
+  if (!link) return;
   const target = new URL(link.href);
   if (
     target.hostname !== 'www.nexscope.ai' &&
     target.origin !== window.location.origin
-  )
-    continue;
+  ) return;
   for (const key of link.hasAttribute('data-track') ? allowed : []) {
     const value = incoming.get(key);
     if (value && value.length <= 200) target.searchParams.set(key, value);
@@ -21,4 +22,4 @@ for (const link of document.querySelectorAll('a[href]')) {
   target.searchParams.delete('fpr');
   if (target.hostname === 'www.nexscope.ai') target.searchParams.set('co-from', 'githubIO');
   link.href = target.href;
-}
+}, true);

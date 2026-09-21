@@ -118,7 +118,7 @@ export function CampaignPage({ campaign }: { campaign: Campaign }) {
   return (
     <>
       <link rel="stylesheet" href="/campaigns.css" />
-      <script src="/campaigns.js" defer />
+      <script src="/campaigns.js?v=2" defer />
       {generator && <VideoGeneratorSchema />}
       <div className={`campaign-page${campaign.visual === 'video' ? ' video' : ''}`}>
         <a className="skip" href="#main">Skip to content</a>
