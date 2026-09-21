@@ -49,18 +49,26 @@
   panel.setAttribute('role', 'region');
   panel.setAttribute('aria-label', 'Analytics preferences');
   panel.style.cssText = 'position:fixed;bottom:16px;right:16px;width:min(380px,calc(100vw - 32px));z-index:9999;background:#fff;color:#211f26;border:1px solid #ded9f2;border-radius:14px;padding:16px 18px;box-shadow:0 16px 48px #211f2626;font:13px/1.5 Arial';
-  panel.append('Allow analytics cookies? Rejecting keeps limited, cookieless measurement. ');
+  const message = document.createElement('p');
+  message.textContent = 'Allow analytics cookies? Rejecting keeps limited, cookieless measurement.';
+  message.style.cssText = 'margin:0;line-height:1.5';
+  panel.append(message);
+  const actions = document.createElement('div');
+  actions.style.cssText = 'display:flex;align-items:center;gap:8px;margin-top:12px';
   for (const [label, value] of [['Allow analytics', 'granted'], ['Reject', 'denied']]) {
     const button = document.createElement('button');
     button.textContent = label;
-    button.style.cssText = 'margin:12px 8px 0 0;padding:8px 12px;border:1px solid #6250e9;border-radius:8px;cursor:pointer;background:white;color:#4032a0;font-weight:600';
+    button.style.cssText = value === 'granted'
+      ? 'padding:9px 12px;border:1px solid #6250e9;border-radius:8px;cursor:pointer;background:#6250e9;color:white;font-weight:600'
+      : 'padding:9px 12px;border:1px solid #ded9f2;border-radius:8px;cursor:pointer;background:white;color:#4032a0;font-weight:600';
     button.onclick = () => {
       try { localStorage.setItem(key, value); } catch { /* Choice applies this visit. */ }
       panel.remove();
       window.gtag('consent', 'update', { analytics_storage: value });
     };
-    panel.append(button);
+    actions.append(button);
   }
+  panel.append(actions);
   if (!consent) document.body.append(panel);
   document.addEventListener('click', (event) => {
     const trigger = event.target.closest?.('a[href]');
