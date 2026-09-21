@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://nexscope-ai.github.io'),
+  metadataBase: new URL('https://learn.nexscope.ai'),
   title: 'Nexscope | Ecommerce Data, AI Agents & Product Videos',
   description:
     'Research products, competitors and keywords, build AI-powered workflows and create product videos with Nexscope.',

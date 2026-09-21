@@ -81,7 +81,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
   if (!guide) notFound();
 
   const nexscopeUrl = trackedDocsUrl(guide.slug);
-  const pageUrl = `https://nexscope-ai.github.io/${guide.slug}/`;
+  const pageUrl = `https://learn.nexscope.ai/${guide.slug}/`;
   const articleJsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -117,7 +117,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
           url: 'https://www.nexscope.ai/',
           logo: {
             '@type': 'ImageObject',
-            url: 'https://nexscope-ai.github.io/logo.png',
+            url: 'https://learn.nexscope.ai/logo.png',
           },
         },
         about: guide.keywords.map((name) => ({
