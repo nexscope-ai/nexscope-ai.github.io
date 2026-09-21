@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 570" role="img" aria-labelledby="title desc">
+  <title id="title">1688 image-search API: one documented test</title>
+  <desc id="desc">On September 20, 2026, three public-image-URL attempts returned business code 13007 and did not deduct credits. A Base64 JPEG request returned code 0 and ten first-page products, with ten credits deducted.</desc>
+  <rect width="1200" height="570" rx="28" fill="#f7f7ff"/>
+  <circle cx="1116" cy="62" r="150" fill="#e8e5ff"/>
+  <text x="56" y="69" fill="#6250e9" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" letter-spacing="3">OBSERVED NEXSCOPE API RUN · 1688</text>
+  <text x="56" y="125" fill="#211f26" font-family="Arial,Helvetica,sans-serif" font-size="38" font-weight="700">Transport status is not the business result</text>
+  <text x="56" y="156" fill="#686571" font-family="Arial,Helvetica,sans-serif" font-size="18">Search By Image · generated unbranded bottle concept · 20 September 2026</text>
+
+  <rect x="55" y="197" width="340" height="272" rx="20" fill="#fff" stroke="#e2dff0"/>
+  <rect x="81" y="221" width="96" height="30" rx="15" fill="#fff2ec"/>
+  <text x="101" y="242" fill="#b4572c" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700">URL input</text>
+  <text x="81" y="320" fill="#211f26" font-family="Arial,Helvetica,sans-serif" font-size="72" font-weight="700">3<tspan font-size="27" fill="#918a9d"> attempts</tspan></text>
+  <text x="81" y="371" fill="#b4572c" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="700">Business code 13007</text>
+  <text x="81" y="415" fill="#686571" font-family="Arial,Helvetica,sans-serif" font-size="16">0 credits deducted for these failures</text>
+
+  <path d="M407 331h10m-5-5 5 5-5 5" fill="none" stroke="#918a9d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="430" y="197" width="340" height="272" rx="20" fill="#fff" stroke="#e2dff0"/>
+  <rect x="456" y="221" width="122" height="30" rx="15" fill="#eaf8f6"/>
+  <text x="474" y="242" fill="#137f80" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="700">Base64 JPEG</text>
+  <text x="456" y="320" fill="#211f26" font-family="Arial,Helvetica,sans-serif" font-size="72" font-weight="700">1<tspan font-size="27" fill="#918a9d"> successful run</tspan></text>
+  <text x="456" y="371" fill="#137f80" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="700">Business code 0</text>
+  <text x="456" y="415" fill="#686571" font-family="Arial,Helvetica,sans-serif" font-size="16">The response was accepted</text>
+
+  <path d="M782 331h10m-5-5 5 5-5 5" fill="none" stroke="#918a9d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="805" y="197" width="340" height="272" rx="20" fill="#fff" stroke="#e2dff0"/>
+  <text x="832" y="239" fill="#686571" font-family="Arial,Helvetica,sans-serif" font-size="16">First-page response</text>
+  <text x="832" y="320" fill="#211f26" font-family="Arial,Helvetica,sans-serif" font-size="72" font-weight="700">10<tspan font-size="27" fill="#918a9d"> products</tspan></text>
+  <text x="832" y="371" fill="#6250e9" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="700">10 credits deducted</text>
+  <text x="832" y="415" fill="#686571" font-family="Arial,Helvetica,sans-serif" font-size="16">Candidates, not verified suppliers</text>
+
+  <text x="56" y="523" fill="#544c66" font-family="Arial,Helvetica,sans-serif" font-size="16">Agent rule: inspect JSON code, preserve the returned rows, and keep failed inputs separate from successful results.</text>
+</svg>

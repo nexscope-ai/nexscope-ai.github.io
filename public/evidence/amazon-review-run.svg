@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 570" role="img" aria-labelledby="title desc">
+  <title id="title">Amazon review research: one observed run</title>
+  <desc id="desc">On September 15, 2026, Nexscope requested 20 low-star reviews for Amazon US ASIN B0G1FVPYNW. Ten were returned: nine one-star and one two-star. Four of the returned comments mentioned size or capacity.</desc>
+  <rect width="1200" height="570" rx="28" fill="#f8f6ff"/>
+  <circle cx="1101" cy="78" r="144" fill="#eae5ff"/>
+  <circle cx="1101" cy="78" r="91" fill="#ddd6ff"/>
+  <text x="56" y="69" fill="#6250e9" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" letter-spacing="3">OBSERVED NEXSCOPE RUN · AMAZON US</text>
+  <text x="56" y="125" fill="#211f26" font-family="Arial,Helvetica,sans-serif" font-size="38" font-weight="700">From returned reviews to a testable question</text>
+  <text x="56" y="156" fill="#686571" font-family="Arial,Helvetica,sans-serif" font-size="18">ASIN B0G1FVPYNW · 15 September 2026 · intentionally low-star sample</text>
+
+  <rect x="55" y="197" width="340" height="272" rx="20" fill="#fff" stroke="#e2dff0"/>
+  <text x="82" y="238" fill="#686571" font-family="Arial,Helvetica,sans-serif" font-size="16">Requested vs. returned</text>
+  <text x="82" y="317" fill="#211f26" font-family="Arial,Helvetica,sans-serif" font-size="70" font-weight="700">10<tspan fill="#918a9d" font-size="37"> / 20</tspan></text>
+  <rect x="82" y="347" width="286" height="19" rx="9.5" fill="#e9e6f1"/>
+  <rect x="82" y="347" width="143" height="19" rx="9.5" fill="#6250e9"/>
+  <text x="82" y="408" fill="#544c66" font-family="Arial,Helvetica,sans-serif" font-size="16">10 requested were not returned.</text>
+
+  <rect x="430" y="197" width="340" height="272" rx="20" fill="#fff" stroke="#e2dff0"/>
+  <text x="457" y="238" fill="#686571" font-family="Arial,Helvetica,sans-serif" font-size="16">Ratings in returned sample</text>
+  <text x="457" y="316" fill="#211f26" font-family="Arial,Helvetica,sans-serif" font-size="67" font-weight="700">9<tspan fill="#918a9d" font-size="28"> one-star</tspan></text>
+  <rect x="457" y="347" width="286" height="19" rx="9.5" fill="#e9e6f1"/>
+  <rect x="457" y="347" width="257" height="19" rx="9.5" fill="#6250e9"/>
+  <text x="457" y="408" fill="#544c66" font-family="Arial,Helvetica,sans-serif" font-size="16">One was two-star.</text>
+
+  <rect x="805" y="197" width="340" height="272" rx="20" fill="#fff" stroke="#e2dff0"/>
+  <text x="832" y="238" fill="#686571" font-family="Arial,Helvetica,sans-serif" font-size="16">Size / capacity comments</text>
+  <text x="832" y="317" fill="#211f26" font-family="Arial,Helvetica,sans-serif" font-size="70" font-weight="700">4<tspan fill="#918a9d" font-size="37"> / 10</tspan></text>
+  <rect x="832" y="347" width="286" height="19" rx="9.5" fill="#e9e6f1"/>
+  <rect x="832" y="347" width="114" height="19" rx="9.5" fill="#16a9b7"/>
+  <text x="832" y="408" fill="#544c66" font-family="Arial,Helvetica,sans-serif" font-size="16">Human-coded in this sample only.</text>
+
+  <text x="56" y="523" fill="#544c66" font-family="Arial,Helvetica,sans-serif" font-size="16">Interpretation: investigate scale and capacity claims; do not infer overall satisfaction or conversion.</text>
+</svg>

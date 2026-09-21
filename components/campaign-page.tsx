@@ -1,4 +1,5 @@
 import type { Campaign } from '@/lib/campaigns';
+import { CampaignEvidence } from '@/components/campaign-evidence';
 
 const campaignLinks = [
   { slug: 'amazon-research', label: 'Amazon research' },
@@ -153,6 +154,7 @@ export function CampaignPage({ campaign }: { campaign: Campaign }) {
             </div>
           </section>
           <div className="strip"><b>{generator ? 'Start with a product image' : 'Built for ecommerce work'}</b>{campaign.strip.map((item) => <span key={item}>{item}</span>)}</div>
+          <CampaignEvidence slug={campaign.slug} />
           <section className="section">
             <span className="eyebrow">{campaign.section.eyebrow}</span>
             <h2>{campaign.section.title}</h2>
