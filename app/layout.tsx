@@ -9,6 +9,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  verification: {
+    other: {
+      'msvalidate.01': 'D2CD3A6DCC807F7EBBB0F0DCCC490644',
+    },
+  },
   icons: {
     icon: [{ url: '/favicon.png', type: 'image/png' }],
     shortcut: '/favicon.ico',
