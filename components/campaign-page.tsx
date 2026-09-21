@@ -87,7 +87,7 @@ function GeneratorExtra({ campaign }: { campaign: Campaign }) {
 }
 
 function VideoGeneratorSchema() {
-  const url = 'https://learn.nexscope.ai/ai-video-generator.html';
+  const url = 'https://learn.nexscope.ai/ai-video-generator/';
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
@@ -133,7 +133,7 @@ export function CampaignPage({ campaign }: { campaign: Campaign }) {
                   <a data-track="" href={campaign.cta.href}>Open generator ↗</a>
                 </>
               ) : campaignLinks.map((link) => (
-                <a key={link.slug} data-track="" href={`/${link.slug}.html`}
+                <a key={link.slug} data-track="" href={`/${link.slug}/`}
                   aria-current={campaign.slug === link.slug ? 'page' : undefined}>{link.label}</a>
               ))}
             </nav>

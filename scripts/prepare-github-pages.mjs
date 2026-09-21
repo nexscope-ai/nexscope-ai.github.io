@@ -1,4 +1,4 @@
-import { copyFile, mkdir, readdir, readFile, unlink, writeFile } from 'node:fs/promises';
+import { copyFile, mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 
 const clientDirectory = new URL('../dist/client/', import.meta.url);
 const routeSlugs = [
@@ -7,6 +7,10 @@ const routeSlugs = [
   'ecommerce-seo-ai-search-visibility',
   'amazon-review-customer-insights',
   '1688-supplier-product-sourcing',
+  'amazon-research',
+  'ecommerce-ai-agents',
+  'ai-product-videos',
+  'ai-video-generator',
 ];
 
 await Promise.all(
@@ -25,8 +29,8 @@ await copyFile(
   new URL('../dist/client/.nojekyll', import.meta.url),
 );
 
-// Vinext exports a /name.html page route as name.html.html. Publish it at its
-// established URL instead so existing links, canonicals and search signals stay put.
+// GitHub Pages cannot return an HTTP 301 from static files. Keep the previous
+// .html URLs as immediate HTML redirects so existing links remain usable.
 const campaignRoutes = [
   'amazon-research',
   'ecommerce-ai-agents',
@@ -34,9 +38,9 @@ const campaignRoutes = [
   'ai-video-generator',
 ];
 await Promise.all(campaignRoutes.map(async (slug) => {
-  const exportedPage = new URL(`${slug}.html.html`, clientDirectory);
-  await copyFile(exportedPage, new URL(`${slug}.html`, clientDirectory));
-  await unlink(exportedPage);
+  const target = `/${slug}/`;
+  const html = `<!doctype html><html lang="en" data-legacy-redirect><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=${target}"><link rel="canonical" href="https://learn.nexscope.ai${target}"><title>Page moved | Nexscope</title><script>location.replace(${JSON.stringify(target)} + location.search + location.hash)</script></head><body><p>This page has moved to <a href="${target}">${target}</a>.</p></body></html>`;
+  await writeFile(new URL(`${slug}.html`, clientDirectory), html);
 }));
 
 // Include analytics on every exported page, including standalone campaigns.
@@ -47,6 +51,7 @@ async function addAnalytics(directory) {
     else if (entry.name.endsWith('.html')) {
       const html = await readFile(file, 'utf8');
       if (!html.includes('</head>')) continue;
+      if (html.includes('data-legacy-redirect')) continue;
       const scripts = [];
       if (!html.includes('src="/analytics.js?v=5"')) {
         scripts.push('<script src="/analytics.js?v=5" defer></script>');

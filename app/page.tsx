@@ -28,7 +28,7 @@ const audiences = [
     title: 'Find your next product opportunity.',
     audience: 'SELLERS & RESEARCH TEAMS',
     text: 'Explore Amazon products, keywords and customer reviews. Compare competitors and turn customer language into better listing ideas.',
-    href: '/amazon-research.html',
+    href: '/amazon-research/',
     cta: 'Explore Amazon research',
     tags: ['Product research', 'Keywords', 'Review insights'],
   },
@@ -37,7 +37,7 @@ const audiences = [
     title: 'Give your AI agent real context.',
     audience: 'DEVELOPERS & AI BUILDERS',
     text: 'Bring structured ecommerce data into your applications. Use REST APIs, MCP tools and skills to build research workflows around your questions.',
-    href: '/ecommerce-ai-agents.html',
+    href: '/ecommerce-ai-agents/',
     cta: 'Build with ecommerce data',
     tags: ['REST APIs', 'MCP', 'Agent skills'],
   },
@@ -46,7 +46,7 @@ const audiences = [
     title: 'Turn product assets into creative.',
     audience: 'BRANDS & CREATIVE TEAMS',
     text: 'Create AI videos from product images, build product talking videos or use video replication to explore a new creative direction.',
-    href: '/ai-product-videos.html',
+    href: '/ai-product-videos/',
     cta: 'Explore AI product videos',
     tags: ['Image to video', 'Product talking', 'Video replication'],
   },
@@ -172,7 +172,7 @@ export default function Home() {
               <div>
                 <b>Bring your product to life</b>
                 <p>AI-generated product videos</p>
-                <a href="/ai-product-videos.html" data-track>
+                <a href="/ai-product-videos/" data-track>
                   Explore creative tools →
                 </a>
               </div>

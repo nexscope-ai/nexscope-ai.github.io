@@ -109,10 +109,13 @@ header {
 }
 .hero {
   display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 64px;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(32px, 4vw, 64px);
   align-items: center;
   padding: 88px 0 76px;
+}
+.hero > div {
+  min-width: 0;
 }
 .eyebrow {
   text-transform: uppercase;
@@ -131,11 +134,14 @@ header {
   border-radius: 50%;
   background: currentColor;
 }
-h1 {
-  font-size: clamp(40px, 4.7vw, 66px);
-  line-height: 1.06;
-  letter-spacing: -3px;
-  margin: 24px 0;
+.campaign-page .hero h1 {
+  max-width: none;
+  color: var(--ink);
+  font-size: clamp(44px, 3.7vw, 58px);
+  font-weight: 750;
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+  margin: 22px 0 26px;
 }
 h1 em {
   font-style: normal;
@@ -554,7 +560,7 @@ pre {
   text-align: center;
 }
 .video .hero {
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .video .visual {
   background: #eee8ef;
@@ -565,9 +571,18 @@ pre {
   color: var(--muted);
 }
 @media (max-width: 900px) {
-  .hero {
-    gap: 30px;
+  .hero,
+  .video .hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
     padding: 56px 0;
+  }
+  .hero > div:first-child {
+    max-width: 680px;
+  }
+  .hero .visual {
+    width: 100%;
+    max-width: 620px;
   }
   .cards {
     gap: 12px;
@@ -582,8 +597,9 @@ pre {
   .navlinks {
     gap: 15px;
   }
-  h1 {
-    letter-spacing: -2px;
+  .campaign-page .hero h1 {
+    font-size: clamp(40px, 4.6vw, 52px);
+    letter-spacing: -0.04em;
   }
 }
 @media (max-width: 650px) {
@@ -611,8 +627,10 @@ pre {
     padding: 38px 0 42px;
     gap: 30px;
   }
-  h1 {
-    font-size: 43px;
+  .campaign-page .hero h1 {
+    font-size: clamp(35px, 9vw, 43px);
+    line-height: 1.14;
+    margin: 18px 0 22px;
   }
   .lead {
     font-size: 16px;

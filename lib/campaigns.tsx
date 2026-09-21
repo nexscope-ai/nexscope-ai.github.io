@@ -181,7 +181,7 @@ export const campaigns = {
       title: 'Make your next product story a video.',
       text: 'Create a concept. Review the details. Test it with your audience.',
     },
-    footerExtra: { label: 'AI video generator', href: '/ai-video-generator.html' },
+    footerExtra: { label: 'AI video generator', href: '/ai-video-generator/' },
   },
   'ai-video-generator': {
     slug: 'ai-video-generator',
@@ -238,7 +238,7 @@ export const campaigns = {
       text: 'Open the generator, choose your model and give your product a new scene.',
       note: '1,000 free credits for new users · Usage varies by model and settings',
     },
-    footerExtra: { label: 'More product video workflows', href: '/ai-product-videos.html' },
+    footerExtra: { label: 'More product video workflows', href: '/ai-product-videos/' },
     footerDisclosure: 'Some Nexscope links include referral tracking; the referrer may receive a commission if you purchase. Current availability, credits and terms are shown in the official tool.',
   },
 } satisfies Record<string, Campaign>;
@@ -246,7 +246,7 @@ export const campaigns = {
 export type CampaignKey = keyof typeof campaigns;
 
 export function campaignMetadata(campaign: Campaign): Metadata {
-  const url = `https://learn.nexscope.ai/${campaign.slug}.html`;
+  const url = `https://learn.nexscope.ai/${campaign.slug}/`;
   return {
     title: campaign.title,
     description: campaign.description,
