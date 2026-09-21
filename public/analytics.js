@@ -38,9 +38,8 @@
     const link = event.target.closest?.('a[href]');
     if (!link) return;
     const url = new URL(link.href);
-    const name = url.hostname === 't.me' ? 'join_telegram_click'
-      : url.hostname === 'www.nexscope.ai' && link.hasAttribute('data-track')
-        ? 'start_using_click' : null;
+    const name = url.hostname === 'www.nexscope.ai' && link.hasAttribute('data-track')
+      ? 'start_using_click' : null;
     if (name) window.gtag('event', name, {
       link_domain: url.hostname, link_path: url.pathname,
       source_page: location.pathname, transport_type: 'beacon',
