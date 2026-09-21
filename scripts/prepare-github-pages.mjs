@@ -32,8 +32,16 @@ async function addAnalytics(directory) {
     if (entry.isDirectory()) await addAnalytics(file);
     else if (entry.name.endsWith('.html')) {
       const html = await readFile(file, 'utf8');
+      if (!html.includes('</head>')) continue;
+      const scripts = [];
       if (!html.includes('src="/analytics.js?v=5"')) {
-        await writeFile(file, html.replace('</head>', '<script src="/analytics.js?v=5" defer></script></head>'));
+        scripts.push('<script src="/analytics.js?v=5" defer></script>');
+      }
+      if (!html.includes('src="https://analytics.ahrefs.com/analytics.js"')) {
+        scripts.push('<script src="https://analytics.ahrefs.com/analytics.js" data-key="q6pDSjaAKMskPeTdzPWCtQ" async></script>');
+      }
+      if (scripts.length) {
+        await writeFile(file, html.replace('</head>', `${scripts.join('')}</head>`));
       }
     }
   }
