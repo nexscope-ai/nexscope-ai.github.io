@@ -61,8 +61,8 @@ function GeneratorExtra({ campaign }: { campaign: Campaign }) {
   if (campaign.slug !== 'ai-video-generator') return null;
   return (
     <>
-      <section className="section">
-        <span className="eyebrow">Give the model a clear brief</span>
+      <section className="campaign-section">
+        <span className="campaign-eyebrow">Give the model a clear brief</span>
         <h2>A product video prompt worth starting with.</h2>
         <div className="card">
           <p>“Slowly push the camera toward the product on a warm, neutral studio surface. Use soft side lighting. Keep the product centered and finish with a steady close-up of its main detail.”</p>
@@ -75,7 +75,7 @@ function GeneratorExtra({ campaign }: { campaign: Campaign }) {
         </div>
       </section>
       <section className="workflow">
-        <div><span className="eyebrow">Choose for your task</span><h2>Find a model that fits your first take.</h2></div>
+        <div><span className="campaign-eyebrow">Choose for your task</span><h2>Find a model that fits your first take.</h2></div>
         <div>
           <p>Nexscope&apos;s tool currently lists models including Seedance, Kling, Wan and MiniMax. Available duration, resolution, reference inputs and credit estimates vary by selection.</p>
           <p>Compare suitable models with the same photo and prompt. Judge product fidelity, motion and framing—not just the model name. Check the live generator for current options.</p>
@@ -117,13 +117,13 @@ export function CampaignPage({ campaign }: { campaign: Campaign }) {
   const generator = campaign.slug === 'ai-video-generator';
   return (
     <>
-      <link rel="stylesheet" href="/campaigns.css" />
+      <link rel="stylesheet" href="/campaigns.css?v=2" />
       <script src="/campaigns.js?v=2" defer />
       {generator && <VideoGeneratorSchema />}
       <div className={`campaign-page${campaign.visual === 'video' ? ' video' : ''}`}>
         <a className="skip" href="#main">Skip to content</a>
         <header>
-          <div className="wrap nav">
+          <div className="wrap campaign-nav">
             <a href="/" aria-label="Nexscope home"><img className="logo" src="/logo.png" width="165" height="32" alt="Nexscope" /></a>
             <nav className="navlinks" aria-label={generator ? 'Page navigation' : 'Solutions'}>
               {generator ? (
@@ -140,9 +140,9 @@ export function CampaignPage({ campaign }: { campaign: Campaign }) {
           </div>
         </header>
         <main id="main" className="wrap">
-          <section className="hero">
+          <section className="campaign-hero">
             <div>
-              <span className="eyebrow">{campaign.audience}</span>
+              <span className="campaign-eyebrow">{campaign.audience}</span>
               <h1>{campaign.headline}</h1>
               <p className="lead">{campaign.lead}</p>
               <a className="button" data-track="" href={campaign.cta.href}>{campaign.cta.label}</a>
@@ -155,8 +155,8 @@ export function CampaignPage({ campaign }: { campaign: Campaign }) {
           </section>
           <div className="strip"><b>{generator ? 'Start with a product image' : 'Built for ecommerce work'}</b>{campaign.strip.map((item) => <span key={item}>{item}</span>)}</div>
           <CampaignEvidence slug={campaign.slug} />
-          <section className="section">
-            <span className="eyebrow">{campaign.section.eyebrow}</span>
+          <section className="campaign-section">
+            <span className="campaign-eyebrow">{campaign.section.eyebrow}</span>
             <h2>{campaign.section.title}</h2>
             <p className="intro">{campaign.section.intro}</p>
             <div className="cards">
@@ -171,7 +171,7 @@ export function CampaignPage({ campaign }: { campaign: Campaign }) {
           </section>
           <section id={campaign.workflow.id} className="workflow">
             <div>
-              <span className="eyebrow">{campaign.workflow.eyebrow}</span>
+              <span className="campaign-eyebrow">{campaign.workflow.eyebrow}</span>
               <h2>{campaign.workflow.title}</h2>
               {campaign.workflow.intro && <p className="intro">{campaign.workflow.intro}</p>}
               {campaign.workflow.cta && <a className="button" data-track="" href={campaign.cta.href}>{campaign.workflow.cta}</a>}
@@ -181,7 +181,7 @@ export function CampaignPage({ campaign }: { campaign: Campaign }) {
             </ol>
           </section>
           <GeneratorExtra campaign={campaign} />
-          <section id={generator ? 'faq' : undefined} className="section faq">
+          <section id={generator ? 'faq' : undefined} className="campaign-section faq">
             <h2>{generator ? 'AI video generator FAQ' : 'A few things to know.'}</h2>
             {campaign.faqs.map((faq) => <details key={faq.question}><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}
           </section>
