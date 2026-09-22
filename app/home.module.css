@@ -61,20 +61,22 @@
   gap: 10px;
   min-height: 50px;
   padding: 13px 22px;
-  border: 1px solid #121722;
-  border-radius: 6px;
-  background: #121722;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: linear-gradient(105deg, #3f78f1, #8051ec);
   color: #fff;
   font-size: 15px;
   font-weight: 620;
   line-height: 1.2;
   white-space: nowrap;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 8px 20px rgb(87 76 214 / 20%);
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 .home .button:hover {
-  background: #252d3d;
+  background: linear-gradient(105deg, #326eea, #7446e3);
   color: #fff;
-  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgb(87 76 214 / 25%);
+  transform: translateY(-2px);
 }
 .home .button:active,
 .home .secondaryButton:active {
@@ -87,10 +89,10 @@
   justify-content: center;
   gap: 10px;
   padding: 13px 22px;
-  border: 1px solid #121722;
-  border-radius: 6px;
+  border: 1px solid rgb(33 31 38 / 16%);
+  border-radius: 999px;
   background: rgb(255 255 255 / 72%);
-  color: #121722;
+  color: #211f26;
   font-size: 15px;
   font-weight: 620;
   line-height: 1.2;
@@ -98,9 +100,10 @@
   transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
 }
 .home .secondaryButton:hover {
-  background: #121722;
-  color: #fff;
-  transform: translateY(-1px);
+  background: #fff;
+  color: #211f26;
+  border-color: rgb(87 76 214 / 38%);
+  transform: translateY(-2px);
 }
 .hero {
   display: grid;
@@ -383,12 +386,14 @@
 .closing .button {
   background: white;
   border-color: white;
-  color: #121722;
+  color: #4938c6;
+  box-shadow: none;
 }
 .closing .button:hover {
   background: #eeeaff;
   border-color: #eeeaff;
-  color: #121722;
+  color: #4938c6;
+  box-shadow: 0 10px 24px rgb(33 31 38 / 14%);
 }
 .footer {
   display: flex;
