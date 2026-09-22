@@ -193,11 +193,14 @@
   margin: 4px 0 0;
 }
 .icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
   background: #f0ecff;
   color: #6250e9;
   border-radius: 8px;
-  padding: 10px;
-  font-size: 12px;
 }
 .connector {
   text-align: center;

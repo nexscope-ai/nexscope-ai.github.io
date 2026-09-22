@@ -2,6 +2,7 @@
  * Images are pre-sized static assets; GitHub Pages has no image optimization server. */
 /* oxlint-disable next/no-html-link-for-pages, next/no-img-element */
 import type { Metadata } from 'next';
+import { BookOpen, Code2, FileSearch, Search, TrendingUp } from 'lucide-react';
 import styles from './home.module.css';
 
 const tracking =
@@ -143,7 +144,9 @@ export default function Home() {
               YOUR NEXT COMMERCE WORKFLOW <span>↗</span>
             </div>
             <div className={styles.flowcard}>
-              <span className={styles.icon}>01</span>
+              <span className={styles.icon} aria-hidden="true">
+                <Search size={20} strokeWidth={1.8} />
+              </span>
               <div>
                 <b>Understand the market</b>
                 <p>Products · Keywords · Reviews</p>
@@ -153,7 +156,9 @@ export default function Home() {
               ↓
             </div>
             <div className={styles.flowcard}>
-              <span className={styles.icon}>02</span>
+              <span className={styles.icon} aria-hidden="true">
+                <Code2 size={20} strokeWidth={1.8} />
+              </span>
               <div>
                 <b>Build on the evidence</b>
                 <p>APIs · MCP · Agent skills</p>
@@ -304,11 +309,14 @@ export default function Home() {
           <p className={styles.intro}>Choose a practical guide, inspect a documented workflow, or follow what is changing in ecommerce.</p>
           <div className={styles.cards}>
             {[
-              { title: 'Practical guides', text: 'Follow focused workflows for Amazon, Shopify, SEO, sourcing and AI creation.', href: '/ecommerce-ai-tools/guides/', cta: 'Browse guides' },
-              { title: 'Case studies', text: 'Inspect the inputs, source evidence and limitations behind a real Nexscope workflow.', href: '/ecommerce-ai-tools/case-studies/', cta: 'Explore evidence' },
-              { title: 'Trends & insights', text: 'Understand changes in AI shopping, marketplaces and creative tools without losing the practical next step.', href: '/ecommerce-ai-tools/ecommerce-trends/', cta: 'Read insights' },
+              { title: 'Practical guides', text: 'Follow focused workflows for Amazon, Shopify, SEO, sourcing and AI creation.', href: '/ecommerce-ai-tools/guides/', cta: 'Browse guides', icon: BookOpen },
+              { title: 'Case studies', text: 'Inspect the inputs, source evidence and limitations behind a real Nexscope workflow.', href: '/ecommerce-ai-tools/case-studies/', cta: 'Explore evidence', icon: FileSearch },
+              { title: 'Trends & insights', text: 'Understand changes in AI shopping, marketplaces and creative tools without losing the practical next step.', href: '/ecommerce-ai-tools/ecommerce-trends/', cta: 'Read insights', icon: TrendingUp },
             ].map((item) => (
               <article className={styles.card} key={item.href}>
+                <span className={styles.icon} aria-hidden="true">
+                  <item.icon size={20} strokeWidth={1.8} />
+                </span>
                 <h3>{item.title}</h3><p>{item.text}</p>
                 <a className={styles.textlink} href={item.href}>{item.cta} →</a>
               </article>
