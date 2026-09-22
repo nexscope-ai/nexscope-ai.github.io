@@ -11,6 +11,7 @@ const routeSlugs = [
   'ecommerce-ai-agents',
   'ai-product-videos',
   'ai-video-generator',
+  'tools',
 ];
 
 await Promise.all(

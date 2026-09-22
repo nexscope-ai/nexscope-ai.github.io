@@ -9,14 +9,14 @@ const tracking =
 const explore = `https://www.nexscope.ai/apis${tracking}`;
 const docs = `https://www.nexscope.ai/api-docs${tracking}`;
 export const metadata: Metadata = {
-  title: 'Nexscope | Ecommerce Data, AI Agents & Product Videos',
+  title: 'Nexscope Learning Hub | Ecommerce Tools & Guides',
   description:
-    'Research products, competitors and keywords with Nexscope. Connect ecommerce data to AI agents through APIs and MCP, or create AI product videos for your brand.',
+    'Find Nexscope ecommerce tools, practical guides and case studies for product research, SEO, AI agents and product videos.',
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'Nexscope | Ecommerce Data, AI Agents & Product Videos',
+    title: 'Nexscope Learning Hub | Ecommerce Tools & Guides',
     description:
-      'From product research to AI-powered workflows and product videos. Find your next move with Nexscope.',
+      'Find a tool, follow a workflow and check the evidence behind your next ecommerce decision.',
     url: '/',
     siteName: 'Nexscope',
     type: 'website',
@@ -93,8 +93,8 @@ export default function Home() {
             />
           </a>
           <div className={styles.navlinks}>
-            <a href="#solutions">Solutions</a>
-            <a href="/ecommerce-ai-tools/">Resources</a>
+            <a href="/tools/">Tools</a>
+            <a href="/ecommerce-ai-tools/">Learn</a>
             <a data-track href={docs}>
               API docs
             </a>
@@ -107,25 +107,25 @@ export default function Home() {
       <main id="main">
         <section className={`${styles.wrap} ${styles.hero}`}>
           <div>
-            <p className={styles.eyebrow}>ECOMMERCE DATA × AI CREATION</p>
+            <p className={styles.eyebrow}>TOOLS × WORKFLOWS × EVIDENCE</p>
             <h1>
-              Ecommerce data.
+              Find the right tool.
               <br />
-              AI agent APIs.
+              Learn the workflow.
               <br />
-              <em>AI product videos.</em>
+              <em>Build what&apos;s next.</em>
             </h1>
             <p className={styles.lead}>
-              Nexscope brings ecommerce data and AI creative tools into your
-              workflow. Research products, power your agents and turn product
-              assets into videos.
+              Explore practical tools and evidence-led guides for product
+              research, ecommerce SEO, AI agents and product videos. Start with
+              a task, then put it to work on Nexscope.
             </p>
             <div className={styles.actions}>
-              <a className={styles.button} data-track href={explore}>
-                Explore Nexscope ↗
+              <a className={styles.button} href="/tools/">
+                Explore tools →
               </a>
-              <a className={styles.secondaryButton} href="#solutions">
-                Find your use case ↓
+              <a className={styles.secondaryButton} href="/ecommerce-ai-tools/">
+                Browse guides →
               </a>
             </div>
             <p className={styles.micro}>
@@ -196,10 +196,10 @@ export default function Home() {
           for your use case.
         </p>
         <section className={`${styles.wrap} ${styles.section}`} id="solutions">
-          <p className={styles.eyebrow}>ONE PLATFORM. YOUR WAY TO WORK.</p>
-          <h2>What are you building next?</h2>
+          <p className={styles.eyebrow}>START WITH A GOAL</p>
+          <h2>What do you need to do?</h2>
           <p className={styles.intro}>
-            Start with the outcome you need. Explore the tools behind it.
+            See the bigger workflow, then choose the tool that fits.
           </p>
           <div className={styles.cards}>
             {audiences.map((item) => (
@@ -299,20 +299,14 @@ export default function Home() {
           </details>
         </section>
         <section className={`${styles.wrap} ${styles.section}`} aria-labelledby="resources-heading">
-          <p className={styles.eyebrow}>THE NEXSCOPE RESOURCE LIBRARY</p>
-          <h2 id="resources-heading">Learn it. Check it. Put it to work.</h2>
-          <p className={styles.intro}>Practical guides, inspectable case studies and fresh perspectives for your next ecommerce decision.</p>
+          <p className={styles.eyebrow}>THE NEXSCOPE LEARNING CENTER</p>
+          <h2 id="resources-heading">Learn the method. Check the evidence.</h2>
+          <p className={styles.intro}>Choose a practical guide, inspect a documented workflow, or follow what is changing in ecommerce.</p>
           <div className={styles.cards}>
             {[
-              { title: 'Practical guides', text: 'Build a competitor shortlist, qualify keywords or turn review insights into a clearer listing.', href: '/ecommerce-ai-tools/guides/', cta: 'Find a workflow' },
-              { title: 'Amazon price history', text: 'Track price, BSR, rating, seller-count and sales signals without mistaking estimates for seller-account data.', href: '/ecommerce-ai-tools/amazon-price-history/', cta: 'Read the guide' },
-              { title: 'What is an MCP server?', text: 'Understand how AI hosts, clients and ecommerce tools connect—and what to verify before production use.', href: '/ecommerce-ai-tools/what-is-an-mcp-server/', cta: 'Explore MCP' },
-              { title: 'Case studies', text: 'Look inside documented workflows, including the source evidence and the limits of each sample.', href: '/ecommerce-ai-tools/case-studies/', cta: 'Explore the evidence' },
-              { title: 'Trends & insights', text: 'Make sense of AI shopping, marketplace intelligence and the tools changing ecommerce research.', href: '/ecommerce-ai-tools/ecommerce-trends/', cta: 'Read the journal' },
-              { title: 'ChatGPT Images 2.5 guide', text: 'Learn a source-backed product photo editing workflow, factual QA checks and how to hand off a still for video.', href: '/ecommerce-ai-tools/ecommerce-trends/chatgpt-images-2-5-ecommerce-product-photos/', cta: 'Read the new article' },
-              { title: 'Amazon review insights', text: 'Turn customer complaints, recurring praise and competitor review evidence into clearer product and listing decisions.', href: '/amazon-review-customer-insights/', cta: 'Analyze review signals' },
-              { title: 'Shopify competitor research', text: 'Compare products, stores and advertising signals with a repeatable, evidence-led research workflow.', href: '/shopify-competitor-product-research/', cta: 'Research competitors' },
-              { title: 'Ecommerce SEO & AI visibility', text: 'Audit technical SEO, answer readiness and AI-search evidence across the pages that matter most.', href: '/ecommerce-seo-ai-search-visibility/', cta: 'Improve visibility' },
+              { title: 'Practical guides', text: 'Follow focused workflows for Amazon, Shopify, SEO, sourcing and AI creation.', href: '/ecommerce-ai-tools/guides/', cta: 'Browse guides' },
+              { title: 'Case studies', text: 'Inspect the inputs, source evidence and limitations behind a real Nexscope workflow.', href: '/ecommerce-ai-tools/case-studies/', cta: 'Explore evidence' },
+              { title: 'Trends & insights', text: 'Understand changes in AI shopping, marketplaces and creative tools without losing the practical next step.', href: '/ecommerce-ai-tools/ecommerce-trends/', cta: 'Read insights' },
             ].map((item) => (
               <article className={styles.card} key={item.href}>
                 <h3>{item.title}</h3><p>{item.text}</p>
@@ -324,9 +318,9 @@ export default function Home() {
         <section className={`${styles.wrap} ${styles.closing}`}>
           <p>YOUR NEXT MOVE STARTS HERE</p>
           <h2>Bring better context to commerce.</h2>
-          <p>Find the data and creative tools that fit your workflow.</p>
-          <a className={styles.button} data-track href={explore}>
-            Explore Nexscope ↗
+          <p>Choose a tool, follow a guide, then test the result in your own workflow.</p>
+          <a className={styles.button} href="/tools/">
+            Find a tool →
           </a>
         </section>
       </main>
@@ -344,7 +338,8 @@ export default function Home() {
           <p>Ecommerce intelligence. AI-powered possibilities.</p>
         </div>
         <div className={styles.footerlinks}>
-          <a href="/ecommerce-ai-tools/">Resource library</a>
+          <a href="/tools/">Tools</a>
+          <a href="/ecommerce-ai-tools/">Learn</a>
           <a data-track href={docs}>
             API docs
           </a>

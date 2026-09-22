@@ -1,11 +1,7 @@
+/* Campaign links cross independently exported static sections. */
+/* oxlint-disable next/no-html-link-for-pages, next/no-img-element, next/no-css-tags */
 import type { Campaign } from '@/lib/campaigns';
 import { CampaignEvidence } from '@/components/campaign-evidence';
-
-const campaignLinks = [
-  { slug: 'amazon-research', label: 'Amazon research' },
-  { slug: 'ecommerce-ai-agents', label: 'AI agents' },
-  { slug: 'ai-product-videos', label: 'Product videos' },
-];
 
 function CampaignVisual({ campaign }: { campaign: Campaign }) {
   if (campaign.visual === 'amazon') {
@@ -125,17 +121,10 @@ export function CampaignPage({ campaign }: { campaign: Campaign }) {
         <header>
           <div className="wrap campaign-nav">
             <a href="/" aria-label="Nexscope home"><img className="logo" src="/logo.png" width="165" height="32" alt="Nexscope" /></a>
-            <nav className="navlinks" aria-label={generator ? 'Page navigation' : 'Solutions'}>
-              {generator ? (
-                <>
-                  <a href="#how-it-works">How it works</a>
-                  <a href="#faq">FAQ</a>
-                  <a data-track="" href={campaign.cta.href}>Open generator ↗</a>
-                </>
-              ) : campaignLinks.map((link) => (
-                <a key={link.slug} data-track="" href={`/${link.slug}/`}
-                  aria-current={campaign.slug === link.slug ? 'page' : undefined}>{link.label}</a>
-              ))}
+            <nav className="navlinks" aria-label="Primary navigation">
+              <a href="/tools/">Tools</a>
+              <a href="/ecommerce-ai-tools/">Learn</a>
+              <a data-track="" href="https://www.nexscope.ai/api-docs?co-from=githubIO">API docs ↗</a>
             </nav>
           </div>
         </header>
@@ -199,6 +188,8 @@ export function CampaignPage({ campaign }: { campaign: Campaign }) {
               <span>© 2026 Nexscope · {generator ? 'Product research' : 'Commerce research'} &amp; creative tools{campaign.footerExtra && <> · <a href={campaign.footerExtra.href}>{campaign.footerExtra.label}</a></>}</span>
               <div className="footlinks">
                 <a href="/">Nexscope home</a>
+                <a href="/tools/">Tools</a>
+                <a href="/ecommerce-ai-tools/">Learn</a>
                 {generator && campaign.footerExtra && <a href={campaign.footerExtra.href}>{campaign.footerExtra.label}</a>}
                 <a href="https://www.nexscope.ai/privacy">Privacy</a>
                 <a href="https://www.nexscope.ai/terms">Terms</a>

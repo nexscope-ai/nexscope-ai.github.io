@@ -1,3 +1,5 @@
+/* Native anchors intentionally navigate between GitHub Pages exports. */
+/* oxlint-disable next/no-html-link-for-pages */
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import {
@@ -153,10 +155,13 @@ export default async function GuidePage({ params }: GuidePageProps) {
       />
       <nav className="nav" aria-label="Primary navigation">
         <div className="container nav-inner">
-          <div className="brand" aria-label="Nexscope Commerce Intelligence">
+          <a className="brand" href="/" aria-label="Nexscope learning home">
             <NexscopeLogo />
+          </a>
+          <div className="nav-links">
+            <a href="/tools/">Tools</a>
+            <a href="/ecommerce-ai-tools/">Learn</a>
           </div>
-
           <a
             className="nav-cta"
             href={nexscopeUrl}
@@ -361,9 +366,9 @@ export default async function GuidePage({ params }: GuidePageProps) {
 
       <footer className="footer detail-footer">
         <div className="container footer-inner">
-          <div className="brand" aria-label="Nexscope Commerce Intelligence">
+          <a className="brand" href="/" aria-label="Nexscope learning home">
             <NexscopeLogo />
-          </div>
+          </a>
           <p className="footer-note">
             Capabilities are matched to Nexscope&apos;s current public API
             catalog. The linked documentation remains the source of truth for
