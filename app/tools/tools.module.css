@@ -193,8 +193,12 @@
   height: 38px;
   background: #f0ecff;
   border-radius: 10px;
-  color: #6250e9;
-  font-size: 22px;
+}
+.mark img {
+  display: block;
+  width: 29px;
+  height: 29px;
+  object-fit: contain;
 }
 .access {
   font-size: 11px;

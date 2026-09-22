@@ -91,7 +91,7 @@ export default function ToolsPage() {
                     <article className={styles.card} key={tool.name}>
                       <div className={styles.cardTop}>
                         <span className={styles.mark} aria-hidden="true">
-                          ✦
+                          <img src="/favicon.png" alt="" width="29" height="29" />
                         </span>
                         <span className={styles.access}>{tool.access}</span>
                       </div>
