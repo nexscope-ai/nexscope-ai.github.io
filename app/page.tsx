@@ -109,11 +109,11 @@ export default function Home() {
           <div>
             <p className={styles.eyebrow}>ECOMMERCE DATA × AI CREATION</p>
             <h1>
-              Research smarter.
+              Ecommerce data.
               <br />
-              Build with AI.
+              AI agent APIs.
               <br />
-              <em>Create what’s next.</em>
+              <em>AI product videos.</em>
             </h1>
             <p className={styles.lead}>
               Nexscope brings ecommerce data and AI creative tools into your
