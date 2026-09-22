@@ -14,6 +14,26 @@ const routeSlugs = [
   'tools',
 ];
 
+// Keep the root sitemap aligned with the routes this repository actually publishes.
+// The Jekyll learning-center sitemap is maintained by its own repository.
+const sitemap = await readFile(new URL('../public/sitemap.xml', import.meta.url), 'utf8');
+const listedUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>
+  new URL(match[1]).href,
+);
+const listedSet = new Set(listedUrls);
+const expectedSet = new Set(
+  ['/', ...routeSlugs.map((slug) => `/${slug}/`)].map(
+    (path) => new URL(path, 'https://learn.nexscope.ai').href,
+  ),
+);
+const missing = [...expectedSet].filter((url) => !listedSet.has(url));
+const extra = [...listedSet].filter((url) => !expectedSet.has(url));
+if (listedUrls.length !== listedSet.size || missing.length || extra.length) {
+  throw new Error(
+    `Root sitemap must match published routes. Missing: ${missing.join(', ') || 'none'}; extra: ${extra.join(', ') || 'none'}; duplicates: ${listedUrls.length - listedSet.size}`,
+  );
+}
+
 await Promise.all(
   routeSlugs.map(async (slug) => {
     const routeDirectory = new URL(`${slug}/`, clientDirectory);
