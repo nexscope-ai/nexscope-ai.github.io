@@ -4,6 +4,8 @@
   --paper: #fbf9f4;
   --purple: #6250e9;
   --line: rgba(33, 31, 38, 0.12);
+  --brand-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  --brand-gradient-hover: linear-gradient(135deg, #60a5fa, #a78bfa);
 }
 * {
   box-sizing: border-box;
@@ -90,22 +92,37 @@ header {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  background: var(--purple);
-  color: white;
-  border-radius: 9px;
-  padding: 15px 23px;
-  font-size: 15px;
-  font-weight: 700;
-  min-height: 48px;
+  gap: 8px;
+  min-height: 50px;
+  padding: 13px 24px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--brand-gradient);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgb(59 130 246 / 18%);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 .button:hover {
-  background: #4430c9;
-  color: white;
+  background: var(--brand-gradient-hover);
+  color: #fff;
+  box-shadow: 0 8px 28px rgb(139 92 246 / 35%);
+  transform: translateY(-1px);
+}
+.button:active {
+  transform: translateY(1px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
 }
 .button::after {
   content: '↗';
-  font-size: 19px;
+  font-size: 16px;
 }
 .campaign-hero {
   display: grid;
@@ -452,7 +469,7 @@ details p {
   padding-right: 24px;
 }
 .closing {
-  background: #6250e9;
+  background: #121722;
   color: white;
   border-radius: 24px;
   padding: 48px;
@@ -463,11 +480,12 @@ details p {
   color: #eeebff;
 }
 .closing .button {
-  background: white;
-  color: #4430c9;
+  background: var(--brand-gradient);
+  color: #fff;
 }
 .closing .button:hover {
-  background: #ede9ff;
+  background: var(--brand-gradient-hover);
+  color: #fff;
 }
 footer {
   border-top: 1px solid var(--line);

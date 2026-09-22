@@ -653,14 +653,15 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  min-height: 42px;
-  border-radius: 9px;
-  padding: 0 18px;
-  font-size: 0.84rem;
-  font-weight: 700;
+  min-height: 50px;
+  border-radius: 999px;
+  padding: 0 24px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
   transition:
     border-color 160ms ease,
-    background 160ms ease,
     color 160ms ease,
     box-shadow 160ms ease,
     transform 160ms ease;
@@ -668,18 +669,28 @@ button:focus-visible {
 
 .nav-cta,
 .button-primary {
-  border: 1px solid #7c3aed;
-  background: #7c3aed;
+  border: 0;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
   color: #ffffff;
-  box-shadow: 0 1px 2px rgba(76, 29, 149, 0.12);
+  box-shadow: 0 8px 24px rgb(59 130 246 / 18%);
 }
 
 .nav-cta:hover,
 .button-primary:hover {
-  border-color: #6d28d9;
-  background: #6d28d9;
-  box-shadow: 0 5px 14px rgba(76, 29, 149, 0.14);
+  background: linear-gradient(135deg, #60a5fa, #a78bfa);
+  color: #fff;
+  box-shadow: 0 8px 28px rgb(139 92 246 / 35%);
   transform: translateY(-1px);
+}
+
+.nav-cta {
+  min-height: 40px;
+}
+
+.nav-cta:active,
+.button-primary:active,
+.button-secondary:active {
+  transform: translateY(1px);
 }
 
 .button-secondary {
@@ -2432,7 +2443,7 @@ button:focus-visible {
   }
 
   .nav-cta {
-    min-height: 38px;
+    min-height: 40px;
     padding: 0 12px;
     font-size: 0.75rem;
   }

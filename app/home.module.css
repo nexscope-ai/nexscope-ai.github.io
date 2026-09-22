@@ -61,22 +61,26 @@
   gap: 10px;
   min-height: 50px;
   padding: 13px 22px;
-  border: 1px solid transparent;
+  border: 0;
   border-radius: 999px;
-  background: linear-gradient(105deg, #3f78f1, #8051ec);
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
   color: #fff;
-  font-size: 15px;
-  font-weight: 620;
-  line-height: 1.2;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
   white-space: nowrap;
-  box-shadow: 0 8px 20px rgb(87 76 214 / 20%);
-  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 8px 24px rgb(59 130 246 / 18%);
+  transition: box-shadow 0.2s ease, transform 0.2s ease, filter 0.2s ease;
 }
 .home .button:hover {
-  background: linear-gradient(105deg, #326eea, #7446e3);
+  background: linear-gradient(135deg, #60a5fa, #a78bfa);
   color: #fff;
-  box-shadow: 0 10px 24px rgb(87 76 214 / 25%);
-  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgb(139 92 246 / 35%);
+  transform: translateY(-1px);
+}
+.home .nav .button {
+  min-height: 40px;
+  padding: 0 24px;
 }
 .home .button:active,
 .home .secondaryButton:active {
@@ -89,21 +93,21 @@
   justify-content: center;
   gap: 10px;
   padding: 13px 22px;
-  border: 1px solid rgb(33 31 38 / 16%);
+  border: 1px solid #cbd5e1;
   border-radius: 999px;
   background: rgb(255 255 255 / 72%);
-  color: #211f26;
-  font-size: 15px;
-  font-weight: 620;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
   line-height: 1.2;
   white-space: nowrap;
   transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
 }
 .home .secondaryButton:hover {
-  background: #fff;
-  color: #211f26;
-  border-color: rgb(87 76 214 / 38%);
-  transform: translateY(-2px);
+  background: #f5f3ff;
+  color: #6d28d9;
+  border-color: #a78bfa;
+  transform: translateY(-1px);
 }
 .hero {
   display: grid;
@@ -371,7 +375,7 @@
   text-align: center;
   padding: 52px 28px;
   border-radius: 24px;
-  background: #6250e9;
+  background: #121722;
   color: white;
   margin-bottom: 64px;
 }
@@ -384,16 +388,14 @@
   margin: 0 0 22px;
 }
 .closing .button {
-  background: white;
-  border-color: white;
-  color: #4938c6;
-  box-shadow: none;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  color: #fff;
+  box-shadow: 0 8px 24px rgb(59 130 246 / 18%);
 }
 .closing .button:hover {
-  background: #eeeaff;
-  border-color: #eeeaff;
-  color: #4938c6;
-  box-shadow: 0 10px 24px rgb(33 31 38 / 14%);
+  background: linear-gradient(135deg, #60a5fa, #a78bfa);
+  color: #fff;
+  box-shadow: 0 8px 28px rgb(139 92 246 / 35%);
 }
 .footer {
   display: flex;
@@ -449,10 +451,10 @@
     padding: 18px 0;
     gap: 18px;
   }
-  .nav .button {
+  .home .nav .button {
     font-size: 12px;
-    padding: 10px 13px;
-    min-height: 44px;
+    padding: 0 13px;
+    min-height: 40px;
   }
   .logo {
     width: 140px;

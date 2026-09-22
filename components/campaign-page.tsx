@@ -117,7 +117,7 @@ export function CampaignPage({ campaign }: { campaign: Campaign }) {
   const generator = campaign.slug === 'ai-video-generator';
   return (
     <>
-      <link rel="stylesheet" href="/campaigns.css?v=2" />
+      <link rel="stylesheet" href="/campaigns.css?v=3" />
       <script src="/campaigns.js?v=2" defer />
       {generator && <VideoGeneratorSchema />}
       <div className={`campaign-page${campaign.visual === 'video' ? ' video' : ''}`}>
