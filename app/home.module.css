@@ -58,17 +58,49 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #6250e9;
-  color: white;
-  border-radius: 9px;
-  padding: 14px 23px;
-  font-size: 14px;
-  font-weight: 700;
-  min-height: 48px;
+  gap: 10px;
+  min-height: 50px;
+  padding: 13px 22px;
+  border: 1px solid #121722;
+  border-radius: 6px;
+  background: #121722;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 620;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 .home .button:hover {
-  background: #4938c6;
-  color: white;
+  background: #252d3d;
+  color: #fff;
+  transform: translateY(-1px);
+}
+.home .button:active,
+.home .secondaryButton:active {
+  transform: translateY(1px);
+}
+.home .secondaryButton {
+  display: inline-flex;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 22px;
+  border: 1px solid #121722;
+  border-radius: 6px;
+  background: rgb(255 255 255 / 72%);
+  color: #121722;
+  font-size: 15px;
+  font-weight: 620;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+.home .secondaryButton:hover {
+  background: #121722;
+  color: #fff;
+  transform: translateY(-1px);
 }
 .hero {
   display: grid;
@@ -104,7 +136,7 @@
 }
 .actions {
   display: flex;
-  gap: 24px;
+  gap: 12px;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -350,11 +382,13 @@
 }
 .closing .button {
   background: white;
-  color: #4938c6;
+  border-color: white;
+  color: #121722;
 }
 .closing .button:hover {
   background: #eeeaff;
-  color: #4938c6;
+  border-color: #eeeaff;
+  color: #121722;
 }
 .footer {
   display: flex;
@@ -413,6 +447,7 @@
   .nav .button {
     font-size: 12px;
     padding: 10px 13px;
+    min-height: 44px;
   }
   .logo {
     width: 140px;
@@ -479,6 +514,22 @@
     gap: 18px;
   }
   .actions {
-    gap: 18px;
+    gap: 12px;
+  }
+}
+@media (max-width: 440px) {
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .actions .button,
+  .actions .secondaryButton {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home .button,
+  .home .secondaryButton {
+    transition: none;
   }
 }

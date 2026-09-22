@@ -124,7 +124,7 @@ export default function Home() {
               <a className={styles.button} data-track href={explore}>
                 Explore Nexscope ↗
               </a>
-              <a className={styles.textlink} href="#solutions">
+              <a className={styles.secondaryButton} href="#solutions">
                 Find your use case ↓
               </a>
             </div>
