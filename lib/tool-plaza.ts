@@ -42,6 +42,10 @@ export const toolCards: ToolCard[] = [
     href: officialTool('amazon-listing-optimization-tool'),
     access: 'Sign-in and credits required',
     category: 'optimization',
+    guide: {
+      label: 'Listing optimization guide',
+      href: '/ecommerce-ai-tools/amazon-listing-optimization-tool/',
+    },
   },
   {
     name: 'SEO Keyword Planner',
@@ -74,6 +78,10 @@ export const toolCards: ToolCard[] = [
     href: officialTool('ai-image-generator'),
     access: 'Sign-in and credits required',
     category: 'creative',
+    guide: {
+      label: 'Product image guide',
+      href: '/ecommerce-ai-tools/ai-product-image-generator/',
+    },
   },
   {
     name: 'AI Video Generator',
