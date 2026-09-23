@@ -5,7 +5,7 @@
 
 .page {
   min-height: 100vh;
-  background: var(--nx-bg-page);
+  background: #FBF9F4;
   color: var(--nx-text-secondary);
   font: 16px/1.6 var(--nx-font-sans);
 }
@@ -480,7 +480,7 @@
   margin-top: 18px;
   padding: 38px;
   border-radius: var(--nx-radius-xl);
-  background: linear-gradient(130deg, var(--nx-brand-ultra-light), #F4EEE7);
+  background: linear-gradient(130deg, #EFEBFB, #F4EEE7);
 }
 
 .paths p:not(.eyebrow) {

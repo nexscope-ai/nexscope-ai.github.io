@@ -5,7 +5,7 @@
 
 /* === 页面容器 === */
 .home {
-  background: var(--nx-bg-page);
+  background: #FBF9F4;
   color: var(--nx-text-secondary);
   font-family: var(--nx-font-sans);
   line-height: 1.6;
@@ -203,7 +203,7 @@
 /* === Hero 视觉元素 === */
 .visual {
   min-width: 0;
-  background: linear-gradient(140deg, var(--nx-brand-ultra-light), #F2E7ED 60%, #F1E9DC);
+  background: linear-gradient(140deg, #EAE5FA, #F2E7ED 60%, #F1E9DC);
   padding: 28px;
   border-radius: var(--nx-radius-xl);
 }
@@ -407,7 +407,7 @@
 .band {
   border-radius: var(--nx-radius-xl);
   padding: 48px;
-  background: linear-gradient(135deg, var(--nx-brand-ultra-light), #F2E7ED);
+  background: #EDE9E1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 64px;
