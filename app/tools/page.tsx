@@ -5,9 +5,9 @@ import { toolCards, toolCategories } from '@/lib/tool-plaza';
 import styles from './tools.module.css';
 
 export const metadata: Metadata = {
-  title: 'Ecommerce Tools for Research, SEO & AI Video | Nexscope',
+  title: 'Ecommerce Tools for Research, Listing SEO & AI Creative | Nexscope',
   description:
-    'Find Nexscope tools for Amazon keyword and review research, website SEO audits, and AI product videos. Choose a workflow, then use the tool on the official Nexscope site.',
+    'Find Nexscope tools for Amazon research and listing optimization, website SEO audits, and AI product image and video creation. Choose a workflow, then use the tool on the official Nexscope site.',
   alternates: { canonical: 'https://learn.nexscope.ai/tools/' },
   openGraph: {
     type: 'website',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     url: 'https://learn.nexscope.ai/tools/',
     title: 'Explore Nexscope Ecommerce Tools',
     description:
-      'Find the right research, SEO or creative workflow for your next ecommerce decision.',
+      'Find the right research, listing optimization, SEO or AI creative workflow for your next ecommerce decision.',
   },
 };
 
@@ -58,8 +58,10 @@ export default function ToolsPage() {
           </h1>
           <p>
             Start with the question you need to answer. Choose a focused tool,
-            read its workflow, and run it on the official Nexscope site. Check
-            access and credit requirements on the tool page before you begin.
+            read its workflow, and run it on the official Nexscope site. You can
+            create a product image first, then use marketplace evidence to plan
+            the next listing change. Check access and credit requirements on
+            the tool page before you begin.
           </p>
           <div className={styles.jumps} aria-label="Browse tools by task">
             {toolCategories.map((category) => (

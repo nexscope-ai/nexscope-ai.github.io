@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://learn.nexscope.ai'),
   title: 'Nexscope Learning Hub | Ecommerce Tools & Guides',
   description:
-    'Find Nexscope ecommerce tools, guides, case studies and insights for product research, SEO, AI agents and creative work.',
+    'Find Nexscope ecommerce tools, guides, case studies and insights for product research, Amazon listing optimization, SEO, AI agents, and AI product image and video creation.',
   alternates: {
     canonical: '/',
   },

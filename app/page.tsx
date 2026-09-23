@@ -12,7 +12,7 @@ const docs = `https://www.nexscope.ai/api-docs${tracking}`;
 export const metadata: Metadata = {
   title: 'Nexscope Learning Hub | Ecommerce Tools & Guides',
   description:
-    'Find Nexscope ecommerce tools, practical guides and case studies for product research, SEO, AI agents and product videos.',
+    'Find Nexscope ecommerce tools, practical guides and case studies for product research, Amazon listing optimization, SEO, AI agents, and AI product images and videos.',
   alternates: { canonical: '/' },
   openGraph: {
     title: 'Nexscope Learning Hub | Ecommerce Tools & Guides',
@@ -28,10 +28,10 @@ const audiences = [
     number: '01',
     title: 'Find your next product opportunity.',
     audience: 'SELLERS & RESEARCH TEAMS',
-    text: 'Explore Amazon products, keywords and customer reviews. Compare competitors and turn customer language into better listing ideas.',
+    text: 'Explore Amazon products, keywords, reviews and listing evidence. Compare competitors and turn those signals into prioritized listing changes to test.',
     href: '/amazon-research/',
     cta: 'Explore Amazon research',
-    tags: ['Product research', 'Keywords', 'Review insights'],
+    tags: ['Product research', 'Keywords', 'Listing optimization'],
   },
   {
     number: '02',
@@ -44,12 +44,12 @@ const audiences = [
   },
   {
     number: '03',
-    title: 'Turn product assets into creative.',
+    title: 'Turn product assets into images and videos.',
     audience: 'BRANDS & CREATIVE TEAMS',
-    text: 'Create AI videos from product images, build product talking videos or use video replication to explore a new creative direction.',
+    text: 'Create AI product images, turn approved visuals into videos, or use video replication to explore a new creative direction.',
     href: '/ai-product-videos/',
     cta: 'Explore AI product videos',
-    tags: ['Image to video', 'Product talking', 'Video replication'],
+    tags: ['Product images', 'Image to video', 'Video replication'],
   },
 ];
 export default function Home() {
@@ -118,8 +118,9 @@ export default function Home() {
             </h1>
             <p className={styles.lead}>
               Explore practical tools and evidence-led guides for product
-              research, ecommerce SEO, AI agents and product videos. Start with
-              a task, then put it to work on Nexscope.
+              research, Amazon listing optimization, ecommerce SEO, AI agents,
+              and AI product images and videos. Start with a task, then put it
+              to work on Nexscope.
             </p>
             <div className={styles.actions}>
               <a className={styles.button} href="/tools/">
@@ -176,7 +177,7 @@ export default function Home() {
               />
               <div>
                 <b>Bring your product to life</b>
-                <p>AI-generated product videos</p>
+                <p>AI-generated product images and videos</p>
                 <a href="/ai-product-videos/" data-track>
                   Explore creative tools →
                 </a>
@@ -260,9 +261,9 @@ export default function Home() {
             <li>
               <b>Put it to work.</b>
               <p>
-                Inform a listing update, build an agent-assisted report or
-                explore product video concepts. Review outputs before
-                publishing.
+                Inform and prioritize a listing update, build an agent-assisted
+                report, or explore product image and video concepts. Review
+                outputs before publishing.
               </p>
             </li>
           </ol>

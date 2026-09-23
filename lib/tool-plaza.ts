@@ -3,7 +3,7 @@ export type ToolCard = {
   description: string;
   href: string;
   access: string;
-  category: 'research' | 'visibility' | 'creative';
+  category: 'research' | 'optimization' | 'visibility' | 'creative';
   guide?: { label: string; href: string };
 };
 
@@ -36,6 +36,14 @@ export const toolCards: ToolCard[] = [
     },
   },
   {
+    name: 'AI Amazon Listing Optimizer',
+    description:
+      'Audit an Amazon listing with ASIN, keyword, traffic and history evidence, then review a prioritized optimization plan.',
+    href: officialTool('amazon-listing-optimization-tool'),
+    access: 'Sign-in and credits required',
+    category: 'optimization',
+  },
+  {
     name: 'SEO Keyword Planner',
     description:
       'Connect keyword evidence with competing Amazon products and build a focused research brief.',
@@ -60,6 +68,14 @@ export const toolCards: ToolCard[] = [
     },
   },
   {
+    name: 'AI Product Image Generator',
+    description:
+      'Create product-focused images and ad concepts with supported models, reviewable settings and product-accuracy guidance.',
+    href: officialTool('ai-image-generator'),
+    access: 'Sign-in and credits required',
+    category: 'creative',
+  },
+  {
     name: 'AI Video Generator',
     description:
       'Turn a product photo and a motion prompt into a video concept with supported models and settings.',
@@ -78,6 +94,12 @@ export const toolCategories = [
     id: 'research',
     label: 'Product & competitor research',
     summary: 'Find demand, compare keywords and learn from customer feedback.',
+  },
+  {
+    id: 'optimization',
+    label: 'Listing optimization',
+    summary:
+      'Turn marketplace evidence into prioritized listing changes to review and test.',
   },
   {
     id: 'visibility',
