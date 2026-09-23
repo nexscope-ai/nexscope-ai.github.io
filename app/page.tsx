@@ -2,7 +2,7 @@
  * Images are pre-sized static assets; GitHub Pages has no image optimization server. */
 /* oxlint-disable next/no-html-link-for-pages, next/no-img-element */
 import type { Metadata } from 'next';
-import { BookOpen, Code2, FileSearch, Search, TrendingUp } from 'lucide-react';
+import { BookOpen, Code2, FileSearch, Map, Search } from 'lucide-react';
 import styles from './home.module.css';
 
 const tracking =
@@ -95,6 +95,7 @@ export default function Home() {
           </a>
           <div className={styles.navlinks}>
             <a href="/tools/">Tools</a>
+            <a href="/ecommerce-ai-tools/capabilities/">Capabilities</a>
             <a href="/ecommerce-ai-tools/">Learn</a>
             <a data-track href={docs}>
               API docs
@@ -310,9 +311,9 @@ export default function Home() {
           <p className={styles.intro}>Choose a practical guide, inspect a documented workflow, or follow what is changing in ecommerce.</p>
           <div className={styles.cards}>
             {[
-              { title: 'Practical guides', text: 'Follow focused workflows for Amazon, Shopify, SEO, sourcing and AI creation.', href: '/ecommerce-ai-tools/guides/', cta: 'Browse guides', icon: BookOpen },
-              { title: 'Case studies', text: 'Inspect the inputs, source evidence and limitations behind a real Nexscope workflow.', href: '/ecommerce-ai-tools/case-studies/', cta: 'Explore evidence', icon: FileSearch },
-              { title: 'Trends & insights', text: 'Understand changes in AI shopping, marketplaces and creative tools without losing the practical next step.', href: '/ecommerce-ai-tools/ecommerce-trends/', cta: 'Read insights', icon: TrendingUp },
+              { title: 'Capability atlas', text: 'Map a commerce decision to the right tutorial, real evidence and Nexscope capability.', href: '/ecommerce-ai-tools/capabilities/', cta: 'Explore capabilities', icon: Map },
+              { title: 'Practical tutorials', text: 'Follow focused workflows for Amazon, Shopify, SEO, sourcing and AI creation.', href: '/ecommerce-ai-tools/guides/', cta: 'Browse tutorials', icon: BookOpen },
+              { title: 'API evidence', text: 'Inspect dated inputs, observed outputs, credit use and limitations from real Nexscope tests.', href: '/ecommerce-ai-tools/api-evidence/', cta: 'Inspect the evidence', icon: FileSearch },
             ].map((item) => (
               <article className={styles.card} key={item.href}>
                 <span className={styles.icon} aria-hidden="true">
@@ -348,6 +349,7 @@ export default function Home() {
         </div>
         <div className={styles.footerlinks}>
           <a href="/tools/">Tools</a>
+          <a href="/ecommerce-ai-tools/capabilities/">Capabilities</a>
           <a href="/ecommerce-ai-tools/">Learn</a>
           <a data-track href={docs}>
             API docs

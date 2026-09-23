@@ -34,6 +34,7 @@ export default function ToolsPage() {
             <a href="/tools/" aria-current="page">
               Tools
             </a>
+            <a href="/ecommerce-ai-tools/capabilities/">Capabilities</a>
             <a href="/ecommerce-ai-tools/">Learn</a>
             <a href="https://www.nexscope.ai/api-docs?co-from=githubIO&utm_source=github_pages&utm_medium=referral&utm_campaign=tool_plaza">
               API docs
@@ -131,6 +132,9 @@ export default function ToolsPage() {
               </p>
             </div>
             <div className={styles.pathLinks}>
+              <a href="/ecommerce-ai-tools/capabilities/">
+                Nexscope capability atlas <span>→</span>
+              </a>
               <a href="/amazon-research/">
                 Amazon research <span>→</span>
               </a>
@@ -154,6 +158,7 @@ export default function ToolsPage() {
           <a href="/">Nexscope</a>
           <nav aria-label="Footer">
             <a href="/tools/">Tools</a>
+            <a href="/ecommerce-ai-tools/capabilities/">Capabilities</a>
             <a href="/ecommerce-ai-tools/">Learn</a>
             <a href="/ecommerce-ai-tools/case-studies/">Case studies</a>
             <a href="https://www.nexscope.ai/api-docs?co-from=githubIO">
