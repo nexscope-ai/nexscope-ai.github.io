@@ -94,11 +94,11 @@ export const campaigns = {
   },
   'ecommerce-ai-agents': {
     slug: 'ecommerce-ai-agents',
-    title: 'Ecommerce Data for AI Agents | Nexscope',
-    description: 'Connect marketplace research to your AI workflows through APIs, MCP and Skills. Build product, keyword and competitor research with data your agent can actually use.',
+    title: 'Ecommerce APIs & MCP Tools for AI Agents | Nexscope',
+    description: 'Learn how to connect marketplace research APIs to AI agents with MCP tools for products, competitors, keywords, reviews and traceable ecommerce evidence.',
     audience: 'For developers & automation teams',
-    headline: <>Give your agent<br /><em>ecommerce evidence.</em><br />Not more guesswork.</>,
-    lead: 'Connect marketplace research to your AI workflows through APIs, MCP and Skills. Build product, keyword and competitor research with data your agent can actually use.',
+    headline: <>Connect marketplace APIs<br /><em>to AI agents with MCP.</em></>,
+    lead: 'Place a controlled MCP tool layer between an AI agent and marketplace research APIs. The agent can discover focused product, keyword, competitor and review tools while your backend keeps credentials, validation, rate limits and evidence handling outside the model context.',
     cta: { label: 'Explore the API docs', href: tracked('/api-docs', 'ecommerce-ai-agents') },
     ctaNote: 'Opens Nexscope · Account and credits may be required',
     visual: 'agents',
@@ -106,8 +106,8 @@ export const campaigns = {
     strip: ['API access', 'MCP integration', 'Portable Skills'],
     section: {
       eyebrow: 'A focused starting point',
-      title: 'Your workflow. A stronger data foundation.',
-      intro: 'Move from a generic recommendation to a research workflow with explicit inputs, provider data and traceable limitations.',
+      title: 'A practical ecommerce MCP architecture.',
+      intro: 'Move from a generic recommendation to a marketplace research workflow with explicit inputs, provider data and traceable limitations.',
       cards: [
         { number: '01 /', title: 'Research products', text: 'Bring marketplace product and competitor signals into your applications. Query what you need instead of manually assembling every research brief.', tag: 'Product & market data' },
         { number: '02 /', title: 'Understand search demand', text: 'Combine keyword discovery and trend analysis with your own logic. Keep marketplace volume separate from normalized trend interest.', tag: 'Keywords & trends' },
@@ -125,6 +125,7 @@ export const campaigns = {
       ],
     },
     faqs: [
+      { question: 'How can an ecommerce team connect marketplace research APIs to AI agents using MCP?', answer: 'Put a domain-oriented MCP server between the agent and the marketplace APIs. Expose focused read-only tools, normalize provider responses, keep credentials server-side, preserve source fields and timestamps, and require human approval before any action changes a listing, price, campaign or budget.' },
       { question: 'Does one integration include every marketplace dataset?', answer: 'No. Coverage, fields and availability vary by capability and provider. Check the live catalog and documentation before building your workflow.' },
       { question: 'Can I call these APIs without authentication?', answer: 'Production calls can require authentication and credits. Follow the current documentation for the chosen API; this marketing page does not execute calls.' },
       { question: 'Does Nexscope automatically operate my store?', answer: 'The research APIs described here retrieve data. They do not imply permission to change listings, spend an advertising budget or perform store actions.' },

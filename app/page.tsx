@@ -10,12 +10,12 @@ const explore = `https://www.nexscope.ai/apis${tracking}`;
 const docs = `https://www.nexscope.ai/api-docs${tracking}`;
 
 export const metadata: Metadata = {
-  title: 'Nexscope Learning Hub | Ecommerce Tools & Guides',
-  description: 'Explore Nexscope ecommerce tools, workflows, guides and documented API evidence for product research, Amazon, SEO, AI agents, and product creation.',
+  title: 'Ecommerce Research, SEO & AI Creation Guides | Nexscope',
+  description: 'Research product demand, competitor keywords, customer reviews and SEO visibility. Explore ecommerce API, MCP, AI image and product-video workflows.',
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'Nexscope Learning Hub | Ecommerce Tools & Guides',
-    description: 'Start with a commerce question. Find a workflow, use the right tool and inspect the evidence.',
+    title: 'Ecommerce Research, SEO & AI Creation Guides | Nexscope',
+    description: 'Research demand, keywords, customer reviews and search visibility, then explore ecommerce APIs and AI product-creation workflows.',
     url: '/',
     siteName: 'Nexscope',
     type: 'website',
@@ -37,7 +37,22 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         '@context': 'https://schema.org', '@graph': [
           { '@type': 'Organization', '@id': 'https://www.nexscope.ai/#organization', name: 'Nexscope', url: 'https://www.nexscope.ai/', logo: 'https://learn.nexscope.ai/logo.png' },
-          { '@type': 'WebSite', name: 'Nexscope', url: 'https://learn.nexscope.ai/', publisher: { '@id': 'https://www.nexscope.ai/#organization' } },
+          { '@type': 'WebSite', '@id': 'https://learn.nexscope.ai/#website', name: 'Nexscope Learning Hub', url: 'https://learn.nexscope.ai/', publisher: { '@id': 'https://www.nexscope.ai/#organization' } },
+          {
+            '@type': 'CollectionPage',
+            '@id': 'https://learn.nexscope.ai/#webpage',
+            url: 'https://learn.nexscope.ai/',
+            name: 'Ecommerce Research, SEO & AI Creation Guides',
+            description: 'A learning hub for ecommerce product demand, competitor keywords, customer reviews, SEO visibility, APIs, MCP and AI product creation.',
+            isPartOf: { '@id': 'https://learn.nexscope.ai/#website' },
+            about: [
+              { '@type': 'Thing', name: 'Ecommerce product research' },
+              { '@type': 'Thing', name: 'Amazon keyword and review research' },
+              { '@type': 'Thing', name: 'Ecommerce SEO and AI search visibility' },
+              { '@type': 'Thing', name: 'Ecommerce APIs and Model Context Protocol' },
+              { '@type': 'Thing', name: 'AI product image and video creation' },
+            ],
+          },
         ],
       }) }} />
       <script src="/campaigns.js" defer />
@@ -57,8 +72,8 @@ export default function Home() {
       <main id="main">
         <section className={`${styles.wrap} ${styles.hero}`} id="overview">
           <p className={styles.eyebrow}>NEXSCOPE COMMERCE ATLAS</p>
-          <h1>What can you do with Nexscope?<br /><em>Start with your next question.</em></h1>
-          <p className={styles.lead}>Find a task, follow a practical workflow and inspect the sources behind it. From marketplace research to AI creation, choose the next step that fits your team.</p>
+          <h1>Research the market.<br /><em>Turn evidence into the next move.</em></h1>
+          <p className={styles.lead}>Research product demand, competitor keywords, customer reviews and search visibility. Then use practical guides to connect ecommerce APIs to AI agents or turn approved product assets into images and videos.</p>
           <div className={styles.actions}>
             <a className={styles.button} href="#library">Explore resources <ArrowRight size={17} /></a>
             <a className={styles.heroTextLink} href="#map">Browse by scenario <ArrowDown size={16} /></a>

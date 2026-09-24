@@ -1,0 +1,39 @@
+# Nexscope Learning Hub
+
+> Official educational site for ecommerce product research, Amazon keywords and reviews, SEO and AI-search visibility, ecommerce APIs, MCP workflows, and AI product image and video creation.
+
+Canonical site: https://learn.nexscope.ai/
+Product site: https://www.nexscope.ai/
+Language: English
+
+## Start here
+
+- https://learn.nexscope.ai/ — task-based ecommerce learning hub
+- https://learn.nexscope.ai/tools/ — directory of research, listing, SEO, image, and video tools
+- https://learn.nexscope.ai/ecommerce-ai-tools/ — guides, case studies, comparisons, trends, and API evidence
+
+## Product and marketplace research
+
+- https://learn.nexscope.ai/amazon-research/ — Amazon keyword, competitor, and review research
+- https://learn.nexscope.ai/ecommerce-product-demand-validation/ — product-demand validation workflow
+- https://learn.nexscope.ai/shopify-competitor-product-research/ — Shopify competitor research
+- https://learn.nexscope.ai/amazon-review-customer-insights/ — customer-review research
+- https://learn.nexscope.ai/1688-supplier-product-sourcing/ — 1688 sourcing workflow
+
+## APIs, MCP, and AI agents
+
+- https://learn.nexscope.ai/ecommerce-ai-agents/ — connect marketplace research APIs to AI agents
+- https://learn.nexscope.ai/ecommerce-ai-tools/ecommerce-mcp-server/ — ecommerce MCP architecture, tools, permissions, and safety
+- https://learn.nexscope.ai/ecommerce-ai-tools/ecommerce-api-for-ai-agents/ — map agent questions to documented ecommerce APIs
+- https://learn.nexscope.ai/ecommerce-ai-tools/api-capabilities/ — capability and evidence guide
+
+## SEO, AI visibility, and creative
+
+- https://learn.nexscope.ai/ecommerce-seo-ai-search-visibility/ — ecommerce SEO and AI-search visibility audit
+- https://learn.nexscope.ai/ai-product-videos/ — AI product-video workflows
+- https://learn.nexscope.ai/ai-video-generator/ — image-to-video workflow and review checklist
+
+## Evidence and limitations
+
+Nexscope pages distinguish observed data, provider estimates, AI-generated recommendations, and unknown values. Marketplace coverage, freshness, access, and credit requirements vary by tool. Verify important product, listing, pricing, advertising, sourcing, and publishing decisions with current first-party data and the live product documentation.
+

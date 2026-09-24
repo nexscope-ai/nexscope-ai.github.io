@@ -82,29 +82,57 @@ function GeneratorExtra({ campaign }: { campaign: Campaign }) {
   );
 }
 
-function VideoGeneratorSchema() {
-  const url = 'https://learn.nexscope.ai/ai-video-generator/';
+function CampaignSchema({ campaign }: { campaign: Campaign }) {
+  const url = `https://learn.nexscope.ai/${campaign.slug}/`;
+  const about = campaign.slug === 'ecommerce-ai-agents'
+    ? [
+        { '@type': 'Thing', name: 'Ecommerce APIs' },
+        { '@type': 'Thing', name: 'Model Context Protocol' },
+        { '@type': 'Thing', name: 'AI agents' },
+        { '@type': 'Thing', name: 'Marketplace research' },
+      ]
+    : campaign.slug === 'amazon-research'
+      ? [
+          { '@type': 'Thing', name: 'Amazon product research' },
+          { '@type': 'Thing', name: 'Competitor keyword research' },
+          { '@type': 'Thing', name: 'Customer review analysis' },
+        ]
+      : [{ '@type': 'Thing', name: 'AI product video generation' }];
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    '@id': `${url}#page`,
-    url,
-    name: 'AI Product Video Generator for Ecommerce | Nexscope',
-    description: 'Create ecommerce product videos from images with a free-to-try AI product video generator and 1,000 starter credits for new users.',
-    inLanguage: 'en',
-    about: {
-      '@type': 'SoftwareApplication',
-      name: 'Nexscope AI Video Generator',
-      url: 'https://www.nexscope.ai/tools/ai-video-generator',
-      applicationCategory: 'MultimediaApplication',
-      operatingSystem: 'Web browser',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Nexscope',
-      url: 'https://www.nexscope.ai/',
-      logo: 'https://learn.nexscope.ai/logo.png',
-    },
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': `${url}#webpage`,
+        url,
+        name: campaign.title,
+        description: campaign.description,
+        inLanguage: 'en',
+        about,
+        isPartOf: { '@id': 'https://learn.nexscope.ai/#website' },
+        publisher: { '@id': 'https://www.nexscope.ai/#organization' },
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': `${url}#faq`,
+        url: `${url}#faq`,
+        mainEntity: campaign.faqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+        })),
+      },
+      ...(campaign.slug === 'ai-video-generator'
+        ? [{
+            '@type': 'SoftwareApplication',
+            '@id': 'https://www.nexscope.ai/tools/ai-video-generator#software',
+            name: 'Nexscope AI Video Generator',
+            url: 'https://www.nexscope.ai/tools/ai-video-generator',
+            applicationCategory: 'MultimediaApplication',
+            operatingSystem: 'Web browser',
+          }]
+        : []),
+    ],
   };
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replaceAll('<', '\\u003c') }} />;
 }
@@ -115,7 +143,7 @@ export function CampaignPage({ campaign }: { campaign: Campaign }) {
     <>
       <link rel="stylesheet" href="/campaigns.css?v=3" />
       <script src="/campaigns.js?v=2" defer />
-      {generator && <VideoGeneratorSchema />}
+      <CampaignSchema campaign={campaign} />
       <div className={`campaign-page${campaign.visual === 'video' ? ' video' : ''}`}>
         <a className="skip" href="#main">Skip to content</a>
         <header>
@@ -170,7 +198,7 @@ export function CampaignPage({ campaign }: { campaign: Campaign }) {
             </ol>
           </section>
           <GeneratorExtra campaign={campaign} />
-          <section id={generator ? 'faq' : undefined} className="campaign-section faq">
+          <section id="faq" className="campaign-section faq">
             <h2>{generator ? 'AI video generator FAQ' : 'A few things to know.'}</h2>
             {campaign.faqs.map((faq) => <details key={faq.question}><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}
           </section>

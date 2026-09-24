@@ -5,23 +5,57 @@ import { toolCards, toolCategories } from '@/lib/tool-plaza';
 import styles from './tools.module.css';
 
 export const metadata: Metadata = {
-  title: 'Ecommerce Tools for Research, Listing SEO & AI Creative | Nexscope',
+  title: 'Ecommerce Research Tools: Keywords, Reviews, SEO & Video | Nexscope',
   description:
-    'Find Nexscope tools for Amazon research and listing optimization, website SEO audits, and AI product image and video creation. Choose a workflow, then use the tool on the official Nexscope site.',
+    'Compare ecommerce tools for product demand, competitor keywords, customer reviews, listing optimization, SEO visibility, AI product images and videos.',
   alternates: { canonical: 'https://learn.nexscope.ai/tools/' },
   openGraph: {
     type: 'website',
     siteName: 'Nexscope',
     url: 'https://learn.nexscope.ai/tools/',
-    title: 'Explore Nexscope Ecommerce Tools',
+    title: 'Ecommerce Research Tools for Keywords, Reviews, SEO and Video',
     description:
-      'Find the right research, listing optimization, SEO or AI creative workflow for your next ecommerce decision.',
+      'Compare focused workflows for product demand, competitor keywords, customer reviews, SEO visibility and AI product creative.',
   },
 };
 
 export default function ToolsPage() {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        '@id': 'https://learn.nexscope.ai/tools/#webpage',
+        url: 'https://learn.nexscope.ai/tools/',
+        name: 'Ecommerce Research Tools for Keywords, Reviews, SEO and Video',
+        description:
+          'A task-based directory for ecommerce product demand, competitor keywords, customer reviews, SEO visibility, listing optimization and AI product creative.',
+        isPartOf: { '@id': 'https://learn.nexscope.ai/#website' },
+        publisher: { '@id': 'https://www.nexscope.ai/#organization' },
+      },
+      {
+        '@type': 'ItemList',
+        name: 'Nexscope ecommerce tools',
+        numberOfItems: toolCards.length,
+        itemListElement: toolCards.map((tool, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: tool.name,
+          description: tool.description,
+          url: tool.href.split('?')[0],
+        })),
+      },
+    ],
+  };
+
   return (
     <div className={styles.page}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schema).replaceAll('<', '\\u003c'),
+        }}
+      />
       <a className={styles.skip} href="#main">
         Skip to content
       </a>
@@ -52,16 +86,16 @@ export default function ToolsPage() {
         <section className={styles.hero}>
           <p className={styles.eyebrow}>NEXSCOPE TOOL DIRECTORY</p>
           <h1>
-            Find the right tool.
+            Research the market.
             <br />
-            <span>Put the next idea to work.</span>
+            <span>Choose the right ecommerce tool.</span>
           </h1>
           <p>
-            Start with the question you need to answer. Choose a focused tool,
-            read its workflow, and run it on the official Nexscope site. You can
-            create a product image first, then use marketplace evidence to plan
-            the next listing change. Check access and credit requirements on
-            the tool page before you begin.
+            Ecommerce sellers can use focused tools to validate product demand,
+            compare competitor keywords, analyze customer reviews, inspect SEO
+            visibility, improve listings, and create product images or videos.
+            Start with one decision, choose the smallest useful workflow, and
+            verify its evidence before you act.
           </p>
           <div className={styles.jumps} aria-label="Browse tools by task">
             {toolCategories.map((category) => (
