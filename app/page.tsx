@@ -5,7 +5,7 @@ import { ArrowDown, ArrowRight, BookOpen, Code2, Image, Search, ShoppingBag } fr
 import HomeLibrary from './home-library';
 import styles from './home.module.css';
 
-const tracking = '?co-from=githubIO&utm_source=github.io&utm_medium=referral&utm_campaign=homepage';
+const tracking = '?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=homepage';
 const explore = `https://www.nexscope.ai/apis${tracking}`;
 const docs = `https://www.nexscope.ai/api-docs${tracking}`;
 

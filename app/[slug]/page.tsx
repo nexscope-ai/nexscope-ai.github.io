@@ -20,7 +20,7 @@ const NEXSCOPE_APIS = 'https://www.nexscope.ai/apis';
 
 function trackedDocsUrl(guideSlug: string, apiSlug?: string) {
   const target = apiSlug ? `${NEXSCOPE_APIS}/${apiSlug}` : NEXSCOPE_APIS;
-  return `${target}?utm_source=github.io&utm_medium=referral&utm_campaign=commerce-radar&utm_content=${guideSlug}&co-from=githubIO`;
+  return `${target}?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=commerce_radar_${guideSlug}&utm_content=inline_link`;
 }
 
 export function generateStaticParams() {

@@ -38,10 +38,15 @@
     const link = event.target.closest?.('a[href]');
     if (!link) return;
     const url = new URL(link.href);
-    const name = url.hostname === 'www.nexscope.ai' && link.hasAttribute('data-track')
+    const name = ['www.nexscope.ai', 'nexscope.ai'].includes(url.hostname) && link.hasAttribute('data-track')
       ? 'start_using_click' : null;
     if (name) window.gtag('event', name, {
       link_domain: url.hostname, link_path: url.pathname,
+      co_from: url.searchParams.get('co-from') || undefined,
+      campaign_source: url.searchParams.get('utm_source') || undefined,
+      campaign_medium: url.searchParams.get('utm_medium') || undefined,
+      campaign_name: url.searchParams.get('utm_campaign') || undefined,
+      campaign_content: url.searchParams.get('utm_content') || undefined,
       source_page: location.pathname, transport_type: 'beacon',
     });
   });

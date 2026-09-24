@@ -35,14 +35,14 @@ export default function ToolsPage() {
               Tools
             </a>
             <a href="/ecommerce-ai-tools/">Learn</a>
-            <a href="https://www.nexscope.ai/api-docs?co-from=githubIO&utm_source=github_pages&utm_medium=referral&utm_campaign=tool_plaza">
+            <a href="https://www.nexscope.ai/api-docs?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=tool_plaza">
               API docs
             </a>
           </div>
           <a
             className={styles.navcta}
             data-track
-            href="https://www.nexscope.ai/?co-from=githubIO&utm_source=github_pages&utm_medium=referral&utm_campaign=tool_plaza"
+            href="https://www.nexscope.ai/?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=tool_plaza"
           >
             Explore Nexscope ↗
           </a>
@@ -159,7 +159,7 @@ export default function ToolsPage() {
             <a href="/tools/">Tools</a>
             <a href="/ecommerce-ai-tools/">Learn</a>
             <a href="/ecommerce-ai-tools/case-studies/">Case studies</a>
-            <a href="https://www.nexscope.ai/api-docs?co-from=githubIO">
+            <a href="https://www.nexscope.ai/api-docs?co-from=learn">
               API docs ↗
             </a>
           </nav>

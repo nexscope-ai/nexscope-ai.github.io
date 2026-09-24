@@ -1,25 +1,33 @@
-// Preserve only campaign attribution, never arbitrary query parameters or credentials.
-const incoming = new URLSearchParams(window.location.search);
-const allowed = [
-  'utm_source',
-  'utm_medium',
-  'utm_campaign',
-  'utm_content',
-  'utm_term',
-];
+// Keep every Learn -> Nexscope handoff attributable without forwarding arbitrary input.
+const officialProductHosts = new Set(['www.nexscope.ai', 'nexscope.ai']);
+const campaignFromPath = () => {
+  const slug = window.location.pathname.split('/').filter(Boolean).at(-1) || 'homepage';
+  return slug.replace(/[^a-z0-9]+/gi, '_').replace(/^_+|_+$/g, '').toLowerCase();
+};
+const contentFromLink = (link, target) => {
+  const explicit = link.dataset.utmContent || target.searchParams.get('utm_content') || '';
+  if (/^(early_cta|inline_link|final_cta)$/.test(explicit)) return explicit;
+  if (link.closest('footer')) return 'final_cta';
+  if (link.closest('main') && link.matches('[class*="button"], [class*="cta"]')) return 'early_cta';
+  return 'inline_link';
+};
+
+const rewriteProductLink = (link) => {
+  const target = new URL(link.href, window.location.href);
+  if (!officialProductHosts.has(target.hostname)) return false;
+  target.searchParams.delete('fpr');
+  target.searchParams.set('co-from', 'learn');
+  target.searchParams.set('utm_source', 'learn.nexscope.ai');
+  target.searchParams.set('utm_medium', 'referral');
+  target.searchParams.set('utm_campaign', link.dataset.utmCampaign || campaignFromPath());
+  target.searchParams.set('utm_content', contentFromLink(link, target));
+  link.setAttribute('data-track', 'start_using');
+  link.href = target.href;
+  return true;
+};
+
+document.querySelectorAll('a[href]').forEach(rewriteProductLink);
 document.addEventListener('click', (event) => {
   const link = event.target.closest?.('a[href]');
-  if (!link) return;
-  const target = new URL(link.href);
-  if (
-    target.hostname !== 'www.nexscope.ai' &&
-    target.origin !== window.location.origin
-  ) return;
-  for (const key of link.hasAttribute('data-track') ? allowed : []) {
-    const value = incoming.get(key);
-    if (value && value.length <= 200) target.searchParams.set(key, value);
-  }
-  target.searchParams.delete('fpr');
-  if (target.hostname === 'www.nexscope.ai') target.searchParams.set('co-from', 'githubIO');
-  link.href = target.href;
+  if (link) rewriteProductLink(link);
 }, true);
