@@ -15,8 +15,9 @@
 .home section[id]{scroll-margin-top:20px}
 .eyebrow{margin:0 0 16px;color:#6250e9;font-size:11px;letter-spacing:2px;font-weight:800}
 .hero{text-align:center;padding-top:84px;padding-bottom:56px}
-.home h1{max-width:1050px;margin:0 auto 22px;font-size:clamp(44px,5.5vw,76px);line-height:1.09;letter-spacing:-3.4px;font-weight:750}
-.home h1 em{font-style:normal;color:#6250e9}
+.home h1{max-width:1050px;margin:0 auto 22px;font-size:clamp(44px,5.5vw,76px);line-height:1.09;letter-spacing:-3.4px;font-weight:700}
+.home h1 em{position:relative;isolation:isolate;display:inline-block;color:transparent;font-style:normal;background:var(--headline-gradient);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.home h1 em::after{position:absolute;right:0;bottom:-.04em;left:0;z-index:-1;height:.14em;content:'';border-radius:999px;background:var(--headline-underline-gradient)}
 .lead{max-width:660px;margin:0 auto;color:#686571;font-size:18px;line-height:1.75}
 .actions{display:flex;justify-content:center;align-items:center;gap:24px;margin-top:28px}
 .heroTextLink{display:inline-flex;gap:8px;align-items:center;font-size:14px;font-weight:700}

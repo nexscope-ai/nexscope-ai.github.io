@@ -31,9 +31,19 @@
   --violet-border: #ddd6fe;
   --teal: #0f8f78;
   --teal-soft: #ecfdf5;
-  --font-sans:
-    Inter, 'Plus Jakarta Sans', 'DM Sans', ui-sans-serif, system-ui,
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-sans: Arial, Helvetica, sans-serif;
+  --headline-gradient: linear-gradient(
+    100deg,
+    #eadcf7 0%,
+    #d99edb 34%,
+    #917cf0 66%,
+    #6250e9 100%
+  );
+  --headline-underline-gradient: linear-gradient(
+    90deg,
+    rgba(233, 160, 215, 0.76),
+    rgba(98, 80, 233, 0.58)
+  );
 }
 
 * {
@@ -53,6 +63,10 @@ body {
   font-family: var(--font-sans);
   font-size: 16px;
   text-rendering: optimizeLegibility;
+}
+
+h1 {
+  font-weight: 700;
 }
 
 button,
@@ -250,7 +264,7 @@ button:focus-visible {
   margin: 42px 0 0;
   color: #ffffff;
   font-size: clamp(3.35rem, 5.4vw, 5.7rem);
-  font-weight: 720;
+  font-weight: 700;
   letter-spacing: -0.064em;
   line-height: 0.94;
 }
@@ -746,7 +760,7 @@ button:focus-visible {
   margin: 22px 0 0;
   color: #ffffff;
   font-size: clamp(3.3rem, 5.7vw, 5.8rem);
-  font-weight: 710;
+  font-weight: 700;
   letter-spacing: -0.062em;
   line-height: 0.95;
 }
@@ -1060,7 +1074,7 @@ button:focus-visible {
   margin: 22px 0 0;
   color: #0f172a;
   font-size: clamp(3.15rem, 5.7vw, 5.3rem);
-  font-weight: 760;
+  font-weight: 700;
   letter-spacing: -0.058em;
   line-height: 0.98;
 }
@@ -1723,7 +1737,7 @@ button:focus-visible {
   max-width: 900px;
   margin: 0;
   font-size: clamp(2.8rem, 5.8vw, 5.4rem);
-  font-weight: 760;
+  font-weight: 700;
   letter-spacing: -0.058em;
   line-height: 0.99;
 }
