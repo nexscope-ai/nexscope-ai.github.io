@@ -6,8 +6,7 @@
   --line: rgba(33, 31, 38, 0.12);
   --brand-gradient: linear-gradient(135deg, #3b82f6, #8b5cf6);
   --brand-gradient-hover: linear-gradient(135deg, #60a5fa, #a78bfa);
-  --headline-gradient: linear-gradient(100deg, #eadcf7 0%, #d99edb 34%, #917cf0 66%, #6250e9 100%);
-  --headline-underline-gradient: linear-gradient(90deg, rgba(233, 160, 215, 0.76), rgba(98, 80, 233, 0.58));
+  --headline-gradient: linear-gradient(100deg, #c986e8 0%, #a56eea 34%, #7b61ea 66%, #6250e9 100%);
 }
 * {
   box-sizing: border-box;
@@ -172,17 +171,6 @@ h1 em {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-h1 em::after {
-  position: absolute;
-  right: 0;
-  bottom: -0.04em;
-  left: 0;
-  z-index: -1;
-  height: 0.14em;
-  content: '';
-  border-radius: 999px;
-  background: var(--headline-underline-gradient);
 }
 .lead {
   font-size: 18px;

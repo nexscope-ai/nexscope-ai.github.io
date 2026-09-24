@@ -34,15 +34,10 @@
   --font-sans: Arial, Helvetica, sans-serif;
   --headline-gradient: linear-gradient(
     100deg,
-    #eadcf7 0%,
-    #d99edb 34%,
-    #917cf0 66%,
+    #c986e8 0%,
+    #a56eea 34%,
+    #7b61ea 66%,
     #6250e9 100%
-  );
-  --headline-underline-gradient: linear-gradient(
-    90deg,
-    rgba(233, 160, 215, 0.76),
-    rgba(98, 80, 233, 0.58)
   );
 }
 

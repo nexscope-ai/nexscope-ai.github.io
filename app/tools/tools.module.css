@@ -118,17 +118,6 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.hero h1 span::after {
-  position: absolute;
-  right: 0;
-  bottom: -0.04em;
-  left: 0;
-  z-index: -1;
-  height: 0.14em;
-  content: '';
-  border-radius: 999px;
-  background: var(--headline-underline-gradient);
-}
 .hero > p:not(.eyebrow) {
   max-width: 700px;
   margin: 0;
