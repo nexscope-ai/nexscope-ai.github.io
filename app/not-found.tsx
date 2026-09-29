@@ -1,7 +1,6 @@
 /* Native anchors keep the exported GitHub Pages site interoperable with the Jekyll section. */
 /* oxlint-disable next/no-html-link-for-pages, next/no-img-element */
 import type { Metadata } from 'next';
-import { ArrowRight, Compass, Home, Search } from 'lucide-react';
 import homeStyles from './home.module.css';
 import styles from './not-found.module.css';
 import { DEFAULT_SOCIAL_IMAGE } from '@/lib/site-metadata';
@@ -35,27 +34,6 @@ export const metadata: Metadata = {
   },
 };
 
-const recoveryLinks = [
-  {
-    label: 'Tools',
-    title: 'Open the tool plaza',
-    description: 'Start with a focused product research, SEO or creative workflow.',
-    href: '/tools/',
-  },
-  {
-    label: 'Learning center',
-    title: 'Browse ecommerce guides',
-    description: 'Find practical tutorials, comparisons, trends and API evidence.',
-    href: '/ecommerce-ai-tools/',
-  },
-  {
-    label: 'Nexscope',
-    title: 'Explore product capabilities',
-    description: 'Review available ecommerce APIs and AI creation tools.',
-    href: `https://www.nexscope.ai/apis${tracking}`,
-  },
-] as const;
-
 export default function NotFound() {
   return (
     <div className={homeStyles.home}>
@@ -66,77 +44,46 @@ export default function NotFound() {
 
       <main id="main" className={styles.main}>
         <section className={styles.hero} aria-labelledby="not-found-title">
+          <div className={styles.visual} aria-hidden="true">
+            <span className={styles.visualLabel}>NEXSCOPE / ERROR 404</span>
+            <div className={styles.code}>
+              4<span>0</span>4
+            </div>
+            <span className={styles.visualCaption}>
+              A small detour. Plenty more to explore.
+            </span>
+          </div>
           <div className={styles.copy}>
-            <p className={styles.eyebrow}>ROUTE NOT FOUND · 404</p>
-            <h1 id="not-found-title">
-              This page isn’t in the atlas.
-              <em>Your next workflow still is.</em>
-            </h1>
+            <p className={styles.eyebrow}>
+              <span aria-hidden="true" /> PAGE NOT FOUND
+            </p>
+            <h1 id="not-found-title">Looks like this page took a detour.</h1>
             <p className={styles.lead}>
-              The address may be outdated, incomplete or moved. Return to the
-              Nexscope Learning Hub, or continue with the task you came to solve.
+              The link may be outdated or the page may have moved. Let’s get you
+              back to something useful.
             </p>
             <div className={styles.actions}>
-              <a className={homeStyles.button} href="/">
-                <Home size={17} aria-hidden="true" />
-                Return to the Learning Hub
+              <a className={styles.primaryButton} href="/">
+                Back to Learning Hub <span aria-hidden="true">↗</span>
               </a>
               <a className={styles.secondaryButton} href="/tools/">
-                Browse tools <ArrowRight size={17} aria-hidden="true" />
+                Explore tools <span aria-hidden="true">→</span>
               </a>
             </div>
           </div>
-
-          <div className={styles.routeMap} aria-label="Route recovery illustration">
-            <span className={styles.number} aria-hidden="true">
-              404
-            </span>
-            <div className={styles.routeCard}>
-              <Search size={20} strokeWidth={1.7} aria-hidden="true" />
-              <div>
-                <span>Requested route</span>
-                <strong>Page not found</strong>
-              </div>
-            </div>
-            <div className={styles.routeLine} aria-hidden="true">
-              <span />
-              <ArrowRight size={17} />
-              <span />
-            </div>
-            <div className={`${styles.routeCard} ${styles.routeCardActive}`}>
-              <Compass size={20} strokeWidth={1.7} aria-hidden="true" />
-              <div>
-                <span>Recommended route</span>
-                <strong>Nexscope Learning Hub</strong>
-                <small>Tools · Guides · Tested workflows</small>
-              </div>
-            </div>
-          </div>
         </section>
-
-        <section className={styles.recovery} aria-labelledby="recovery-title">
-          <div className={styles.sectionHeading}>
-            <div>
-              <p className={styles.eyebrow}>USEFUL PLACES</p>
-              <h2 id="recovery-title">Choose a clearer route forward.</h2>
-            </div>
-            <p>These are the main entry points across learn.nexscope.ai.</p>
-          </div>
-          <div className={styles.linkGrid}>
-            {recoveryLinks.map((link, index) => (
-              <a href={link.href} key={link.title}>
-                <span>
-                  {String(index + 1).padStart(2, '0')} · {link.label}
-                </span>
-                <strong>{link.title}</strong>
-                <p>{link.description}</p>
-                <b>
-                  Continue <ArrowRight size={16} aria-hidden="true" />
-                </b>
-              </a>
-            ))}
-          </div>
-        </section>
+        <nav className={styles.shortcuts} aria-label="Helpful places">
+          <span>Or pick up from here</span>
+          <a href="/ecommerce-ai-tools/guides/">
+            Guides <span aria-hidden="true">↗</span>
+          </a>
+          <a href="/ecommerce-ai-tools/product-showcase/">
+            Product Gallery <span aria-hidden="true">↗</span>
+          </a>
+          <a href="/ecommerce-ai-tools/community/">
+            Community <span aria-hidden="true">↗</span>
+          </a>
+        </nav>
       </main>
 
       <footer className={`${homeStyles.wrap} ${homeStyles.footer}`}>
