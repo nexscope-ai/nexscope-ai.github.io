@@ -2,6 +2,7 @@
 /* oxlint-disable next/no-html-link-for-pages, next/no-img-element */
 import type { Metadata } from 'next';
 import { toolCards, toolCategories } from '@/lib/tool-plaza';
+import { DEFAULT_SOCIAL_IMAGE } from '@/lib/site-metadata';
 import styles from './tools.module.css';
 
 export const metadata: Metadata = {
@@ -16,6 +17,13 @@ export const metadata: Metadata = {
     title: 'Ecommerce Research Tools for Keywords, Reviews, SEO and Video',
     description:
       'Compare focused workflows for product demand, competitor keywords, customer reviews, SEO visibility and AI product creative.',
+    images: [DEFAULT_SOCIAL_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ecommerce Research Tools for Keywords, Reviews, SEO and Video',
+    description: 'Compare focused workflows for product demand, competitor keywords, customer reviews, SEO visibility and AI product creative.',
+    images: [DEFAULT_SOCIAL_IMAGE],
   },
 };
 
@@ -173,6 +181,9 @@ export default function ToolsPage() {
               </a>
               <a href="/ai-product-videos/">
                 AI product videos <span>→</span>
+              </a>
+              <a href="/ai-video-generator/">
+                AI video generator <span>→</span>
               </a>
               <a href="/ecommerce-ai-agents/">
                 Ecommerce AI agents & APIs <span>→</span>

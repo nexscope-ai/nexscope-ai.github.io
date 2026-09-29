@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { ArrowDown, ArrowRight, BookOpen, Code2, Image, Search, ShoppingBag } from 'lucide-react';
 import HomeLibrary from './home-library';
 import styles from './home.module.css';
+import { DEFAULT_SOCIAL_IMAGE } from '@/lib/site-metadata';
 
 const tracking = '?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=homepage';
 const explore = `https://www.nexscope.ai/apis${tracking}`;
@@ -19,6 +20,13 @@ export const metadata: Metadata = {
     url: '/',
     siteName: 'Nexscope',
     type: 'website',
+    images: [DEFAULT_SOCIAL_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ecommerce Research, SEO & AI Creation Guides | Nexscope',
+    description: 'Research demand, keywords, customer reviews and search visibility, then explore ecommerce APIs and AI product-creation workflows.',
+    images: [DEFAULT_SOCIAL_IMAGE],
   },
 };
 

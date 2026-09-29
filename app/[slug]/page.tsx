@@ -11,6 +11,7 @@ import {
 import { NexscopeLogo } from '@/components/nexscope-logo';
 import { TrendMap } from '@/components/trend-map';
 import { getGuideBySlug, guides } from '@/lib/guides';
+import { DEFAULT_SOCIAL_IMAGE } from '@/lib/site-metadata';
 
 type GuidePageProps = {
   params: Promise<{ slug: string }>;
@@ -67,11 +68,13 @@ export async function generateMetadata({
       description: guide.metaDescription,
       publishedTime: guide.date.replaceAll('.', '-'),
       modifiedTime: guide.date.replaceAll('.', '-'),
+      images: [DEFAULT_SOCIAL_IMAGE],
     },
     twitter: {
-      card: 'summary',
+      card: 'summary_large_image',
       title: guide.seoTitle,
       description: guide.metaDescription,
+      images: [DEFAULT_SOCIAL_IMAGE],
     },
   };
 }

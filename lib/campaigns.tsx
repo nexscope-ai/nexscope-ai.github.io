@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+import { DEFAULT_SOCIAL_IMAGE } from '@/lib/site-metadata';
 
 export type Campaign = {
   slug: string;
@@ -139,7 +140,7 @@ export const campaigns = {
   'ai-product-videos': {
     slug: 'ai-product-videos',
     title: 'AI Product Videos for Ecommerce Brands | Nexscope',
-    description: 'Turn product images and creative direction into AI-generated product videos. Explore showcases, UGC-style talking videos and reference-led concepts for your next campaign.',
+    description: 'Turn product images and creative direction into AI product videos for ecommerce showcases, UGC concepts and ad tests, with a review-first workflow.',
     audience: 'For brands & creative teams',
     headline: <>Your product.<br />Your next<br /><em>video creative.</em></>,
     lead: 'Turn product images and creative direction into AI-generated product videos. Explore showcases, UGC-style talking videos and reference-led concepts for your next campaign.',
@@ -248,6 +249,9 @@ export type CampaignKey = keyof typeof campaigns;
 
 export function campaignMetadata(campaign: Campaign): Metadata {
   const url = `https://learn.nexscope.ai/${campaign.slug}/`;
+  const socialImage = campaign.image
+    ? { url: campaign.image.src, alt: campaign.image.alt }
+    : DEFAULT_SOCIAL_IMAGE;
   return {
     title: campaign.title,
     description: campaign.description,
@@ -256,13 +260,13 @@ export function campaignMetadata(campaign: Campaign): Metadata {
     openGraph: {
       type: 'website', siteName: 'Nexscope', url, title: campaign.title,
       description: campaign.ogDescription ?? campaign.description,
-      images: campaign.image ? [{ url: campaign.image.src, alt: campaign.image.alt }] : undefined,
+      images: [socialImage],
     },
     twitter: {
-      card: campaign.image ? 'summary_large_image' : 'summary',
+      card: 'summary_large_image',
       title: campaign.title,
       description: campaign.twitterDescription ?? campaign.description,
-      images: campaign.image ? [{ url: campaign.image.src, alt: campaign.image.alt }] : undefined,
+      images: [socialImage],
     },
   };
 }

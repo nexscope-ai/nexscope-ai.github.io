@@ -122,16 +122,6 @@ function CampaignSchema({ campaign }: { campaign: Campaign }) {
           acceptedAnswer: { '@type': 'Answer', text: faq.answer },
         })),
       },
-      ...(campaign.slug === 'ai-video-generator'
-        ? [{
-            '@type': 'SoftwareApplication',
-            '@id': 'https://www.nexscope.ai/tools/ai-video-generator#software',
-            name: 'Nexscope AI Video Generator',
-            url: 'https://www.nexscope.ai/tools/ai-video-generator',
-            applicationCategory: 'MultimediaApplication',
-            operatingSystem: 'Web browser',
-          }]
-        : []),
     ],
   };
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replaceAll('<', '\\u003c') }} />;

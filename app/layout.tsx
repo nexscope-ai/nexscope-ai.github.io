@@ -1,14 +1,12 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { DEFAULT_SOCIAL_IMAGE } from '@/lib/site-metadata';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://learn.nexscope.ai'),
   title: 'Nexscope Learning Hub | Ecommerce Tools & Guides',
   description:
     'Find Nexscope ecommerce tools, guides, case studies and insights for product research, Amazon listing optimization, SEO, AI agents, and AI product image and video creation.',
-  alternates: {
-    canonical: '/',
-  },
   verification: {
     other: {
       'msvalidate.01': 'D2CD3A6DCC807F7EBBB0F0DCCC490644',
@@ -30,6 +28,13 @@ export const metadata: Metadata = {
     title: 'Nexscope Learning Hub | Ecommerce Tools & Guides',
     description:
       'Practical ecommerce tools, workflow guides and evidence from Nexscope.',
+    images: [DEFAULT_SOCIAL_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Nexscope Learning Hub | Ecommerce Tools & Guides',
+    description: 'Practical ecommerce tools, workflow guides and evidence from Nexscope.',
+    images: [DEFAULT_SOCIAL_IMAGE],
   },
 };
 
