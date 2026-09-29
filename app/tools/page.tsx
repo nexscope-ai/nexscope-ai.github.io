@@ -3,6 +3,7 @@
 import type { Metadata } from 'next';
 import { toolCards, toolCategories } from '@/lib/tool-plaza';
 import { DEFAULT_SOCIAL_IMAGE } from '@/lib/site-metadata';
+import MarketingHeader from '@/components/marketing-header';
 import styles from './tools.module.css';
 
 export const metadata: Metadata = {
@@ -67,29 +68,7 @@ export default function ToolsPage() {
       <a className={styles.skip} href="#main">
         Skip to content
       </a>
-      <header className={styles.header}>
-        <nav className={styles.nav} aria-label="Primary navigation">
-          <a href="/" aria-label="Nexscope learning home">
-            <img src="/logo.png" alt="Nexscope" width="165" height="32" />
-          </a>
-          <div className={styles.navlinks}>
-            <a href="/tools/" aria-current="page">
-              Tools
-            </a>
-            <a href="/ecommerce-ai-tools/">Learn</a>
-            <a href="https://www.nexscope.ai/api-docs?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=tool_plaza">
-              API docs
-            </a>
-          </div>
-          <a
-            className={styles.navcta}
-            data-track
-            href="https://www.nexscope.ai/?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=tool_plaza"
-          >
-            Explore Nexscope ↗
-          </a>
-        </nav>
-      </header>
+      <MarketingHeader active="tools" campaign="tool_plaza" />
       <main id="main" className={styles.main}>
         <section className={styles.hero}>
           <p className={styles.eyebrow}>NEXSCOPE TOOL DIRECTORY</p>

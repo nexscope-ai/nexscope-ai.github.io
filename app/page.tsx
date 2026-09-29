@@ -5,9 +5,9 @@ import { ArrowDown, ArrowRight, BookOpen, Code2, Image, Search, ShoppingBag } fr
 import HomeLibrary from './home-library';
 import styles from './home.module.css';
 import { DEFAULT_SOCIAL_IMAGE } from '@/lib/site-metadata';
+import MarketingHeader from '@/components/marketing-header';
 
 const tracking = '?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=homepage';
-const explore = `https://www.nexscope.ai/apis${tracking}`;
 const docs = `https://www.nexscope.ai/api-docs${tracking}`;
 
 export const metadata: Metadata = {
@@ -65,17 +65,7 @@ export default function Home() {
       }) }} />
       <script src="/campaigns.js" defer />
       <a className={styles.skip} href="#main">Skip to content</a>
-      <header className={styles.header}>
-        <nav className={styles.nav} aria-label="Primary navigation">
-          <a href="/" aria-label="Nexscope home"><img className={styles.logo} src="/logo.png" alt="Nexscope" width="165" height="32" /></a>
-          <div className={styles.navlinks}>
-            <a href="/tools/">Tools</a>
-            <a href="/ecommerce-ai-tools/">Learn</a>
-            <a data-track href={docs}>API docs</a>
-          </div>
-          <a className={styles.button} data-track href={explore}>Explore Nexscope ↗</a>
-        </nav>
-      </header>
+      <MarketingHeader campaign="homepage" explorePath="/apis" />
 
       <main id="main">
         <section className={`${styles.wrap} ${styles.hero}`} id="overview">

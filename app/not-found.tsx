@@ -5,6 +5,7 @@ import { ArrowRight, Compass, Home, Search } from 'lucide-react';
 import homeStyles from './home.module.css';
 import styles from './not-found.module.css';
 import { DEFAULT_SOCIAL_IMAGE } from '@/lib/site-metadata';
+import MarketingHeader from '@/components/marketing-header';
 
 const tracking =
   '?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=404_recovery';
@@ -61,30 +62,7 @@ export default function NotFound() {
       <a className={homeStyles.skip} href="#main">
         Skip to content
       </a>
-      <header className={homeStyles.header}>
-        <nav className={homeStyles.nav} aria-label="Primary navigation">
-          <a href="/" aria-label="Nexscope home">
-            <img
-              className={homeStyles.logo}
-              src="/logo.png"
-              alt="Nexscope"
-              width="165"
-              height="32"
-            />
-          </a>
-          <div className={homeStyles.navlinks}>
-            <a href="/tools/">Tools</a>
-            <a href="/ecommerce-ai-tools/">Learn</a>
-            <a href={`https://www.nexscope.ai/api-docs${tracking}`}>API docs</a>
-          </div>
-          <a
-            className={homeStyles.button}
-            href={`https://www.nexscope.ai/apis${tracking}`}
-          >
-            Explore Nexscope ↗
-          </a>
-        </nav>
-      </header>
+      <MarketingHeader campaign="404_recovery" explorePath="/apis" />
 
       <main id="main" className={styles.main}>
         <section className={styles.hero} aria-labelledby="not-found-title">
