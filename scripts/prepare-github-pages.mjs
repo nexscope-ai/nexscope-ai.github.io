@@ -78,8 +78,8 @@ async function addAnalytics(directory) {
       if (!html.includes('</head>')) continue;
       if (html.includes('data-legacy-redirect')) continue;
       const scripts = [];
-      if (!html.includes('src="/analytics.js?v=6"')) {
-        scripts.push('<script src="/analytics.js?v=6" defer></script>');
+      if (!html.includes('src="/analytics.js?v=7"')) {
+        scripts.push('<script src="/analytics.js?v=7" defer></script>');
       }
       if (!html.includes('src="https://analytics.ahrefs.com/analytics.js"')) {
         scripts.push('<script src="https://analytics.ahrefs.com/analytics.js" data-key="q6pDSjaAKMskPeTdzPWCtQ" async></script>');

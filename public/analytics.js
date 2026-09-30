@@ -7,7 +7,8 @@
   try { consent = localStorage.getItem(key); } catch { /* Storage unavailable. */ }
 
   window.dataLayer = window.dataLayer || [];
-  window.gtag = function (...args) { window.dataLayer.push(args); };
+  // oxlint-disable-next-line prefer-rest-params -- Google gtag.js requires the Arguments object.
+  window.gtag = function () { window.dataLayer.push(arguments); };
   window.gtag('consent', 'default', {
     analytics_storage: consent === 'granted' ? 'granted' : 'denied',
     ad_storage: 'denied',
