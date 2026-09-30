@@ -1,4 +1,4 @@
-import { copyFile, mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
+import { copyFile, mkdir, readdir, readFile, unlink, writeFile } from 'node:fs/promises';
 
 const clientDirectory = new URL('../dist/client/', import.meta.url);
 const routeSlugs = [
@@ -45,19 +45,23 @@ await Promise.all(
   }),
 );
 
+// These three flat .html campaign URLs were briefly published before the
+// canonical directory routes. Remove them from the Pages artifact so Google
+// sees only one indexable URL for each page.
+await Promise.all(
+  ['amazon-research', 'ai-product-videos', 'ai-video-generator'].map((slug) =>
+    unlink(new URL(`${slug}.html`, clientDirectory)),
+  ),
+);
+
 await copyFile(
   new URL('../public/.nojekyll', import.meta.url),
   new URL('../dist/client/.nojekyll', import.meta.url),
 );
 
-// GitHub Pages cannot return an HTTP 301 from static files. Keep the previous
-// .html URLs as immediate HTML redirects so existing links remain usable.
-const campaignRoutes = [
-  'amazon-research',
-  'ecommerce-ai-agents',
-  'ai-product-videos',
-  'ai-video-generator',
-];
+// GitHub Pages cannot return an HTTP 301 from static files. Keep the remaining
+// established legacy URL usable while its external links are migrated.
+const campaignRoutes = ['ecommerce-ai-agents'];
 await Promise.all(campaignRoutes.map(async (slug) => {
   const target = `/${slug}/`;
   const html = `<!doctype html><html lang="en" data-legacy-redirect><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=${target}"><link rel="canonical" href="https://learn.nexscope.ai${target}"><title>Page moved | Nexscope</title><script>location.replace(${JSON.stringify(target)} + location.search + location.hash)</script></head><body><p>This page has moved to <a href="${target}">${target}</a>.</p></body></html>`;

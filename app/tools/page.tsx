@@ -167,6 +167,18 @@ export default function ToolsPage() {
               <a href="/ecommerce-ai-agents/">
                 Ecommerce AI agents & APIs <span>→</span>
               </a>
+              <a href="/ecommerce-ai-tools/alternatives/keepa-api/">
+                Keepa API comparison <span>→</span>
+              </a>
+              <a href="/ecommerce-ai-tools/ecommerce-mcp-server/">
+                Ecommerce MCP server setup <span>→</span>
+              </a>
+              <a href="/ecommerce-ai-tools/amazon-negative-review-analysis/">
+                Amazon negative review workflow <span>→</span>
+              </a>
+              <a href="/ecommerce-ai-tools/website-seo-audit-guide/">
+                Ecommerce SEO audit guide <span>→</span>
+              </a>
             </div>
           </section>
           <p className={styles.note}>

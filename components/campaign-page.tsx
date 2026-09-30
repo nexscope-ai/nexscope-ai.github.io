@@ -82,6 +82,43 @@ function GeneratorExtra({ campaign }: { campaign: Campaign }) {
   );
 }
 
+function AmazonResearchPaths({ slug }: { slug: string }) {
+  if (slug !== 'amazon-research') return null;
+  const paths = [
+    {
+      title: 'Analyze low-star review evidence',
+      text: 'See how to preserve requested and returned counts, source comments, limitations and a validation step.',
+      href: '/ecommerce-ai-tools/amazon-negative-review-analysis/',
+    },
+    {
+      title: 'Research competitor keywords',
+      text: 'Build a reviewed keyword shortlist without treating Google and Amazon demand signals as interchangeable.',
+      href: '/ecommerce-ai-tools/amazon-competitor-keyword-research/',
+    },
+    {
+      title: 'Inspect a price-series API test',
+      text: 'Review a dated Amazon US request, four returned price observations and the gaps the result cannot answer.',
+      href: '/ecommerce-ai-tools/api-evidence/amazon-price-series/',
+    },
+  ];
+  return (
+    <section className="campaign-section" aria-labelledby="amazon-research-paths-title">
+      <span className="campaign-eyebrow">Continue with traceable evidence</span>
+      <h2 id="amazon-research-paths-title">Choose the Amazon research question you need to answer.</h2>
+      <p className="intro">These focused guides separate observed data, provider estimates and the decisions that still require seller validation. Reviewed September 30, 2026.</p>
+      <div className="cards">
+        {paths.map((path) => (
+          <article className="card" key={path.href}>
+            <h3>{path.title}</h3>
+            <p>{path.text}</p>
+            <a href={path.href}>Open the evidence-based workflow →</a>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function CampaignSchema({ campaign }: { campaign: Campaign }) {
   const url = `https://learn.nexscope.ai/${campaign.slug}/`;
   const about = campaign.slug === 'ecommerce-ai-agents'
@@ -162,6 +199,7 @@ export function CampaignPage({ campaign }: { campaign: Campaign }) {
           </section>
           <div className="strip"><b>{generator ? 'Start with a product image' : 'Built for ecommerce work'}</b>{campaign.strip.map((item) => <span key={item}>{item}</span>)}</div>
           <CampaignEvidence slug={campaign.slug} />
+          <AmazonResearchPaths slug={campaign.slug} />
           <section className="campaign-section">
             <span className="campaign-eyebrow">{campaign.section.eyebrow}</span>
             <h2>{campaign.section.title}</h2>
