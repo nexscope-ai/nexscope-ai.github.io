@@ -44,7 +44,7 @@ export type Campaign = {
 };
 
 const tracked = (path: string, campaign: string) =>
-  `https://www.nexscope.ai${path}?co-from=githubIO&utm_source=github.io&utm_medium=referral&utm_campaign=${campaign}`;
+  `https://www.nexscope.ai${path}?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=${campaign}`;
 
 const handWash = 'https://www.nexscope.ai/video-lab/seedance-20-hand-wash-poster.png';
 const hairDemo = 'https://www.nexscope.ai/video-lab/seedance-20-hair-demo-poster.png';

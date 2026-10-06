@@ -195,7 +195,7 @@ export default function ToolsPage() {
             <a href="/tools/">Tools</a>
             <a href="/ecommerce-ai-tools/">Learn</a>
             <a href="/ecommerce-ai-tools/case-studies/">Case studies</a>
-            <a href="https://www.nexscope.ai/api-docs?co-from=learn">
+            <a data-track href="https://www.nexscope.ai/api-docs?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=tool_plaza&utm_content=footer_api_docs">
               API docs ↗
             </a>
           </nav>

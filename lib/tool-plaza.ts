@@ -8,7 +8,7 @@ export type ToolCard = {
 };
 
 const officialTool = (slug: string) =>
-  `https://www.nexscope.ai/tools/${slug}?co-from=githubIO&utm_source=github_pages&utm_medium=referral&utm_campaign=tool_plaza`;
+  `https://www.nexscope.ai/tools/${slug}?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=tool_plaza`;
 
 export const toolCards: ToolCard[] = [
   {

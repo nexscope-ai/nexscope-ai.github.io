@@ -179,7 +179,7 @@ export function CampaignPage({ campaign }: { campaign: Campaign }) {
             <nav className="navlinks" aria-label="Primary navigation">
               <a href="/tools/">Tools</a>
               <a href="/ecommerce-ai-tools/">Learn</a>
-              <a data-track="" href="https://www.nexscope.ai/api-docs?co-from=githubIO">API docs ↗</a>
+              <a data-track="" href={`https://www.nexscope.ai/api-docs?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=${campaign.slug}&utm_content=header_api_docs`}>API docs ↗</a>
             </nav>
           </div>
         </header>
