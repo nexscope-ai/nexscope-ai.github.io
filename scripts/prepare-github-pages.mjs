@@ -1,6 +1,11 @@
 import { copyFile, mkdir, readdir, readFile, unlink, writeFile } from 'node:fs/promises';
 
 const clientDirectory = new URL('../dist/client/', import.meta.url);
+const interactiveWorkflowSlugs = [
+  'amazon-to-1688-supplier-finder',
+  'tiktok-shop-new-product-validator',
+  'tiktok-shop-creator-match',
+];
 const routeSlugs = [
   'ecommerce-product-demand-validation',
   'shopify-competitor-product-research',
@@ -12,6 +17,7 @@ const routeSlugs = [
   'ai-product-videos',
   'ai-video-generator',
   'tools',
+  ...interactiveWorkflowSlugs.map((slug) => `tools/${slug}`),
 ];
 
 // Keep the root sitemap aligned with the routes this repository actually publishes.
@@ -45,11 +51,10 @@ await Promise.all(
   }),
 );
 
-// These three flat .html campaign URLs were briefly published before the
-// canonical directory routes. Remove them from the Pages artifact so Google
-// sees only one indexable URL for each page.
+// Remove duplicate flat .html files once the canonical directory routes exist.
 await Promise.all(
-  ['amazon-research', 'ai-product-videos', 'ai-video-generator'].map((slug) =>
+  ['amazon-research', 'ai-product-videos', 'ai-video-generator',
+    ...interactiveWorkflowSlugs.map((slug) => `tools/${slug}`)].map((slug) =>
     unlink(new URL(`${slug}.html`, clientDirectory)),
   ),
 );
@@ -74,12 +79,14 @@ async function addAnalytics(directory) {
     const file = new URL(entry.name + (entry.isDirectory() ? '/' : ''), directory);
     if (entry.isDirectory()) await addAnalytics(file);
     else if (entry.name.endsWith('.html')) {
+      // BYOK workflow pages must not load third-party analytics scripts beside a user-entered API key.
+      if (interactiveWorkflowSlugs.some((slug) => file.pathname.endsWith(`/tools/${slug}/index.html`))) continue;
       const html = await readFile(file, 'utf8');
       if (!html.includes('</head>')) continue;
       if (html.includes('data-legacy-redirect')) continue;
       const scripts = [];
-      if (!html.includes('src="/analytics.js?v=7"')) {
-        scripts.push('<script src="/analytics.js?v=7" defer></script>');
+      if (!html.includes('src="/analytics.js?v=8"')) {
+        scripts.push('<script src="/analytics.js?v=8" defer></script>');
       }
       if (!html.includes('src="https://analytics.ahrefs.com/analytics.js"')) {
         scripts.push('<script src="https://analytics.ahrefs.com/analytics.js" data-key="q6pDSjaAKMskPeTdzPWCtQ" async></script>');

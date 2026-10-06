@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "vinext dev",
     "build": "vinext build",
+    "test:workflows": "node --test scripts/test-workflow-tools.cjs",
     "postbuild": "node scripts/prepare-github-pages.mjs",
     "icons": "node scripts/generate-favicons.mjs",
     "start": "wrangler dev --config dist/server/wrangler.json",

@@ -12,6 +12,28 @@ const officialTool = (slug: string) =>
 
 export const toolCards: ToolCard[] = [
   {
+    name: 'Amazon to 1688 Supplier Finder',
+    description: 'Start with an Amazon ASIN, find visually similar 1688 listings, then inspect supplier terms and minimum order quantities.',
+    href: '/tools/amazon-to-1688-supplier-finder/',
+    access: 'Bring your own API key · credits apply',
+    category: 'research',
+    guide: { label: 'Sourcing overview', href: '/1688-supplier-product-sourcing/' },
+  },
+  {
+    name: 'TikTok Shop New-Product Validator',
+    description: 'Review a dated new-product ranking, then inspect sales windows and related video evidence for products you select.',
+    href: '/tools/tiktok-shop-new-product-validator/',
+    access: 'Bring your own API key · credits apply',
+    category: 'research',
+  },
+  {
+    name: 'TikTok Shop Product-to-Creator Match',
+    description: 'Find creators associated with a TikTok Shop product, then inspect profiles and product-tagged videos.',
+    href: '/tools/tiktok-shop-creator-match/',
+    access: 'Bring your own API key · credits apply',
+    category: 'research',
+  },
+  {
     name: 'Free Amazon Keyword Research',
     description:
       'Explore related Amazon keywords, search volume, trends and competition before planning a listing update.',

@@ -9,7 +9,7 @@ import styles from './tools.module.css';
 export const metadata: Metadata = {
   title: 'Ecommerce Research Tools: Keywords, Reviews, SEO & Video | Nexscope',
   description:
-    'Compare ecommerce tools for product demand, competitor keywords, customer reviews, listing optimization, SEO visibility, AI product images and videos.',
+    'Run Amazon-to-1688 sourcing and TikTok Shop research workflows with your own API key, alongside keyword, review, SEO and creative tools.',
   alternates: { canonical: 'https://learn.nexscope.ai/tools/' },
   openGraph: {
     type: 'website',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     url: 'https://learn.nexscope.ai/tools/',
     title: 'Ecommerce Research Tools for Keywords, Reviews, SEO and Video',
     description:
-      'Compare focused workflows for product demand, competitor keywords, customer reviews, SEO visibility and AI product creative.',
+      'Find focused workflows for sourcing, TikTok Shop research, competitor keywords, customer reviews, SEO visibility and AI product creative.',
     images: [DEFAULT_SOCIAL_IMAGE],
   },
   twitter: {
@@ -38,7 +38,7 @@ export default function ToolsPage() {
         url: 'https://learn.nexscope.ai/tools/',
         name: 'Ecommerce Research Tools for Keywords, Reviews, SEO and Video',
         description:
-          'A task-based directory for ecommerce product demand, competitor keywords, customer reviews, SEO visibility, listing optimization and AI product creative.',
+          'A task-based directory for sourcing, TikTok Shop product and creator research, competitor keywords, customer reviews, SEO visibility and AI product creative.',
         isPartOf: { '@id': 'https://learn.nexscope.ai/#website' },
         publisher: { '@id': 'https://www.nexscope.ai/#organization' },
       },
@@ -124,6 +124,7 @@ export default function ToolsPage() {
                         <a
                           className={styles.toolLink}
                           data-track
+                          data-track-tool={tool.href.startsWith('/tools/') ? tool.href.split('/')[2] : undefined}
                           href={tool.href}
                         >
                           Open tool ↗

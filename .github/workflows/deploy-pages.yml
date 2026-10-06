@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Test interactive API workflows
+        run: npm run test:workflows
+
       - name: Build
         run: npm run build
 

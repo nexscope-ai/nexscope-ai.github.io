@@ -39,6 +39,12 @@
     const link = event.target.closest?.('a[href]');
     if (!link) return;
     const url = new URL(link.href);
+    const workflow = link.getAttribute('data-track-tool');
+    if (workflow && /^[a-z0-9-]{1,80}$/.test(workflow) && url.origin === location.origin) {
+      window.gtag('event', 'workflow_open_click', {
+        workflow, source_page: location.pathname, transport_type: 'beacon',
+      });
+    }
     const name = ['www.nexscope.ai', 'nexscope.ai'].includes(url.hostname) && link.hasAttribute('data-track')
       ? 'start_using_click' : null;
     if (name) window.gtag('event', name, {
