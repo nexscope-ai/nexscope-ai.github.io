@@ -1,6 +1,12 @@
-@import 'tailwindcss';
+@import 'tailwindcss' source(none);
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
+
+@source './';
+@source '../components/campaign-page.tsx';
+@source '../components/marketing-header.tsx';
+@source '../components/nexscope-logo.tsx';
+@source '../components/trend-map.tsx';
 
 @theme inline {
   --color-background: var(--background);
