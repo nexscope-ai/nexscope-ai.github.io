@@ -89,7 +89,7 @@ export default function ToolsPage() {
         <div className={styles.content}>
           <ToolDirectory />
           <section className={styles.paths} aria-labelledby="paths-title">
-            <div>
+            <div className={styles.pathsIntro}>
               <p className={styles.eyebrow}>NEED THE BIGGER PICTURE?</p>
               <h2 id="paths-title">Explore a complete workflow.</h2>
               <p>
@@ -97,7 +97,10 @@ export default function ToolsPage() {
                 and decisions behind it.
               </p>
             </div>
-            <div className={styles.pathLinks}>
+            <nav
+              className={styles.pathLinks}
+              aria-label="Related ecommerce guides"
+            >
               <a href="/ecommerce-ai-tools/">
                 Nexscope learning center <span>→</span>
               </a>
@@ -125,7 +128,7 @@ export default function ToolsPage() {
               <a href="/ecommerce-ai-tools/website-seo-audit-guide/">
                 Ecommerce SEO audit guide <span>→</span>
               </a>
-            </div>
+            </nav>
           </section>
           <p className={styles.note}>
             Tool capabilities, availability, sign-in requirements and credits

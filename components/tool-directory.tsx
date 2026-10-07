@@ -1,16 +1,10 @@
 'use client';
 
+/* oxlint-disable next/no-img-element */
+
 import { useState } from 'react';
 import { toolCards, toolCategories, type ToolCard } from '@/lib/tool-plaza';
 import styles from '@/app/tools/tools.module.css';
-
-const categoryMarks: Record<ToolCard['category'], string> = {
-  research: '↗',
-  pricing: '↔',
-  tiktok: '▶',
-  visibility: '◎',
-  creative: '✦',
-};
 
 export default function ToolDirectory() {
   const [query, setQuery] = useState('');
@@ -86,7 +80,11 @@ export default function ToolDirectory() {
               title={item.summary}
             >
               {item.id === 'visibility' && (
-                <span id="optimization" className={styles.anchorAlias} aria-hidden="true" />
+                <span
+                  id="optimization"
+                  className={styles.anchorAlias}
+                  aria-hidden="true"
+                />
               )}
               {item.label}
               <span>
@@ -120,7 +118,14 @@ export default function ToolDirectory() {
               >
                 <div className={styles.cardTop}>
                   <span className={styles.mark} aria-hidden="true">
-                    {categoryMarks[tool.category]}
+                    <img
+                      src={tool.icon}
+                      alt=""
+                      width="64"
+                      height="64"
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </span>
                   <span className={styles.location}>
                     {isLearnTool ? 'On Learn' : 'On Nexscope'}
