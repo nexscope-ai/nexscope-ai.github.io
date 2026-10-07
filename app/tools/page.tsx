@@ -1,9 +1,10 @@
 /* Native anchors keep exported GitHub Pages routes and the Jekyll section interoperable. */
 /* oxlint-disable next/no-html-link-for-pages, next/no-img-element */
 import type { Metadata } from 'next';
-import { toolCards, toolCategories } from '@/lib/tool-plaza';
+import { toolCards } from '@/lib/tool-plaza';
 import { DEFAULT_SOCIAL_IMAGE } from '@/lib/site-metadata';
 import MarketingHeader from '@/components/marketing-header';
+import ToolDirectory from '@/components/tool-directory';
 import styles from './tools.module.css';
 
 export const metadata: Metadata = {
@@ -75,85 +76,18 @@ export default function ToolsPage() {
         <section className={styles.hero}>
           <p className={styles.eyebrow}>NEXSCOPE TOOL DIRECTORY</p>
           <h1>
-            Research the market.
+            Tools for your next
             <br />
-            <span>Choose the right ecommerce tool.</span>
+            <span>ecommerce decision.</span>
           </h1>
           <p>
-            Ecommerce sellers can use focused tools to validate product demand,
-            investigate TikTok Shop products and creators, look up Amazon and
-            1688 prices, review SEO visibility, and create product media.
-            Start with one decision, choose the smallest useful workflow, and
-            verify its evidence before you act.
+            Research demand, compare prices, investigate TikTok Shop, improve
+            visibility or create product media. Find the workflow that fits your
+            question, then review the evidence before you act.
           </p>
-          <div className={styles.jumps} aria-label="Browse tools by task">
-            {toolCategories.map((category) => (
-              <a key={category.id} href={`#${category.id}`}>
-                {category.label} <span aria-hidden="true">↘</span>
-              </a>
-            ))}
-          </div>
         </section>
         <div className={styles.content}>
-          {toolCategories.map((category) => (
-            <section
-              className={styles.category}
-              id={category.id}
-              key={category.id}
-              aria-labelledby={`${category.id}-title`}
-            >
-              <div className={styles.categoryHead}>
-                <div>
-                  <p className={styles.eyebrow}>EXPLORE BY TASK</p>
-                  <h2 id={`${category.id}-title`}>{category.label}</h2>
-                </div>
-                <p>{category.summary}</p>
-              </div>
-              <div className={styles.grid}>
-                {toolCards
-                  .filter((tool) => tool.category === category.id)
-                  .map((tool) => (
-                    <article className={styles.card} key={tool.name}>
-                      <div className={styles.cardTop}>
-                        <span className={styles.mark} aria-hidden="true">
-                          <img
-                            src="/favicon.png"
-                            alt=""
-                            width="29"
-                            height="29"
-                          />
-                        </span>
-                        <span className={styles.access}>{tool.access}</span>
-                      </div>
-                      <h3>{tool.name}</h3>
-                      <p>{tool.description}</p>
-                      <div className={styles.cardLinks}>
-                        <a
-                          className={styles.toolLink}
-                          data-track
-                          data-track-tool={
-                            tool.href.startsWith('/tools/')
-                              ? tool.href.split('/')[2]
-                              : undefined
-                          }
-                          href={tool.href}
-                        >
-                          Open tool ↗
-                        </a>
-                        {tool.guide && (
-                          <a
-                            className={styles.guideLink}
-                            href={tool.guide.href}
-                          >
-                            {tool.guide.label} →
-                          </a>
-                        )}
-                      </div>
-                    </article>
-                  ))}
-              </div>
-            </section>
-          ))}
+          <ToolDirectory />
           <section className={styles.paths} aria-labelledby="paths-title">
             <div>
               <p className={styles.eyebrow}>NEED THE BIGGER PICTURE?</p>

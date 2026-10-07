@@ -136,6 +136,7 @@ test('the root-site routes, sitemap and analytics exception cover all three tool
   const sitemap = readFileSync(join(root, 'public', 'sitemap.xml'), 'utf8');
   const exportScript = readFileSync(join(root, 'scripts', 'prepare-github-pages.mjs'), 'utf8');
   const directory = readFileSync(join(root, 'app', 'tools', 'page.tsx'), 'utf8');
+  const directoryCards = readFileSync(join(root, 'components', 'tool-directory.tsx'), 'utf8');
   const analytics = readFileSync(join(root, 'public', 'analytics.js'), 'utf8');
   for (const slug of ['amazon-to-1688-supplier-finder', 'tiktok-shop-new-product-validator', 'tiktok-shop-creator-match']) {
     assert.ok(data.includes(`slug: '${slug}'`));
@@ -155,7 +156,8 @@ test('the root-site routes, sitemap and analytics exception cover all three tool
   assert.match(route, /data-run-tool/);
   assert.doesNotMatch(route, /<form\b/i);
   assert.match(exportScript, /interactiveWorkflowSlugs\.some[\s\S]*index\.html/);
-  assert.match(directory, /data-track-tool=/);
+  assert.match(directory, /<ToolDirectory\s*\/>/);
+  assert.match(directoryCards, /data-track-tool=/);
   assert.match(analytics, /workflow_open_click/);
   assert.match(route, /decisionGuide\.question/);
 });

@@ -3,7 +3,7 @@ export type ToolCard = {
   description: string;
   href: string;
   access: string;
-  category: 'research' | 'optimization' | 'visibility' | 'creative';
+  category: 'research' | 'pricing' | 'tiktok' | 'visibility' | 'creative';
   guide?: { label: string; href: string };
 };
 
@@ -21,13 +21,13 @@ export const toolCards: ToolCard[] = [
     name: 'Amazon Product Price Checker',
     description: 'Check one ASIN’s reported Amazon listing price, currency, previous price and rating.',
     href: '/tools/amazon-product-price-checker/',
-    access: 'Bring your own API key · credits apply', category: 'research',
+    access: 'Bring your own API key · credits apply', category: 'pricing',
   },
   {
     name: '1688 Wholesale Price Finder',
     description: 'Compare a shortlist of reported 1688 wholesale prices, minimum orders and supplier details.',
     href: '/tools/1688-wholesale-price-finder/',
-    access: 'Bring your own API key · credits apply', category: 'research',
+    access: 'Bring your own API key · credits apply', category: 'pricing',
   },
   {
     name: 'Amazon to 1688 Supplier Finder',
@@ -35,7 +35,7 @@ export const toolCards: ToolCard[] = [
       'Start with an Amazon ASIN, find visually similar 1688 listings, then inspect supplier terms and minimum order quantities.',
     href: '/tools/amazon-to-1688-supplier-finder/',
     access: 'Bring your own API key · credits apply',
-    category: 'research',
+    category: 'pricing',
     guide: {
       label: 'Sourcing overview',
       href: '/1688-supplier-product-sourcing/',
@@ -47,7 +47,7 @@ export const toolCards: ToolCard[] = [
       'Review a dated new-product ranking, then inspect sales windows and related video evidence for products you select.',
     href: '/tools/tiktok-shop-new-product-validator/',
     access: 'Bring your own API key · credits apply',
-    category: 'research',
+    category: 'tiktok',
   },
   {
     name: 'TikTok Shop Product-to-Creator Match',
@@ -55,7 +55,7 @@ export const toolCards: ToolCard[] = [
       'Find creators associated with a TikTok Shop product, then inspect profiles and product-tagged videos.',
     href: '/tools/tiktok-shop-creator-match/',
     access: 'Bring your own API key · credits apply',
-    category: 'research',
+    category: 'tiktok',
   },
   {
     name: 'Free Amazon Keyword Research',
@@ -87,7 +87,7 @@ export const toolCards: ToolCard[] = [
       'Audit an Amazon listing with ASIN, keyword, traffic and history evidence, then review a prioritized optimization plan.',
     href: officialTool('amazon-listing-optimization-tool'),
     access: 'Sign-in and credits required',
-    category: 'optimization',
+    category: 'visibility',
     guide: {
       label: 'Listing optimization guide',
       href: '/ecommerce-ai-tools/amazon-listing-optimization-tool/',
@@ -146,23 +146,28 @@ export const toolCards: ToolCard[] = [
 export const toolCategories = [
   {
     id: 'research',
-    label: 'Product & competitor research',
-    summary: 'Find demand, compare keywords and learn from customer feedback.',
+    label: 'Market research',
+    summary: 'Explore demand, keywords, competitors and customer feedback.',
   },
   {
-    id: 'optimization',
-    label: 'Listing optimization',
+    id: 'pricing',
+    label: 'Prices & sourcing',
     summary:
-      'Turn marketplace evidence into prioritized listing changes to review and test.',
+      'Check Amazon and 1688 prices and investigate supplier candidates.',
+  },
+  {
+    id: 'tiktok',
+    label: 'TikTok Shop',
+    summary: 'Investigate products, sales evidence and associated creators.',
   },
   {
     id: 'visibility',
-    label: 'SEO & visibility',
-    summary: 'Review the pages customers and search engines see.',
+    label: 'Listings & SEO',
+    summary: 'Improve listings and review what search engines can see.',
   },
   {
     id: 'creative',
     label: 'AI creative',
-    summary: 'Create and inspect product media before publishing.',
+    summary: 'Create product imagery and video concepts.',
   },
 ] as const;
