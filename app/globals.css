@@ -7,6 +7,7 @@
 @source '../components/marketing-header.tsx';
 @source '../components/nexscope-logo.tsx';
 @source '../components/trend-map.tsx';
+@source '../components/md-text.tsx';
 
 @theme inline {
   --color-background: var(--background);

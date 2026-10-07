@@ -80,7 +80,7 @@ export default async function WorkflowPage({ params }: WorkflowPageProps) {
 
   return (
     <div className="workflow-tool-page">
-      <link rel="stylesheet" href="/assets/workflow-tools.css?v=13" />
+      <link rel="stylesheet" href="/assets/workflow-tools.css?v=14" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replaceAll('<', '\\u003c') }} />
       <a className="wf-skip" href="#main-content">Skip to content</a>
       <MarketingHeader active="tools" campaign={`workflow_${tool.slug}`} />
@@ -133,6 +133,7 @@ export default async function WorkflowPage({ params }: WorkflowPageProps) {
                 <div className="wf-key-heading"><label htmlFor="wf-api-key">Your Nexscope API key</label><a href={apiKeyUrl.toString()} target="_blank" rel="noopener noreferrer">Get an API key ↗</a></div>
                 <input id="wf-api-key" name="apiKey" type="text" placeholder="Paste your key here" autoComplete="off" autoCapitalize="off" autoCorrect="off" spellCheck={false} aria-required="true" aria-describedby="wf-api-key-error" />
                 <span className="wf-field-error" id="wf-api-key-error" data-error-for="apiKey" role="alert" />
+                <p className="wf-key-note">Saved in this tab&apos;s sessionStorage for these Nexscope tools. Clear the field to remove it; it is not placed in cookies or the URL.</p>
               </div>
               <div className="wf-form-actions"><button className="wf-primary" type="button" data-run-tool="">{tool.buttonLabel}</button><p>{tool.creditNote}</p></div>
               <div className="wf-credit-note"><strong>{tool.creditChip}</strong><span>API calls may consume credits; inspect one result only when needed.</span></div>

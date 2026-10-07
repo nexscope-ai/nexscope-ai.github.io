@@ -1,6 +1,7 @@
 (() => {
   'use strict';
 
+  function mount() {
   const core = window.NexscopeWorkflowCore;
   const root = document.querySelector('[data-workflow-tool]');
   if (!core || !root || root.dataset.workflowInitialized === 'true') return;
@@ -11,6 +12,7 @@
   const results = root.querySelector('[data-tool-results]');
   const outputState = root.querySelector('.wf-output-state');
   const keyInput = form.querySelector('[name="apiKey"]');
+  window.NexscopeToolApiKeySession?.bind(keyInput);
   const activeRequests = new Set();
   let loading = false;
   let currentRows = [];
@@ -732,4 +734,8 @@
     rankingDate.value = [yesterday.getFullYear(), String(yesterday.getMonth() + 1).padStart(2, '0'),
       String(yesterday.getDate()).padStart(2, '0')].join('-');
   }
+  }
+
+  window.NexscopeWorkflowUi = { mount };
+  mount();
 })();

@@ -5,6 +5,7 @@ const interactiveWorkflowSlugs = [
   'amazon-to-1688-supplier-finder',
   'tiktok-shop-new-product-validator',
   'tiktok-shop-creator-match',
+  'seo-keyword-planner',
 ];
 const routeSlugs = [
   'ecommerce-product-demand-validation',

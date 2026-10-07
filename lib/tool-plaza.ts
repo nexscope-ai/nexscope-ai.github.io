@@ -72,9 +72,9 @@ export const toolCards: ToolCard[] = [
   {
     name: 'SEO Keyword Planner',
     description:
-      'Connect keyword evidence with competing Amazon products and build a focused research brief.',
-    href: officialTool('seo-keyword-planner'),
-    access: 'Sign-in and credits required',
+      'Expand Google keyword ideas, inspect Amazon US competitors for a selected phrase, and optionally generate an AI report.',
+    href: '/tools/seo-keyword-planner/',
+    access: 'Bring your own API key · credits apply',
     category: 'research',
     guide: {
       label: 'Competitor keyword workflow',
