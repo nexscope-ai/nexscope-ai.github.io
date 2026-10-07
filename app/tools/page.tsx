@@ -9,7 +9,7 @@ import styles from './tools.module.css';
 export const metadata: Metadata = {
   title: 'Ecommerce Research & AI Tools | Nexscope',
   description:
-    'Run focused Amazon, Shopify, TikTok, sourcing-price and AI search research workflows with your own API key, alongside creative tools.',
+    'Explore Amazon niche research, Amazon and 1688 price lookups, TikTok Shop workflows, SEO research and ecommerce creative tools.',
   alternates: { canonical: 'https://learn.nexscope.ai/tools/' },
   openGraph: {
     type: 'website',
@@ -17,14 +17,14 @@ export const metadata: Metadata = {
     url: 'https://learn.nexscope.ai/tools/',
     title: 'Ecommerce Research and AI Tools',
     description:
-      'Find focused workflows for sourcing, TikTok Shop research, competitor keywords, customer reviews, SEO visibility and AI product creative.',
+      'Find focused workflows for Amazon niches and prices, 1688 sourcing, TikTok Shop research, SEO visibility and AI product creative.',
     images: [DEFAULT_SOCIAL_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Ecommerce Research and AI Tools',
     description:
-      'Compare focused workflows for product demand, competitor keywords, customer reviews, SEO visibility and AI product creative.',
+      'Compare focused workflows for product demand, marketplace prices, customer reviews, SEO visibility and AI product creative.',
     images: [DEFAULT_SOCIAL_IMAGE],
   },
 };
@@ -39,7 +39,7 @@ export default function ToolsPage() {
         url: 'https://learn.nexscope.ai/tools/',
         name: 'Ecommerce Research Tools for Keywords, Reviews, SEO and Video',
         description:
-          'A task-based directory for sourcing, TikTok Shop product and creator research, competitor keywords, customer reviews, SEO visibility and AI product creative.',
+          'A task-based directory for Amazon niche and price research, 1688 sourcing, TikTok Shop product and creator research, SEO visibility and AI product creative.',
         isPartOf: { '@id': 'https://learn.nexscope.ai/#website' },
         publisher: { '@id': 'https://www.nexscope.ai/#organization' },
       },
@@ -81,8 +81,8 @@ export default function ToolsPage() {
           </h1>
           <p>
             Ecommerce sellers can use focused tools to validate product demand,
-            compare competitor keywords, inspect store and ad evidence, look up
-            Amazon and 1688 prices, review SEO visibility, and create product media.
+            investigate TikTok Shop products and creators, look up Amazon and
+            1688 prices, review SEO visibility, and create product media.
             Start with one decision, choose the smallest useful workflow, and
             verify its evidence before you act.
           </p>

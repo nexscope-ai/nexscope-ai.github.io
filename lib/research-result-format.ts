@@ -178,6 +178,25 @@ export function supplierSignals(row: RecordValue) {
   };
 }
 
+export type SupplierSort = 'provider' | 'price-asc' | 'price-desc' | 'min-order' | 'orders-desc';
+
+export function sortSupplierEntries(rows: RecordValue[], sort: SupplierSort): { row: RecordValue; index: number }[] {
+  return rows.map((row, index) => ({ row, index })).sort((left, right) => {
+    if (sort === 'provider') return left.index - right.index;
+    const field = sort.startsWith('price') ? 'price' : sort === 'min-order' ? 'quantityBegin' : 'salesOrderCount';
+    const usable = (row: RecordValue) => {
+      const value = numeric(row[field]);
+      return field !== 'salesOrderCount' && value !== null && value <= 0 ? null : value;
+    };
+    const first = usable(left.row);
+    const second = usable(right.row);
+    if (first === null) return second === null ? left.index - right.index : 1;
+    if (second === null) return -1;
+    const direction = sort === 'price-desc' || sort === 'orders-desc' ? -1 : 1;
+    return (first - second) * direction || left.index - right.index;
+  });
+}
+
 export type QuantityTier = { quantity: string; price: string };
 
 export function quantityTiers(value: unknown): QuantityTier[] {

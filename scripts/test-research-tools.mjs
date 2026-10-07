@@ -8,15 +8,20 @@ import {
 } from '../lib/research-tool-api.ts';
 import { reportEvidence } from '../lib/research-report-evidence.ts';
 import { researchTools } from '../lib/research-tools.ts';
+import { toolCards } from '../lib/tool-plaza.ts';
 import { dataCreditsUrl } from '../lib/tool-credit-modal.ts';
 import {
   amazonBullets, amazonDescription, amazonSignals, amazonSpecifications, amazonVariants,
-  nicheSignals, percentage, quantityTiers, reportedPrice, supplierSignals,
+  nicheSignals, percentage, quantityTiers, reportedPrice, sortSupplierEntries, supplierSignals,
 } from '../lib/research-result-format.ts';
 
-void test('seven distinct research tools are statically registered without a free margin calculator or TikTok video tool', () => {
-  assert.equal(researchTools.length, 7);
-  assert.equal(new Set(researchTools.map((tool) => tool.slug)).size, 7);
+void test('only the three requested research tools are registered for static pages', () => {
+  assert.deepEqual(researchTools.map((tool) => tool.slug), [
+    'amazon-niche-opportunity-evaluator',
+    'amazon-product-price-checker',
+    '1688-wholesale-price-finder',
+  ]);
+  assert.equal(new Set(researchTools.map((tool) => tool.slug)).size, 3);
   assert.equal(researchTools.some((tool) => tool.slug.includes('video')), false);
   assert.equal(researchTools.some((tool) => tool.slug.includes('margin')), false);
 });
@@ -96,6 +101,21 @@ void test('1688 results preserve zero, orders and sales while omitting absent fi
   assert.deepEqual(quantityTiers([{ quantity: '10', value: '¥6' }, { quantity: '', value: '¥5' }]), [{ quantity: '10', price: '¥6' }]);
 });
 
+void test('1688 candidate sorting keeps provider order stable and puts unreported prices last', () => {
+  const candidates = [
+    { offerId: 'a', price: 10, quantityBegin: 3, salesOrderCount: 0 },
+    { offerId: 'b', price: 5, quantityBegin: 1, salesOrderCount: 8 },
+    { offerId: 'c', quantityBegin: 2, salesOrderCount: 4 },
+    { offerId: 'd', price: 0, salesOrderCount: 8 },
+  ];
+  const ids = (sort) => sortSupplierEntries(candidates, sort).map(({ row }) => row.offerId);
+  assert.deepEqual(ids('provider'), ['a', 'b', 'c', 'd']);
+  assert.deepEqual(ids('price-asc'), ['b', 'a', 'c', 'd']);
+  assert.deepEqual(ids('price-desc'), ['a', 'b', 'c', 'd']);
+  assert.deepEqual(ids('min-order'), ['b', 'c', 'a', 'd']);
+  assert.deepEqual(ids('orders-desc'), ['b', 'd', 'c', 'a']);
+});
+
 void test('Amazon price results show promotions and buyer context without inventing missing data', () => {
   const row = {
     extractedPrice: 24.99, extractedOldPrice: 32.99, currency: 'USD',
@@ -137,6 +157,29 @@ void test('Amazon and 1688 price lookups are independent paid API tools', async 
   const runtime = await readFile(new URL('../components/price-lookup-runtime.tsx', import.meta.url), 'utf8');
   assert.match(runtime, /runResearchApi\(slug/);
   assert.doesNotMatch(runtime, /marginScenario|Calculate margin|Free local calculation/);
+});
+
+void test('all static tool workflows stack setup above full-width results', async () => {
+  const root = new URL('../', import.meta.url);
+  const researchRuntime = await readFile(new URL('components/research-tool-runtime.tsx', root), 'utf8');
+  const priceRuntime = await readFile(new URL('components/price-lookup-runtime.tsx', root), 'utf8');
+  const workflowRoute = await readFile(new URL('app/tools/[slug]/page.tsx', root), 'utf8');
+  const plannerRoute = await readFile(new URL('app/tools/seo-keyword-planner/page.tsx', root), 'utf8');
+  const researchStyles = await readFile(new URL('public/assets/research-tools.css', root), 'utf8');
+  const workflowStyles = await readFile(new URL('public/assets/workflow-tools.css', root), 'utf8');
+  const plannerStyles = await readFile(new URL('public/assets/seo-keyword-planner.css', root), 'utf8');
+  assert.match(researchRuntime, /<div className="rt-grid">[\s\S]*?<div className="rt-panel rt-form-panel">[\s\S]*?<div className="rt-panel rt-results">/);
+  assert.match(priceRuntime, /<div className="rt-grid">[\s\S]*?<div className="rt-panel rt-form-panel">[\s\S]*?<div className="rt-panel rt-results">/);
+  assert.match(researchStyles, /\.research-tool-page \.rt-grid\{[^}]*grid-template-columns:minmax\(0,1fr\)/);
+  assert.match(researchStyles, /\.rt-workflow--amazon \.rt-form\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/);
+  assert.match(researchStyles, /\.rt-workflow--amazon \.rt-form>\.rt-key-box\{grid-column:1\/-1\}/);
+  assert.match(researchStyles, /\.rt-workflow--price \.rt-form>\.rt-primary\{[^}]*grid-column:1\/-1;[^}]*white-space:normal/);
+  assert.match(researchStyles, /@media\(max-width:700px\)\{\.research-tool-page \.rt-workflow--price \.rt-form\{grid-template-columns:1fr\}/);
+  assert.doesNotMatch(researchStyles, /\.rt-workflow--amazon \.rt-form>\.rt-primary\{[^}]*white-space:nowrap/);
+  assert.match(workflowRoute, /className="wf-shell"[\s\S]*?className="wf-input-panel"[\s\S]*?className="wf-output-panel"/);
+  assert.match(workflowStyles, /\.wf-shell\s*\{[^}]*grid-template-columns:\s*minmax\(0, 1fr\)/);
+  assert.match(plannerRoute, /className="seo-workspace-grid"[\s\S]*?className="seo-card seo-form-card"[\s\S]*?className="seo-card seo-results-card"/);
+  assert.match(plannerStyles, /\.seo-workspace-grid\{[^}]*grid-template-columns:minmax\(0,1fr\)/);
 });
 
 void test('AI report evidence is bounded, preserves zero and excludes raw HTML or unrelated data', () => {
@@ -251,11 +294,22 @@ void test('direct provider success and business failures are interpreted separat
   } finally { globalThis.fetch = original; }
 });
 
-void test('all new static routes skip third-party analytics near BYOK input', async () => {
+void test('only requested new routes appear in the plaza, sitemap and analytics exception list', async () => {
   const script = await readFile(new URL('./prepare-github-pages.mjs', import.meta.url), 'utf8');
   const sitemap = await readFile(new URL('../public/sitemap.xml', import.meta.url), 'utf8');
   for (const tool of researchTools) {
     assert.ok(script.includes(`'${tool.slug}'`));
     assert.ok(sitemap.includes(`/tools/${tool.slug}/`));
+    assert.ok(toolCards.some((card) => card.href === `/tools/${tool.slug}/`));
+  }
+  for (const slug of [
+    'shopify-competitor-store-snapshot',
+    'amazon-keyword-exposure-gap',
+    'tiktok-ad-product-evidence',
+    'ai-shopping-readiness-check',
+  ]) {
+    assert.ok(!script.includes(`'${slug}'`));
+    assert.ok(!sitemap.includes(`/tools/${slug}/`));
+    assert.ok(!toolCards.some((card) => card.href === `/tools/${slug}/`));
   }
 });

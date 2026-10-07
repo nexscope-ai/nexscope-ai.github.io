@@ -7,15 +7,24 @@ import ResearchAnalysisReport from '@/components/research-analysis-report';
 import SupplierResultCard from '@/components/supplier-result-card';
 import type { ResearchTool } from '@/lib/research-tools';
 import { reportEvidence } from '@/lib/research-report-evidence';
+import { sortSupplierEntries, type SupplierSort } from '@/lib/research-result-format';
 import { asRows, display, isInsufficientCreditsError, numeric, readStoredKey, runResearchAnalysis, runResearchApi, saveStoredKey, subscribeStoredKey, type RecordValue } from '@/lib/research-tool-api';
 import { showToolCreditModal } from '@/lib/tool-credit-modal';
 
 type Props = { tool: ResearchTool; apiKeyUrl: string };
+const INITIAL_VISIBLE_SUPPLIERS = 5;
 const MARKETS = [
   { value: 'amazon.com', label: 'United States · amazon.com' },
   { value: 'amazon.co.uk', label: 'United Kingdom · amazon.co.uk' },
   { value: 'amazon.de', label: 'Germany · amazon.de' },
   { value: 'amazon.co.jp', label: 'Japan · amazon.co.jp' },
+];
+const SUPPLIER_SORT_OPTIONS: { value: SupplierSort; label: string }[] = [
+  { value: 'provider', label: 'Provider order' },
+  { value: 'price-asc', label: 'Price: low to high' },
+  { value: 'price-desc', label: 'Price: high to low' },
+  { value: 'min-order', label: 'Minimum order: low to high' },
+  { value: 'orders-desc', label: 'Reported orders: high to low' },
 ];
 
 export default function PriceLookupRuntime({ tool, apiKeyUrl }: Props) {
@@ -29,6 +38,8 @@ export default function PriceLookupRuntime({ tool, apiKeyUrl }: Props) {
   const [report, setReport] = useState('');
   const [reportLoading, setReportLoading] = useState(false);
   const [reportError, setReportError] = useState('');
+  const [supplierSort, setSupplierSort] = useState<SupplierSort>('provider');
+  const [showAllSuppliers, setShowAllSuppliers] = useState(false);
   const [error, setError] = useState('');
   const [fieldError, setFieldError] = useState<'query' | 'apiKey' | ''>('');
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -79,6 +90,7 @@ export default function PriceLookupRuntime({ tool, apiKeyUrl }: Props) {
     abortRef.current?.abort();
     const controller = new AbortController(); abortRef.current = controller;
     setLoading(true); setReportLoading(false); setReport(''); setReportError('');
+    setSupplierSort('provider'); setShowAllSuppliers(false);
     setError(''); setFieldError(''); setResult(null); setSubmittedQuery(term);
     try {
       const data = await runResearchApi(slug, amazon
@@ -103,8 +115,10 @@ export default function PriceLookupRuntime({ tool, apiKeyUrl }: Props) {
       || (typeof row.offerId === 'string' && Boolean(row.offerId.trim()))
       || (typeof row.offerId === 'number' && Number.isSafeInteger(row.offerId));
   });
+  const supplierEntries = sortSupplierEntries(suppliers, supplierSort);
+  const visibleSupplierEntries = showAllSuppliers ? supplierEntries : supplierEntries.slice(0, INITIAL_VISIBLE_SUPPLIERS);
 
-  return <section className="rt-workflow" id="workflow" aria-labelledby="workflow-title">
+  return <section className={`rt-workflow rt-workflow--price ${amazon ? 'rt-workflow--amazon' : 'rt-workflow--supplier'}`} id="workflow" aria-labelledby="workflow-title">
     <div className="rt-heading"><span className="rt-kicker">A FOCUSED PRICE LOOKUP</span><h2 id="workflow-title">From search to reported price.</h2></div>
     <div className="rt-grid">
       <div className="rt-panel rt-form-panel">
@@ -129,10 +143,9 @@ export default function PriceLookupRuntime({ tool, apiKeyUrl }: Props) {
               type="text" autoComplete="off" spellCheck={false} placeholder="Paste your key here" aria-invalid={fieldError === 'apiKey'}
               aria-describedby={fieldError === 'apiKey' ? 'rt-price-key-error' : undefined} />
             {fieldError === 'apiKey' && <span className="rt-error" id="rt-price-key-error" role="alert">{error}</span>}
-            <small>Saved in this browser&apos;s localStorage and shared with Nexscope tools until cleared. Use a trusted device; API requests are sent only to api.nexscope.ai after you start.</small>
           </div>
           <button className="rt-primary" type="button" disabled={busy} onClick={run}>{loading ? 'Loading prices…' : reportLoading ? 'Generating report…' : amazon ? 'Check Amazon price + AI report ↗' : 'Find 1688 prices + AI report ↗'}</button>
-          <p className="rt-cost">{amazon ? 'Amazon Product Detail: 21 credits.' : '1688 Product Search: 12 credits.'} After data returns, an AI analysis starts automatically and uses additional model-based credits. No AI call is made if no usable result is returned.</p>
+          <p className="rt-cost">{amazon ? 'Amazon Product Detail: 21 credits. After data returns, an AI analysis starts automatically and uses additional model-based credits. No AI call is made if no usable result is returned.' : '1688 lookup: 12 credits. An AI report follows usable results and uses additional model credits; empty results do not trigger analysis.'}</p>
           {error && !fieldError && <p className="rt-global-error" role="alert">{error}</p>}
         </div>
       </div>
@@ -142,7 +155,28 @@ export default function PriceLookupRuntime({ tool, apiKeyUrl }: Props) {
           {loading && <output className="rt-loading" aria-live="polite"><p>{amazon ? 'Looking up the Amazon listing…' : 'Searching 1688 supplier listings…'}</p><div className="rt-skeleton" /><div className="rt-skeleton short" /><div className="rt-skeleton" /></output>}
           {!loading && !result && <div className="rt-empty"><div className="rt-star">✦</div><h4>Run one API lookup.</h4><p>{amazon ? 'Review the reported listing price and currency before using it in a sourcing decision.' : 'Compare reported wholesale prices and minimum orders; confirm supplier terms before buying.'}</p><div className="rt-preview"><b>WHAT YOU&apos;LL SEE</b>{tool.preview.map((item, index) => <div key={item}><span>{String(index + 1).padStart(2, '0')}</span>{item}</div>)}</div></div>}
           {!loading && result && amazon && (product ? <AmazonPriceResultCard product={product} /> : <p className="rt-note">No matching product was returned for this ASIN. The API request may still have consumed credits.</p>)}
-          {!loading && result && !amazon && <><h4>{suppliers.length} priced or identifiable listings</h4><p className="rt-note">These are search candidates, not verified quotes or proof that listings represent the same product. Sales are provider-reported for an unspecified period; verify quantity tiers, currency and supplier terms before buying.</p>{suppliers.length ? suppliers.map((row, index) => <SupplierResultCard row={row} index={index} key={`${display(row.offerId)}-${index}`} />) : <p className="rt-note">No usable listings were returned for this term.</p>}</>}
+          {!loading && result && !amazon && <>
+            <h4>{suppliers.length} priced or identifiable listings</h4>
+            <p className="rt-note">These are search candidates, not verified quotes or proof that listings represent the same product. Sales are provider-reported for an unspecified period; verify quantity tiers, currency and supplier terms before buying.</p>
+            {suppliers.length ? <>
+              <div className="rt-supplier-toolbar">
+                <span>Showing {visibleSupplierEntries.length} of {suppliers.length} candidates</span>
+                <div className="rt-supplier-sort"><span>Sort by</span>
+                  <Select value={supplierSort} onValueChange={(value) => { if (value) { setSupplierSort(value as SupplierSort); setShowAllSuppliers(false); } }}>
+                    <SelectTrigger className="rt-select rt-supplier-sort-trigger" aria-label="Sort 1688 listings">{SUPPLIER_SORT_OPTIONS.find((option) => option.value === supplierSort)?.label}</SelectTrigger>
+                    <SelectContent className="rt-select-popup" align="end" alignItemWithTrigger={false}>
+                      {SUPPLIER_SORT_OPTIONS.map((option) => <SelectItem className="rt-select-option" key={option.value} value={option.value}>{option.label}</SelectItem>)}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              <div className="rt-supplier-list-head" aria-hidden="true"><span>Listing</span><span>Price</span><span>Min. order</span><span>Provider activity</span><span>Store</span><span>Details</span></div>
+              <ol className="rt-supplier-list">
+                {visibleSupplierEntries.map(({ row, index }) => <SupplierResultCard row={row} index={index} key={`${display(row.offerId)}-${index}`} />)}
+              </ol>
+              {suppliers.length > INITIAL_VISIBLE_SUPPLIERS && <button className="rt-secondary rt-supplier-more" type="button" onClick={() => setShowAllSuppliers((value) => !value)}>{showAllSuppliers ? `Show first ${INITIAL_VISIBLE_SUPPLIERS}` : `Show all ${suppliers.length} listings`}</button>}
+            </> : <p className="rt-note">No usable listings were returned for this term.</p>}
+          </>}
         </div>
       </div>
     </div>

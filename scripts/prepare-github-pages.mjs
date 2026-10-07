@@ -14,10 +14,6 @@ const interactiveWorkflowSlugs = [
   'tiktok-shop-creator-match',
   'seo-keyword-planner',
   'amazon-niche-opportunity-evaluator',
-  'shopify-competitor-store-snapshot',
-  'amazon-keyword-exposure-gap',
-  'tiktok-ad-product-evidence',
-  'ai-shopping-readiness-check',
   'amazon-product-price-checker',
   '1688-wholesale-price-finder',
 ];
