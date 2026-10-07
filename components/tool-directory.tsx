@@ -111,48 +111,32 @@ export default function ToolDirectory() {
               (item) => item.id === tool.category,
             )?.label;
             return (
-              <article
+              <a
                 className={styles.card}
                 data-category={tool.category}
+                data-track
+                data-track-tool={
+                  isLearnTool ? tool.href.split('/')[2] : undefined
+                }
+                href={tool.href}
+                aria-label={`Open ${tool.name}${isLearnTool ? '' : ' on Nexscope'}`}
                 key={tool.name}
               >
-                <div className={styles.cardTop}>
-                  <span className={styles.mark} aria-hidden="true">
-                    <img
-                      src={tool.icon}
-                      alt=""
-                      width="64"
-                      height="64"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </span>
-                  <span className={styles.location}>
-                    {isLearnTool ? 'On Learn' : 'On Nexscope'}
-                  </span>
-                </div>
+                <span className={styles.mark} aria-hidden="true">
+                  <img
+                    src={tool.icon}
+                    alt=""
+                    width="64"
+                    height="64"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
                 <span className={styles.cardCategory}>{categoryLabel}</span>
                 <h3>{tool.name}</h3>
                 <p className={styles.cardDescription}>{tool.description}</p>
                 <p className={styles.access}>{tool.access}</p>
-                <div className={styles.cardLinks}>
-                  <a
-                    className={styles.toolLink}
-                    data-track
-                    data-track-tool={
-                      isLearnTool ? tool.href.split('/')[2] : undefined
-                    }
-                    href={tool.href}
-                  >
-                    Open tool <span aria-hidden="true">↗</span>
-                  </a>
-                  {tool.guide && (
-                    <a className={styles.guideLink} href={tool.guide.href}>
-                      {tool.guide.label} →
-                    </a>
-                  )}
-                </div>
-              </article>
+              </a>
             );
           })}
         </div>
