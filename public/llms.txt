@@ -11,6 +11,8 @@ Language: English
 - https://learn.nexscope.ai/ — task-based ecommerce learning hub
 - https://learn.nexscope.ai/tools/ — directory of research, listing, SEO, image, and video tools
 - https://learn.nexscope.ai/ecommerce-ai-tools/ — guides, case studies, comparisons, trends, and API evidence
+- https://learn.nexscope.ai/ecommerce-ai-tools/about/ — Nexscope identity, audience, maintainers, and official profiles
+- https://learn.nexscope.ai/ecommerce-ai-tools/editorial-policy/ — source hierarchy, evidence labels, AI review, and corrections
 
 ## Product and marketplace research
 
@@ -36,4 +38,3 @@ Language: English
 ## Evidence and limitations
 
 Nexscope pages distinguish observed data, provider estimates, AI-generated recommendations, and unknown values. Marketplace coverage, freshness, access, and credit requirements vary by tool. Verify important product, listing, pricing, advertising, sourcing, and publishing decisions with current first-party data and the live product documentation.
-

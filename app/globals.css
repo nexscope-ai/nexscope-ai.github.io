@@ -2252,6 +2252,28 @@ button:focus-visible {
   font-size: 0.67rem;
 }
 
+.guide-source-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 18px;
+  margin-top: 18px;
+  color: #64748b;
+  font-size: 0.75rem;
+}
+
+.guide-source-links strong {
+  color: #334155;
+}
+
+.guide-source-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #6d28d9;
+  font-weight: 650;
+}
+
 .faq-list {
   display: grid;
   margin: 0;

@@ -129,9 +129,12 @@ export default async function GuidePage({ params }: GuidePageProps) {
           '@type': 'Thing',
           name,
         })),
-        citation: guide.apiCapabilities.map(
-          (api) => `${NEXSCOPE_APIS}/${api.slug}`,
-        ),
+        citation: [
+          ...guide.apiCapabilities.map(
+            (api) => `${NEXSCOPE_APIS}/${api.slug}`,
+          ),
+          ...guide.sources.map((source) => source.href),
+        ],
       },
       {
         '@type': 'FAQPage',
@@ -332,6 +335,14 @@ export default async function GuidePage({ params }: GuidePageProps) {
                 <p>{guide.evidenceNote}</p>
                 <small>Last reviewed {guide.lastReviewed}</small>
               </aside>
+              <div className="guide-source-links" aria-label="Primary sources">
+                <strong>Primary sources</strong>
+                {guide.sources.map((source) => (
+                  <a href={source.href} target="_blank" rel="noreferrer" key={source.href}>
+                    {source.label} <ExternalLink size={13} aria-hidden="true" />
+                  </a>
+                ))}
+              </div>
             </section>
 
             <section className="detail-section" id="frequently-asked-questions">

@@ -102,8 +102,11 @@ export default function NotFound() {
         <div className={homeStyles.footerlinks}>
           <a href="/tools/">Tools</a>
           <a href="/ecommerce-ai-tools/">Learn</a>
+          <a href="/ecommerce-ai-tools/about/">About</a>
           <a href={`https://www.nexscope.ai/api-docs${tracking}`}>API docs</a>
-          <a href="#analytics-preferences">Privacy</a>
+          <a href="https://www.nexscope.ai/privacy">Privacy</a>
+          <a href="https://www.nexscope.ai/terms">Terms</a>
+          <a href="#analytics-preferences">Cookie settings</a>
         </div>
       </footer>
     </div>

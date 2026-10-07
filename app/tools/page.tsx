@@ -7,7 +7,7 @@ import MarketingHeader from '@/components/marketing-header';
 import styles from './tools.module.css';
 
 export const metadata: Metadata = {
-  title: 'Ecommerce Research Tools: Keywords, Reviews, SEO & Video | Nexscope',
+  title: 'Ecommerce Research & AI Tools | Nexscope',
   description:
     'Run Amazon-to-1688 sourcing and TikTok Shop research workflows with your own API key, alongside keyword, review, SEO and creative tools.',
   alternates: { canonical: 'https://learn.nexscope.ai/tools/' },
@@ -15,15 +15,16 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Nexscope',
     url: 'https://learn.nexscope.ai/tools/',
-    title: 'Ecommerce Research Tools for Keywords, Reviews, SEO and Video',
+    title: 'Ecommerce Research and AI Tools',
     description:
       'Find focused workflows for sourcing, TikTok Shop research, competitor keywords, customer reviews, SEO visibility and AI product creative.',
     images: [DEFAULT_SOCIAL_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ecommerce Research Tools for Keywords, Reviews, SEO and Video',
-    description: 'Compare focused workflows for product demand, competitor keywords, customer reviews, SEO visibility and AI product creative.',
+    title: 'Ecommerce Research and AI Tools',
+    description:
+      'Compare focused workflows for product demand, competitor keywords, customer reviews, SEO visibility and AI product creative.',
     images: [DEFAULT_SOCIAL_IMAGE],
   },
 };
@@ -51,7 +52,8 @@ export default function ToolsPage() {
           position: index + 1,
           name: tool.name,
           description: tool.description,
-          url: tool.href.split('?')[0],
+          url: new URL(tool.href.split('?')[0], 'https://learn.nexscope.ai')
+            .href,
         })),
       },
     ],
@@ -114,7 +116,12 @@ export default function ToolsPage() {
                     <article className={styles.card} key={tool.name}>
                       <div className={styles.cardTop}>
                         <span className={styles.mark} aria-hidden="true">
-                          <img src="/favicon.png" alt="" width="29" height="29" />
+                          <img
+                            src="/favicon.png"
+                            alt=""
+                            width="29"
+                            height="29"
+                          />
                         </span>
                         <span className={styles.access}>{tool.access}</span>
                       </div>
@@ -124,7 +131,11 @@ export default function ToolsPage() {
                         <a
                           className={styles.toolLink}
                           data-track
-                          data-track-tool={tool.href.startsWith('/tools/') ? tool.href.split('/')[2] : undefined}
+                          data-track-tool={
+                            tool.href.startsWith('/tools/')
+                              ? tool.href.split('/')[2]
+                              : undefined
+                          }
                           href={tool.href}
                         >
                           Open tool ↗
@@ -195,8 +206,15 @@ export default function ToolsPage() {
           <nav aria-label="Footer">
             <a href="/tools/">Tools</a>
             <a href="/ecommerce-ai-tools/">Learn</a>
-            <a href="/ecommerce-ai-tools/case-studies/">Case studies</a>
-            <a data-track href="https://www.nexscope.ai/api-docs?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=tool_plaza&utm_content=footer_api_docs">
+            <a href="/ecommerce-ai-tools/about/">About</a>
+            <a href="/ecommerce-ai-tools/editorial-policy/">Editorial policy</a>
+            <a href="https://www.nexscope.ai/privacy">Privacy</a>
+            <a href="https://www.nexscope.ai/terms">Terms</a>
+            <a href="#analytics-preferences">Cookie settings</a>
+            <a
+              data-track
+              href="https://www.nexscope.ai/api-docs?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=tool_plaza&utm_content=footer_api_docs"
+            >
               API docs ↗
             </a>
           </nav>

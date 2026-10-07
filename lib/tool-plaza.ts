@@ -13,22 +13,28 @@ const officialTool = (slug: string) =>
 export const toolCards: ToolCard[] = [
   {
     name: 'Amazon to 1688 Supplier Finder',
-    description: 'Start with an Amazon ASIN, find visually similar 1688 listings, then inspect supplier terms and minimum order quantities.',
+    description:
+      'Start with an Amazon ASIN, find visually similar 1688 listings, then inspect supplier terms and minimum order quantities.',
     href: '/tools/amazon-to-1688-supplier-finder/',
     access: 'Bring your own API key · credits apply',
     category: 'research',
-    guide: { label: 'Sourcing overview', href: '/1688-supplier-product-sourcing/' },
+    guide: {
+      label: 'Sourcing overview',
+      href: '/1688-supplier-product-sourcing/',
+    },
   },
   {
     name: 'TikTok Shop New-Product Validator',
-    description: 'Review a dated new-product ranking, then inspect sales windows and related video evidence for products you select.',
+    description:
+      'Review a dated new-product ranking, then inspect sales windows and related video evidence for products you select.',
     href: '/tools/tiktok-shop-new-product-validator/',
     access: 'Bring your own API key · credits apply',
     category: 'research',
   },
   {
     name: 'TikTok Shop Product-to-Creator Match',
-    description: 'Find creators associated with a TikTok Shop product, then inspect profiles and product-tagged videos.',
+    description:
+      'Find creators associated with a TikTok Shop product, then inspect profiles and product-tagged videos.',
     href: '/tools/tiktok-shop-creator-match/',
     access: 'Bring your own API key · credits apply',
     category: 'research',
@@ -70,14 +76,14 @@ export const toolCards: ToolCard[] = [
     },
   },
   {
-    name: 'SEO Keyword Planner',
+    name: 'Google-to-Amazon Keyword Research Workflow',
     description:
-      'Expand Google keyword ideas, inspect Amazon US competitors for a selected phrase, and optionally generate an AI report.',
+      'Expand Google keyword ideas, then inspect Amazon US competitors for one selected phrase in a deliberate API workflow.',
     href: '/tools/seo-keyword-planner/',
     access: 'Bring your own API key · credits apply',
     category: 'research',
     guide: {
-      label: 'Competitor keyword workflow',
+      label: 'Amazon keyword research guide',
       href: '/ecommerce-ai-tools/amazon-competitor-keyword-research/',
     },
   },

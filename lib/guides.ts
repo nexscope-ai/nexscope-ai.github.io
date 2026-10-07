@@ -19,6 +19,11 @@ export type GuideFaq = {
   answer: string;
 };
 
+export type GuideSource = {
+  label: string;
+  href: string;
+};
+
 export type { MarketNode } from '@/lib/market-coverage';
 
 export type Guide = {
@@ -40,6 +45,7 @@ export type Guide = {
   keyTakeaways: string[];
   faqs: GuideFaq[];
   evidenceNote: string;
+  sources: GuideSource[];
   signal: string;
   readingTime: string;
   featured?: boolean;
@@ -100,6 +106,12 @@ export const guides: Guide[] = [
     ],
     evidenceNote:
       'API availability and fields were reviewed against Nexscope’s public catalog on September 11, 2026. Marketplace estimates are directional and should be tested against first-party sales, advertising, and cost data.',
+    sources: [
+      {
+        label: 'Google Trends Help: FAQ about Google Trends data',
+        href: 'https://support.google.com/trends/answer/4365533?hl=en',
+      },
+    ],
     signal: 'Validate before you buy',
     readingTime: '7 min read',
     featured: true,
@@ -235,6 +247,12 @@ export const guides: Guide[] = [
     ],
     evidenceNote:
       'API availability and fields were reviewed against Nexscope’s public catalog on September 11, 2026. Shopify competitor metrics are external estimates for benchmarking, not a replacement for first-party store analytics.',
+    sources: [
+      {
+        label: 'Shopify: Competitor brand analysis',
+        href: 'https://www.shopify.com/blog/competitor-brand-analysis',
+      },
+    ],
     signal: 'Build a market benchmark',
     readingTime: '6 min read',
     keywords: [
@@ -332,6 +350,16 @@ export const guides: Guide[] = [
     ],
     evidenceNote:
       'The SEO framework follows current Google Search guidance: AI search features use the same core eligibility and quality principles as Search, with no special AI schema required. Nexscope API fields were reviewed on September 11, 2026.',
+    sources: [
+      {
+        label: 'Google Search Central: Generative AI features guidance',
+        href: 'https://developers.google.com/search/docs/fundamentals/ai-optimization-guide',
+      },
+      {
+        label: 'Google Trends Help: FAQ about Google Trends data',
+        href: 'https://support.google.com/trends/answer/4365533?hl=en',
+      },
+    ],
     signal: 'Measure discovery, then diagnose',
     readingTime: '7 min read',
     keywords: [
@@ -434,6 +462,12 @@ export const guides: Guide[] = [
     ],
     evidenceNote:
       'API availability and marketplace coverage were reviewed against Nexscope’s public catalog on September 11, 2026. Review themes summarize observed language and should be checked against the underlying review text.',
+    sources: [
+      {
+        label: 'Amazon Community Guidelines for customer reviews',
+        href: 'https://www.amazon.com/gp/help/customer/display.html?nodeId=GLHXEX85MENUE4XF',
+      },
+    ],
     signal: 'Read the market in customer language',
     readingTime: '6 min read',
     keywords: [
@@ -535,6 +569,12 @@ export const guides: Guide[] = [
     ],
     evidenceNote:
       'API availability and fields were reviewed against Nexscope’s public catalog on September 11, 2026. Product and supplier signals support shortlisting only; procurement, legal, quality, and compliance checks remain the buyer’s responsibility.',
+    sources: [
+      {
+        label: 'Alibaba Group: 1688 domestic wholesale marketplace',
+        href: 'https://www.alibabagroup.com/en-US/about-alibaba-businesses-1941299332078632960',
+      },
+    ],
     signal: 'Connect demand to supply',
     readingTime: '7 min read',
     keywords: [

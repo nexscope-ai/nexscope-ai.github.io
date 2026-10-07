@@ -1,4 +1,11 @@
-import { copyFile, mkdir, readdir, readFile, unlink, writeFile } from 'node:fs/promises';
+import {
+  copyFile,
+  mkdir,
+  readdir,
+  readFile,
+  unlink,
+  writeFile,
+} from 'node:fs/promises';
 
 const clientDirectory = new URL('../dist/client/', import.meta.url);
 const interactiveWorkflowSlugs = [
@@ -23,9 +30,12 @@ const routeSlugs = [
 
 // Keep the root sitemap aligned with the routes this repository actually publishes.
 // The Jekyll learning-center sitemap is maintained by its own repository.
-const sitemap = await readFile(new URL('../public/sitemap.xml', import.meta.url), 'utf8');
-const listedUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) =>
-  new URL(match[1]).href,
+const sitemap = await readFile(
+  new URL('../public/sitemap.xml', import.meta.url),
+  'utf8',
+);
+const listedUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(
+  (match) => new URL(match[1]).href,
 );
 const listedSet = new Set(listedUrls);
 const expectedSet = new Set(
@@ -54,10 +64,7 @@ await Promise.all(
 
 // Remove duplicate flat .html files once the canonical directory routes exist.
 await Promise.all(
-  ['amazon-research', 'ai-product-videos', 'ai-video-generator',
-    ...interactiveWorkflowSlugs.map((slug) => `tools/${slug}`)].map((slug) =>
-    unlink(new URL(`${slug}.html`, clientDirectory)),
-  ),
+  routeSlugs.map((slug) => unlink(new URL(`${slug}.html`, clientDirectory))),
 );
 
 await copyFile(
@@ -68,20 +75,30 @@ await copyFile(
 // GitHub Pages cannot return an HTTP 301 from static files. Keep the remaining
 // established legacy URL usable while its external links are migrated.
 const campaignRoutes = ['ecommerce-ai-agents'];
-await Promise.all(campaignRoutes.map(async (slug) => {
-  const target = `/${slug}/`;
-  const html = `<!doctype html><html lang="en" data-legacy-redirect><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=${target}"><link rel="canonical" href="https://learn.nexscope.ai${target}"><title>Page moved | Nexscope</title><script>location.replace(${JSON.stringify(target)} + location.search + location.hash)</script></head><body><p>This page has moved to <a href="${target}">${target}</a>.</p></body></html>`;
-  await writeFile(new URL(`${slug}.html`, clientDirectory), html);
-}));
+await Promise.all(
+  campaignRoutes.map(async (slug) => {
+    const target = `/${slug}/`;
+    const html = `<!doctype html><html lang="en" data-legacy-redirect><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=${target}"><link rel="canonical" href="https://learn.nexscope.ai${target}"><title>Page moved | Nexscope</title><script>location.replace(${JSON.stringify(target)} + location.search + location.hash)</script></head><body><p>This page has moved to <a href="${target}">${target}</a>.</p></body></html>`;
+    await writeFile(new URL(`${slug}.html`, clientDirectory), html);
+  }),
+);
 
 // Include analytics on every exported page, including standalone campaigns.
 async function addAnalytics(directory) {
   for (const entry of await readdir(directory, { withFileTypes: true })) {
-    const file = new URL(entry.name + (entry.isDirectory() ? '/' : ''), directory);
+    const file = new URL(
+      entry.name + (entry.isDirectory() ? '/' : ''),
+      directory,
+    );
     if (entry.isDirectory()) await addAnalytics(file);
     else if (entry.name.endsWith('.html')) {
       // BYOK workflow pages must not load third-party analytics scripts beside a user-entered API key.
-      if (interactiveWorkflowSlugs.some((slug) => file.pathname.endsWith(`/tools/${slug}/index.html`))) continue;
+      if (
+        interactiveWorkflowSlugs.some((slug) =>
+          file.pathname.endsWith(`/tools/${slug}/index.html`),
+        )
+      )
+        continue;
       const html = await readFile(file, 'utf8');
       if (!html.includes('</head>')) continue;
       if (html.includes('data-legacy-redirect')) continue;
@@ -90,10 +107,15 @@ async function addAnalytics(directory) {
         scripts.push('<script src="/analytics.js?v=8" defer></script>');
       }
       if (!html.includes('src="https://analytics.ahrefs.com/analytics.js"')) {
-        scripts.push('<script src="https://analytics.ahrefs.com/analytics.js" data-key="q6pDSjaAKMskPeTdzPWCtQ" async></script>');
+        scripts.push(
+          '<script src="https://analytics.ahrefs.com/analytics.js" data-key="q6pDSjaAKMskPeTdzPWCtQ" async></script>',
+        );
       }
       if (scripts.length) {
-        await writeFile(file, html.replace('</head>', `${scripts.join('')}</head>`));
+        await writeFile(
+          file,
+          html.replace('</head>', `${scripts.join('')}</head>`),
+        );
       }
     }
   }

@@ -86,10 +86,10 @@ test('production export includes the new route and does not inject third-party a
   const directory = readFileSync(join(root, 'lib', 'tool-plaza.ts'), 'utf8');
   const exportScript = readFileSync(join(root, 'scripts', 'prepare-github-pages.mjs'), 'utf8');
   const sitemap = readFileSync(join(root, 'public', 'sitemap.xml'), 'utf8');
-  assert.match(route, /name="apiKey" type="text"/);
-  assert.match(route, /tab: 'api-keys', mode: 'data'/);
+  assert.match(route, /name="apiKey"\s+type="text"/);
+  assert.match(route, /tab:\s*'api-keys',\s*mode:\s*'data'/);
   assert.match(directory, /href: '\/tools\/seo-keyword-planner\/'/);
   assert.match(exportScript, /'seo-keyword-planner'/);
-  assert.match(exportScript, /interactiveWorkflowSlugs\.some.*index\.html/);
+  assert.match(exportScript, /interactiveWorkflowSlugs\.some[\s\S]*index\.html/);
   assert.match(sitemap, /https:\/\/learn\.nexscope\.ai\/tools\/seo-keyword-planner\//);
 });

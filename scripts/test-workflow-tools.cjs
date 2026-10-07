@@ -131,7 +131,7 @@ test('the root-site routes, sitemap and analytics exception cover all three tool
     assert.ok(sitemap.includes(`https://learn.nexscope.ai/tools/${slug}/`));
     assert.ok(exportScript.includes(`'${slug}'`));
   }
-  assert.match(route, /name="apiKey" type="text"/);
+  assert.match(route, /name="apiKey"\s+type="text"/);
   assert.match(route, /https:\/\/www\.nexscope\.ai\/seller\/api-access/);
   assert.match(route, /tab: 'api-keys'/);
   assert.match(route, /mode: 'data'/);
@@ -143,7 +143,7 @@ test('the root-site routes, sitemap and analytics exception cover all three tool
   assert.doesNotMatch(route, /wf-privacy|Sent only to api\.nexscope\.ai/);
   assert.match(route, /data-run-tool/);
   assert.doesNotMatch(route, /<form\b/i);
-  assert.match(exportScript, /interactiveWorkflowSlugs\.some.*index\.html/);
+  assert.match(exportScript, /interactiveWorkflowSlugs\.some[\s\S]*index\.html/);
   assert.match(directory, /data-track-tool=/);
   assert.match(analytics, /workflow_open_click/);
   assert.match(route, /decisionGuide\.question/);
