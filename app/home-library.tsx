@@ -212,6 +212,39 @@ const entries: Entry[] = [
     boundary:
       'The selected sample does not measure overall satisfaction, conversion, returns or sales.',
   },
+  {
+    title: 'Portable blender market-research case',
+    description:
+      'Follow a production API workflow from Google keyword estimates to Amazon competitors, low-star themes and 1688 supplier candidates.',
+    area: 'Product research',
+    kind: 'Case study',
+    href: '/ecommerce-ai-tools/portable-blender-market-research-case-study/',
+    path: 'Search language → products → risks → supplier samples',
+    boundary:
+      'The run identifies what to verify next; it does not prove demand, margin, defect rate or launch performance.',
+  },
+  {
+    title: 'Portable blender keyword and competitor API test',
+    description:
+      'Inspect 10 Google US keyword ideas and a 10-row Amazon US competitor sample, including the returned intent noise.',
+    area: 'SEO & visibility',
+    kind: 'API evidence',
+    href: '/ecommerce-ai-tools/api-evidence/portable-blender-keyword-competitor/',
+    path: 'Seed keyword → estimated metrics → bounded Amazon sample',
+    boundary:
+      'Google estimates are not Amazon search volume, and provider sales fields are not audited seller data.',
+  },
+  {
+    title: 'Portable blender Amazon-to-1688 API test',
+    description:
+      'Review a real Amazon product, a selected low-star sample, 10 image-search candidates and two supplier-detail checks.',
+    area: 'Sourcing',
+    kind: 'API evidence',
+    href: '/ecommerce-ai-tools/api-evidence/portable-blender-amazon-1688/',
+    path: 'Amazon product → review risks → 1688 candidates → samples',
+    boundary:
+      'Visual similarity and listing prices do not prove product identity, supplier reliability or margin.',
+  },
 ];
 
 const areas = [

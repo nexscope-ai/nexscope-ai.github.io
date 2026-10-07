@@ -100,6 +100,24 @@ const scenes = [
 
 const evidenceRecords = [
   {
+    label: 'CASE STUDY · OCTOBER 2026',
+    title: 'Portable blender: demand, complaints and sourcing',
+    summary:
+      'A production workflow connects 10 Google keyword ideas, 10 Amazon products, a selected low-star sample and 10 visual 1688 candidates.',
+    boundary:
+      'The run defines what to verify next; it does not prove demand, defect rate, factory identity, margin or launch performance.',
+    href: '/ecommerce-ai-tools/portable-blender-market-research-case-study/',
+  },
+  {
+    label: 'API EVIDENCE · OCTOBER 2026',
+    title: 'Google keywords to an Amazon competitor sample',
+    summary:
+      'Six of 10 keyword ideas were brand-led, while one of 10 Amazon rows was a non-electric shaker bottle rather than a direct competitor.',
+    boundary:
+      'Google metrics are estimates, and returned Amazon sales and revenue fields are not audited seller records.',
+    href: '/ecommerce-ai-tools/api-evidence/portable-blender-keyword-competitor/',
+  },
+  {
     label: 'CASE STUDY · SEPTEMBER 2026',
     title: 'Amazon reviews to a product-capacity test',
     summary:

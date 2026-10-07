@@ -21,6 +21,7 @@ Language: English
 - https://learn.nexscope.ai/shopify-competitor-product-research/ — Shopify competitor research
 - https://learn.nexscope.ai/amazon-review-customer-insights/ — customer-review research
 - https://learn.nexscope.ai/1688-supplier-product-sourcing/ — 1688 sourcing workflow
+- https://learn.nexscope.ai/ecommerce-ai-tools/portable-blender-market-research-case-study/ — production API case connecting Google keywords, Amazon competitors and reviews, and 1688 supplier candidates
 
 ## APIs, MCP, and AI agents
 
@@ -36,5 +37,8 @@ Language: English
 - https://learn.nexscope.ai/ai-video-generator/ — image-to-video workflow and review checklist
 
 ## Evidence and limitations
+
+- https://learn.nexscope.ai/ecommerce-ai-tools/api-evidence/portable-blender-keyword-competitor/ — dated Google US keyword and Amazon US competitor evidence
+- https://learn.nexscope.ai/ecommerce-ai-tools/api-evidence/portable-blender-amazon-1688/ — dated Amazon, review, 1688 image-search and supplier-detail evidence
 
 Nexscope pages distinguish observed data, provider estimates, AI-generated recommendations, and unknown values. Marketplace coverage, freshness, access, and credit requirements vary by tool. Verify important product, listing, pricing, advertising, sourcing, and publishing decisions with current first-party data and the live product documentation.
