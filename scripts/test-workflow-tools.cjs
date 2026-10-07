@@ -9,6 +9,17 @@ runInNewContext(readFileSync(join(__dirname, '..', 'public', 'assets', 'workflow
   { module: moduleScope, URL, Intl });
 const core = moduleScope.exports;
 
+test('workflow API identifies only explicit credit shortfall codes or HTTP 402', async () => {
+  for (const code of [13011, 16002, 17001, 18001, 440215, -40002]) {
+    await assert.rejects(core.runSkill(async () => new Response(JSON.stringify({ code, msg: 'Insufficient credits' }), { status: 200 }),
+      'tiktok-new-product-rank', {}, 'nk-test'), (error) => error.name === 'InsufficientCreditsError');
+  }
+  await assert.rejects(core.runSkill(async () => new Response('{}', { status: 402 }),
+    'tiktok-new-product-rank', {}, 'nk-test'), (error) => error.name === 'InsufficientCreditsError');
+  await assert.rejects(core.runSkill(async () => new Response(JSON.stringify({ code: 1001, msg: 'Insufficient credits appears in data' }), { status: 200 }),
+    'tiktok-new-product-rank', {}, 'nk-test'), (error) => error.name !== 'InsufficientCreditsError');
+});
+
 test('Amazon input accepts supported marketplaces and rejects lookalike hosts', () => {
   assert.equal(core.amazonAsin('b072mq5brx'), 'B072MQ5BRX');
   assert.equal(core.amazonAsin('https://www.amazon.co.uk/gp/product/B08N5WRWNW'), 'B08N5WRWNW');

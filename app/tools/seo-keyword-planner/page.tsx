@@ -291,8 +291,8 @@ export default function SeoKeywordPlannerPage() {
                 <p className="seo-muted seo-credit-note">
                   This action runs keyword expansion, then keyword metrics. Both
                   API requests may use credits. Your key is saved in this
-                  tab&apos;s sessionStorage for the Nexscope tools; it is not
-                  placed in cookies or the URL. Clear the field to remove it.
+                  browser&apos;s localStorage for the Nexscope tools, not in
+                  cookies or the URL. Use a trusted device; clear the field to remove it.
                 </p>
               </form>
               <output
@@ -314,13 +314,14 @@ export default function SeoKeywordPlannerPage() {
                   <span aria-hidden="true">✦</span>
                   <h4>Begin with one product topic.</h4>
                   <p>
-                    Keywords, competitor products and the optional report will
-                    appear here as you request them.
+                    Keywords and competitor products appear here as you request
+                    them. The optional AI report appears below this workspace.
                   </p>
                 </div>
               </div>
             </div>
           </div>
+          <div data-seo-report />
           <noscript>
             <p>
               JavaScript is required to run this API workflow. No API key is

@@ -147,7 +147,7 @@
       body: JSON.stringify(body), credentials: 'omit', cache: 'no-store', referrerPolicy: 'no-referrer', signal: options.signal,
     });
     if (response.status === 401) throw new Error('The API key was rejected. Check the key and try again.');
-    if (response.status === 402) throw new Error('Insufficient credits. Review your usage before trying again.');
+    if (response.status === 402) throw insufficientCreditsError();
     if (response.status === 403) throw new Error('This API key does not have access to the requested skill.');
     if (response.status === 429) throw new Error('The API rate limit was reached. Wait before trying again.');
     let envelope;
@@ -156,7 +156,7 @@
     const code = envelope.code === null || envelope.code === undefined || envelope.code === '' ? Number.NaN : Number(envelope.code);
     const data = record(envelope.data);
     if (!response.ok || ![0, 200].includes(code) || envelope.success === false || data.success === false || envelope.error || data.error) {
-      if ([13011, 16002, 17001, 18001].includes(code)) throw new Error('Insufficient credits. Review your usage before trying again.');
+      if ([13011, 16002, 17001, 18001, 440215, -40002].includes(code)) throw insufficientCreditsError();
       if ([12001, 12003, 12204].includes(code)) throw new Error('The API key was rejected. Check the key and try again.');
       throw new Error(`The API request could not be completed (HTTP ${response.status}, code ${Number.isFinite(code) ? code : 'unknown'}). Check usage before retrying.`);
     }
@@ -168,6 +168,12 @@
       throw new Error(`The data provider did not complete this request (code ${String(data.errcode)}).`);
     }
     return data;
+  }
+
+  function insufficientCreditsError() {
+    const error = new Error('Insufficient Data credits. Add credits to continue.');
+    error.name = 'InsufficientCreditsError';
+    return error;
   }
 
   function element(tag, className, text) {
@@ -225,6 +231,7 @@
     const status = root.querySelector('[data-seo-status]');
     const resultState = root.querySelector('[data-seo-result-state]');
     const results = root.querySelector('[data-seo-results]');
+    const reportRoot = root.querySelector('[data-seo-report]');
     const state = { research: null, selected: '', competitors: new Map(), reports: new Map(), busy: '', error: '', errorStage: '', generation: 0 };
 
     function setStatus(message, isError = false) {
@@ -296,9 +303,10 @@
       markdownUnmounts.forEach(unmount => unmount());
       markdownUnmounts.clear();
       results.replaceChildren();
+      reportRoot.replaceChildren();
       if (!state.research) {
         if (state.busy) results.appendChild(skeleton(state.busy === 'metrics' ? 'Checking Google keyword metrics…' : 'Expanding your topic…'));
-        else results.appendChild(append(element('div', 'seo-empty'), element('span', '', '✦'), element('h4', '', 'Begin with one product topic.'), element('p', '', 'Keywords, competitor products and the optional report will appear here as you request them.')));
+        else results.appendChild(append(element('div', 'seo-empty'), element('span', '', '✦'), element('h4', '', 'Begin with one product topic.'), element('p', '', 'Keywords and competitor products appear here as you request them. The optional AI report appears below this workspace.')));
         return;
       }
       const research = state.research;
@@ -364,8 +372,8 @@
       results.appendChild(productSection);
       if (!cached.products.length) return;
 
-      const reportSection = element('section', 'seo-stage');
-      append(reportSection, element('span', 'seo-step', 'STEP 3 / OPTIONAL AI REPORT'), element('h4', '', 'Interpret the competitor sample'), element('p', 'seo-muted', 'This is another request that may use credits. The report uses the returned products only—not reviews, a website audit or the entire market.'));
+      const reportSection = element('section', 'seo-card seo-report-panel');
+      append(reportSection, element('span', 'seo-step', 'STEP 3 / OPTIONAL AI REPORT'), element('h3', '', 'Interpret the competitor sample'), element('p', 'seo-muted', 'This is another request that may use credits. The report uses the returned products only—not reviews, a website audit or the entire market.'));
       const report = state.reports.get(state.selected);
       const analyzeButton = element('button', 'seo-button seo-button-primary', report ? 'Report generated' : state.busy === 'analyze' ? 'Analyzing competitors…' : 'Generate competitor report ↗');
       analyzeButton.type = 'button';
@@ -387,7 +395,7 @@
         append(content, reportButton, element('p', 'seo-muted', 'Validate the AI conclusions against the source products before making decisions.'));
         reportSection.appendChild(content);
       }
-      results.appendChild(reportSection);
+      reportRoot.appendChild(reportSection);
     }
 
     async function request(slug, action, body) {
@@ -395,6 +403,9 @@
       const timeout = setTimeout(() => controller.abort(), 60000);
       try { return await callSkill(fetch, slug, action, body, keyInput.value, { signal: controller.signal }); }
       catch (error) {
+        if (error?.name === 'InsufficientCreditsError') {
+          window.dispatchEvent(new CustomEvent('nexscope:insufficient-credits', { detail: { stage: action === 'analyze' ? 'analysis' : 'data' } }));
+        }
         if (error?.name === 'AbortError') throw new Error('The request timed out. The provider may still be processing it; check usage before retrying.');
         if (error instanceof TypeError) throw new Error('Could not reach the Nexscope API. Check the network and usage before retrying.');
         throw error;
@@ -486,5 +497,5 @@
     keyInput.addEventListener('input', () => { keyError.textContent = ''; keyInput.removeAttribute('aria-invalid'); state.error = ''; setStatus(''); });
   }
 
-  return { version: 3, API_BASE, normalizeSeed, validateSeed, keywordItems, parseCompetitors, csv, analysisPayload, reportMarkdown, extractAnalysis, callSkill, mount };
+  return { version: 4, API_BASE, normalizeSeed, validateSeed, keywordItems, parseCompetitors, csv, analysisPayload, reportMarkdown, extractAnalysis, callSkill, mount };
 });

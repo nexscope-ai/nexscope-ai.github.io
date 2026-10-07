@@ -33,6 +33,9 @@ jobs:
       - name: Test interactive API workflows
         run: npm run test:workflows
 
+      - name: Test research tools
+        run: npm run test:research
+
       - name: Build
         run: npm run build
 

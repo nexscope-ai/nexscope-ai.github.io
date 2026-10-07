@@ -134,6 +134,9 @@
     let fieldFailure;
     try { await task(); }
     catch (error) {
+      if (error?.name === 'InsufficientCreditsError') {
+        window.dispatchEvent(new CustomEvent('nexscope:insufficient-credits', { detail: { stage: 'data' } }));
+      }
       const hadSkeleton = Boolean(results.querySelector('[data-skeleton]'));
       clearSkeletons();
       if (hadSkeleton) {
@@ -736,6 +739,6 @@
   }
   }
 
-  window.NexscopeWorkflowUi = { mount };
+  window.NexscopeWorkflowUi = { version: 12, mount };
   mount();
 })();

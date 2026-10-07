@@ -10,6 +10,15 @@ runInNewContext(readFileSync(join(__dirname, '..', 'public', 'assets', 'seo-keyw
   { module: moduleScope, URL, Intl });
 const planner = moduleScope.exports;
 
+test('SEO planner marks platform credit failures for the shared modal without using message matching', async () => {
+  await assert.rejects(planner.callSkill(async () => new Response('{}', { status: 402 }),
+    'seo-keyword-expand', 'run', {}, 'nk-test'), (error) => error.name === 'InsufficientCreditsError');
+  await assert.rejects(planner.callSkill(async () => new Response(JSON.stringify({ code: 13011, msg: 'No credits' }), { status: 200 }),
+    'seo-keyword-expand', 'run', {}, 'nk-test'), (error) => error.name === 'InsufficientCreditsError');
+  await assert.rejects(planner.callSkill(async () => new Response(JSON.stringify({ code: 1001, msg: 'Insufficient credits example only' }), { status: 200 }),
+    'seo-keyword-expand', 'run', {}, 'nk-test'), (error) => error.name !== 'InsufficientCreditsError');
+});
+
 test('English topic validation matches the original 1–10 word, 80-character boundary', () => {
   assert.equal(planner.validateSeed(' insulated   lunch bag '), '');
   assert.match(planner.validateSeed(''), /Enter/);

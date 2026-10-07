@@ -9,7 +9,7 @@ import styles from './tools.module.css';
 export const metadata: Metadata = {
   title: 'Ecommerce Research & AI Tools | Nexscope',
   description:
-    'Run Amazon-to-1688 sourcing and TikTok Shop research workflows with your own API key, alongside keyword, review, SEO and creative tools.',
+    'Run focused Amazon, Shopify, TikTok, sourcing-price and AI search research workflows with your own API key, alongside creative tools.',
   alternates: { canonical: 'https://learn.nexscope.ai/tools/' },
   openGraph: {
     type: 'website',
@@ -81,8 +81,8 @@ export default function ToolsPage() {
           </h1>
           <p>
             Ecommerce sellers can use focused tools to validate product demand,
-            compare competitor keywords, analyze customer reviews, inspect SEO
-            visibility, improve listings, and create product images or videos.
+            compare competitor keywords, inspect store and ad evidence, look up
+            Amazon and 1688 prices, review SEO visibility, and create product media.
             Start with one decision, choose the smallest useful workflow, and
             verify its evidence before you act.
           </p>

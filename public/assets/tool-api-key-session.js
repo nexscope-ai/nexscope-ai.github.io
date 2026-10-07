@@ -8,15 +8,27 @@
   const STORAGE_KEY = 'nexscope.tools.api-key.v1';
 
   function read() {
-    try { return root.sessionStorage.getItem(STORAGE_KEY) || ''; }
-    catch { return ''; }
+    try {
+      const saved = root.localStorage.getItem(STORAGE_KEY);
+      if (saved !== null) {
+        try { root.sessionStorage?.removeItem(STORAGE_KEY); } catch { /* Storage may be blocked. */ }
+        return saved;
+      }
+      const previous = root.sessionStorage?.getItem(STORAGE_KEY) || '';
+      if (previous) {
+        root.localStorage.setItem(STORAGE_KEY, previous);
+        root.sessionStorage.removeItem(STORAGE_KEY);
+      }
+      return previous;
+    } catch { return ''; }
   }
 
   function write(value) {
     const key = String(value || '').trim();
     try {
-      if (key) root.sessionStorage.setItem(STORAGE_KEY, key);
-      else root.sessionStorage.removeItem(STORAGE_KEY);
+      if (key) root.localStorage.setItem(STORAGE_KEY, key);
+      else root.localStorage.removeItem(STORAGE_KEY);
+      try { root.sessionStorage?.removeItem(STORAGE_KEY); } catch { /* Storage may be blocked. */ }
       return true;
     } catch { return false; }
   }
@@ -27,7 +39,10 @@
     input.value = read();
     input.addEventListener('input', () => { write(input.value); });
     root.addEventListener?.('pageshow', () => { input.value = read(); });
+    root.addEventListener?.('storage', (event) => {
+      if (event.key === STORAGE_KEY) input.value = read();
+    });
   }
 
-  return { STORAGE_KEY, read, write, bind };
+  return { STORAGE_KEY, storage: 'localStorage', read, write, bind };
 });

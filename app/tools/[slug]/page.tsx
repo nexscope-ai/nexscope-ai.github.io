@@ -6,13 +6,15 @@ import { notFound } from 'next/navigation';
 import MarketingHeader from '@/components/marketing-header';
 import WorkflowMarketSelect from '@/components/workflow-market-select';
 import WorkflowRuntime from '@/components/workflow-runtime';
+import ResearchToolPage from '@/components/research-tool-page';
 import { DEFAULT_SOCIAL_IMAGE } from '@/lib/site-metadata';
 import { getWorkflowTool, workflowTools } from '@/lib/workflow-tools';
+import { getResearchTool, researchTools } from '@/lib/research-tools';
 
 type WorkflowPageProps = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return workflowTools.map((tool) => ({ slug: tool.slug }));
+  return [...workflowTools, ...researchTools].map((tool) => ({ slug: tool.slug }));
 }
 
 export async function generateMetadata({
@@ -20,6 +22,19 @@ export async function generateMetadata({
 }: WorkflowPageProps): Promise<Metadata> {
   const { slug } = await params;
   const tool = getWorkflowTool(slug);
+  const researchTool = getResearchTool(slug);
+  if (!tool && !researchTool) return { title: 'Tool not found | Nexscope' };
+  if (researchTool) {
+    const url = `https://learn.nexscope.ai/tools/${slug}/`;
+    return {
+      title: researchTool.title, description: researchTool.description,
+      referrer: 'no-referrer', alternates: { canonical: url },
+      openGraph: { type: 'website', siteName: 'Nexscope', url, title: researchTool.title,
+        description: researchTool.description, images: [DEFAULT_SOCIAL_IMAGE] },
+      twitter: { card: 'summary_large_image', title: researchTool.title,
+        description: researchTool.description, images: [DEFAULT_SOCIAL_IMAGE] },
+    };
+  }
   if (!tool) return { title: 'Tool not found | Nexscope' };
   const url = `https://learn.nexscope.ai/tools/${tool.slug}/`;
   return {
@@ -48,6 +63,8 @@ export async function generateMetadata({
 export default async function WorkflowPage({ params }: WorkflowPageProps) {
   const { slug } = await params;
   const tool = getWorkflowTool(slug);
+  const researchTool = getResearchTool(slug);
+  if (researchTool) return <ResearchToolPage tool={researchTool} />;
   if (!tool) notFound();
   const url = `https://learn.nexscope.ai/tools/${tool.slug}/`;
   const apiKeyUrl = new URL('https://www.nexscope.ai/seller/api-access');
@@ -275,9 +292,9 @@ export default async function WorkflowPage({ params }: WorkflowPageProps) {
                   role="alert"
                 />
                 <p className="wf-key-note">
-                  Saved in this tab&apos;s sessionStorage for these Nexscope
-                  tools. Clear the field to remove it; it is not placed in
-                  cookies or the URL.
+                  Saved in this browser&apos;s localStorage for these Nexscope
+                  tools. Use a trusted device; clear the field to remove it.
+                  It is not placed in cookies or the URL.
                 </p>
               </div>
               <div className="wf-form-actions">

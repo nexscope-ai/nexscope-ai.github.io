@@ -91,8 +91,10 @@
 .seo-product-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0}
 .seo-product-metrics dt{font-size:10px;color:#72809a;line-height:1.4}
 .seo-product-metrics dd{margin:3px 0 0;font-size:12px;font-weight:700;overflow-wrap:anywhere}
+.seo-report-panel{min-width:0;margin-top:22px;padding:clamp(22px,3vw,36px);overflow:hidden}
+.seo-report-panel>.seo-muted{margin:7px 0 20px}
 .seo-report{margin:20px 0 0;border:1px solid #e5def8;border-radius:14px;background:#fbfaff;padding:18px}
-.seo-report-markdown{font-size:13px;line-height:1.7;overflow-wrap:anywhere;margin-bottom:16px;min-width:0}
+.seo-report-markdown{font-size:14px;line-height:1.7;overflow-wrap:anywhere;overflow-x:auto;margin-bottom:16px;min-width:0}
 .seo-report-markdown .md-text{max-width:none}
 .seo-report-markdown .md-text p{margin:8px 0}
 .seo-report-markdown .md-text ul,.seo-report-markdown .md-text ol{margin:8px 0;padding-left:22px}

@@ -177,13 +177,18 @@
     });
     if (!response.ok) {
       if (response.status === 401) throw new Error('The API key was rejected. Check the key and try again.');
+      if (response.status === 402) throw insufficientCreditsError();
       if (response.status === 403) throw new Error('This account does not have access to this API.');
       if (response.status === 429) throw new Error('The API rate limit was reached. Wait before trying again.');
+      let failure;
+      try { failure = await response.json(); } catch { /* Use the HTTP fallback below. */ }
+      if (isInsufficientCreditsCode(failure?.code)) throw insufficientCreditsError();
       throw new Error(`The API request failed (HTTP ${response.status}).`);
     }
     let result;
     try { result = await response.json(); }
     catch { throw new Error('The API returned an unreadable response.'); }
+    if (isInsufficientCreditsCode(result?.code)) throw insufficientCreditsError();
     if (result?.code !== 0) {
       throw new Error(`The API did not complete this request (code ${String(result?.code ?? 'unknown')}).`);
     }
@@ -198,8 +203,18 @@
     return data;
   }
 
+  function isInsufficientCreditsCode(code) {
+    return [13011, 16002, 17001, 18001, 440215, -40002].includes(Number(code));
+  }
+
+  function insufficientCreditsError() {
+    const error = new Error('Insufficient Data credits. Add credits to continue.');
+    error.name = 'InsufficientCreditsError';
+    return error;
+  }
+
   return {
-    API_BASE, SKILLS, amazonAsin, amazonDomainFromUrl, amazonProduct, amazonImage, asArray, asObject,
+    version: 6, API_BASE, SKILLS, amazonAsin, amazonDomainFromUrl, amazonProduct, amazonImage, asArray, asObject,
     creatorId, creatorIdentity, firstNonempty, formatMoney, formatNumber, number, productId,
     rows, runSkill, safeHttpsUrl, salesPace, usableCreators, usableVideos, videoFields,
   };

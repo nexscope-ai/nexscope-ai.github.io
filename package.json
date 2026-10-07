@@ -9,6 +9,7 @@
     "dev": "vinext dev",
     "build": "vinext build",
     "test:workflows": "node --test scripts/test-workflow-tools.cjs scripts/test-seo-keyword-planner.cjs scripts/test-tool-api-key-session.cjs scripts/test-md-text.mjs",
+    "test:research": "node --experimental-strip-types --test scripts/test-research-tools.mjs",
     "postbuild": "node scripts/prepare-github-pages.mjs",
     "icons": "node scripts/generate-favicons.mjs",
     "start": "wrangler dev --config dist/server/wrangler.json",

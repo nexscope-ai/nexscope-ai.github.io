@@ -12,6 +12,48 @@ const officialTool = (slug: string) =>
 
 export const toolCards: ToolCard[] = [
   {
+    name: 'Amazon Niche Opportunity Evaluator',
+    description: 'Compare niche demand, brand concentration, product launches and returns for one Amazon keyword.',
+    href: '/tools/amazon-niche-opportunity-evaluator/',
+    access: 'Bring your own API key · credits apply', category: 'research',
+  },
+  {
+    name: 'Shopify Competitor Store Snapshot',
+    description: 'Find Shopify stores, compare reported store metrics and inspect matching products on demand.',
+    href: '/tools/shopify-competitor-store-snapshot/',
+    access: 'Bring your own API key · credits apply', category: 'research',
+  },
+  {
+    name: 'Amazon Keyword Exposure Gap',
+    description: 'Compare bounded ASIN keyword samples to find competitor-only search terms and rank context.',
+    href: '/tools/amazon-keyword-exposure-gap/',
+    access: 'Bring your own API key · credits apply', category: 'research',
+  },
+  {
+    name: 'TikTok Ad & Product Evidence',
+    description: 'Search a small TikTok ad shortlist and inspect products associated with one selected ad.',
+    href: '/tools/tiktok-ad-product-evidence/',
+    access: 'Bring your own API key · credits apply', category: 'research',
+  },
+  {
+    name: 'Amazon Product Price Checker',
+    description: 'Check one ASIN’s reported Amazon listing price, currency, previous price and rating.',
+    href: '/tools/amazon-product-price-checker/',
+    access: 'Bring your own API key · credits apply', category: 'research',
+  },
+  {
+    name: '1688 Wholesale Price Finder',
+    description: 'Compare a shortlist of reported 1688 wholesale prices, minimum orders and supplier details.',
+    href: '/tools/1688-wholesale-price-finder/',
+    access: 'Bring your own API key · credits apply', category: 'research',
+  },
+  {
+    name: 'AI Shopping Readiness Check',
+    description: 'Inspect product-page SEO evidence, then optionally sample one AI answer and its citations.',
+    href: '/tools/ai-shopping-readiness-check/',
+    access: 'Bring your own API key · credits apply', category: 'visibility',
+  },
+  {
     name: 'Amazon to 1688 Supplier Finder',
     description:
       'Start with an Amazon ASIN, find visually similar 1688 listings, then inspect supplier terms and minimum order quantities.',
