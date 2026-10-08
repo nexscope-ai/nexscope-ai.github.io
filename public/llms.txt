@@ -10,8 +10,11 @@ Language: English
 
 - https://learn.nexscope.ai/ — task-based ecommerce learning hub
 - https://learn.nexscope.ai/tools/ — directory of research, listing, SEO, image, and video tools
+- https://learn.nexscope.ai/about/ — official Nexscope brand, company, audience, products, and web properties
+- https://learn.nexscope.ai/security/ — published safeguards, credential guidance, and private security reporting
+- https://learn.nexscope.ai/contact/ — official support, sales, API, editorial, and security contact channels
 - https://learn.nexscope.ai/ecommerce-ai-tools/ — guides, case studies, comparisons, trends, and API evidence
-- https://learn.nexscope.ai/ecommerce-ai-tools/about/ — Nexscope identity, audience, maintainers, and official profiles
+- https://learn.nexscope.ai/ecommerce-ai-tools/about/ — scope, audience, maintainers, and content types for the learning center
 - https://learn.nexscope.ai/ecommerce-ai-tools/editorial-policy/ — source hierarchy, evidence labels, AI review, and corrections
 
 ## Product and marketplace research

@@ -53,6 +53,6 @@ export default function ResearchToolPage({ tool }: { tool: ResearchTool }) {
         <div className="rt-more-links">{[tool.primaryApi, ...tool.additionalApis].map((slug) => <a key={slug} href={`https://www.nexscope.ai/api-docs/${slug}?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=workflow_${tool.slug}`}>{slug} ↗</a>)}<a href="/tools/">All ecommerce tools →</a></div>
       </section>
     </main>
-    <footer className="rt-footer"><div className="rt-wrap"><a href="/">Nexscope</a><nav aria-label="Footer"><a href="/tools/">Tools</a><a href="/ecommerce-ai-tools/">Learn</a><a href="https://www.nexscope.ai/privacy">Privacy</a><a href="https://www.nexscope.ai/terms">Terms</a></nav></div></footer>
+    <footer className="rt-footer"><div className="rt-wrap"><a href="/">Nexscope</a><nav aria-label="Footer"><a href="/tools/">Tools</a><a href="/ecommerce-ai-tools/">Learn</a><a href="/about/">About</a><a href="/security/">Security</a><a href="/contact/">Contact</a><a href="https://www.nexscope.ai/privacy">Privacy</a><a href="https://www.nexscope.ai/terms">Terms</a></nav></div></footer>
   </div>;
 }

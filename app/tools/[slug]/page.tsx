@@ -396,7 +396,9 @@ export default async function WorkflowPage({ params }: WorkflowPageProps) {
           <nav aria-label="Footer">
             <a href="/tools/">Tools</a>
             <a href="/ecommerce-ai-tools/">Learn</a>
-            <a href="/ecommerce-ai-tools/about/">About</a>
+            <a href="/about/">About</a>
+            <a href="/security/">Security</a>
+            <a href="/contact/">Contact</a>
             <a href="/ecommerce-ai-tools/editorial-policy/">Editorial policy</a>
             <a href="https://www.nexscope.ai/privacy">Privacy</a>
             <a href="https://www.nexscope.ai/terms">Terms</a>

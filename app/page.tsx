@@ -433,7 +433,7 @@ export default function Home() {
             <a href="/ecommerce-ai-tools/editorial-policy/">
               Editorial &amp; evidence policy <ArrowRight size={16} />
             </a>
-            <a href="/ecommerce-ai-tools/about/">
+            <a href="/about/">
               About Nexscope <ArrowRight size={16} />
             </a>
             <a data-track href={docs}>
@@ -468,7 +468,9 @@ export default function Home() {
         <div className={styles.footerlinks}>
           <a href="/tools/">Tools</a>
           <a href="/ecommerce-ai-tools/">Learn</a>
-          <a href="/ecommerce-ai-tools/about/">About</a>
+          <a href="/about/">About</a>
+          <a href="/security/">Security</a>
+          <a href="/contact/">Contact</a>
           <a href="/ecommerce-ai-tools/editorial-policy/">Editorial policy</a>
           <a data-track href={docs}>
             API docs

@@ -405,7 +405,9 @@ export function CampaignPage({ campaign }: { campaign: Campaign }) {
                 <a href="/">Nexscope home</a>
                 <a href="/tools/">Tools</a>
                 <a href="/ecommerce-ai-tools/">Learn</a>
-                <a href="/ecommerce-ai-tools/about/">About</a>
+                <a href="/about/">About</a>
+                <a href="/security/">Security</a>
+                <a href="/contact/">Contact</a>
                 <a href="/ecommerce-ai-tools/editorial-policy/">
                   Editorial policy
                 </a>

@@ -27,6 +27,9 @@ const routeSlugs = [
   'ecommerce-ai-agents',
   'ai-product-videos',
   'ai-video-generator',
+  'about',
+  'security',
+  'contact',
   'tools',
   ...interactiveWorkflowSlugs.map((slug) => `tools/${slug}`),
 ];
