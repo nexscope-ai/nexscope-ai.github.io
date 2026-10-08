@@ -173,6 +173,69 @@
 .channel p {
   margin: 0;
 }
+.profileGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+}
+.profileLink {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  min-width: 0;
+  padding: 17px 18px;
+  border: 1px solid #211f261a;
+  border-radius: 14px;
+  background: #fff;
+  color: #211f26 !important;
+  text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+.profileLink:hover {
+  border-color: #6250e966;
+  box-shadow: 0 12px 30px rgb(58 48 92 / 10%);
+  transform: translateY(-2px);
+}
+.profileLink:focus-visible {
+  outline: 3px solid #6250e94d;
+  outline-offset: 3px;
+}
+.profileMark {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 11px;
+  background: #211f26;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.profileText {
+  min-width: 0;
+}
+.profileText strong,
+.profileText span {
+  display: block;
+}
+.profileText span {
+  overflow: hidden;
+  margin-top: 3px;
+  color: #686571;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.externalMark {
+  color: #6250e9;
+  font-size: 18px;
+}
 .aside {
   position: sticky;
   top: 28px;
@@ -274,6 +337,7 @@
 
 @media (max-width: 560px) {
   .cards,
+  .profileGrid,
   .details div,
   .channel {
     grid-template-columns: 1fr;
@@ -285,7 +349,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .skip {
+  .skip,
+  .profileLink {
     transition: none;
   }
 }

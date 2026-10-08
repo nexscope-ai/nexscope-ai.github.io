@@ -51,6 +51,39 @@ const supportingLinks = [
   },
 ] as const;
 
+const officialProfiles = [
+  {
+    href: 'https://www.linkedin.com/company/nexscope-ai/',
+    label: 'LinkedIn',
+    account: 'Nexscope.AI',
+    mark: 'in',
+  },
+  {
+    href: 'https://x.com/Nexscope_ai',
+    label: 'X',
+    account: '@Nexscope_ai',
+    mark: 'X',
+  },
+  {
+    href: 'https://www.youtube.com/@Nexscope-AI',
+    label: 'YouTube',
+    account: '@Nexscope-AI',
+    mark: '▶',
+  },
+  {
+    href: 'https://www.tiktok.com/@nexscope_ai',
+    label: 'TikTok',
+    account: '@nexscope_ai',
+    mark: '♪',
+  },
+  {
+    href: 'https://github.com/nexscope-ai',
+    label: 'GitHub',
+    account: 'nexscope-ai',
+    mark: '</>',
+  },
+] as const;
+
 export default function AboutPage() {
   return (
     <>
@@ -191,23 +224,32 @@ export default function AboutPage() {
 
         <section>
           <h2>Official profiles</h2>
-          <ul>
-            <li>
-              <a href="https://www.linkedin.com/company/nexscope-ai/">LinkedIn</a>
-            </li>
-            <li>
-              <a href="https://x.com/Nexscope_ai">X</a>
-            </li>
-            <li>
-              <a href="https://www.youtube.com/@Nexscope-AI">YouTube</a>
-            </li>
-            <li>
-              <a href="https://www.tiktok.com/@nexscope_ai">TikTok</a>
-            </li>
-            <li>
-              <a href="https://github.com/nexscope-ai">GitHub</a>
-            </li>
-          </ul>
+          <p>
+            These account names and destinations match the social links published
+            on the Nexscope product website. External profiles open in a new tab.
+          </p>
+          <div className={styles.profileGrid}>
+            {officialProfiles.map((profile) => (
+              <a
+                className={styles.profileLink}
+                href={profile.href}
+                key={profile.label}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <span className={styles.profileMark} aria-hidden="true">
+                  {profile.mark}
+                </span>
+                <span className={styles.profileText}>
+                  <strong>{profile.label}</strong>
+                  <span>{profile.account}</span>
+                </span>
+                <span className={styles.externalMark} aria-hidden="true">
+                  ↗
+                </span>
+              </a>
+            ))}
+          </div>
         </section>
       </SiteInfoPage>
     </>
