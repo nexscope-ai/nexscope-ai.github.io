@@ -127,3 +127,71 @@ async function addAnalytics(directory) {
   }
 }
 await addAnalytics(clientDirectory);
+
+// Attribute the actual published anchors, including links supplied by card
+// data and tool pages. Canonical, schema, image, and script URLs stay clean.
+const officialAnchor = /(<a\b[^>]*?\bhref\s*=\s*)(["'])(.*?)\2/gi;
+const decodeAttribute = (value) =>
+  value.replace(/&(?:amp|#38|#x26);/gi, '&');
+const escapeAttribute = (value) =>
+  value.replaceAll('&', '&amp;').replaceAll('"', '&quot;');
+
+async function attributeOfficialLinks(directory) {
+  let pageCount = 0;
+  let linkCount = 0;
+  for (const entry of await readdir(directory, { withFileTypes: true })) {
+    const file = new URL(entry.name + (entry.isDirectory() ? '/' : ''), directory);
+    if (entry.isDirectory()) {
+      const nested = await attributeOfficialLinks(file);
+      pageCount += nested.pageCount;
+      linkCount += nested.linkCount;
+      continue;
+    }
+    if (!entry.name.endsWith('.html')) continue;
+    pageCount += 1;
+    const pageName = file.pathname
+      .slice(clientDirectory.pathname.length)
+      .replace(/(?:\/index)?\.html$/, '')
+      .replace(/[^a-z0-9]+/gi, '_')
+      .replace(/^_+|_+$/g, '') || 'home';
+    let index = 0;
+    const original = await readFile(file, 'utf8');
+    const updated = original.replace(officialAnchor, (whole, prefix, quote, rawHref) => {
+      const href = decodeAttribute(rawHref);
+      let url;
+      try {
+        url = new URL(href);
+      } catch {
+        return whole;
+      }
+      if (url.protocol !== 'https:' || !['nexscope.ai', 'www.nexscope.ai'].includes(url.hostname)) {
+        return whole;
+      }
+      index += 1;
+      url.hostname = 'www.nexscope.ai';
+      url.searchParams.set('co-from', 'learn');
+      url.searchParams.set('utm_source', 'learn.nexscope.ai');
+      url.searchParams.set('utm_medium', 'referral');
+      if (!url.searchParams.get('utm_campaign')) {
+        url.searchParams.set('utm_campaign', pageName.startsWith('tools_') ? 'tool_plaza' : 'learning_center');
+      }
+      if (!url.searchParams.get('utm_content')) {
+        url.searchParams.set('utm_content', `${pageName}_link_${index}`);
+      }
+      return `${prefix}${quote}${escapeAttribute(url.toString())}${quote}`;
+    });
+    for (const match of updated.matchAll(officialAnchor)) {
+      const url = new URL(decodeAttribute(match[3]), 'https://learn.nexscope.ai');
+      if (url.hostname !== 'www.nexscope.ai') continue;
+      for (const key of ['co-from', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content']) {
+        if (!url.searchParams.get(key)) throw new Error(`Missing ${key} on ${file.pathname}`);
+      }
+    }
+    if (updated !== original) await writeFile(file, updated);
+    linkCount += index;
+  }
+  return { pageCount, linkCount };
+}
+
+const outboundAttribution = await attributeOfficialLinks(clientDirectory);
+console.log(`Attributed ${outboundAttribution.linkCount} official links across ${outboundAttribution.pageCount} exported pages.`);

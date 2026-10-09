@@ -43,6 +43,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        <script src="/outbound-attribution.js" defer />
+      </head>
       <body>{children}</body>
     </html>
   );
