@@ -34,7 +34,7 @@ export default function ResearchToolPage({ tool }: { tool: ResearchTool }) {
     ],
   };
   return <div className="research-tool-page">
-    <link rel="stylesheet" href="/assets/research-tools.css?v=10" />
+    <link rel="stylesheet" href="/assets/research-tools.css?v=11" />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replaceAll('<', '\\u003c') }} />
     <MarketingHeader active="tools" campaign={`workflow_${tool.slug}`} />
     <main className="rt-wrap" id="main-content">

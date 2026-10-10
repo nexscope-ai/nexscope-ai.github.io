@@ -25,14 +25,14 @@ export default function SeoPlannerRuntime() {
     runtimeWindow.NexscopeToolMarkdown = markdownBridge;
     const loadPlanner = () => {
       const runtime = (window as Window & { NexscopeSeoPlanner?: { version?: number; mount: () => void } }).NexscopeSeoPlanner;
-      if (runtime?.version === 5) { runtime.mount(); return; }
+      if (runtime?.version === 6) { runtime.mount(); return; }
       const id = 'nexscope-seo-planner-runtime';
       let script = document.getElementById(id) as HTMLScriptElement | null;
-      if (script && !script.src.endsWith('/assets/seo-keyword-planner.js?v=5')) { script.remove(); script = null; }
+      if (script && !script.src.endsWith('/assets/seo-keyword-planner.js?v=6')) { script.remove(); script = null; }
       if (!script) {
         script = document.createElement('script');
         script.id = id;
-        script.src = '/assets/seo-keyword-planner.js?v=5';
+        script.src = '/assets/seo-keyword-planner.js?v=6';
         document.body.appendChild(script);
       }
       script.addEventListener('load', () => {

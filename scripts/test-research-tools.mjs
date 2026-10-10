@@ -222,10 +222,15 @@ void test('expansion pages omit the Review panel and generate a full-width Markd
 
 void test('all research runtimes render a dedicated empty state instead of an unavailable AI report', async () => {
   const emptyState = await readFile(new URL('../components/research-empty-state.tsx', import.meta.url), 'utf8');
+  const page = await readFile(new URL('../components/research-tool-page.tsx', import.meta.url), 'utf8');
+  const style = await readFile(new URL('../public/assets/research-tools.css', import.meta.url), 'utf8');
   const lookup = await readFile(new URL('../components/price-lookup-runtime.tsx', import.meta.url), 'utf8');
   const research = await readFile(new URL('../components/research-tool-runtime.tsx', import.meta.url), 'utf8');
   const planner = await readFile(new URL('../public/assets/seo-keyword-planner.js', import.meta.url), 'utf8');
   assert.match(emptyState, /No data available/);
+  assert.match(emptyState, /className="rt-data-empty-icon"/);
+  assert.match(style, /\.research-tool-page \.rt-data-empty-icon\{/);
+  assert.match(page, /research-tools\.css\?v=11/);
   assert.match(lookup, /result && !amazon && suppliers\.length === 0 && <ResearchEmptyState/);
   assert.match(lookup, /product \? <AmazonPriceResultCard product=\{product\} \/> : <ResearchEmptyState/);
   assert.match(research, /\{noData && <ResearchEmptyState/);

@@ -131,7 +131,7 @@ const schema = {
 export default function SeoKeywordPlannerPage() {
   return (
     <div className="seo-planner-page">
-      <link rel="stylesheet" href="/assets/seo-keyword-planner.css?v=2" />
+      <link rel="stylesheet" href="/assets/seo-keyword-planner.css?v=3" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

@@ -128,7 +128,11 @@ test('production export includes the new route and does not inject third-party a
 
 test('runtime cache-busts the revised competitor report script', () => {
   const runtime = readFileSync(join(__dirname, '..', 'components', 'seo-planner-runtime.tsx'), 'utf8');
-  assert.match(runtime, /runtime\?\.version === 5/);
-  assert.match(runtime, /seo-keyword-planner\.js\?v=5/);
-  assert.equal(planner.version, 5);
+  const route = readFileSync(join(__dirname, '..', 'app', 'tools', 'seo-keyword-planner', 'page.tsx'), 'utf8');
+  const style = readFileSync(join(__dirname, '..', 'public', 'assets', 'seo-keyword-planner.css'), 'utf8');
+  assert.match(runtime, /runtime\?\.version === 6/);
+  assert.match(runtime, /seo-keyword-planner\.js\?v=6/);
+  assert.match(route, /seo-keyword-planner\.css\?v=3/);
+  assert.match(style, /\.seo-data-empty-icon\{/);
+  assert.equal(planner.version, 6);
 });

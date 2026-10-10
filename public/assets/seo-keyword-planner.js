@@ -397,12 +397,13 @@
       append(productSection, element('span', 'seo-step', 'COMPETITOR SAMPLE'), element('h4', '', `${cached.products.length} returned products`), element('p', 'seo-muted', 'Provider sales and revenue are estimates. This sample is not the whole market. Open source listings to verify relevance.'));
       if (!cached.products.length) {
         const emptySample = element('output', 'seo-data-empty');
-        const count = append(element('div', 'seo-data-empty-count'), element('strong', '', '0'), element('span', '', 'RESULTS'));
-        const copy = append(element('div', 'seo-data-empty-copy'), element('span', 'seo-step', 'NO AMAZON DATA'),
+        const icon = element('span', 'seo-data-empty-icon');
+        icon.setAttribute('aria-hidden', 'true');
+        const copy = append(element('div', 'seo-data-empty-copy'), element('span', 'seo-data-empty-label', 'No results'),
           element('h5', '', 'No data available'),
           element('p', '', 'No matching Amazon products were returned for this keyword. Select another keyword to try a new sample.'),
           element('small', '', 'No AI analysis request was sent. The completed product lookup may still have used credits.'));
-        emptySample.append(count, copy);
+        emptySample.append(icon, copy);
         productSection.appendChild(emptySample);
       }
       else {
@@ -538,5 +539,5 @@
     keyInput.addEventListener('input', () => { keyError.textContent = ''; keyInput.removeAttribute('aria-invalid'); state.error = ''; setStatus(''); });
   }
 
-  return { version: 5, API_BASE, normalizeSeed, validateSeed, keywordItems, parseCompetitors, csv, analysisPayload, guardCompetitorAnalysis, reportMarkdown, extractAnalysis, callSkill, mount };
+  return { version: 6, API_BASE, normalizeSeed, validateSeed, keywordItems, parseCompetitors, csv, analysisPayload, guardCompetitorAnalysis, reportMarkdown, extractAnalysis, callSkill, mount };
 });
