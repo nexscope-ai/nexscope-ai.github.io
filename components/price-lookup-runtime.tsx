@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger } from '@/components/ui/select';
 import AmazonPriceResultCard from '@/components/amazon-price-result-card';
 import ResearchAnalysisReport from '@/components/research-analysis-report';
+import ResearchEmptyState from '@/components/research-empty-state';
 import SupplierResultCard from '@/components/supplier-result-card';
 import type { ResearchTool } from '@/lib/research-tools';
 import { reportEvidence } from '@/lib/research-report-evidence';
@@ -118,6 +119,7 @@ export default function PriceLookupRuntime({ tool, apiKeyUrl }: Props) {
   });
   const supplierEntries = sortSupplierEntries(suppliers, supplierSort);
   const visibleSupplierEntries = showAllSuppliers ? supplierEntries : supplierEntries.slice(0, INITIAL_VISIBLE_SUPPLIERS);
+  const hasUsableData = amazon ? Boolean(product) : suppliers.length > 0;
 
   return <section className={`rt-workflow rt-workflow--price ${amazon ? 'rt-workflow--amazon' : 'rt-workflow--supplier'}`} id="workflow" aria-labelledby="workflow-title">
     <div className="rt-heading"><span className="rt-kicker">A FOCUSED PRICE LOOKUP</span><h2 id="workflow-title">From search to reported price.</h2></div>
@@ -151,12 +153,13 @@ export default function PriceLookupRuntime({ tool, apiKeyUrl }: Props) {
         </div>
       </div>
       <div className="rt-panel rt-results">
-        <div className="rt-panel-head rt-results-head"><div><span className="rt-kicker">02 / REVIEW</span><h3>{amazon ? 'Amazon listing' : '1688 price candidates'}</h3></div><span>{loading ? 'Loading data' : result ? 'Ready' : 'No lookup yet'}</span></div>
+        <div className="rt-panel-head rt-results-head"><div><span className="rt-kicker">02 / REVIEW</span><h3>{amazon ? 'Amazon listing' : '1688 price candidates'}</h3></div><span>{loading ? 'Loading data' : result ? hasUsableData ? 'Ready' : 'No data' : 'No lookup yet'}</span></div>
         <div className="rt-result-body">
           {loading && <output className="rt-loading" aria-live="polite"><p>{amazon ? 'Looking up the Amazon listing…' : 'Searching 1688 supplier listings…'}</p><div className="rt-skeleton" /><div className="rt-skeleton short" /><div className="rt-skeleton" /></output>}
           {!loading && !result && <div className="rt-empty"><div className="rt-star">✦</div><h4>Run one API lookup.</h4><p>{amazon ? 'Review the reported listing price and currency before using it in a sourcing decision.' : 'Compare reported wholesale prices and minimum orders; confirm supplier terms before buying.'}</p><div className="rt-preview"><b>WHAT YOU&apos;LL SEE</b>{tool.preview.map((item, index) => <div key={item}><span>{String(index + 1).padStart(2, '0')}</span>{item}</div>)}</div></div>}
-          {!loading && result && amazon && (product ? <AmazonPriceResultCard product={product} /> : <p className="rt-note">No matching product was returned for this ASIN. The API request may still have consumed credits.</p>)}
-          {!loading && result && !amazon && <>
+          {!loading && result && amazon && (product ? <AmazonPriceResultCard product={product} /> : <ResearchEmptyState message="No matching listing was returned for this ASIN in the selected Amazon marketplace. Check the ASIN and marketplace before trying again." note="No AI analysis request was sent. The completed product lookup may still have used credits." />)}
+          {!loading && result && !amazon && suppliers.length === 0 && <ResearchEmptyState message="No priced or identifiable 1688 listings were returned for this Chinese search term. Try a broader product term or a different wording." note="No AI analysis request was sent. The completed 1688 search may still have used credits." />}
+          {!loading && result && !amazon && suppliers.length > 0 && <>
             <h4>{suppliers.length} priced or identifiable listings</h4>
             <p className="rt-note">These are search candidates, not verified quotes or proof that listings represent the same product. Sales are provider-reported for an unspecified period; verify quantity tiers, currency and supplier terms before buying.</p>
             {suppliers.length ? <>
@@ -181,6 +184,6 @@ export default function PriceLookupRuntime({ tool, apiKeyUrl }: Props) {
         </div>
       </div>
     </div>
-    {!loading && result && (amazon ? Boolean(product) : suppliers.length > 0) && <ResearchAnalysisReport markdown={report} loading={reportLoading} error={reportError} onRetry={retryAnalysis} />}
+    {!loading && result && hasUsableData && <ResearchAnalysisReport markdown={report} loading={reportLoading} error={reportError} onRetry={retryAnalysis} />}
   </section>;
 }

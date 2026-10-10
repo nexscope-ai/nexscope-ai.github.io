@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from 'react';
 import { Select, SelectContent, SelectItem, SelectTrigger } from '@/components/ui/select';
 import MdText from '@/components/md-text';
 import ResearchAnalysisReport from '@/components/research-analysis-report';
+import ResearchEmptyState from '@/components/research-empty-state';
 import type { ResearchTool } from '@/lib/research-tools';
 import {
-  asRecord, display, isInsufficientCreditsError,
+  asRecord, asRows, display, isInsufficientCreditsError,
   pick, readStoredKey, runResearchAnalysis, runResearchApi, safeLink, saveStoredKey, subscribeStoredKey,
   type RecordValue,
 } from '@/lib/research-tool-api';
@@ -106,7 +107,7 @@ export default function ExpansionToolRuntime({ tool, apiKeyUrl }: Props) {
     const coverage = asRecord(evidence?.coverage);
     setAnalysisCoverage(Object.keys(coverage).length ? coverage : null);
     if (!evidence) {
-      setReportError('The API returned no usable evidence for an AI report. No analysis request was sent or charged.');
+      setReportError('');
       return;
     }
     setStage('analysis'); setReportError('');
@@ -133,6 +134,10 @@ export default function ExpansionToolRuntime({ tool, apiKeyUrl }: Props) {
       else data = await runResearchApi('1688-product-search', { keyWord: form.termZh.trim(), pageIndex: 1, pageSize: 10, searchType: 1 }, apiKey, controller.signal);
       if (controller.signal.aborted) return;
       setPrimary(data);
+      if ((kind === 'asin-gap' || kind === 'sourcing-demand') && asRows(data).length === 0) {
+        await analyze(data, null, form, controller.signal);
+        return;
+      }
       const second = kind === 'asin-gap' || kind === 'sourcing-demand' ? await runSecondary(controller.signal, form) : null;
       if (controller.signal.aborted || ((kind === 'asin-gap' || kind === 'sourcing-demand') && !second)) return;
       await analyze(data, second, form, controller.signal);
@@ -163,6 +168,16 @@ export default function ExpansionToolRuntime({ tool, apiKeyUrl }: Props) {
   const choice = (name: string, label: string, options: { value: string; label: string }[]) => <Choice key={name} label={label} value={values[name]} options={options} onChange={(value) => update(name, value)} disabled={busy} />;
   const citationResult = asRecord(secondary?.result);
   const citations = Array.isArray(citationResult.citations) ? citationResult.citations.map(asRecord) : [];
+  const noData = Boolean(primary) && !analysisHasEvidence && !secondaryError && !busy;
+  const noDataMessage = kind === 'price-history'
+    ? `No usable dated observations were found for this ASIN in the selected ${submitted.days || values.days}-day period. Check the marketplace or try a longer lookback.`
+    : kind === 'asin-gap'
+      ? asRows(primary).length === 0 ? 'No keyword rows were returned for your ASIN. The competitor request was not started; check the ASIN and marketplace.' : 'No keyword rows were returned for the competitor ASIN. A keyword gap cannot be calculated from one sample alone.'
+      : kind === 'sourcing-demand'
+        ? asRows(primary).length === 0 ? 'No 1688 listings were returned for the Chinese sourcing term. The Amazon request was not started; try a more specific term.' : 'No Amazon listings were returned for the search term. A supply-versus-demand comparison needs results from both markets.'
+        : kind === 'tiktok-momentum'
+          ? 'No ranked products were returned for this market and period. Try another completed period or market.'
+          : 'No usable product-page snapshots were returned for this URL. Check that the page is public and accessible, then try again.';
 
   return <section className="rt-workflow rt-exp-workflow" aria-labelledby="workflow-title">
     <div className="rt-heading"><span className="rt-kicker">A FOCUSED WORKFLOW</span><h2 id="workflow-title">From input to AI report.</h2></div>
@@ -182,12 +197,13 @@ export default function ExpansionToolRuntime({ tool, apiKeyUrl }: Props) {
       </div>
     </div>
     {(stage === 'primary' || stage === 'secondary' || stage === 'analysis' || primary || reportError) && <div className="rt-exp-report-slot" ref={reportRef}>
+      {noData && <ResearchEmptyState message={noDataMessage} note="No AI analysis request was sent. Completed source requests may still have used credits." />}
       {kind === 'sourcing-demand' && analysisCoverage && <p className="rt-exp-coverage">Report input: {display(analysisCoverage.supplierIncludedCount)} of {display(analysisCoverage.supplierReturnedCount)} returned 1688 listings and {display(analysisCoverage.amazonIncludedCount)} of {display(analysisCoverage.amazonReturnedCount)} returned Amazon listings ({display(analysisCoverage.amazonSponsoredCount)} sponsored, {display(analysisCoverage.amazonOrganicCount)} organic).{analysisCoverage.analysisTruncated === true && ' Some fields or lower-ranked listings were omitted to fit the analysis limit.'}</p>}
       {(stage === 'primary' || stage === 'secondary') && <section className="rt-analysis-report" aria-busy="true"><div className="rt-analysis-head"><div><span className="rt-kicker">AI REPORT</span><h3>Analysis report</h3></div><span>Preparing</span></div><Skeleton label={stage === 'primary' ? 'Collecting source data before generating your report…' : 'Collecting the second source before generating your report…'} /></section>}
       {stage !== 'primary' && stage !== 'secondary' && secondaryError && (kind === 'asin-gap' || kind === 'sourcing-demand') && <section className="rt-analysis-report"><div className="rt-analysis-head"><div><span className="rt-kicker">AI REPORT</span><h3>Report not generated yet</h3></div><span>Second source unavailable</span></div><div className="rt-analysis-failure" role="alert"><p>{secondaryError} The first source is complete; retrying below only calls the second source.</p><button className="rt-secondary" type="button" disabled={busy} onClick={retrySecondary}>Retry second source · may use credits</button></div></section>}
-      {stage !== 'primary' && stage !== 'secondary' && (!secondaryError || kind === 'ai-shopping-check') && <ResearchAnalysisReport markdown={report} loading={stage === 'analysis'} error={reportError} onRetry={analysisHasEvidence ? retryAnalysis : undefined} kicker="AI REPORT" />}
+      {stage !== 'primary' && stage !== 'secondary' && !noData && (!secondaryError || kind === 'ai-shopping-check') && <ResearchAnalysisReport markdown={report} loading={stage === 'analysis'} error={reportError} onRetry={analysisHasEvidence ? retryAnalysis : undefined} kicker="AI REPORT" />}
     </div>}
-    {kind === 'ai-shopping-check' && primary && stage !== 'primary' && stage !== 'analysis' && <section className="rt-exp-citation-form"><div><span className="rt-kicker">OPTIONAL AI ANSWER SAMPLE</span><h3>Check one buyer question</h3><p>A separate citation sample costs an estimated 152 credits and is not continuous visibility tracking.</p></div>{input('prompt', 'Buyer question', 'What is the best insulated lunch bag for work?')}<button className="rt-secondary" type="button" disabled={busy} onClick={retrySecondary}>Sample one answer · estimated 152 credits</button>{secondaryError && <p className="rt-global-error" role="alert">{secondaryError}</p>}</section>}
+    {kind === 'ai-shopping-check' && primary && analysisHasEvidence && stage !== 'primary' && stage !== 'analysis' && <section className="rt-exp-citation-form"><div><span className="rt-kicker">OPTIONAL AI ANSWER SAMPLE</span><h3>Check one buyer question</h3><p>A separate citation sample costs an estimated 152 credits and is not continuous visibility tracking.</p></div>{input('prompt', 'Buyer question', 'What is the best insulated lunch bag for work?')}<button className="rt-secondary" type="button" disabled={busy} onClick={retrySecondary}>Sample one answer · estimated 152 credits</button>{secondaryError && <p className="rt-global-error" role="alert">{secondaryError}</p>}</section>}
     {kind === 'ai-shopping-check' && (stage === 'citation' || secondary) && <section className="rt-analysis-report" aria-labelledby="rt-exp-citation-title"><div className="rt-analysis-head"><div><span className="rt-kicker">AI ANSWER SAMPLE</span><h3 id="rt-exp-citation-title">Answer and citations</h3></div><span>{stage === 'citation' ? 'Loading' : 'Ready'}</span></div>{stage === 'citation' && <Skeleton label="Collecting one answer and its citations…" />}{secondary && <><p className="rt-note">A single answer sample can vary by time, wording, location and model.</p>{typeof citationResult.answerMarkdown === 'string' && <div className="rt-analysis-markdown"><MdText text={citationResult.answerMarkdown} variant="document" /></div>}<h4>{citations.length} reported citations</h4>{citations.map((citation, index) => <div className="rt-small-row" key={index}><strong>{display(pick(citation, 'title', 'sourceName', 'domain'))}</strong>{safeLink(citation.url) && <a href={safeLink(citation.url)!} target="_blank" rel="noopener noreferrer">Open source ↗</a>}</div>)}</>}</section>}
   </section>;
 }

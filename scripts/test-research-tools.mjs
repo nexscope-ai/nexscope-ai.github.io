@@ -23,6 +23,8 @@ void test('five new tools prepare bounded evidence for the automatic AI report',
   const timestamp = new Date(now.getTime() - 86_400_000).toISOString();
   const history = expansionReportEvidence('price-history', { price: [{ time: timestamp, value: 19.99 }, { time: timestamp, value: -1 }] }, null, { asin: 'B072MQ5BRX', market: 'US', days: '30' });
   assert.equal(history.series.price.observationCount, 1);
+  const rankOnly = expansionReportEvidence('price-history', { bsrMain: [{ categoryName: 'Home', points: [{ time: timestamp, value: 1234 }] }] }, null, { asin: 'B072MQ5BRX', market: 'US', days: '30' });
+  assert.equal(rankOnly.bsr.bsrMain[0].observationCount, 1);
   assert.equal(expansionReportEvidence('price-history', { price: [] }, null, { asin: 'B072MQ5BRX', market: 'US', days: '30' }), null);
 
   const own = { data: [{ keyword: 'lunch bag', weeklySearchVolume: 100 }] };
@@ -30,6 +32,8 @@ void test('five new tools prepare bounded evidence for the automatic AI report',
   assert.equal(expansionReportEvidence('asin-gap', own, null, { asin: 'B072MQ5BRX', competitorAsin: 'B08N5WRWNW', market: 'US' }), null);
   const gap = expansionReportEvidence('asin-gap', own, competitor, { asin: 'B072MQ5BRX', competitorAsin: 'B08N5WRWNW', market: 'US' });
   assert.deepEqual(gap.competitorOnlyInSamples.map((row) => row.keyword), ['cooler bag']);
+  assert.equal(expansionReportEvidence('asin-gap', { data: [] }, competitor, { asin: 'B072MQ5BRX', competitorAsin: 'B08N5WRWNW', market: 'US' }), null);
+  assert.equal(expansionReportEvidence('asin-gap', own, { data: [] }, { asin: 'B072MQ5BRX', competitorAsin: 'B08N5WRWNW', market: 'US' }), null);
 
   const html = '<script type="application/ld+json">{"@type":"Product","name":"Travel mug","offers":{"price":"19.99","priceCurrency":"USD"}}</script>';
   const seo = expansionReportEvidence('ai-shopping-check', { status: 'COMPLETED', result: { snapshots: [{ evidence: { title: 'Travel mug', html, textLength: 120 }, missing: [] }] } }, null, { url: 'https://example.com/mug' });
@@ -46,6 +50,8 @@ void test('five new tools prepare bounded evidence for the automatic AI report',
   assert.equal(demand.supplierCandidates.length, 1);
   assert.equal(demand.amazonResults.length, 1);
   assert.equal(expansionReportEvidence('sourcing-demand', { products: [] }, { products: [] }, { termZh: '瑜伽垫', termEn: 'yoga mat', market: 'US' }), null);
+  assert.equal(expansionReportEvidence('sourcing-demand', { products: [] }, { products: [{ title: 'Yoga mat' }] }, { termZh: '瑜伽垫', termEn: 'yoga mat', market: 'US' }), null);
+  assert.equal(expansionReportEvidence('sourcing-demand', { products: [{ title: '瑜伽垫' }] }, { products: [] }, { termZh: '瑜伽垫', termEn: 'yoga mat', market: 'US' }), null);
 });
 
 void test('niche analysis retains click, conversion, ad-cost and concentration signals', () => {
@@ -209,7 +215,22 @@ void test('expansion pages omit the Review panel and generate a full-width Markd
   assert.match(runtime, /await analyze\(data, second, form, controller\.signal\)/);
   assert.match(runtime, /<ResearchAnalysisReport[^>]+kicker="AI REPORT"/);
   assert.match(runtime, /kind === 'asin-gap' \|\| kind === 'sourcing-demand' \? await runSecondary/);
-  assert.match(runtime, /No analysis request was sent or charged/);
+  assert.match(runtime, /asRows\(data\)\.length === 0/);
+  assert.match(runtime, /!noData && \(!secondaryError/);
+  assert.match(runtime, /<ResearchEmptyState message=\{noDataMessage\}/);
+});
+
+void test('all research runtimes render a dedicated empty state instead of an unavailable AI report', async () => {
+  const emptyState = await readFile(new URL('../components/research-empty-state.tsx', import.meta.url), 'utf8');
+  const lookup = await readFile(new URL('../components/price-lookup-runtime.tsx', import.meta.url), 'utf8');
+  const research = await readFile(new URL('../components/research-tool-runtime.tsx', import.meta.url), 'utf8');
+  const planner = await readFile(new URL('../public/assets/seo-keyword-planner.js', import.meta.url), 'utf8');
+  assert.match(emptyState, /No data available/);
+  assert.match(lookup, /result && !amazon && suppliers\.length === 0 && <ResearchEmptyState/);
+  assert.match(lookup, /product \? <AmazonPriceResultCard product=\{product\} \/> : <ResearchEmptyState/);
+  assert.match(research, /\{noData && <ResearchEmptyState/);
+  assert.match(research, /\{!noData && <>/);
+  assert.match(planner, /No matching Amazon products were returned[\s\S]*if \(!cached\.products\.length\) return;/);
 });
 
 void test('the original three and five new research tools are registered for static pages', () => {

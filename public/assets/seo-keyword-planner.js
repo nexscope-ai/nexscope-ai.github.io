@@ -395,7 +395,16 @@
       if (!cached) return;
       const productSection = element('section', 'seo-stage');
       append(productSection, element('span', 'seo-step', 'COMPETITOR SAMPLE'), element('h4', '', `${cached.products.length} returned products`), element('p', 'seo-muted', 'Provider sales and revenue are estimates. This sample is not the whole market. Open source listings to verify relevance.'));
-      if (!cached.products.length) productSection.appendChild(element('p', 'seo-notice', 'No matching products were returned. Select another keyword. AI analysis is unavailable for an empty sample.'));
+      if (!cached.products.length) {
+        const emptySample = element('output', 'seo-data-empty');
+        const count = append(element('div', 'seo-data-empty-count'), element('strong', '', '0'), element('span', '', 'RESULTS'));
+        const copy = append(element('div', 'seo-data-empty-copy'), element('span', 'seo-step', 'NO AMAZON DATA'),
+          element('h5', '', 'No data available'),
+          element('p', '', 'No matching Amazon products were returned for this keyword. Select another keyword to try a new sample.'),
+          element('small', '', 'No AI analysis request was sent. The completed product lookup may still have used credits.'));
+        emptySample.append(count, copy);
+        productSection.appendChild(emptySample);
+      }
       else {
         const list = element('div', 'seo-product-list');
         cached.products.forEach(product => list.appendChild(renderProduct(product)));

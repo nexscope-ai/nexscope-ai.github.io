@@ -51,15 +51,24 @@ export function expansionReportEvidence(
       const points = pricePoints(primary, key, days).filter((point) => point.inWindow);
       return [key, points.length ? summarizeDatedPoints(points) : null];
     }).filter(([, value]) => value !== null));
-    if (!Object.keys(series).length) return null;
-    return { asin: form.asin.toUpperCase(), marketplace: form.market, lookbackDays: days, series,
+    const bsr = Object.fromEntries(['bsrMain', 'bsrSub'].map((key) => {
+      const categories = Array.isArray(primary[key]) ? primary[key].map(asRecord).slice(0, 8) : [];
+      const observed = categories.flatMap((category) => {
+        const points = pricePoints({ points: category.points }, 'points', days).filter((point) => point.inWindow);
+        return points.length ? [{ categoryName: typeof category.categoryName === 'string' ? category.categoryName.slice(0, 120) : null,
+          ...summarizeDatedPoints(points) }] : [];
+      });
+      return [key, observed];
+    }).filter(([, value]) => (value as RecordValue[]).length));
+    if (!Object.keys(series).length && !Object.keys(bsr).length) return null;
+    return { asin: form.asin.toUpperCase(), marketplace: form.market, lookbackDays: days, series, bsr,
       analysisTask: 'Compare observed dated points only. monthlySold is a rolling monthly estimate at each observation, not sales on that day. A coincident price and sales change is not evidence that the price caused the sales change. Do not imply continuous prices or causal promotion effects between sparse observations.',
-      caveat: 'Only returned dated observations are evidence. Up to 40 observations per series are spread across the full selected window, with exact first, latest, low and high values retained. Negative provider sentinels were excluded. Do not infer values between observations or imply a continuous price history.' };
+      caveat: 'Only returned dated observations are evidence. Up to 40 observations per series are spread across the full selected window, with exact first, latest, low and high values retained. Negative provider sentinels were excluded. BSR is a rank, not sales volume; lower rank numbers generally mean higher placement. Do not infer values between observations or imply a continuous price history.' };
   }
   if (kind === 'asin-gap') {
     if (!secondary) return null;
     const competitor = asRows(secondary);
-    if (!rows.length && !competitor.length) return null;
+    if (!rows.length || !competitor.length) return null;
     const keys = ['keyword', 'translateKeyword', 'weeklySearchVolume', 'keywordPopularityRank',
       'totalSearchResultProductCount', 'productNaturalRank', 'naturalRankDisplay', 'productAdRank',
       'adRankDisplay', 'trafficShare', 'naturalTrafficShare', 'paidTrafficShare',
@@ -141,7 +150,7 @@ export function expansionReportEvidence(
   if (kind === 'sourcing-demand') {
     if (!secondary) return null;
     const amazon = asRows(secondary);
-    if (!rows.length && !amazon.length) return null;
+    if (!rows.length || !amazon.length) return null;
     const supplierCandidates: RecordValue[] = rows.map((row) => ({
       ...compact(row, ['offerId', 'title', 'shopId', 'company', 'sourceTool', 'sourceType', 'price', 'consignPrice', 'currency',
         'quantityBegin', 'salesOrderCount', 'salesQuantity', 'estimatedSalesAmount', 'unit',
