@@ -7,6 +7,7 @@ import ResearchAnalysisReport from '@/components/research-analysis-report';
 import SupplierResultCard from '@/components/supplier-result-card';
 import type { ResearchTool } from '@/lib/research-tools';
 import { reportEvidence } from '@/lib/research-report-evidence';
+import { guardResearchReport } from '@/lib/research-report-guard';
 import { sortSupplierEntries, type SupplierSort } from '@/lib/research-result-format';
 import { asRows, display, isInsufficientCreditsError, numeric, readStoredKey, runResearchAnalysis, runResearchApi, saveStoredKey, subscribeStoredKey, type RecordValue } from '@/lib/research-tool-api';
 import { showToolCreditModal } from '@/lib/tool-credit-modal';
@@ -64,7 +65,7 @@ export default function PriceLookupRuntime({ tool, apiKeyUrl }: Props) {
     const evidence = reportEvidence(amazon ? 'amazon-price' : 'supplier-price', data, term, selectedMarket);
     if (!evidence) return;
     setReportLoading(true); setReportError(''); setReport('');
-    try { setReport(await runResearchAnalysis(slug, evidence, apiKey, controller.signal)); }
+    try { setReport(guardResearchReport(amazon ? 'amazon-price' : 'supplier-price', await runResearchAnalysis(slug, evidence, apiKey, controller.signal), evidence)); }
     catch (cause) {
       if (!(cause instanceof DOMException && cause.name === 'AbortError')) {
         if (isInsufficientCreditsError(cause)) showToolCreditModal('analysis');

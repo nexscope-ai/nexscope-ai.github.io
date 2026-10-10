@@ -67,6 +67,12 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+@media (max-width: 340px) {
+  body {
+    min-width: 0;
+  }
+}
+
 h1 {
   font-weight: 700;
 }

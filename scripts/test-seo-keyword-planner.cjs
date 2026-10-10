@@ -55,6 +55,19 @@ test('competitor parser accepts nested envelopes but excludes invalid and duplic
   assert.throws(() => planner.parseCompetitors({ result: {} }), /No readable competitor data/);
 });
 
+test('competitor analysis keeps sales growth, seller context and negative trend values', () => {
+  const products = planner.parseCompetitors({ products: [{ asin: 'B072MQ5BRX',
+    monthlySalesUnits: 100, monthlySalesRevenue: 2500, monthlySalesUnitsGrowthRate: -0.15,
+    ratingsGrowth: 20, sellerNum: 3, fulfillment: 'FBA', averagePrice: 24.5,
+  }] });
+  const payload = planner.analysisPayload({ keyword: 'lunch bag', collectedAt: '2026-10-10', products });
+  assert.equal(payload.rawData.products[0].monthlySalesUnitsGrowthRate, -0.15);
+  assert.equal(payload.rawData.products[0].sellerNum, 3);
+  assert.equal(payload.rawData.products[0].averagePrice, 24.5);
+  assert.equal(payload.rawData.products[0].fulfillment, 'FBA');
+  assert.equal(payload.rawData.products[0].availableDate, undefined);
+});
+
 test('CSV escapes spreadsheet formulas and the report uses only the returned product sample', () => {
   const csv = planner.csv([{ keyword: '=HYPERLINK("bad")', searchVolume: null, keywordDifficulty: 3 }]);
   assert.ok(csv.startsWith('\uFEFF'));
@@ -63,8 +76,18 @@ test('CSV escapes spreadsheet formulas and the report uses only the returned pro
   const payload = planner.analysisPayload(result);
   assert.equal(payload.language, 'English');
   assert.equal(payload.rawData.sampleSize, 1);
+  assert.match(payload.rawData.asOfDateUtc, /^\d{4}-\d{2}-\d{2}$/);
+  assert.match(payload.rawData.analysisTask, /does not prove a category-wide or seasonal decline/);
   assert.match(payload.rawData.scope, /Google keyword metrics are not Amazon search volume/);
   assert.match(planner.reportMarkdown(result, 'Summary'), /Summary/);
+});
+
+test('competitor report removes unsupported future-date and category-wide claims', () => {
+  const report = planner.guardCompetitorAnalysis('This sample shows a category-wide decline.\nThe overall market shows a sharp decline.\nThe listing has a future availability date.\nThe first product has 100 estimated monthly units.', { keyword: 'lunch bag', products: [{ asin: 'B072MQ5BRX' }] });
+  assert.doesNotMatch(report, /shows a category-wide decline|future availability date/);
+  assert.doesNotMatch(report, /overall market shows/);
+  assert.match(report, /first-page sample cannot establish category-wide trends/);
+  assert.match(report, /100 estimated monthly units/);
 });
 
 test('API requests carry visitor key only in Authorization and never use credentials or referrer', async () => {
@@ -101,4 +124,11 @@ test('production export includes the new route and does not inject third-party a
   assert.match(exportScript, /'seo-keyword-planner'/);
   assert.match(exportScript, /interactiveWorkflowSlugs\.some[\s\S]*index\.html/);
   assert.match(sitemap, /https:\/\/learn\.nexscope\.ai\/tools\/seo-keyword-planner\//);
+});
+
+test('runtime cache-busts the revised competitor report script', () => {
+  const runtime = readFileSync(join(__dirname, '..', 'components', 'seo-planner-runtime.tsx'), 'utf8');
+  assert.match(runtime, /runtime\?\.version === 5/);
+  assert.match(runtime, /seo-keyword-planner\.js\?v=5/);
+  assert.equal(planner.version, 5);
 });

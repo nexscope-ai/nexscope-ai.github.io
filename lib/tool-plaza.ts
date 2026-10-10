@@ -40,6 +40,31 @@ export const toolCards: ToolCard[] = [
     category: 'pricing',
   },
   {
+    name: 'Amazon Price History Analyzer', icon: '/assets/tool-icons/amazon-price.webp',
+    description: 'Review dated Amazon price observations, deal signals and seller changes for one ASIN.',
+    href: '/tools/amazon-price-history-analyzer/', access: 'Bring your own API key · 10 credits', category: 'pricing',
+  },
+  {
+    name: 'Reverse ASIN Keyword Gap', icon: '/assets/tool-icons/amazon-keywords.webp',
+    description: 'Compare two bounded reverse-ASIN keyword samples to find competitor-only search terms.',
+    href: '/tools/reverse-asin-keyword-gap/', access: 'Bring your own API key · 12 credits per ASIN', category: 'research',
+  },
+  {
+    name: 'AI Shopping Product Data Checker', icon: '/assets/tool-icons/seo-auditor.webp',
+    description: 'Check public product-page evidence and optionally sample one AI answer and citations.',
+    href: '/tools/ai-shopping-product-data-checker/', access: 'Bring your own API key · credits apply', category: 'visibility',
+  },
+  {
+    name: 'TikTok Shop Bestseller Momentum', icon: '/assets/tool-icons/tiktok-new.webp',
+    description: 'Inspect a dated top-selling list with reported unit sales, GMV and growth signals.',
+    href: '/tools/tiktok-shop-bestseller-momentum/', access: 'Bring your own API key · 15 credits', category: 'tiktok',
+  },
+  {
+    name: '1688 to Amazon Demand Matcher', icon: '/assets/tool-icons/supplier-match.webp',
+    description: 'Compare 1688 supplier listings and Amazon search evidence for a translated product idea.',
+    href: '/tools/1688-amazon-demand-matcher/', access: 'Bring your own API key · two calls', category: 'pricing',
+  },
+  {
     name: 'Amazon to 1688 Supplier Finder',
     icon: '/assets/tool-icons/supplier-match.webp',
     description:

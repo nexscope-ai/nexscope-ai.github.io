@@ -5,6 +5,7 @@ const ALLOWED_SLUGS = new Set([
   'amazon-asin-keywords', 'chuhaijiang-tiktok-ad-search',
   'chuhaijiang-tiktok-ad-related-products', 'seo-page-evidence',
   'seo-ai-search-citation-sample', 'amazon-product-detail', '1688-product-search',
+  'amazon-product-price-series', 'tiktok-top-selling-products', 'amazon-search',
 ]);
 const INSUFFICIENT_CREDIT_CODES = new Set([13011, 16002, 17001, 18001, 440215, -40002]);
 
@@ -30,7 +31,8 @@ export function asRows(value: unknown): RecordValue[] {
   const nested = asRecord(source.data);
   const candidates = [source.data, source.items, source.products, source.stores, source.list,
     nested.data, nested.items, nested.products, nested.stores, nested.list, asRecord(nested.result).items];
-  const rows = candidates.find(Array.isArray);
+  const rows = candidates.find((candidate) => Array.isArray(candidate) && candidate.length)
+    ?? candidates.find(Array.isArray);
   return Array.isArray(rows) ? rows.map(asRecord) : [];
 }
 
@@ -149,7 +151,7 @@ export async function runResearchAnalysis(slug: string, rawData: RecordValue, ke
   if (!ALLOWED_SLUGS.has(slug)) throw new Error('Unsupported API operation.');
   const response = await request(`${ROOT}/${slug}/analyze`, key, { language: 'English', rawData }, signal);
   const content = pick(response, 'analysis') ?? pick(asRecord(response.data), 'analysis');
-  if (typeof content !== 'string' || !content.trim()) throw new Error('AI analysis returned no report. Your source data is still available.');
+  if (typeof content !== 'string' || !content.trim()) throw new Error('AI analysis returned no report. Retry the analysis request if needed.');
   return content.trim();
 }
 

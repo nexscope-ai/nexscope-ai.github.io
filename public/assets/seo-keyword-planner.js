@@ -31,6 +31,10 @@
     return typeof value === 'number' && Number.isFinite(value) && value >= 0 ? value : null;
   }
 
+  function signedMetric(value) {
+    return typeof value === 'number' && Number.isFinite(value) ? value : null;
+  }
+
   function safeHttpsUrl(value) {
     if (typeof value !== 'string') return '';
     try {
@@ -89,11 +93,20 @@
         imageUrl: safeHttpsUrl(row.imageUrl),
         currency: /^[A-Z]{3}$/.test(row.currency) ? row.currency : 'USD',
         price: metric(row.price),
+        primePrice: metric(row.primePrice),
+        averagePrice: metric(row.averagePrice),
         monthlySalesUnits: metric(row.monthlySalesUnits),
         monthlySalesRevenue: metric(row.monthlySalesRevenue),
+        monthlySalesUnitsGrowthRate: signedMetric(row.monthlySalesUnitsGrowthRate),
         rating: metric(row.rating),
         ratings: metric(row.ratings),
+        ratingsGrowth: metric(row.ratingsGrowth),
+        ratingsRate: metric(row.ratingsRate),
         bsr: metric(row.bsr),
+        bsrGrowthRate: signedMetric(row.bsrGrowthRate),
+        sellerNum: metric(row.sellerNum),
+        fulfillment: typeof row.fulfillment === 'string' ? row.fulfillment.slice(0, 30) : '',
+        availableDate: typeof row.availableDate === 'string' ? row.availableDate.slice(0, 30) : '',
       }];
     }).slice(0, 10);
   }
@@ -115,10 +128,29 @@
       language: 'English',
       rawData: {
         marketplace: 'US', keyword: result.keyword, collectedAt: result.collectedAt,
-        sampleSize: result.products.length, products: result.products,
+        asOfDateUtc: new Date().toISOString().slice(0, 10),
+        sampleSize: result.products.length, products: result.products.map(function (product) {
+          const copy = Object.assign({}, product);
+          delete copy.availableDate;
+          return copy;
+        }),
+        analysisTask: 'Analyze only these returned Amazon products. Listing availability dates are intentionally excluded because their provider meaning is not verified; do not discuss future availability, launch timing or preorder status. Treat monthly sales and growth as provider estimates. A decline among sample products does not prove a category-wide or seasonal decline. Do not invent the cause of growth, a promotion, fulfillment method, review themes or customer sentiment when not supplied. Explain which findings are sample observations and which require additional evidence.',
         scope: 'Returned Amazon product sample only. Missing values are unknown. Sales are provider estimates; Google keyword metrics are not Amazon search volume. Product descriptions and review text were not retrieved.',
       },
     };
+  }
+
+  function guardCompetitorAnalysis(markdown, result) {
+    let removed = 0;
+    const safe = String(markdown || '').split('\n').filter(function (line) {
+      const unsupported = /\b(?:future availability|future date|pre.?order|not yet available)\b/i.test(line)
+        || /(?:shows|indicates|is experiencing|suggests).{0,65}(?:category-wide|market-wide|seasonal).{0,30}(?:declin|downturn)/i.test(line)
+        || /(?:overall market.{0,70}(?:declin|downturn)|declin.{0,40}category competitors)/i.test(line);
+      if (unsupported) removed++;
+      return !unsupported;
+    }).join('\n').replace(/\n{3,}/g, '\n\n').trim();
+    const note = removed ? `\n\n> ${removed} unsupported AI claim${removed === 1 ? ' was' : 's were'} omitted after checking the returned sample.` : '';
+    return `> Verified scope: ${result.products.length} returned Amazon products for “${result.keyword}”; this first-page sample cannot establish category-wide trends or listing availability.\n\n${safe}${note}`;
   }
 
   function reportMarkdown(result, report) {
@@ -485,7 +517,7 @@
       try {
         const response = await request('amazon-competitor-lookup', 'analyze', analysisPayload(result));
         if (requestId !== state.generation) return;
-        state.reports.set(keyword, extractAnalysis(response));
+        state.reports.set(keyword, guardCompetitorAnalysis(extractAnalysis(response), result));
         setStatus('The competitor report is ready. Verify conclusions against source products.');
       } catch (error) {
         if (requestId === state.generation) actionError(error instanceof Error ? error.message : 'AI analysis failed. Your competitor products remain available.', 'analyze');
@@ -497,5 +529,5 @@
     keyInput.addEventListener('input', () => { keyError.textContent = ''; keyInput.removeAttribute('aria-invalid'); state.error = ''; setStatus(''); });
   }
 
-  return { version: 4, API_BASE, normalizeSeed, validateSeed, keywordItems, parseCompetitors, csv, analysisPayload, reportMarkdown, extractAnalysis, callSkill, mount };
+  return { version: 5, API_BASE, normalizeSeed, validateSeed, keywordItems, parseCompetitors, csv, analysisPayload, guardCompetitorAnalysis, reportMarkdown, extractAnalysis, callSkill, mount };
 });

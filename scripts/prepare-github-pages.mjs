@@ -16,6 +16,11 @@ const interactiveWorkflowSlugs = [
   'amazon-niche-opportunity-evaluator',
   'amazon-product-price-checker',
   '1688-wholesale-price-finder',
+  'amazon-price-history-analyzer',
+  'reverse-asin-keyword-gap',
+  'ai-shopping-product-data-checker',
+  'tiktok-shop-bestseller-momentum',
+  '1688-amazon-demand-matcher',
 ];
 const routeSlugs = [
   'ecommerce-product-demand-validation',
