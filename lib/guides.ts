@@ -71,7 +71,7 @@ export const guides: Guide[] = [
     title: 'How to validate ecommerce product demand before you invest',
     summary:
       'A practical product-research workflow for comparing demand, competition, pricing, reviews, and growth signals before committing inventory or advertising budget.',
-    seoTitle: 'Ecommerce Product Demand Validation: Data-First Guide',
+    seoTitle: 'Ecommerce Product Demand Validation: Data-First Guide | Nexscope',
     metaDescription:
       'Learn how to validate ecommerce product demand using market size, sales estimates, pricing, reviews, competition, and Google Trends before investing.',
     lastReviewed: 'September 11, 2026',
@@ -212,7 +212,7 @@ export const guides: Guide[] = [
     title: 'How to research Shopify stores, products, and competitors',
     summary:
       'Use external Shopify market signals to benchmark products and stores by pricing, weekly sales, ads, traffic, assortment, and growth—without confusing competitor estimates with your own analytics.',
-    seoTitle: 'Shopify Competitor Research: Products, Stores & Ads',
+    seoTitle: 'Shopify Competitor Research: Products, Stores & Ads | Nexscope',
     metaDescription:
       'Research Shopify competitors by product, price, weekly sales, ads, traffic, assortment, and country using a repeatable data-backed workflow.',
     lastReviewed: 'September 11, 2026',
@@ -315,7 +315,7 @@ export const guides: Guide[] = [
     title: 'How to diagnose ecommerce SEO and AI search visibility',
     summary:
       'Separate technical indexation checks from regional demand and AI-discovery research, then inspect how commercial queries appear in Google AI Mode.',
-    seoTitle: 'Ecommerce SEO & AI Search Visibility Audit Guide',
+    seoTitle: 'Ecommerce SEO & AI Search Visibility Audit Guide | Nexscope',
     metaDescription:
       'Diagnose ecommerce SEO and AI search visibility with Search Console checks, Google AI Mode results, regional demand data, and a repeatable audit.',
     lastReviewed: 'September 11, 2026',
@@ -426,7 +426,7 @@ export const guides: Guide[] = [
     title: 'How to turn Amazon reviews into customer insights',
     summary:
       'Move beyond average star ratings by separating recurring complaints, positive outcomes, purchase objections, and product-improvement opportunities.',
-    seoTitle: 'Amazon Review Analysis for Customer Insights',
+    seoTitle: 'Amazon Review Analysis for Customer Insights | Nexscope',
     metaDescription:
       'Turn Amazon reviews into customer insights by finding repeated complaints, objections, desired outcomes, and product opportunities across marketplaces.',
     lastReviewed: 'September 11, 2026',
@@ -534,7 +534,7 @@ export const guides: Guide[] = [
     title: 'How to find and compare 1688 suppliers with product data',
     summary:
       'Search by keyword or image, compare wholesale and dropship pricing, minimum order quantity, sales, supplier identity, and delivery signals before contacting a factory.',
-    seoTitle: '1688 Supplier Sourcing: Search, Compare & Verify',
+    seoTitle: '1688 Supplier Sourcing: Search, Compare & Verify | Nexscope',
     metaDescription:
       'Find and compare 1688 suppliers by keyword or image using pricing, MOQ, sales, supplier identity, service, and dispatch signals before outreach.',
     lastReviewed: 'September 11, 2026',
