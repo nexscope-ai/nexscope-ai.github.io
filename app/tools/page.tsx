@@ -152,7 +152,7 @@ export default function ToolsPage() {
             <a href="#analytics-preferences">Cookie settings</a>
             <a
               data-track
-              href="https://www.nexscope.ai/api-docs?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=tool_plaza&utm_content=footer_api_docs"
+              href="https://www.nexscope.ai/api-docs?co-from=learn"
             >
               API docs ↗
             </a>

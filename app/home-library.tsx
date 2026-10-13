@@ -23,7 +23,7 @@ const entries: Entry[] = [
       'Explore related Amazon keywords, search volume and competition before planning a listing update.',
     area: 'Product research',
     kind: 'Tool',
-    href: 'https://www.nexscope.ai/tools/free-amazon-keyword-research-tool?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=learning_library',
+    href: 'https://www.nexscope.ai/tools/free-amazon-keyword-research-tool?co-from=learn',
     path: 'Keyword → related terms → listing questions',
     boundary:
       'Search metrics are estimates; tool access and coverage may change.',
@@ -45,7 +45,7 @@ const entries: Entry[] = [
       'Turn a bounded sample of low-star reviews into customer questions worth testing.',
     area: 'Product research',
     kind: 'Tool',
-    href: 'https://www.nexscope.ai/tools/amazon-review-analyzer?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=learning_library',
+    href: 'https://www.nexscope.ai/tools/amazon-review-analyzer?co-from=learn',
     path: 'Reviews → recurring complaints → testable questions',
     boundary:
       'A review sample cannot represent every customer or prove demand.',

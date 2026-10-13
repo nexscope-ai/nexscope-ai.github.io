@@ -13,12 +13,12 @@ type MarketingHeaderProps = {
 
 export default function MarketingHeader({
   active,
-  campaign,
+  campaign: _campaign,
   explorePath = '/',
 }: MarketingHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
-  const tracking = `?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=${campaign}`;
+  const tracking = '?co-from=learn';
 
   useEffect(() => {
     if (!menuOpen) return;

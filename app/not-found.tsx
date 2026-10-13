@@ -7,7 +7,7 @@ import { DEFAULT_SOCIAL_IMAGE } from '@/lib/site-metadata';
 import MarketingHeader from '@/components/marketing-header';
 
 const tracking =
-  '?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=404_recovery';
+  '?co-from=learn';
 
 export const metadata: Metadata = {
   title: 'Page Not Found | Nexscope',

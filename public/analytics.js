@@ -1,7 +1,8 @@
 (() => {
   if (window.nexscopeAnalyticsLoaded) return;
   window.nexscopeAnalyticsLoaded = true;
-  const id = 'G-DJD5Y220T1';
+  // Learn and www.nexscope.ai share one GA4 web stream so journeys can be joined.
+  const id = 'G-55CJ5T3HHS';
   const key = 'nexscope_marketing_analytics_consent';
   let consent;
   try { consent = localStorage.getItem(key); } catch { /* Storage unavailable. */ }
@@ -27,7 +28,8 @@
   let referrer = '';
   try { referrer = new URL(document.referrer).origin; } catch { /* No referrer. */ }
   window.gtag('config', id, {
-    page_location: page.href, page_referrer: referrer,
+    page_location: page.href, page_title: document.title, page_referrer: referrer,
+    cookie_domain: 'auto',
     allow_google_signals: false, allow_ad_personalization_signals: false,
   });
   const script = document.createElement('script');
@@ -50,10 +52,6 @@
     if (name) window.gtag('event', name, {
       link_domain: url.hostname, link_path: url.pathname,
       co_from: url.searchParams.get('co-from') || undefined,
-      campaign_source: url.searchParams.get('utm_source') || undefined,
-      campaign_medium: url.searchParams.get('utm_medium') || undefined,
-      campaign_name: url.searchParams.get('utm_campaign') || undefined,
-      campaign_content: url.searchParams.get('utm_content') || undefined,
       source_page: location.pathname, transport_type: 'beacon',
     });
   });

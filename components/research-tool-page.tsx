@@ -12,8 +12,6 @@ export default function ResearchToolPage({ tool }: { tool: ResearchTool }) {
   const apiKeyUrl = new URL('https://www.nexscope.ai/seller/api-access');
   apiKeyUrl.search = new URLSearchParams({
     tab: 'api-keys', mode: 'data', 'co-from': 'learn',
-    utm_source: 'learn.nexscope.ai', utm_medium: 'referral',
-    utm_campaign: `workflow_${tool.slug}`, utm_content: 'get_api_key',
   }).toString();
   const schema = {
     '@context': 'https://schema.org',
@@ -69,7 +67,7 @@ export default function ResearchToolPage({ tool }: { tool: ResearchTool }) {
         </details>)}</div>
       </section> : null}
       <section className="rt-more"><h2>Inspect the APIs behind this workflow.</h2><p>Confirm current parameters, credit prices and access before running a larger research batch.</p>
-        <div className="rt-more-links">{[tool.primaryApi, ...tool.additionalApis].map((slug) => <a key={slug} href={`https://www.nexscope.ai/api-docs/${slug}?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=workflow_${tool.slug}`}>{slug} ↗</a>)}<a href="/tools/">All ecommerce tools →</a></div>
+        <div className="rt-more-links">{[tool.primaryApi, ...tool.additionalApis].map((slug) => <a key={slug} href={`https://www.nexscope.ai/api-docs/${slug}?co-from=learn`}>{slug} ↗</a>)}<a href="/tools/">All ecommerce tools →</a></div>
       </section>
     </main>
     <footer className="rt-footer"><div className="rt-wrap"><a href="/">Nexscope</a><nav aria-label="Footer"><a href="/tools/">Tools</a><a href="/ecommerce-ai-tools/">Learn</a><a href="/about/">About</a><a href="/security/">Security</a><a href="/contact/">Contact</a><a href="https://www.nexscope.ai/privacy">Privacy</a><a href="https://www.nexscope.ai/terms">Terms</a></nav></div></footer>

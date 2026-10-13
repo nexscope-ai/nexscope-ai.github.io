@@ -148,9 +148,7 @@ test('the root-site routes, sitemap and analytics exception cover all three tool
   assert.match(route, /tab: 'api-keys'/);
   assert.match(route, /mode: 'data'/);
   assert.match(route, /'co-from': 'learn'/);
-  assert.match(route, /utm_source: 'learn\.nexscope\.ai'/);
-  assert.match(route, /utm_medium: 'referral'/);
-  assert.match(route, /utm_campaign: `workflow_\$\{tool\.slug\}`/);
+  assert.doesNotMatch(route, /utm_source: 'learn\.nexscope\.ai'/);
   assert.doesNotMatch(route, /data-toggle-key/);
   assert.doesNotMatch(route, /wf-privacy|Sent only to api\.nexscope\.ai/);
   assert.match(route, /data-run-tool/);

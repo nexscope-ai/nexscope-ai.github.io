@@ -8,15 +8,11 @@ export function showToolCreditModal(stage: CreditShortfallStage = 'data'): void 
 }
 
 export function dataCreditsUrl(pathname: string): string {
-  const path = pathname.match(/^\/tools\/([a-z0-9-]+)\/?$/)?.[1] || 'tools';
+  void pathname;
   const url = new URL('https://www.nexscope.ai/seller/billing');
   url.search = new URLSearchParams({
     mode: 'data',
     'co-from': 'learn',
-    utm_source: 'learn.nexscope.ai',
-    utm_medium: 'referral',
-    utm_campaign: 'tool_credit_shortfall',
-    utm_content: path,
   }).toString();
   url.hash = 'top-up';
   return url.toString();

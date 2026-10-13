@@ -114,8 +114,8 @@ async function addAnalytics(directory) {
       if (!html.includes('</head>')) continue;
       if (html.includes('data-legacy-redirect')) continue;
       const scripts = [];
-      if (!html.includes('src="/analytics.js?v=8"')) {
-        scripts.push('<script src="/analytics.js?v=8" defer></script>');
+      if (!html.includes('src="/analytics.js?v=9"')) {
+        scripts.push('<script src="/analytics.js?v=9" defer></script>');
       }
       if (!html.includes('src="https://analytics.ahrefs.com/analytics.js"')) {
         scripts.push(
@@ -133,8 +133,8 @@ async function addAnalytics(directory) {
 }
 await addAnalytics(clientDirectory);
 
-// Attribute the actual published anchors, including links supplied by card
-// data and tool pages. Canonical, schema, image, and script URLs stay clean.
+// Keep Learn-to-main links within the same GA4 session. Published anchors,
+// including card and tool links, must not start a new acquisition campaign.
 const officialAnchor = /(<a\b[^>]*?\bhref\s*=\s*)(["'])(.*?)\2/gi;
 const decodeAttribute = (value) =>
   value.replace(/&(?:amp|#38|#x26);/gi, '&');
@@ -154,12 +154,6 @@ async function attributeOfficialLinks(directory) {
     }
     if (!entry.name.endsWith('.html')) continue;
     pageCount += 1;
-    const pageName = file.pathname
-      .slice(clientDirectory.pathname.length)
-      .replace(/(?:\/index)?\.html$/, '')
-      .replace(/[^a-z0-9]+/gi, '_')
-      .replace(/^_+|_+$/g, '') || 'home';
-    let index = 0;
     const original = await readFile(file, 'utf8');
     const updated = original.replace(officialAnchor, (whole, prefix, quote, rawHref) => {
       const href = decodeAttribute(rawHref);
@@ -172,28 +166,22 @@ async function attributeOfficialLinks(directory) {
       if (url.protocol !== 'https:' || !['nexscope.ai', 'www.nexscope.ai'].includes(url.hostname)) {
         return whole;
       }
-      index += 1;
+      linkCount += 1;
       url.hostname = 'www.nexscope.ai';
       url.searchParams.set('co-from', 'learn');
-      url.searchParams.set('utm_source', 'learn.nexscope.ai');
-      url.searchParams.set('utm_medium', 'referral');
-      if (!url.searchParams.get('utm_campaign')) {
-        url.searchParams.set('utm_campaign', pageName.startsWith('tools_') ? 'tool_plaza' : 'learning_center');
-      }
-      if (!url.searchParams.get('utm_content')) {
-        url.searchParams.set('utm_content', `${pageName}_link_${index}`);
+      for (const key of [...url.searchParams.keys()]) {
+        if (key.startsWith('utm_')) url.searchParams.delete(key);
       }
       return `${prefix}${quote}${escapeAttribute(url.toString())}${quote}`;
     });
     for (const match of updated.matchAll(officialAnchor)) {
       const url = new URL(decodeAttribute(match[3]), 'https://learn.nexscope.ai');
       if (url.hostname !== 'www.nexscope.ai') continue;
-      for (const key of ['co-from', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content']) {
-        if (!url.searchParams.get(key)) throw new Error(`Missing ${key} on ${file.pathname}`);
+      if (url.searchParams.get('co-from') !== 'learn' || [...url.searchParams.keys()].some(key => key.startsWith('utm_'))) {
+        throw new Error(`Invalid Learn-to-main attribution on ${file.pathname}`);
       }
     }
     if (updated !== original) await writeFile(file, updated);
-    linkCount += index;
   }
   return { pageCount, linkCount };
 }

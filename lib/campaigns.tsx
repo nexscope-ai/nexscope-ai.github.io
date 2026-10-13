@@ -43,8 +43,8 @@ export type Campaign = {
   footerDisclosure?: string;
 };
 
-const tracked = (path: string, campaign: string) =>
-  `https://www.nexscope.ai${path}?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=${campaign}`;
+const tracked = (path: string, _campaign: string) =>
+  `https://www.nexscope.ai${path}?co-from=learn`;
 
 const handWash =
   'https://www.nexscope.ai/video-lab/seedance-20-hand-wash-poster.png';

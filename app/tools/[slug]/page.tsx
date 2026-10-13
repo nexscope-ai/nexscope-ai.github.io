@@ -72,10 +72,6 @@ export default async function WorkflowPage({ params }: WorkflowPageProps) {
     tab: 'api-keys',
     mode: 'data',
     'co-from': 'learn',
-    utm_source: 'learn.nexscope.ai',
-    utm_medium: 'referral',
-    utm_campaign: `workflow_${tool.slug}`,
-    utm_content: 'get_api_key',
   }).toString();
   const schema = {
     '@context': 'https://schema.org',

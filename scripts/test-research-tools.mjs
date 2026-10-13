@@ -515,7 +515,8 @@ void test('only explicit platform credit failures trigger the Data top-up path',
     assert.equal(url.origin, 'https://www.nexscope.ai');
     assert.equal(url.pathname, '/seller/billing');
     assert.equal(url.searchParams.get('mode'), 'data');
-    assert.equal(url.searchParams.get('utm_content'), 'amazon-product-price-checker');
+    assert.equal(url.searchParams.get('co-from'), 'learn');
+    assert.equal(url.searchParams.has('utm_source'), false);
     assert.equal(url.hash, '#top-up');
   } finally { globalThis.fetch = original; }
 });

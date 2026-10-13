@@ -19,9 +19,9 @@ type GuidePageProps = {
 
 const NEXSCOPE_APIS = 'https://www.nexscope.ai/apis';
 
-function trackedDocsUrl(guideSlug: string, apiSlug?: string) {
+function trackedDocsUrl(_guideSlug: string, apiSlug?: string) {
   const target = apiSlug ? `${NEXSCOPE_APIS}/${apiSlug}` : NEXSCOPE_APIS;
-  return `${target}?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=commerce_radar_${guideSlug}&utm_content=inline_link`;
+  return `${target}?co-from=learn`;
 }
 
 export function generateStaticParams() {

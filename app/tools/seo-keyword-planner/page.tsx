@@ -14,10 +14,6 @@ apiKeyUrl.search = new URLSearchParams({
   tab: 'api-keys',
   mode: 'data',
   'co-from': 'learn',
-  utm_source: 'learn.nexscope.ai',
-  utm_medium: 'referral',
-  utm_campaign: 'workflow_seo-keyword-planner',
-  utm_content: 'get_api_key',
 }).toString();
 
 export const metadata: Metadata = {

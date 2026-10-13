@@ -19,7 +19,7 @@ import {
 import MarketingHeader from '@/components/marketing-header';
 
 const tracking =
-  '?co-from=learn&utm_source=learn.nexscope.ai&utm_medium=referral&utm_campaign=homepage';
+  '?co-from=learn';
 const docs = `https://www.nexscope.ai/api-docs${tracking}`;
 
 export const metadata: Metadata = {
