@@ -9,12 +9,14 @@ type MarketingHeaderProps = {
   active?: 'tools';
   campaign: string;
   explorePath?: '/apis' | '/';
+  productReviewCta?: boolean;
 };
 
 export default function MarketingHeader({
   active,
   campaign: _campaign,
   explorePath = '/',
+  productReviewCta = false,
 }: MarketingHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
@@ -94,10 +96,19 @@ export default function MarketingHeader({
             <li>
               <a
                 className={styles.cta}
-                data-track
-                href={`https://www.nexscope.ai${explorePath}${tracking}`}
+                data-track={productReviewCta ? undefined : true}
+                data-showcase-submit-cta={
+                  productReviewCta ? 'root-navigation' : undefined
+                }
+                href={
+                  productReviewCta
+                    ? '/ecommerce-ai-tools/product-showcase/submit/'
+                    : `https://www.nexscope.ai${explorePath}${tracking}`
+                }
               >
-                Explore Nexscope ↗
+                {productReviewCta
+                  ? 'Get free feedback →'
+                  : 'Explore Nexscope ↗'}
               </a>
             </li>
           </ul>

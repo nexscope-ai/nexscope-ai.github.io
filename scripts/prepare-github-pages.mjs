@@ -114,8 +114,11 @@ async function addAnalytics(directory) {
       if (!html.includes('</head>')) continue;
       if (html.includes('data-legacy-redirect')) continue;
       const scripts = [];
-      if (!html.includes('src="/analytics.js?v=9"')) {
-        scripts.push('<script src="/analytics.js?v=9" defer></script>');
+      if (!html.includes('src="/traffic-attribution.js?v=1"')) {
+        scripts.push('<script src="/traffic-attribution.js?v=1" defer></script>');
+      }
+      if (!html.includes('src="/analytics.js?v=10"')) {
+        scripts.push('<script src="/analytics.js?v=10" defer></script>');
       }
       if (!html.includes('src="https://analytics.ahrefs.com/analytics.js"')) {
         scripts.push(
@@ -169,6 +172,7 @@ async function attributeOfficialLinks(directory) {
       linkCount += 1;
       url.hostname = 'www.nexscope.ai';
       url.searchParams.set('co-from', 'learn');
+      // oxlint-disable-next-line unicorn/no-useless-spread -- Snapshot the keys before deleting from URLSearchParams.
       for (const key of [...url.searchParams.keys()]) {
         if (key.startsWith('utm_')) url.searchParams.delete(key);
       }

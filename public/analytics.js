@@ -27,9 +27,14 @@
   }
   let referrer = '';
   try { referrer = new URL(document.referrer).origin; } catch { /* No referrer. */ }
+  const traffic = window.nexscopeTrafficAttribution || {};
   window.gtag('config', id, {
     page_location: page.href, page_title: document.title, page_referrer: referrer,
     cookie_domain: 'auto',
+    landing_source: traffic.trafficSource || 'direct_or_unknown',
+    landing_medium: traffic.trafficMedium || 'none',
+    landing_campaign: traffic.trafficCampaign || undefined,
+    landing_path: traffic.trafficLandingPath || page.pathname,
     allow_google_signals: false, allow_ad_personalization_signals: false,
   });
   const script = document.createElement('script');
@@ -37,10 +42,35 @@
   script.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
   document.head.appendChild(script);
 
+  const sellerIntents = new Set(['product-visibility', 'product-page-review', 'product-media-review']);
+  const sellerEvent = (name, properties) => {
+    window.gtag('event', name, {
+      ...properties,
+      traffic_source: traffic.trafficSource || 'direct_or_unknown',
+      traffic_medium: traffic.trafficMedium || 'none',
+      traffic_campaign: traffic.trafficCampaign || undefined,
+      traffic_landing_path: traffic.trafficLandingPath || page.pathname,
+      source_page: page.pathname,
+      transport_type: 'beacon',
+    });
+  };
+
   document.addEventListener('click', (event) => {
     const link = event.target.closest?.('a[href]');
     if (!link) return;
     const url = new URL(link.href);
+    const reviewPlacement = link.getAttribute('data-showcase-submit-cta')
+      || link.getAttribute('data-cta-placement') || 'body-link';
+    if (/^[a-z0-9-]{1,60}$/.test(reviewPlacement || '') && url.origin === page.origin
+        && url.pathname === '/ecommerce-ai-tools/product-showcase/submit/'
+        && url.pathname !== page.pathname) {
+      sellerEvent('product_showcase_submit_click', { cta_placement: reviewPlacement });
+    }
+    const intent = link.getAttribute('data-seller-help');
+    if (sellerIntents.has(intent) && url.origin === page.origin
+        && url.pathname === `/ecommerce-ai-tools/seller-help/${intent}/`) {
+      sellerEvent('seller_help_open', { seller_intent: intent });
+    }
     const workflow = link.getAttribute('data-track-tool');
     if (workflow && /^[a-z0-9-]{1,80}$/.test(workflow) && url.origin === location.origin) {
       window.gtag('event', 'workflow_open_click', {
