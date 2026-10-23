@@ -40,12 +40,12 @@ const supportingLinks = [
     description: 'Use a private email channel; do not open a public issue.',
   },
   {
-    href: 'https://www.nexscope.ai/privacy',
+    href: 'https://www.nexscope.ai/privacy?co-from=learn',
     label: 'Privacy Policy',
     description: 'Data collection, use, retention, safeguards and privacy rights.',
   },
   {
-    href: 'https://www.nexscope.ai/terms',
+    href: 'https://www.nexscope.ai/terms?co-from=learn',
     label: 'Terms of Service',
     description: 'The current terms governing use of the Nexscope service.',
   },
@@ -78,34 +78,41 @@ export default function SecurityPage() {
       <SiteInfoPage
         campaign="security"
         eyebrow="SECURITY"
-        title="Protecting accounts, data and ecommerce workflows."
-        lead="Nexscope uses technical and organizational safeguards designed to protect the personal information it processes. This page summarizes published practices and explains how to report a potential security issue privately."
+        title="Security at Nexscope"
+        lead="Nexscope uses technical and organizational safeguards designed to protect the personal information it processes. This page summarizes the focus areas currently published in the Privacy Policy and explains how to report a potential security issue privately."
         supportingTitle="Security and policy links"
         supportingLinks={supportingLinks}
-        lastReviewed="October 8, 2026"
+        lastReviewed="October 23, 2026"
       >
         <section>
           <h2>Published security practices</h2>
           <p>
-            Nexscope&apos;s Privacy Policy identifies the following safeguards.
-            Their implementation and scope may evolve with the service.
+            Section 8 of Nexscope&apos;s{' '}
+            <a href="https://www.nexscope.ai/privacy?co-from=learn">
+              Privacy Policy
+            </a>{' '}
+            identifies the following security focus areas. Their implementation
+            and scope may evolve with the service.
           </p>
           <div className={styles.cards}>
             <div className={styles.card}>
-              <h3>Encryption</h3>
-              <p>Encryption of data in transit and at rest.</p>
+              <h3>Transmission and storage</h3>
+              <p>Protecting personal information during transmission and storage.</p>
             </div>
             <div className={styles.card}>
-              <h3>Assessment</h3>
-              <p>Regular security assessments and penetration testing.</p>
+              <h3>Security risk management</h3>
+              <p>Identifying and addressing security risks.</p>
             </div>
             <div className={styles.card}>
               <h3>Access controls</h3>
-              <p>Access controls and authentication mechanisms.</p>
+              <p>Controlling access to accounts and systems.</p>
             </div>
             <div className={styles.card}>
-              <h3>People and process</h3>
-              <p>Employee training on data protection.</p>
+              <h3>Authorized personnel</h3>
+              <p>
+                Limiting access to personal information to authorized personnel
+                who need it for their work.
+              </p>
             </div>
           </div>
           <div className={styles.callout}>
@@ -113,7 +120,10 @@ export default function SecurityPage() {
             <p>
               No internet transmission or storage system can be guaranteed to be
               completely secure. The{' '}
-              <a href="https://www.nexscope.ai/privacy">Privacy Policy</a> is the
+              <a href="https://www.nexscope.ai/privacy?co-from=learn">
+                Privacy Policy
+              </a>{' '}
+              is the
               source of truth for Nexscope&apos;s current published data-security
               statement.
             </p>

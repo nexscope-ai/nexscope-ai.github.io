@@ -17,6 +17,7 @@ export const NEXSCOPE_ORGANIZATION = {
   '@type': 'Organization',
   '@id': 'https://www.nexscope.ai/#organization',
   name: 'Nexscope',
+  legalName: 'ECOCREATE TECHNOLOGY PTE. LTD.',
   url: 'https://www.nexscope.ai/',
   description:
     'Nexscope is an ecommerce intelligence and AI-creative platform for sellers, brands, agencies and developers.',

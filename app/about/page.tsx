@@ -35,12 +35,12 @@ export const metadata: Metadata = {
 
 const supportingLinks = [
   {
-    href: 'https://www.nexscope.ai/',
+    href: 'https://www.nexscope.ai/?co-from=learn',
     label: 'Nexscope product',
     description: 'Current product access, pricing and account experience.',
   },
   {
-    href: 'https://www.nexscope.ai/api-docs',
+    href: 'https://www.nexscope.ai/api-docs?co-from=learn',
     label: 'API documentation',
     description: 'Current endpoints, schemas, inputs and access requirements.',
   },
@@ -111,41 +111,62 @@ export default function AboutPage() {
       <SiteInfoPage
         campaign="brand_about"
         eyebrow="ABOUT NEXSCOPE"
-        title="Ecommerce intelligence for clearer decisions and better creation."
-        lead="Nexscope brings marketplace research, ecommerce APIs, AI-agent workflows, listing analysis, and product-image and video tools into one product family for sellers, brands, agencies and developers."
+        title="About Nexscope"
+        lead="Nexscope helps ecommerce teams use marketplace data to find opportunities, then turn those insights into clearer listings, product images and videos. Sellers can work in browser tools, while developers can connect documented REST APIs and MCP tools."
         supportingTitle="Verify current Nexscope information"
         supportingLinks={supportingLinks}
-        lastReviewed="October 8, 2026"
+        lastReviewed="October 23, 2026"
       >
         <section>
-          <h2>What Nexscope helps teams do</h2>
+          <h2>From marketplace evidence to product content</h2>
+          <p>
+            Start with a specific ecommerce question, inspect the available
+            evidence, and use the result to decide what to improve or create.
+            These public tools show four practical starting points.
+          </p>
           <div className={styles.cards}>
             <div className={styles.card}>
-              <h3>Research marketplaces</h3>
+              <h3>
+                <a href="https://www.nexscope.ai/tools/amazon-review-analyzer?co-from=learn">
+                  Find buyer needs in product reviews
+                </a>
+              </h3>
               <p>
-                Investigate products, keywords, competitors, reviews, prices and
-                sourcing candidates across supported ecommerce workflows.
+                Analyze a bounded review sample to identify repeated complaints,
+                product questions and language worth checking against the listing.
               </p>
             </div>
             <div className={styles.card}>
-              <h3>Build with ecommerce data</h3>
+              <h3>
+                <a href="https://www.nexscope.ai/tools/seo-keyword-planner?co-from=learn">
+                  Compare keywords and competing products
+                </a>
+              </h3>
               <p>
-                Connect documented REST APIs and supported MCP tools to internal
-                applications, analysis pipelines and compatible AI clients.
+                Review keyword demand and related Amazon products before choosing
+                which search terms or positioning questions to investigate.
               </p>
             </div>
             <div className={styles.card}>
-              <h3>Improve product communication</h3>
+              <h3>
+                <a href="https://www.nexscope.ai/tools/ai-video-generator?co-from=learn">
+                  Turn product images into video concepts
+                </a>
+              </h3>
               <p>
-                Turn research evidence into listing questions, content briefs and
-                reviewable optimization hypotheses.
+                Use authorized product images to create video drafts, then review
+                product accuracy, motion and claims before publishing.
               </p>
             </div>
             <div className={styles.card}>
-              <h3>Create product media</h3>
+              <h3>
+                <a href="https://www.nexscope.ai/api-docs?co-from=learn">
+                  Connect ecommerce data to an application or AI agent
+                </a>
+              </h3>
               <p>
-                Generate product-image and video concepts, then review the output
-                for product accuracy and authorized use before publishing.
+                Inspect current REST endpoint schemas, examples and access
+                requirements, or review the supported MCP integration path.
               </p>
             </div>
           </div>
@@ -199,8 +220,14 @@ export default function AboutPage() {
           <p>
             Nexscope is operated by ECOCREATE TECHNOLOGY PTE. LTD., a company
             incorporated in Singapore. The official{' '}
-            <a href="https://www.nexscope.ai/privacy">Privacy Policy</a> and{' '}
-            <a href="https://www.nexscope.ai/terms">Terms of Service</a> identify
+            <a href="https://www.nexscope.ai/privacy?co-from=learn">
+              Privacy Policy
+            </a>{' '}
+            and{' '}
+            <a href="https://www.nexscope.ai/terms?co-from=learn">
+              Terms of Service
+            </a>{' '}
+            identify
             the legal policies that apply to the service.
           </p>
           <p>

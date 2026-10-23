@@ -11,6 +11,8 @@ import styles from '../site-info.module.css';
 const url = 'https://learn.nexscope.ai/contact/';
 const supportEmail =
   'mailto:service@nexscope.ai?subject=Nexscope%20support%20request';
+const privacyEmail =
+  'mailto:service@nexscope.ai?subject=Nexscope%20privacy%20request';
 
 export const metadata: Metadata = {
   title: 'Contact Nexscope | Support, Sales & Security',
@@ -39,7 +41,8 @@ const supportingLinks = [
   {
     href: supportEmail,
     label: 'Email Nexscope',
-    description: 'Private account, billing, sales, security or data matters.',
+    description:
+      'Private account, billing, sales, security, privacy or account-closure requests.',
   },
   {
     href: 'https://github.com/nexscope-ai/ecommerce-ai-tools/discussions/categories/q-a',
@@ -50,6 +53,11 @@ const supportingLinks = [
     href: 'https://github.com/nexscope-ai/ecommerce-ai-tools/issues/new/choose',
     label: 'Issue tracker',
     description: 'Reproducible bugs, feature requests and content corrections.',
+  },
+  {
+    href: 'https://www.nexscope.ai/privacy?co-from=learn',
+    label: 'Privacy Policy',
+    description: 'Privacy rights, deletion, retention and account-closure details.',
   },
 ] as const;
 
@@ -93,11 +101,11 @@ export default function ContactPage() {
       <SiteInfoPage
         campaign="contact"
         eyebrow="CONTACT NEXSCOPE"
-        title="Choose the right channel for a faster answer."
-        lead="Use private email for account, billing, sales, security and data matters. Use the public community and issue tracker for questions or reproducible problems that can be discussed without secrets."
+        title="Contact Nexscope"
+        lead="Choose the channel that matches your request. Use private email for account, billing, sales, security and privacy matters. Public GitHub channels are available for questions and reproducible problems, but a GitHub account is not required to contact the team."
         supportingTitle="Contact Nexscope"
         supportingLinks={supportingLinks}
-        lastReviewed="October 8, 2026"
+        lastReviewed="October 23, 2026"
       >
         <section>
           <h2>Where to send your request</h2>
@@ -163,6 +171,20 @@ export default function ContactPage() {
             </div>
             <div className={styles.channel}>
               <div>
+                <strong>Privacy request or account closure</strong>
+                <a href={privacyEmail}>Email a privacy request</a>
+              </div>
+              <p>
+                Request access, correction, deletion or another applicable privacy
+                right, or ask to close an account. Review the{' '}
+                <a href="https://www.nexscope.ai/privacy?co-from=learn">
+                  Privacy Policy
+                </a>{' '}
+                for conditions, exceptions and retention information.
+              </p>
+            </div>
+            <div className={styles.channel}>
+              <div>
                 <strong>Editorial correction</strong>
                 <a href="https://github.com/nexscope-ai/ecommerce-ai-tools/issues/new/choose">
                   Report a correction
@@ -173,6 +195,15 @@ export default function ContactPage() {
                 a primary source when available.
               </p>
             </div>
+          </div>
+          <div className={styles.callout}>
+            <strong>No GitHub account?</strong>
+            <p>
+              Email <a href={supportEmail}>service@nexscope.ai</a> with the page,
+              product or API involved and a safely redacted description. You can
+              use email for a product question, reproducible bug or content
+              correction instead of signing in to GitHub.
+            </p>
           </div>
         </section>
 
@@ -197,11 +228,11 @@ export default function ContactPage() {
         <section>
           <h2>Response expectations</h2>
           <p>
-            The Nexscope team checks public Q&amp;A and actionable issue reports on
-            business days and aims to acknowledge them within one business day.
-            This is a response target, not a guaranteed resolution time. Private
-            product and service inquiries are generally reviewed within one to two
-            business days.
+            The Nexscope team works on Singapore business days (SGT, UTC+8). It
+            aims to acknowledge public Q&amp;A and actionable issue reports within
+            one business day. This is a response target, not a guaranteed
+            resolution time. Private product and service inquiries are generally
+            reviewed within one to two business days.
           </p>
           <p>
             Search existing discussions and issues before opening a duplicate. A
