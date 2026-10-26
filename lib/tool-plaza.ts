@@ -12,6 +12,10 @@ const officialTool = (slug: string) =>
   `https://www.nexscope.ai/tools/${slug}?co-from=learn`;
 
 export const toolCards: ToolCard[] = [
+  { name: '1688 Product Detail Analyzer', icon: '/assets/tool-icons/wholesale-1688.webp', description: 'Inspect one offer’s SKU prices, tiers, listing fields and shipping evidence; export CSV or request an AI report.', href: '/tools/1688-product-detail-analyzer/', access: 'Bring your own API key · credits apply', category: 'pricing', guide: { label: 'Product Detail API guide', href: '/ecommerce-ai-tools/guides/1688-product-detail-api/' } },
+  { name: '1688 Product Selection Screener', icon: '/assets/tool-icons/wholesale-1688.webp', description: 'Filter real 1688 product rows by Chinese keyword, price and MOQ; export the API report or request AI analysis.', href: '/tools/1688-product-selection-screener/', access: 'Bring your own API key · credits apply', category: 'pricing' },
+  { name: 'Shopee Competitor Analyzer', icon: '/assets/tool-icons/amazon-niche.webp', description: 'Compare product and shop data in one Shopee market, with reported and estimated sales kept separate.', href: '/tools/shopee-competitor-analyzer/', access: 'Bring your own API key · credits apply', category: 'research' },
+  { name: 'Ozon Product Selection Analyzer', icon: '/assets/tool-icons/amazon-niche.webp', description: 'Inspect Ozon product sales, revenue, prices, ratings and seller fields for a chosen report period.', href: '/tools/ozon-product-selection-analyzer/', access: 'Bring your own API key · credits apply', category: 'research' },
   {
     name: 'Amazon Niche Opportunity Evaluator',
     icon: '/assets/tool-icons/amazon-niche.webp',

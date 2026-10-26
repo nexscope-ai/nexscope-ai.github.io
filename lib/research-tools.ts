@@ -1,4 +1,8 @@
 export type ResearchToolKind =
+  | 'supplier-detail'
+  | '1688-selection'
+  | 'shopee-competitor'
+  | 'ozon-selection'
   | 'niche'
   | 'shopify'
   | 'keyword-gap'
@@ -172,5 +176,177 @@ export const researchTools: ResearchTool[] = [
     ],
   },
 ];
+
+researchTools.push({
+  slug: '1688-product-detail-analyzer',
+  kind: 'supplier-detail',
+  name: '1688 Product Detail Analyzer',
+  title: '1688 Product Detail Analyzer: SKU, MOQ & AI Report | Nexscope',
+  description:
+    'Inspect one 1688 offer, compare SKU prices, MOQ and shipping fields, export CSV and optionally generate an AI report with your Nexscope API key.',
+  eyebrow: '1688 OFFER RESEARCH',
+  headline: 'Know the offer before you buy.',
+  lead: 'Turn one 1688 product link into a clear view of variants, price tiers and shipping evidence. Read the data first, then choose an AI interpretation.',
+  question: 'What does this exact 1688 offer report?',
+  method:
+    'One Product Detail lookup retrieves one offer. The shared tool API key is saved in this browser. Generate an AI report separately when you want an interpretation; both requests may use credits.',
+  limit:
+    'Listing data is not a negotiated quote, verified factory audit or profit forecast. Missing values remain unknown, and price arithmetic does not determine eligibility for an order.',
+  primaryApi: '1688-product-detail',
+  additionalApis: [],
+  preview: [
+    'One offer link or string ID',
+    'SKU evidence, MOQ and source price tiers',
+    'CSV export and optional AI report',
+  ],
+  answer:
+    'This analyzer retrieves the documented product-detail fields for one 1688 offer. Inspect variant-level prices, product quantity tiers and shipping units separately. You can export the SKU table and ask for an AI review checklist based on a bounded evidence sample. No store connection or automatic supplier recommendation is required.',
+  faqs: [
+    {
+      question: 'Is the example live data?',
+      answer:
+        'No. View an example uses clearly labeled illustrative data and makes no API request. AI analysis is disabled for the example. Query your own offer to generate a report.',
+    },
+    {
+      question: 'Where is my API key stored?',
+      answer:
+        'The key is saved in this browser’s localStorage and shared with Nexscope tool pages until you clear it. It is sent to Nexscope for authentication and is not included in AI evidence or downloads.',
+    },
+    {
+      question:
+        'Does an estimated merchandise subtotal mean I can order at that price?',
+      answer:
+        'No. You select a reported price for arithmetic. Confirm the exact SKU, quantity, pack unit, minimums and current supplier terms. Freight, taxes, fees and supplier verification are not included.',
+    },
+  ],
+});
+
+researchTools.push(
+  {
+    slug: '1688-product-selection-screener',
+    kind: '1688-selection',
+    name: '1688 Product Selection Screener',
+    title: '1688 Product Selection Screener: Price, MOQ & Sales | Nexscope',
+    description:
+      'Search 1688 products by Chinese keyword, price and MOQ. Review a live API product report, export CSV and optionally request AI analysis.',
+    eyebrow: '1688 PRODUCT RESEARCH',
+    headline: 'Find 1688 products with source evidence.',
+    lead: 'Filter a 1688 product shortlist and inspect the reported prices, orders and supplier fields before AI analysis.',
+    question: 'Which 1688 listings match my search?',
+    method:
+      'One 1688 Product Search request returns the first 20 rows. AI analysis is a separate action.',
+    limit:
+      'Search results do not verify factory status, product quality or a negotiated purchase price.',
+    primaryApi: '1688-product-search',
+    additionalApis: [],
+    preview: [
+      'Chinese keyword and price/MOQ filters',
+      'Real product data table and CSV',
+      'Optional AI interpretation',
+    ],
+    answer:
+      'Review the returned 1688 products with wholesale price, dropship price, minimum order, reported sales and store fields. All returned first-page rows are available in the table and optional AI report.',
+    faqs: [
+      {
+        question: 'Are these supplier quotes?',
+        answer:
+          'No. They are reported listing values. Confirm variants, quantities, shipping and current terms with the supplier.',
+      },
+      {
+        question: 'Does the first page include every 1688 listing?',
+        answer:
+          'No. This tool requests a 20-row first page and shows the provider total separately when supplied.',
+      },
+      {
+        question: 'Can I inspect the unselected source fields?',
+        answer:
+          'Yes. Expand a returned product row or export the visible report fields to CSV.',
+      },
+    ],
+  },
+  {
+    slug: 'shopee-competitor-analyzer',
+    kind: 'shopee-competitor',
+    name: 'Shopee Competitor Analyzer',
+    title: 'Shopee Competitor Analyzer: Product & Shop Data | Nexscope',
+    description:
+      'Search Shopee listings by market and keyword, compare reported 30-day sales and ratings, export CSV and optionally generate an AI report.',
+    eyebrow: 'SHOPEE COMPETITOR RESEARCH',
+    headline: 'Compare Shopee listings and shops.',
+    lead: 'Choose one Shopee market, inspect real product rows, then ask for an interpretation if needed.',
+    question: 'What are comparable Shopee listings reporting?',
+    method:
+      'One Shopee Product Search request returns the first 20 matching products. AI analysis is a separate action.',
+    limit:
+      'Reported 30-day sales, estimated sales and historical totals are distinct metrics. This is a sample, not a complete market census.',
+    primaryApi: 'shopee-product-search',
+    additionalApis: [],
+    preview: [
+      'Marketplace and keyword filters',
+      'Product and shop evidence table',
+      'Optional AI interpretation',
+    ],
+    answer:
+      'Compare price in the chosen local currency, reported sales, estimated sales, historical totals, rating and shop for returned Shopee products. The AI report cites only those source rows.',
+    faqs: [
+      {
+        question:
+          'Are estimated units and reported sold units interchangeable?',
+        answer: 'No. The table and AI evidence retain them in separate fields.',
+      },
+      {
+        question: 'Are prices converted to USD?',
+        answer: 'No. Prices remain in the selected marketplace local currency.',
+      },
+      {
+        question: 'Does this cover all competitor shops?',
+        answer:
+          'No. It shows the first 20 returned product rows for the selected filters, along with the provider total when available.',
+      },
+    ],
+  },
+  {
+    slug: 'ozon-product-selection-analyzer',
+    kind: 'ozon-selection',
+    name: 'Ozon Product Selection Analyzer',
+    title: 'Ozon Product Selection Analyzer: Sales & Price Report | Nexscope',
+    description:
+      'Filter Ozon product reports by keyword, price and period. Inspect returned sales, revenue and rating data, export CSV and optionally generate AI analysis.',
+    eyebrow: 'OZON PRODUCT RESEARCH',
+    headline: 'Inspect Ozon product opportunities.',
+    lead: 'Compare product-level report data for a rolling 30-day period or a completed historical month.',
+    question: 'What does the Ozon product report actually show?',
+    method:
+      'One Ozon Product Report Search request returns the first 20 rows. AI analysis is a separate action.',
+    limit:
+      'A product report is a dated sample. Missing or provider-estimated fields cannot prove future demand or profit.',
+    primaryApi: 'ozon-product-report-search',
+    additionalApis: [],
+    preview: [
+      'Russian product term and price filter',
+      'Sales and revenue data table',
+      'Optional AI interpretation',
+    ],
+    answer:
+      'Review returned Ozon product prices, monthly sales, revenue, growth, ratings, brand and seller values in RUB. Use a complete historical month when comparing older periods.',
+    faqs: [
+      {
+        question: 'Does a historical month include current month-to-date data?',
+        answer:
+          'No. The API interprets searchDate as selecting the preceding complete month.',
+      },
+      {
+        question: 'Does this tool calculate future profit?',
+        answer:
+          'No. It displays returned data for a selected period and cannot predict profit or demand.',
+      },
+      {
+        question: 'How many products are analyzed?',
+        answer:
+          'The first request asks for 20 rows. The optional AI report receives every row returned on that page.',
+      },
+    ],
+  },
+);
 
 export const getResearchTool = (slug: string) => researchTools.find((tool) => tool.slug === slug);

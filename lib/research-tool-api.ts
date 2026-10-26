@@ -6,6 +6,7 @@ const ALLOWED_SLUGS = new Set([
   'chuhaijiang-tiktok-ad-related-products', 'seo-page-evidence',
   'seo-ai-search-citation-sample', 'amazon-product-detail', '1688-product-search',
   'amazon-product-price-series', 'tiktok-top-selling-products', 'amazon-search',
+  '1688-product-detail', 'shopee-product-search', 'ozon-product-report-search',
 ]);
 const INSUFFICIENT_CREDIT_CODES = new Set([13011, 16002, 17001, 18001, 440215, -40002]);
 

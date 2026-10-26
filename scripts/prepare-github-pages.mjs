@@ -9,6 +9,10 @@ import {
 
 const clientDirectory = new URL('../dist/client/', import.meta.url);
 const interactiveWorkflowSlugs = [
+  '1688-product-detail-analyzer',
+  '1688-product-selection-screener',
+  'shopee-competitor-analyzer',
+  'ozon-product-selection-analyzer',
   'amazon-to-1688-supplier-finder',
   'tiktok-shop-new-product-validator',
   'tiktok-shop-creator-match',

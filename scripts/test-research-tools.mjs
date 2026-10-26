@@ -238,7 +238,7 @@ void test('all research runtimes render a dedicated empty state instead of an un
   assert.match(planner, /No matching Amazon products were returned[\s\S]*if \(!cached\.products\.length\) return;/);
 });
 
-void test('the original three and five new research tools are registered for static pages', () => {
+void test('research tools including the 1688 detail and marketplace reports are registered for static pages', () => {
   assert.deepEqual(researchTools.map((tool) => tool.slug), [
     'amazon-niche-opportunity-evaluator',
     'amazon-product-price-checker',
@@ -248,8 +248,12 @@ void test('the original three and five new research tools are registered for sta
     'ai-shopping-product-data-checker',
     'tiktok-shop-bestseller-momentum',
     '1688-amazon-demand-matcher',
+    '1688-product-detail-analyzer',
+    '1688-product-selection-screener',
+    'shopee-competitor-analyzer',
+    'ozon-product-selection-analyzer',
   ]);
-  assert.equal(new Set(researchTools.map((tool) => tool.slug)).size, 8);
+  assert.equal(new Set(researchTools.map((tool) => tool.slug)).size, 12);
   assert.equal(researchTools.some((tool) => tool.slug.includes('video')), false);
   assert.equal(researchTools.some((tool) => tool.slug.includes('margin')), false);
 });
@@ -257,7 +261,7 @@ void test('the original three and five new research tools are registered for sta
 void test('new tool pages publish answer-first guidance and visible decision questions', async () => {
   const page = await readFile(new URL('../components/research-tool-page.tsx', import.meta.url), 'utf8');
   const newTools = researchTools.filter((tool) => tool.answer);
-  assert.equal(newTools.length, 5);
+  assert.equal(newTools.length, 9);
   for (const tool of newTools) {
     assert.ok(tool.answer.length > 100, `${tool.slug} needs a self-contained answer`);
     assert.equal(tool.faqs?.length, 3);
