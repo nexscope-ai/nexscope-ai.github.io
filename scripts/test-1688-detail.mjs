@@ -15,6 +15,28 @@ import {
   runResearchApi,
   runResearchAnalysis,
 } from '../lib/research-tool-api.ts';
+import {
+  normalizeReportHeadings,
+  removeFalseCollectionDateClaim,
+} from '../lib/research-report-cleanup.ts';
+
+test('AI report titles render as headings and collection time is not falsely called future', () => {
+  assert.equal(
+    normalizeReportHeadings('**Executive Summary**\n\n\\*\\*Key Findings\\*\\*\n\n- **Inline fact**'),
+    '### Executive Summary\n\n### Key Findings\n\n- **Inline fact**',
+  );
+  const report = [
+    '## Risks and Anomalies',
+    '- **Anomalous Timestamp:** The data collection time 2026-10-26T07:31:16Z is a date in the future.',
+    '- **Missing shipping:** 16 SKUs lack dimensions.',
+    '- **Future listing date:** A separate listing field is dated 2027-01-01.',
+  ].join('\n');
+  const guarded = removeFalseCollectionDateClaim(report, '2026-10-26T07:31:16Z');
+  assert.doesNotMatch(guarded, /Anomalous Timestamp/);
+  assert.match(guarded, /Missing shipping/);
+  assert.match(guarded, /Future listing date/);
+  assert.match(guarded, /unsupported collection-time claim/);
+});
 
 test('offer identifiers remain exact strings and unsafe or unrelated links are rejected', () => {
   const id = '123456789012345678901234567890';

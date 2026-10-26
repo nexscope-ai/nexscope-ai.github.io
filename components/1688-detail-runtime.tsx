@@ -22,6 +22,7 @@ import {
   type OfferDetail,
 } from '@/lib/1688-detail';
 import styles from './1688-detail.module.css';
+import { removeFalseCollectionDateClaim } from '@/lib/research-report-cleanup';
 
 type Snapshot = { offer: OfferDetail; collectedAt: string; demo: boolean };
 function download(name: string, text: string, mime: string) {
@@ -151,7 +152,8 @@ export default function DetailRuntime({ apiKeyUrl }: { apiKeyUrl: string }) {
         key,
         request.signal,
       );
-      if (!request.signal.aborted) setReport(markdown);
+      if (!request.signal.aborted)
+        setReport(removeFalseCollectionDateClaim(markdown, snapshot.collectedAt));
     } catch (cause) {
       if (isInsufficientCreditsError(cause)) showToolCreditModal('analysis');
       if (!request.signal.aborted) setReportError(safeError(cause));

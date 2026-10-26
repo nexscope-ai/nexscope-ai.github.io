@@ -1,6 +1,7 @@
 'use client';
 
 import MdText from '@/components/md-text';
+import { normalizeReportHeadings } from '@/lib/research-report-cleanup';
 
 type Props = {
   markdown: string;
@@ -16,7 +17,7 @@ export default function ResearchAnalysisReport({ markdown, loading, error, onRet
     <div className="rt-analysis-head"><div><span className="rt-kicker">{kicker}</span><h3 id="rt-analysis-title">Analysis report</h3></div><span>{loading ? 'Generating' : markdown ? 'Ready' : 'Unavailable'}</span></div>
     <p className="rt-note">Generated from the returned API sample. Verify recommendations against the source data and current market conditions.</p>
     {loading && <output className="rt-loading" aria-live="polite"><p>Source data is ready. Generating a Markdown report…</p><div className="rt-skeleton" /><div className="rt-skeleton short" /><div className="rt-skeleton" /></output>}
-    {!loading && markdown && <div className="rt-analysis-markdown"><MdText text={markdown} variant="document" /></div>}
+    {!loading && markdown && <div className="rt-analysis-markdown"><MdText text={normalizeReportHeadings(markdown)} variant="document" /></div>}
     {!loading && error && <div className="rt-analysis-failure" role="alert"><p>{error}</p>{onRetry && <button className="rt-secondary" type="button" onClick={onRetry}>Retry AI analysis · may use credits</button>}</div>}
   </section>;
 }

@@ -8,6 +8,7 @@ void test('web MdText renders AI report tables and inline formatting', async () 
   const vite = await createServer({ configFile: false, server: { middlewareMode: true }, appType: 'custom' });
   try {
     const { default: MdText } = await vite.ssrLoadModule('/components/md-text.tsx');
+    const { normalizeReportHeadings } = await vite.ssrLoadModule('/lib/research-report-cleanup.ts');
     const report = [
       '## Competitive Landscape Analysis',
       '',
@@ -28,6 +29,12 @@ void test('web MdText renders AI report tables and inline formatting', async () 
     assert.match(html, /<strong\b[^>]*>Market Dominance:<\/strong>/);
     assert.match(html, /<li\b[^>]*>Check the source listing<\/li>/);
     assert.doesNotMatch(html, /\| :--- \|/);
+    const headingHtml = renderToStaticMarkup(React.createElement(MdText, {
+      text: normalizeReportHeadings('\\*\\*Executive Summary\\*\\*\n\nA tested report.'),
+      variant: 'document',
+    }));
+    assert.match(headingHtml, /<h3\b[^>]*>Executive Summary<\/h3>/);
+    assert.doesNotMatch(headingHtml, /\*\*Executive Summary\*\*/);
   } finally {
     await vite.close();
   }

@@ -557,6 +557,13 @@ export default function MarketplaceReportRuntime({
                     stay unreported; prices are not converted between
                     currencies.
                   </p>
+                  {kind === 'ozon-selection' && (
+                    <p className={styles.note}>
+                      Search matches can include accessories and related items.
+                      Check each product title before treating these rows as an
+                      exact-product market sample.
+                    </p>
+                  )}
                   <section
                     className={styles.tableWrap}
                     aria-label="API product report table"
