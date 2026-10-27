@@ -1,0 +1,36 @@
+// Shared by static export, canonical sitemap generation and route regression checks.
+export const interactiveWorkflowSlugs = [
+  '1688-product-detail-analyzer',
+  '1688-product-selection-screener',
+  'shopee-competitor-analyzer',
+  'ozon-product-selection-analyzer',
+  'amazon-to-1688-supplier-finder',
+  'tiktok-shop-new-product-validator',
+  'tiktok-shop-creator-match',
+  'seo-keyword-planner',
+  'amazon-niche-opportunity-evaluator',
+  'amazon-product-price-checker',
+  '1688-wholesale-price-finder',
+  'amazon-price-history-analyzer',
+  'reverse-asin-keyword-gap',
+  'ai-shopping-product-data-checker',
+  'tiktok-shop-bestseller-momentum',
+  '1688-amazon-demand-matcher',
+];
+export const routeSlugs = [
+  'ecommerce-product-demand-validation',
+  'shopify-competitor-product-research',
+  'ecommerce-seo-ai-search-visibility',
+  'amazon-review-customer-insights',
+  '1688-supplier-product-sourcing',
+  'amazon-research',
+  'ecommerce-ai-agents',
+  'ai-product-videos',
+  'ai-video-generator',
+  'about',
+  'security',
+  'contact',
+  'tools',
+  ...interactiveWorkflowSlugs.map((slug) => `tools/${slug}`),
+];
+export const publishedPaths = ['/', ...routeSlugs.map((slug) => `/${slug}/`)];

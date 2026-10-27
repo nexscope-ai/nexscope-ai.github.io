@@ -2,6 +2,7 @@
 /* oxlint-disable next/no-html-link-for-pages, next/no-img-element, next/no-css-tags */
 import type { Campaign } from '@/lib/campaigns';
 import { CampaignEvidence } from '@/components/campaign-evidence';
+import MarketingHeader from '@/components/marketing-header';
 
 function CampaignVisual({ campaign }: { campaign: Campaign }) {
   if (campaign.visual === 'amazon') {
@@ -255,7 +256,7 @@ export function CampaignPage({ campaign }: { campaign: Campaign }) {
   return (
     <>
       <link rel="stylesheet" href="/campaigns.css?v=3" />
-      <script src="/campaigns.js?v=2" defer />
+      <script src="/campaigns.js?v=3" defer />
       <CampaignSchema campaign={campaign} />
       <div
         className={`campaign-page${campaign.visual === 'video' ? ' video' : ''}`}
@@ -263,29 +264,7 @@ export function CampaignPage({ campaign }: { campaign: Campaign }) {
         <a className="skip" href="#main">
           Skip to content
         </a>
-        <header>
-          <div className="wrap campaign-nav">
-            <a href="/" aria-label="Nexscope home">
-              <img
-                className="logo"
-                src="/logo.png"
-                width="165"
-                height="32"
-                alt="Nexscope"
-              />
-            </a>
-            <nav className="navlinks" aria-label="Primary navigation">
-              <a href="/tools/">Tools</a>
-              <a href="/ecommerce-ai-tools/">Learn</a>
-              <a
-                data-track=""
-                href="https://www.nexscope.ai/api-docs?co-from=learn"
-              >
-                API docs ↗
-              </a>
-            </nav>
-          </div>
-        </header>
+        <MarketingHeader campaign={campaign.slug} />
         <main id="main" className="wrap">
           <section className="campaign-hero">
             <div>
@@ -404,7 +383,10 @@ export function CampaignPage({ campaign }: { campaign: Campaign }) {
               <div className="footlinks">
                 <a href="/">Nexscope home</a>
                 <a href="/tools/">Tools</a>
-                <a href="/ecommerce-ai-tools/">Learn</a>
+                <a href="/ecommerce-ai-tools/">Resource library</a>
+                <a href="/ecommerce-ai-tools/topics/evidence/">
+                  Evidence &amp; cases
+                </a>
                 <a href="/about/">About</a>
                 <a href="/security/">Security</a>
                 <a href="/contact/">Contact</a>

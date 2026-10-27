@@ -19,6 +19,13 @@ Language: English
 
 ## Product and marketplace research
 
+- https://learn.nexscope.ai/ecommerce-ai-tools/topics/research/ — product and market research learning path
+- https://learn.nexscope.ai/ecommerce-ai-tools/topics/visibility/ — SEO, AI visibility and measurement learning path
+- https://learn.nexscope.ai/ecommerce-ai-tools/topics/sourcing/ — sourcing and 1688 learning path
+- https://learn.nexscope.ai/ecommerce-ai-tools/topics/agents/ — ecommerce APIs and AI agents learning path
+- https://learn.nexscope.ai/ecommerce-ai-tools/topics/creative/ — product image and video learning path
+- https://learn.nexscope.ai/ecommerce-ai-tools/topics/evidence/ — dated tests and case studies
+
 - https://learn.nexscope.ai/amazon-research/ — Amazon keyword, competitor, and review research
 - https://learn.nexscope.ai/ecommerce-product-demand-validation/ — product-demand validation workflow
 - https://learn.nexscope.ai/shopify-competitor-product-research/ — Shopify competitor research

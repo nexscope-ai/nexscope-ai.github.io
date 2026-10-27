@@ -75,23 +75,23 @@ export default function MarketingHeader({
               </a>
             </li>
             <li>
-              <a href="/ecommerce-ai-tools/">Learn</a>
+              <a href="/ecommerce-ai-tools/topics/research/">Research</a>
             </li>
             <li>
-              <a href="/ecommerce-ai-tools/product-showcase/">
-                Product Gallery
+              <a href="/ecommerce-ai-tools/topics/visibility/">
+                SEO & AI visibility
               </a>
             </li>
             <li>
-              <a href="/ecommerce-ai-tools/community/">Community</a>
+              <a href="/ecommerce-ai-tools/topics/creative/">Creative</a>
             </li>
             <li>
-              <a
-                data-track
-                href={`https://www.nexscope.ai/api-docs${tracking}`}
-              >
-                API docs
+              <a data-track href="/ecommerce-ai-tools/topics/agents/">
+                APIs & agents
               </a>
+            </li>
+            <li>
+              <a href="/ecommerce-ai-tools/topics/evidence/">Evidence</a>
             </li>
             <li>
               <a

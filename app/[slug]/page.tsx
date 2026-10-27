@@ -12,6 +12,7 @@ import { NexscopeLogo } from '@/components/nexscope-logo';
 import { TrendMap } from '@/components/trend-map';
 import { getGuideBySlug, guides } from '@/lib/guides';
 import { DEFAULT_SOCIAL_IMAGE } from '@/lib/site-metadata';
+import MarketingHeader from '@/components/marketing-header';
 
 type GuidePageProps = {
   params: Promise<{ slug: string }>;
@@ -130,9 +131,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
           name,
         })),
         citation: [
-          ...guide.apiCapabilities.map(
-            (api) => `${NEXSCOPE_APIS}/${api.slug}`,
-          ),
+          ...guide.apiCapabilities.map((api) => `${NEXSCOPE_APIS}/${api.slug}`),
           ...guide.sources.map((source) => source.href),
         ],
       },
@@ -159,25 +158,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
           __html: JSON.stringify(articleJsonLd).replaceAll('<', '\\u003c'),
         }}
       />
-      <nav className="nav" aria-label="Primary navigation">
-        <div className="container nav-inner">
-          <a className="brand" href="/" aria-label="Nexscope learning home">
-            <NexscopeLogo />
-          </a>
-          <div className="nav-links">
-            <a href="/tools/">Tools</a>
-            <a href="/ecommerce-ai-tools/">Learn</a>
-          </div>
-          <a
-            className="nav-cta"
-            href={nexscopeUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
-            API Docs <ArrowUpRight size={15} aria-hidden="true" />
-          </a>
-        </div>
-      </nav>
+      <MarketingHeader campaign={guide.slug} explorePath="/apis" />
 
       <header className="detail-hero">
         <div className="container">
@@ -190,6 +171,15 @@ export default async function GuidePage({ params }: GuidePageProps) {
               </div>
               <h1>{guide.title}</h1>
               <p className="detail-summary">{guide.summary}</p>
+              <p>
+                By the <a href="/ecommerce-ai-tools/about/">Nexscope team</a> ·
+                Editorial review {guide.lastReviewed}.{' '}
+                <a
+                  href={`/ecommerce-ai-tools/topics/${guide.category === 'Sourcing' ? 'sourcing' : guide.category === 'SEO & AI Visibility' ? 'visibility' : 'research'}/`}
+                >
+                  Explore this learning path →
+                </a>
+              </p>
               <div className="detail-source-row">
                 <span>Capability source</span>
                 <a href={nexscopeUrl} target="_blank" rel="noreferrer">
@@ -253,6 +243,15 @@ export default async function GuidePage({ params }: GuidePageProps) {
                   ))}
                 </ul>
               </div>
+              <p>
+                <a href="/ecommerce-ai-tools/topics/evidence/">
+                  Inspect dated test records and case studies →
+                </a>{' '}
+                ·{' '}
+                <a href="/ecommerce-ai-tools/editorial-policy/">
+                  Read our evidence policy →
+                </a>
+              </p>
             </section>
 
             <section className="detail-section" id="the-problem">
@@ -338,7 +337,12 @@ export default async function GuidePage({ params }: GuidePageProps) {
               <div className="guide-source-links" aria-label="Primary sources">
                 <strong>Primary sources</strong>
                 {guide.sources.map((source) => (
-                  <a href={source.href} target="_blank" rel="noreferrer" key={source.href}>
+                  <a
+                    href={source.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    key={source.href}
+                  >
                     {source.label} <ExternalLink size={13} aria-hidden="true" />
                   </a>
                 ))}

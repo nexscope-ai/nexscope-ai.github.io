@@ -13,15 +13,10 @@
     if (url.protocol !== 'https:' || !officialHosts.has(url.hostname)) return;
     url.hostname = 'www.nexscope.ai';
     url.searchParams.set('co-from', 'learn');
-    url.searchParams.set('utm_source', 'learn.nexscope.ai');
-    url.searchParams.set('utm_medium', 'referral');
-    if (!url.searchParams.get('utm_campaign')) {
-      url.searchParams.set('utm_campaign', location.pathname.startsWith('/tools/') ? 'tool_plaza' : 'learning_center');
-    }
-    if (!url.searchParams.get('utm_content')) {
-      const page = location.pathname.replace(/[^a-z0-9]+/gi, '_').replace(/^_+|_+$/g, '') || 'home';
-      const label = (anchor.textContent || 'link').trim().replace(/[^a-z0-9]+/gi, '_').replace(/^_+|_+$/g, '') || 'link';
-      url.searchParams.set('utm_content', `${page}_${label}`.slice(0, 120));
+    // Snapshot keys: deleting while iterating URLSearchParams can skip adjacent tags.
+    // oxlint-disable-next-line unicorn/no-useless-spread -- Mutation requires a stable key list.
+    for (const key of [...url.searchParams.keys()]) {
+      if (key.startsWith('utm_')) url.searchParams.delete(key);
     }
     if (anchor.href !== url.href) anchor.href = url.href;
   }

@@ -1,4 +1,3 @@
-/* Native anchors keep exported GitHub Pages routes and the Jekyll section interoperable. */
 /* oxlint-disable next/no-html-link-for-pages, next/no-img-element */
 import type { Metadata } from 'next';
 import { ArrowRight } from 'lucide-react';
@@ -10,65 +9,86 @@ import {
 } from '@/lib/site-metadata';
 import MarketingHeader from '@/components/marketing-header';
 
-const tracking = '?co-from=learn';
-const docs = `https://www.nexscope.ai/api-docs${tracking}`;
+const library = '/ecommerce-ai-tools';
+const topics = [
+  [
+    'research',
+    'Product & market research',
+    'Compare demand, competitors, keywords and reviews across Amazon, Shopify and TikTok Shop.',
+  ],
+  [
+    'visibility',
+    'SEO & AI visibility',
+    'Check index access, product facts and AI referral traffic before prioritizing changes.',
+  ],
+  [
+    'sourcing',
+    'Sourcing & 1688',
+    'Connect marketplace questions to image-search candidates, offer details and supplier verification.',
+  ],
+  [
+    'agents',
+    'APIs & AI agents',
+    'Choose REST or MCP workflows by input, returned fields, marketplace coverage and credit requirements.',
+  ],
+  [
+    'creative',
+    'Product images & video',
+    'Plan product media, compare model workflows and inspect identity-preservation limits.',
+  ],
+  [
+    'evidence',
+    'Evidence & case studies',
+    'Inspect dated requests, observed outputs, source artifacts and the limits of each test.',
+  ],
+] as const;
+const evidence = [
+  [
+    'portable-blender-keyword-competitor',
+    'Keyword estimates and competitor sampling',
+    '2026-10-07',
+    'Ten keyword ideas and ten Amazon results; one result was outside the intended product category.',
+  ],
+  [
+    'portable-blender-amazon-1688',
+    'Amazon-to-1688 sourcing workflow',
+    '2026-10-07',
+    'Ten candidate offers and two detail records; similarity does not verify the factory or an identical SKU.',
+  ],
+  [
+    'amazon-price-series',
+    'Amazon price-series response',
+    '2026-09-30',
+    'Four returned observations; a requested time range does not establish continuous historical coverage.',
+  ],
+  [
+    'gpt-image-2-5-flare',
+    'Reference-image editing and product fidelity',
+    '2026-09-23',
+    'One recorded image edit with credit use and an exact-SKU preservation failure.',
+  ],
+] as const;
 
 export const metadata: Metadata = {
-  title: 'Free Product Page Review & Seller Resources | Nexscope',
+  title: 'Ecommerce Research, SEO & API Evidence | Nexscope Learn',
   description:
-    'Get free product-page feedback and an approved public Gallery listing linked to your store. Explore Nexscope seller guides, tools and API workflows.',
-  keywords: [
-    'free product page review',
-    'professional product page feedback',
-    'free product showcase for online sellers',
-    'product listing improvement advice',
-    'ecommerce product visibility help',
-  ],
+    'Official Nexscope guides, tools and dated evidence for ecommerce product research, SEO, AI visibility, 1688 sourcing, APIs and product media.',
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'Free Product Page Review & Seller Resources | Nexscope',
+    title: 'Nexscope Learn — Research, Workflows & Evidence',
     description:
-      'Get free product-page feedback and a public Gallery page if approved. Find seller guides and tools for your next product decision.',
+      'Start with a task. Inspect the evidence. Choose your next ecommerce workflow.',
     url: '/',
-    siteName: 'Nexscope',
     type: 'website',
     images: [DEFAULT_SOCIAL_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Product Page Review & Seller Resources | Nexscope',
-    description:
-      'Get free product-page feedback and a public Gallery page if approved. Find seller guides and tools for your next product decision.',
+    title: 'Nexscope Learn — Research, Workflows & Evidence',
+    description: 'Official guides, tools and dated ecommerce evidence.',
     images: [DEFAULT_SOCIAL_IMAGE],
   },
 };
-
-const sellerProblems = [
-  {
-    id: 'product-visibility',
-    label: 'DISCOVERY',
-    title: 'My product needs more visibility',
-    description:
-      'Get a second look at product facts and search language, plus an additional public showcase if approved.',
-    link: 'Explore product visibility help',
-  },
-  {
-    id: 'product-page-review',
-    label: 'BUYER CLARITY',
-    title: 'Visitors arrive but do not buy',
-    description:
-      'Check whether your product details, images and compatibility information leave buyer questions unanswered.',
-    link: 'Explore product-page feedback',
-  },
-  {
-    id: 'product-media-review',
-    label: 'PRODUCT VISUALS',
-    title: 'My photos do not explain the product',
-    description:
-      'Review variant accuracy, scale, included items and real use before planning new photos or video.',
-    link: 'Explore image and video feedback',
-  },
-] as const;
 
 export default function Home() {
   return (
@@ -83,230 +103,233 @@ export default function Home() {
               {
                 '@type': 'WebSite',
                 '@id': 'https://learn.nexscope.ai/#website',
-                name: 'Nexscope Learning Hub',
+                name: 'Nexscope Learn',
                 url: 'https://learn.nexscope.ai/',
-                inLanguage: 'en',
                 publisher: { '@id': 'https://www.nexscope.ai/#organization' },
               },
               {
                 '@type': 'CollectionPage',
                 '@id': 'https://learn.nexscope.ai/#webpage',
+                name: 'Ecommerce Research, SEO & API Evidence',
                 url: 'https://learn.nexscope.ai/',
-                name: 'Free Product Page Review & Seller Resources',
-                description:
-                  'Free product-page feedback, a public Product Gallery if approved, and seller resources for product visibility, research, SEO and creative workflows.',
                 isPartOf: { '@id': 'https://learn.nexscope.ai/#website' },
-                about: [
-                  { '@type': 'Thing', name: 'Ecommerce product research' },
-                  {
-                    '@type': 'Thing',
-                    name: 'Amazon keyword and review research',
-                  },
-                  {
-                    '@type': 'Thing',
-                    name: 'Ecommerce SEO and AI search visibility',
-                  },
-                  {
-                    '@type': 'Thing',
-                    name: 'Ecommerce APIs and Model Context Protocol',
-                  },
-                  {
-                    '@type': 'Thing',
-                    name: 'AI product image and video creation',
-                  },
-                ],
+                mainEntity: {
+                  '@type': 'ItemList',
+                  itemListElement: topics.map(([slug, name], index) => ({
+                    '@type': 'ListItem',
+                    position: index + 1,
+                    name,
+                    url: `https://learn.nexscope.ai${library}/topics/${slug}/`,
+                  })),
+                },
               },
             ],
           }),
         }}
       />
-      <script src="/campaigns.js" defer />
+      <script src="/campaigns.js?v=3" defer />
       <a className={styles.skip} href="#main">
         Skip to content
       </a>
-      <MarketingHeader
-        campaign="homepage"
-        explorePath="/apis"
-        productReviewCta
-      />
-
+      <MarketingHeader campaign="homepage" />
       <main id="main">
-        <section className={`${styles.wrap} ${styles.hero}`} id="overview">
-          <p className={styles.eyebrow}>NEXSCOPE · FREE PRODUCT-PAGE REVIEW</p>
+        <section className={`${styles.wrap} ${styles.hero}`}>
+          <p className={styles.eyebrow}>
+            OFFICIAL NEXSCOPE LEARNING & EVIDENCE CENTER
+          </p>
           <h1>
-            Improve your product page.
+            Make your next commerce decision.
             <br />
-            <em>Add a place to be seen.</em>
+            <em>Start with the evidence.</em>
           </h1>
           <p className={styles.lead}>
-            Submit one product for professional feedback on its title,
-            description and visuals. If approved and published, it also gets a
-            free Product Gallery page linked to your store—another place for
-            shoppers to discover it.
+            Nexscope Learn helps sellers, brands, agencies and developers
+            research products, improve search visibility, source candidates and
+            build with ecommerce APIs. Follow a practical workflow, inspect its
+            evidence and understand its limits before acting.
           </p>
           <div className={styles.actions}>
-            <a
-              className={styles.button}
-              data-showcase-submit-cta="root-home-hero"
-              href="/ecommerce-ai-tools/product-showcase/submit/"
-            >
-              Get free product-page feedback <ArrowRight size={17} />
+            <a className={styles.button} href="#topics">
+              Choose your task <ArrowRight size={17} />
             </a>
             <a
               className={styles.heroTextLink}
-              href="/ecommerce-ai-tools/product-showcase/"
+              href={`${library}/api-evidence/`}
             >
-              Explore the Gallery <ArrowRight size={16} />
+              Inspect real tests <ArrowRight size={16} />
             </a>
           </div>
           <p className={styles.micro}>
-            Free review and approved listing · No store connection · Your store
-            handles purchases
+            Guides and evidence by Nexscope · Current product access, pricing
+            and terms on nexscope.ai
           </p>
-
-          <div
-            className={styles.workflow}
-            aria-label="How the free product-page review works"
+          <nav
+            className={styles.sellerResourceLinks}
+            aria-label="Research by marketplace"
           >
-            <div className={styles.workflowStep}>
-              <span>01 · SHARE ONE PRODUCT</span>
-              <strong>Start with what you sell</strong>
-              <p>
-                Public product URL or ASIN · Short description · One accurate
-                image
-              </p>
-            </div>
-            <span className={styles.workflowArrow} aria-hidden="true">
-              →
-            </span>
-            <div className={`${styles.workflowStep} ${styles.workflowCenter}`}>
-              <span>02 · READ YOUR REVIEW</span>
-              <strong>Get specific feedback</strong>
-              <p>
-                See clear strengths and meaningful gaps on your private page
-              </p>
-            </div>
-            <span className={styles.workflowArrow} aria-hidden="true">
-              →
-            </span>
-            <div className={styles.workflowStep}>
-              <span>03 · SHOW YOUR PRODUCT</span>
-              <strong>Add a discovery route</strong>
-              <p>
-                A free public Gallery page linked to your store, if approved and
-                published
-              </p>
-            </div>
-          </div>
-          <p className={styles.workflowNote}>
-            Save your private review link. No fixed review deadline or automatic
-            status email. Publication, indexing, traffic and sales are not
-            guaranteed.
-          </p>
+            <a href="/amazon-research/">Amazon research →</a>
+            <a href="/shopify-competitor-product-research/">
+              Shopify competitors →
+            </a>
+            <a href="/tools/tiktok-shop-new-product-validator/">
+              TikTok Shop validation →
+            </a>
+            <a href="/1688-supplier-product-sourcing/">1688 sourcing →</a>
+          </nav>
         </section>
-
-        <section
-          className={`${styles.wrap} ${styles.sellerProblems}`}
-          aria-labelledby="seller-problems-title"
-        >
+        <section className={`${styles.wrap} ${styles.mapSection}`} id="topics">
           <div className={styles.sectionHeading}>
             <div>
-              <p className={styles.eyebrow}>START WITH YOUR SELLER PROBLEM</p>
-              <h2 id="seller-problems-title">
-                What is holding your product back?
-              </h2>
+              <p className={styles.eyebrow}>START WITH YOUR TASK</p>
+              <h2>Six paths to a more informed decision.</h2>
             </div>
-            <p>Choose the help that fits your product page.</p>
+            <p>
+              Each path connects guides, tools, evidence and official product
+              documentation.
+            </p>
           </div>
-          <div className={styles.sellerProblemGrid}>
-            {sellerProblems.map((problem) => (
+          <div className={styles.sceneGrid}>
+            {topics.map(([slug, title, description]) => (
               <a
-                className={styles.sellerProblemCard}
-                key={problem.id}
-                data-seller-help={problem.id}
-                href={`/ecommerce-ai-tools/seller-help/${problem.id}/`}
+                className={styles.sceneCard}
+                key={slug}
+                href={`${library}/topics/${slug}/`}
               >
-                <span>{problem.label}</span>
-                <h3>{problem.title}</h3>
-                <p>{problem.description}</p>
-                <strong>
-                  {problem.link} <ArrowRight size={16} />
-                </strong>
+                <h3>{title}</h3>
+                <p>{description}</p>
+                <strong>Explore this workflow →</strong>
               </a>
             ))}
           </div>
-          <div className={styles.sellerExample}>
+        </section>
+        <section
+          className={`${styles.wrap} ${styles.evidenceSection}`}
+          id="evidence"
+        >
+          <div className={styles.sectionHeading}>
             <div>
-              <strong>See what a published product page looks like.</strong>
+              <p className={styles.eyebrow}>DATED TEST RECORDS</p>
+              <h2>See what was actually returned.</h2>
+            </div>
+            <p>
+              Test records describe individual observations. They do not
+              establish ongoing availability or business outcomes.
+            </p>
+          </div>
+          <div className={styles.sceneGrid}>
+            {evidence.map(([slug, title, date, description]) => (
+              <a
+                className={styles.sceneCard}
+                key={slug}
+                href={`${library}/api-evidence/${slug}/`}
+              >
+                <span>
+                  Record updated <time dateTime={date}>{date}</time>
+                </span>
+                <h3>{title}</h3>
+                <p>{description}</p>
+                <strong>Inspect inputs, output and limits →</strong>
+              </a>
+            ))}
+          </div>
+        </section>
+        <section className={`${styles.wrap} ${styles.method}`}>
+          <div className={styles.sectionHeading}>
+            <div>
+              <p className={styles.eyebrow}>HOW TO USE THE EVIDENCE</p>
+              <h2>Connect an observation to a decision.</h2>
+            </div>
+          </div>
+          <div className={styles.methodGrid}>
+            <div>
+              <h3>1. Define the task</h3>
               <p>
-                Inspect the format, product details and original listing link.
-                This example does not establish traffic or sales results.
+                Choose a marketplace, comparable products and a time window.
+                Sellers can start with demand or reviews; developers can start
+                with a required response field.
               </p>
             </div>
-            <a href="/ecommerce-ai-tools/product-showcase/product/336e970a-19aa-4a7d-9361-7b056f55d4f1/">
-              View a published example <ArrowRight size={16} />
-            </a>
+            <div>
+              <h3>2. Inspect the source</h3>
+              <p>
+                Separate returned observations, provider estimates and vendor
+                claims. Check the source date and limitations before comparing
+                numbers.
+              </p>
+            </div>
+            <div>
+              <h3>3. Run a bounded test</h3>
+              <p>
+                Use the linked tool or API documentation. Verify current access,
+                coverage and credit requirements, then record the result before
+                expanding.
+              </p>
+            </div>
           </div>
           <nav
             className={styles.sellerResourceLinks}
-            aria-label="More seller resources"
+            aria-label="Complete workflows"
           >
-            <a href="/tools/">Find a tool →</a>
-            <a href="/ecommerce-ai-tools/guides/">Read seller tutorials →</a>
-            <a href="/ecommerce-ai-tools/community/">Get official help →</a>
+            <a href={`${library}/portable-blender-market-research-case-study/`}>
+              Demand → competitors → sourcing →
+            </a>
+            <a href="/ecommerce-seo-ai-search-visibility/">
+              Index access → visibility → measurement →
+            </a>
+            <a href={`${library}/ecommerce-api-for-ai-agents/`}>
+              Required evidence → API → agent →
+            </a>
           </nav>
         </section>
-
         <HomeLibrary />
-
         <section className={`${styles.wrap} ${styles.closing}`}>
-          <p>START WITH ONE PRODUCT</p>
-          <h2>Give your listing a fresh pair of eyes.</h2>
+          <p>WORK WITH YOUR OWN PRODUCT</p>
+          <h2>Get feedback on one product page.</h2>
           <span>
-            Request free editorial feedback. A public Gallery page follows if
-            approved and published.
+            Request free editorial feedback on product details and visuals.
+            Approved submissions may receive a public Gallery page linked to the
+            original store.
           </span>
           <a
             className={styles.button}
             data-showcase-submit-cta="root-home-footer"
-            href="/ecommerce-ai-tools/product-showcase/submit/"
+            href={`${library}/product-showcase/submit/`}
           >
-            Get free product-page feedback <ArrowRight size={17} />
+            Get product-page feedback <ArrowRight size={17} />
           </a>
+          <p>
+            <a href={`${library}/product-showcase/`}>
+              Browse seller-submitted products →
+            </a>
+          </p>
         </section>
       </main>
-
       <footer className={`${styles.wrap} ${styles.footer}`}>
         <div>
-          <a href="/" aria-label="Nexscope home">
-            <img
-              className={styles.logo}
-              src="/logo.png"
-              alt="Nexscope"
-              width="165"
-              height="32"
-            />
-          </a>
-          <p>Ecommerce intelligence. AI-powered possibilities.</p>
+          <a href="/">Nexscope Learn</a>
+          <p>Practical workflows. Inspectable evidence.</p>
         </div>
-        <div className={styles.footerlinks}>
+        <nav className={styles.footerlinks} aria-label="Footer">
+          <a href={`${library}/`}>Resource library</a>
           <a href="/tools/">Tools</a>
-          <a href="/ecommerce-ai-tools/">Learn</a>
-          <a href="/about/">About</a>
+          <a href={`${library}/ecommerce-trends/`}>Insights</a>
+          <a href={`${library}/alternatives/`}>Comparisons</a>
+          <a href={`${library}/product-showcase/`}>Product Gallery</a>
+          <a href={`${library}/community/`}>Community</a>
+          <a href="/about/">About Nexscope</a>
+          <a href={`${library}/about/`}>About Learn</a>
+          <a href={`${library}/editorial-policy/`}>Editorial policy</a>
           <a href="/security/">Security</a>
           <a href="/contact/">Contact</a>
-          <a href="/ecommerce-ai-tools/editorial-policy/">Editorial policy</a>
-          <a data-track href={docs}>
-            API docs
-          </a>
+          <a href="https://www.nexscope.ai/api-docs?co-from=learn">API docs</a>
           <a href="https://www.nexscope.ai/privacy">Privacy</a>
           <a href="https://www.nexscope.ai/terms">Terms</a>
           <a href="#analytics-preferences">Cookie settings</a>
-        </div>
+        </nav>
         <p className={styles.disclosure}>
-          Links to Nexscope may include campaign parameters for attribution.
-          Current product availability, access, credits and terms are shown on
-          nexscope.ai.
+          Nexscope publishes these resources about its own products. Compare
+          linked primary sources and inspect test limits. Current access,
+          credits and terms are shown on nexscope.ai.
         </p>
       </footer>
     </div>

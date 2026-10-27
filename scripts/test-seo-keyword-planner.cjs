@@ -112,18 +112,18 @@ test('analysis reads its report while processing remains an explicit non-final s
   await assert.rejects(planner.callSkill(async () => ({ ok: true, status: 200, json: async () => ({ code: 0, data: { status: 'PROCESSING' } }) }), 'seo-keyword-metrics', 'run', {}, 'nk-example'), /not confirmed/);
 });
 
-test('production export includes the new route and does not inject third-party analytics beside the API key', () => {
+test('production export includes the new route and does not inject third-party analytics beside the API key', async () => {
   const root = join(__dirname, '..');
   const route = readFileSync(join(root, 'app', 'tools', 'seo-keyword-planner', 'page.tsx'), 'utf8');
   const directory = readFileSync(join(root, 'lib', 'tool-plaza.ts'), 'utf8');
   const exportScript = readFileSync(join(root, 'scripts', 'prepare-github-pages.mjs'), 'utf8');
-  const sitemap = readFileSync(join(root, 'public', 'sitemap.xml'), 'utf8');
+  const { publishedPaths } = await import('./site-routes.mjs');
   assert.match(route, /name="apiKey"\s+type="text"/);
   assert.match(route, /tab:\s*'api-keys',\s*mode:\s*'data'/);
   assert.match(directory, /href: '\/tools\/seo-keyword-planner\/'/);
-  assert.match(exportScript, /'seo-keyword-planner'/);
+  assert.ok(publishedPaths.includes('/tools/seo-keyword-planner/'));
   assert.match(exportScript, /interactiveWorkflowSlugs\.some[\s\S]*index\.html/);
-  assert.match(sitemap, /https:\/\/learn\.nexscope\.ai\/tools\/seo-keyword-planner\//);
+  assert.match(exportScript, /generateSitemap\(clientDirectory, publishedPaths\)/);
 });
 
 test('runtime cache-busts the revised competitor report script', () => {

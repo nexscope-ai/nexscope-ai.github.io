@@ -129,19 +129,19 @@ test('auth failures never echo the key or provider diagnostics', async () => {
     error => !error.message.includes('nk-secret') && /key was rejected/.test(error.message));
 });
 
-test('the root-site routes, sitemap and analytics exception cover all three tools', () => {
+test('the root-site routes, sitemap and analytics exception cover all three tools', async () => {
   const root = join(__dirname, '..');
   const route = readFileSync(join(root, 'app', 'tools', '[slug]', 'page.tsx'), 'utf8');
   const data = readFileSync(join(root, 'lib', 'workflow-tools.ts'), 'utf8');
-  const sitemap = readFileSync(join(root, 'public', 'sitemap.xml'), 'utf8');
+  const { publishedPaths, interactiveWorkflowSlugs } = await import('./site-routes.mjs');
   const exportScript = readFileSync(join(root, 'scripts', 'prepare-github-pages.mjs'), 'utf8');
   const directory = readFileSync(join(root, 'app', 'tools', 'page.tsx'), 'utf8');
   const directoryCards = readFileSync(join(root, 'components', 'tool-directory.tsx'), 'utf8');
   const analytics = readFileSync(join(root, 'public', 'analytics.js'), 'utf8');
   for (const slug of ['amazon-to-1688-supplier-finder', 'tiktok-shop-new-product-validator', 'tiktok-shop-creator-match']) {
     assert.ok(data.includes(`slug: '${slug}'`));
-    assert.ok(sitemap.includes(`https://learn.nexscope.ai/tools/${slug}/`));
-    assert.ok(exportScript.includes(`'${slug}'`));
+    assert.ok(publishedPaths.includes(`/tools/${slug}/`));
+    assert.ok(interactiveWorkflowSlugs.includes(slug));
   }
   assert.match(route, /name="apiKey"\s+type="text"/);
   assert.match(route, /https:\/\/www\.nexscope\.ai\/seller\/api-access/);

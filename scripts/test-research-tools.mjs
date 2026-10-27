@@ -570,11 +570,10 @@ void test('direct provider success and business failures are interpreted separat
 });
 
 void test('only requested new routes appear in the plaza, sitemap and analytics exception list', async () => {
-  const script = await readFile(new URL('./prepare-github-pages.mjs', import.meta.url), 'utf8');
-  const sitemap = await readFile(new URL('../public/sitemap.xml', import.meta.url), 'utf8');
+  const { interactiveWorkflowSlugs, publishedPaths } = await import('./site-routes.mjs');
   for (const tool of researchTools) {
-    assert.ok(script.includes(`'${tool.slug}'`));
-    assert.ok(sitemap.includes(`/tools/${tool.slug}/`));
+    assert.ok(interactiveWorkflowSlugs.includes(tool.slug));
+    assert.ok(publishedPaths.includes(`/tools/${tool.slug}/`));
     assert.ok(toolCards.some((card) => card.href === `/tools/${tool.slug}/`));
   }
   for (const slug of [
@@ -583,8 +582,8 @@ void test('only requested new routes appear in the plaza, sitemap and analytics 
     'tiktok-ad-product-evidence',
     'ai-shopping-readiness-check',
   ]) {
-    assert.ok(!script.includes(`'${slug}'`));
-    assert.ok(!sitemap.includes(`/tools/${slug}/`));
+    assert.ok(!interactiveWorkflowSlugs.includes(slug));
+    assert.ok(!publishedPaths.includes(`/tools/${slug}/`));
     assert.ok(!toolCards.some((card) => card.href === `/tools/${slug}/`));
   }
 });

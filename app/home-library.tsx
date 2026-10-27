@@ -165,7 +165,7 @@ const entries: Entry[] = [
     description:
       'Explore REST APIs, MCP tools and skills for research workflows built on commerce data.',
     area: 'Agents & APIs',
-    kind: 'Tool',
+    kind: 'Guide',
     href: '/ecommerce-ai-agents/',
     path: 'Business question → data retrieval → agent answer',
     boundary: 'Agent outputs still need human review and source checking.',
@@ -175,7 +175,7 @@ const entries: Entry[] = [
     description:
       'Turn approved product visuals into video concepts and assess the output before publishing.',
     area: 'Images & video',
-    kind: 'Tool',
+    kind: 'Guide',
     href: '/ai-product-videos/',
     path: 'Product assets → video generation → review',
     boundary: 'Generation may introduce visual or claim inaccuracies.',
@@ -185,7 +185,7 @@ const entries: Entry[] = [
     description:
       'Plan a product video from a clear brief, suitable assets and a review checklist.',
     area: 'Images & video',
-    kind: 'Tool',
+    kind: 'Guide',
     href: '/ai-video-generator/',
     path: 'Brief → generation → quality review',
     boundary:
@@ -380,7 +380,11 @@ export default function HomeLibrary() {
                       <strong>{entry.path}</strong>
                     </div>
                     <div className={styles.entryActions}>
-                      <a href={entry.href} data-track>
+                      <a
+                        href={entry.href}
+                        data-track
+                        aria-label={`Open ${entry.title}`}
+                      >
                         Open resource <ArrowRight size={15} />
                       </a>
                       <span>{entry.area}</span>

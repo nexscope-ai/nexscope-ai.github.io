@@ -7,64 +7,12 @@ import {
   writeFile,
 } from 'node:fs/promises';
 
+import {
+  interactiveWorkflowSlugs,
+  routeSlugs,
+  publishedPaths,
+} from './site-routes.mjs';
 const clientDirectory = new URL('../dist/client/', import.meta.url);
-const interactiveWorkflowSlugs = [
-  '1688-product-detail-analyzer',
-  '1688-product-selection-screener',
-  'shopee-competitor-analyzer',
-  'ozon-product-selection-analyzer',
-  'amazon-to-1688-supplier-finder',
-  'tiktok-shop-new-product-validator',
-  'tiktok-shop-creator-match',
-  'seo-keyword-planner',
-  'amazon-niche-opportunity-evaluator',
-  'amazon-product-price-checker',
-  '1688-wholesale-price-finder',
-  'amazon-price-history-analyzer',
-  'reverse-asin-keyword-gap',
-  'ai-shopping-product-data-checker',
-  'tiktok-shop-bestseller-momentum',
-  '1688-amazon-demand-matcher',
-];
-const routeSlugs = [
-  'ecommerce-product-demand-validation',
-  'shopify-competitor-product-research',
-  'ecommerce-seo-ai-search-visibility',
-  'amazon-review-customer-insights',
-  '1688-supplier-product-sourcing',
-  'amazon-research',
-  'ecommerce-ai-agents',
-  'ai-product-videos',
-  'ai-video-generator',
-  'about',
-  'security',
-  'contact',
-  'tools',
-  ...interactiveWorkflowSlugs.map((slug) => `tools/${slug}`),
-];
-
-// Keep the root sitemap aligned with the routes this repository actually publishes.
-// The Jekyll learning-center sitemap is maintained by its own repository.
-const sitemap = await readFile(
-  new URL('../public/sitemap.xml', import.meta.url),
-  'utf8',
-);
-const listedUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(
-  (match) => new URL(match[1]).href,
-);
-const listedSet = new Set(listedUrls);
-const expectedSet = new Set(
-  ['/', ...routeSlugs.map((slug) => `/${slug}/`)].map(
-    (path) => new URL(path, 'https://learn.nexscope.ai').href,
-  ),
-);
-const missing = [...expectedSet].filter((url) => !listedSet.has(url));
-const extra = [...listedSet].filter((url) => !expectedSet.has(url));
-if (listedUrls.length !== listedSet.size || missing.length || extra.length) {
-  throw new Error(
-    `Root sitemap must match published routes. Missing: ${missing.join(', ') || 'none'}; extra: ${extra.join(', ') || 'none'}; duplicates: ${listedUrls.length - listedSet.size}`,
-  );
-}
 
 await Promise.all(
   routeSlugs.map(async (slug) => {
@@ -119,7 +67,9 @@ async function addAnalytics(directory) {
       if (html.includes('data-legacy-redirect')) continue;
       const scripts = [];
       if (!html.includes('src="/traffic-attribution.js?v=1"')) {
-        scripts.push('<script src="/traffic-attribution.js?v=1" defer></script>');
+        scripts.push(
+          '<script src="/traffic-attribution.js?v=1" defer></script>',
+        );
       }
       if (!html.includes('src="/analytics.js?v=10"')) {
         scripts.push('<script src="/analytics.js?v=10" defer></script>');
@@ -143,8 +93,7 @@ await addAnalytics(clientDirectory);
 // Keep Learn-to-main links within the same GA4 session. Published anchors,
 // including card and tool links, must not start a new acquisition campaign.
 const officialAnchor = /(<a\b[^>]*?\bhref\s*=\s*)(["'])(.*?)\2/gi;
-const decodeAttribute = (value) =>
-  value.replace(/&(?:amp|#38|#x26);/gi, '&');
+const decodeAttribute = (value) => value.replace(/&(?:amp|#38|#x26);/gi, '&');
 const escapeAttribute = (value) =>
   value.replaceAll('&', '&amp;').replaceAll('"', '&quot;');
 
@@ -152,7 +101,10 @@ async function attributeOfficialLinks(directory) {
   let pageCount = 0;
   let linkCount = 0;
   for (const entry of await readdir(directory, { withFileTypes: true })) {
-    const file = new URL(entry.name + (entry.isDirectory() ? '/' : ''), directory);
+    const file = new URL(
+      entry.name + (entry.isDirectory() ? '/' : ''),
+      directory,
+    );
     if (entry.isDirectory()) {
       const nested = await attributeOfficialLinks(file);
       pageCount += nested.pageCount;
@@ -162,31 +114,45 @@ async function attributeOfficialLinks(directory) {
     if (!entry.name.endsWith('.html')) continue;
     pageCount += 1;
     const original = await readFile(file, 'utf8');
-    const updated = original.replace(officialAnchor, (whole, prefix, quote, rawHref) => {
-      const href = decodeAttribute(rawHref);
-      let url;
-      try {
-        url = new URL(href);
-      } catch {
-        return whole;
-      }
-      if (url.protocol !== 'https:' || !['nexscope.ai', 'www.nexscope.ai'].includes(url.hostname)) {
-        return whole;
-      }
-      linkCount += 1;
-      url.hostname = 'www.nexscope.ai';
-      url.searchParams.set('co-from', 'learn');
-      // oxlint-disable-next-line unicorn/no-useless-spread -- Snapshot the keys before deleting from URLSearchParams.
-      for (const key of [...url.searchParams.keys()]) {
-        if (key.startsWith('utm_')) url.searchParams.delete(key);
-      }
-      return `${prefix}${quote}${escapeAttribute(url.toString())}${quote}`;
-    });
+    const updated = original.replace(
+      officialAnchor,
+      (whole, prefix, quote, rawHref) => {
+        const href = decodeAttribute(rawHref);
+        let url;
+        try {
+          url = new URL(href);
+        } catch {
+          return whole;
+        }
+        if (
+          url.protocol !== 'https:' ||
+          !['nexscope.ai', 'www.nexscope.ai'].includes(url.hostname)
+        ) {
+          return whole;
+        }
+        linkCount += 1;
+        url.hostname = 'www.nexscope.ai';
+        url.searchParams.set('co-from', 'learn');
+        // oxlint-disable-next-line unicorn/no-useless-spread -- Snapshot the keys before deleting from URLSearchParams.
+        for (const key of [...url.searchParams.keys()]) {
+          if (key.startsWith('utm_')) url.searchParams.delete(key);
+        }
+        return `${prefix}${quote}${escapeAttribute(url.toString())}${quote}`;
+      },
+    );
     for (const match of updated.matchAll(officialAnchor)) {
-      const url = new URL(decodeAttribute(match[3]), 'https://learn.nexscope.ai');
+      const url = new URL(
+        decodeAttribute(match[3]),
+        'https://learn.nexscope.ai',
+      );
       if (url.hostname !== 'www.nexscope.ai') continue;
-      if (url.searchParams.get('co-from') !== 'learn' || [...url.searchParams.keys()].some(key => key.startsWith('utm_'))) {
-        throw new Error(`Invalid Learn-to-main attribution on ${file.pathname}`);
+      if (
+        url.searchParams.get('co-from') !== 'learn' ||
+        [...url.searchParams.keys()].some((key) => key.startsWith('utm_'))
+      ) {
+        throw new Error(
+          `Invalid Learn-to-main attribution on ${file.pathname}`,
+        );
       }
     }
     if (updated !== original) await writeFile(file, updated);
@@ -195,4 +161,10 @@ async function attributeOfficialLinks(directory) {
 }
 
 const outboundAttribution = await attributeOfficialLinks(clientDirectory);
-console.log(`Attributed ${outboundAttribution.linkCount} official links across ${outboundAttribution.pageCount} exported pages.`);
+console.log(
+  `Attributed ${outboundAttribution.linkCount} official links across ${outboundAttribution.pageCount} exported pages.`,
+);
+
+// Read the canonical HTML actually exported instead of maintaining a second URL list.
+const { generateSitemap } = await import('./generate-sitemap.mjs');
+await generateSitemap(clientDirectory, publishedPaths);

@@ -44,7 +44,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script src="/outbound-attribution.js" defer />
+        <script src="/outbound-attribution.js?v=2" defer />
       </head>
       <body>{children}</body>
     </html>
