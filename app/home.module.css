@@ -347,8 +347,37 @@
   background: #fbf9f4;
 }
 .evidenceSection {
-  background: #f4f0e8;
-  border-bottom: 1px solid #ddd6ca;
+  background: transparent;
+}
+.evidenceSection .sceneGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.evidenceSection .sceneCard {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 260px;
+  padding: 32px;
+}
+.evidenceSection .sceneCard > span {
+  color: #817d88;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.home .evidenceSection .sceneCard h3 {
+  margin: 0;
+  line-height: 1.35;
+}
+.evidenceSection .sceneCard p {
+  max-width: none;
+  line-height: 1.7;
+}
+.evidenceSection .sceneCard strong {
+  margin-top: auto;
+  padding-top: 4px;
+  font-size: 14px;
+  line-height: 1.5;
 }
 .evidenceGrid {
   display: grid;
@@ -828,6 +857,14 @@
   }
 }
 @media (max-width: 700px) {
+  .evidenceSection .sceneGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .evidenceSection .sceneCard {
+    min-height: 0;
+    padding: 24px;
+  }
   .wrap,
   .nav {
     width: calc(100% - 36px);
