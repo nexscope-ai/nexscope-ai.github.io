@@ -98,14 +98,6 @@
   opacity: 0.4;
   cursor: default;
 }
-.toggle em {
-  font-style: normal;
-  font-size: 10px;
-  padding: 4px 6px;
-  border-radius: 4px;
-  color: #3f7a5d;
-  background: #e5f3ea;
-}
 .cycleNote {
   font-size: 11px;
   color: #978ba0;

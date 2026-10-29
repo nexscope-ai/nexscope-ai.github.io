@@ -1,6 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
+  pricingBillingUrl,
+  openPricingSelection,
+} from '../lib/pricing-navigation.mjs';
+import {
   monthlyPlans,
   loadMonthlyPlans,
   loadSubscriptionPlans,
@@ -17,6 +21,81 @@ const plan = {
   name: 'Starter',
   level: 200,
 };
+test('billing destinations preserve exact SKU and cycle using the main-site pricing intent', () => {
+  for (const [level, name] of [
+    [200, 'starter'],
+    [300, 'growth'],
+    [400, 'pro'],
+    [500, 'level-500'],
+  ]) {
+    for (const period of [1, 12]) {
+      const sku = `sku-${level}-${period}`;
+      const url = new URL(
+        pricingBillingUrl({ level, billingPeriod: period, sku }),
+      );
+      assert.equal(url.origin, 'https://www.nexscope.ai');
+      assert.equal(url.pathname, '/seller/billing');
+      assert.deepEqual(Object.fromEntries(url.searchParams), {
+        mode: 'creative',
+        source: 'pricing',
+        intent: 'subscribe',
+        plan: name,
+        cycle: period === 12 ? 'annual' : 'monthly',
+        sku,
+        'co-from': 'learn',
+      });
+      assert.equal(url.hash, '#plans');
+      assert.equal(url.searchParams.has('price'), false);
+    }
+  }
+  assert.equal(
+    new URL(
+      pricingBillingUrl({ level: null, billingPeriod: 12, sku: 'unknown' }),
+    ).pathname,
+    '/pricing',
+  );
+});
+test('ordinary click opens one attributed URL synchronously without login checks; modified clicks keep native behavior', () => {
+  const original = globalThis.window;
+  const opened = [];
+  let prevented = 0;
+  globalThis.window = { open: (...args) => opened.push(args) };
+  try {
+    const event = {
+      button: 0,
+      defaultPrevented: false,
+      currentTarget: {
+        href: pricingBillingUrl({
+          level: 300,
+          billingPeriod: 12,
+          sku: 'growth-yearly',
+        }),
+      },
+      preventDefault() {
+        prevented += 1;
+      },
+    };
+    openPricingSelection(event);
+    assert.deepEqual(opened, [
+      [event.currentTarget.href, '_blank', 'noopener'],
+    ]);
+    assert.equal(prevented, 1);
+    for (const modifier of [
+      { ctrlKey: true },
+      { metaKey: true },
+      { shiftKey: true },
+      { altKey: true },
+      { button: 1 },
+      { defaultPrevented: true },
+    ])
+      openPricingSelection({ ...event, ...modifier });
+    assert.equal(opened.length, 1);
+    assert.equal(prevented, 1);
+  } finally {
+    if (original === undefined) delete globalThis.window;
+    else globalThis.window = original;
+  }
+});
 test('monthly prices use cents and exclude annual, withdrawn and malformed plans', () => {
   const result = monthlyPlans({
     code: 0,

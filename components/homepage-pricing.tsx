@@ -3,6 +3,10 @@
 import { useState } from 'react';
 import { ArrowRight, Check, Sparkles } from 'lucide-react';
 import { annualSavings } from '@/lib/public-pricing.mjs';
+import {
+  pricingBillingUrl,
+  openPricingSelection,
+} from '@/lib/pricing-navigation.mjs';
 import styles from './homepage-pricing.module.css';
 
 type Plan = {
@@ -35,10 +39,6 @@ export default function HomepagePricing({ plans }: { plans: Plan[] }) {
         plan.introductoryPrice !== null &&
         plan.introductoryPrice * 2 === plan.price,
     );
-  const maxAnnualSaving = Math.max(
-    0,
-    ...plans.map((plan) => annualSavings(plan, plans)?.percent ?? 0),
-  );
 
   return (
     <section className={styles.section} aria-labelledby="subscription-title">
@@ -71,12 +71,7 @@ export default function HomepagePricing({ plans }: { plans: Plan[] }) {
                 onChange={() => setCycle(period)}
                 disabled={!plans.some((plan) => plan.billingPeriod === period)}
               />
-              <span>
-                {period === 12 ? 'Yearly' : 'Monthly'}
-                {period === 12 && maxAnnualSaving > 0 && (
-                  <em>Save up to {maxAnnualSaving}%</em>
-                )}
-              </span>
+              <span>{period === 12 ? 'Yearly' : 'Monthly'}</span>
             </label>
           ))}
         </fieldset>
@@ -141,7 +136,13 @@ export default function HomepagePricing({ plans }: { plans: Plan[] }) {
                       </p>
                     )}
                   </div>
-                  <a href={pricingUrl} data-track-tool="subscription-pricing">
+                  <a
+                    href={pricingBillingUrl(plan)}
+                    target="_blank"
+                    rel="noopener"
+                    onClick={openPricingSelection}
+                    data-track-tool="subscription-pricing"
+                  >
                     Choose {plan.name}
                     <ArrowRight size={16} aria-hidden="true" />
                   </a>
@@ -166,23 +167,16 @@ export default function HomepagePricing({ plans }: { plans: Plan[] }) {
                     <div
                       className={`${styles.comparison} ${savings.perMonth > 0 ? styles.saving : ''}`}
                     >
-                      {savings.perMonth > 0 ? (
-                        <>
-                          <strong>
-                            Save {dollars(savings.perMonth)}/mo ·{' '}
-                            {savings.percent}% less
-                          </strong>
-                          <span>
-                            {dollars(plan.price / 12)}/mo yearly vs{' '}
-                            {dollars(savings.monthlyPrice)}/mo monthly, before
-                            the first-subscription offer.
-                          </span>
-                        </>
-                      ) : (
-                        <span>
-                          Same standard monthly equivalent as monthly billing.
-                        </span>
-                      )}
+                      <strong>
+                        Yearly {dollars(plan.price / 12)}/mo vs monthly{' '}
+                        {dollars(savings.monthlyPrice)}/mo
+                      </strong>
+                      <span>
+                        {savings.perMonth > 0
+                          ? `Save ${dollars(savings.perMonth)}/mo with yearly billing. `
+                          : ''}
+                        Standard rates before the first-subscription offer.
+                      </span>
                     </div>
                   )}
                 </article>
