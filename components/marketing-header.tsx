@@ -10,6 +10,7 @@ type MarketingHeaderProps = {
   campaign: string;
   explorePath?: '/apis' | '/';
   productReviewCta?: boolean;
+  homepageFocus?: boolean;
 };
 
 export default function MarketingHeader({
@@ -17,6 +18,7 @@ export default function MarketingHeader({
   campaign: _campaign,
   explorePath = '/',
   productReviewCta = false,
+  homepageFocus = false,
 }: MarketingHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
@@ -66,36 +68,62 @@ export default function MarketingHeader({
           data-open={menuOpen}
         >
           <ul>
-            <li>
-              <a
-                href="/tools/"
-                aria-current={active === 'tools' ? 'page' : undefined}
-              >
-                Tools
-              </a>
-            </li>
-            <li>
-              <a href="/data/">Data APIs</a>
-            </li>
-            <li>
-              <a href="/ecommerce-ai-tools/topics/research/">Research</a>
-            </li>
-            <li>
-              <a href="/ecommerce-ai-tools/topics/visibility/">
-                SEO & AI visibility
-              </a>
-            </li>
-            <li>
-              <a href="/ecommerce-ai-tools/topics/creative/">Creative</a>
-            </li>
-            <li>
-              <a data-track href="/ecommerce-ai-tools/topics/agents/">
-                APIs & agents
-              </a>
-            </li>
-            <li>
-              <a href="/ecommerce-ai-tools/topics/evidence/">Evidence</a>
-            </li>
+            {homepageFocus ? (
+              <>
+                <li>
+                  <a href="/data/" data-track-tool="data-directory">
+                    Data APIs
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/ecommerce-ai-tools/product-showcase/"
+                    data-track-tool="product-gallery"
+                  >
+                    Product Gallery
+                  </a>
+                </li>
+                <li>
+                  <a href="/tools/">Tools</a>
+                </li>
+                <li>
+                  <a href="/ecommerce-ai-tools/">Guides & resources</a>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <a
+                    href="/tools/"
+                    aria-current={active === 'tools' ? 'page' : undefined}
+                  >
+                    Tools
+                  </a>
+                </li>
+                <li>
+                  <a href="/data/">Data APIs</a>
+                </li>
+                <li>
+                  <a href="/ecommerce-ai-tools/topics/research/">Research</a>
+                </li>
+                <li>
+                  <a href="/ecommerce-ai-tools/topics/visibility/">
+                    SEO & AI visibility
+                  </a>
+                </li>
+                <li>
+                  <a href="/ecommerce-ai-tools/topics/creative/">Creative</a>
+                </li>
+                <li>
+                  <a data-track href="/ecommerce-ai-tools/topics/agents/">
+                    APIs & agents
+                  </a>
+                </li>
+                <li>
+                  <a href="/ecommerce-ai-tools/topics/evidence/">Evidence</a>
+                </li>
+              </>
+            )}
             <li>
               <a
                 className={styles.cta}
@@ -110,7 +138,9 @@ export default function MarketingHeader({
                 }
               >
                 {productReviewCta
-                  ? 'Get free feedback →'
+                  ? homepageFocus
+                    ? 'List a product free →'
+                    : 'Get free feedback →'
                   : 'Explore Nexscope ↗'}
               </a>
             </li>
