@@ -61,7 +61,7 @@ export async function generateSitemap(directory, paths) {
         .sort((a, b) => a.localeCompare(b))
         .at(-1);
     }
-    if (path.startsWith('/api/')) {
+    if (path.startsWith('/api/') || path.startsWith('/data/')) {
       const published = html.match(/<meta\b[^>]*property="article:modified_time"[^>]*content="([^"]+)"/i)?.[1];
       if (!published || Number.isNaN(Date.parse(published))) throw new Error(`Missing API publication time: ${path}`);
       date = published;
