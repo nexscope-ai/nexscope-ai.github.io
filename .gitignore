@@ -37,3 +37,4 @@ next-env.d.ts
 /outputs/
 /work/
 /tsconfig.tsbuildinfo
+/.api-docs-source/

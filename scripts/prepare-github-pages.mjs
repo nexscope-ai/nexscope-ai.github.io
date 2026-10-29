@@ -13,6 +13,8 @@ import {
   publishedPaths,
 } from './site-routes.mjs';
 const clientDirectory = new URL('../dist/client/', import.meta.url);
+const { buildDataApiDocs } = await import('./build-data-api-docs.mjs');
+const apiPaths = await buildDataApiDocs();
 
 await Promise.all(
   routeSlugs.map(async (slug) => {
@@ -167,4 +169,4 @@ console.log(
 
 // Read the canonical HTML actually exported instead of maintaining a second URL list.
 const { generateSitemap } = await import('./generate-sitemap.mjs');
-await generateSitemap(clientDirectory, publishedPaths);
+await generateSitemap(clientDirectory, [...publishedPaths, ...apiPaths]);

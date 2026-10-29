@@ -123,7 +123,7 @@ test('production export includes the new route and does not inject third-party a
   assert.match(directory, /href: '\/tools\/seo-keyword-planner\/'/);
   assert.ok(publishedPaths.includes('/tools/seo-keyword-planner/'));
   assert.match(exportScript, /interactiveWorkflowSlugs\.some[\s\S]*index\.html/);
-  assert.match(exportScript, /generateSitemap\(clientDirectory, publishedPaths\)/);
+  assert.match(exportScript, /generateSitemap\(clientDirectory, \[\.\.\.publishedPaths, \.\.\.apiPaths\]\)/);
 });
 
 test('runtime cache-busts the revised competitor report script', () => {

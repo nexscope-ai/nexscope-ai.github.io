@@ -20,12 +20,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Check out Data API documentation sources
+        uses: actions/checkout@v4
+        with:
+          repository: nexscope-ai/ecommerce-ai-tools
+          ref: main
+          path: .api-docs-source
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
+
+      - name: Test Data API documentation generation
+        run: node --test .api-docs-source/scripts/test_build_api_docs.mjs
 
       - name: Install dependencies
         run: npm ci
