@@ -75,6 +75,9 @@ export default function MarketingHeader({
               </a>
             </li>
             <li>
+              <a href="/data/">Data APIs</a>
+            </li>
+            <li>
               <a href="/ecommerce-ai-tools/topics/research/">Research</a>
             </li>
             <li>

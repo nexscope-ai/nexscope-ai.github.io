@@ -1,5 +1,5 @@
 import { existsSync } from 'node:fs';
-import { readFile, mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile } from 'node:fs/promises';
 import { resolve, join, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -7,7 +7,8 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 export async function buildDataApiDocs() {
   const source = resolve(root, existsSync(join(root,'.api-docs-source/scripts/build_api_docs.mjs')) ? '.api-docs-source' : '../ecommerce-ai-tools');
   const { buildRoot } = await import(pathToFileURL(join(source,'scripts/build_api_docs.mjs')).href);
-  const snapshot = JSON.parse(await readFile(join(source,'scripts/data/api-docs.public.json'),'utf8'));
+  const { refreshSnapshot } = await import(pathToFileURL(join(source,'scripts/refresh-data-api-snapshot.mjs')).href);
+  const snapshot = await refreshSnapshot(source);
   const paths = await buildRoot(snapshot,join(root,'dist/client/data'));
   if (!paths.includes('/data/') || paths.some(path => !/^\/data\/(?:[a-z0-9-]+\/)?$/.test(path))) throw new Error('Only the Data category square and category pages may be published');
   // Preserve the previously published directory address as a static alias.

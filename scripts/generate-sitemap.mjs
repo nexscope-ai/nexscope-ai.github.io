@@ -9,6 +9,7 @@ const escapeXml = (value) =>
     .replaceAll('"', '&quot;');
 export async function generateSitemap(directory, paths) {
   const entries = [];
+  const dataEntries = [];
   for (const path of [...new Set(paths)].sort((a, b) => a.localeCompare(b))) {
     const html = await readFile(
       new URL(
@@ -69,10 +70,15 @@ export async function generateSitemap(directory, paths) {
     entries.push(
       `<url><loc>${escapeXml(canonical)}</loc>${date ? `<lastmod>${date}</lastmod>` : ''}</url>`,
     );
+    if (path.startsWith('/data/')) dataEntries.push(entries.at(-1));
   }
   await writeFile(
     new URL('sitemap.xml', directory),
     `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries.join('\n')}\n</urlset>\n`,
+  );
+  await writeFile(
+    new URL('data-sitemap.xml', directory),
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${dataEntries.join('\n')}\n</urlset>\n`,
   );
   console.log(
     `Generated root sitemap: ${entries.length} canonical, indexable HTML pages.`,

@@ -70,7 +70,7 @@
   outline-offset: 3px;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1180px) {
   .inner {
     width: calc(100% - 36px);
     min-height: 72px;

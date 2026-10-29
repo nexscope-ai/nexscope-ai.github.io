@@ -175,6 +175,7 @@ export default function Home() {
               TikTok Shop validation →
             </a>
             <a href="/1688-supplier-product-sourcing/">1688 sourcing →</a>
+            <a href="/data/">Browse ecommerce Data APIs →</a>
           </nav>
         </section>
         <section className={`${styles.wrap} ${styles.mapSection}`} id="topics">
@@ -312,6 +313,7 @@ export default function Home() {
         <nav className={styles.footerlinks} aria-label="Footer">
           <a href={`${library}/`}>Resource library</a>
           <a href="/tools/">Tools</a>
+          <a href="/data/">Data APIs</a>
           <a href={`${library}/ecommerce-trends/`}>Insights</a>
           <a href={`${library}/alternatives/`}>Comparisons</a>
           <a href={`${library}/product-showcase/`}>Product Gallery</a>

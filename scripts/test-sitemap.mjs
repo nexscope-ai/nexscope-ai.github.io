@@ -45,5 +45,7 @@ void test('Data API sitemap uses source publication dates and rejects missing ge
   assert.ok(map.includes('<loc>https://learn.nexscope.ai/data/example/</loc>'));
   assert.ok(map.includes('<lastmod>2026-10-28T09:45:47.193Z</lastmod>'));
   assert.ok(!map.includes('/ecommerce-ai-tools/'));
+  const dataMap = await readFile(join(dir, 'data-sitemap.xml'), 'utf8');
+  assert.equal(dataMap,map);
   await assert.rejects(generateSitemap(url, ['/data/missing/']), /ENOENT/);
 });
