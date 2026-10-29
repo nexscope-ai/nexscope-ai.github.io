@@ -18,6 +18,8 @@ import MarketingHeader from '@/components/marketing-header';
 const library = '/ecommerce-ai-tools';
 const gallery = `${library}/product-showcase/`;
 const submit = `${gallery}submit/`;
+const homeSummary =
+  'Nexscope Learn helps developers find ecommerce Data APIs and sellers publish free product listings. Explore marketplace data for apps and AI workflows, or submit a product for a reviewed public page with facts, images and your store link.';
 const platforms = [
   ['amazon', 'Amazon'],
   ['tiktok', 'TikTok'],
@@ -27,6 +29,10 @@ const platforms = [
   ['walmart', 'Walmart'],
 ] as const;
 const faqs = [
+  {
+    q: 'Who should use the Nexscope Data API directory?',
+    a: 'The directory is for developers, analysts and teams choosing ecommerce data for applications or AI workflows. Browsing is free. Before running a request, use the selected API’s official documentation to check its inputs, marketplace coverage, returned fields and credit requirements.',
+  },
   {
     q: 'Is listing my product completely free?',
     a: 'Yes. Product submission, editorial review, and approved product listing and display are completely free. You do not need to pay or connect a store account to submit.',
@@ -40,17 +46,17 @@ const faqs = [
     a: 'Save the private management link shown after submission. Use it to check status, read editorial feedback and make changes when needed. Products remain offline until approved and published; there is no fixed review deadline or automatic status email.',
   },
   {
-    q: 'Is the Data API directory free to browse?',
-    a: 'Yes. You can browse categories and API descriptions for free. Executing an API request follows the selected operation’s account, access and credit requirements, which are shown in the official documentation.',
+    q: 'Can shoppers buy directly from the Product Gallery?',
+    a: 'Purchases take place on your original store or marketplace listing. A Nexscope Product Gallery page presents the product and links shoppers to that destination. You keep your existing checkout and fulfillment process.',
   },
 ];
 const resources = [
   {
-    title: 'Start with a Data API',
+    title: 'Amazon-to-1688 API test',
     description:
-      'Choose the right operation and inspect a first request before building.',
-    href: `${library}/api-capabilities/`,
-    label: 'API workflow guide',
+      'Inspect a dated Amazon-to-1688 sourcing test, its returned records and its limits.',
+    href: `${library}/api-evidence/portable-blender-amazon-1688/`,
+    label: 'Public API test',
   },
   {
     title: 'Prepare your product for AI search',
@@ -113,9 +119,20 @@ const paths = [
 export const metadata: Metadata = {
   title: 'Ecommerce Data APIs & Free Product Listings | Nexscope Learn',
   description:
-    'Explore Nexscope ecommerce Data APIs, or list your product for free. Give search and AI systems a clear product page with facts, images and a link to your store.',
+    'Browse Nexscope ecommerce Data APIs. Submit a product for free review and, if approved, a public listing built for search and AI discovery.',
   alternates: { canonical: '/' },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
+    siteName: 'Nexscope Learn',
     title: 'Nexscope Learn — Ecommerce Data APIs & Free Product Listings',
     description:
       'Find the data for your next build. Give your product a free public page after review.',
@@ -146,6 +163,7 @@ export default function Home() {
                 '@type': 'WebSite',
                 '@id': 'https://learn.nexscope.ai/#website',
                 name: 'Nexscope Learn',
+                description: homeSummary,
                 url: 'https://learn.nexscope.ai/',
                 publisher: { '@id': 'https://www.nexscope.ai/#organization' },
               },
@@ -153,7 +171,10 @@ export default function Home() {
                 '@type': 'CollectionPage',
                 '@id': 'https://learn.nexscope.ai/#webpage',
                 name: 'Ecommerce Data APIs & Free Product Listings',
+                description: homeSummary,
                 url: 'https://learn.nexscope.ai/',
+                inLanguage: 'en',
+                publisher: { '@id': 'https://www.nexscope.ai/#organization' },
                 isPartOf: { '@id': 'https://learn.nexscope.ai/#website' },
                 mainEntity: {
                   '@type': 'ItemList',
@@ -198,18 +219,7 @@ export default function Home() {
             <br />
             <em>Free product listings.</em>
           </h1>
-          <p className={styles.focusLead}>
-            Find the data for your next workflow, or give your product a public
-            page built for search and AI discovery.
-          </p>
-          <div className={styles.heroChoiceLinks}>
-            <a href="/data/" data-track-tool="data-directory">
-              Explore Data APIs <ArrowRight size={15} />
-            </a>
-            <a href={submit} data-showcase-submit-cta="root-home-hero">
-              List a product free <ArrowRight size={15} />
-            </a>
-          </div>
+          <p className={styles.focusLead}>{homeSummary}</p>
         </section>
 
         <section
@@ -230,12 +240,14 @@ export default function Home() {
             </div>
             <p className={styles.featureKicker}>DATA API DIRECTORY</p>
             <h2>
-              The right data.
-              <br />A clear place to start.
+              Find ecommerce data.
+              <br />
+              Build your next workflow.
             </h2>
             <p className={styles.featureDescription}>
-              Explore marketplace, sourcing and search APIs. Find the operation
-              that fits your task, then test it in the official documentation.
+              Nexscope’s Data API directory helps developers and analysts find
+              ecommerce data by platform and task. Open the matching official
+              documentation to check inputs, results and credits before testing.
             </p>
             <div
               className={styles.platformPreview}
@@ -296,13 +308,14 @@ export default function Home() {
             </div>
             <p className={styles.featureKicker}>PRODUCT GALLERY</p>
             <h2>
-              Your product.
-              <br />A new place to be found.
+              Free product listings.
+              <br />
+              Built for AI discovery.
             </h2>
             <p className={styles.featureDescription}>
-              Give search and AI systems a clearer source about what you sell.
-              Submit your product for review and an approved public page linked
-              to your store.
+              Nexscope Product Gallery publishes reviewed product facts, images
+              and your store link on a free public page. This gives search and
+              AI systems another source for understanding what you sell.
             </p>
             <div
               className={styles.productPreview}
