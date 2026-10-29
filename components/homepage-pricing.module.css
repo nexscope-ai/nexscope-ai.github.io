@@ -1,0 +1,352 @@
+.section {
+  max-width: 1200px;
+  width: calc(100% - 64px);
+  margin: 24px auto 0;
+  padding: 58px 0 48px;
+  border-top: 1px solid #e7e0ed;
+}
+.heading {
+  text-align: center;
+}
+.offer {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 19px;
+  border: 1px solid #dfd3f9;
+  padding: 7px 9px 7px 12px;
+  background: #f0eaff;
+  border-radius: 30px;
+  color: #7546ce;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.9px;
+}
+.offer strong {
+  padding: 5px 9px;
+  background: #7644d6;
+  border-radius: 20px;
+  color: white;
+  font-size: 12px;
+  letter-spacing: 0;
+}
+.eyebrow {
+  color: #7950cd;
+  font-size: 11px;
+  letter-spacing: 1.8px;
+}
+.heading h2 {
+  margin: 0;
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 600;
+  letter-spacing: -1.2px;
+  line-height: 1.18;
+}
+.heading > p:last-child {
+  color: #887d94;
+  margin: 16px 0 26px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.toggle {
+  display: flex;
+  width: fit-content;
+  gap: 3px;
+  padding: 4px;
+  margin: 0 auto;
+  border: 1px solid #e7dfef;
+  border-radius: 11px;
+  background: #efebf4;
+}
+.toggle legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+.toggle label {
+  cursor: pointer;
+  position: relative;
+}
+.toggle input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.toggle span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  color: #8e7ea0;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+}
+.toggle input:checked + span {
+  background: white;
+  color: #332442;
+  box-shadow: 0 2px 5px #34204909;
+}
+.toggle input:focus-visible + span {
+  outline: 2px solid #8258df;
+  outline-offset: 2px;
+}
+.toggle input:disabled + span {
+  opacity: 0.4;
+  cursor: default;
+}
+.toggle em {
+  font-style: normal;
+  font-size: 10px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  color: #3f7a5d;
+  background: #e5f3ea;
+}
+.cycleNote {
+  font-size: 11px;
+  color: #978ba0;
+  text-align: center;
+  line-height: 1.7;
+  margin: 13px 0 29px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.grid[hidden] {
+  display: none;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid #e6deed;
+  border-radius: 17px;
+  padding: 26px;
+  background: #fff;
+  color: #25212c;
+}
+.identity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 27px;
+}
+.identity h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+.identity > span {
+  font-size: 10px;
+  color: #c2acff;
+  background: #ffffff12;
+  border: 1px solid #ffffff19;
+  border-radius: 20px;
+  padding: 5px 8px;
+}
+.priceLabel {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 20px;
+  margin-bottom: 9px;
+  font-size: 11px;
+  color: #8c7c9d;
+}
+.priceLabel s {
+  color: #a69aaf;
+  font-size: 13px;
+}
+.price {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 12px;
+}
+.price strong {
+  font-size: clamp(32px, 3.3vw, 46px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -1.9px;
+}
+.price > span {
+  color: #9a8ca6;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.price small {
+  display: block;
+  font-size: 10px;
+}
+.billing {
+  color: #8a7a99;
+  font-size: 11px;
+  line-height: 1.8;
+  min-height: 47px;
+  margin-bottom: 22px;
+}
+.billing p {
+  margin: 0;
+}
+.card > a,
+.fallback {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-radius: 8px;
+  min-height: 43px;
+  padding: 10px 14px;
+  background: #f2edf9;
+  color: #7142b9;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background 0.15s;
+}
+.card > a:hover {
+  background: #e9e0f8;
+}
+.features {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0;
+  font-size: 12px;
+  color: #82728e;
+}
+.features p {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+}
+.features svg {
+  color: #9267d7;
+  flex-shrink: 0;
+}
+.features strong {
+  color: #413447;
+  font-weight: 600;
+}
+.comparison {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 16px;
+  margin-top: auto;
+  border-top: 1px solid #eee7f4;
+  color: #a292ad;
+  font-size: 11px;
+  line-height: 1.7;
+  min-height: 54px;
+}
+.saving strong {
+  color: #a3dfbc;
+  font-size: 12px;
+  font-weight: 600;
+}
+.featured {
+  background: #282131;
+  color: white;
+  border-color: #282131;
+  box-shadow: 0 10px 28px #33204712;
+}
+.featured .priceLabel,
+.featured .billing,
+.featured .price > span {
+  color: #b5a5c3;
+}
+.featured .priceLabel s {
+  color: #897894;
+}
+.featured .features {
+  color: #c4b8ce;
+}
+.featured .features strong {
+  color: #f4edf9;
+}
+.featured .features svg {
+  color: #baa0f4;
+}
+.featured > a {
+  color: white;
+  background: #8955ef;
+}
+.featured > a:hover {
+  background: #9c6af7;
+}
+.featured .comparison {
+  border-color: #ffffff18;
+  color: #ab9ab9;
+}
+.terms {
+  color: #a498ac;
+  font-size: 11px;
+  line-height: 1.8;
+  margin: 18px auto 24px;
+  text-align: center;
+  max-width: 740px;
+}
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border-top: 1px solid #e8e1ee;
+  padding-top: 19px;
+  font-size: 12px;
+  color: #8c7d99;
+}
+.bottom p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  flex-wrap: wrap;
+  line-height: 1.7;
+}
+.bottom a {
+  color: #7950b9;
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+}
+.bottom p:last-child {
+  color: #4f886d;
+}
+@media (max-width: 760px) {
+  .section {
+    width: calc(100% - 36px);
+    padding-top: 38px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .card {
+    padding: 25px;
+  }
+  .price strong {
+    font-size: 44px;
+  }
+  .identity {
+    margin-bottom: 22px;
+  }
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .comparison {
+    min-height: 0;
+  }
+  .heading h2 {
+    letter-spacing: -0.8px;
+  }
+}

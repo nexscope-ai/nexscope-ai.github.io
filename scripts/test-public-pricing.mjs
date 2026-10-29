@@ -1,6 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { monthlyPlans, loadMonthlyPlans } from '../lib/public-pricing.mjs';
+import {
+  monthlyPlans,
+  loadMonthlyPlans,
+  loadSubscriptionPlans,
+  annualSavings,
+} from '../lib/public-pricing.mjs';
 
 const plan = {
   status: true,
@@ -10,6 +15,7 @@ const plan = {
   presentCredit: '30000',
   sku: 'starter',
   name: 'Starter',
+  level: 200,
 };
 test('monthly prices use cents and exclude annual, withdrawn and malformed plans', () => {
   const result = monthlyPlans({
@@ -33,6 +39,71 @@ test('monthly prices use cents and exclude annual, withdrawn and malformed plans
     null,
   );
 });
+test('annual savings compare matching tiers without combining introductory discounts', () => {
+  const catalog = [
+    {
+      ...plan,
+      name: 'Growth',
+      level: 300,
+      sku: 'growth-monthly',
+      price: '6900',
+    },
+    {
+      ...plan,
+      name: 'Growth',
+      level: 300,
+      sku: 'growth-yearly',
+      billingPeriod: 12,
+      price: '66000',
+      introductoryPrice: '33000',
+    },
+    {
+      ...plan,
+      sku: 'starter-yearly',
+      billingPeriod: 12,
+      price: '34800',
+      introductoryPrice: '17400',
+    },
+    plan,
+  ];
+  const raw = { code: 0, data: catalog };
+  const plans = [...monthlyPlans(raw), ...monthlyPlans(raw, 12)];
+  assert.deepEqual(
+    annualSavings(
+      plans.find((p) => p.sku === 'growth-yearly'),
+      plans,
+    ),
+    { perMonth: 1400, percent: 20, monthlyPrice: 6900 },
+  );
+  assert.equal(
+    annualSavings(
+      plans.find((p) => p.sku === 'starter-yearly'),
+      plans,
+    ).perMonth,
+    0,
+  );
+  assert.equal(annualSavings({ billingPeriod: 12, level: null }, plans), null);
+});
+test('annual catalog preserves upfront totals, monthly credits and independent annual discounts', async () => {
+  const annual = {
+    ...plan,
+    sku: 'starter-yearly',
+    billingPeriod: 12,
+    price: '34800',
+    introductoryPrice: '17400',
+  };
+  const result = await loadSubscriptionPlans(async () => ({
+    ok: true,
+    json: async () => ({ code: 0, data: [plan, annual] }),
+  }));
+  assert.equal(result.length, 2);
+  assert.equal(result[1].billingPeriod, 12);
+  assert.equal(result[1].price, 34800);
+  assert.equal(result[1].introductoryPrice / 12 / 100, 14.5);
+  assert.equal(result[1].introductoryPrice * 2, result[1].price);
+  assert.equal(result[1].credits, 30000);
+  assert.deepEqual(monthlyPlans({ code: 0, data: [plan] }, 12), []);
+});
 test('business errors and unavailable network never produce invented prices', async () => {
   assert.throws(() => monthlyPlans({ code: 401, data: [plan] }));
   assert.deepEqual(
@@ -48,4 +119,14 @@ test('business errors and unavailable network never produce invented prices', as
     })),
     [],
   );
+});
+test('a temporary catalog failure is retried before using the fallback', async () => {
+  let attempts = 0;
+  const result = await loadSubscriptionPlans(async () => {
+    attempts += 1;
+    if (attempts === 1) throw new Error('temporary timeout');
+    return { ok: true, json: async () => ({ code: 0, data: [plan] }) };
+  });
+  assert.equal(attempts, 2);
+  assert.equal(result[0].sku, 'starter');
 });

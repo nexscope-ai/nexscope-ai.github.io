@@ -15,6 +15,7 @@ import {
 } from '@/lib/site-metadata';
 import MarketingHeader from '@/components/marketing-header';
 import pricingSnapshot from '@/lib/pricing-snapshot.json';
+import HomepagePricing from '@/components/homepage-pricing';
 
 const library = '/ecommerce-ai-tools';
 const gallery = `${library}/product-showcase/`;
@@ -151,13 +152,6 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const plans = pricingSnapshot.plans;
-  const dollars = (amount: number) =>
-    new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      maximumFractionDigits: 2,
-    }).format(amount / 100);
   return (
     <div className={styles.home}>
       <script
@@ -372,6 +366,8 @@ export default function Home() {
           </article>
         </section>
 
+        <HomepagePricing plans={pricingSnapshot.plans} />
+
         <section
           className={`${styles.wrap} ${styles.nextSteps}`}
           aria-labelledby="next-steps-title"
@@ -414,80 +410,6 @@ export default function Home() {
               </article>
             ))}
           </div>
-        </section>
-
-        <section
-          className={`${styles.wrap} ${styles.subscriptionSection}`}
-          aria-labelledby="subscription-title"
-        >
-          <div className={styles.focusSectionHeading}>
-            <p className={styles.eyebrow}>FOR YOUR NEXT API WORKFLOW</p>
-            <h2 id="subscription-title">
-              Start small. Scale when you need to.
-            </h2>
-            <p>
-              One Nexscope subscription for ecommerce data, images and videos.
-              Billed monthly in USD.
-            </p>
-          </div>
-          <div className={styles.subscriptionGrid}>
-            {plans.map((plan) => (
-              <article
-                key={plan.sku}
-                className={`${styles.subscriptionCard} ${plan.popular ? styles.subscriptionPopular : ''}`}
-              >
-                <div className={styles.subscriptionIdentity}>
-                  <h3>{plan.name}</h3>
-                  {plan.popular && <span>Popular</span>}
-                </div>
-                <p className={styles.subscriptionPrice}>
-                  <strong>{dollars(plan.price)}</strong>
-                  <span>/ month</span>
-                </p>
-                <p className={styles.subscriptionCredits}>
-                  <Check size={16} aria-hidden="true" />{' '}
-                  {plan.credits.toLocaleString('en-US')} credits every month
-                </p>
-                {plan.introductoryPrice !== null && (
-                  <p className={styles.subscriptionOffer}>
-                    Eligible first subscription:{' '}
-                    {dollars(plan.introductoryPrice)} for the first month, then{' '}
-                    {dollars(plan.price)}/month. Eligibility confirmed on the
-                    main site.
-                  </p>
-                )}
-                <a
-                  href="https://www.nexscope.ai/pricing?co-from=learn"
-                  data-track-tool="subscription-pricing"
-                >
-                  View {plan.name} plan{' '}
-                  <ArrowRight size={16} aria-hidden="true" />
-                </a>
-              </article>
-            ))}
-          </div>
-          {plans.length === 0 && (
-            <a
-              className={styles.pricingFallback}
-              href="https://www.nexscope.ai/pricing?co-from=learn"
-              data-track-tool="subscription-pricing"
-            >
-              View current subscription prices{' '}
-              <ArrowRight size={16} aria-hidden="true" />
-            </a>
-          )}
-          <p className={styles.subscriptionFootnote}>
-            Only need Data APIs? Data-only credit top-ups are also available
-            without a subscription. Credit costs vary by API; check the official
-            documentation before running a request.{' '}
-            <a href="https://www.nexscope.ai/pricing?co-from=learn">
-              See all pricing options →
-            </a>
-          </p>
-          <p className={styles.freeListingNote}>
-            <Check size={16} aria-hidden="true" /> Product Gallery submission,
-            review and approved display remain completely free.
-          </p>
         </section>
 
         <section
