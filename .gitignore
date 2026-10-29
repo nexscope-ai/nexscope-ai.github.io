@@ -38,3 +38,6 @@ next-env.d.ts
 /work/
 /tsconfig.tsbuildinfo
 /.api-docs-source/
+
+# Generated from the anonymous public catalog before each build
+/lib/pricing-snapshot.json

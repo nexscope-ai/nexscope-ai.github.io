@@ -42,6 +42,9 @@ jobs:
       - name: Test interactive API workflows
         run: npm run test:workflows
 
+      - name: Test public subscription pricing
+        run: node --test scripts/test-public-pricing.mjs
+
       - name: Test research tools
         run: npm run test:research
 
