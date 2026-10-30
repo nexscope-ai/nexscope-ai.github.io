@@ -2,6 +2,7 @@
 import type { Metadata } from 'next';
 import {
   ArrowRight,
+  ArrowDownRight,
   ArrowUpRight,
   Check,
   Code2,
@@ -174,9 +175,41 @@ export default function Home() {
             workflows with marketplace APIs. Give your product a free public
             page to support AI discovery.
           </p>
-          <a className={styles.heroLink} href="#for-ecommerce-operators">
-            See what you can create <ArrowRight size={16} />
-          </a>
+          <nav
+            className={styles.quickNav}
+            aria-label="Explore the two homepage modules"
+          >
+            <a className={styles.quickLink} href="#for-ecommerce-operators">
+              <span className={styles.quickIcon}>
+                <Sparkles size={20} aria-hidden="true" />
+              </span>
+              <span className={styles.quickCopy}>
+                <strong>For ecommerce operators</strong>
+                <span>
+                  Create product videos and list your product for free.
+                </span>
+              </span>
+              <ArrowDownRight
+                className={styles.quickArrow}
+                size={18}
+                aria-hidden="true"
+              />
+            </a>
+            <a className={styles.quickLink} href="#for-ecommerce-developers">
+              <span className={styles.quickIcon}>
+                <Code2 size={20} aria-hidden="true" />
+              </span>
+              <span className={styles.quickCopy}>
+                <strong>For ecommerce developers</strong>
+                <span>Find Data APIs and build marketplace workflows.</span>
+              </span>
+              <ArrowDownRight
+                className={styles.quickArrow}
+                size={18}
+                aria-hidden="true"
+              />
+            </a>
+          </nav>
         </section>
 
         <section

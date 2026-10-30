@@ -28,7 +28,6 @@
   top: 9px;
 }
 .hero,
-.planApplications,
 .topUps,
 .freeGallery,
 .faq,
@@ -69,54 +68,12 @@
   font-style: normal;
   color: #9874bd;
 }
-.hero > p:last-child {
+.hero > p:not(.eyebrow) {
   font-size: 14px;
   line-height: 1.8;
-  color: #9b8aa9;
+  color: #6b6075;
   max-width: 630px;
   margin: 23px auto 0;
-}
-.planApplications {
-  padding: 24px 0 45px;
-}
-.planApplications > h2 {
-  font-size: 25px;
-  font-weight: 600;
-  letter-spacing: -0.6px;
-  margin: 0 0 23px;
-}
-.applicationGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-.applicationGrid article {
-  background: white;
-  border: 1px solid #e5deeb;
-  border-radius: 14px;
-  padding: 27px;
-}
-.applicationGrid svg {
-  color: #9979bd;
-}
-.applicationGrid h3 {
-  font-size: 18px;
-  font-weight: 600;
-  margin: 20px 0 12px;
-}
-.applicationGrid p {
-  font-size: 13px;
-  line-height: 1.8;
-  color: #94819f;
-  margin: 0 0 20px;
-}
-.applicationGrid a {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  color: #8259b5;
-  font-size: 12px;
-  font-weight: 600;
 }
 .topUps {
   display: flex;
@@ -136,7 +93,7 @@
   margin: 0 0 13px;
 }
 .topUps p:last-child {
-  color: #9983ab;
+  color: #6b6075;
   font-size: 13px;
   line-height: 1.8;
   max-width: 620px;
@@ -207,7 +164,7 @@
 .faq details p {
   font-size: 12px;
   line-height: 1.9;
-  color: #927f9f;
+  color: #6b6075;
   margin: 14px 0 0;
 }
 .priceNote {
@@ -223,14 +180,172 @@
   flex-shrink: 0;
   margin-top: 2px;
 }
+.jumpLinks {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 22px 0 4px;
+}
+.jumpLinks a {
+  padding: 8px 13px;
+  border: 1px solid #e5deeb;
+  border-radius: 20px;
+  color: #6c45ae;
+  font-size: 12px;
+  background: #fff;
+}
+.jumpLinks a:hover {
+  background: #f1ecf8;
+}
+.comparison,
+.decision {
+  width: min(1200px, calc(100% - 64px));
+  margin: 0 auto;
+  padding: 38px 0;
+  border-top: 1px solid #e5deeb;
+  scroll-margin-top: 24px;
+}
+.comparison h2,
+.decision h2 {
+  font-size: clamp(25px, 3vw, 34px);
+  line-height: 1.2;
+  letter-spacing: -0.7px;
+  margin: 0 0 18px;
+  font-weight: 600;
+}
+.comparison > p:not(.eyebrow),
+.decision > div > p:not(.eyebrow) {
+  color: #6b6075;
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 850px;
+}
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid #e5deeb;
+  border-radius: 14px;
+  background: #fff;
+  margin-top: 24px;
+}
+.tableWrap:focus-visible {
+  outline: 3px solid #7950d1;
+  outline-offset: 4px;
+}
+.tableWrap table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 760px;
+  font-size: 14px;
+  text-align: left;
+}
+.tableWrap caption {
+  text-align: left;
+  padding: 18px 20px;
+  color: #6b6075;
+  font-size: 12px;
+}
+.tableWrap thead {
+  background: #f1ecf8;
+}
+.tableWrap th,
+.tableWrap td {
+  padding: 16px 20px;
+  border-top: 1px solid #e9e3ee;
+  vertical-align: top;
+}
+.tableWrap th {
+  font-weight: 600;
+}
+.tableWrap span {
+  display: block;
+  color: #74677e;
+  font-weight: 400;
+  font-size: 11px;
+  margin-top: 4px;
+}
+.comparison .sourceNote {
+  font-size: 12px;
+  color: #74677e;
+  margin-top: 16px;
+  max-width: none;
+}
+.sourceNote a,
+.comparison > p a {
+  color: #6c45ae;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.decisionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.decisionGrid article {
+  padding: 24px;
+  border: 1px solid #e5deeb;
+  background: #fff;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+}
+.decisionGrid h3,
+.boundaries h3 {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+.decisionGrid p,
+.boundaries {
+  font-size: 13px;
+  color: #6b6075;
+  line-height: 1.8;
+}
+.decisionGrid a {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #6c45ae;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: auto;
+  padding-top: 15px;
+}
+.boundaries {
+  padding: 25px;
+  border-radius: 14px;
+  background: #f1ecf8;
+}
+.boundaries ul {
+  padding-left: 20px;
+  margin: 0 0 16px;
+}
+.boundaries li + li {
+  margin-top: 8px;
+}
+.boundaries p {
+  margin: 0;
+}
 @media (max-width: 700px) {
   .hero,
-  .planApplications,
   .topUps,
   .freeGallery,
   .faq,
   .priceNote {
     width: calc(100% - 36px);
+  }
+  .comparison,
+  .decision {
+    width: calc(100% - 36px);
+    padding: 30px 0;
+  }
+  .decisionGrid {
+    grid-template-columns: 1fr;
+  }
+  .tableWrap th,
+  .tableWrap td {
+    padding: 14px;
   }
   .hero {
     padding-top: 27px;
@@ -242,15 +357,8 @@
   .hero nav {
     margin-bottom: 26px;
   }
-  .hero > p:last-child {
+  .hero > p:not(.eyebrow) {
     font-size: 13px;
-  }
-  .applicationGrid {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-  .planApplications > h2 {
-    font-size: 23px;
   }
   .topUps {
     flex-direction: column;

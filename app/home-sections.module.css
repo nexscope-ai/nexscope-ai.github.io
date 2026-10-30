@@ -31,7 +31,7 @@
   width: min(980px, calc(100% - 64px));
   margin: auto;
   text-align: center;
-  padding: 76px 0 62px;
+  padding: 56px 0 42px;
 }
 .eyebrow {
   font-size: 10px;
@@ -67,14 +67,69 @@
   color: #706179;
   margin: 25px auto 22px;
 }
-.heroLink {
-  display: inline-flex;
+.quickNav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  max-width: 830px;
+  margin: 26px auto 0;
+  text-align: left;
+}
+.quickLink {
+  display: flex;
   align-items: center;
-  gap: 9px;
-  padding: 10px 0;
+  gap: 13px;
+  padding: 18px;
+  border: 1px solid #e4dce9;
+  border-radius: 14px;
+  background: #fff;
+  color: #302637;
+  transition:
+    border-color 0.18s,
+    background 0.18s;
+}
+.quickLink:hover {
+  border-color: #b79ad9;
+  background: #f5f0fc;
+}
+.quickIcon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #f1ebfa;
+  color: #7950b7;
+}
+.quickCopy {
+  display: grid;
+  gap: 4px;
+}
+.quickCopy strong {
   font-size: 13px;
   font-weight: 600;
-  color: #7650bb;
+}
+.quickCopy > span {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #706179;
+}
+.quickArrow {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: #7950b7;
+}
+@media (max-width: 700px) {
+  .quickNav {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 22px;
+  }
+  .quickLink {
+    padding: 14px;
+    gap: 10px;
+  }
 }
 .module {
   width: min(1200px, calc(100% - 64px));
@@ -760,7 +815,8 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .workflowCard {
+  .workflowCard,
+  .quickLink {
     transition: none;
   }
   .workflowCard:hover {

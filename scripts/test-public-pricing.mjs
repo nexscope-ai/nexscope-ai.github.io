@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { pricingRows, subscriptionService } from '../lib/pricing-content.mjs';
 import {
   pricingBillingUrl,
   openPricingSelection,
@@ -208,4 +209,46 @@ test('a temporary catalog failure is retried before using the fallback', async (
   });
   assert.equal(attempts, 2);
   assert.equal(result[0].sku, 'starter');
+});
+
+test('comparison rows and structured offers preserve full annual charges, not introductory monthly equivalents', () => {
+  const plans = [
+    {
+      sku: 'growth-yearly',
+      name: 'Growth',
+      level: 300,
+      billingPeriod: 12,
+      price: 66000,
+      credits: 75000,
+      introductoryPrice: 33000,
+    },
+  ];
+  const [row] = pricingRows(plans);
+  assert.equal(row.monthlyEquivalent, 5500);
+  assert.equal(row.intro, 33000);
+  const [offer] = subscriptionService(plans).hasOfferCatalog.itemListElement;
+  assert.equal(offer.price, '660.00');
+  assert.equal(offer.priceCurrency, 'USD');
+  assert.match(offer.description, /upfront per year/);
+  assert.match(offer.url, /cycle=annual/);
+  assert.match(offer.url, /co-from=learn/);
+});
+
+test('unavailable or invalid pricing cannot generate a zero-price offer', () => {
+  assert.equal('hasOfferCatalog' in subscriptionService([]), false);
+  assert.equal(
+    pricingRows([{ price: 0, credits: 30000, billingPeriod: 1 }]).length,
+    0,
+  );
+  assert.equal(
+    pricingRows([
+      {
+        price: 2900,
+        credits: 30000,
+        billingPeriod: 1,
+        introductoryPrice: 2900,
+      },
+    ])[0].intro,
+    null,
+  );
 });
