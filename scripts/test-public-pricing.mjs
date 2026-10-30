@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { entrySubscription, estimatedCapacity } from '../lib/home-value.mjs';
 import { pricingRows, subscriptionService } from '../lib/pricing-content.mjs';
 import {
   pricingBillingUrl,
@@ -251,4 +252,35 @@ test('unavailable or invalid pricing cannot generate a zero-price offer', () => 
     ])[0].intro,
     null,
   );
+});
+
+test('homepage entry price uses the annual introductory total divided by twelve and safely handles missing offers', () => {
+  const annual = {
+    sku: 'starter-yearly',
+    name: 'Starter',
+    level: 200,
+    billingPeriod: 12,
+    price: 34800,
+    credits: 30000,
+    introductoryPrice: 17400,
+  };
+  assert.equal(entrySubscription([annual]).monthlyAmount, 1450);
+  assert.equal(
+    entrySubscription([{ ...annual, introductoryPrice: null }]).monthlyAmount,
+    2900,
+  );
+  assert.equal(
+    entrySubscription([
+      { ...annual, billingPeriod: 1, price: 2900, introductoryPrice: 1450 },
+    ]).monthlyAmount,
+    1450,
+  );
+  assert.equal(entrySubscription([]), null);
+});
+
+test('credit capacity estimates round down and reject missing or zero costs', () => {
+  assert.equal(estimatedCapacity(30000, 550), 54);
+  assert.equal(estimatedCapacity(30000, 10), 3000);
+  assert.equal(estimatedCapacity(30000, 0), null);
+  assert.equal(estimatedCapacity(30000, undefined), null);
 });

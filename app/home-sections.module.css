@@ -120,7 +120,130 @@
   flex-shrink: 0;
   color: #7950b7;
 }
+.priceIntro {
+  margin: 22px auto 0;
+  max-width: 830px;
+}
+.priceIntroLine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+}
+.trialLink {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  color: #35654d;
+  font-size: 12px;
+  font-weight: 600;
+}
+.trialLink span {
+  font-weight: 400;
+}
+.fromPrice {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #67527e;
+  font-size: 12px;
+}
+.fromPrice strong {
+  color: #402755;
+  font-size: 21px;
+  line-height: 1.2;
+}
+.fromPrice strong span {
+  font-size: 12px;
+  font-weight: 400;
+}
+.introBadge {
+  padding: 4px 7px;
+  color: #694199;
+  background: #ece3f8;
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: 600;
+}
+.priceTerms {
+  margin: 10px 0 0;
+  color: #776780;
+  font-size: 10px;
+  line-height: 1.7;
+}
+.valueStrip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  padding: 25px 28px;
+  border: 1px solid #e4dce9;
+  border-radius: 14px;
+  background: #f4effb;
+  margin: 26px 0;
+}
+.valueStrip > div {
+  max-width: 850px;
+}
+.valueStrip .valueEyebrow {
+  color: #7950b7;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  margin: 0 0 10px;
+}
+.valueStrip h3 {
+  font-size: 22px;
+  line-height: 1.3;
+  margin: 0 0 10px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+}
+.valueStrip p:not(.valueEyebrow) {
+  color: #685871;
+  font-size: 13px;
+  line-height: 1.8;
+  margin: 0 0 10px;
+}
+.valueStrip small {
+  display: block;
+  color: #796a83;
+  font-size: 10px;
+  line-height: 1.7;
+}
+.valueStrip small a {
+  color: #7049a4;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.valueStrip > a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  color: #7049a4;
+  font-size: 12px;
+  font-weight: 600;
+}
 @media (max-width: 700px) {
+  .priceIntroLine {
+    gap: 12px;
+  }
+  .priceTerms {
+    font-size: 10px;
+  }
+  .valueStrip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 22px;
+  }
+  .valueStrip h3 {
+    font-size: 20px;
+  }
   .quickNav {
     grid-template-columns: 1fr;
     gap: 10px;

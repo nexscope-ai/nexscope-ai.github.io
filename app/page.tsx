@@ -15,6 +15,13 @@ import MarketingHeader from '@/components/marketing-header';
 import LearnFooter from '@/components/learn-footer';
 import HomeVideoExamples from '@/components/home-video-examples';
 import exampleSnapshot from '@/lib/home-video-examples.json';
+import pricingSnapshot from '@/lib/pricing-snapshot.json';
+import { pricingMoney } from '@/lib/pricing-content.mjs';
+import {
+  entrySubscription,
+  estimatedCapacity,
+  publicCostExamples,
+} from '@/lib/home-value.mjs';
 import { videoWorkflows, workflowUrl } from '@/lib/home-video-workflows';
 import {
   DEFAULT_SOCIAL_IMAGE,
@@ -89,6 +96,13 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  const entry = entrySubscription(pricingSnapshot.plans);
+  const videoCount = entry
+    ? estimatedCapacity(entry.credits, publicCostExamples.video.credits)
+    : null;
+  const dataCount = entry
+    ? estimatedCapacity(entry.credits, publicCostExamples.data.credits)
+    : null;
   return (
     <div className={styles.page}>
       <script
@@ -186,7 +200,7 @@ export default function Home() {
               <span className={styles.quickCopy}>
                 <strong>For ecommerce operators</strong>
                 <span>
-                  Create product videos and list your product for free.
+                  Create product videos. Product listings are free.
                 </span>
               </span>
               <ArrowDownRight
@@ -210,6 +224,57 @@ export default function Home() {
               />
             </a>
           </nav>
+          <div className={styles.priceIntro}>
+            <div className={styles.priceIntroLine}>
+              <a
+                className={styles.trialLink}
+                href="https://www.nexscope.ai/pricing?co-from=learn"
+                target="_blank"
+                rel="noopener"
+                data-track-tool="free-trial"
+              >
+                Try free <span>1,000 credits · 3 days</span>
+              </a>
+              <a className={styles.fromPrice} href="/pricing/">
+                {entry ? (
+                  <>
+                    Plans from{' '}
+                    <strong>
+                      {pricingMoney(entry.monthlyAmount)}
+                      <span>/mo</span>
+                    </strong>
+                    {entry.intro && (
+                      <span className={styles.introBadge}>
+                        {Math.round((1 - entry.intro / entry.price) * 100)}% off
+                        first {entry.billingPeriod === 12 ? 'year' : 'month'}
+                      </span>
+                    )}
+                  </>
+                ) : (
+                  'Explore subscription plans'
+                )}{' '}
+                <ArrowRight size={15} aria-hidden="true" />
+              </a>
+            </div>
+            <p className={styles.priceTerms}>
+              {entry ? (
+                <>
+                  {entry.intro
+                    ? `Eligible first ${entry.billingPeriod === 12 ? 'year' : 'month'} on ${entry.name}: `
+                    : `${entry.name}: `}
+                  {pricingMoney(entry.intro ?? entry.price)}{' '}
+                  {entry.billingPeriod === 12
+                    ? 'billed upfront'
+                    : 'billed monthly'}
+                  {entry.intro
+                    ? `, then ${pricingMoney(entry.price)}/${entry.billingPeriod === 12 ? 'year' : 'month'}`
+                    : ` per ${entry.billingPeriod === 12 ? 'year' : 'month'}`}
+                  .{' '}
+                </>
+              ) : null}
+              USD · No credit card needed for the trial.
+            </p>
+          </div>
         </section>
 
         <section
@@ -248,6 +313,44 @@ export default function Home() {
             Official Nexscope Inspiration examples. Preview a clip, then start
             with your own product. Outputs vary by input and model.
           </p>
+          {entry && videoCount !== null && (
+            <div className={styles.valueStrip}>
+              <div>
+                <p className={styles.valueEyebrow}>
+                  A SMALL PLAN. ROOM TO CREATE.
+                </p>
+                <h3>
+                  {entry.name}: {entry.credits.toLocaleString('en-US')} credits
+                  every month.
+                </h3>
+                <p>
+                  About{' '}
+                  <strong>
+                    {videoCount.toLocaleString('en-US')} five-second videos
+                  </strong>{' '}
+                  if the full allocation goes to {publicCostExamples.video.name}{' '}
+                  at {publicCostExamples.video.setting} (
+                  {publicCostExamples.video.credits} credits each).
+                </p>
+                <small>
+                  Source:{' '}
+                  <a
+                    href="https://www.nexscope.ai/pricing?co-from=learn"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    official pricing
+                  </a>
+                  , checked {publicCostExamples.verifiedOn}. Costs vary by model
+                  and settings. Trial video creation is in-app only; video API
+                  access is excluded.
+                </small>
+              </div>
+              <a href="/pricing/">
+                Compare plans <ArrowRight size={16} aria-hidden="true" />
+              </a>
+            </div>
+          )}
           <div className={styles.subheading}>
             <h3>A starting point for every kind of product video.</h3>
             <span>Choose your workflow</span>
@@ -425,6 +528,40 @@ export default function Home() {
               </a>
             </div>
           </div>
+          {entry && dataCount !== null && (
+            <div className={styles.valueStrip}>
+              <div>
+                <p className={styles.valueEyebrow}>PLAN YOUR API BUDGET</p>
+                <h3>
+                  About {dataCount.toLocaleString('en-US')} calls at{' '}
+                  {publicCostExamples.data.credits} credits each.
+                </h3>
+                <p>
+                  For example, {publicCostExamples.data.name} is estimated at{' '}
+                  {publicCostExamples.data.credits} credits per call. This uses
+                  the full {entry.name} monthly allocation of{' '}
+                  {entry.credits.toLocaleString('en-US')} credits for that
+                  operation.
+                </p>
+                <small>
+                  Source:{' '}
+                  <a
+                    href="https://www.nexscope.ai/pricing?co-from=learn"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    official pricing
+                  </a>
+                  , checked {publicCostExamples.verifiedOn}. Other APIs have
+                  different costs. This is an allocation estimate, not a
+                  per-call cash price.
+                </small>
+              </div>
+              <a href="/data/1688-sourcing/">
+                Explore 1688 APIs <ArrowRight size={16} aria-hidden="true" />
+              </a>
+            </div>
+          )}
           <div className={styles.evidenceRow}>
             <div>
               <Globe2 size={20} />
