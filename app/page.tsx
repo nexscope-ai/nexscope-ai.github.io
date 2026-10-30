@@ -2,26 +2,29 @@
 import type { Metadata } from 'next';
 import {
   ArrowRight,
-  Database,
-  PackagePlus,
-  Globe2,
-  Code2,
+  ArrowUpRight,
   Check,
+  Code2,
+  Database,
+  Globe2,
+  PackagePlus,
+  Sparkles,
 } from 'lucide-react';
-import styles from './home.module.css';
+import MarketingHeader from '@/components/marketing-header';
+import LearnFooter from '@/components/learn-footer';
+import HomeVideoExamples from '@/components/home-video-examples';
+import exampleSnapshot from '@/lib/home-video-examples.json';
+import { videoWorkflows, workflowUrl } from '@/lib/home-video-workflows';
 import {
   DEFAULT_SOCIAL_IMAGE,
   NEXSCOPE_ORGANIZATION,
 } from '@/lib/site-metadata';
-import MarketingHeader from '@/components/marketing-header';
-import pricingSnapshot from '@/lib/pricing-snapshot.json';
-import HomepagePricing from '@/components/homepage-pricing';
+import styles from './home-sections.module.css';
 
-const library = '/ecommerce-ai-tools';
-const gallery = `${library}/product-showcase/`;
+const gallery = '/ecommerce-ai-tools/product-showcase/';
 const submit = `${gallery}submit/`;
-const homeSummary =
-  'Nexscope Learn helps developers find ecommerce Data APIs and sellers publish free product listings. Explore marketplace data for apps and AI workflows, or submit a product for a reviewed public page with facts, images and your store link.';
+const summary =
+  'Nexscope helps ecommerce operators create product videos and developers build with marketplace Data APIs. Explore official video examples, choose a workflow, or submit a product for a free reviewed Gallery listing.';
 const platforms = [
   ['amazon', 'Amazon'],
   ['tiktok', 'TikTok'],
@@ -32,96 +35,31 @@ const platforms = [
 ] as const;
 const faqs = [
   {
-    q: 'Who should use the Nexscope Data API directory?',
-    a: 'The directory is for developers, analysts and teams choosing ecommerce data for applications or AI workflows. Browsing is free. Before running a request, use the selected API’s official documentation to check its inputs, marketplace coverage, returned fields and credit requirements.',
+    q: 'What can ecommerce operators do here?',
+    a: 'Explore Image to Video, URL to Video, Avatar Video, Video Clone, Bulk Video and the Model Library. Open a workflow on the official Nexscope site to check its inputs, settings and credit requirements before creating a video.',
+  },
+  {
+    q: 'What is available for ecommerce developers?',
+    a: 'The Data API directory groups marketplace and research APIs by platform and task. Compare descriptions, recorded usage and credit ranges, then open the exact official documentation and online tester. API requests use your own credentials and follow the selected operation’s requirements.',
   },
   {
     q: 'Is listing my product completely free?',
-    a: 'Yes. Product submission, editorial review, and approved product listing and display are completely free. You do not need to pay or connect a store account to submit.',
+    a: 'Yes. Product submission, editorial review, and approved product listing and display are completely free. You do not need to pay or connect a store account to submit. Save the private management link after submission to check status, read feedback and edit your details.',
   },
   {
-    q: 'How can a Gallery page help with AI discovery?',
-    a: 'An approved public page brings product facts, images and a link to your store together in a format search and AI systems can access. This supports generative engine optimization (GEO), but does not guarantee indexing, AI citations, traffic or sales.',
+    q: 'Does a Product Gallery listing guarantee AI recommendations?',
+    a: 'An approved listing gives search and AI systems a public source of product facts, images and your store link. It supports AI discovery and GEO, but does not guarantee indexing, recommendations, traffic or sales. Purchases take place on your original store.',
   },
   {
-    q: 'What happens after I submit a product?',
-    a: 'Save the private management link shown after submission. Use it to check status, read editorial feedback and make changes when needed. Products remain offline until approved and published; there is no fixed review deadline or automatic status email.',
-  },
-  {
-    q: 'Can shoppers buy directly from the Product Gallery?',
-    a: 'Purchases take place on your original store or marketplace listing. A Nexscope Product Gallery page presents the product and links shoppers to that destination. You keep your existing checkout and fulfillment process.',
-  },
-];
-const resources = [
-  {
-    title: 'Amazon-to-1688 API test',
-    description:
-      'Inspect a dated Amazon-to-1688 sourcing test, its returned records and its limits.',
-    href: `${library}/api-evidence/portable-blender-amazon-1688/`,
-    label: 'Public API test',
-  },
-  {
-    title: 'Prepare your product for AI search',
-    description:
-      'Learn which product facts make a page easier to understand and verify.',
-    href: `${library}/product-page-geo-ai-shopping/`,
-    label: 'Product GEO guide',
-  },
-  {
-    title: 'Explore the learning library',
-    description:
-      'Find marketplace research, tools, tutorials and worked examples.',
-    href: `${library}/`,
-    label: 'All resources',
-  },
-];
-const paths = [
-  {
-    title: 'Build a data workflow',
-    icon: Code2,
-    href: '/data/',
-    label: 'Find your first API',
-    steps: [
-      [
-        'Choose an operation',
-        'Start with the marketplace and information you need.',
-      ],
-      [
-        'Test one request',
-        'Review required inputs, returned fields and current credit requirements.',
-      ],
-      [
-        'Connect it to your app',
-        'Use the documented REST API in your application or AI workflow.',
-      ],
-    ],
-  },
-  {
-    title: 'Publish a free product listing',
-    icon: Globe2,
-    href: submit,
-    label: 'Start a free submission',
-    steps: [
-      [
-        'Add your product facts',
-        'Share a public product URL or ASIN, accurate details and a clear image.',
-      ],
-      [
-        'Save your private review link',
-        'Check status, read feedback and edit your submission when needed.',
-      ],
-      [
-        'Get a public page after approval',
-        'Your product page brings its facts and media together and links to your store.',
-      ],
-    ],
+    q: 'Where can I compare subscriptions and API credits?',
+    a: 'The Pricing page shows monthly and yearly subscriptions from Nexscope’s public plan catalog. Review the upfront total, monthly credit allocation, introductory offer eligibility and renewal price. Data-only credit top-ups are also available without a subscription.',
   },
 ];
 
 export const metadata: Metadata = {
-  title: 'Ecommerce Data APIs & Free Product Listings | Nexscope Learn',
+  title: 'Nexscope Learn | Ecommerce AI Videos & Data APIs',
   description:
-    'Browse Nexscope ecommerce Data APIs. Submit a product for free review and, if approved, a public listing built for search and AI discovery.',
+    'Create ecommerce product videos with Nexscope or build with marketplace Data APIs. Explore official video examples, subscription plans and free product listings.',
   alternates: { canonical: '/' },
   robots: {
     index: true,
@@ -134,26 +72,24 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
+    title: 'Nexscope Learn — Product Videos & Ecommerce Data APIs',
+    description: summary,
     siteName: 'Nexscope Learn',
-    title: 'Nexscope Learn — Ecommerce Data APIs & Free Product Listings',
-    description:
-      'Find the data for your next build. Give your product a free public page after review.',
     url: '/',
     type: 'website',
     images: [DEFAULT_SOCIAL_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ecommerce Data APIs & Free Product Listings',
-    description:
-      'Two ways to get started with Nexscope: explore ecommerce data or submit a product for free.',
+    title: 'Nexscope Learn | Ecommerce AI Videos & Data APIs',
+    description: summary,
     images: [DEFAULT_SOCIAL_IMAGE],
   },
 };
 
 export default function Home() {
   return (
-    <div className={styles.home}>
+    <div className={styles.page}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -165,18 +101,17 @@ export default function Home() {
                 '@type': 'WebSite',
                 '@id': 'https://learn.nexscope.ai/#website',
                 name: 'Nexscope Learn',
-                description: homeSummary,
                 url: 'https://learn.nexscope.ai/',
+                description: summary,
                 publisher: { '@id': 'https://www.nexscope.ai/#organization' },
               },
               {
                 '@type': 'CollectionPage',
                 '@id': 'https://learn.nexscope.ai/#webpage',
-                name: 'Ecommerce Data APIs & Free Product Listings',
-                description: homeSummary,
                 url: 'https://learn.nexscope.ai/',
+                name: 'Ecommerce AI video workflows and Data APIs',
+                description: summary,
                 inLanguage: 'en',
-                publisher: { '@id': 'https://www.nexscope.ai/#organization' },
                 isPartOf: { '@id': 'https://learn.nexscope.ai/#website' },
                 mainEntity: {
                   '@type': 'ItemList',
@@ -184,14 +119,26 @@ export default function Home() {
                     {
                       '@type': 'ListItem',
                       position: 1,
+                      name: 'Ecommerce video workflows',
+                      url: 'https://learn.nexscope.ai/#for-ecommerce-operators',
+                    },
+                    {
+                      '@type': 'ListItem',
+                      position: 2,
                       name: 'Ecommerce Data API directory',
                       url: 'https://learn.nexscope.ai/data/',
                     },
                     {
                       '@type': 'ListItem',
-                      position: 2,
-                      name: 'Free ecommerce Product Gallery',
+                      position: 3,
+                      name: 'Free Product Gallery',
                       url: `https://learn.nexscope.ai${gallery}`,
+                    },
+                    {
+                      '@type': 'ListItem',
+                      position: 4,
+                      name: 'Nexscope subscriptions',
+                      url: 'https://learn.nexscope.ai/pricing/',
                     },
                   ],
                 },
@@ -208,246 +155,284 @@ export default function Home() {
           }).replace(/</g, '\\u003c'),
         }}
       />
-      <script src="/campaigns.js?v=3" defer />
       <a className={styles.skip} href="#main">
         Skip to content
       </a>
       <MarketingHeader campaign="homepage" homepageFocus productReviewCta />
       <main id="main">
-        <section className={`${styles.wrap} ${styles.focusHero}`}>
-          <p className={styles.eyebrow}>NEXSCOPE · FOR BUILDERS AND SELLERS</p>
+        <section className={styles.hero}>
+          <p className={styles.eyebrow}>
+            NEXSCOPE · AI TOOLS & DATA FOR ECOMMERCE
+          </p>
           <h1>
-            Ecommerce Data APIs.
+            Create for your store.
             <br />
-            <em>Free product listings.</em>
+            <em>Build for ecommerce.</em>
           </h1>
-          <p className={styles.focusLead}>{homeSummary}</p>
+          <p className={styles.heroLead}>
+            Turn product photos and links into video stories. Build ecommerce
+            workflows with marketplace APIs. Give your product a free public
+            page to support AI discovery.
+          </p>
+          <a className={styles.heroLink} href="#for-ecommerce-operators">
+            See what you can create <ArrowRight size={16} />
+          </a>
         </section>
 
         <section
-          className={`${styles.wrap} ${styles.featurePair}`}
-          aria-label="Choose your next step"
+          className={styles.module}
+          id="for-ecommerce-operators"
+          aria-labelledby="operators-title"
         >
-          <article
-            className={`${styles.primaryFeature} ${styles.dataFeature}`}
-            id="data-apis"
-          >
-            <div className={styles.featureTop}>
-              <span className={styles.featureIcon}>
-                <Database size={23} />
-              </span>
-              <span className={styles.audienceTag}>
-                FOR DEVELOPERS & AI BUILDERS
-              </span>
+          <div className={styles.moduleHeading}>
+            <div>
+              <p className={styles.moduleLabel}>
+                <span>01</span> FOR ECOMMERCE OPERATORS
+              </p>
+              <h2 id="operators-title">
+                Make your next
+                <br />
+                <em>product story.</em>
+              </h2>
             </div>
-            <p className={styles.featureKicker}>DATA API DIRECTORY</p>
-            <h2>
-              Find ecommerce data.
-              <br />
-              Build your next workflow.
-            </h2>
-            <p className={styles.featureDescription}>
-              Nexscope’s Data API directory helps developers and analysts find
-              ecommerce data by platform and task. Open the matching official
-              documentation to check inputs, results and credits before testing.
-            </p>
-            <div
-              className={styles.platformPreview}
-              aria-label="Supported marketplace examples"
-            >
-              {platforms.map(([logo, label]) => (
-                <span key={logo}>
-                  <img
-                    src={`/data/logos/${logo}.webp`}
-                    width="23"
-                    height="23"
-                    alt=""
-                  />
-                  {label}
-                </span>
-              ))}
-            </div>
-            <ul className={styles.featureBenefits}>
-              {[
-                'Find APIs by platform, category or keyword',
-                'Compare purposes and recorded usage',
-                'Open the exact API documentation and online test',
-              ].map((text) => (
-                <li key={text}>
-                  <Check size={16} />
-                  {text}
-                </li>
-              ))}
-            </ul>
-            <div className={styles.featureBottom}>
+            <div className={styles.moduleIntro}>
+              <p>
+                From a product photo to a video concept. Create in the browser,
+                review the result and choose what fits your store.
+              </p>
               <a
-                className={styles.button}
+                href={workflowUrl('image-to-video')}
+                target="_blank"
+                rel="noopener"
+                data-track-tool="image-to-video"
+              >
+                Open the video workspace <ArrowUpRight size={16} />
+              </a>
+            </div>
+          </div>
+          <HomeVideoExamples examples={exampleSnapshot.examples} />
+          <p className={styles.exampleNote}>
+            Official Nexscope Inspiration examples. Preview a clip, then start
+            with your own product. Outputs vary by input and model.
+          </p>
+          <div className={styles.subheading}>
+            <h3>A starting point for every kind of product video.</h3>
+            <span>Choose your workflow</span>
+          </div>
+          <div className={styles.workflowGrid}>
+            {videoWorkflows.map(
+              ({ name, path, icon: Icon, description, input }) => (
+                <a
+                  className={styles.workflowCard}
+                  href={workflowUrl(path)}
+                  key={path}
+                  target="_blank"
+                  rel="noopener"
+                  data-track-tool={path}
+                >
+                  <div className={styles.workflowTop}>
+                    <Icon size={22} aria-hidden="true" />
+                    <ArrowUpRight size={16} aria-hidden="true" />
+                  </div>
+                  <h4>{name}</h4>
+                  <p>{description}</p>
+                  <span>{input}</span>
+                </a>
+              ),
+            )}
+          </div>
+          <div className={styles.galleryBanner} id="free-product-listings">
+            <div className={styles.galleryIcon}>
+              <PackagePlus size={31} aria-hidden="true" />
+            </div>
+            <div className={styles.galleryCopy}>
+              <p className={styles.freeBadge}>100% FREE LISTING & DISPLAY</p>
+              <h3>
+                A clearer page for your product.
+                <br />
+                Another source for AI discovery.
+              </h3>
+              <p>
+                Publish reviewed product facts, images and your store link in
+                the Product Gallery. Submission, review and approved display are
+                completely free.
+              </p>
+              <small>
+                Keep your existing checkout. Indexing, AI recommendations and
+                traffic are not guaranteed.
+              </small>
+            </div>
+            <div className={styles.galleryActions}>
+              <a href={submit} data-showcase-submit-cta="root-home-feature">
+                List your product for free <ArrowRight size={15} />
+              </a>
+              <a href={gallery}>
+                Browse the Product Gallery <ArrowRight size={14} />
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section
+          className={`${styles.module} ${styles.developers}`}
+          id="for-ecommerce-developers"
+          aria-labelledby="developers-title"
+        >
+          <div className={styles.moduleHeading}>
+            <div>
+              <p className={styles.moduleLabel}>
+                <span>02</span> FOR ECOMMERCE DEVELOPERS
+              </p>
+              <h2 id="developers-title">
+                The data behind
+                <br />
+                <em>your next build.</em>
+              </h2>
+            </div>
+            <p className={styles.moduleIntro}>
+              Bring marketplace research into your apps, internal tools and AI
+              workflows. Find an operation by platform and task, then inspect
+              its documented inputs and results.
+            </p>
+          </div>
+          <div className={styles.developerGrid} id="data-apis">
+            <div className={styles.dataCopy}>
+              <span className={styles.dataIcon}>
+                <Database size={24} aria-hidden="true" />
+              </span>
+              <h3>Find the right ecommerce Data API.</h3>
+              <p>
+                Research products, reviews, keywords, sourcing candidates and
+                competitors across marketplaces.
+              </p>
+              <div
+                className={styles.platforms}
+                aria-label="Marketplace examples"
+              >
+                {platforms.map(([slug, name]) => (
+                  <span key={slug}>
+                    <img
+                      src={`/data/logos/${slug}.webp`}
+                      alt=""
+                      width="20"
+                      height="20"
+                      loading="lazy"
+                    />
+                    {name}
+                  </span>
+                ))}
+              </div>
+              <ul className={styles.benefits}>
+                <li>
+                  <Check size={16} />
+                  Filter APIs by platform, category or keyword
+                </li>
+                <li>
+                  <Check size={16} />
+                  Compare recorded usage and credit ranges
+                </li>
+                <li>
+                  <Check size={16} />
+                  Open the exact official documentation and tester
+                </li>
+              </ul>
+              <a
+                className={styles.primary}
                 href="/data/"
                 data-track-tool="data-directory"
               >
-                Explore Data APIs <ArrowRight size={17} />
+                Explore Data APIs <ArrowRight size={16} />
               </a>
-              <p>Free to browse. API requests may use credits.</p>
+              <p className={styles.dataNote}>
+                Free to browse. API requests follow the selected operation’s
+                access and credit requirements.
+              </p>
             </div>
-            <a
-              className={styles.galleryBrowse}
-              href={`${library}/api-capabilities/`}
-            >
-              How to choose your first API <ArrowRight size={15} />
-            </a>
-          </article>
-          <article
-            className={`${styles.primaryFeature} ${styles.galleryFeature}`}
-            id="free-product-listings"
-          >
-            <div className={styles.featureTop}>
-              <span className={styles.featureIcon}>
-                <PackagePlus size={23} />
-              </span>
-              <span className={styles.freeTag}>
-                100% FREE LISTING & DISPLAY
-              </span>
-            </div>
-            <p className={styles.featureKicker}>PRODUCT GALLERY</p>
-            <h2>
-              Free product listings.
-              <br />
-              Built for AI discovery.
-            </h2>
-            <p className={styles.featureDescription}>
-              Nexscope Product Gallery publishes reviewed product facts, images
-              and your store link on a free public page. This gives search and
-              AI systems another source for understanding what you sell.
-            </p>
-            <div
-              className={styles.productPreview}
-              aria-label="What your product page brings together"
-            >
-              <span className={styles.productPreviewIcon}>
-                <PackagePlus size={34} />
-              </span>
-              <div>
-                <strong>Your product, clearly presented.</strong>
-                <span>Product facts · Images · Your store link</span>
+            <div className={styles.codeCard}>
+              <div className={styles.codeTop}>
+                <span>
+                  <i />
+                  <i />
+                  <i />
+                </span>
+                <span>START WITH THE PUBLIC CATALOG</span>
+                <Code2 size={17} />
               </div>
-              <span className={styles.productPreviewGlobe}>
-                <Globe2 size={21} />
-              </span>
-            </div>
-            <ul className={styles.featureBenefits}>
-              {[
-                'A public product page after editorial approval',
-                'Clear product context to support AI discovery & GEO',
-                'Shoppers follow the link to your original store',
-              ].map((text) => (
-                <li key={text}>
-                  <Check size={16} />
-                  {text}
-                </li>
-              ))}
-            </ul>
-            <div className={styles.featureBottom}>
-              <a
-                className={`${styles.button} ${styles.galleryButton}`}
-                href={submit}
-                data-showcase-submit-cta="root-home-feature"
-              >
-                List your product for free <ArrowRight size={17} />
-              </a>
-              <p>No payment or store connection required.</p>
-            </div>
-            <a
-              className={styles.galleryBrowse}
-              href={gallery}
-              data-track-tool="product-gallery"
-            >
-              Browse the Product Gallery <ArrowRight size={15} />
-            </a>
-          </article>
-        </section>
-
-        <HomepagePricing plans={pricingSnapshot.plans} />
-
-        <section
-          className={`${styles.wrap} ${styles.nextSteps}`}
-          aria-labelledby="next-steps-title"
-        >
-          <div className={styles.focusSectionHeading}>
-            <p className={styles.eyebrow}>A SIMPLE NEXT STEP</p>
-            <h2 id="next-steps-title">
-              Choose your path. Start with one task.
-            </h2>
-          </div>
-          <div className={styles.pathGrid}>
-            {paths.map((path) => (
-              <article key={path.href}>
-                <div className={styles.pathTitle}>
-                  <path.icon size={21} />
-                  <h3>{path.title}</h3>
+              <div className={styles.codeBody}>
+                <span className={styles.httpMethod}>GET</span>
+                <span className={styles.codePath}>/api/skill-api/catalog</span>
+                <pre>
+                  <code>{`curl --request GET \\\n  'https://api.nexscope.ai/api/skill-api/catalog'`}</code>
+                </pre>
+                <div className={styles.codeComment}>
+                  Discover the available operations.
+                  <br />
+                  Choose a Data API, check its inputs and test with your own API
+                  key.
                 </div>
-                <ol>
-                  {path.steps.map(([title, text], i) => (
-                    <li key={title}>
-                      <span>0{i + 1}</span>
-                      <div>
-                        <strong>{title}</strong>
-                        <p>{text}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ol>
-                <a
-                  href={path.href}
-                  data-track-tool={
-                    path.href === '/data/' ? 'data-directory' : undefined
-                  }
-                  data-showcase-submit-cta={
-                    path.href === submit ? 'root-home-steps' : undefined
-                  }
-                >
-                  {path.label} <ArrowRight size={15} />
-                </a>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section
-          className={`${styles.wrap} ${styles.supportingResources}`}
-          aria-labelledby="resource-title"
-        >
-          <div className={styles.focusSectionHeading}>
-            <p className={styles.eyebrow}>HELP WHEN YOU NEED IT</p>
-            <h2 id="resource-title">A little guidance before you start.</h2>
-          </div>
-          <div className={styles.resourceTriplet}>
-            {resources.map((item) => (
-              <a key={item.href} href={item.href}>
-                <span>{item.label}</span>
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-                <ArrowRight size={19} aria-hidden="true" />
+              </div>
+              <ol className={styles.apiSteps}>
+                <li>
+                  <span>1</span>Choose a marketplace
+                </li>
+                <li>
+                  <span>2</span>Inspect an endpoint
+                </li>
+                <li>
+                  <span>3</span>Test one real request
+                </li>
+              </ol>
+              <a
+                href="https://www.nexscope.ai/api-docs?tab=data&co-from=learn"
+                target="_blank"
+                rel="noopener"
+                data-track-tool="data-api-docs"
+              >
+                Open official API documentation <ArrowUpRight size={15} />
               </a>
-            ))}
+            </div>
           </div>
-          <nav
-            className={styles.secondaryResources}
-            aria-label="More Nexscope resources"
-          >
-            <a href="/tools/">Ecommerce tools</a>
-            <a href={`${library}/topics/research/`}>Market research</a>
-            <a href={`${library}/topics/sourcing/`}>Sourcing & 1688</a>
-            <a href={`${library}/topics/creative/`}>Images & video</a>
-            <a href={`${library}/api-evidence/`}>API evidence</a>
-            <a href={`${library}/community/`}>Community</a>
-          </nav>
+          <div className={styles.evidenceRow}>
+            <div>
+              <Globe2 size={20} />
+              <p>See a workflow before you build it.</p>
+            </div>
+            <a href="/ecommerce-ai-tools/api-evidence/portable-blender-amazon-1688/">
+              Amazon-to-1688 API test <ArrowRight size={14} />
+            </a>
+            <a href="/ecommerce-ai-tools/api-capabilities/">
+              API selection guide <ArrowRight size={14} />
+            </a>
+            <a href="/ecommerce-ai-tools/">
+              Learning library <ArrowRight size={14} />
+            </a>
+          </div>
         </section>
 
         <section
-          className={`${styles.wrap} ${styles.homeFaq}`}
-          aria-labelledby="faq-title"
+          className={styles.pricingStrip}
+          aria-labelledby="home-pricing-title"
         >
-          <div className={styles.focusSectionHeading}>
+          <div>
+            <p className={styles.eyebrow}>
+              <Sparkles size={13} /> PLANS FOR YOUR NEXT STEP
+            </p>
+            <h2 id="home-pricing-title">
+              One subscription.
+              <br />
+              Create and build with shared credits.
+            </h2>
+            <p>
+              Compare monthly and yearly plans, credit allocations and
+              first-subscription offers. Product Gallery listings stay free.
+            </p>
+          </div>
+          <a href="/pricing/">
+            Explore subscription plans <ArrowRight size={17} />
+          </a>
+        </section>
+        <section className={styles.faq} aria-labelledby="faq-title">
+          <div>
             <p className={styles.eyebrow}>GOOD TO KNOW</p>
             <h2 id="faq-title">Before you get started.</h2>
           </div>
@@ -461,33 +446,7 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className={`${styles.wrap} ${styles.footer}`}>
-        <div>
-          <a href="/">Nexscope Learn</a>
-          <p>Ecommerce data. Clearer product discovery.</p>
-        </div>
-        <nav className={styles.footerlinks} aria-label="Footer">
-          <a href="/data/">Data APIs</a>
-          <a href={gallery}>Product Gallery</a>
-          <a href={submit} data-showcase-submit-cta="root-home-footer">
-            List a product free
-          </a>
-          <a href="/tools/">Tools</a>
-          <a href={`${library}/`}>Learning library</a>
-          <a href={`${library}/community/`}>Community</a>
-          <a href="/about/">About</a>
-          <a href="/security/">Security</a>
-          <a href="/contact/">Contact</a>
-          <a href="https://www.nexscope.ai/privacy">Privacy</a>
-          <a href="https://www.nexscope.ai/terms">Terms</a>
-          <a href="#analytics-preferences">Cookie settings</a>
-        </nav>
-        <p className={styles.disclosure}>
-          Nexscope publishes this directory and Product Gallery. Product
-          submission, review and approved display are free. API access and
-          credits follow the selected operation’s official documentation.
-        </p>
-      </footer>
+      <LearnFooter />
     </div>
   );
 }

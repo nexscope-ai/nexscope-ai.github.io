@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "vinext dev",
-    "prebuild": "node scripts/build-public-pricing.mjs",
+    "prebuild": "node scripts/prepare-public-home-data.mjs",
     "build": "vinext build",
     "test:workflows": "node --test scripts/test-analytics-stream.mjs scripts/test-workflow-tools.cjs scripts/test-seo-keyword-planner.cjs scripts/test-tool-api-key-session.cjs scripts/test-md-text.mjs scripts/test-campaign-attribution.mjs scripts/test-sitemap.mjs",
     "test:research": "node --experimental-strip-types --test scripts/test-research-tools.mjs scripts/test-1688-detail.mjs scripts/test-marketplace-report.mjs",

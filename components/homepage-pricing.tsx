@@ -202,7 +202,7 @@ export default function HomepagePricing({ plans }: { plans: Plan[] }) {
       <div className={styles.bottom}>
         <p>
           Only need data?{' '}
-          <a href={pricingUrl}>
+          <a href="#data-api-topups">
             Explore Data API top-ups
             <ArrowRight size={13} aria-hidden="true" />
           </a>

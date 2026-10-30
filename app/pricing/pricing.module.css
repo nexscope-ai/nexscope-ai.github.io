@@ -1,0 +1,286 @@
+.page {
+  background: #fbf9f4;
+  color: #28222f;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+.page * {
+  box-sizing: border-box;
+}
+.page a {
+  text-decoration: none;
+}
+.page a:focus-visible,
+.page summary:focus-visible {
+  outline: 3px solid #7950d1;
+  outline-offset: 4px;
+}
+.skip {
+  position: absolute;
+  top: -100px;
+  left: 18px;
+  padding: 12px;
+  background: white;
+  z-index: 70;
+  color: #6c45ae;
+}
+.skip:focus {
+  top: 9px;
+}
+.hero,
+.planApplications,
+.topUps,
+.freeGallery,
+.faq,
+.priceNote {
+  width: min(1200px, calc(100% - 64px));
+  margin-inline: auto;
+}
+.hero {
+  padding: 40px 0 25px;
+  text-align: center;
+}
+.hero nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 35px;
+  color: #a18fae;
+  font-size: 11px;
+}
+.hero nav a {
+  color: inherit;
+}
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  color: #9272b7;
+  margin: 0 0 17px;
+  font-weight: 600;
+}
+.hero h1 {
+  font-size: clamp(35px, 4.8vw, 55px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -1.8px;
+  margin: 0;
+}
+.hero h1 em {
+  font-style: normal;
+  color: #9874bd;
+}
+.hero > p:last-child {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #9b8aa9;
+  max-width: 630px;
+  margin: 23px auto 0;
+}
+.planApplications {
+  padding: 24px 0 45px;
+}
+.planApplications > h2 {
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -0.6px;
+  margin: 0 0 23px;
+}
+.applicationGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.applicationGrid article {
+  background: white;
+  border: 1px solid #e5deeb;
+  border-radius: 14px;
+  padding: 27px;
+}
+.applicationGrid svg {
+  color: #9979bd;
+}
+.applicationGrid h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 20px 0 12px;
+}
+.applicationGrid p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #94819f;
+  margin: 0 0 20px;
+}
+.applicationGrid a {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: #8259b5;
+  font-size: 12px;
+  font-weight: 600;
+}
+.topUps {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 35px;
+  background: #f1ecf8;
+  border: 1px solid #e5dced;
+  padding: 30px 33px;
+  border-radius: 15px;
+  scroll-margin-top: 25px;
+}
+.topUps h2 {
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin: 0 0 13px;
+}
+.topUps p:last-child {
+  color: #9983ab;
+  font-size: 13px;
+  line-height: 1.8;
+  max-width: 620px;
+  margin: 0;
+}
+.topUps > a {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  white-space: nowrap;
+  font-weight: 600;
+  color: #7b4fac;
+  font-size: 12px;
+}
+.freeGallery {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+  padding: 22px 0 38px;
+  border-bottom: 1px solid #e7e0ec;
+  color: #719b7f;
+}
+.freeGallery p {
+  margin: 0;
+  flex: 1;
+  font-size: 12px;
+  line-height: 1.8;
+}
+.freeGallery strong {
+  display: block;
+  color: #4c805e;
+}
+.freeGallery a {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  color: #538765;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 600;
+}
+.faq {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 60px;
+  padding: 47px 0 20px;
+}
+.faq h2 {
+  font-size: 27px;
+  font-weight: 600;
+  letter-spacing: -0.6px;
+  line-height: 1.25;
+  margin: 0;
+}
+.faq details {
+  padding: 17px 0;
+  border-bottom: 1px solid #e8e0ed;
+}
+.faq details:first-child {
+  padding-top: 0;
+}
+.faq summary {
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.faq details p {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #927f9f;
+  margin: 14px 0 0;
+}
+.priceNote {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: #a292ad;
+  font-size: 10px;
+  line-height: 1.8;
+  padding-bottom: 35px;
+}
+.priceNote svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+@media (max-width: 700px) {
+  .hero,
+  .planApplications,
+  .topUps,
+  .freeGallery,
+  .faq,
+  .priceNote {
+    width: calc(100% - 36px);
+  }
+  .hero {
+    padding-top: 27px;
+  }
+  .hero h1 {
+    font-size: 35px;
+    letter-spacing: -1.1px;
+  }
+  .hero nav {
+    margin-bottom: 26px;
+  }
+  .hero > p:last-child {
+    font-size: 13px;
+  }
+  .applicationGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .planApplications > h2 {
+    font-size: 23px;
+  }
+  .topUps {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 25px;
+    gap: 22px;
+  }
+  .topUps h2 {
+    font-size: 23px;
+  }
+  .freeGallery {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .freeGallery > svg {
+    flex-shrink: 0;
+  }
+  .freeGallery p {
+    min-width: 230px;
+  }
+  .freeGallery > a {
+    margin-left: 36px;
+  }
+  .faq {
+    grid-template-columns: 1fr;
+    gap: 27px;
+    padding-top: 35px;
+  }
+  .faq h2 {
+    font-size: 25px;
+  }
+}

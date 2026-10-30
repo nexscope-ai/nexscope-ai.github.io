@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import styles from './marketing-header.module.css';
 
 type MarketingHeaderProps = {
-  active?: 'tools';
+  active?: 'tools' | 'pricing';
   campaign: string;
   explorePath?: '/apis' | '/';
   productReviewCta?: boolean;
@@ -88,6 +88,9 @@ export default function MarketingHeader({
                 </li>
                 <li>
                   <a href="/ecommerce-ai-tools/">Guides & resources</a>
+                </li>
+                <li>
+                  <a href="/pricing/" aria-current={active === 'pricing' ? 'page' : undefined}>Pricing</a>
                 </li>
               </>
             ) : (

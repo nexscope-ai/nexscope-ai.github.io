@@ -1,0 +1,29 @@
+{
+  "updatedAt": "2026-10-30T00:00:00.000Z",
+  "examples": [
+    {
+      "title": "Poolside Sunglasses",
+      "poster": "https://store.nexscope.ai/prod/marketing-video-example/image/73498a9a-c7bb-468d-8a3d-c1469b14e1e9.jpg",
+      "video": "https://store.nexscope.ai/prod/marketing-video-example/video/5071462a-a04b-4a2a-bba9-d813cf3d6dbf.mp4",
+      "sourceImage": "https://store.nexscope.ai/prod/marketing-video-example/image/f1955781-27f8-4e54-be76-443a7bc35f6f.jpg",
+      "duration": 10,
+      "ratio": "9:16"
+    },
+    {
+      "title": "A Happy Mealtime",
+      "poster": "https://store.nexscope.ai/prod/marketing-video-example/image/4f9dfb06-a641-488b-90d0-f8a1b2a5852e.jpg",
+      "video": "https://store.nexscope.ai/prod/marketing-video-example/video/13c9a7fa-dfff-4db0-97f2-07d575eef1da.mp4",
+      "sourceImage": "https://store.nexscope.ai/prod/marketing-video-example/image/d78b5adb-681b-4551-b1bf-d6f4566214e3.jpg",
+      "duration": 10,
+      "ratio": "9:16"
+    },
+    {
+      "title": "A Little Care, Every Day",
+      "poster": "https://store.nexscope.ai/prod/marketing-video-example/image/ec64544e-1923-4d02-a201-260b8886943b.jpg",
+      "video": "https://store.nexscope.ai/prod/marketing-video-example/video/e580690b-753d-49fc-ad83-a74f78c527ec.mp4",
+      "sourceImage": "https://store.nexscope.ai/prod/marketing-video-example/image/4cf24451-766c-472d-abfd-4d5a5645fe29.jpg",
+      "duration": 10,
+      "ratio": "9:16"
+    }
+  ]
+}
