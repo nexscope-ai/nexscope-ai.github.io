@@ -16,10 +16,12 @@ import LearnFooter from '@/components/learn-footer';
 import HomeVideoExamples from '@/components/home-video-examples';
 import exampleSnapshot from '@/lib/home-video-examples.json';
 import pricingSnapshot from '@/lib/pricing-snapshot.json';
+import creditSnapshot from '@/lib/data-credit-snapshot.json';
 import { pricingMoney } from '@/lib/pricing-content.mjs';
 import {
   entrySubscription,
   estimatedCapacity,
+  historicalAverage,
   publicCostExamples,
 } from '@/lib/home-value.mjs';
 import { videoWorkflows, workflowUrl } from '@/lib/home-video-workflows';
@@ -100,9 +102,8 @@ export default function Home() {
   const videoCount = entry
     ? estimatedCapacity(entry.credits, publicCostExamples.video.credits)
     : null;
-  const dataCount = entry
-    ? estimatedCapacity(entry.credits, publicCostExamples.data.credits)
-    : null;
+  const dataCost = historicalAverage(creditSnapshot, '1688-search-by-image');
+  const dataCount = entry ? estimatedCapacity(entry.credits, dataCost) : null;
   return (
     <div className={styles.page}>
       <script
@@ -199,9 +200,7 @@ export default function Home() {
               </span>
               <span className={styles.quickCopy}>
                 <strong>For ecommerce operators</strong>
-                <span>
-                  Create product videos. Product listings are free.
-                </span>
+                <span>Create product videos. Product listings are free.</span>
               </span>
               <ArrowDownRight
                 className={styles.quickArrow}
@@ -228,12 +227,21 @@ export default function Home() {
             <div className={styles.priceIntroLine}>
               <a
                 className={styles.trialLink}
-                href="https://www.nexscope.ai/pricing?co-from=learn"
+                href={workflowUrl('image-to-video')}
                 target="_blank"
                 rel="noopener"
-                data-track-tool="free-trial"
+                data-track-tool="image-to-video"
               >
-                Try free <span>1,000 credits · 3 days</span>
+                Try Image to Video <ArrowUpRight size={13} aria-hidden="true" />
+              </a>
+              <a
+                className={styles.trialLink}
+                href="https://www.nexscope.ai/api-docs/1688-search-by-image?co-from=learn"
+                target="_blank"
+                rel="noopener"
+                data-track-tool="1688-search-by-image"
+              >
+                Test a Data API <ArrowUpRight size={13} aria-hidden="true" />
               </a>
               <a className={styles.fromPrice} href="/pricing/">
                 {entry ? (
@@ -272,7 +280,8 @@ export default function Home() {
                   .{' '}
                 </>
               ) : null}
-              USD · No credit card needed for the trial.
+              USD · New accounts: 1,000 trial credits for 3 days. No credit card
+              required. Trial videos are in-app only.
             </p>
           </div>
         </section>
@@ -304,7 +313,7 @@ export default function Home() {
                 rel="noopener"
                 data-track-tool="image-to-video"
               >
-                Open the video workspace <ArrowUpRight size={16} />
+                Try Image to Video <ArrowUpRight size={16} />
               </a>
             </div>
           </div>
@@ -406,6 +415,79 @@ export default function Home() {
                 Browse the Product Gallery <ArrowRight size={14} />
               </a>
             </div>
+          </div>
+          <div
+            className={styles.galleryExample}
+            aria-labelledby="gallery-example-title"
+          >
+            <div className={styles.galleryJourney}>
+              <p className={styles.eyebrow}>SEE WHAT YOU GET</p>
+              <h3 id="gallery-example-title">
+                From product facts to a public Gallery page.
+              </h3>
+              <ol>
+                <li>
+                  <strong>You provide</strong>
+                  <span>
+                    Your product link, accurate details and a clear product
+                    image. No store connection required.
+                  </span>
+                </li>
+                <li>
+                  <strong>We review</strong>
+                  <span>
+                    Read editorial feedback on your private management page.
+                    Publication follows approval.
+                  </span>
+                </li>
+                <li>
+                  <strong>Your product gets a public page</strong>
+                  <span>
+                    Approved listings bring product facts, images and a link to
+                    your original store together in one crawlable page.
+                  </span>
+                </li>
+              </ol>
+              <p className={styles.galleryExampleNote}>
+                Submission, review and approved display are completely free. A
+                clearer source of product facts can support AI discovery;
+                indexing, recommendations and traffic are not guaranteed.
+              </p>
+              <a href={submit} data-showcase-submit-cta="home-gallery-example">
+                Create your free product page <ArrowRight size={15} />
+              </a>
+            </div>
+            <article className={styles.publishedExample}>
+              <a
+                href={`${gallery}product/d693a492-b61c-4ee2-8390-d5c4a7140748/`}
+                aria-label="View the published PARTNER Cheese Block product page"
+              >
+                <img
+                  src="https://store.nexscope.ai/product-showcase/uploads/5d8d2c29-6640-4833-a644-86df3991dafd-20261029.webp"
+                  alt="PARTNER Cheese Block Freeze-Dried Treats — Box of 12 Sachets"
+                  width="420"
+                  height="320"
+                  loading="lazy"
+                />
+              </a>
+              <div>
+                <span className={styles.publishedBadge}>
+                  PUBLISHED GALLERY EXAMPLE
+                </span>
+                <h4>PARTNER Cheese Block Freeze-Dried Treats</h4>
+                <p>12 sachets · 4 oz total · For cats and dogs</p>
+                <ul>
+                  <li>Product facts and feeding limitations</li>
+                  <li>Accurate product image</li>
+                  <li>Link to the original store</li>
+                </ul>
+                <a
+                  href={`${gallery}product/d693a492-b61c-4ee2-8390-d5c4a7140748/`}
+                >
+                  See the real product page <ArrowUpRight size={14} />
+                </a>
+              </div>
+            </article>
           </div>
         </section>
 
@@ -519,12 +601,12 @@ export default function Home() {
                 </li>
               </ol>
               <a
-                href="https://www.nexscope.ai/api-docs?tab=data&co-from=learn"
+                href="https://www.nexscope.ai/api-docs/1688-search-by-image?co-from=learn"
                 target="_blank"
                 rel="noopener"
-                data-track-tool="data-api-docs"
+                data-track-tool="1688-search-by-image"
               >
-                Open official API documentation <ArrowUpRight size={15} />
+                Test 1688 Search by Image <ArrowUpRight size={15} />
               </a>
             </div>
           </div>
@@ -533,27 +615,27 @@ export default function Home() {
               <div>
                 <p className={styles.valueEyebrow}>PLAN YOUR API BUDGET</p>
                 <h3>
-                  About {dataCount.toLocaleString('en-US')} calls at{' '}
-                  {publicCostExamples.data.credits} credits each.
+                  About {dataCount.toLocaleString('en-US')} calls at {dataCost}{' '}
+                  credits each, using historical averages.
                 </h3>
                 <p>
-                  For example, {publicCostExamples.data.name} is estimated at{' '}
-                  {publicCostExamples.data.credits} credits per call. This uses
-                  the full {entry.name} monthly allocation of{' '}
-                  {entry.credits.toLocaleString('en-US')} credits for that
-                  operation.
+                  For example, {publicCostExamples.data.name} has a historical
+                  average of {dataCost} credits per call with a 10-credit
+                  minimum applied. This uses the full {entry.name} monthly
+                  allocation of {entry.credits.toLocaleString('en-US')} credits
+                  for that operation.
                 </p>
                 <small>
                   Source:{' '}
                   <a
-                    href="https://www.nexscope.ai/pricing?co-from=learn"
+                    href="https://api.nexscope.ai/api/skill-api/v1/credit-statistics"
                     target="_blank"
                     rel="noopener"
                   >
-                    official pricing
+                    public credit statistics
                   </a>
-                  , checked {publicCostExamples.verifiedOn}. Other APIs have
-                  different costs. This is an allocation estimate, not a
+                  , checked {creditSnapshot.checkedAt.slice(0, 10)}. Other APIs
+                  have different costs. This is an allocation estimate, not a
                   per-call cash price.
                 </small>
               </div>

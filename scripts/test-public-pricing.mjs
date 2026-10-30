@@ -1,6 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { entrySubscription, estimatedCapacity } from '../lib/home-value.mjs';
+import {
+  entrySubscription,
+  estimatedCapacity,
+  historicalAverage,
+} from '../lib/home-value.mjs';
 import { pricingRows, subscriptionService } from '../lib/pricing-content.mjs';
 import {
   pricingBillingUrl,
@@ -283,4 +287,32 @@ test('credit capacity estimates round down and reject missing or zero costs', ()
   assert.equal(estimatedCapacity(30000, 10), 3000);
   assert.equal(estimatedCapacity(30000, 0), null);
   assert.equal(estimatedCapacity(30000, undefined), null);
+});
+
+test('homepage API estimate follows fetched historical averages and hides missing costs', () => {
+  assert.equal(
+    historicalAverage(
+      { available: true, statistics: { api: { average: 9.97 } } },
+      'api',
+    ),
+    10,
+  );
+  assert.equal(
+    historicalAverage(
+      { available: true, statistics: { api: { average: 41.46 } } },
+      'api',
+    ),
+    41,
+  );
+  assert.equal(
+    historicalAverage(
+      { available: false, statistics: { api: { average: 41.46 } } },
+      'api',
+    ),
+    null,
+  );
+  assert.equal(
+    historicalAverage({ available: true, statistics: {} }, 'api'),
+    null,
+  );
 });

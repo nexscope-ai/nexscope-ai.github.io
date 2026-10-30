@@ -41,3 +41,4 @@ next-env.d.ts
 
 # Generated from the anonymous public catalog before each build
 /lib/pricing-snapshot.json
+/lib/data-credit-snapshot.json
