@@ -194,20 +194,6 @@ export default function Home() {
             className={styles.quickNav}
             aria-label="Explore the two homepage modules"
           >
-            <a className={styles.quickLink} href="#for-ecommerce-operators">
-              <span className={styles.quickIcon}>
-                <Sparkles size={20} aria-hidden="true" />
-              </span>
-              <span className={styles.quickCopy}>
-                <strong>For ecommerce operators</strong>
-                <span>Create product videos. Product listings are free.</span>
-              </span>
-              <ArrowDownRight
-                className={styles.quickArrow}
-                size={18}
-                aria-hidden="true"
-              />
-            </a>
             <a className={styles.quickLink} href="#for-ecommerce-developers">
               <span className={styles.quickIcon}>
                 <Code2 size={20} aria-hidden="true" />
@@ -215,6 +201,20 @@ export default function Home() {
               <span className={styles.quickCopy}>
                 <strong>For ecommerce developers</strong>
                 <span>Find Data APIs and build marketplace workflows.</span>
+              </span>
+              <ArrowDownRight
+                className={styles.quickArrow}
+                size={18}
+                aria-hidden="true"
+              />
+            </a>
+            <a className={styles.quickLink} href="#for-ecommerce-operators">
+              <span className={styles.quickIcon}>
+                <Sparkles size={20} aria-hidden="true" />
+              </span>
+              <span className={styles.quickCopy}>
+                <strong>For ecommerce operators</strong>
+                <span>Create product videos. Product listings are free.</span>
               </span>
               <ArrowDownRight
                 className={styles.quickArrow}
@@ -287,6 +287,176 @@ export default function Home() {
         </section>
 
         <section
+          className={`${styles.module} ${styles.developers}`}
+          id="for-ecommerce-developers"
+          aria-labelledby="developers-title"
+        >
+          <div className={styles.moduleHeading}>
+            <div>
+              <p className={styles.moduleLabel}>
+                <span>01</span> FOR ECOMMERCE DEVELOPERS
+              </p>
+              <h2 id="developers-title">
+                The data behind
+                <br />
+                <em>your next build.</em>
+              </h2>
+            </div>
+            <p className={styles.moduleIntro}>
+              Bring marketplace research into your apps, internal tools and AI
+              workflows. Find an operation by platform and task, then inspect
+              its documented inputs and results.
+            </p>
+          </div>
+          <div className={styles.developerGrid} id="data-apis">
+            <div className={styles.dataCopy}>
+              <span className={styles.dataIcon}>
+                <Database size={24} aria-hidden="true" />
+              </span>
+              <h3>Find the right ecommerce Data API.</h3>
+              <p>
+                Research products, reviews, keywords, sourcing candidates and
+                competitors across marketplaces.
+              </p>
+              <div
+                className={styles.platforms}
+                aria-label="Marketplace examples"
+              >
+                {platforms.map(([slug, name]) => (
+                  <span key={slug}>
+                    <img
+                      src={`/data/logos/${slug}.webp`}
+                      alt=""
+                      width="20"
+                      height="20"
+                      loading="lazy"
+                    />
+                    {name}
+                  </span>
+                ))}
+              </div>
+              <ul className={styles.benefits}>
+                <li>
+                  <Check size={16} />
+                  Filter APIs by platform, category or keyword
+                </li>
+                <li>
+                  <Check size={16} />
+                  Compare recorded usage and credit ranges
+                </li>
+                <li>
+                  <Check size={16} />
+                  Open the exact official documentation and tester
+                </li>
+              </ul>
+              <a
+                className={styles.primary}
+                href="/data/"
+                data-track-tool="data-directory"
+              >
+                Explore Data APIs <ArrowRight size={16} />
+              </a>
+              <p className={styles.dataNote}>
+                Free to browse. API requests follow the selected operation’s
+                access and credit requirements.
+              </p>
+            </div>
+            <div className={styles.codeCard}>
+              <div className={styles.codeTop}>
+                <span>
+                  <i />
+                  <i />
+                  <i />
+                </span>
+                <span>START WITH THE PUBLIC CATALOG</span>
+                <Code2 size={17} />
+              </div>
+              <div className={styles.codeBody}>
+                <span className={styles.httpMethod}>GET</span>
+                <span className={styles.codePath}>/api/skill-api/catalog</span>
+                <pre>
+                  <code>{`curl --request GET \\\n  'https://api.nexscope.ai/api/skill-api/catalog'`}</code>
+                </pre>
+                <div className={styles.codeComment}>
+                  Discover the available operations.
+                  <br />
+                  Choose a Data API, check its inputs and test with your own API
+                  key.
+                </div>
+              </div>
+              <ol className={styles.apiSteps}>
+                <li>
+                  <span>1</span>Choose a marketplace
+                </li>
+                <li>
+                  <span>2</span>Inspect an endpoint
+                </li>
+                <li>
+                  <span>3</span>Test one real request
+                </li>
+              </ol>
+              <a
+                href="https://www.nexscope.ai/api-docs/1688-search-by-image?co-from=learn"
+                target="_blank"
+                rel="noopener"
+                data-track-tool="1688-search-by-image"
+              >
+                Test 1688 Search by Image <ArrowUpRight size={15} />
+              </a>
+            </div>
+          </div>
+          {entry && dataCount !== null && (
+            <div className={styles.valueStrip}>
+              <div>
+                <p className={styles.valueEyebrow}>PLAN YOUR API BUDGET</p>
+                <h3>
+                  About {dataCount.toLocaleString('en-US')} calls at {dataCost}{' '}
+                  credits each, using historical averages.
+                </h3>
+                <p>
+                  For example, {publicCostExamples.data.name} has a historical
+                  average of {dataCost} credits per call with a 10-credit
+                  minimum applied. This uses the full {entry.name} monthly
+                  allocation of {entry.credits.toLocaleString('en-US')} credits
+                  for that operation.
+                </p>
+                <small>
+                  Source:{' '}
+                  <a
+                    href="https://api.nexscope.ai/api/skill-api/v1/credit-statistics"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    public credit statistics
+                  </a>
+                  , checked {creditSnapshot.checkedAt.slice(0, 10)}. Other APIs
+                  have different costs. This is an allocation estimate, not a
+                  per-call cash price.
+                </small>
+              </div>
+              <a href="/data/1688-sourcing/">
+                Explore 1688 APIs <ArrowRight size={16} aria-hidden="true" />
+              </a>
+            </div>
+          )}
+          <div className={styles.evidenceRow}>
+            <div>
+              <Globe2 size={20} />
+              <p>See a workflow before you build it.</p>
+            </div>
+            <a href="/ecommerce-ai-tools/api-evidence/portable-blender-amazon-1688/">
+              Amazon-to-1688 API test <ArrowRight size={14} />
+            </a>
+            <a href="/ecommerce-ai-tools/api-capabilities/">
+              API selection guide <ArrowRight size={14} />
+            </a>
+            <a href="/ecommerce-ai-tools/">
+              Learning library <ArrowRight size={14} />
+            </a>
+          </div>
+        </section>
+
+        <section
           className={styles.module}
           id="for-ecommerce-operators"
           aria-labelledby="operators-title"
@@ -294,7 +464,7 @@ export default function Home() {
           <div className={styles.moduleHeading}>
             <div>
               <p className={styles.moduleLabel}>
-                <span>01</span> FOR ECOMMERCE OPERATORS
+                <span>02</span> FOR ECOMMERCE OPERATORS
               </p>
               <h2 id="operators-title">
                 Make your next
@@ -488,176 +658,6 @@ export default function Home() {
                 </a>
               </div>
             </article>
-          </div>
-        </section>
-
-        <section
-          className={`${styles.module} ${styles.developers}`}
-          id="for-ecommerce-developers"
-          aria-labelledby="developers-title"
-        >
-          <div className={styles.moduleHeading}>
-            <div>
-              <p className={styles.moduleLabel}>
-                <span>02</span> FOR ECOMMERCE DEVELOPERS
-              </p>
-              <h2 id="developers-title">
-                The data behind
-                <br />
-                <em>your next build.</em>
-              </h2>
-            </div>
-            <p className={styles.moduleIntro}>
-              Bring marketplace research into your apps, internal tools and AI
-              workflows. Find an operation by platform and task, then inspect
-              its documented inputs and results.
-            </p>
-          </div>
-          <div className={styles.developerGrid} id="data-apis">
-            <div className={styles.dataCopy}>
-              <span className={styles.dataIcon}>
-                <Database size={24} aria-hidden="true" />
-              </span>
-              <h3>Find the right ecommerce Data API.</h3>
-              <p>
-                Research products, reviews, keywords, sourcing candidates and
-                competitors across marketplaces.
-              </p>
-              <div
-                className={styles.platforms}
-                aria-label="Marketplace examples"
-              >
-                {platforms.map(([slug, name]) => (
-                  <span key={slug}>
-                    <img
-                      src={`/data/logos/${slug}.webp`}
-                      alt=""
-                      width="20"
-                      height="20"
-                      loading="lazy"
-                    />
-                    {name}
-                  </span>
-                ))}
-              </div>
-              <ul className={styles.benefits}>
-                <li>
-                  <Check size={16} />
-                  Filter APIs by platform, category or keyword
-                </li>
-                <li>
-                  <Check size={16} />
-                  Compare recorded usage and credit ranges
-                </li>
-                <li>
-                  <Check size={16} />
-                  Open the exact official documentation and tester
-                </li>
-              </ul>
-              <a
-                className={styles.primary}
-                href="/data/"
-                data-track-tool="data-directory"
-              >
-                Explore Data APIs <ArrowRight size={16} />
-              </a>
-              <p className={styles.dataNote}>
-                Free to browse. API requests follow the selected operation’s
-                access and credit requirements.
-              </p>
-            </div>
-            <div className={styles.codeCard}>
-              <div className={styles.codeTop}>
-                <span>
-                  <i />
-                  <i />
-                  <i />
-                </span>
-                <span>START WITH THE PUBLIC CATALOG</span>
-                <Code2 size={17} />
-              </div>
-              <div className={styles.codeBody}>
-                <span className={styles.httpMethod}>GET</span>
-                <span className={styles.codePath}>/api/skill-api/catalog</span>
-                <pre>
-                  <code>{`curl --request GET \\\n  'https://api.nexscope.ai/api/skill-api/catalog'`}</code>
-                </pre>
-                <div className={styles.codeComment}>
-                  Discover the available operations.
-                  <br />
-                  Choose a Data API, check its inputs and test with your own API
-                  key.
-                </div>
-              </div>
-              <ol className={styles.apiSteps}>
-                <li>
-                  <span>1</span>Choose a marketplace
-                </li>
-                <li>
-                  <span>2</span>Inspect an endpoint
-                </li>
-                <li>
-                  <span>3</span>Test one real request
-                </li>
-              </ol>
-              <a
-                href="https://www.nexscope.ai/api-docs/1688-search-by-image?co-from=learn"
-                target="_blank"
-                rel="noopener"
-                data-track-tool="1688-search-by-image"
-              >
-                Test 1688 Search by Image <ArrowUpRight size={15} />
-              </a>
-            </div>
-          </div>
-          {entry && dataCount !== null && (
-            <div className={styles.valueStrip}>
-              <div>
-                <p className={styles.valueEyebrow}>PLAN YOUR API BUDGET</p>
-                <h3>
-                  About {dataCount.toLocaleString('en-US')} calls at {dataCost}{' '}
-                  credits each, using historical averages.
-                </h3>
-                <p>
-                  For example, {publicCostExamples.data.name} has a historical
-                  average of {dataCost} credits per call with a 10-credit
-                  minimum applied. This uses the full {entry.name} monthly
-                  allocation of {entry.credits.toLocaleString('en-US')} credits
-                  for that operation.
-                </p>
-                <small>
-                  Source:{' '}
-                  <a
-                    href="https://api.nexscope.ai/api/skill-api/v1/credit-statistics"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    public credit statistics
-                  </a>
-                  , checked {creditSnapshot.checkedAt.slice(0, 10)}. Other APIs
-                  have different costs. This is an allocation estimate, not a
-                  per-call cash price.
-                </small>
-              </div>
-              <a href="/data/1688-sourcing/">
-                Explore 1688 APIs <ArrowRight size={16} aria-hidden="true" />
-              </a>
-            </div>
-          )}
-          <div className={styles.evidenceRow}>
-            <div>
-              <Globe2 size={20} />
-              <p>See a workflow before you build it.</p>
-            </div>
-            <a href="/ecommerce-ai-tools/api-evidence/portable-blender-amazon-1688/">
-              Amazon-to-1688 API test <ArrowRight size={14} />
-            </a>
-            <a href="/ecommerce-ai-tools/api-capabilities/">
-              API selection guide <ArrowRight size={14} />
-            </a>
-            <a href="/ecommerce-ai-tools/">
-              Learning library <ArrowRight size={14} />
-            </a>
           </div>
         </section>
 
