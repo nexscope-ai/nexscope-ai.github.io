@@ -43,7 +43,7 @@ jobs:
         run: npm run test:workflows
 
       - name: Test public subscription pricing
-        run: node --test scripts/test-public-pricing.mjs scripts/test-home-examples.mjs
+        run: node --test scripts/test-public-pricing.mjs scripts/test-home-examples.mjs scripts/test-home-product.mjs
 
       - name: Test research tools
         run: npm run test:research

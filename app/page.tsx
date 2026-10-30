@@ -17,6 +17,7 @@ import HomeVideoExamples from '@/components/home-video-examples';
 import exampleSnapshot from '@/lib/home-video-examples.json';
 import pricingSnapshot from '@/lib/pricing-snapshot.json';
 import creditSnapshot from '@/lib/data-credit-snapshot.json';
+import homeProductSnapshot from '@/lib/home-product-snapshot.json';
 import { pricingMoney } from '@/lib/pricing-content.mjs';
 import {
   entrySubscription,
@@ -33,6 +34,7 @@ import styles from './home-sections.module.css';
 
 const gallery = '/ecommerce-ai-tools/product-showcase/';
 const submit = `${gallery}submit/`;
+const publishedProduct = homeProductSnapshot.product;
 const summary =
   'Nexscope helps ecommerce operators create product videos and developers build with marketplace Data APIs. Explore official video examples, choose a workflow, or submit a product for a free reviewed Gallery listing.';
 const platforms = [
@@ -627,37 +629,32 @@ export default function Home() {
                 Create your free product page <ArrowRight size={15} />
               </a>
             </div>
-            <article className={styles.publishedExample}>
-              <a
-                href={`${gallery}product/d693a492-b61c-4ee2-8390-d5c4a7140748/`}
-                aria-label="View the published PARTNER Cheese Block product page"
-              >
-                <img
-                  src="https://store.nexscope.ai/product-showcase/uploads/5d8d2c29-6640-4833-a644-86df3991dafd-20261029.webp"
-                  alt="PARTNER Cheese Block Freeze-Dried Treats — Box of 12 Sachets"
-                  width="420"
-                  height="320"
-                  loading="lazy"
-                />
-              </a>
-              <div>
-                <span className={styles.publishedBadge}>
-                  PUBLISHED GALLERY EXAMPLE
-                </span>
-                <h4>PARTNER Cheese Block Freeze-Dried Treats</h4>
-                <p>12 sachets · 4 oz total · For cats and dogs</p>
-                <ul>
-                  <li>Product facts and feeding limitations</li>
-                  <li>Accurate product image</li>
-                  <li>Link to the original store</li>
-                </ul>
+            {publishedProduct && (
+              <article className={styles.publishedExample}>
                 <a
-                  href={`${gallery}product/d693a492-b61c-4ee2-8390-d5c4a7140748/`}
+                  href={publishedProduct.href}
+                  aria-label={`View ${publishedProduct.title}`}
                 >
-                  See the real product page <ArrowUpRight size={14} />
+                  <img
+                    src={publishedProduct.image}
+                    alt={publishedProduct.title}
+                    width="420"
+                    height="320"
+                    loading="lazy"
+                  />
                 </a>
-              </div>
-            </article>
+                <div>
+                  <span className={styles.publishedBadge}>
+                    PUBLISHED GALLERY EXAMPLE
+                  </span>
+                  <h4>{publishedProduct.title}</h4>
+                  <p>{publishedProduct.description}</p>
+                  <a href={publishedProduct.href}>
+                    See the real product page <ArrowUpRight size={14} />
+                  </a>
+                </div>
+              </article>
+            )}
           </div>
         </section>
 
