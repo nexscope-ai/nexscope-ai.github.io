@@ -839,6 +839,15 @@
   color: #8751c6;
   background: linear-gradient(135deg, #f2e7fc, #eeeafb);
 }
+.apiTypeIcon:has(img) {
+  background: #fff !important;
+}
+.apiTypeIcon img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
 .apiCard[data-api-category='image-generation-models'] .apiTypeIcon {
   color: #be6a31;
   background: linear-gradient(135deg, #fff0df, #fbecf3);
@@ -945,22 +954,6 @@
   line-height: 1.6;
   color: #81758d;
 }
-.channelPause {
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  flex-shrink: 0;
-  border: 1px solid #e6deef;
-  border-radius: 50%;
-  color: #795b99;
-  background: white;
-  cursor: pointer;
-}
-.channelPause:hover {
-  background: #f1eafa;
-  border-color: #c4aadf;
-}
 .channelViewport {
   overflow-x: auto;
   scrollbar-width: none;
@@ -1011,8 +1004,7 @@
   object-fit: contain;
 }
 .channelStrip:hover .channelTrack,
-.channelStrip:focus-within .channelTrack,
-.channelViewport[data-paused='true'] .channelTrack {
+.channelStrip:focus-within .channelTrack {
   animation-play-state: paused;
 }
 @keyframes channel-scroll {
@@ -1043,8 +1035,7 @@
   .channelTrack {
     animation: none;
   }
-  .channelGroup[aria-hidden='true'],
-  .channelPause {
+  .channelGroup[aria-hidden='true'] {
     display: none;
   }
   .channelViewport {

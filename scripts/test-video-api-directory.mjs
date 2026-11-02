@@ -2,6 +2,36 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { projectVideoApis } from './refresh-video-api-directory.mjs';
+import { videoModelIcon } from '../lib/video-model-icons.mjs';
+
+test('fixed model APIs use the matching local logo; generic workflows retain capability icons', async () => {
+  const expected = {
+    'banana-2-1-image-generation': 'nano-banana',
+    'gpt-image-2-5-generation': 'gpt-image',
+    'seedance-2-5-video-generation': 'seedream-seedance',
+    'seedream-5-pro-image-generation': 'seedream-seedance',
+    'kling-3-omni-video-generation': 'kling',
+    'wan-3-video-generation': 'wan',
+    'hailuo-2-3-video-generation': 'hailuo',
+    'minimax-h3-video-generation': 'minimax',
+    'happy-horse-2-video-generation': 'happy-horse',
+  };
+  for (const [slug, family] of Object.entries(expected)) {
+    const path = videoModelIcon(slug);
+    assert.equal(path, `/assets/video-models/${family}.webp`);
+    assert.ok(
+      (await readFile(new URL('../public' + path, import.meta.url))).length > 0,
+    );
+  }
+  for (const slug of [
+    'image-upscale',
+    'ai-video-reclone',
+    'ai-model-swap',
+    'unknown-future-model',
+    'not-kling-workflow',
+  ])
+    assert.equal(videoModelIcon(slug), null);
+});
 
 function fixture() {
   return {

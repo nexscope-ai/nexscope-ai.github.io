@@ -1,5 +1,5 @@
 'use client';
-/* oxlint-disable next/no-html-link-for-pages */
+/* oxlint-disable next/no-html-link-for-pages, next/no-img-element */
 import { useState } from 'react';
 import {
   ArrowUpRight,
@@ -9,6 +9,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import catalog from '@/lib/video-api-directory.json';
+import { videoModelIcon } from '@/lib/video-model-icons.mjs';
 import styles from '@/app/video/video.module.css';
 
 const categoryIcons = {
@@ -87,6 +88,7 @@ export default function VideoApiDirectory() {
       </output>
       <div className={styles.apiGrid}>
         {visible.map((item) => {
+          const modelLogo = videoModelIcon(item.slug);
           const Icon =
             categoryIcons[item.category as keyof typeof categoryIcons] ??
             Sparkles;
@@ -105,7 +107,18 @@ export default function VideoApiDirectory() {
               >
                 <div className={styles.apiCardTop}>
                   <span className={styles.apiTypeIcon}>
-                    <Icon size={24} aria-hidden="true" />
+                    {modelLogo ? (
+                      <img
+                        src={modelLogo}
+                        alt=""
+                        width="40"
+                        height="40"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    ) : (
+                      <Icon size={24} aria-hidden="true" />
+                    )}
                   </span>
                   <span className={styles.apiTypeBadge}>
                     {item.category === 'video-generation-models'
