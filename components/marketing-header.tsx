@@ -96,9 +96,6 @@ export default function MarketingHeader({
                   </a>
                 </li>
                 <li>
-                  <a href="/tools/">Tools</a>
-                </li>
-                <li>
                   <a href="/ecommerce-ai-tools/">Guides & resources</a>
                 </li>
                 <li>
@@ -112,14 +109,6 @@ export default function MarketingHeader({
               </>
             ) : (
               <>
-                <li>
-                  <a
-                    href="/tools/"
-                    aria-current={active === 'tools' ? 'page' : undefined}
-                  >
-                    Tools
-                  </a>
-                </li>
                 <li>
                   <a href="/data/">Data APIs</a>
                 </li>

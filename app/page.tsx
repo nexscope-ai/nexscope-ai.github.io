@@ -423,17 +423,9 @@ export default function Home() {
                   for that operation.
                 </p>
                 <small>
-                  Source:{' '}
-                  <a
-                    href="https://api.nexscope.ai/api/skill-api/v1/credit-statistics"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    public credit statistics
-                  </a>
-                  , checked {creditSnapshot.checkedAt.slice(0, 10)}. Other APIs
-                  have different costs. This is an allocation estimate, not a
-                  per-call cash price.
+                  Estimates checked {creditSnapshot.checkedAt.slice(0, 10)}.
+                  Other APIs have different costs. This is an allocation
+                  estimate, not a per-call cash price.
                 </small>
               </div>
               <a href="/data/1688-sourcing/">
