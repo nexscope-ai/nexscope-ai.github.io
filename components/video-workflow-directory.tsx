@@ -1,5 +1,5 @@
 'use client';
-/* oxlint-disable next/no-html-link-for-pages */
+/* oxlint-disable next/no-html-link-for-pages, next/no-img-element */
 import { useState } from 'react';
 import {
   ArrowUpRight,
@@ -8,8 +8,10 @@ import {
   Video,
   Clapperboard,
   Layers3,
+  ArrowRight,
 } from 'lucide-react';
 import { videoDirectory, videoWorkspaceUrl } from '@/lib/video-directory';
+import examples from '@/lib/video-directory-examples.json';
 import styles from '@/app/video/video.module.css';
 
 const icons = {
@@ -67,12 +69,38 @@ export default function VideoWorkflowDirectory() {
       <div className={styles.cards}>
         {videoDirectory.map((item, index) => {
           const Icon = icons[item.id];
+          const example = examples.workflows[item.id]?.[0];
           return (
             <article
               key={item.id}
               hidden={material !== 'all' && material !== item.material}
               className={styles.card}
             >
+              {example && (
+                <a
+                  className={styles.workflowPreview}
+                  href={videoWorkspaceUrl(item.id)}
+                  data-track
+                  data-track-tool={item.id}
+                  data-cta-placement="video-workflow-preview"
+                  aria-label={`Explore ${item.name}`}
+                >
+                  <img
+                    src={example.poster}
+                    alt={`${item.name}: ${example.title}`}
+                    width="640"
+                    height="360"
+                    loading="lazy"
+                  />
+                  <span className={styles.previewLabel}>
+                    <Icon size={15} aria-hidden="true" />
+                    {item.name}
+                  </span>
+                  <span className={styles.previewArrow} aria-hidden="true">
+                    <ArrowUpRight size={20} />
+                  </span>
+                </a>
+              )}
               <div className={styles.cardTop}>
                 <span className={styles.icon}>
                   <Icon size={24} aria-hidden="true" />
@@ -92,16 +120,22 @@ export default function VideoWorkflowDirectory() {
                   <dd>{item.result}</dd>
                 </div>
               </dl>
-              <div className={styles.input}>
-                <strong>Bring</strong>
-                <span>{item.inputs}</span>
-              </div>
-              <ol className={styles.steps}>
-                {item.steps.map((step) => (
-                  <li key={step}>{step}</li>
-                ))}
-              </ol>
-              <p className={styles.boundary}>{item.boundary}</p>
+              <details className={styles.workflowDetails}>
+                <summary>
+                  What to prepare & how it works{' '}
+                  <ArrowRight size={14} aria-hidden="true" />
+                </summary>
+                <div className={styles.input}>
+                  <strong>Bring</strong>
+                  <span>{item.inputs}</span>
+                </div>
+                <ol className={styles.steps}>
+                  {item.steps.map((step) => (
+                    <li key={step}>{step}</li>
+                  ))}
+                </ol>
+                <p className={styles.boundary}>{item.boundary}</p>
+              </details>
               <div className={styles.cardActions}>
                 <a
                   className={styles.primary}

@@ -1,9 +1,21 @@
 'use client';
 /* oxlint-disable next/no-html-link-for-pages */
 import { useState } from 'react';
-import { ArrowUpRight, Search, Code2 } from 'lucide-react';
+import {
+  ArrowUpRight,
+  Search,
+  Clapperboard,
+  Image,
+  Sparkles,
+} from 'lucide-react';
 import catalog from '@/lib/video-api-directory.json';
 import styles from '@/app/video/video.module.css';
+
+const categoryIcons = {
+  'video-generation-models': Clapperboard,
+  'image-generation-models': Image,
+  'multimodal-ai': Sparkles,
+};
 
 export default function VideoApiDirectory() {
   const [category, setCategory] = useState('all');
@@ -74,24 +86,46 @@ export default function VideoApiDirectory() {
         {visible.length} {visible.length === 1 ? 'API' : 'APIs'} found
       </output>
       <div className={styles.apiGrid}>
-        {visible.map((item) => (
-          <article key={item.slug} className={styles.apiCard}>
-            <span className={styles.eyebrow}>
-              <Code2 size={14} aria-hidden="true" /> {item.categoryName}
-            </span>
-            <h3>{item.name}</h3>
-            <p>{item.description}</p>
-            <a
-              href={`https://www.nexscope.ai/api-docs/${item.slug}?view=playground&co-from=learn`}
-              data-track
-              data-track-tool={item.slug}
-              data-cta-placement="video-api-directory"
+        {visible.map((item) => {
+          const Icon =
+            categoryIcons[item.category as keyof typeof categoryIcons] ??
+            Sparkles;
+          return (
+            <article
+              key={item.slug}
+              className={styles.apiCard}
+              data-api-category={item.category}
             >
-              Open API playground{' '}
-              <ArrowUpRight size={16} aria-hidden="true" />
-            </a>
-          </article>
-        ))}
+              <a
+                className={styles.apiCardLink}
+                href={`https://www.nexscope.ai/api-docs/${item.slug}?view=playground&co-from=learn`}
+                data-track
+                data-track-tool={item.slug}
+                data-cta-placement="video-api-directory"
+              >
+                <div className={styles.apiCardTop}>
+                  <span className={styles.apiTypeIcon}>
+                    <Icon size={24} aria-hidden="true" />
+                  </span>
+                  <span className={styles.apiTypeBadge}>
+                    {item.category === 'video-generation-models'
+                      ? 'VIDEO'
+                      : item.category === 'image-generation-models'
+                        ? 'IMAGE'
+                        : 'MULTIMODAL'}
+                  </span>
+                </div>
+                <span className={styles.apiCategory}>{item.categoryName}</span>
+                <h3>{item.name}</h3>
+                <p title={item.description}>{item.description}</p>
+                <span className={styles.apiCardCta}>
+                  Open API playground{' '}
+                  <ArrowUpRight size={16} aria-hidden="true" />
+                </span>
+              </a>
+            </article>
+          );
+        })}
       </div>
       {!visible.length && (
         <p>No APIs match your search. Try another model or task.</p>

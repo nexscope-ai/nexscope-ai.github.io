@@ -259,6 +259,94 @@
   background: white;
   border-radius: 20px;
   padding: 28px;
+  overflow: hidden;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.card:hover {
+  border-color: #cdbbe9;
+  box-shadow: 0 12px 32px #34204e0a;
+}
+.workflowPreview {
+  position: relative;
+  display: block;
+  aspect-ratio: 16/9;
+  margin: -28px -28px 24px;
+  overflow: hidden;
+  background: #eae3f5;
+}
+.workflowPreview::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, #21152c80, transparent 65%);
+  pointer-events: none;
+}
+.workflowPreview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  transition: transform 0.4s;
+}
+.workflowPreview:hover img {
+  transform: scale(1.03);
+}
+.previewLabel {
+  position: absolute;
+  z-index: 1;
+  bottom: 16px;
+  left: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 10px;
+  background: #251831a6;
+  color: white;
+  border: 1px solid #ffffff38;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 650;
+  backdrop-filter: blur(8px);
+}
+.previewArrow {
+  position: absolute;
+  z-index: 1;
+  bottom: 16px;
+  right: 20px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: #fff;
+  background: #ffffff25;
+}
+.workflowDetails {
+  margin: 0 0 20px;
+  border-top: 1px solid #eee9f3;
+}
+.workflowDetails summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  list-style: none;
+  cursor: pointer;
+  color: #77528e;
+  font-size: 12px;
+  font-weight: 600;
+}
+.workflowDetails summary::-webkit-details-marker {
+  display: none;
+}
+.workflowDetails[open] summary svg {
+  transform: rotate(90deg);
+}
+.workflowDetails .boundary {
+  margin-bottom: 0;
 }
 .cardTop {
   display: flex;
@@ -709,29 +797,90 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  padding: 24px;
+  padding: 0;
   background: #fff;
   border: 1px solid #e3dfed;
   border-radius: 18px;
   overflow-wrap: anywhere;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s,
+    transform 0.2s;
 }
-.apiCard > span {
+.apiCard:hover {
+  border-color: #bd9be9;
+  box-shadow: 0 10px 28px #5034770c;
+  transform: translateY(-2px);
+}
+.apiCard .apiCardLink {
   display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: 24px;
+  text-decoration: none;
+  color: inherit;
+  margin: 0;
+}
+.apiCardTop {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 6px;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.apiTypeIcon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  color: #8751c6;
+  background: linear-gradient(135deg, #f2e7fc, #eeeafb);
+}
+.apiCard[data-api-category='image-generation-models'] .apiTypeIcon {
+  color: #be6a31;
+  background: linear-gradient(135deg, #fff0df, #fbecf3);
+}
+.apiCard[data-api-category='multimodal-ai'] .apiTypeIcon {
+  color: #477fb0;
+  background: linear-gradient(135deg, #e8f2ff, #eeedff);
+}
+.apiTypeBadge {
+  padding: 5px 8px;
+  border: 1px solid #ede7f3;
+  border-radius: 6px;
+  background: #faf8fd;
+  color: #8b7a9a;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.apiCategory {
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  color: #8b759e;
+  text-transform: uppercase;
 }
 .apiCard h3 {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.35;
-  margin: 16px 0 10px;
+  margin: 9px 0 12px;
 }
 .apiCard p {
   color: #655f75;
   font-size: 14px;
   line-height: 1.7;
   margin: 0 0 20px;
+  font-weight: 400;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
-.apiCard a {
+.apiCardCta {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -740,6 +889,9 @@
   font-size: 13px;
   font-weight: 650;
   color: #7046e8;
+  justify-content: space-between;
+  border-top: 1px solid #eee9f3;
+  padding-top: 14px;
 }
 @media (max-width: 1000px) {
   .apiGrid {
@@ -750,12 +902,22 @@
   .apiGrid {
     grid-template-columns: minmax(0, 1fr);
   }
-  .apiCard {
+  .apiCard .apiCardLink {
     padding: 20px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
   .page * {
     scroll-behavior: auto !important;
+    transition: none !important;
+  }
+  .apiCard:hover,
+  .workflowPreview:hover img {
+    transform: none;
+  }
+}
+@media (max-width: 700px) {
+  .workflowPreview {
+    margin: -22px -22px 20px;
   }
 }
