@@ -96,7 +96,7 @@ test('saved public directory has unique safe entries and links retain Learn attr
   );
   assert.ok(
     component.includes(
-      'https://www.nexscope.ai/api-docs/${item.slug}?co-from=learn',
+      'https://www.nexscope.ai/api-docs/${item.slug}?view=playground&co-from=learn',
     ),
   );
   assert.ok(component.includes('data-cta-placement="video-api-directory"'));

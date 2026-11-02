@@ -82,12 +82,12 @@ export default function VideoApiDirectory() {
             <h3>{item.name}</h3>
             <p>{item.description}</p>
             <a
-              href={`https://www.nexscope.ai/api-docs/${item.slug}?co-from=learn`}
+              href={`https://www.nexscope.ai/api-docs/${item.slug}?view=playground&co-from=learn`}
               data-track
               data-track-tool={item.slug}
               data-cta-placement="video-api-directory"
             >
-              View API documentation{' '}
+              Open API playground{' '}
               <ArrowUpRight size={16} aria-hidden="true" />
             </a>
           </article>

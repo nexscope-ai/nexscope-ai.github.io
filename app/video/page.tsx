@@ -82,7 +82,7 @@ export default function VideoDirectoryPage() {
           '@type': 'ListItem',
           position: index + 1,
           name: item.name,
-          url: `https://www.nexscope.ai/api-docs/${item.slug}?co-from=learn`,
+          url: `https://www.nexscope.ai/api-docs/${item.slug}?view=playground&co-from=learn`,
         })),
       },
       {
