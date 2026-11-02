@@ -53,3 +53,10 @@ test('rejects test hosts, signed URLs and non-video media; deduplicates clips', 
   assert.throws(() => projectHomeExamples({ code: 500, data: [] }));
   assert.throws(() => projectHomeExamples({ code: 0, data: {} }));
 });
+
+test('workflow selection retains production URL examples without relabeling image examples', () => {
+  const image=example('Image example',1);
+  const url={...example('Product link example',2),workflowType:'URL_TO_VIDEO',coverImageUrl:'https://store.nexscope.ai/blog/202609/public-cover.jpg'};
+  assert.deepEqual(projectHomeExamples({code:0,data:[image,url]},'URL_TO_VIDEO').map(row=>row.title),['Product link example']);
+  assert.equal(projectHomeExamples({code:0,data:[{...url,previewVideoUrl:'https://nexscope-test.s3.us-east-1.amazonaws.com/test/private.mp4'}]},'URL_TO_VIDEO').length,0);
+});

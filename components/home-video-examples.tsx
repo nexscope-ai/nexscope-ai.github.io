@@ -1,8 +1,9 @@
 'use client';
 /* oxlint-disable next/no-img-element, jsx-a11y/media-has-caption -- Official Inspiration clips have no supplied caption tracks; do not invent captions. */
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { ArrowUpRight, Play, X } from 'lucide-react';
 import styles from './home-video-examples.module.css';
+import { videoWorkspaceUrl, type VideoWorkflowId } from '@/lib/video-directory';
 
 type Example = {
   title: string;
@@ -12,14 +13,23 @@ type Example = {
   duration: number | null;
   ratio: string | null;
 };
-const destination =
-  'https://www.nexscope.ai/seller/video-generation/image-to-video?co-from=learn';
-
 export default function HomeVideoExamples({
   examples,
+  entryPage = 'learn_home',
+  workflow = 'image-to-video',
+  workflowName = 'Image to Video',
+  exampleLabel = 'Official Inspiration',
+  showWorkflowCta = false,
 }: {
   examples: Example[];
+  entryPage?: string;
+  workflow?: VideoWorkflowId;
+  workflowName?: string;
+  exampleLabel?: string;
+  showWorkflowCta?: boolean;
 }) {
+  const destination = videoWorkspaceUrl(workflow);
+  const headingId = useId();
   const [active, setActive] = useState<Example | null>(null);
   const [failed, setFailed] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
@@ -45,8 +55,8 @@ export default function HomeVideoExamples({
       'video_example_play',
       {
         example_title: active.title,
-        workflow: 'image-to-video',
-        entry_page: 'learn_home',
+        workflow,
+        entry_page: entryPage,
       },
     );
   };
@@ -77,7 +87,7 @@ export default function HomeVideoExamples({
               <span className={styles.play} aria-hidden="true">
                 <Play size={21} fill="currentColor" />
               </span>
-              <span className={styles.exampleTag}>Official Inspiration</span>
+              <span className={styles.exampleTag}>{exampleLabel}</span>
               {example.sourceImage && (
                 <img
                   className={styles.source}
@@ -97,15 +107,18 @@ export default function HomeVideoExamples({
             <div className={styles.caption}>
               <div>
                 <h3>{example.title}</h3>
-                <p>Image to Video example</p>
+                <p>{workflowName} example</p>
               </div>
               <a
+                className={showWorkflowCta ? styles.workflowLink : undefined}
                 href={destination}
                 target="_blank"
                 rel="noopener"
-                data-track-tool="image-to-video"
-                aria-label={`Create an image-to-video project like ${example.title}`}
+                data-track
+                data-track-tool={workflow}
+                aria-label={`Open ${workflowName} for a project like ${example.title}`}
               >
+                {showWorkflowCta && `Try ${workflowName}`}
                 <ArrowUpRight size={19} />
               </a>
             </div>
@@ -117,14 +130,14 @@ export default function HomeVideoExamples({
         ref={dialog}
         onClose={() => setActive(null)}
         onCancel={() => setActive(null)}
-        aria-labelledby="home-example-title"
+        aria-labelledby={headingId}
       >
         {active && (
           <div className={styles.dialogInner}>
             <div className={styles.dialogHeading}>
               <div>
-                <span>OFFICIAL INSPIRATION</span>
-                <h3 id="home-example-title">{active.title}</h3>
+                <span>{exampleLabel.toUpperCase()}</span>
+                <h3 id={headingId}>{active.title}</h3>
               </div>
               <button
                 type="button"
@@ -136,7 +149,7 @@ export default function HomeVideoExamples({
             </div>
             {failed ? (
               <output className={styles.error}>
-                This preview is unavailable. Open Image to Video to explore the
+                This preview is unavailable. Open {workflowName} to explore the
                 examples.
               </output>
             ) : (
@@ -157,9 +170,10 @@ export default function HomeVideoExamples({
               href={destination}
               target="_blank"
               rel="noopener"
-              data-track-tool="image-to-video"
+              data-track
+              data-track-tool={workflow}
             >
-              Create your own product video <ArrowUpRight size={16} />
+              Create with {workflowName} <ArrowUpRight size={16} />
             </a>
           </div>
         )}

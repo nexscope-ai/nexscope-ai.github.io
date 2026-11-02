@@ -14,7 +14,7 @@ function publicMedia(value, extensions) {
     const url = new URL(value);
     return url.protocol === 'https:' &&
       url.hostname === 'store.nexscope.ai' &&
-      url.pathname.startsWith('/prod/marketing-video-example/') &&
+      (url.pathname.startsWith('/prod/marketing-video-example/') || url.pathname.startsWith('/blog/')) &&
       !url.search &&
       !url.hash &&
       !url.username &&
@@ -27,14 +27,14 @@ function publicMedia(value, extensions) {
   }
 }
 
-export function projectHomeExamples(payload) {
+export function projectHomeExamples(payload, workflowType = 'IMAGE_TO_VIDEO') {
   if (payload?.code !== 0) throw new Error('Public examples unavailable');
   const data = payload.data;
   const rows = Array.isArray(data) ? data : (data?.records ?? data?.list);
   if (!Array.isArray(rows)) throw new Error('Invalid public examples envelope');
   const valid = rows.flatMap((item) => {
     if (
-      item.workflowType !== 'IMAGE_TO_VIDEO' ||
+      item.workflowType !== workflowType ||
       typeof item.title !== 'string' ||
       !item.title.trim()
     )

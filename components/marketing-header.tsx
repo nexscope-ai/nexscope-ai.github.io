@@ -4,13 +4,15 @@
 /* oxlint-disable next/no-html-link-for-pages, next/no-img-element */
 import { useEffect, useRef, useState } from 'react';
 import styles from './marketing-header.module.css';
+import { videoWorkspaceUrl } from '@/lib/video-directory';
 
 type MarketingHeaderProps = {
-  active?: 'tools' | 'pricing';
+  active?: 'tools' | 'pricing' | 'video';
   campaign: string;
   explorePath?: '/apis' | '/';
   productReviewCta?: boolean;
   homepageFocus?: boolean;
+  videoCta?: boolean;
 };
 
 export default function MarketingHeader({
@@ -19,6 +21,7 @@ export default function MarketingHeader({
   explorePath = '/',
   productReviewCta = false,
   homepageFocus = false,
+  videoCta = false,
 }: MarketingHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
@@ -77,6 +80,15 @@ export default function MarketingHeader({
                 </li>
                 <li>
                   <a
+                    href="/video/"
+                    data-track-tool="video-directory"
+                    aria-current={active === 'video' ? 'page' : undefined}
+                  >
+                    Video workflows
+                  </a>
+                </li>
+                <li>
+                  <a
                     href="/ecommerce-ai-tools/product-showcase/"
                     data-track-tool="product-gallery"
                   >
@@ -90,7 +102,12 @@ export default function MarketingHeader({
                   <a href="/ecommerce-ai-tools/">Guides & resources</a>
                 </li>
                 <li>
-                  <a href="/pricing/" aria-current={active === 'pricing' ? 'page' : undefined}>Pricing</a>
+                  <a
+                    href="/pricing/"
+                    aria-current={active === 'pricing' ? 'page' : undefined}
+                  >
+                    Pricing
+                  </a>
                 </li>
               </>
             ) : (
@@ -105,6 +122,15 @@ export default function MarketingHeader({
                 </li>
                 <li>
                   <a href="/data/">Data APIs</a>
+                </li>
+                <li>
+                  <a
+                    href="/video/"
+                    data-track-tool="video-directory"
+                    aria-current={active === 'video' ? 'page' : undefined}
+                  >
+                    Video workflows
+                  </a>
                 </li>
                 <li>
                   <a href="/ecommerce-ai-tools/topics/research/">Research</a>
@@ -130,21 +156,27 @@ export default function MarketingHeader({
             <li>
               <a
                 className={styles.cta}
-                data-track={productReviewCta ? undefined : true}
+                data-track={videoCta || !productReviewCta ? true : undefined}
+                data-track-tool={videoCta ? 'image-to-video' : undefined}
+                data-cta-placement={videoCta ? 'video-navigation' : undefined}
                 data-showcase-submit-cta={
-                  productReviewCta ? 'root-navigation' : undefined
+                  productReviewCta && !videoCta ? 'root-navigation' : undefined
                 }
                 href={
-                  productReviewCta
-                    ? '/ecommerce-ai-tools/product-showcase/submit/'
-                    : `https://www.nexscope.ai${explorePath}${tracking}`
+                  videoCta
+                    ? videoWorkspaceUrl('image-to-video')
+                    : productReviewCta
+                      ? '/ecommerce-ai-tools/product-showcase/submit/'
+                      : `https://www.nexscope.ai${explorePath}${tracking}`
                 }
               >
-                {productReviewCta
-                  ? homepageFocus
-                    ? 'List a product free →'
-                    : 'Get free feedback →'
-                  : 'Explore Nexscope ↗'}
+                {videoCta
+                  ? 'Create a video ↗'
+                  : productReviewCta
+                    ? homepageFocus
+                      ? 'List a product free →'
+                      : 'Get free feedback →'
+                    : 'Explore Nexscope ↗'}
               </a>
             </li>
           </ul>

@@ -292,6 +292,24 @@ export function CampaignPage({ campaign }: { campaign: Campaign }) {
             ))}
           </div>
           <CampaignEvidence slug={campaign.slug} />
+          {['ai-product-videos', 'ai-video-generator'].includes(
+            campaign.slug,
+          ) && (
+            <section className="campaign-section">
+              <span className="campaign-eyebrow">
+                Choose your starting point
+              </span>
+              <h2>Have photos, a listing link or a reference clip?</h2>
+              <p className="intro">
+                Compare the{' '}
+                <a href="/video/" data-track-tool="video-directory">
+                  five Nexscope product video workflows and official examples
+                </a>{' '}
+                before choosing a tool. See which materials each workflow needs,
+                the output it creates and what to check before spending credits.
+              </p>
+            </section>
+          )}
           <AmazonResearchPaths slug={campaign.slug} />
           <section className="campaign-section">
             <span className="campaign-eyebrow">{campaign.section.eyebrow}</span>

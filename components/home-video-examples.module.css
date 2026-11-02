@@ -120,6 +120,21 @@
   background: #f0e9fa;
   color: #6740a2;
 }
+.caption:has(.workflowLink) {
+  flex-direction: column;
+  align-items: flex-start;
+}
+.caption a.workflowLink {
+  display: inline-flex;
+  gap: 7px;
+  width: auto;
+  min-height: 44px;
+  height: auto;
+  padding: 9px 13px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
 .preview:focus-visible,
 .caption a:focus-visible,
 .dialog button:focus-visible,

@@ -11,6 +11,7 @@ export default function LearnFooter() {
         </div>
         <nav className={styles.footerlinks} aria-label="Footer">
           <a href="/data/">Data APIs</a>
+          <a href="/video/" data-track-tool="video-directory">Video workflows</a>
           <a href="/ecommerce-ai-tools/product-showcase/">Product Gallery</a>
           <a
             href="/ecommerce-ai-tools/product-showcase/submit/"

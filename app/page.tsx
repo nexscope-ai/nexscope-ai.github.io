@@ -487,6 +487,9 @@ export default function Home() {
               >
                 Try Image to Video <ArrowUpRight size={16} />
               </a>
+              <a href="/video/" data-track-tool="video-directory">
+                Compare all video workflows <ArrowRight size={16} />
+              </a>
             </div>
           </div>
           <HomeVideoExamples examples={exampleSnapshot.examples} />
