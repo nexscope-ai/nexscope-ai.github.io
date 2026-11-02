@@ -6,7 +6,9 @@ import MarketingHeader from '@/components/marketing-header';
 import LearnFooter from '@/components/learn-footer';
 import VideoDirectoryExamples from '@/components/video-directory-examples';
 import VideoWorkflowDirectory from '@/components/video-workflow-directory';
+import VideoApiDirectory from '@/components/video-api-directory';
 import examples from '@/lib/home-video-examples.json';
+import videoApis from '@/lib/video-api-directory.json';
 import {
   videoDirectory,
   videoDirectoryFaqs,
@@ -18,9 +20,9 @@ import {
 } from '@/lib/site-metadata';
 import styles from './video.module.css';
 
-const title = 'Compare AI Product Video Workflows & Examples | Nexscope Learn';
+const title = 'AI Video Workflows, Video & Image APIs | Nexscope Learn';
 const description =
-  'Compare five Nexscope AI product video workflows by input, use case and output. Watch official examples, check credit estimates and open the matching video tool.';
+  'Compare five AI product video workflows and explore Nexscope Video & Image APIs. Watch examples, find image and video models, and open the matching documentation.';
 export const metadata: Metadata = {
   title,
   description,
@@ -69,6 +71,18 @@ export default function VideoDirectoryPage() {
           name: item.name,
           description: `${item.bestFor} ${item.result}`,
           url: videoWorkspaceUrl(item.id),
+        })),
+      },
+      {
+        '@type': 'ItemList',
+        '@id': 'https://learn.nexscope.ai/video/#apis',
+        name: 'Nexscope Video & Image APIs',
+        numberOfItems: videoApis.entries.length,
+        itemListElement: videoApis.entries.map((item, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: item.name,
+          url: `https://www.nexscope.ai/api-docs/${item.slug}?co-from=learn`,
         })),
       },
       {
@@ -141,6 +155,9 @@ export default function VideoDirectoryPage() {
               </a>
               <a href="#comparison" className={styles.secondary}>
                 Compare all workflows <ArrowRight size={15} />
+              </a>
+              <a href="#apis" className={styles.secondary}>
+                Browse Video & Image APIs <ArrowRight size={15} />
               </a>
             </div>
             <ul className={styles.benefits}>
@@ -360,6 +377,7 @@ export default function VideoDirectoryPage() {
             ))}
           </div>
         </section>
+        <VideoApiDirectory />
         <aside className={styles.developer}>
           <Code2 size={25} />
           <div>
