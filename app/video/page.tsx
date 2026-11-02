@@ -7,6 +7,7 @@ import LearnFooter from '@/components/learn-footer';
 import VideoDirectoryExamples from '@/components/video-directory-examples';
 import VideoWorkflowDirectory from '@/components/video-workflow-directory';
 import VideoApiDirectory from '@/components/video-api-directory';
+import VideoChannelStrip from '@/components/video-channel-strip';
 import examples from '@/lib/home-video-examples.json';
 import videoApis from '@/lib/video-api-directory.json';
 import {
@@ -209,6 +210,7 @@ export default function VideoDirectoryPage() {
             </div>
           </div>
         </section>
+        <VideoChannelStrip />
         <section
           className={styles.section}
           id="comparison"
