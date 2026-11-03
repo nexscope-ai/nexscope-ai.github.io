@@ -5,6 +5,20 @@ export const DEFAULT_SOCIAL_IMAGE = {
   alt: 'Nexscope ecommerce research, tools and evidence-based workflows',
 } as const;
 
+export const HOME_SOCIAL_IMAGE = {
+  url: 'https://learn.nexscope.ai/og-home.png',
+  width: 1672,
+  height: 941,
+  alt: 'Nexscope product videos, ecommerce Data APIs and Product Gallery',
+} as const;
+
+export const VIDEO_SOCIAL_IMAGE = {
+  url: 'https://learn.nexscope.ai/og-video.png',
+  width: 1672,
+  height: 941,
+  alt: 'Nexscope turns product images into product videos, listing videos and avatar videos',
+} as const;
+
 export const NEXSCOPE_SOCIAL_PROFILES = [
   'https://www.linkedin.com/company/nexscope-ai/',
   'https://x.com/Nexscope_ai',

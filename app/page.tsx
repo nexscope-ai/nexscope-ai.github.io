@@ -27,7 +27,7 @@ import {
 } from '@/lib/home-value.mjs';
 import { videoWorkflows, workflowUrl } from '@/lib/home-video-workflows';
 import {
-  DEFAULT_SOCIAL_IMAGE,
+  HOME_SOCIAL_IMAGE,
   NEXSCOPE_ORGANIZATION,
 } from '@/lib/site-metadata';
 import styles from './home-sections.module.css';
@@ -89,13 +89,13 @@ export const metadata: Metadata = {
     siteName: 'Nexscope Learn',
     url: '/',
     type: 'website',
-    images: [DEFAULT_SOCIAL_IMAGE],
+    images: [HOME_SOCIAL_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Nexscope Learn | Ecommerce AI Videos & Data APIs',
     description: summary,
-    images: [DEFAULT_SOCIAL_IMAGE],
+    images: [HOME_SOCIAL_IMAGE],
   },
 };
 

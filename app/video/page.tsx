@@ -16,7 +16,7 @@ import {
   videoWorkspaceUrl,
 } from '@/lib/video-directory';
 import {
-  DEFAULT_SOCIAL_IMAGE,
+  VIDEO_SOCIAL_IMAGE,
   NEXSCOPE_ORGANIZATION,
 } from '@/lib/site-metadata';
 import styles from './video.module.css';
@@ -35,13 +35,13 @@ export const metadata: Metadata = {
     url: '/video/',
     type: 'website',
     siteName: 'Nexscope Learn',
-    images: [DEFAULT_SOCIAL_IMAGE],
+    images: [VIDEO_SOCIAL_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
     title,
     description,
-    images: [DEFAULT_SOCIAL_IMAGE],
+    images: [VIDEO_SOCIAL_IMAGE],
   },
 };
 
