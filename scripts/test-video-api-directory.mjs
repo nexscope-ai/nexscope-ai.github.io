@@ -2,6 +2,50 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { projectVideoApis } from './refresh-video-api-directory.mjs';
+import { videoApiChoices, relatedVideoApi } from '../lib/video-api-choices.mjs';
+import { trackDirectoryAction } from '../lib/directory-analytics.mjs';
+
+test('related workflow options resolve only to currently published APIs or model groups', async () => {
+  const { entries } = JSON.parse(
+    await readFile(
+      new URL('../lib/video-api-directory.json', import.meta.url),
+      'utf8',
+    ),
+  );
+  for (const choice of videoApiChoices)
+    assert.equal(relatedVideoApi(choice.id, entries), choice);
+  assert.equal(relatedVideoApi('video-replication', []), null);
+  assert.equal(relatedVideoApi('image-to-video', []), null);
+  assert.equal(
+    relatedVideoApi('url-to-video', entries),
+    null,
+    'do not invent a matching API',
+  );
+});
+test('directory measurement reports result counts without search text, credentials or extra page views', () => {
+  const calls = [];
+  const target = {
+    location: { pathname: '/video/' },
+    gtag: (...args) => calls.push(args),
+  };
+  trackDirectoryAction(
+    'video_api_search',
+    {
+      query_length: 9,
+      result_count: 2,
+      query: 'private@example.com',
+      api_key: 'secret',
+    },
+    target,
+  );
+  trackDirectoryAction('page_view', {}, target);
+  assert.equal(calls.length, 1);
+  assert.equal(calls[0][1], 'video_api_search');
+  assert.equal(calls[0][2].source_page, '/video/');
+  assert.equal(calls[0][2].result_count, 2);
+  assert.equal(JSON.stringify(calls).includes('private@example.com'), false);
+  assert.equal(JSON.stringify(calls).includes('secret'), false);
+});
 import { videoModelIcon } from '../lib/video-model-icons.mjs';
 
 test('fixed model APIs use the matching local logo; generic workflows retain capability icons', async () => {

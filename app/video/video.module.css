@@ -768,6 +768,66 @@
   background: #fff;
   margin-bottom: 20px;
 }
+.apiChoices {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.apiChoices article {
+  min-width: 0;
+  border: 1px solid #e4dced;
+  border-radius: 16px;
+  padding: 22px;
+  background: #f5f0fc;
+}
+.apiChoices h3 {
+  font-size: 18px;
+  line-height: 1.4;
+  margin: 0 0 18px;
+}
+.apiChoices dl {
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 0 0 14px;
+}
+.apiChoices dl div + div {
+  margin-top: 12px;
+}
+.apiChoices dt {
+  font-weight: 650;
+}
+.apiChoices dd {
+  margin: 2px 0 0;
+  color: #655f75;
+  overflow-wrap: anywhere;
+}
+.apiChoices a,
+.exampleApiLink a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  color: #7046e8;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.exampleApiLink {
+  margin: 12px 0 24px;
+}
+.exampleApiLink span {
+  display: block;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #655f75;
+  max-width: 760px;
+}
+@media (max-width: 768px) {
+  .apiChoices {
+    grid-template-columns: 1fr;
+  }
+}
 .apiSearch input {
   min-width: 0;
   width: 100%;

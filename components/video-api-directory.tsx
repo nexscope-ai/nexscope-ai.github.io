@@ -11,6 +11,8 @@ import {
 import catalog from '@/lib/video-api-directory.json';
 import { videoModelIcon } from '@/lib/video-model-icons.mjs';
 import styles from '@/app/video/video.module.css';
+import { trackDirectoryAction } from '@/lib/directory-analytics.mjs';
+import { videoApiChoices, relatedVideoApi } from '@/lib/video-api-choices.mjs';
 
 const categoryIcons = {
   'video-generation-models': Clapperboard,
@@ -33,6 +35,19 @@ export default function VideoApiDirectory() {
         .toLowerCase()
         .includes(query.trim().toLowerCase()),
   );
+  const chooseCategory = (next: string, searchQuery = query) => {
+    setCategory(next);
+    trackDirectoryAction('video_api_filter', {
+      data_category: next,
+      result_count: catalog.entries.filter(
+        (item) =>
+          (next === 'all' || item.category === next) &&
+          `${item.name} ${item.description} ${item.categoryName}`
+            .toLowerCase()
+            .includes(searchQuery.trim().toLowerCase()),
+      ).length,
+    });
+  };
   return (
     <section
       id="apis"
@@ -50,13 +65,62 @@ export default function VideoApiDirectory() {
           multimodal tools, then open the matching API documentation.
         </p>
       </div>
+      <div className={styles.apiChoices}>
+        {videoApiChoices
+          .filter((choice) => relatedVideoApi(choice.id, catalog.entries))
+          .map((choice) => (
+            <article key={choice.id}>
+              <h3>{choice.title}</h3>
+              <dl>
+                <div>
+                  <dt>You bring</dt>
+                  <dd>{choice.input}</dd>
+                </div>
+                <div>
+                  <dt>You get</dt>
+                  <dd>{choice.output}</dd>
+                </div>
+              </dl>
+              {choice.slug ? (
+                <a
+                  href={`https://www.nexscope.ai/api-docs/${choice.slug}?view=playground&co-from=learn`}
+                  data-track
+                  data-track-tool={choice.slug}
+                  data-cta-placement="video-task-start"
+                >
+                  {choice.label} <ArrowUpRight size={16} />
+                </a>
+              ) : (
+                <a
+                  href="#api-search"
+                  onClick={() => {
+                    setQuery('');
+                    chooseCategory(choice.category || 'all', '');
+                  }}
+                >
+                  {choice.label} →
+                </a>
+              )}
+              <a href={choice.guide}>Read the preparation guide →</a>
+            </article>
+          ))}
+      </div>
       <label className={styles.apiSearch}>
         <Search size={19} aria-hidden="true" />
         <span className={styles.apiSearchLabel}>Search Video & Image APIs</span>
         <input
+          id="api-search"
           type="search"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
+          onBlur={() => {
+            if (query.trim())
+              trackDirectoryAction('video_api_search', {
+                query_length: Math.min(query.trim().length, 500),
+                result_count: visible.length,
+                data_category: category,
+              });
+          }}
           placeholder="Search by model, task or API name"
         />
       </label>
@@ -67,7 +131,7 @@ export default function VideoApiDirectory() {
         <button
           type="button"
           aria-pressed={category === 'all'}
-          onClick={() => setCategory('all')}
+          onClick={() => chooseCategory('all')}
         >
           All APIs ({catalog.entries.length})
         </button>
@@ -76,7 +140,7 @@ export default function VideoApiDirectory() {
             key={id}
             type="button"
             aria-pressed={category === id}
-            onClick={() => setCategory(id)}
+            onClick={() => chooseCategory(id)}
           >
             {name} (
             {catalog.entries.filter((item) => item.category === id).length})
