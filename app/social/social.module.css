@@ -166,3 +166,180 @@
     padding: 22px;
   }
 }
+
+.sectionLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin: 24px 0 8px;
+}
+.sectionLinks a {
+  color: #7950b9;
+  font-size: 13px;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+}
+.guideSection {
+  padding: 42px 0;
+  border-bottom: 1px solid #e6e1eb;
+  scroll-margin-top: 100px;
+}
+.guideSection h2 {
+  margin: 0 0 16px;
+  font-size: clamp(25px, 3vw, 34px);
+  letter-spacing: -0.03em;
+}
+.guideSection > p {
+  max-width: 850px;
+  color: #786b83;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid #e6deef;
+  border-radius: 16px;
+  background: #fff;
+  margin: 24px 0 14px;
+}
+.tableWrap table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.tableWrap caption {
+  padding: 14px 20px;
+  text-align: left;
+  color: #8b7a99;
+  font-size: 12px;
+  background: #faf7ff;
+}
+.tableWrap th,
+.tableWrap td {
+  padding: 16px 20px;
+  border-top: 1px solid #eee7f5;
+  vertical-align: top;
+}
+.tableWrap thead th {
+  color: #796586;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: #fcfaff;
+}
+.tableWrap tbody th {
+  color: #493655;
+  white-space: nowrap;
+}
+.tableWrap td a {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  color: #8054b6;
+  margin: 0 16px 7px 0;
+}
+.workflowGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+.workflowGrid article {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e5dcec;
+  border-radius: 18px;
+  background: #fff;
+  padding: 24px;
+}
+.workflowGrid h3 {
+  font-size: 19px;
+  line-height: 1.35;
+  margin: 0 0 16px;
+  color: #44314f;
+}
+.workflowGrid p,
+.workflowGrid ol {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #806f8c;
+  margin: 0 0 16px;
+}
+.workflowGrid ol {
+  padding-left: 18px;
+}
+.workflowGrid li + li {
+  margin-top: 8px;
+}
+.workflowLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+}
+.workflowLinks a {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  color: #8257b5;
+  font-size: 12px;
+  min-height: 36px;
+}
+.workflowGrid .reviewNote {
+  border-top: 1px solid #eee6f5;
+  margin: 18px 0 0;
+  padding-top: 14px;
+  font-size: 11px;
+}
+.faqList {
+  border: 1px solid #e5dcec;
+  border-radius: 16px;
+  background: #fff;
+  overflow: hidden;
+}
+.faqList details + details {
+  border-top: 1px solid #ece5f3;
+}
+.faqList summary {
+  padding: 20px 24px;
+  font-size: 14px;
+  font-weight: 650;
+  color: #624c72;
+  cursor: pointer;
+}
+.faqList p {
+  padding: 0 24px 22px;
+  margin: 0;
+  max-width: 900px;
+  color: #81738b;
+  font-size: 13px;
+  line-height: 1.8;
+}
+@media (max-width: 900px) {
+  .workflowGrid {
+    grid-template-columns: 1fr;
+  }
+  .workflowGrid article {
+    padding: 22px;
+  }
+}
+@media (max-width: 580px) {
+  .guideSection {
+    padding: 32px 0;
+  }
+  .tableWrap th,
+  .tableWrap td {
+    padding: 14px;
+  }
+  .faqList summary {
+    padding: 18px;
+  }
+  .faqList p {
+    padding: 0 18px 18px;
+  }
+}

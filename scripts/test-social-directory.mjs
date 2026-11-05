@@ -1,5 +1,30 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { socialGuide } from '../lib/social-guide.mjs';
+
+test('selection evidence reflects current published operations and removes unavailable workflow links', () => {
+  const entry = (slug, platform) => ({ slug, platform, name: slug });
+  const entries = [
+    entry('social-reddit-search', 'reddit'),
+    entry('social-reddit-post-comments', 'reddit'),
+  ];
+  const guide = socialGuide(entries);
+  assert.equal(guide.platforms.length, 1);
+  assert.equal(guide.platforms[0].count, 2);
+  assert.equal(guide.workflows.length, 1);
+  assert.ok(
+    guide.workflows[0].links.every((l) =>
+      l.url.endsWith('?view=playground&co-from=learn'),
+    ),
+  );
+  assert.equal(socialGuide(entries.slice(0, 1)).workflows.length, 0);
+  assert.equal(
+    guide.platforms
+      .flatMap((p) => p.links)
+      .some((l) => l.slug === 'social-reddit-post-detail'),
+    false,
+  );
+});
 import {
   splitDataCollections,
   projectSocialDirectory,

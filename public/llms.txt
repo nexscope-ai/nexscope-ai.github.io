@@ -35,6 +35,9 @@ Language: English
 
 ## APIs, MCP, and AI agents
 
+- https://learn.nexscope.ai/social/ — Nexscope social media and content API directory, platform comparison, endpoint-selection workflows, and official playground links
+- https://learn.nexscope.ai/data/ — Nexscope ecommerce marketplace and product Data API directory
+
 - https://learn.nexscope.ai/ecommerce-ai-agents/ — connect marketplace research APIs to AI agents
 - https://learn.nexscope.ai/ecommerce-ai-tools/ecommerce-mcp-server/ — ecommerce MCP architecture, tools, permissions, and safety
 - https://learn.nexscope.ai/ecommerce-ai-tools/ecommerce-api-for-ai-agents/ — map agent questions to documented ecommerce APIs

@@ -26,10 +26,7 @@ import {
   publicCostExamples,
 } from '@/lib/home-value.mjs';
 import { videoWorkflows, workflowUrl } from '@/lib/home-video-workflows';
-import {
-  HOME_SOCIAL_IMAGE,
-  NEXSCOPE_ORGANIZATION,
-} from '@/lib/site-metadata';
+import { HOME_SOCIAL_IMAGE, NEXSCOPE_ORGANIZATION } from '@/lib/site-metadata';
 import styles from './home-sections.module.css';
 
 const gallery = '/ecommerce-ai-tools/product-showcase/';
@@ -307,7 +304,12 @@ export default function Home() {
             <p className={styles.moduleIntro}>
               Bring marketplace research into your apps, internal tools and AI
               workflows. Find an operation by platform and task, then inspect
-              its documented inputs and results.
+              its documented inputs and results. For profiles, posts and
+              comments, explore the{' '}
+              <a href="/social/" data-track-tool="social-directory">
+                Social API directory
+              </a>
+              .
             </p>
           </div>
           <div className={styles.developerGrid} id="data-apis">

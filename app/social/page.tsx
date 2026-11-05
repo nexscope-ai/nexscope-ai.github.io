@@ -1,4 +1,5 @@
 /* oxlint-disable next/no-html-link-for-pages */
+/* oxlint-disable jsx-a11y/no-noninteractive-tabindex -- The named comparison region needs keyboard focus for horizontal scrolling. */
 import type { Metadata } from 'next';
 import {
   ArrowRight,
@@ -11,15 +12,16 @@ import MarketingHeader from '@/components/marketing-header';
 import LearnFooter from '@/components/learn-footer';
 import SocialApiDirectory from '@/components/social-api-directory';
 import catalog from '@/lib/social-api-directory.json';
+import { socialGuide, socialFaqs } from '@/lib/social-guide.mjs';
 import {
   DEFAULT_SOCIAL_IMAGE,
   NEXSCOPE_ORGANIZATION,
 } from '@/lib/site-metadata';
 import styles from '@/app/video/video.module.css';
 import social from './social.module.css';
-const title = 'Social Media Data APIs for Developers | Nexscope';
+const title = 'Social Media APIs: Instagram, TikTok & YouTube | Nexscope';
 const description =
-  'Explore social media and content data APIs for TikTok, Instagram, YouTube, Facebook, Reddit and more. Find profiles, posts, comments, search and transcript endpoints.';
+  'Explore Nexscope social media APIs for profiles, posts, comments, search and transcripts. Compare platforms, choose an endpoint and test in its official playground.';
 export const metadata: Metadata = {
   title,
   description,
@@ -41,6 +43,7 @@ export const metadata: Metadata = {
 };
 export default function SocialPage() {
   const platforms = new Set(catalog.entries.map((e) => e.platform)).size;
+  const guide = socialGuide(catalog.entries);
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -52,6 +55,12 @@ export default function SocialPage() {
         name: title,
         description,
         inLanguage: 'en',
+        publisher: { '@id': NEXSCOPE_ORGANIZATION['@id'] },
+        about: [
+          'Social media APIs',
+          'Social content research',
+          'Creator research',
+        ],
         mainEntity: {
           '@type': 'ItemList',
           numberOfItems: catalog.entries.length,
@@ -62,6 +71,14 @@ export default function SocialPage() {
             url: `https://www.nexscope.ai/api-docs/${e.slug}?view=playground&co-from=learn`,
           })),
         },
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: socialFaqs.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a },
+        })),
       },
       {
         '@type': 'BreadcrumbList',
@@ -99,16 +116,27 @@ export default function SocialPage() {
         <section className={social.hero}>
           <p className={styles.eyebrow}>Nexscope social & content data APIs</p>
           <h1>
-            Social insights.
+            Social media APIs.
             <br />
-            <em>Ready for your next build.</em>
+            <em>Find the right data for your next build.</em>
           </h1>
           <p className={styles.lead}>
-            Find the right endpoint for social profiles, posts, comments, search
-            results and transcripts. Explore {catalog.entries.length} published
-            APIs across {platforms} platform and tool groups, then test your
-            request in the official playground.
+            Nexscope provides platform-specific social media APIs for profiles,
+            posts, comments, search results and transcripts. Explore{' '}
+            {catalog.entries.length} published operations across {platforms}{' '}
+            platform and tool groups. Choose the platform and task, check the
+            required input, then inspect a response in the matching official
+            playground.
           </p>
+          <nav
+            className={social.sectionLinks}
+            aria-label="Social API page sections"
+          >
+            <a href="#platforms">Compare platforms</a>
+            <a href="#workflows">Choose a workflow</a>
+            <a href="#apis">Browse all APIs</a>
+            <a href="#social-faq">API questions</a>
+          </nav>
           <div className={styles.heroActions}>
             <a className={styles.primary} href="#apis">
               Explore social APIs <ArrowRight size={17} />
@@ -148,7 +176,131 @@ export default function SocialPage() {
             ))}
           </div>
         </section>
+        <section
+          id="platforms"
+          className={social.guideSection}
+          aria-labelledby="social-platforms-title"
+        >
+          <p className={styles.eyebrow}>
+            Platform coverage, from the published catalog
+          </p>
+          <h2 id="social-platforms-title">
+            Which social API should you start with?
+          </h2>
+          <p>
+            Pick the platform where the content lives, then choose a profile,
+            post, comment, search or transcript operation. Counts below come
+            from the APIs listed in this directory; examples link to the
+            corresponding official documentation.
+          </p>
+          <section
+            className={social.tableWrap}
+            tabIndex={0}
+            aria-label="Social API platform comparison"
+          >
+            <table>
+              <caption>
+                Selected social platforms and documented API starting points
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Platform</th>
+                  <th scope="col">Published APIs</th>
+                  <th scope="col">Example operations</th>
+                </tr>
+              </thead>
+              <tbody>
+                {guide.platforms.map((p) => (
+                  <tr key={p.id}>
+                    <th scope="row">{p.name}</th>
+                    <td>{p.count}</td>
+                    <td>
+                      {p.links.map((l) => (
+                        <a
+                          key={l.slug}
+                          href={l.url}
+                          data-track
+                          data-track-tool={l.slug}
+                          data-cta-placement="social-platform-comparison"
+                        >
+                          {l.name} <ArrowRight size={13} aria-hidden="true" />
+                        </a>
+                      ))}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </section>
+          <p className={styles.caption}>
+            Source:{' '}
+            <a href="https://www.nexscope.ai/api-docs?tab=data&co-from=learn">
+              Nexscope official API catalog
+            </a>
+            . The full directory below also includes content, music, community
+            and creator-tool operations.
+          </p>
+        </section>
+        <section
+          id="workflows"
+          className={social.guideSection}
+          aria-labelledby="social-workflow-title"
+        >
+          <p className={styles.eyebrow}>From a question to an endpoint</p>
+          <h2 id="social-workflow-title">Three ways to start your research.</h2>
+          <p>
+            These are selection walkthroughs using documented endpoints, not
+            live API test results. Use your own input in the playground to
+            verify availability.
+          </p>
+          <div className={social.workflowGrid}>
+            {guide.workflows.map((w) => (
+              <article key={w.title}>
+                <h3>{w.title}</h3>
+                <p>
+                  <strong>{w.question}</strong>
+                </p>
+                <ol>
+                  {w.steps.map((step) => (
+                    <li key={step}>{step}</li>
+                  ))}
+                </ol>
+                <div className={social.workflowLinks}>
+                  {w.links.map((l) => (
+                    <a
+                      key={l.slug}
+                      href={l.url}
+                      data-track
+                      data-track-tool={l.slug}
+                      data-cta-placement="social-workflow-guide"
+                    >
+                      {l.name}
+                      <ArrowRight size={13} aria-hidden="true" />
+                    </a>
+                  ))}
+                </div>
+                <p className={social.reviewNote}>{w.review}</p>
+              </article>
+            ))}
+          </div>
+        </section>
         <SocialApiDirectory />
+        <section
+          id="social-faq"
+          className={social.guideSection}
+          aria-labelledby="social-faq-title"
+        >
+          <p className={styles.eyebrow}>Before your first request</p>
+          <h2 id="social-faq-title">Nexscope Social API questions.</h2>
+          <div className={social.faqList}>
+            {socialFaqs.map((f) => (
+              <details key={f.q}>
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
         <section className={social.nextStep}>
           <h2>Start with one question and one endpoint.</h2>
           <p>
@@ -158,6 +310,11 @@ export default function SocialPage() {
           <a href="/pricing/">
             Compare subscription plans <ArrowRight size={15} />
           </a>
+          <p>
+            Working on products or marketplace research?{' '}
+            <a href="/data/">Explore ecommerce Data APIs</a>. Creating product
+            content? <a href="/video/">Compare AI video workflows</a>.
+          </p>
         </section>
       </main>
       <LearnFooter />
