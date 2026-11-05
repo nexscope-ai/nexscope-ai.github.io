@@ -43,3 +43,5 @@ next-env.d.ts
 /lib/pricing-snapshot.json
 /lib/data-credit-snapshot.json
 /lib/home-product-snapshot.json
+/lib/ecommerce-directory-snapshot.json
+/lib/social-api-directory.json

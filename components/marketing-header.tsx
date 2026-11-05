@@ -7,7 +7,7 @@ import styles from './marketing-header.module.css';
 import { videoWorkspaceUrl } from '@/lib/video-directory';
 
 type MarketingHeaderProps = {
-  active?: 'tools' | 'pricing' | 'video';
+  active?: 'tools' | 'pricing' | 'video' | 'social';
   campaign: string;
   explorePath?: '/apis' | '/';
   productReviewCta?: boolean;
@@ -80,6 +80,15 @@ export default function MarketingHeader({
                 </li>
                 <li>
                   <a
+                    href="/social/"
+                    data-track-tool="social-directory"
+                    aria-current={active === 'social' ? 'page' : undefined}
+                  >
+                    Social APIs
+                  </a>
+                </li>
+                <li>
+                  <a
                     href="/video/"
                     data-track-tool="video-directory"
                     aria-current={active === 'video' ? 'page' : undefined}
@@ -111,6 +120,15 @@ export default function MarketingHeader({
               <>
                 <li>
                   <a href="/data/">Data APIs</a>
+                </li>
+                <li>
+                  <a
+                    href="/social/"
+                    data-track-tool="social-directory"
+                    aria-current={active === 'social' ? 'page' : undefined}
+                  >
+                    Social APIs
+                  </a>
                 </li>
                 <li>
                   <a

@@ -1,0 +1,168 @@
+.newBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 8px;
+  border-radius: 7px;
+  background: linear-gradient(120deg, #7941c8, #aa42cc, #7060df);
+  box-shadow:
+    0 2px 9px #8647c32b,
+    inset 0 1px 0 #ffffff40;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.07em;
+  line-height: 1;
+}
+.hero {
+  padding: 70px 0 42px;
+  border-bottom: 1px solid #e6e1eb;
+}
+.hero h1 {
+  font-size: clamp(40px, 5vw, 66px);
+  letter-spacing: -0.055em;
+  line-height: 1.06;
+  margin: 0 0 24px;
+}
+.hero h1 em {
+  font-style: normal;
+  color: #7a50c6;
+}
+.taskGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 40px;
+}
+.taskGrid > div {
+  padding: 20px;
+  border: 1px solid #e6dfee;
+  border-radius: 14px;
+  background: #fff;
+}
+.taskGrid svg {
+  color: #8b64bb;
+  display: block;
+  margin-bottom: 14px;
+}
+.taskGrid strong {
+  font-size: 14px;
+}
+.taskGrid p {
+  font-size: 12px;
+  color: #81718c;
+  line-height: 1.7;
+  margin: 8px 0 0;
+}
+.directory {
+  padding: 44px 0;
+}
+.platforms button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.platforms img,
+.platforms svg {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+.platforms span {
+  opacity: 0.65;
+  font-size: 11px;
+}
+.platformIcon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  background: #f9f6ff;
+  border-radius: 13px;
+  color: #8b68ad;
+}
+.platformIcon img {
+  object-fit: contain;
+  width: 30px;
+  height: 30px;
+}
+.resultBar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+.resultBar button {
+  border: 0;
+  background: transparent;
+  color: #7950b9;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  min-height: 44px;
+}
+.cardBottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.credits {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #8c7a9c;
+  font-size: 11px;
+  font-weight: 500;
+}
+.empty {
+  padding: 40px 20px;
+  text-align: center;
+  background: #f2ecfa;
+  border-radius: 14px;
+  color: #74617f;
+}
+.nextStep {
+  padding: 30px;
+  margin: 0 0 60px;
+  background: #f1eafb;
+  border-radius: 18px;
+}
+.nextStep h2 {
+  margin: 0 0 12px;
+  font-size: 24px;
+}
+.nextStep p {
+  max-width: 700px;
+  color: #776482;
+  line-height: 1.7;
+  font-size: 14px;
+}
+.nextStep a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #7650ae;
+  min-height: 44px;
+}
+@media (max-width: 900px) {
+  .taskGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 580px) {
+  .hero {
+    padding-top: 42px;
+  }
+  .taskGrid {
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .taskGrid > div {
+    padding: 14px;
+  }
+  .nextStep {
+    padding: 22px;
+  }
+}
