@@ -4,6 +4,12 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Refresh public API publications and library references even when only the
+  # independently deployed content repository changes. No cross-repo secret.
+  schedule:
+    - cron: '17 */4 * * *'
+  repository_dispatch:
+    types: [learning-content-updated]
 
 permissions:
   contents: read

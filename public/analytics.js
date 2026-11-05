@@ -6,6 +6,13 @@
   const key = 'nexscope_marketing_analytics_consent';
   let consent;
   try { consent = localStorage.getItem(key); } catch { /* Storage unavailable. */ }
+  if (consent !== 'granted' && consent !== 'denied') {
+    try {
+      const match = document.cookie.match(/(?:^|; )nexscope_analytics_consent_v1=([^;]*)/);
+      const value = match ? decodeURIComponent(match[1]) : '';
+      if (value === 'granted' || value === 'denied') consent = value;
+    } catch { /* Cookie unavailable. */ }
+  }
 
   window.dataLayer = window.dataLayer || [];
   // oxlint-disable-next-line prefer-rest-params -- Google gtag.js requires the Arguments object.
@@ -30,12 +37,23 @@
   const traffic = window.nexscopeTrafficAttribution || {};
   window.gtag('config', id, {
     page_location: page.href, page_title: document.title, page_referrer: referrer,
-    cookie_domain: 'auto',
+    cookie_domain: 'nexscope.ai',
+    linker: { domains: ['learn.nexscope.ai', 'www.nexscope.ai', 'nexscope.ai'], decorate_forms: false },
+    send_page_view: false,
+    content_group: 'learn', site_surface: 'learn',
     landing_source: traffic.trafficSource || 'direct_or_unknown',
     landing_medium: traffic.trafficMedium || 'none',
     landing_campaign: traffic.trafficCampaign || undefined,
     landing_path: traffic.trafficLandingPath || page.pathname,
     allow_google_signals: false, allow_ad_personalization_signals: false,
+  });
+  window.gtag('event', 'page_view', {
+    page_location: page.href, page_title: document.title, page_referrer: referrer || undefined,
+    content_group: 'learn', site_surface: 'learn',
+    landing_source: traffic.trafficSource || 'direct_or_unknown',
+    landing_medium: traffic.trafficMedium || 'none',
+    landing_path: traffic.trafficLandingPath || page.pathname,
+    transport_type: 'beacon',
   });
   const script = document.createElement('script');
   script.async = true;
@@ -103,6 +121,9 @@
       : 'padding:9px 12px;border:1px solid #ded9f2;border-radius:8px;cursor:pointer;background:white;color:#4032a0;font-weight:600';
     button.onclick = () => {
       try { localStorage.setItem(key, value); } catch { /* Choice applies this visit. */ }
+      try {
+        document.cookie = `nexscope_analytics_consent_v1=${value}; Max-Age=31536000; Path=/; Domain=.nexscope.ai; SameSite=Lax; Secure`;
+      } catch { /* Cookie unavailable. */ }
       panel.remove();
       window.gtag('consent', 'update', { analytics_storage: value });
     };

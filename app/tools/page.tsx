@@ -2,7 +2,10 @@
 /* oxlint-disable next/no-html-link-for-pages, next/no-img-element */
 import type { Metadata } from 'next';
 import { toolCards } from '@/lib/tool-plaza';
-import { DEFAULT_SOCIAL_IMAGE } from '@/lib/site-metadata';
+import {
+  DEFAULT_SOCIAL_IMAGE,
+  NEXSCOPE_ORGANIZATION,
+} from '@/lib/site-metadata';
 import MarketingHeader from '@/components/marketing-header';
 import ToolDirectory from '@/components/tool-directory';
 import styles from './tools.module.css';
@@ -34,6 +37,24 @@ export default function ToolsPage() {
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
+      NEXSCOPE_ORGANIZATION,
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Nexscope Learn',
+            item: 'https://learn.nexscope.ai/',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Ecommerce tools',
+            item: 'https://learn.nexscope.ai/tools/',
+          },
+        ],
+      },
       {
         '@type': 'CollectionPage',
         '@id': 'https://learn.nexscope.ai/tools/#webpage',
@@ -150,10 +171,7 @@ export default function ToolsPage() {
             <a href="https://www.nexscope.ai/privacy">Privacy</a>
             <a href="https://www.nexscope.ai/terms">Terms</a>
             <a href="#analytics-preferences">Cookie settings</a>
-            <a
-              data-track
-              href="https://www.nexscope.ai/api-docs?co-from=learn"
-            >
+            <a data-track href="https://www.nexscope.ai/api-docs?co-from=learn">
               API docs ↗
             </a>
           </nav>

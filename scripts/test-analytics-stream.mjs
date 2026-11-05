@@ -15,13 +15,14 @@ const script = readFileSync(
   'utf8',
 );
 
-function loadAnalytics(consent = 'granted', traffic) {
+function loadAnalytics(consent = 'granted', traffic, cookie = '') {
   const listeners = new Map();
   const appendedScripts = [];
   const location = new URL(
     'https://learn.nexscope.ai/tools/?utm_source=chatgpt.com&token=private',
   );
   const document = {
+    cookie,
     title: 'Learn tools | Nexscope',
     referrer: 'https://chatgpt.com/c/private-chat',
     head: { appendChild: (node) => appendedScripts.push(node) },
@@ -102,7 +103,8 @@ void test('Learn sends one privacy-safe initial page view to the main GA4 stream
   const configs = window.dataLayer.filter((args) => args[0] === 'config');
   assert.equal(configs.length, 1);
   assert.equal(configs[0][1], 'G-55CJ5T3HHS');
-  assert.equal(configs[0][2].cookie_domain, 'auto');
+  assert.equal(configs[0][2].cookie_domain, 'nexscope.ai');
+  assert.equal(configs[0][2].send_page_view, false);
   assert.equal(configs[0][2].page_title, 'Learn tools | Nexscope');
   assert.equal(
     configs[0][2].page_location,
@@ -113,7 +115,7 @@ void test('Learn sends one privacy-safe initial page view to the main GA4 stream
     window.dataLayer.filter(
       (args) => args[0] === 'event' && args[1] === 'page_view',
     ).length,
-    0,
+    1,
   );
   assert.equal(appendedScripts.length, 1);
   assert.equal(
@@ -121,6 +123,24 @@ void test('Learn sends one privacy-safe initial page view to the main GA4 stream
     'https://www.googletagmanager.com/gtag/js?id=G-55CJ5T3HHS',
   );
   assert.equal(script.includes('G-DJD5Y220T1'), false);
+});
+
+void test('shared consent cookie is respected and denied visits still queue one minimal page view', () => {
+  const shared = loadAnalytics(
+    '',
+    undefined,
+    'nexscope_analytics_consent_v1=granted',
+  );
+  assert.equal(shared.window.dataLayer[0][2].analytics_storage, 'granted');
+  const denied = loadAnalytics('denied');
+  assert.equal(denied.window.dataLayer[0][2].analytics_storage, 'denied');
+  assert.equal(
+    denied.window.dataLayer.filter(
+      (a) => a[0] === 'event' && a[1] === 'page_view',
+    ).length,
+    1,
+  );
+  assert.equal(denied.appendedScripts.length, 1);
 });
 
 void test('Learn-to-main click event retains path context without internal campaign tags', () => {
