@@ -1,17 +1,18 @@
 'use client';
 /* oxlint-disable next/no-img-element, next/no-html-link-for-pages */
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import {
   ArrowUpRight,
   Globe2,
   Search,
-  Sparkles,
   Compass,
   Link2,
   Contact,
   MessageCircle,
   Video,
   Users,
+  ChevronDown,
+  ChevronUp,
 } from 'lucide-react';
 import catalog from '@/lib/social-api-directory.json';
 import styles from '@/app/video/video.module.css';
@@ -71,6 +72,9 @@ const groups = [
 export default function SocialApiDirectory() {
   const [platform, setPlatform] = useState('all');
   const [query, setQuery] = useState('');
+  const [expanded, setExpanded] = useState(false);
+  const resultsRef = useRef<HTMLDivElement>(null);
+  const previewLimit = 12;
   const words = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
   const entries = catalog.entries.filter(
     (e) =>
@@ -103,7 +107,10 @@ export default function SocialApiDirectory() {
         <input
           type="search"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => {
+            setQuery(e.target.value);
+            setExpanded(false);
+          }}
           placeholder="Try Instagram profiles, YouTube transcripts or Reddit comments…"
         />
       </label>
@@ -114,7 +121,10 @@ export default function SocialApiDirectory() {
         <button
           type="button"
           aria-pressed={platform === 'all'}
-          onClick={() => setPlatform('all')}
+          onClick={() => {
+            setPlatform('all');
+            setExpanded(false);
+          }}
         >
           All platforms <span>{catalog.entries.length}</span>
         </button>
@@ -123,7 +133,10 @@ export default function SocialApiDirectory() {
             key={g.id}
             type="button"
             aria-pressed={platform === g.id}
-            onClick={() => setPlatform(g.id)}
+            onClick={() => {
+              setPlatform(g.id);
+              setExpanded(false);
+            }}
           >
             <PlatformIcon platform={g.id} />
             {g.name}
@@ -131,7 +144,7 @@ export default function SocialApiDirectory() {
           </button>
         ))}
       </fieldset>
-      <div className={social.resultBar}>
+      <div className={social.resultBar} ref={resultsRef}>
         <output className={styles.count} aria-live="polite">
           {entries.length} {entries.length === 1 ? 'API' : 'APIs'}{' '}
           {platform !== 'all' || query
@@ -144,15 +157,20 @@ export default function SocialApiDirectory() {
             onClick={() => {
               setPlatform('all');
               setQuery('');
+              setExpanded(false);
             }}
           >
             Clear filters
           </button>
         )}
       </div>
-      <div className={styles.apiGrid}>
-        {entries.map((e) => (
-          <article className={styles.apiCard} key={e.slug}>
+      <div className={styles.apiGrid} id="social-api-results">
+        {entries.map((e, index) => (
+          <article
+            className={`${styles.apiCard} ${!expanded && index >= previewLimit ? social.hiddenCard : ''}`}
+            hidden={!expanded && index >= previewLimit}
+            key={e.slug}
+          >
             <a
               className={styles.apiCardLink}
               href={`https://www.nexscope.ai/api-docs/${e.slug}?view=playground&co-from=learn`}
@@ -163,10 +181,6 @@ export default function SocialApiDirectory() {
               <div className={styles.apiCardTop}>
                 <span className={social.platformIcon}>
                   <PlatformIcon platform={e.platform} />
-                </span>
-                <span className={social.newBadge}>
-                  <Sparkles size={12} aria-hidden="true" />
-                  NEW
                 </span>
               </div>
               <span className={styles.apiCategory}>{e.platformName}</span>
@@ -182,6 +196,31 @@ export default function SocialApiDirectory() {
           </article>
         ))}
       </div>
+      {entries.length > previewLimit && (
+        <div className={social.expandResults}>
+          <p>
+            Showing {expanded ? entries.length : previewLimit} of{' '}
+            {entries.length} APIs
+          </p>
+          <button
+            type="button"
+            aria-expanded={expanded}
+            aria-controls="social-api-results"
+            onClick={() => {
+              setExpanded(!expanded);
+              if (expanded)
+                resultsRef.current?.scrollIntoView({ block: 'start' });
+            }}
+          >
+            {expanded ? 'Show less' : `View all ${entries.length} APIs`}
+            {expanded ? (
+              <ChevronUp size={18} aria-hidden="true" />
+            ) : (
+              <ChevronDown size={18} aria-hidden="true" />
+            )}
+          </button>
+        </div>
+      )}
       {!entries.length && (
         <p className={social.empty}>
           No APIs match these filters. Try a different platform or search term.
