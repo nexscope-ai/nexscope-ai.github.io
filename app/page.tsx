@@ -10,6 +10,9 @@ import {
   Globe2,
   PackagePlus,
   Sparkles,
+  MessageCircle,
+  Search,
+  Users,
 } from 'lucide-react';
 import MarketingHeader from '@/components/marketing-header';
 import LearnFooter from '@/components/learn-footer';
@@ -18,6 +21,7 @@ import exampleSnapshot from '@/lib/home-video-examples.json';
 import pricingSnapshot from '@/lib/pricing-snapshot.json';
 import creditSnapshot from '@/lib/data-credit-snapshot.json';
 import homeProductSnapshot from '@/lib/home-product-snapshot.json';
+import socialCatalog from '@/lib/social-api-directory.json';
 import { pricingMoney } from '@/lib/pricing-content.mjs';
 import {
   entrySubscription,
@@ -49,7 +53,7 @@ const faqs = [
   },
   {
     q: 'What is available for ecommerce developers?',
-    a: 'The Data API directory groups marketplace and research APIs by platform and task. Compare descriptions, recorded usage and credit ranges, then open the exact official documentation and online tester. API requests use your own credentials and follow the selected operation’s requirements.',
+    a: 'Explore ecommerce Data APIs for marketplace research and Social APIs for profiles, posts, comments, search and transcripts. Choose an endpoint by platform and task, then open its official playground to inspect required inputs and responses. API requests use your own credentials and follow the selected operation’s requirements.',
   },
   {
     q: 'Is listing my product completely free?',
@@ -199,7 +203,7 @@ export default function Home() {
               </span>
               <span className={styles.quickCopy}>
                 <strong>For ecommerce developers</strong>
-                <span>Find Data APIs and build marketplace workflows.</span>
+                <span>Build with ecommerce and social media APIs.</span>
               </span>
               <ArrowDownRight
                 className={styles.quickArrow}
@@ -409,6 +413,89 @@ export default function Home() {
               </a>
             </div>
           </div>
+          <section
+            className={styles.socialFeature}
+            aria-labelledby="home-social-title"
+          >
+            <div className={styles.socialFeatureIntro}>
+              <p className={styles.valueEyebrow}>SOCIAL & CONTENT DATA APIS</p>
+              <h3 id="home-social-title">
+                Build with the conversations behind the market.
+              </h3>
+              <p>
+                Bring social profiles, posts, comments, search results and
+                transcripts into your research tools and apps. Explore{' '}
+                {socialCatalog.entries.length} published operations and choose
+                the endpoint that fits your platform and task.
+              </p>
+              <div
+                className={styles.platforms}
+                aria-label="Social platform examples"
+              >
+                {[
+                  ['Instagram', '/assets/video-channels/instagram.svg'],
+                  ['TikTok', '/assets/video-channels/tiktok.webp'],
+                  ['YouTube', '/assets/video-channels/youtube.svg'],
+                  ['Reddit', '/assets/social-platforms/reddit.svg'],
+                  ['LinkedIn', '/assets/social-platforms/linkedin.svg'],
+                  ['X / Twitter', '/assets/social-platforms/x.svg'],
+                ].map(([name, logo]) => (
+                  <span key={name}>
+                    <img
+                      src={logo}
+                      alt=""
+                      width="20"
+                      height="20"
+                      loading="lazy"
+                    />
+                    {name}
+                  </span>
+                ))}
+              </div>
+              <a
+                className={styles.primary}
+                href="/social/"
+                data-track-tool="social-directory"
+                data-cta-placement="home-developers-social"
+              >
+                Explore Social APIs <ArrowRight size={16} aria-hidden="true" />
+              </a>
+            </div>
+            <div className={styles.socialTasks}>
+              {(
+                [
+                  [
+                    Users,
+                    'Research creators',
+                    'Inspect public profiles and available post data before building your shortlist.',
+                  ],
+                  [
+                    MessageCircle,
+                    'Understand discussions',
+                    'Explore comments and replies to review questions, feedback and context.',
+                  ],
+                  [
+                    Search,
+                    'Discover content',
+                    'Find platform search and transcript endpoints for your content research workflow.',
+                  ],
+                ] as const
+              ).map(([Icon, title, description]) => (
+                <div key={title}>
+                  <Icon size={22} aria-hidden="true" />
+                  <div>
+                    <h4>{title}</h4>
+                    <p>{description}</p>
+                  </div>
+                </div>
+              ))}
+              <p className={styles.socialScope}>
+                Coverage, available fields and access requirements vary by
+                endpoint. Inspect a response in the official playground before
+                integrating.
+              </p>
+            </div>
+          </section>
           {entry && dataCount !== null && (
             <div className={styles.valueStrip}>
               <div>
