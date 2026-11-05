@@ -1,7 +1,18 @@
 'use client';
 /* oxlint-disable next/no-img-element, next/no-html-link-for-pages */
 import { useState } from 'react';
-import { ArrowUpRight, Globe2, Search, Coins, Sparkles } from 'lucide-react';
+import {
+  ArrowUpRight,
+  Globe2,
+  Search,
+  Sparkles,
+  Compass,
+  Link2,
+  Contact,
+  MessageCircle,
+  Video,
+  Users,
+} from 'lucide-react';
 import catalog from '@/lib/social-api-directory.json';
 import styles from '@/app/video/video.module.css';
 import social from '@/app/social/social.module.css';
@@ -14,12 +25,36 @@ const logos: Record<string, string> = {
   reddit: '/assets/social-platforms/reddit.svg',
   twitter: '/assets/social-platforms/x.svg',
   github: '/assets/social-platforms/github.svg',
+  'apple-music': '/assets/social-platforms/apple-music.svg',
+  bluesky: '/assets/social-platforms/bluesky.svg',
+  google: '/assets/social-platforms/google.webp',
+  kick: '/assets/social-platforms/kick.svg',
+  pinterest: '/assets/social-platforms/pinterest.svg',
+  rumble: '/assets/social-platforms/rumble.svg',
+  snapchat: '/assets/social-platforms/snapchat.svg',
+  soundcloud: '/assets/social-platforms/soundcloud.svg',
+  spotify: '/assets/social-platforms/spotify.svg',
+  telegram: '/assets/social-platforms/telegram.svg',
+  threads: '/assets/social-platforms/threads.svg',
+  twitch: '/assets/social-platforms/twitch.svg',
+  linktree: '/assets/social-platforms/linktree.svg',
+  linkedin: '/assets/social-platforms/linkedin.svg',
+};
+const platformIcons: Record<string, typeof Globe2> = {
+  cosmos: Compass,
+  komi: Link2,
+  linkbio: Contact,
+  linkme: Link2,
+  truthsocial: MessageCircle,
+  kwai: Video,
+  'creator-tools': Users,
 };
 function PlatformIcon({ platform }: { platform: string }) {
+  const Icon = platformIcons[platform] || Globe2;
   return logos[platform] ? (
     <img src={logos[platform]} alt="" width="28" height="28" loading="lazy" />
   ) : (
-    <Globe2 size={23} aria-hidden="true" />
+    <Icon size={23} aria-hidden="true" />
   );
 }
 const groups = [
@@ -142,13 +177,6 @@ export default function SocialApiDirectory() {
                   Open API playground{' '}
                   <ArrowUpRight size={16} aria-hidden="true" />
                 </span>
-                <span
-                  className={social.credits}
-                  title="Historical credits per call, with a 10-credit reporting floor. Check current pricing in official documentation."
-                >
-                  <Coins size={14} aria-hidden="true" />
-                  {e.creditRange}
-                </span>
               </div>
             </a>
           </article>
@@ -159,11 +187,6 @@ export default function SocialApiDirectory() {
           No APIs match these filters. Try a different platform or search term.
         </p>
       )}
-      <p className={styles.caption}>
-        Credit ranges reflect available historical statistics with a 10-credit
-        reporting floor. “-” means no estimate is available. Check current costs
-        and input requirements in the official playground.
-      </p>
     </section>
   );
 }
