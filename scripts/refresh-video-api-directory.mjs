@@ -83,13 +83,25 @@ export function projectVideoApis(html, sitemap) {
 
 export async function refreshVideoApis() {
   const read = async (url) => {
-    const response = await fetch(url, {
-      signal: AbortSignal.timeout(30000),
-      redirect: 'error',
-    });
-    if (!response.ok)
-      throw new Error('Official Video & Image source HTTP ' + response.status);
-    return response.text();
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+        const response = await fetch(url, {
+          signal: AbortSignal.timeout(30000),
+          redirect: 'error',
+          headers: {
+            'Cache-Control': 'no-cache',
+            Accept: 'text/html,application/xml',
+          },
+        });
+        if (!response.ok)
+          throw new Error(
+            'Official Video & Image source HTTP ' + response.status,
+          );
+        return await response.text();
+      } catch (error) {
+        if (attempt === 2) throw error;
+      }
+    }
   };
   const [html, sitemap] = await Promise.all([
     read('https://www.nexscope.ai/api-docs?tab=creative'),
