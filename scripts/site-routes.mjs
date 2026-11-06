@@ -34,6 +34,7 @@ export const routeSlugs = [
   'pricing',
   'video',
   'social',
+  'product-growth-report',
   ...interactiveWorkflowSlugs.map((slug) => `tools/${slug}`),
 ];
 export const publishedPaths = ['/', ...routeSlugs.map((slug) => `/${slug}/`)];

@@ -69,9 +69,9 @@
 }
 .quickNav {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
-  max-width: 830px;
+  max-width: 1100px;
   margin: 26px auto 0;
   text-align: left;
 }
@@ -1125,5 +1125,85 @@
   }
   .workflowCard:hover {
     transform: none;
+  }
+}
+
+.growthFeature {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 50px;
+  padding: 38px;
+  border: 1px solid #d9cceb;
+  border-radius: 22px;
+  background: linear-gradient(120deg, #f2ecfb, #fff 80%);
+}
+.growthFeature h3 {
+  font-size: 32px;
+  line-height: 1.18;
+  letter-spacing: -1px;
+  margin: 0 0 18px;
+}
+.growthFeature p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #706179;
+}
+.growthTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 22px 0;
+}
+.growthTags span {
+  font-size: 11px;
+  color: #70518c;
+  background: #eae0f5;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+.growthOutline {
+  background: #fff;
+  border: 1px solid #e5dceb;
+  border-radius: 16px;
+  padding: 28px;
+}
+.growthOutline > span {
+  font-size: 10px;
+  letter-spacing: 1.1px;
+  color: #8b68ca;
+  font-weight: 600;
+}
+.growthOutline ol {
+  padding-left: 20px;
+  margin: 24px 0 0;
+}
+.growthOutline li {
+  padding-left: 6px;
+  margin-bottom: 22px;
+  color: #7950b7;
+}
+.growthOutline li:last-child {
+  margin-bottom: 0;
+}
+.growthOutline strong {
+  font-size: 14px;
+  color: #302637;
+}
+.growthOutline p {
+  font-size: 12px;
+  margin: 6px 0 0;
+}
+@media (max-width: 900px) {
+  .growthFeature {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 26px;
+  }
+  .quickNav {
+    grid-template-columns: 1fr;
+    max-width: 640px;
+  }
+  .growthFeature h3 {
+    font-size: 28px;
   }
 }

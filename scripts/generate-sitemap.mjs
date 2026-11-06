@@ -10,7 +10,14 @@ const escapeXml = (value) =>
 export async function generateSitemap(directory, paths) {
   const entries = [];
   const dataEntries = [];
-  for (const path of [...new Set(paths)].sort((a, b) => a.localeCompare(b))) {
+  // Keep the main discovery entry points easy to inspect. XML order is not a
+  // Google ranking signal; URLs remain unique, canonical and indexable.
+  const featured = ['/', '/product-growth-report/'];
+  const rank = (path) =>
+    featured.includes(path) ? featured.indexOf(path) : featured.length;
+  for (const path of [...new Set(paths)].sort(
+    (a, b) => rank(a) - rank(b) || a.localeCompare(b),
+  )) {
     const html = await readFile(
       new URL(
         path === '/' ? 'index.html' : `${path.slice(1)}index.html`,
@@ -35,6 +42,12 @@ export async function generateSitemap(directory, paths) {
     const source =
       path === '/' ? 'app/page.tsx' : `app/${path.slice(1)}page.tsx`;
     let sources = [source];
+    if (path === '/product-growth-report/') {
+      sources.push(
+        'components/growth-report-example.tsx',
+        'app/product-growth-report/report.module.css',
+      );
+    }
     try {
       await access(new URL(`../${source}`, import.meta.url));
     } catch {
@@ -63,8 +76,11 @@ export async function generateSitemap(directory, paths) {
         .at(-1);
     }
     if (path.startsWith('/api/') || path.startsWith('/data/')) {
-      const published = html.match(/<meta\b[^>]*property="article:modified_time"[^>]*content="([^"]+)"/i)?.[1];
-      if (!published || Number.isNaN(Date.parse(published))) throw new Error(`Missing API publication time: ${path}`);
+      const published = html.match(
+        /<meta\b[^>]*property="article:modified_time"[^>]*content="([^"]+)"/i,
+      )?.[1];
+      if (!published || Number.isNaN(Date.parse(published)))
+        throw new Error(`Missing API publication time: ${path}`);
       date = published;
     }
     entries.push(

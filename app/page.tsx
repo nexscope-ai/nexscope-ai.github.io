@@ -6,6 +6,7 @@ import {
   ArrowUpRight,
   Check,
   Code2,
+  ClipboardCheck,
   Database,
   Globe2,
   PackagePlus,
@@ -37,7 +38,7 @@ const gallery = '/ecommerce-ai-tools/product-showcase/';
 const submit = `${gallery}submit/`;
 const publishedProduct = homeProductSnapshot.product;
 const summary =
-  'Nexscope helps ecommerce operators create product videos and developers build with marketplace Data APIs. Explore official video examples, choose a workflow, or submit a product for a free reviewed Gallery listing.';
+  'Nexscope helps ecommerce operators create product videos and developers build with marketplace Data APIs. Explore official video examples, choose a workflow, or get a human-reviewed Product Growth Report. Product Gallery listings are free.';
 const platforms = [
   ['amazon', 'Amazon'],
   ['tiktok', 'TikTok'],
@@ -56,6 +57,10 @@ const faqs = [
     a: 'Explore ecommerce Data APIs for marketplace research and Social APIs for profiles, posts, comments, search and transcripts. Choose an endpoint by platform and task, then open its official playground to inspect required inputs and responses. API requests use your own credentials and follow the selected operation’s requirements.',
   },
   {
+    q: 'Is the Product Growth Report the same as a free Gallery listing?',
+    a: 'No. The growth report is a separately quoted credit-based service for one product and target market, reviewed before delivery. Choose at least one paid service; SEO and GEO analyses are included. Gallery submission, review and approved display remain completely free.',
+  },
+  {
     q: 'Is listing my product completely free?',
     a: 'Yes. Product submission, editorial review, and approved product listing and display are completely free. You do not need to pay or connect a store account to submit. Save the private management link after submission to check status, read feedback and edit your details.',
   },
@@ -70,9 +75,9 @@ const faqs = [
 ];
 
 export const metadata: Metadata = {
-  title: 'Nexscope Learn | Ecommerce AI Videos & Data APIs',
+  title: 'Nexscope Learn | Data APIs, Videos & Product Growth',
   description:
-    'Create ecommerce product videos with Nexscope or build with marketplace Data APIs. Explore official video examples, subscription plans and free product listings.',
+    'Build with Data and Social APIs, create product videos, or get a human-reviewed Product Growth Report. Product Gallery listings are completely free.',
   alternates: { canonical: '/' },
   robots: {
     index: true,
@@ -85,7 +90,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Nexscope Learn — Product Videos & Ecommerce Data APIs',
+    title: 'Nexscope Learn — APIs, Videos & Product Growth',
     description: summary,
     siteName: 'Nexscope Learn',
     url: '/',
@@ -94,7 +99,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nexscope Learn | Ecommerce AI Videos & Data APIs',
+    title: 'Nexscope Learn | Data APIs, Videos & Product Growth',
     description: summary,
     images: [HOME_SOCIAL_IMAGE],
   },
@@ -128,7 +133,7 @@ export default function Home() {
                 '@type': 'CollectionPage',
                 '@id': 'https://learn.nexscope.ai/#webpage',
                 url: 'https://learn.nexscope.ai/',
-                name: 'Ecommerce AI video workflows and Data APIs',
+                name: 'Ecommerce APIs, video workflows and product growth services',
                 description: summary,
                 inLanguage: 'en',
                 isPartOf: { '@id': 'https://learn.nexscope.ai/#website' },
@@ -150,8 +155,8 @@ export default function Home() {
                     {
                       '@type': 'ListItem',
                       position: 3,
-                      name: 'Free Product Gallery',
-                      url: `https://learn.nexscope.ai${gallery}`,
+                      name: 'Product Growth Report and free Product Gallery',
+                      url: 'https://learn.nexscope.ai/#product-growth',
                     },
                     {
                       '@type': 'ListItem',
@@ -190,12 +195,12 @@ export default function Home() {
           </h1>
           <p className={styles.heroLead}>
             Turn product photos and links into video stories. Build ecommerce
-            workflows with marketplace APIs. Give your product a free public
-            page to support AI discovery.
+            workflows with marketplace APIs. Get a clearer plan for your product
+            with a reviewed growth report, or publish a free Gallery listing.
           </p>
           <nav
             className={styles.quickNav}
-            aria-label="Explore the two homepage modules"
+            aria-label="Explore the three homepage modules"
           >
             <a className={styles.quickLink} href="#for-ecommerce-developers">
               <span className={styles.quickIcon}>
@@ -217,7 +222,21 @@ export default function Home() {
               </span>
               <span className={styles.quickCopy}>
                 <strong>For ecommerce operators</strong>
-                <span>Create product videos. Product listings are free.</span>
+                <span>Create product videos from your own materials.</span>
+              </span>
+              <ArrowDownRight
+                className={styles.quickArrow}
+                size={18}
+                aria-hidden="true"
+              />
+            </a>
+            <a className={styles.quickLink} href="#product-growth">
+              <span className={styles.quickIcon}>
+                <ClipboardCheck size={20} aria-hidden="true" />
+              </span>
+              <span className={styles.quickCopy}>
+                <strong>For every product team</strong>
+                <span>Growth reports and free product listings.</span>
               </span>
               <ArrowDownRight
                 className={styles.quickArrow}
@@ -641,6 +660,86 @@ export default function Home() {
                 </a>
               ),
             )}
+          </div>
+        </section>
+
+        <section
+          className={`${styles.module} ${styles.growthModule}`}
+          id="product-growth"
+          aria-labelledby="growth-title"
+        >
+          <div className={styles.moduleHeading}>
+            <div>
+              <p className={styles.moduleLabel}>
+                <span>03</span> FOR OPERATORS & DEVELOPERS
+              </p>
+              <h2 id="growth-title">
+                Know what to improve.
+                <br />
+                <em>Give your product a clearer next step.</em>
+              </h2>
+            </div>
+            <p className={styles.moduleIntro}>
+              Get recommendations for one product and market, or create a free
+              public source of product facts. Two separate services for the same
+              product team.
+            </p>
+          </div>
+          <div className={styles.growthFeature}>
+            <div>
+              <p className={styles.eyebrow}>
+                PRODUCT GROWTH REPORT · PAID SERVICES
+              </p>
+              <h3>
+                One product link.
+                <br />A plan you can act on.
+              </h3>
+              <p>
+                Choose AI mention analysis, competitor research, keywords,
+                product copy or advertising images. Receive a report reviewed by
+                a person before delivery, with findings, available evidence and
+                recommended changes.
+              </p>
+              <div className={styles.growthTags}>
+                <span>SEO & GEO included</span>
+                <span>Human review before delivery</span>
+                <span>Expected within 24 hours</span>
+              </div>
+              <a
+                className={styles.primary}
+                href="/product-growth-report/"
+                data-track-tool="product-growth-report"
+                data-cta-placement="home-growth-report"
+              >
+                Explore the growth report{' '}
+                <ArrowRight size={16} aria-hidden="true" />
+              </a>
+              <p className={styles.dataNote}>
+                Choose at least one paid service. Review your credit quote
+                before submitting. You apply the recommendations.
+              </p>
+            </div>
+            <div className={styles.growthOutline}>
+              <span>FROM PRODUCT PAGE TO NEXT ACTION</span>
+              <ol>
+                <li>
+                  <strong>Your product & market</strong>
+                  <p>
+                    Start with an Amazon listing or public store product page.
+                  </p>
+                </li>
+                <li>
+                  <strong>Your chosen analysis or creative services</strong>
+                  <p>Focus on the questions and materials you need.</p>
+                </li>
+                <li>
+                  <strong>A reviewed, downloadable delivery</strong>
+                  <p>
+                    Read your HTML report and download purchased PNG images.
+                  </p>
+                </li>
+              </ol>
+            </div>
           </div>
           <div className={styles.galleryBanner} id="free-product-listings">
             <div className={styles.galleryIcon}>

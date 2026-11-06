@@ -22,6 +22,7 @@ export default function LearnFooter() {
           >
             List a product free
           </a>
+          <a href="/product-growth-report/">Product Growth Report</a>
           <a href="/tools/">Tools</a>
           <a href="/pricing/">Pricing</a>
           <a href="/ecommerce-ai-tools/">Learning library</a>
