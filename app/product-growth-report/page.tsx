@@ -24,9 +24,9 @@ import GrowthReportExample, {
 
 const configure =
   'https://www.nexscope.ai/product-growth-report?co-from=learn#request';
-const title = 'Product Growth Report: Product Page Analysis | Nexscope';
+const title = 'Product Growth Report for Ecommerce Sellers | Nexscope';
 const description =
-  'Turn a product link into a human-reviewed growth report. Choose AI mention analysis, competitors, keywords, product copy or ad images. SEO and GEO analyses included.';
+  'Get a human-reviewed Nexscope Product Growth Report. Choose AI mentions, competitors, keywords, copy or ad images; SEO and GEO are included with paid services.';
 const services = [
   {
     icon: MessagesSquare,

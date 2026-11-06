@@ -52,10 +52,13 @@ const faqs = [
   },
 ];
 
+const title = 'Nexscope Pricing | API Credits & AI Video Plans';
+const description =
+  'Compare Nexscope monthly and yearly plans, API credits and AI image and video subscriptions. Check introductory offers, renewal prices and Data-only top-ups.';
+
 export const metadata: Metadata = {
-  title: 'Nexscope Pricing | Compare API & AI Video Subscription Plans',
-  description:
-    'Compare Nexscope monthly and yearly subscriptions, shared API and video credits, introductory offers and renewal prices. Product Gallery listings stay free.',
+  title,
+  description,
   alternates: { canonical: '/pricing/' },
   robots: {
     index: true,
@@ -68,9 +71,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Nexscope Pricing — Subscriptions & Shared Credits',
-    description:
-      'Compare monthly and yearly plans for ecommerce operators and developers.',
+    title,
+    description,
     url: '/pricing/',
     type: 'website',
     siteName: 'Nexscope Learn',
@@ -78,9 +80,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nexscope Pricing | Ecommerce APIs & AI Video Plans',
-    description:
-      'Compare monthly and yearly billing, credit allocations and eligible introductory offers.',
+    title,
+    description,
     images: [DEFAULT_SOCIAL_IMAGE],
   },
 };

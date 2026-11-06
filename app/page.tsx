@@ -37,8 +37,11 @@ import styles from './home-sections.module.css';
 const gallery = '/ecommerce-ai-tools/product-showcase/';
 const submit = `${gallery}submit/`;
 const publishedProduct = homeProductSnapshot.product;
+const homeTitle = 'Nexscope Learn | Ecommerce APIs, AI Videos & Product Growth';
+const homeDescription =
+  'Explore Nexscope ecommerce and social media APIs, AI product video workflows, human-reviewed growth reports and free product listings. Find your next workflow.';
 const summary =
-  'Nexscope helps ecommerce operators create product videos and developers build with marketplace Data APIs. Explore official video examples, choose a workflow, or get a human-reviewed Product Growth Report. Product Gallery listings are free.';
+  'Nexscope Learn helps developers build with ecommerce and social media APIs, and operators create AI product videos. Explore documented endpoints and video examples, request a human-reviewed Product Growth Report for one product and market, or submit accurate product facts to the completely free Product Gallery.';
 const platforms = [
   ['amazon', 'Amazon'],
   ['tiktok', 'TikTok'],
@@ -75,9 +78,8 @@ const faqs = [
 ];
 
 export const metadata: Metadata = {
-  title: 'Nexscope Learn | Data APIs, Videos & Product Growth',
-  description:
-    'Build with Data and Social APIs, create product videos, or get a human-reviewed Product Growth Report. Product Gallery listings are completely free.',
+  title: homeTitle,
+  description: homeDescription,
   alternates: { canonical: '/' },
   robots: {
     index: true,
@@ -90,8 +92,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Nexscope Learn — APIs, Videos & Product Growth',
-    description: summary,
+    title: homeTitle,
+    description: homeDescription,
     siteName: 'Nexscope Learn',
     url: '/',
     type: 'website',
@@ -99,8 +101,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nexscope Learn | Data APIs, Videos & Product Growth',
-    description: summary,
+    title: homeTitle,
+    description: homeDescription,
     images: [HOME_SOCIAL_IMAGE],
   },
 };
@@ -133,7 +135,7 @@ export default function Home() {
                 '@type': 'CollectionPage',
                 '@id': 'https://learn.nexscope.ai/#webpage',
                 url: 'https://learn.nexscope.ai/',
-                name: 'Ecommerce APIs, video workflows and product growth services',
+                name: homeTitle,
                 description: summary,
                 inLanguage: 'en',
                 isPartOf: { '@id': 'https://learn.nexscope.ai/#website' },
@@ -143,24 +145,30 @@ export default function Home() {
                     {
                       '@type': 'ListItem',
                       position: 1,
-                      name: 'Ecommerce video workflows',
-                      url: 'https://learn.nexscope.ai/#for-ecommerce-operators',
-                    },
-                    {
-                      '@type': 'ListItem',
-                      position: 2,
                       name: 'Ecommerce Data API directory',
                       url: 'https://learn.nexscope.ai/data/',
                     },
                     {
                       '@type': 'ListItem',
+                      position: 2,
+                      name: 'Social Media API directory',
+                      url: 'https://learn.nexscope.ai/social/',
+                    },
+                    {
+                      '@type': 'ListItem',
                       position: 3,
+                      name: 'AI product video workflows',
+                      url: 'https://learn.nexscope.ai/video/',
+                    },
+                    {
+                      '@type': 'ListItem',
+                      position: 4,
                       name: 'Product Growth Report and free Product Gallery',
                       url: 'https://learn.nexscope.ai/#product-growth',
                     },
                     {
                       '@type': 'ListItem',
-                      position: 4,
+                      position: 5,
                       name: 'Nexscope subscriptions',
                       url: 'https://learn.nexscope.ai/pricing/',
                     },
@@ -194,9 +202,10 @@ export default function Home() {
             <em>Build for ecommerce.</em>
           </h1>
           <p className={styles.heroLead}>
-            Turn product photos and links into video stories. Build ecommerce
-            workflows with marketplace APIs. Get a clearer plan for your product
-            with a reviewed growth report, or publish a free Gallery listing.
+            Build ecommerce workflows with marketplace and social media APIs.
+            Turn product photos and links into AI videos. Get a human-reviewed
+            Product Growth Report, or list your product in the completely free
+            Product Gallery.
           </p>
           <nav
             className={styles.quickNav}

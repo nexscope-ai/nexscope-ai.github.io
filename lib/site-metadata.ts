@@ -6,10 +6,10 @@ export const DEFAULT_SOCIAL_IMAGE = {
 } as const;
 
 export const HOME_SOCIAL_IMAGE = {
-  url: 'https://learn.nexscope.ai/og-home.png',
+  url: 'https://learn.nexscope.ai/og-home-v2.png',
   width: 1672,
   height: 941,
-  alt: 'Nexscope product videos, ecommerce Data APIs and Product Gallery',
+  alt: 'Nexscope Data and Social APIs, AI product videos, Product Growth Reports and free Product Gallery',
 } as const;
 
 export const VIDEO_SOCIAL_IMAGE = {

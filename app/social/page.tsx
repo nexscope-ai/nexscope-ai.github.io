@@ -19,9 +19,9 @@ import {
 } from '@/lib/site-metadata';
 import styles from '@/app/video/video.module.css';
 import social from './social.module.css';
-const title = 'Social Media APIs: Instagram, TikTok & YouTube | Nexscope';
+const title = 'Social Media APIs for Profiles, Posts & Video | Nexscope';
 const description =
-  'Explore Nexscope social media APIs for profiles, posts, comments, search and transcripts. Compare platforms, choose an endpoint and test in its official playground.';
+  'Find Nexscope social media APIs for profiles, posts, comments and video transcripts. Compare platforms and test the right endpoint in its official playground.';
 export const metadata: Metadata = {
   title,
   description,

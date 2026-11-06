@@ -15,15 +15,12 @@ import {
   videoDirectoryFaqs,
   videoWorkspaceUrl,
 } from '@/lib/video-directory';
-import {
-  VIDEO_SOCIAL_IMAGE,
-  NEXSCOPE_ORGANIZATION,
-} from '@/lib/site-metadata';
+import { VIDEO_SOCIAL_IMAGE, NEXSCOPE_ORGANIZATION } from '@/lib/site-metadata';
 import styles from './video.module.css';
 
-const title = 'AI Video Workflows, Video & Image APIs | Nexscope Learn';
+const title = 'AI Product Video Workflows & Generation APIs | Nexscope';
 const description =
-  'Compare five AI product video workflows and explore Nexscope Video & Image APIs. Watch examples, find image and video models, and open the matching documentation.';
+  'Turn product photos, listing URLs or reference clips into AI videos with Nexscope. Compare five workflows, watch examples and explore video generation APIs.';
 export const metadata: Metadata = {
   title,
   description,
