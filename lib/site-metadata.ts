@@ -19,6 +19,20 @@ export const VIDEO_SOCIAL_IMAGE = {
   alt: 'Nexscope turns product images into product videos, listing videos and avatar videos',
 } as const;
 
+export const SOCIAL_API_SOCIAL_IMAGE = {
+  url: 'https://learn.nexscope.ai/og-social.png',
+  width: 1672,
+  height: 941,
+  alt: 'Nexscope Social Media APIs connect profiles, posts, comments and video transcripts to research workflows',
+} as const;
+
+export const GROWTH_REPORT_SOCIAL_IMAGE = {
+  url: 'https://learn.nexscope.ai/og-product-growth-report.png',
+  width: 1672,
+  height: 941,
+  alt: 'Nexscope turns a product link into a human-reviewed Product Growth Report with selected analyses, copy and advertising images',
+} as const;
+
 export const NEXSCOPE_SOCIAL_PROFILES = [
   'https://www.linkedin.com/company/nexscope-ai/',
   'https://x.com/Nexscope_ai',

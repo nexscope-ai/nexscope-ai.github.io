@@ -14,7 +14,7 @@ import SocialApiDirectory from '@/components/social-api-directory';
 import catalog from '@/lib/social-api-directory.json';
 import { socialGuide, socialFaqs } from '@/lib/social-guide.mjs';
 import {
-  DEFAULT_SOCIAL_IMAGE,
+  SOCIAL_API_SOCIAL_IMAGE,
   NEXSCOPE_ORGANIZATION,
 } from '@/lib/site-metadata';
 import styles from '@/app/video/video.module.css';
@@ -32,13 +32,13 @@ export const metadata: Metadata = {
     description,
     url: '/social/',
     type: 'website',
-    images: [DEFAULT_SOCIAL_IMAGE],
+    images: [SOCIAL_API_SOCIAL_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
     title,
     description,
-    images: [DEFAULT_SOCIAL_IMAGE],
+    images: [SOCIAL_API_SOCIAL_IMAGE],
   },
 };
 export default function SocialPage() {

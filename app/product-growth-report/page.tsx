@@ -14,7 +14,7 @@ import {
 import MarketingHeader from '@/components/marketing-header';
 import LearnFooter from '@/components/learn-footer';
 import {
-  DEFAULT_SOCIAL_IMAGE,
+  GROWTH_REPORT_SOCIAL_IMAGE,
   NEXSCOPE_ORGANIZATION,
 } from '@/lib/site-metadata';
 import styles from './report.module.css';
@@ -113,13 +113,13 @@ export const metadata: Metadata = {
     description,
     url: '/product-growth-report/',
     type: 'website',
-    images: [DEFAULT_SOCIAL_IMAGE],
+    images: [GROWTH_REPORT_SOCIAL_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
     title,
     description,
-    images: [DEFAULT_SOCIAL_IMAGE],
+    images: [GROWTH_REPORT_SOCIAL_IMAGE],
   },
 };
 
