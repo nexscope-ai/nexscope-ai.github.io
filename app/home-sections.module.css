@@ -649,79 +649,96 @@
   border-top: 1px solid #e5ddef;
   font-size: 11px;
 }
-.videoApiFeature {
+.videoApiModule {
+  margin-top: 44px;
+  padding-top: 42px;
+  border-top: 1px solid #e8e0eb;
+  scroll-margin-top: 26px;
+}
+.videoApiModule .moduleHeading {
+  margin-bottom: 30px;
+}
+.videoApiModule .moduleLabel > span {
+  width: auto;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 8px;
+  letter-spacing: 0.6px;
+}
+.videoApiCategories {
+  padding: 26px 27px 23px;
+}
+.videoApiCategories > p {
+  margin: 0 0 12px;
+  color: #a28bb5;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+}
+.videoApiCategory {
   display: flex;
   align-items: center;
-  gap: 22px;
-  margin-top: 18px;
-  padding: 22px 26px;
-  border: 1px solid #e2d7ee;
-  border-radius: 18px;
-  background: linear-gradient(115deg, #f5f0fc, #fff 78%);
+  gap: 13px;
+  padding: 15px 0;
+  border-bottom: 1px solid #ffffff12;
 }
-.videoApiIcon {
+.videoApiCategory:last-child {
+  border-bottom: 0;
+}
+.videoApiCategoryIcon {
   display: grid;
   place-items: center;
-  flex: 0 0 48px;
-  width: 48px;
-  height: 48px;
-  border-radius: 13px;
-  background: #ede7f7;
-  color: #7853be;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  border: 1px solid #ffffff18;
+  border-radius: 10px;
+  color: #c7a9ee;
 }
-.videoApiCopy {
-  flex: 1;
+.videoApiCategoryCopy {
+  display: grid;
+  gap: 3px;
   min-width: 0;
 }
-.videoApiCopy .valueEyebrow {
-  margin: 0 0 5px;
-  color: #7950b7;
-  font-size: 9px;
-  font-weight: 650;
-  letter-spacing: 1.3px;
-}
-.videoApiCopy h3 {
-  margin: 0 0 5px;
-  font-size: 18px;
-  line-height: 1.35;
-  letter-spacing: -0.25px;
-}
-.videoApiCopy > p:last-child {
-  margin: 0;
-  color: #706179;
+.videoApiCategoryCopy strong {
+  color: #eee5f5;
   font-size: 12px;
-  line-height: 1.65;
+  font-weight: 600;
 }
-.videoApiFeature > a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  flex: none;
-  min-height: 44px;
-  padding: 0 15px;
-  border-radius: 9px;
-  background: #f0e9fb;
-  color: #7049a4;
-  font-size: 12px;
-  font-weight: 650;
+.videoApiCategoryCopy small {
+  color: #a58fb4;
+  font-size: 10px;
+  line-height: 1.5;
+}
+.videoApiCategoryCount {
+  margin-left: auto;
+  color: #c6afe1;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
 }
 @media (max-width: 760px) {
   .socialFeature {
     grid-template-columns: 1fr;
     gap: 32px;
   }
-  .videoApiFeature {
-    align-items: flex-start;
-    flex-wrap: wrap;
-    padding: 20px;
-    gap: 14px;
+  .videoApiModule {
+    margin-top: 34px;
+    padding-top: 32px;
   }
-  .videoApiCopy {
-    flex-basis: calc(100% - 64px);
+  .videoApiCategories {
+    padding: 22px 20px 18px;
   }
-  .videoApiFeature > a {
-    margin-left: 62px;
+  .videoApiCategory {
+    gap: 10px;
+  }
+  .videoApiCategoryIcon {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+  }
+  .videoApiCategoryCopy small {
+    font-size: 9px;
   }
 }
 .dataCopy {

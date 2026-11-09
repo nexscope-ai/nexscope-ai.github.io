@@ -10,6 +10,7 @@ import {
   Clapperboard,
   Database,
   Globe2,
+  Image,
   PackagePlus,
   Sparkles,
   MessageCircle,
@@ -78,6 +79,26 @@ const faqs = [
     a: 'The Pricing page shows monthly and yearly subscriptions from Nexscope’s public plan catalog. Review the upfront total, monthly credit allocation, introductory offer eligibility and renewal price. Data-only credit top-ups are also available without a subscription.',
   },
 ];
+const videoApiCategories = [
+  {
+    id: 'image-generation-models',
+    name: 'Image generation',
+    summary: 'Create and edit product visuals',
+    Icon: Image,
+  },
+  {
+    id: 'video-generation-models',
+    name: 'Video generation',
+    summary: 'Turn product assets into motion',
+    Icon: Clapperboard,
+  },
+  {
+    id: 'multimodal-ai',
+    name: 'Multimodal AI',
+    summary: 'Explore image and video workflows',
+    Icon: Sparkles,
+  },
+] as const;
 
 export const metadata: Metadata = {
   title: homeTitle,
@@ -533,31 +554,129 @@ export default function Home() {
             </div>
           </section>
           <section
-            className={styles.videoApiFeature}
+            className={styles.videoApiModule}
+            id="video-image-apis"
             aria-labelledby="home-video-api-title"
           >
-            <span className={styles.videoApiIcon}>
-              <Clapperboard size={23} aria-hidden="true" />
-            </span>
-            <div className={styles.videoApiCopy}>
-              <p className={styles.valueEyebrow}>VIDEO &amp; IMAGE APIS</p>
-              <h3 id="home-video-api-title">
-                Build creative workflows with model APIs.
-              </h3>
-              <p>
-                Browse {videoApiCatalog.entries.length} image generation,
-                video generation and multimodal APIs. Filter by capability and
-                open the official playground for each model.
+            <div className={styles.moduleHeading}>
+              <div>
+                <p className={styles.moduleLabel}>
+                  <span>VIDEO</span> IMAGE &amp; VIDEO APIS
+                </p>
+                <h2 id="home-video-api-title">
+                  Creative models for
+                  <br />
+                  <em>your next workflow.</em>
+                </h2>
+              </div>
+              <p className={styles.moduleIntro}>
+                Browse image generation, video generation and multimodal APIs
+                in one place. Compare model capabilities, review the required
+                inputs, then open the official playground to try an endpoint.
               </p>
             </div>
-            <a
-              href="/video-apis/"
-              data-track-tool="video-api-directory"
-              data-cta-placement="home-developers-video-apis"
-            >
-              Explore Video &amp; Image APIs{' '}
-              <ArrowRight size={16} aria-hidden="true" />
-            </a>
+            <div className={styles.developerGrid}>
+              <div className={styles.dataCopy}>
+                <span className={styles.dataIcon}>
+                  <Clapperboard size={24} aria-hidden="true" />
+                </span>
+                <h3>Find the right image or video API.</h3>
+                <p>
+                  Create product visuals, turn images into videos and explore
+                  multimodal models for creative applications.
+                </p>
+                <div
+                  className={styles.platforms}
+                  aria-label="Video and image API categories"
+                >
+                  {videoApiCategories.map(({ id, name, Icon }) => (
+                    <span key={id}>
+                      <Icon size={17} aria-hidden="true" />
+                      {name}
+                    </span>
+                  ))}
+                </div>
+                <ul className={styles.benefits}>
+                  <li>
+                    <Check size={16} />
+                    Browse {videoApiCatalog.entries.length} published APIs by
+                    capability
+                  </li>
+                  <li>
+                    <Check size={16} />
+                    Compare model inputs and supported workflows
+                  </li>
+                  <li>
+                    <Check size={16} />
+                    Open official docs and playgrounds
+                  </li>
+                </ul>
+                <a
+                  className={styles.primary}
+                  href="/video-apis/"
+                  data-track-tool="video-api-directory"
+                  data-cta-placement="home-developers-video-apis"
+                >
+                  Explore Video &amp; Image APIs <ArrowRight size={16} />
+                </a>
+                <p className={styles.dataNote}>
+                  Browse model options and check each API&apos;s documentation
+                  for supported inputs and credit requirements.
+                </p>
+              </div>
+              <div className={`${styles.codeCard} ${styles.videoApiPanel}`}>
+                <div className={styles.codeTop}>
+                  <span>
+                    <i />
+                    <i />
+                    <i />
+                  </span>
+                  <span>CHOOSE A CREATIVE API</span>
+                  <Clapperboard size={17} aria-hidden="true" />
+                </div>
+                <div className={styles.videoApiCategories}>
+                  <p>EXPLORE BY CAPABILITY</p>
+                  {videoApiCategories.map(({ id, name, summary, Icon }) => {
+                    const count = videoApiCatalog.entries.filter(
+                      (item) => item.category === id,
+                    ).length;
+                    return (
+                      <div className={styles.videoApiCategory} key={id}>
+                        <span className={styles.videoApiCategoryIcon}>
+                          <Icon size={18} aria-hidden="true" />
+                        </span>
+                        <span className={styles.videoApiCategoryCopy}>
+                          <strong>{name}</strong>
+                          <small>{summary}</small>
+                        </span>
+                        <span className={styles.videoApiCategoryCount}>
+                          {count}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+                <ol className={styles.apiSteps}>
+                  <li>
+                    <span>1</span>Choose a task or model
+                  </li>
+                  <li>
+                    <span>2</span>Check inputs and outputs
+                  </li>
+                  <li>
+                    <span>3</span>Open its official playground
+                  </li>
+                </ol>
+                <a
+                  href="/video-apis/"
+                  data-track-tool="video-api-directory"
+                  data-cta-placement="home-video-api-panel"
+                >
+                  Browse all {videoApiCatalog.entries.length} APIs
+                  <ArrowUpRight size={15} aria-hidden="true" />
+                </a>
+              </div>
+            </div>
           </section>
           {entry && dataCount !== null && (
             <div className={styles.valueStrip}>
