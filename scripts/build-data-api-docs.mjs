@@ -27,6 +27,23 @@ export async function buildDataApiDocs() {
     undefined,
     credits,
   );
+  const generatedIndex = await readFile(
+    new URL('data/index.html', new URL('../dist/client/', import.meta.url)),
+    'utf8',
+  );
+  const sharedNavigationMarkers = [
+    'class="nav-dropdown"',
+    'href="/product-growth-report/"',
+    'href="/pricing/"',
+  ];
+  const missingNavigationMarkers = sharedNavigationMarkers.filter(
+    (marker) => !generatedIndex.includes(marker),
+  );
+  if (missingNavigationMarkers.length) {
+    throw new Error(
+      `Generated Data API page is missing shared Learn navigation: ${missingNavigationMarkers.join(', ')}`,
+    );
+  }
   if (
     !paths.includes('/data/') ||
     paths.some((path) => !/^\/data\/(?:[a-z0-9-]+\/)?$/.test(path))
