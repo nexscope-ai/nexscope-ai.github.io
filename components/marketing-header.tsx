@@ -145,16 +145,16 @@ export default function MarketingHeader({
                   current: active === 'tools',
                 },
                 {
-                  href: '/social/',
-                  label: 'Social APIs',
-                  trackTool: 'social-directory',
-                  current: active === 'social',
-                },
-                {
                   href: '/video-apis/',
                   label: 'Video & Image APIs',
                   trackTool: 'video-api-directory',
                   current: active === 'video-apis',
+                },
+                {
+                  href: '/social/',
+                  label: 'Social APIs',
+                  trackTool: 'social-directory',
+                  current: active === 'social',
                 },
               ]}
             />
