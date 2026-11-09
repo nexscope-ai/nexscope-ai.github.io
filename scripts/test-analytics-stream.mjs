@@ -15,12 +15,23 @@ const script = readFileSync(
   'utf8',
 );
 
-function loadAnalytics(consent = 'granted', traffic, cookie = '') {
+function loadAnalytics(
+  consent = 'granted',
+  traffic,
+  cookie = '',
+  href = 'https://learn.nexscope.ai/tools/?utm_source=chatgpt.com&token=private',
+) {
   const listeners = new Map();
   const appendedScripts = [];
-  const location = new URL(
-    'https://learn.nexscope.ai/tools/?utm_source=chatgpt.com&token=private',
-  );
+  const location = new URL(href);
+  const history = {
+    pushState(_state, _title, url) {
+      if (url) location.href = new URL(url, location).href;
+    },
+    replaceState(_state, _title, url) {
+      if (url) location.href = new URL(url, location).href;
+    },
+  };
   const document = {
     cookie,
     title: 'Learn tools | Nexscope',
@@ -39,6 +50,12 @@ function loadAnalytics(consent = 'granted', traffic, cookie = '') {
   const window = {
     dataLayer: [],
     location,
+    history,
+    addEventListener: (name, listener) =>
+      listeners.set(`window:${name}`, [
+        ...(listeners.get(`window:${name}`) || []),
+        listener,
+      ]),
     nexscopeTrafficAttribution: traffic,
   };
   const context = {
@@ -51,7 +68,15 @@ function loadAnalytics(consent = 'granted', traffic, cookie = '') {
   };
   runInNewContext(script, context);
   runInNewContext(script, context);
-  return { window, listeners, appendedScripts };
+  return { window, listeners, appendedScripts, location };
+}
+
+function pageViews(dataLayer) {
+  return dataLayer.filter((args) => args[0] === 'event' && args[1] === 'page_view');
+}
+
+function consentDefaults(dataLayer) {
+  return dataLayer.filter((args) => args[0] === 'consent' && args[1] === 'default');
 }
 
 void test('seller CTA clicks preserve the acquisition source without tracking unrelated links or sensitive query strings', () => {
@@ -131,16 +156,101 @@ void test('shared consent cookie is respected and denied visits still queue one 
     undefined,
     'nexscope_analytics_consent_v1=granted',
   );
+  assert.equal(consentDefaults(shared.window.dataLayer).length, 1);
   assert.equal(shared.window.dataLayer[0][2].analytics_storage, 'granted');
+  assert.equal(shared.window.dataLayer[0][2].ad_storage, 'granted');
   const denied = loadAnalytics('denied');
+  assert.equal(consentDefaults(denied.window.dataLayer).length, 1);
   assert.equal(denied.window.dataLayer[0][2].analytics_storage, 'denied');
-  assert.equal(
-    denied.window.dataLayer.filter(
-      (a) => a[0] === 'event' && a[1] === 'page_view',
-    ).length,
-    1,
-  );
+  assert.equal(denied.window.dataLayer[0][2].ad_storage, 'denied');
+  assert.equal(pageViews(denied.window.dataLayer).length, 1);
   assert.equal(denied.appendedScripts.length, 1);
+  const cookieDenied = loadAnalytics(
+    '',
+    undefined,
+    'other=1; nexscope_analytics_consent_v1=denied',
+  );
+  assert.equal(consentDefaults(cookieDenied.window.dataLayer).length, 1);
+  const deniedChoice = cookieDenied.window.dataLayer[0][2];
+  assert.equal(deniedChoice.analytics_storage, 'denied');
+  assert.equal(deniedChoice.ad_storage, 'denied');
+  assert.equal(deniedChoice.ad_user_data, 'denied');
+  assert.equal(deniedChoice.ad_personalization, 'denied');
+  assert.equal(deniedChoice.region, undefined);
+});
+
+void test('visitors without a stored choice are measured outside opt-in regions', () => {
+  const { window } = loadAnalytics('');
+  const defaults = consentDefaults(window.dataLayer);
+  assert.equal(defaults.length, 2);
+  assert.equal(defaults[0][2].analytics_storage, 'denied');
+  assert.equal(defaults[0][2].ad_storage, 'denied');
+  assert.equal(defaults[0][2].ad_user_data, 'denied');
+  assert.equal(defaults[0][2].ad_personalization, 'denied');
+  for (const code of ['DE', 'FR', 'GB', 'CH', 'IS', 'NO']) {
+    assert.ok(defaults[0][2].region.includes(code), code);
+  }
+  assert.equal(defaults[0][2].region.includes('US'), false);
+  assert.equal(defaults[1][2].analytics_storage, 'granted');
+  assert.equal(defaults[1][2].ad_storage, 'granted');
+  assert.equal(defaults[1][2].region, undefined);
+  assert.equal(pageViews(window.dataLayer).length, 1);
+  assert.ok(
+    window.dataLayer.some(
+      (args) => args[0] === 'set' && args[1] === 'url_passthrough' && args[2] === true,
+    ),
+  );
+});
+
+void test('page location keeps ads click ids and drops unrelated query params', () => {
+  const gclid = `CjwKCAjw${'A'.repeat(120)}`;
+  const { window } = loadAnalytics(
+    'granted',
+    undefined,
+    '',
+    `https://learn.nexscope.ai/tools/?utm_source=google&utm_medium=cpc&gclid=${gclid}&gbraid=0A1B_gbraid.1&wbraid=WBRAID-1&gad_source=1&msclkid=bing-click&token=private&fbclid=social`,
+  );
+  const location = window.dataLayer.find((args) => args[0] === 'config')[2]
+    .page_location;
+  const params = new URL(location).searchParams;
+  assert.equal(params.get('utm_source'), 'google');
+  assert.equal(params.get('utm_medium'), 'cpc');
+  assert.equal(params.get('gclid'), gclid);
+  assert.equal(params.get('gbraid'), '0A1B_gbraid.1');
+  assert.equal(params.get('wbraid'), 'WBRAID-1');
+  assert.equal(params.get('gad_source'), '1');
+  assert.equal(params.get('msclkid'), 'bing-click');
+  assert.equal(params.has('token'), false);
+  assert.equal(params.has('fbclid'), false);
+  assert.equal(location.includes('private'), false);
+});
+
+void test('client-side navigations send one page view per sanitized URL', () => {
+  const { window, listeners } = loadAnalytics('granted');
+  assert.equal(pageViews(window.dataLayer).length, 1);
+  window.history.pushState({}, '', '/pricing/?token=private&gclid=CLICKID');
+  const views = pageViews(window.dataLayer);
+  assert.equal(views.length, 2);
+  assert.equal(
+    views[1][2].page_location,
+    'https://learn.nexscope.ai/pricing/?gclid=CLICKID',
+  );
+  assert.equal(
+    views[1][2].page_referrer,
+    'https://learn.nexscope.ai/tools/?utm_source=chatgpt.com',
+  );
+  assert.equal(views[1][2].landing_path, '/tools/');
+  window.history.replaceState({}, '', '/pricing/?token=private&gclid=CLICKID');
+  assert.equal(pageViews(window.dataLayer).length, 2);
+  window.location.href =
+    'https://learn.nexscope.ai/tools/?utm_source=chatgpt.com&token=private';
+  for (const listener of listeners.get('window:popstate')) listener();
+  const restored = pageViews(window.dataLayer);
+  assert.equal(restored.length, 3);
+  assert.equal(
+    restored[2][2].page_location,
+    'https://learn.nexscope.ai/tools/?utm_source=chatgpt.com',
+  );
 });
 
 void test('Learn-to-main click event retains path context without internal campaign tags', () => {
