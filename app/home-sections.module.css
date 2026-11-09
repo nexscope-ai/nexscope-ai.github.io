@@ -809,6 +809,14 @@
 .dataCopy {
   padding: 16px 15px 15px 0;
 }
+.dataCopy > .apiSubmoduleLabel {
+  margin: 0 0 12px;
+  color: #8266b5;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
 .dataIcon {
   display: grid;
   place-items: center;

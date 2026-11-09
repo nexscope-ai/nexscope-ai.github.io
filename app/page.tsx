@@ -398,7 +398,8 @@ export default function Home() {
           <div className={styles.moduleHeading}>
             <div>
               <p className={styles.moduleLabel}>
-                <span className={styles.moduleIndex}>01 / 03</span> DATA APIS
+                <span className={styles.moduleIndex}>01 / 03</span> FOR
+                ECOMMERCE DEVELOPERS
               </p>
               <h2 id="developers-title">
                 The data behind
@@ -407,17 +408,19 @@ export default function Home() {
               </h2>
             </div>
             <p className={styles.moduleIntro}>
-              For ecommerce developers building research tools and AI workflows:
-              explore marketplace data by platform, compare documented inputs
-              and outputs, then open the official tester.
+              Explore marketplace, social and creative APIs by platform, model
+              or task. Inspect documented inputs and responses before you build.
             </p>
           </div>
           <div className={styles.developerGrid} id="data-apis">
             <div className={styles.dataCopy}>
+              <p className={styles.apiSubmoduleLabel}>DATA APIS</p>
               <span className={styles.dataIcon}>
                 <Database size={24} aria-hidden="true" />
               </span>
-              <h3>Find the right ecommerce Data API.</h3>
+              <h3 id="data-api-submodule-title">
+                Find the right ecommerce Data API.
+              </h3>
               <p>
                 Research products, reviews, keywords, sourcing candidates and
                 competitors across marketplaces.
@@ -512,32 +515,19 @@ export default function Home() {
           <section
             className={styles.videoApiModule}
             id="video-image-apis"
-            aria-labelledby="home-video-api-title"
+            aria-labelledby="video-api-submodule-title"
           >
-            <div className={styles.moduleHeading}>
-              <div>
-                <p className={styles.moduleLabel}>
-                  <span className={styles.moduleIndex}>02 / 03</span> VIDEO
-                  &amp; IMAGE APIS
-                </p>
-                <h2 id="home-video-api-title">
-                  Creative models for
-                  <br />
-                  <em>your next workflow.</em>
-                </h2>
-              </div>
-              <p className={styles.moduleIntro}>
-                Browse image generation, video generation and multimodal APIs in
-                one place. Compare model capabilities, review the required
-                inputs, then open the official playground to try an endpoint.
-              </p>
-            </div>
             <div className={`${styles.developerGrid} ${styles.videoApiGrid}`}>
               <div className={styles.dataCopy}>
+                <p className={styles.apiSubmoduleLabel}>
+                  VIDEO &amp; IMAGE APIS
+                </p>
                 <span className={styles.dataIcon}>
                   <Clapperboard size={24} aria-hidden="true" />
                 </span>
-                <h3>Find the right image or video API.</h3>
+                <h3 id="video-api-submodule-title">
+                  Find the right image or video API.
+                </h3>
                 <p>
                   Create product visuals, turn images into videos and explore
                   multimodal models for creative applications.
@@ -677,36 +667,22 @@ export default function Home() {
             id="social-apis"
             aria-labelledby="home-social-title"
           >
-            <div className={styles.moduleHeading}>
-              <div>
-                <p className={styles.moduleLabel}>
-                  <span className={styles.moduleIndex}>03 / 03</span> SOCIAL
-                  APIS
-                </p>
-                <h2 id="home-social-title">
-                  Build with the conversations
-                  <br />
-                  <em>behind the market.</em>
-                </h2>
-              </div>
-              <p className={styles.moduleIntro}>
-                Bring public profiles, posts, comments, search results and
-                transcripts into your research tools. Browse{' '}
-                {socialCatalog.entries.length} Social API operations by platform
-                and workflow.
-              </p>
-            </div>
             <div className={`${styles.developerGrid} ${styles.socialApiGrid}`}>
               <div
                 className={`${styles.dataCopy} ${styles.socialFeatureIntro}`}
               >
+                <p className={styles.apiSubmoduleLabel}>SOCIAL APIS</p>
                 <span className={styles.dataIcon}>
                   <Users size={24} aria-hidden="true" />
                 </span>
-                <h3>Bring public social signals into your workflows.</h3>
+                <h3 id="home-social-title">
+                  Build with the conversations behind the market.
+                </h3>
                 <p>
-                  Find creator profiles, posts, comments, discussions and
-                  transcripts across supported platforms.
+                  Bring public profiles, posts, comments, search results and
+                  transcripts into your research tools. Browse{' '}
+                  {socialCatalog.entries.length} Social API operations by
+                  platform and workflow.
                 </p>
                 <div
                   className={styles.platforms}
@@ -860,7 +836,10 @@ export default function Home() {
         >
           <div className={styles.moduleHeading}>
             <div>
-              <p className={styles.moduleLabel}>FOR ECOMMERCE OPERATORS</p>
+              <p className={styles.moduleLabel}>
+                <span className={styles.moduleIndex}>02 / 03</span> FOR
+                ECOMMERCE OPERATORS
+              </p>
               <h2 id="operators-title">
                 Make your next
                 <br />
@@ -963,7 +942,10 @@ export default function Home() {
         >
           <div className={styles.moduleHeading}>
             <div>
-              <p className={styles.moduleLabel}>FOR PRODUCT TEAMS</p>
+              <p className={styles.moduleLabel}>
+                <span className={styles.moduleIndex}>03 / 03</span> FOR PRODUCT
+                TEAMS
+              </p>
               <h2 id="growth-title">
                 The next step for
                 <br />
