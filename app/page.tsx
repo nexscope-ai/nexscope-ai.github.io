@@ -2,15 +2,14 @@
 import type { Metadata } from 'next';
 import {
   ArrowRight,
-  ArrowDownRight,
   ArrowUpRight,
+  Bot,
   Check,
-  Code2,
-  ClipboardCheck,
   Clapperboard,
   Database,
   Globe2,
   PackagePlus,
+  ShieldCheck,
   Sparkles,
   Users,
 } from 'lucide-react';
@@ -37,19 +36,96 @@ import styles from './home-sections.module.css';
 const gallery = '/ecommerce-ai-tools/product-showcase/';
 const submit = `${gallery}submit/`;
 const publishedProduct = homeProductSnapshot.product;
-const homeTitle = 'Nexscope Learn | Ecommerce APIs, AI Videos & Product Growth';
+const homeTitle =
+  'Nexscope Learn | Ecommerce Data APIs, MCP, and AI Image & Video';
 const homeDescription =
-  'Explore Nexscope ecommerce, social media, video and image APIs, AI product video workflows, human-reviewed growth reports and free product listings.';
+  'See Nexscope ecommerce data APIs, the MCP server for AI agents, social APIs, and AI image and video generation, with an example request and response shape for each.';
 const summary =
-  'Nexscope Learn helps developers build with ecommerce, social media, video and image APIs, and operators create AI product videos. Explore documented endpoints and video examples, request a human-reviewed Product Growth Report for one product and market, or submit accurate product facts to the completely free Product Gallery.';
+  'Nexscope Learn shows ecommerce data APIs, an MCP server for AI agents, social APIs, and AI image and video generation. Each section includes an example request and response shape. A human-reviewed Product Growth Report and the free Product Gallery remain available.';
+const mcpUrl = 'https://api.nexscope.ai/mcp';
+const mcpSetupUrl = 'https://www.nexscope.ai/mcp-data?co-from=learn';
 const platforms = [
   ['amazon', 'Amazon'],
-  ['tiktok', 'TikTok'],
+  ['tiktok', 'TikTok Shop'],
   ['1688', '1688'],
   ['shopify', 'Shopify'],
   ['shopee', 'Shopee'],
   ['walmart', 'Walmart'],
+  ['ozon', 'Ozon'],
 ] as const;
+const dataExample = `curl -X POST 'https://api.nexscope.ai/amazon/product/detail' \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+  "amazonDomain": "amazon.com",
+  "asins": "B072MQ5BRX,B08N5WRWNW"
+}'`;
+const dataResponse = `{
+  "code": 0,
+  "data": {
+    "total": 1,
+    "products": [
+      {
+        "asin": "B072MQ5BRX",
+        "title": "<listing title>",
+        "brand": "<brand>",
+        "extractedPrice": "<number>",
+        "currency": "$",
+        "imageUrl": "https://…"
+      }
+    ]
+  }
+}`;
+const videoExample = `curl -X POST 'https://api.nexscope.ai/video/seedance20VideoGeneration' \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+  "imageUrl": "https://example.com/source-image.jpg",
+  "prompt": "Keep the product consistent while the camera slowly orbits and highlights material details.",
+  "resolution": "720p",
+  "videoTime": 10
+}'`;
+const videoResponse = `{
+  "code": 0,
+  "data": {
+    "status": "PENDING",
+    "taskId": "example-task",
+    "result": null
+  }
+}`;
+const socialExample = `curl -X POST 'https://api.nexscope.ai/instagram/profile' \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+  "handle": "scrapecreators"
+}'`;
+const socialResponse = `{
+  "code": 0,
+  "data": {
+    "platform": "instagram",
+    "profile": null,
+    "resourceStatus": "NOT_FOUND",
+    "fetchedAt": "2026-10-28T00:00:00Z"
+  }
+}`;
+const mcpExample = `URL: https://api.nexscope.ai/mcp
+Transport: Streamable HTTP
+Authorization: Bearer YOUR_API_KEY
+
+{
+  "jsonrpc": "2.0",
+  "id": "tool-call-1",
+  "method": "tools/call",
+  "params": {
+    "name": "nexscope_amazon_product_detail",
+    "arguments": {
+      "asins": "B072MQ5BRX",
+      "returnAuthorsReviews": false,
+      "returnBoughtTogether": false,
+      "returnRelatedProducts": false
+    }
+  }
+}`;
 const faqs = [
   {
     q: 'What can ecommerce operators do here?',
@@ -57,7 +133,7 @@ const faqs = [
   },
   {
     q: 'What is available for ecommerce developers?',
-    a: 'Explore ecommerce Data APIs, Social APIs, and Video & Image APIs for creative integrations. Choose an endpoint by platform, model or task, then open its official playground to inspect required inputs and responses. API requests use your own credentials and follow the selected operation’s requirements.',
+    a: 'Use ecommerce Data APIs, the MCP server at https://api.nexscope.ai/mcp, Social APIs, and Video and Image APIs. The homepage shows one example request and response shape for each. Live calls use your own credentials and follow the selected operation’s requirements.',
   },
   {
     q: 'Is the Product Growth Report the same as a free Gallery listing?',
@@ -111,38 +187,6 @@ const videoApiCategories = [
     ],
   },
 ] as const;
-const socialApiWorkflows = [
-  {
-    title: 'Research creators',
-    description:
-      'Review public profiles and posts before building a shortlist.',
-    channels: [
-      ['Instagram', '/assets/video-channels/instagram.svg'],
-      ['TikTok', '/assets/video-channels/tiktok.webp'],
-      ['YouTube', '/assets/video-channels/youtube.svg'],
-      ['LinkedIn', '/assets/social-platforms/linkedin.svg'],
-    ],
-  },
-  {
-    title: 'Understand discussions',
-    description:
-      'Explore comments and replies for questions, feedback and context.',
-    channels: [
-      ['Reddit', '/assets/social-platforms/reddit.svg'],
-      ['LinkedIn', '/assets/social-platforms/linkedin.svg'],
-      ['X / Twitter', '/assets/social-platforms/x.svg'],
-    ],
-  },
-  {
-    title: 'Discover content',
-    description: 'Find platform search and transcript endpoints for research.',
-    channels: [
-      ['YouTube', '/assets/video-channels/youtube.svg'],
-      ['TikTok', '/assets/video-channels/tiktok.webp'],
-      ['Reddit', '/assets/social-platforms/reddit.svg'],
-    ],
-  },
-] as const;
 
 export const metadata: Metadata = {
   title: homeTitle,
@@ -173,6 +217,44 @@ export const metadata: Metadata = {
     images: [HOME_SOCIAL_IMAGE],
   },
 };
+
+function ExampleCard({
+  kicker,
+  request,
+  response,
+  responseLabel = 'Example response shape',
+}: {
+  kicker: string;
+  request: string;
+  response: string;
+  responseLabel?: string;
+}) {
+  return (
+    <div className={styles.codeCard}>
+      <div className={styles.codeTop}>
+        <span>
+          <i />
+          <i />
+          <i />
+        </span>
+        <span>{kicker}</span>
+      </div>
+      <div className={`${styles.codeBody} ${styles.exampleBody}`}>
+        <p className={styles.exampleTag}>Example request</p>
+        <pre>
+          <code>{request}</code>
+        </pre>
+        <p className={styles.exampleTag}>{responseLabel}</p>
+        <pre>
+          <code>{response}</code>
+        </pre>
+        <p className={styles.codeComment}>
+          Illustrative sample from the public API docs. Not a live response.
+        </p>
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   const entry = entrySubscription(pricingSnapshot.plans);
@@ -218,30 +300,36 @@ export default function Home() {
                     {
                       '@type': 'ListItem',
                       position: 2,
+                      name: 'Ecommerce MCP server',
+                      url: 'https://learn.nexscope.ai/#mcp',
+                    },
+                    {
+                      '@type': 'ListItem',
+                      position: 3,
                       name: 'Social Media API directory',
                       url: 'https://learn.nexscope.ai/social/',
                     },
                     {
                       '@type': 'ListItem',
-                      position: 3,
+                      position: 4,
                       name: 'AI product video workflows',
                       url: 'https://learn.nexscope.ai/video/',
                     },
                     {
                       '@type': 'ListItem',
-                      position: 4,
+                      position: 5,
                       name: 'Video and Image API directory',
                       url: 'https://learn.nexscope.ai/video-apis/',
                     },
                     {
                       '@type': 'ListItem',
-                      position: 5,
+                      position: 6,
                       name: 'Product Growth Report and free Product Gallery',
                       url: 'https://learn.nexscope.ai/#product-growth',
                     },
                     {
                       '@type': 'ListItem',
-                      position: 6,
+                      position: 7,
                       name: 'Nexscope subscriptions',
                       url: 'https://learn.nexscope.ai/pricing/',
                     },
@@ -267,126 +355,202 @@ export default function Home() {
       <main id="main">
         <section className={styles.hero}>
           <p className={styles.eyebrow}>
-            NEXSCOPE · AI TOOLS & DATA FOR ECOMMERCE
+            NEXSCOPE · ECOMMERCE DATA, MCP, AND CREATIVE APIS
           </p>
           <h1>
-            Create for your store.
+            Ecommerce data APIs.
             <br />
-            <em>Build for ecommerce.</em>
+            <em>MCP for AI agents. AI image and video.</em>
           </h1>
           <p className={styles.heroLead}>
-            Build ecommerce workflows with marketplace, social media, video and
-            image APIs. Turn product photos and links into AI videos. Get a
-            human-reviewed Product Growth Report, or list your product in the
-            completely free Product Gallery.
+            Look up marketplace products, connect Codex, Claude, or Cursor to
+            the Nexscope MCP server, and generate product images and video.
+            Each section below shows one example request and the response shape.
           </p>
-          <nav
-            className={styles.quickNav}
-            aria-label="Explore the three homepage modules"
-          >
-            <a className={styles.quickLink} href="#for-ecommerce-developers">
-              <span className={styles.quickIcon}>
-                <Code2 size={20} aria-hidden="true" />
-              </span>
-              <span className={styles.quickCopy}>
-                <strong>For ecommerce developers</strong>
-                <span>Build with ecommerce, social, video and image APIs.</span>
-              </span>
-              <ArrowDownRight
-                className={styles.quickArrow}
-                size={18}
-                aria-hidden="true"
-              />
+          <nav className={styles.heroActions} aria-label="Primary actions">
+            <a
+              className={styles.primary}
+              href="/data/"
+              data-track-tool="data-directory"
+            >
+              Explore Data APIs <ArrowRight size={16} aria-hidden="true" />
             </a>
-            <a className={styles.quickLink} href="#for-ecommerce-operators">
-              <span className={styles.quickIcon}>
-                <Sparkles size={20} aria-hidden="true" />
-              </span>
-              <span className={styles.quickCopy}>
-                <strong>For ecommerce operators</strong>
-                <span>Create product videos from your own materials.</span>
-              </span>
-              <ArrowDownRight
-                className={styles.quickArrow}
-                size={18}
-                aria-hidden="true"
-              />
+            <a
+              className={styles.primary}
+              href={mcpSetupUrl}
+              target="_blank"
+              rel="noopener"
+              data-track
+              data-cta-placement="home-hero-mcp"
+            >
+              Connect MCP <ArrowUpRight size={16} aria-hidden="true" />
             </a>
-            <a className={styles.quickLink} href="#product-growth">
-              <span className={styles.quickIcon}>
-                <ClipboardCheck size={20} aria-hidden="true" />
-              </span>
-              <span className={styles.quickCopy}>
-                <strong>For every product team</strong>
-                <span>Growth reports and free product listings.</span>
-              </span>
-              <ArrowDownRight
-                className={styles.quickArrow}
-                size={18}
-                aria-hidden="true"
-              />
+            <a
+              className={styles.secondaryCta}
+              href={workflowUrl('image-to-video')}
+              target="_blank"
+              rel="noopener"
+              data-track-tool="image-to-video"
+            >
+              Try Image to Video <ArrowUpRight size={15} aria-hidden="true" />
             </a>
           </nav>
-          <div className={styles.priceIntro}>
-            <div className={styles.priceIntroLine}>
+          <p className={styles.priceTerms}>
+            {entry ? (
+              <>
+                <a href="/pricing/">
+                  Plans from {pricingMoney(entry.monthlyAmount)}/mo
+                </a>
+                .{' '}
+              </>
+            ) : (
+              <>
+                <a href="/pricing/">Compare subscription plans</a>.{' '}
+              </>
+            )}
+            USD. New accounts receive 1,000 trial credits for 3 days. No credit
+            card required. Trial videos stay in the app.
+          </p>
+        </section>
+
+        <section
+          className={styles.capabilityBand}
+          id="capabilities"
+          aria-labelledby="capabilities-title"
+        >
+          <h2 id="capabilities-title">What you can use</h2>
+          <div className={styles.capabilityGrid}>
+            <article className={styles.capabilityCard}>
+              <Database size={20} aria-hidden="true" />
+              <h3>Ecommerce data APIs</h3>
+              <p>
+                Product, keyword, review, and sourcing lookups. Platforms
+                referenced here: Amazon, TikTok Shop, 1688, Shopify, Shopee,
+                Walmart, and Ozon.
+              </p>
+              <a href="#data-apis">See the data example</a>
+              <p className={styles.seeHow}>
+                See how:{' '}
+                <a href="/ecommerce-ai-tools/guides/tiktok-shop-api-guide/">
+                  TikTok Shop API
+                </a>
+                {' · '}
+                <a href="/ecommerce-ai-tools/guides/1688-product-detail-api/">
+                  1688 product detail
+                </a>
+              </p>
+            </article>
+            <article className={styles.capabilityCard}>
+              <Bot size={20} aria-hidden="true" />
+              <h3>MCP for AI agents</h3>
+              <p>
+                Ecommerce data is exposed at {mcpUrl} for Codex, Claude, and
+                Cursor-style agents.
+              </p>
+              <a href="#mcp">See the MCP example</a>
+              <p className={styles.seeHow}>
+                See how:{' '}
+                <a href="/ecommerce-ai-tools/ecommerce-mcp-server/">
+                  MCP setup guide
+                </a>
+              </p>
+            </article>
+            <article className={styles.capabilityCard}>
+              <Clapperboard size={20} aria-hidden="true" />
+              <h3>AI image and video</h3>
+              <p>
+                {videoApiCatalog.entries.length} published image and video APIs,
+                plus browser workflows such as Image to Video.
+              </p>
+              <a href="#video-image-apis">See the video example</a>
+              <p className={styles.seeHow}>
+                See how:{' '}
+                <a href="/ecommerce-ai-tools/guides/seedance-2-0-video/">
+                  Seedance video guide
+                </a>
+              </p>
+            </article>
+            <article className={styles.capabilityCard}>
+              <Users size={20} aria-hidden="true" />
+              <h3>Social APIs</h3>
+              <p>
+                {socialCatalog.entries.length} published operations for public
+                profiles, posts, comments, search, and transcripts.
+              </p>
+              <a href="#social-apis">See the social example</a>
+              <p className={styles.seeHow}>
+                See how:{' '}
+                <a href="/ecommerce-ai-tools/guides/instagram-api-mcp-creator-research/">
+                  Instagram creator research
+                </a>
+              </p>
+            </article>
+            <article className={styles.capabilityCard}>
+              <ShieldCheck size={20} aria-hidden="true" />
+              <h3>IP and risk checks</h3>
+              <p>
+                Patent, trademark, and TRO screening before a product launch.
+              </p>
+              <a href="/ecommerce-ai-tools/guides/amazon-patent-trademark-tro-check/">
+                Open the IP guide
+              </a>
+            </article>
+            <article className={styles.capabilityCard}>
+              <Sparkles size={20} aria-hidden="true" />
+              <h3>SEO and GEO</h3>
+              <p>
+                Search visibility and AI-search readiness. SEO and GEO analyses
+                are included with a paid Product Growth Report.
+              </p>
+              <a href="/ecommerce-seo-ai-search-visibility/">
+                Read the SEO and GEO guide
+              </a>
+            </article>
+          </div>
+        </section>
+
+        <section
+          className={`${styles.module} ${styles.mcpModule}`}
+          id="mcp"
+          aria-labelledby="mcp-title"
+        >
+          <div className={styles.developerGrid}>
+            <div className={styles.dataCopy}>
+              <p className={styles.apiSubmoduleLabel}>MCP</p>
+              <span className={styles.dataIcon}>
+                <Bot size={24} aria-hidden="true" />
+              </span>
+              <h2 id="mcp-title">Ecommerce data for an AI agent.</h2>
+              <p>
+                Nexscope exposes ecommerce data through MCP at{' '}
+                <a href={mcpUrl}>{mcpUrl}</a>. Codex, Claude, and Cursor-style
+                agents connect with Streamable HTTP. When the client asks for a
+                key, send <code>Authorization: Bearer YOUR_API_KEY</code>.
+              </p>
               <a
-                className={styles.trialLink}
-                href={workflowUrl('image-to-video')}
+                className={styles.primary}
+                href={mcpSetupUrl}
                 target="_blank"
                 rel="noopener"
-                data-track-tool="image-to-video"
+                data-track
+                data-cta-placement="home-mcp"
               >
-                Try Image to Video <ArrowUpRight size={13} aria-hidden="true" />
+                Connect MCP <ArrowUpRight size={16} aria-hidden="true" />
               </a>
-              <a
-                className={styles.trialLink}
-                href="https://www.nexscope.ai/api-docs/1688-search-by-image?co-from=learn"
-                target="_blank"
-                rel="noopener"
-                data-track-tool="1688-search-by-image"
-              >
-                Test a Data API <ArrowUpRight size={13} aria-hidden="true" />
-              </a>
-              <a className={styles.fromPrice} href="/pricing/">
-                {entry ? (
-                  <>
-                    Plans from{' '}
-                    <strong>
-                      {pricingMoney(entry.monthlyAmount)}
-                      <span>/mo</span>
-                    </strong>
-                    {entry.intro && (
-                      <span className={styles.introBadge}>
-                        {Math.round((1 - entry.intro / entry.price) * 100)}% off
-                        first {entry.billingPeriod === 12 ? 'year' : 'month'}
-                      </span>
-                    )}
-                  </>
-                ) : (
-                  'Explore subscription plans'
-                )}{' '}
-                <ArrowRight size={15} aria-hidden="true" />
-              </a>
+              <p className={styles.dataNote}>
+                Setup details are in the{' '}
+                <a href="/ecommerce-ai-tools/ecommerce-mcp-server/">
+                  MCP server guide
+                </a>
+                .
+              </p>
             </div>
-            <p className={styles.priceTerms}>
-              {entry ? (
-                <>
-                  {entry.intro
-                    ? `Eligible first ${entry.billingPeriod === 12 ? 'year' : 'month'} on ${entry.name}: `
-                    : `${entry.name}: `}
-                  {pricingMoney(entry.intro ?? entry.price)}{' '}
-                  {entry.billingPeriod === 12
-                    ? 'billed upfront'
-                    : 'billed monthly'}
-                  {entry.intro
-                    ? `, then ${pricingMoney(entry.price)}/${entry.billingPeriod === 12 ? 'year' : 'month'}`
-                    : ` per ${entry.billingPeriod === 12 ? 'year' : 'month'}`}
-                  .{' '}
-                </>
-              ) : null}
-              USD · New accounts: 1,000 trial credits for 3 days. No credit card
-              required. Trial videos are in-app only.
-            </p>
+            <ExampleCard
+              kicker="EXAMPLE MCP CONNECTION"
+              request={mcpExample}
+              response={dataResponse}
+              responseLabel="Example tool result fields"
+            />
           </div>
         </section>
 
@@ -398,18 +562,18 @@ export default function Home() {
           <div className={styles.moduleHeading}>
             <div>
               <p className={styles.moduleLabel}>
-                <span className={styles.moduleIndex}>01 / 03</span> FOR
-                ECOMMERCE DEVELOPERS
+                <span className={styles.moduleIndex}>01 / 03</span> DATA, SOCIAL,
+                AND CREATIVE APIS
               </p>
               <h2 id="developers-title">
-                The data behind
+                One example for
                 <br />
-                <em>your next build.</em>
+                <em>each API collection.</em>
               </h2>
             </div>
             <p className={styles.moduleIntro}>
-              Explore marketplace, social and creative APIs by platform, model
-              or task. Inspect documented inputs and responses before you build.
+              Marketplace, social, and creative APIs. The samples show the
+              documented request and the fields a response can include.
             </p>
           </div>
           <div className={styles.developerGrid} id="data-apis">
@@ -468,56 +632,18 @@ export default function Home() {
                 access and credit requirements.
               </p>
             </div>
-            <div className={styles.codeCard}>
-              <div className={styles.codeTop}>
-                <span>
-                  <i />
-                  <i />
-                  <i />
-                </span>
-                <span>START WITH THE PUBLIC CATALOG</span>
-                <Code2 size={17} />
-              </div>
-              <div className={styles.codeBody}>
-                <span className={styles.httpMethod}>GET</span>
-                <span className={styles.codePath}>/api/skill-api/catalog</span>
-                <pre>
-                  <code>{`curl --request GET \\\n  'https://api.nexscope.ai/api/skill-api/catalog'`}</code>
-                </pre>
-                <div className={styles.codeComment}>
-                  Discover the available operations.
-                  <br />
-                  Choose a Data API, check its inputs and test with your own API
-                  key.
-                </div>
-              </div>
-              <ol className={styles.apiSteps}>
-                <li>
-                  <span>1</span>Choose a marketplace
-                </li>
-                <li>
-                  <span>2</span>Inspect an endpoint
-                </li>
-                <li>
-                  <span>3</span>Test one real request
-                </li>
-              </ol>
-              <a
-                href="https://www.nexscope.ai/api-docs/1688-search-by-image?co-from=learn"
-                target="_blank"
-                rel="noopener"
-                data-track-tool="1688-search-by-image"
-              >
-                Test 1688 Search by Image <ArrowUpRight size={15} />
-              </a>
-            </div>
+            <ExampleCard
+              kicker="EXAMPLE · AMAZON PRODUCT DETAIL"
+              request={dataExample}
+              response={dataResponse}
+            />
           </div>
           <section
             className={styles.videoApiModule}
             id="video-image-apis"
             aria-labelledby="video-api-submodule-title"
           >
-            <div className={`${styles.developerGrid} ${styles.videoApiGrid}`}>
+            <div className={styles.developerGrid}>
               <div className={styles.dataCopy}>
                 <p className={styles.apiSubmoduleLabel}>
                   VIDEO &amp; IMAGE APIS
@@ -526,7 +652,7 @@ export default function Home() {
                   <Clapperboard size={24} aria-hidden="true" />
                 </span>
                 <h3 id="video-api-submodule-title">
-                  Find the right image or video API.
+                  Image in, video task out.
                 </h3>
                 <p>
                   Create product visuals, turn images into videos and explore
@@ -592,74 +718,11 @@ export default function Home() {
                   for supported inputs and credit requirements.
                 </p>
               </div>
-              <div className={`${styles.codeCard} ${styles.videoApiPanel}`}>
-                <div className={styles.codeTop}>
-                  <span>
-                    <i />
-                    <i />
-                    <i />
-                  </span>
-                  <span>CHOOSE A CREATIVE API</span>
-                  <Clapperboard size={17} aria-hidden="true" />
-                </div>
-                <div className={styles.videoApiCategories}>
-                  <p>EXPLORE BY CAPABILITY</p>
-                  {videoApiCategories.map(({ id, name, summary, channels }) => {
-                    const count = videoApiCatalog.entries.filter(
-                      (item) => item.category === id,
-                    ).length;
-                    return (
-                      <div className={styles.videoApiCategory} key={id}>
-                        <span
-                          className={styles.videoApiChannelStack}
-                          role="img"
-                          aria-label={`${channels
-                            .map(([channel]) => channel)
-                            .join(', ')} model channels`}
-                        >
-                          {channels.slice(0, 4).map(([channel, logo]) => (
-                            <img
-                              key={channel}
-                              src={`/assets/video-models/${logo}`}
-                              alt=""
-                              title={channel}
-                              width="23"
-                              height="23"
-                              loading="lazy"
-                            />
-                          ))}
-                        </span>
-                        <span className={styles.videoApiCategoryCopy}>
-                          <strong>{name}</strong>
-                          <small>{summary}</small>
-                        </span>
-                        <span className={styles.videoApiCategoryCount}>
-                          {count}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
-                <ol className={styles.apiSteps}>
-                  <li>
-                    <span>1</span>Choose a task or model
-                  </li>
-                  <li>
-                    <span>2</span>Check inputs and outputs
-                  </li>
-                  <li>
-                    <span>3</span>Open its official playground
-                  </li>
-                </ol>
-                <a
-                  href="/video-apis/"
-                  data-track-tool="video-api-directory"
-                  data-cta-placement="home-video-api-panel"
-                >
-                  Browse all {videoApiCatalog.entries.length} APIs
-                  <ArrowUpRight size={15} aria-hidden="true" />
-                </a>
-              </div>
+              <ExampleCard
+                kicker="EXAMPLE · SEEDANCE VIDEO"
+                request={videoExample}
+                response={videoResponse}
+              />
             </div>
           </section>
           <section
@@ -676,7 +739,7 @@ export default function Home() {
                   <Users size={24} aria-hidden="true" />
                 </span>
                 <h3 id="home-social-title">
-                  Build with the conversations behind the market.
+                  A profile handle in, a profile record out.
                 </h3>
                 <p>
                   Bring public profiles, posts, comments, search results and
@@ -718,72 +781,11 @@ export default function Home() {
                   <ArrowRight size={16} aria-hidden="true" />
                 </a>
               </div>
-              <div className={`${styles.codeCard} ${styles.socialApiPanel}`}>
-                <div className={styles.codeTop}>
-                  <span>
-                    <i />
-                    <i />
-                    <i />
-                  </span>
-                  <span>CHOOSE A SOCIAL API</span>
-                  <Users size={17} aria-hidden="true" />
-                </div>
-                <div className={styles.socialTasks}>
-                  <p className={styles.socialPanelLabel}>EXPLORE BY WORKFLOW</p>
-                  {socialApiWorkflows.map(
-                    ({ title, description, channels }) => (
-                      <div key={title}>
-                        <span
-                          className={styles.socialChannelStack}
-                          role="img"
-                          aria-label={`${channels
-                            .map(([channel]) => channel)
-                            .join(', ')} APIs`}
-                        >
-                          {channels.map(([channel, logo]) => (
-                            <img
-                              key={channel}
-                              src={logo}
-                              alt=""
-                              title={channel}
-                              width="23"
-                              height="23"
-                              loading="lazy"
-                            />
-                          ))}
-                        </span>
-                        <div>
-                          <h4>{title}</h4>
-                          <p>{description}</p>
-                        </div>
-                      </div>
-                    ),
-                  )}
-                  <p className={styles.socialScope}>
-                    Coverage and available fields vary by endpoint. Check the
-                    official playground before integrating.
-                  </p>
-                </div>
-                <ol className={styles.apiSteps}>
-                  <li>
-                    <span>1</span>Choose a platform
-                  </li>
-                  <li>
-                    <span>2</span>Find profiles, posts or discussions
-                  </li>
-                  <li>
-                    <span>3</span>Inspect the documented response
-                  </li>
-                </ol>
-                <a
-                  href="/social/"
-                  data-track-tool="social-directory"
-                  data-cta-placement="home-social-api-panel"
-                >
-                  Browse all {socialCatalog.entries.length} Social APIs
-                  <ArrowUpRight size={15} aria-hidden="true" />
-                </a>
-              </div>
+              <ExampleCard
+                kicker="EXAMPLE · INSTAGRAM PROFILE"
+                request={socialExample}
+                response={socialResponse}
+              />
             </div>
           </section>
           {entry && dataCount !== null && (
@@ -841,26 +843,18 @@ export default function Home() {
                 ECOMMERCE OPERATORS
               </p>
               <h2 id="operators-title">
-                Make your next
+                Product video
                 <br />
-                <em>product story.</em>
+                <em>workflows.</em>
               </h2>
             </div>
             <div className={styles.moduleIntro}>
               <p>
-                Turn product photos and links into video concepts. Preview
-                examples, compare workflows and create in the browser.
+                Preview official examples, then open a workflow with your own
+                product photo or link.
               </p>
-              <a
-                href={workflowUrl('image-to-video')}
-                target="_blank"
-                rel="noopener"
-                data-track-tool="image-to-video"
-              >
-                Try Image to Video <ArrowUpRight size={16} />
-              </a>
               <a href="/video/" data-track-tool="video-directory">
-                Compare all video workflows <ArrowRight size={16} />
+                Compare video workflows <ArrowRight size={16} />
               </a>
             </div>
           </div>
@@ -1118,22 +1112,15 @@ export default function Home() {
           aria-labelledby="home-pricing-title"
         >
           <div>
-            <p className={styles.eyebrow}>
-              <Sparkles size={13} /> PLANS FOR YOUR NEXT STEP
-            </p>
-            <h2 id="home-pricing-title">
-              One subscription.
-              <br />
-              Create and build with shared credits.
-            </h2>
+            <p className={styles.eyebrow}>SUBSCRIPTIONS</p>
+            <h2 id="home-pricing-title">Plans, credits, and what stays free.</h2>
             <p>
-              Compare monthly and yearly plans, credit allocations and
-              first-subscription offers. Product Gallery listings stay free.
+              Monthly and yearly plans share credits across API calls and video
+              creation. Product Gallery submission, review, and approved display
+              stay free.{' '}
+              <a href="/pricing/">See plan details</a>
             </p>
           </div>
-          <a href="/pricing/">
-            Explore subscription plans <ArrowRight size={17} />
-          </a>
         </section>
         <section className={styles.faq} aria-labelledby="faq-title">
           <div>
