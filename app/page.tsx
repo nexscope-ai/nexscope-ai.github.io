@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import MarketingHeader from '@/components/marketing-header';
 import LearnFooter from '@/components/learn-footer';
+import HomeExampleCard from '@/components/home-example-card';
 import HomeVideoExamples from '@/components/home-video-examples';
 import exampleSnapshot from '@/lib/home-video-examples.json';
 import pricingSnapshot from '@/lib/pricing-snapshot.json';
@@ -70,8 +71,7 @@ const dataResponse = `{
         "title": "<listing title>",
         "brand": "<brand>",
         "extractedPrice": "<number>",
-        "currency": "$",
-        "imageUrl": "https://…"
+        "currency": "$"
       }
     ]
   }
@@ -119,10 +119,7 @@ Authorization: Bearer YOUR_API_KEY
   "params": {
     "name": "nexscope_amazon_product_detail",
     "arguments": {
-      "asins": "B072MQ5BRX",
-      "returnAuthorsReviews": false,
-      "returnBoughtTogether": false,
-      "returnRelatedProducts": false
+      "asins": "B072MQ5BRX"
     }
   }
 }`;
@@ -217,44 +214,6 @@ export const metadata: Metadata = {
     images: [HOME_SOCIAL_IMAGE],
   },
 };
-
-function ExampleCard({
-  kicker,
-  request,
-  response,
-  responseLabel = 'Example response shape',
-}: {
-  kicker: string;
-  request: string;
-  response: string;
-  responseLabel?: string;
-}) {
-  return (
-    <div className={styles.codeCard}>
-      <div className={styles.codeTop}>
-        <span>
-          <i />
-          <i />
-          <i />
-        </span>
-        <span>{kicker}</span>
-      </div>
-      <div className={`${styles.codeBody} ${styles.exampleBody}`}>
-        <p className={styles.exampleTag}>Example request</p>
-        <pre>
-          <code>{request}</code>
-        </pre>
-        <p className={styles.exampleTag}>{responseLabel}</p>
-        <pre>
-          <code>{response}</code>
-        </pre>
-        <p className={styles.codeComment}>
-          Illustrative sample from the public API docs. Not a live response.
-        </p>
-      </div>
-    </div>
-  );
-}
 
 export default function Home() {
   const entry = entrySubscription(pricingSnapshot.plans);
@@ -545,7 +504,7 @@ export default function Home() {
                 .
               </p>
             </div>
-            <ExampleCard
+            <HomeExampleCard
               kicker="EXAMPLE MCP CONNECTION"
               request={mcpExample}
               response={dataResponse}
@@ -632,7 +591,7 @@ export default function Home() {
                 access and credit requirements.
               </p>
             </div>
-            <ExampleCard
+            <HomeExampleCard
               kicker="EXAMPLE · AMAZON PRODUCT DETAIL"
               request={dataExample}
               response={dataResponse}
@@ -718,7 +677,7 @@ export default function Home() {
                   for supported inputs and credit requirements.
                 </p>
               </div>
-              <ExampleCard
+              <HomeExampleCard
                 kicker="EXAMPLE · SEEDANCE VIDEO"
                 request={videoExample}
                 response={videoResponse}
@@ -781,7 +740,7 @@ export default function Home() {
                   <ArrowRight size={16} aria-hidden="true" />
                 </a>
               </div>
-              <ExampleCard
+              <HomeExampleCard
                 kicker="EXAMPLE · INSTAGRAM PROFILE"
                 request={socialExample}
                 response={socialResponse}
