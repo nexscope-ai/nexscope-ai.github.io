@@ -611,6 +611,13 @@
 }
 .videoApiGrid {
   grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'panel copy';
+}
+.videoApiGrid > .dataCopy {
+  grid-area: copy;
+}
+.videoApiGrid > .videoApiPanel {
+  grid-area: panel;
 }
 .socialFeature {
   display: block;
@@ -761,6 +768,9 @@
   .developerGrid {
     grid-template-columns: 1fr;
     gap: 22px;
+  }
+  .videoApiGrid {
+    grid-template-areas: 'copy' 'panel';
   }
   .socialFeature,
   .videoApiModule {
