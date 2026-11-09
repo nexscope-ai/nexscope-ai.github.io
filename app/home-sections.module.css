@@ -383,10 +383,10 @@
   }
 }
 .moduleHeading {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 55px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+  align-items: start;
+  gap: clamp(30px, 5vw, 64px);
   margin-bottom: 34px;
 }
 .moduleLabel {
@@ -410,7 +410,21 @@
   letter-spacing: 0;
   color: #9775ad;
 }
+.moduleLabel > .moduleIndex {
+  display: inline-flex;
+  width: auto;
+  min-width: 56px;
+  height: 27px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: #f3eef9;
+  font-size: 9px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
 .module h2 {
+  min-height: 2.24em;
   font-size: clamp(30px, 3.6vw, 43px);
   line-height: 1.12;
   font-weight: 600;
@@ -422,11 +436,11 @@
   color: #a983ba;
 }
 .moduleIntro {
-  max-width: 365px;
+  max-width: 390px;
   color: #706179;
   font-size: 14px;
-  line-height: 1.8;
-  margin: 0 0 4px;
+  line-height: 1.75;
+  margin: 47px 0 4px;
 }
 .moduleIntro p {
   margin: 0 0 15px;
@@ -1183,8 +1197,11 @@
   }
   .moduleIntro {
     max-width: none;
-    margin-top: 22px;
+    margin: 22px 0 4px;
     font-size: 13px;
+  }
+  .module h2 {
+    min-height: 0;
   }
   .moduleLabel {
     font-size: 9px;

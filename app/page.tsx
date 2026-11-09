@@ -398,7 +398,10 @@ export default function Home() {
           <div className={styles.moduleHeading}>
             <div>
               <p className={styles.moduleLabel}>
-                <span>01</span> FOR ECOMMERCE DEVELOPERS
+                <span className={styles.moduleIndex}>
+                  01 / 03
+                </span>{' '}
+                FOR ECOMMERCE DEVELOPERS
               </p>
               <h2 id="developers-title">
                 The data behind
@@ -407,14 +410,8 @@ export default function Home() {
               </h2>
             </div>
             <p className={styles.moduleIntro}>
-              Bring marketplace research and creative capabilities into your
-              apps, internal tools and AI workflows. Find an operation by
-              platform, model or task, then inspect its documented inputs and
-              results. For profiles, posts and comments, explore the{' '}
-              <a href="/social/" data-track-tool="social-directory">
-                Social API directory
-              </a>
-              .
+              Explore marketplace, social and creative APIs by platform, model
+              or task. Inspect documented inputs and responses before you build.
             </p>
           </div>
           <div className={styles.developerGrid} id="data-apis">
@@ -840,7 +837,10 @@ export default function Home() {
           <div className={styles.moduleHeading}>
             <div>
               <p className={styles.moduleLabel}>
-                <span>02</span> FOR ECOMMERCE OPERATORS
+                <span className={styles.moduleIndex}>
+                  02 / 03
+                </span>{' '}
+                FOR ECOMMERCE OPERATORS
               </p>
               <h2 id="operators-title">
                 Make your next
@@ -850,8 +850,8 @@ export default function Home() {
             </div>
             <div className={styles.moduleIntro}>
               <p>
-                From a product photo to a video concept. Create in the browser,
-                review the result and choose what fits your store.
+                Turn product photos and links into video concepts. Preview
+                examples, compare workflows and create in the browser.
               </p>
               <a
                 href={workflowUrl('image-to-video')}
@@ -945,18 +945,20 @@ export default function Home() {
           <div className={styles.moduleHeading}>
             <div>
               <p className={styles.moduleLabel}>
-                <span>03</span> FOR OPERATORS & DEVELOPERS
+                <span className={styles.moduleIndex}>
+                  03 / 03
+                </span>{' '}
+                FOR PRODUCT TEAMS
               </p>
               <h2 id="growth-title">
-                Know what to improve.
+                The next step for
                 <br />
-                <em>Give your product a clearer next step.</em>
+                <em>your product.</em>
               </h2>
             </div>
             <p className={styles.moduleIntro}>
-              Get recommendations for one product and market, or create a free
-              public source of product facts. Two separate services for the same
-              product team.
+              Get a human-reviewed action plan for one product and market, or
+              publish a free listing with verified product facts.
             </p>
           </div>
           <div className={styles.growthFeature}>
