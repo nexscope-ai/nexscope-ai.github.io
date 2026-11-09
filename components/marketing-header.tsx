@@ -3,6 +3,7 @@
 /* Native anchors keep exported GitHub Pages routes and the Jekyll section interoperable. */
 /* oxlint-disable next/no-html-link-for-pages, next/no-img-element */
 import { useEffect, useRef, useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 import styles from './marketing-header.module.css';
 import { videoWorkspaceUrl } from '@/lib/video-directory';
 
@@ -71,19 +72,36 @@ export default function MarketingHeader({
           data-open={menuOpen}
         >
           <ul>
-            <li>
-              <a href="/data/" data-track-tool="data-directory">
-                Data APIs
-              </a>
-            </li>
-            <li>
-              <a
-                href="/social/"
-                data-track-tool="social-directory"
-                aria-current={active === 'social' ? 'page' : undefined}
-              >
-                Social APIs
-              </a>
+            <li className={styles.dropdown}>
+              <details>
+                <summary
+                  aria-current={
+                    active === 'tools' || active === 'social' ? 'page' : undefined
+                  }
+                >
+                  APIs <ChevronDown aria-hidden="true" size={14} />
+                </summary>
+                <ul className={styles.dropdownMenu}>
+                  <li>
+                    <a
+                      href="/data/"
+                      data-track-tool="data-directory"
+                      aria-current={active === 'tools' ? 'page' : undefined}
+                    >
+                      Data APIs
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/social/"
+                      data-track-tool="social-directory"
+                      aria-current={active === 'social' ? 'page' : undefined}
+                    >
+                      Social APIs
+                    </a>
+                  </li>
+                </ul>
+              </details>
             </li>
             <li>
               <a
@@ -110,16 +128,25 @@ export default function MarketingHeader({
                 Product Growth Report
               </a>
             </li>
-            <li>
-              <a href="/ecommerce-ai-tools/">Guides &amp; resources</a>
-            </li>
-            <li>
-              <a
-                href="/pricing/"
-                aria-current={active === 'pricing' ? 'page' : undefined}
-              >
-                Pricing
-              </a>
+            <li className={styles.dropdown}>
+              <details>
+                <summary aria-current={active === 'pricing' ? 'page' : undefined}>
+                  Resources <ChevronDown aria-hidden="true" size={14} />
+                </summary>
+                <ul className={styles.dropdownMenu}>
+                  <li>
+                    <a href="/ecommerce-ai-tools/">Guides &amp; resources</a>
+                  </li>
+                  <li>
+                    <a
+                      href="/pricing/"
+                      aria-current={active === 'pricing' ? 'page' : undefined}
+                    >
+                      Pricing
+                    </a>
+                  </li>
+                </ul>
+              </details>
             </li>
             <li>
               <a
