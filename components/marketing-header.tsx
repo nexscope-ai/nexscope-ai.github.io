@@ -2,7 +2,8 @@
 
 /* Native anchors keep exported GitHub Pages routes and the Jekyll section interoperable. */
 /* oxlint-disable next/no-html-link-for-pages, next/no-img-element */
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { ChevronDown } from 'lucide-react';
 import {
   DropdownMenu,
@@ -29,6 +30,8 @@ type NavigationDropdownItem = {
   current?: boolean;
 };
 
+const headerMenuEvent = 'nexscope-header-menu';
+
 function NavigationDropdown({
   label,
   current,
@@ -38,16 +41,95 @@ function NavigationDropdown({
   current?: boolean;
   items: NavigationDropdownItem[];
 }) {
+  const [open, setOpen] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const menuId = useId();
+  const pathname = usePathname();
+  const [menuPath, setMenuPath] = useState(pathname);
+  if (pathname !== menuPath) {
+    setMenuPath(pathname);
+    setOpen(false);
+  }
+  const containsMenu = useCallback(
+    (node: Node | null) => {
+      if (!node) return false;
+      const element = node instanceof Element ? node : node.parentElement;
+      if (!element) return false;
+      if (triggerRef.current?.contains(element)) return true;
+      const popup = document.getElementById(menuId);
+      if (popup?.contains(element)) return true;
+      return Boolean(element.closest('[data-base-ui-focus-guard]'));
+    },
+    [menuId],
+  );
+
+  useEffect(() => {
+    if (!open) return;
+    const closeOthers = (event: Event) => {
+      if ((event as CustomEvent<string>).detail !== menuId) setOpen(false);
+    };
+    window.addEventListener(headerMenuEvent, closeOthers);
+    window.dispatchEvent(new CustomEvent(headerMenuEvent, { detail: menuId }));
+    const onPointerDown = (event: PointerEvent) => {
+      const target = event.target instanceof Node ? event.target : null;
+      if (!containsMenu(target)) setOpen(false);
+    };
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+      event.preventDefault();
+      setOpen(false);
+      triggerRef.current?.focus();
+    };
+    const onFocusOut = (event: FocusEvent) => {
+      const next = event.relatedTarget;
+      if (next instanceof Node) {
+        if (!containsMenu(next)) setOpen(false);
+        return;
+      }
+      const active = document.activeElement;
+      if (active instanceof Node && containsMenu(active)) return;
+      if (!document.hasFocus()) setOpen(false);
+    };
+    const onClick = (event: MouseEvent) => {
+      const target = event.target instanceof Element ? event.target : null;
+      const link = target?.closest('a[href]');
+      const popup = document.getElementById(menuId);
+      if (link && popup?.contains(link)) setOpen(false);
+    };
+    const close = () => setOpen(false);
+    document.addEventListener('pointerdown', onPointerDown, true);
+    document.addEventListener('keydown', onKeyDown, true);
+    document.addEventListener('focusout', onFocusOut);
+    document.addEventListener('click', onClick);
+    window.addEventListener('popstate', close);
+    window.addEventListener('hashchange', close);
+    window.addEventListener('pageshow', close);
+    return () => {
+      window.removeEventListener(headerMenuEvent, closeOthers);
+      document.removeEventListener('pointerdown', onPointerDown, true);
+      document.removeEventListener('keydown', onKeyDown, true);
+      document.removeEventListener('focusout', onFocusOut);
+      document.removeEventListener('click', onClick);
+      window.removeEventListener('popstate', close);
+      window.removeEventListener('hashchange', close);
+      window.removeEventListener('pageshow', close);
+    };
+  }, [containsMenu, menuId, open]);
+
   return (
     <li>
-      <DropdownMenu>
+      <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger
+          ref={triggerRef}
           className={styles.dropdownTrigger}
+          aria-controls={menuId}
           aria-current={current ? 'page' : undefined}
+          aria-expanded={open}
         >
           {label} <ChevronDown aria-hidden="true" size={14} />
         </DropdownMenuTrigger>
         <DropdownMenuContent
+          id={menuId}
           className={styles.dropdownMenu}
           align="start"
           side="bottom"
@@ -84,6 +166,12 @@ export default function MarketingHeader({
 }: MarketingHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
+  const pathname = usePathname();
+  const [navPath, setNavPath] = useState(pathname);
+  if (pathname !== navPath) {
+    setNavPath(pathname);
+    setMenuOpen(false);
+  }
   const tracking = '?co-from=learn';
 
   useEffect(() => {

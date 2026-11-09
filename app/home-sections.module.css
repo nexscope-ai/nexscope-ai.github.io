@@ -61,11 +61,127 @@
   -webkit-text-fill-color: transparent;
 }
 .heroLead {
-  max-width: 710px;
+  max-width: 760px;
   font-size: 16px;
   line-height: 1.8;
   color: #706179;
   margin: 25px auto 22px;
+}
+.heroActions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 8px auto 18px;
+}
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 18px;
+  border: 1px solid #d7cbe6;
+  border-radius: 8px;
+  background: #fff;
+  color: #5d4578;
+  font-size: 12px;
+  font-weight: 600;
+}
+.secondaryCta:hover {
+  border-color: #b79ad9;
+  background: #f5f0fc;
+}
+.priceTerms a {
+  color: #7049a4;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.capabilityBand {
+  width: min(1200px, calc(100% - 64px));
+  margin: 0 auto;
+  padding: 8px 0 28px;
+  text-align: left;
+}
+.capabilityBand > h2 {
+  margin: 0 0 16px;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.4px;
+}
+.capabilityGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.capabilityCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-width: 0;
+  padding: 18px 18px 16px;
+  border: 1px solid #e7e0ed;
+  border-radius: 14px;
+  background: #fff;
+  color: #302637;
+}
+.capabilityCard svg {
+  color: #7950b7;
+}
+.capabilityCard h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+.capabilityCard p {
+  margin: 0;
+  color: #706179;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.capabilityCard > a {
+  margin-top: auto;
+  color: #7049a4;
+  font-size: 12px;
+  font-weight: 600;
+}
+.seeHow {
+  font-size: 12px;
+}
+.seeHow a {
+  color: #7049a4;
+  font-weight: 600;
+}
+.mcpModule {
+  padding-top: 28px;
+}
+.mcpModule a {
+  color: #7049a4;
+}
+.mcpModule .primary {
+  color: #fff;
+}
+.exampleBody {
+  padding: 22px 22px 18px;
+}
+.exampleBody pre {
+  margin: 8px 0 16px;
+  line-height: 1.55;
+  font-size: 11.5px;
+}
+.exampleTag {
+  margin: 0;
+  color: #b7dfa8;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+.pricingStrip p a {
+  color: #7049a4;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 .quickNav {
   display: grid;
@@ -244,10 +360,14 @@
   .valueStrip h3 {
     font-size: 20px;
   }
-  .quickNav {
+  .quickNav,
+  .capabilityGrid {
     grid-template-columns: 1fr;
     gap: 10px;
-    margin-top: 22px;
+  }
+  .capabilityBand {
+    width: calc(100% - 36px);
+    padding-bottom: 12px;
   }
   .quickLink {
     padding: 14px;
@@ -1130,6 +1250,9 @@
   margin: 14px 0 0;
 }
 @media (max-width: 1000px) {
+  .capabilityGrid {
+    grid-template-columns: 1fr 1fr;
+  }
   .moduleHeading {
     gap: 30px;
   }
