@@ -51,7 +51,7 @@ function NavigationDropdown({
           className={styles.dropdownMenu}
           align="start"
           side="bottom"
-          sideOffset={6}
+          sideOffset={24}
         >
           {items.map((item) => (
             <DropdownMenuItem
