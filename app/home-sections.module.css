@@ -95,72 +95,6 @@
   text-decoration: underline;
   text-underline-offset: 2px;
 }
-.capabilityBand {
-  width: min(1200px, calc(100% - 64px));
-  margin: 0 auto;
-  padding: 8px 0 28px;
-  text-align: left;
-}
-.capabilityBand > h2 {
-  margin: 0 0 16px;
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: -0.4px;
-}
-.capabilityGrid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-}
-.capabilityCard {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  min-width: 0;
-  padding: 18px 18px 16px;
-  border: 1px solid #e7e0ed;
-  border-radius: 14px;
-  background: #fff;
-  color: #302637;
-}
-.capabilityCard svg {
-  color: #7950b7;
-}
-.capabilityCard h3 {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: -0.2px;
-}
-.capabilityCard p {
-  margin: 0;
-  color: #706179;
-  font-size: 13px;
-  line-height: 1.65;
-}
-.capabilityCard > a {
-  margin-top: auto;
-  color: #7049a4;
-  font-size: 12px;
-  font-weight: 600;
-}
-.seeHow {
-  font-size: 12px;
-}
-.seeHow a {
-  color: #7049a4;
-  font-weight: 600;
-}
-.mcpModule {
-  padding-top: 28px;
-}
-.mcpModule a {
-  color: #7049a4;
-}
-.mcpModule .primary {
-  color: #fff;
-}
 .exampleBody {
   padding: 22px 22px 18px;
 }
@@ -360,14 +294,10 @@
   .valueStrip h3 {
     font-size: 20px;
   }
-  .quickNav,
-  .capabilityGrid {
+  .quickNav {
     grid-template-columns: 1fr;
     gap: 10px;
-  }
-  .capabilityBand {
-    width: calc(100% - 36px);
-    padding-bottom: 12px;
+    margin-top: 22px;
   }
   .quickLink {
     padding: 14px;
@@ -1048,6 +978,31 @@
   color: #a294ac;
   max-width: 360px;
 }
+.mcpInset {
+  max-width: 480px;
+  margin-top: 16px;
+  padding: 12px 14px 10px;
+  border: 1px solid #e7e0ed;
+  border-radius: 10px;
+  background: #fff;
+  scroll-margin-top: 24px;
+}
+.mcpInset p {
+  margin: 0;
+  color: #5f5468;
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+.mcpInset a {
+  color: #7049a4;
+  font-weight: 600;
+}
+.mcpInset .mcpInsetLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-top: 8px;
+}
 .codeCard {
   min-width: 0;
   max-height: 420px;
@@ -1330,9 +1285,6 @@
   margin: 14px 0 0;
 }
 @media (max-width: 1000px) {
-  .capabilityGrid {
-    grid-template-columns: 1fr 1fr;
-  }
   .moduleHeading {
     gap: 30px;
   }

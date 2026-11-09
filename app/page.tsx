@@ -3,14 +3,11 @@ import type { Metadata } from 'next';
 import {
   ArrowRight,
   ArrowUpRight,
-  Bot,
   Check,
   Clapperboard,
   Database,
   Globe2,
   PackagePlus,
-  ShieldCheck,
-  Sparkles,
   Users,
 } from 'lucide-react';
 import MarketingHeader from '@/components/marketing-header';
@@ -373,147 +370,6 @@ export default function Home() {
         </section>
 
         <section
-          className={styles.capabilityBand}
-          id="capabilities"
-          aria-labelledby="capabilities-title"
-        >
-          <h2 id="capabilities-title">What you can use</h2>
-          <div className={styles.capabilityGrid}>
-            <article className={styles.capabilityCard}>
-              <Database size={20} aria-hidden="true" />
-              <h3>Ecommerce data APIs</h3>
-              <p>
-                Product, keyword, review, and sourcing lookups. Platforms
-                referenced here: Amazon, TikTok Shop, 1688, Shopify, Shopee,
-                Walmart, and Ozon.
-              </p>
-              <a href="#data-apis">See the data example</a>
-              <p className={styles.seeHow}>
-                See how:{' '}
-                <a href="/ecommerce-ai-tools/guides/tiktok-shop-api-guide/">
-                  TikTok Shop API
-                </a>
-                {' · '}
-                <a href="/ecommerce-ai-tools/guides/1688-product-detail-api/">
-                  1688 product detail
-                </a>
-              </p>
-            </article>
-            <article className={styles.capabilityCard}>
-              <Bot size={20} aria-hidden="true" />
-              <h3>MCP for AI agents</h3>
-              <p>
-                Ecommerce data is exposed at {mcpUrl} for Codex, Claude, and
-                Cursor-style agents.
-              </p>
-              <a href="#mcp">See the MCP example</a>
-              <p className={styles.seeHow}>
-                See how:{' '}
-                <a href="/ecommerce-ai-tools/ecommerce-mcp-server/">
-                  MCP setup guide
-                </a>
-              </p>
-            </article>
-            <article className={styles.capabilityCard}>
-              <Clapperboard size={20} aria-hidden="true" />
-              <h3>AI image and video</h3>
-              <p>
-                {videoApiCatalog.entries.length} published image and video APIs,
-                plus browser workflows such as Image to Video.
-              </p>
-              <a href="#video-image-apis">See the video example</a>
-              <p className={styles.seeHow}>
-                See how:{' '}
-                <a href="/ecommerce-ai-tools/guides/seedance-2-0-video/">
-                  Seedance video guide
-                </a>
-              </p>
-            </article>
-            <article className={styles.capabilityCard}>
-              <Users size={20} aria-hidden="true" />
-              <h3>Social APIs</h3>
-              <p>
-                {socialCatalog.entries.length} published operations for public
-                profiles, posts, comments, search, and transcripts.
-              </p>
-              <a href="#social-apis">See the social example</a>
-              <p className={styles.seeHow}>
-                See how:{' '}
-                <a href="/ecommerce-ai-tools/guides/instagram-api-mcp-creator-research/">
-                  Instagram creator research
-                </a>
-              </p>
-            </article>
-            <article className={styles.capabilityCard}>
-              <ShieldCheck size={20} aria-hidden="true" />
-              <h3>IP and risk checks</h3>
-              <p>
-                Patent, trademark, and TRO screening before a product launch.
-              </p>
-              <a href="/ecommerce-ai-tools/guides/amazon-patent-trademark-tro-check/">
-                Open the IP guide
-              </a>
-            </article>
-            <article className={styles.capabilityCard}>
-              <Sparkles size={20} aria-hidden="true" />
-              <h3>SEO and GEO</h3>
-              <p>
-                Search visibility and AI-search readiness. SEO and GEO analyses
-                are included with a paid Product Growth Report.
-              </p>
-              <a href="/ecommerce-seo-ai-search-visibility/">
-                Read the SEO and GEO guide
-              </a>
-            </article>
-          </div>
-        </section>
-
-        <section
-          className={`${styles.module} ${styles.mcpModule}`}
-          id="mcp"
-          aria-labelledby="mcp-title"
-        >
-          <div className={styles.developerGrid}>
-            <div className={styles.dataCopy}>
-              <p className={styles.apiSubmoduleLabel}>MCP</p>
-              <span className={styles.dataIcon}>
-                <Bot size={24} aria-hidden="true" />
-              </span>
-              <h2 id="mcp-title">Ecommerce data for an AI agent.</h2>
-              <p>
-                Nexscope exposes ecommerce data through MCP at{' '}
-                <a href={mcpUrl}>{mcpUrl}</a>. Codex, Claude, and Cursor-style
-                agents connect with Streamable HTTP. When the client asks for a
-                key, send <code>Authorization: Bearer YOUR_API_KEY</code>.
-              </p>
-              <a
-                className={styles.primary}
-                href={mcpSetupUrl}
-                target="_blank"
-                rel="noopener"
-                data-track
-                data-cta-placement="home-mcp"
-              >
-                Connect MCP <ArrowUpRight size={16} aria-hidden="true" />
-              </a>
-              <p className={styles.dataNote}>
-                Setup details are in the{' '}
-                <a href="/ecommerce-ai-tools/ecommerce-mcp-server/">
-                  MCP server guide
-                </a>
-                .
-              </p>
-            </div>
-            <HomeExampleCard
-              kicker="EXAMPLE MCP CONNECTION"
-              request={mcpExample}
-              response={dataResponse}
-              responseLabel="Example tool result fields"
-            />
-          </div>
-        </section>
-
-        <section
           className={`${styles.module} ${styles.developers}`}
           id="for-ecommerce-developers"
           aria-labelledby="developers-title"
@@ -590,11 +446,33 @@ export default function Home() {
                 Free to browse. API requests follow the selected operation’s
                 access and credit requirements.
               </p>
+              <div className={styles.mcpInset} id="mcp">
+                <p>
+                  The same ecommerce data is available via MCP at{' '}
+                  <a href={mcpUrl}>{mcpUrl}</a> for Claude, Cursor, and Codex
+                  agents.
+                </p>
+                <p className={styles.mcpInsetLinks}>
+                  <a
+                    href={mcpSetupUrl}
+                    target="_blank"
+                    rel="noopener"
+                    data-track
+                    data-cta-placement="home-mcp"
+                  >
+                    Connect MCP
+                  </a>
+                  <a href="/ecommerce-ai-tools/ecommerce-mcp-server/">
+                    MCP setup guide
+                  </a>
+                </p>
+              </div>
             </div>
             <HomeExampleCard
               kicker="EXAMPLE · AMAZON PRODUCT DETAIL"
               request={dataExample}
               response={dataResponse}
+              mcp={mcpExample}
             />
           </div>
           <section
