@@ -7,7 +7,7 @@ import styles from './marketing-header.module.css';
 import { videoWorkspaceUrl } from '@/lib/video-directory';
 
 type MarketingHeaderProps = {
-  active?: 'tools' | 'pricing' | 'video' | 'social';
+  active?: 'tools' | 'pricing' | 'video' | 'social' | 'growth';
   campaign: string;
   explorePath?: '/apis' | '/';
   productReviewCta?: boolean;
@@ -71,95 +71,56 @@ export default function MarketingHeader({
           data-open={menuOpen}
         >
           <ul>
-            {homepageFocus ? (
-              <>
-                <li>
-                  <a href="/data/" data-track-tool="data-directory">
-                    Data APIs
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/social/"
-                    data-track-tool="social-directory"
-                    aria-current={active === 'social' ? 'page' : undefined}
-                  >
-                    Social APIs
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/video/"
-                    data-track-tool="video-directory"
-                    aria-current={active === 'video' ? 'page' : undefined}
-                  >
-                    Video workflows
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/ecommerce-ai-tools/product-showcase/"
-                    data-track-tool="product-gallery"
-                  >
-                    Product Gallery
-                  </a>
-                </li>
-                <li>
-                  <a href="/ecommerce-ai-tools/">Guides & resources</a>
-                </li>
-                <li>
-                  <a
-                    href="/pricing/"
-                    aria-current={active === 'pricing' ? 'page' : undefined}
-                  >
-                    Pricing
-                  </a>
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <a href="/data/">Data APIs</a>
-                </li>
-                <li>
-                  <a
-                    href="/social/"
-                    data-track-tool="social-directory"
-                    aria-current={active === 'social' ? 'page' : undefined}
-                  >
-                    Social APIs
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/video/"
-                    data-track-tool="video-directory"
-                    aria-current={active === 'video' ? 'page' : undefined}
-                  >
-                    Video workflows
-                  </a>
-                </li>
-                <li>
-                  <a href="/ecommerce-ai-tools/topics/research/">Research</a>
-                </li>
-                <li>
-                  <a href="/ecommerce-ai-tools/topics/visibility/">
-                    SEO & AI visibility
-                  </a>
-                </li>
-                <li>
-                  <a href="/ecommerce-ai-tools/topics/creative/">Creative</a>
-                </li>
-                <li>
-                  <a data-track href="/ecommerce-ai-tools/topics/agents/">
-                    APIs & agents
-                  </a>
-                </li>
-                <li>
-                  <a href="/ecommerce-ai-tools/topics/evidence/">Evidence</a>
-                </li>
-              </>
-            )}
+            <li>
+              <a href="/data/" data-track-tool="data-directory">
+                Data APIs
+              </a>
+            </li>
+            <li>
+              <a
+                href="/social/"
+                data-track-tool="social-directory"
+                aria-current={active === 'social' ? 'page' : undefined}
+              >
+                Social APIs
+              </a>
+            </li>
+            <li>
+              <a
+                href="/video/"
+                data-track-tool="video-directory"
+                aria-current={active === 'video' ? 'page' : undefined}
+              >
+                Video workflows
+              </a>
+            </li>
+            <li>
+              <a
+                href="/ecommerce-ai-tools/product-showcase/"
+                data-track-tool="product-gallery"
+              >
+                Product Gallery
+              </a>
+            </li>
+            <li>
+              <a
+                href="/product-growth-report/"
+                aria-current={active === 'growth' ? 'page' : undefined}
+              >
+                Product Growth Report
+              </a>
+            </li>
+            <li>
+              <a href="/ecommerce-ai-tools/">Guides &amp; resources</a>
+            </li>
+            <li>
+              <a
+                href="/pricing/"
+                aria-current={active === 'pricing' ? 'page' : undefined}
+              >
+                Pricing
+              </a>
+            </li>
             <li>
               <a
                 className={styles.cta}

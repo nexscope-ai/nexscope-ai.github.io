@@ -192,7 +192,7 @@ export default function ProductGrowthReport() {
       <a className={styles.skip} href="#main">
         Skip to content
       </a>
-      <MarketingHeader campaign="product-growth-report" />
+      <MarketingHeader active="growth" campaign="product-growth-report" />
       <main id="main" className={styles.main}>
         <section className={styles.hero}>
           <div>
