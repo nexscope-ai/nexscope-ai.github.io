@@ -608,7 +608,7 @@
 .socialFeature {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-areas: 'panel copy';
+  grid-template-areas: 'copy panel';
   gap: 48px;
   margin-top: 44px;
   padding-top: 42px;
