@@ -12,8 +12,6 @@ import {
   Globe2,
   PackagePlus,
   Sparkles,
-  MessageCircle,
-  Search,
   Users,
 } from 'lucide-react';
 import MarketingHeader from '@/components/marketing-header';
@@ -110,6 +108,38 @@ const videoApiCategories = [
       ['OpenAI', 'gpt-image.webp'],
       ['ByteDance', 'seedream-seedance.webp'],
       ['Alibaba', 'wan.webp'],
+    ],
+  },
+] as const;
+const socialApiWorkflows = [
+  {
+    title: 'Research creators',
+    description:
+      'Review public profiles and posts before building a shortlist.',
+    channels: [
+      ['Instagram', '/assets/video-channels/instagram.svg'],
+      ['TikTok', '/assets/video-channels/tiktok.webp'],
+      ['YouTube', '/assets/video-channels/youtube.svg'],
+      ['LinkedIn', '/assets/social-platforms/linkedin.svg'],
+    ],
+  },
+  {
+    title: 'Understand discussions',
+    description:
+      'Explore comments and replies for questions, feedback and context.',
+    channels: [
+      ['Reddit', '/assets/social-platforms/reddit.svg'],
+      ['LinkedIn', '/assets/social-platforms/linkedin.svg'],
+      ['X / Twitter', '/assets/social-platforms/x.svg'],
+    ],
+  },
+  {
+    title: 'Discover content',
+    description: 'Find platform search and transcript endpoints for research.',
+    channels: [
+      ['YouTube', '/assets/video-channels/youtube.svg'],
+      ['TikTok', '/assets/video-channels/tiktok.webp'],
+      ['Reddit', '/assets/social-platforms/reddit.svg'],
     ],
   },
 ] as const;
@@ -245,8 +275,8 @@ export default function Home() {
             <em>Build for ecommerce.</em>
           </h1>
           <p className={styles.heroLead}>
-            Build ecommerce workflows with marketplace, social media, video
-            and image APIs. Turn product photos and links into AI videos. Get a
+            Build ecommerce workflows with marketplace, social media, video and
+            image APIs. Turn product photos and links into AI videos. Get a
             human-reviewed Product Growth Report, or list your product in the
             completely free Product Gallery.
           </p>
@@ -501,12 +531,12 @@ export default function Home() {
                 </h2>
               </div>
               <p className={styles.moduleIntro}>
-                Browse image generation, video generation and multimodal APIs
-                in one place. Compare model capabilities, review the required
+                Browse image generation, video generation and multimodal APIs in
+                one place. Compare model capabilities, review the required
                 inputs, then open the official playground to try an endpoint.
               </p>
             </div>
-            <div className={styles.developerGrid}>
+            <div className={`${styles.developerGrid} ${styles.videoApiGrid}`}>
               <div className={styles.dataCopy}>
                 <span className={styles.dataIcon}>
                   <Clapperboard size={24} aria-hidden="true" />
@@ -694,39 +724,69 @@ export default function Home() {
                 Explore Social APIs <ArrowRight size={16} aria-hidden="true" />
               </a>
             </div>
-            <div className={styles.socialTasks}>
-              {(
-                [
-                  [
-                    Users,
-                    'Research creators',
-                    'Inspect public profiles and available post data before building your shortlist.',
-                  ],
-                  [
-                    MessageCircle,
-                    'Understand discussions',
-                    'Explore comments and replies to review questions, feedback and context.',
-                  ],
-                  [
-                    Search,
-                    'Discover content',
-                    'Find platform search and transcript endpoints for your content research workflow.',
-                  ],
-                ] as const
-              ).map(([Icon, title, description]) => (
-                <div key={title}>
-                  <Icon size={22} aria-hidden="true" />
-                  <div>
-                    <h4>{title}</h4>
-                    <p>{description}</p>
+            <div className={`${styles.codeCard} ${styles.socialApiPanel}`}>
+              <div className={styles.codeTop}>
+                <span>
+                  <i />
+                  <i />
+                  <i />
+                </span>
+                <span>CHOOSE A SOCIAL API</span>
+                <Users size={17} aria-hidden="true" />
+              </div>
+              <div className={styles.socialTasks}>
+                <p className={styles.socialPanelLabel}>EXPLORE BY WORKFLOW</p>
+                {socialApiWorkflows.map(({ title, description, channels }) => (
+                  <div key={title}>
+                    <span
+                      className={styles.socialChannelStack}
+                      role="img"
+                      aria-label={`${channels
+                        .map(([channel]) => channel)
+                        .join(', ')} APIs`}
+                    >
+                      {channels.map(([channel, logo]) => (
+                        <img
+                          key={channel}
+                          src={logo}
+                          alt=""
+                          title={channel}
+                          width="23"
+                          height="23"
+                          loading="lazy"
+                        />
+                      ))}
+                    </span>
+                    <div>
+                      <h4>{title}</h4>
+                      <p>{description}</p>
+                    </div>
                   </div>
-                </div>
-              ))}
-              <p className={styles.socialScope}>
-                Coverage, available fields and access requirements vary by
-                endpoint. Inspect a response in the official playground before
-                integrating.
-              </p>
+                ))}
+                <p className={styles.socialScope}>
+                  Coverage and available fields vary by endpoint. Check the
+                  official playground before integrating.
+                </p>
+              </div>
+              <ol className={styles.apiSteps}>
+                <li>
+                  <span>1</span>Choose a platform
+                </li>
+                <li>
+                  <span>2</span>Find profiles, posts or discussions
+                </li>
+                <li>
+                  <span>3</span>Inspect the documented response
+                </li>
+              </ol>
+              <a
+                href="/social/"
+                data-track-tool="social-directory"
+                data-cta-placement="home-social-api-panel"
+              >
+                Browse all {socialCatalog.entries.length} Social APIs
+                <ArrowUpRight size={15} aria-hidden="true" />
+              </a>
             </div>
           </section>
           {entry && dataCount !== null && (

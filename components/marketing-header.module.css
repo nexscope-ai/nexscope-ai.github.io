@@ -34,7 +34,7 @@
   list-style: none;
 }
 .navigation a,
-.navigation summary {
+.navigation .dropdownTrigger {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
@@ -44,54 +44,58 @@
   text-decoration: none;
   white-space: nowrap;
 }
-.navigation summary {
+.navigation .dropdownTrigger {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  font-family: inherit;
   gap: 5px;
   cursor: pointer;
-  list-style: none;
 }
-.navigation summary::-webkit-details-marker {
-  display: none;
-}
-.navigation summary svg {
+.navigation .dropdownTrigger svg {
   flex: none;
   transition: transform 0.18s ease;
 }
-.navigation details[open] summary svg {
+.navigation .dropdownTrigger[data-popup-open='true'] svg {
   transform: rotate(180deg);
 }
 .navigation a:hover,
 .navigation a[aria-current],
-.navigation summary:hover,
-.navigation summary[aria-current] {
+.navigation .dropdownTrigger:hover,
+.navigation .dropdownTrigger[aria-current] {
   color: #6250e9;
 }
-.dropdown {
-  position: relative;
-}
 .dropdownMenu {
-  position: absolute;
-  top: calc(100% + 4px);
-  left: -12px;
-  z-index: 2;
   display: grid;
   gap: 2px;
-  min-width: 190px;
-  margin: 0;
   padding: 8px;
   border: 1px solid #ddd8e8;
   border-radius: 14px;
   background: #fff;
   box-shadow: 0 14px 30px rgb(33 31 38 / 12%);
 }
-.navigation .dropdownMenu a {
+.dropdownMenu[data-slot='dropdown-menu-content'] {
+  width: 200px;
+  min-width: 190px;
+}
+.dropdownItem {
+  display: flex;
+  align-items: center;
   width: 100%;
   min-height: 40px;
   padding: 0 12px;
   border-radius: 8px;
+  color: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
 }
-.navigation .dropdownMenu a:hover,
-.navigation .dropdownMenu a[aria-current] {
+.dropdownItem:hover,
+.dropdownItem:focus-visible,
+.dropdownItem[aria-current] {
   background: #f4f0ff;
+  color: #6250e9;
 }
 .navigation .cta {
   justify-content: center;
@@ -111,7 +115,7 @@
 }
 .brand:focus-visible,
 .navigation a:focus-visible,
-.navigation summary:focus-visible,
+.navigation .dropdownTrigger:focus-visible,
 .toggle:focus-visible {
   outline: 3px solid #6250e9;
   outline-offset: 3px;
@@ -180,25 +184,11 @@
     min-height: 48px;
     padding: 0 14px;
   }
-  .navigation summary {
+  .navigation .dropdownTrigger {
     justify-content: space-between;
     width: 100%;
     min-height: 48px;
     padding: 0 14px;
-  }
-  .navigation .dropdownMenu {
-    position: static;
-    display: grid;
-    gap: 0;
-    min-width: 0;
-    padding: 0 8px 8px 20px;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
-  }
-  .navigation .dropdownMenu a {
-    padding-left: 18px;
   }
   .navigation .cta {
     margin-top: 8px;
@@ -211,7 +201,8 @@
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .toggle span {
+  .toggle span,
+  .navigation .dropdownTrigger svg {
     transition: none;
   }
 }

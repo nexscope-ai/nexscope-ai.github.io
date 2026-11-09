@@ -4,6 +4,12 @@
 /* oxlint-disable next/no-html-link-for-pages, next/no-img-element */
 import { useEffect, useRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import styles from './marketing-header.module.css';
 import { videoWorkspaceUrl } from '@/lib/video-directory';
 
@@ -15,6 +21,58 @@ type MarketingHeaderProps = {
   homepageFocus?: boolean;
   videoCta?: boolean;
 };
+
+type NavigationDropdownItem = {
+  href: string;
+  label: string;
+  trackTool?: string;
+  current?: boolean;
+};
+
+function NavigationDropdown({
+  label,
+  current,
+  items,
+}: {
+  label: string;
+  current?: boolean;
+  items: NavigationDropdownItem[];
+}) {
+  return (
+    <li>
+      <DropdownMenu>
+        <DropdownMenuTrigger
+          className={styles.dropdownTrigger}
+          aria-current={current ? 'page' : undefined}
+        >
+          {label} <ChevronDown aria-hidden="true" size={14} />
+        </DropdownMenuTrigger>
+        <DropdownMenuContent
+          className={styles.dropdownMenu}
+          align="start"
+          side="bottom"
+          sideOffset={6}
+        >
+          {items.map((item) => (
+            <DropdownMenuItem
+              key={item.href}
+              className={styles.dropdownItem}
+              render={
+                <a
+                  href={item.href}
+                  data-track-tool={item.trackTool}
+                  aria-current={item.current ? 'page' : undefined}
+                >
+                  {item.label}
+                </a>
+              }
+            />
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </li>
+  );
+}
 
 export default function MarketingHeader({
   active,
@@ -72,48 +130,34 @@ export default function MarketingHeader({
           data-open={menuOpen}
         >
           <ul>
-            <li className={styles.dropdown}>
-              <details>
-                <summary
-                  aria-current={
-                    active === 'tools' || active === 'social' || active === 'video-apis'
-                      ? 'page'
-                      : undefined
-                  }
-                >
-                  APIs <ChevronDown aria-hidden="true" size={14} />
-                </summary>
-                <ul className={styles.dropdownMenu}>
-                  <li>
-                    <a
-                      href="/data/"
-                      data-track-tool="data-directory"
-                      aria-current={active === 'tools' ? 'page' : undefined}
-                    >
-                      Data APIs
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/social/"
-                      data-track-tool="social-directory"
-                      aria-current={active === 'social' ? 'page' : undefined}
-                    >
-                      Social APIs
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="/video-apis/"
-                      data-track-tool="video-api-directory"
-                      aria-current={active === 'video-apis' ? 'page' : undefined}
-                    >
-                      Video &amp; Image APIs
-                    </a>
-                  </li>
-                </ul>
-              </details>
-            </li>
+            <NavigationDropdown
+              label="APIs"
+              current={
+                active === 'tools' ||
+                active === 'social' ||
+                active === 'video-apis'
+              }
+              items={[
+                {
+                  href: '/data/',
+                  label: 'Data APIs',
+                  trackTool: 'data-directory',
+                  current: active === 'tools',
+                },
+                {
+                  href: '/social/',
+                  label: 'Social APIs',
+                  trackTool: 'social-directory',
+                  current: active === 'social',
+                },
+                {
+                  href: '/video-apis/',
+                  label: 'Video & Image APIs',
+                  trackTool: 'video-api-directory',
+                  current: active === 'video-apis',
+                },
+              ]}
+            />
             <li>
               <a
                 href="/video/"
@@ -139,26 +183,18 @@ export default function MarketingHeader({
                 Product Growth Report
               </a>
             </li>
-            <li className={styles.dropdown}>
-              <details>
-                <summary aria-current={active === 'pricing' ? 'page' : undefined}>
-                  Resources <ChevronDown aria-hidden="true" size={14} />
-                </summary>
-                <ul className={styles.dropdownMenu}>
-                  <li>
-                    <a href="/ecommerce-ai-tools/">Guides &amp; resources</a>
-                  </li>
-                  <li>
-                    <a
-                      href="/pricing/"
-                      aria-current={active === 'pricing' ? 'page' : undefined}
-                    >
-                      Pricing
-                    </a>
-                  </li>
-                </ul>
-              </details>
-            </li>
+            <NavigationDropdown
+              label="Resources"
+              current={active === 'pricing'}
+              items={[
+                { href: '/ecommerce-ai-tools/', label: 'Guides & resources' },
+                {
+                  href: '/pricing/',
+                  label: 'Pricing',
+                  current: active === 'pricing',
+                },
+              ]}
+            />
             <li>
               <a
                 className={styles.cta}
