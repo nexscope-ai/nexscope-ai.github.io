@@ -6,6 +6,7 @@ import LearnFooter from '@/components/learn-footer';
 import VideoApiDirectory from '@/components/video-api-directory';
 import catalog from '@/lib/video-api-directory.json';
 import { VIDEO_SOCIAL_IMAGE, NEXSCOPE_ORGANIZATION } from '@/lib/site-metadata';
+import gradientTitle from '@/app/gradient-title.module.css';
 import styles from '@/app/video/video.module.css';
 
 const title = 'Video & Image Generation APIs for Ecommerce | Nexscope';
@@ -98,7 +99,7 @@ export default function VideoApisPage() {
           <h1 id="video-apis-title">
             Video &amp; image APIs.
             <br />
-            <em>Find the model for your next build.</em>
+            <em className={gradientTitle.text}>Find the model for your next build.</em>
           </h1>
           <p className={styles.lead}>
             Browse {catalog.entries.length} published APIs across image

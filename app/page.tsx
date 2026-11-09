@@ -30,6 +30,7 @@ import {
 } from '@/lib/home-value.mjs';
 import { videoWorkflows, workflowUrl } from '@/lib/home-video-workflows';
 import { HOME_SOCIAL_IMAGE, NEXSCOPE_ORGANIZATION } from '@/lib/site-metadata';
+import gradientTitle from './gradient-title.module.css';
 import styles from './home-sections.module.css';
 
 const gallery = '/ecommerce-ai-tools/product-showcase/';
@@ -317,7 +318,7 @@ export default function Home() {
           <h1>
             Ecommerce data APIs.
             <br />
-            <em>MCP for AI agents. AI image and video.</em>
+            <em className={gradientTitle.text}>MCP for AI agents. AI image and video.</em>
           </h1>
           <p className={styles.heroLead}>
             Look up marketplace products, connect Codex, Claude, or Cursor to

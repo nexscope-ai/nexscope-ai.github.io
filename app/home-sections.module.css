@@ -54,12 +54,6 @@
   font-weight: 600;
   margin: 0;
 }
-.hero h1 em {
-  font-style: normal;
-  background: linear-gradient(105deg, #8c62d7, #6665c6 60%, #4b8871);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 .heroLead {
   max-width: 760px;
   font-size: 16px;

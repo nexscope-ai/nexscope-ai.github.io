@@ -14,6 +14,7 @@ import {
   videoWorkspaceUrl,
 } from '@/lib/video-directory';
 import { VIDEO_SOCIAL_IMAGE, NEXSCOPE_ORGANIZATION } from '@/lib/site-metadata';
+import gradientTitle from '@/app/gradient-title.module.css';
 import styles from './video.module.css';
 
 const title = 'AI Product Video Workflows for Ecommerce | Nexscope';
@@ -117,7 +118,7 @@ export default function VideoDirectoryPage() {
             <h1 id="video-title">
               AI product videos.
               <br />
-              Start with what you have.
+              <em className={gradientTitle.text}>Start with what you have.</em>
             </h1>
             <p className={styles.lead}>
               Nexscope offers five AI product video workflows for ecommerce

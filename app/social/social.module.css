@@ -8,10 +8,6 @@
   line-height: 1.06;
   margin: 0 0 24px;
 }
-.hero h1 em {
-  font-style: normal;
-  color: #7a50c6;
-}
 .taskGrid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

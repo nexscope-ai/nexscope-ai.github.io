@@ -13,6 +13,7 @@ import LearnFooter from '@/components/learn-footer';
 import SocialApiDirectory from '@/components/social-api-directory';
 import catalog from '@/lib/social-api-directory.json';
 import { socialGuide, socialFaqs } from '@/lib/social-guide.mjs';
+import gradientTitle from '@/app/gradient-title.module.css';
 import {
   SOCIAL_API_SOCIAL_IMAGE,
   NEXSCOPE_ORGANIZATION,
@@ -118,7 +119,7 @@ export default function SocialPage() {
           <h1>
             Social media APIs.
             <br />
-            <em>Find the right data for your next build.</em>
+            <em className={gradientTitle.text}>Find the right data for your next build.</em>
           </h1>
           <p className={styles.lead}>
             Nexscope provides platform-specific social media APIs for profiles,

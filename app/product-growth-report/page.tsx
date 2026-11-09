@@ -17,6 +17,7 @@ import {
   GROWTH_REPORT_SOCIAL_IMAGE,
   NEXSCOPE_ORGANIZATION,
 } from '@/lib/site-metadata';
+import gradientTitle from '@/app/gradient-title.module.css';
 import styles from './report.module.css';
 import GrowthReportExample, {
   reportExampleUrl,
@@ -200,7 +201,7 @@ export default function ProductGrowthReport() {
             <h1>
               Product Growth Report.
               <br />
-              <em>Know what to improve next.</em>
+              <em className={gradientTitle.text}>Know what to improve next.</em>
             </h1>
             <p className={styles.lead}>
               Nexscope Product Growth Report is a one-time, human-reviewed
