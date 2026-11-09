@@ -6,10 +6,8 @@ import MarketingHeader from '@/components/marketing-header';
 import LearnFooter from '@/components/learn-footer';
 import VideoDirectoryExamples from '@/components/video-directory-examples';
 import VideoWorkflowDirectory from '@/components/video-workflow-directory';
-import VideoApiDirectory from '@/components/video-api-directory';
 import VideoChannelStrip from '@/components/video-channel-strip';
 import examples from '@/lib/home-video-examples.json';
-import videoApis from '@/lib/video-api-directory.json';
 import {
   videoDirectory,
   videoDirectoryFaqs,
@@ -18,9 +16,9 @@ import {
 import { VIDEO_SOCIAL_IMAGE, NEXSCOPE_ORGANIZATION } from '@/lib/site-metadata';
 import styles from './video.module.css';
 
-const title = 'AI Product Video Workflows & Generation APIs | Nexscope';
+const title = 'AI Product Video Workflows for Ecommerce | Nexscope';
 const description =
-  'Turn product photos, listing URLs or reference clips into AI videos with Nexscope. Compare five workflows, watch examples and explore video generation APIs.';
+  'Turn product photos, listing URLs or reference clips into AI videos with Nexscope. Compare five guided workflows, watch examples and prepare your materials.';
 export const metadata: Metadata = {
   title,
   description,
@@ -69,18 +67,6 @@ export default function VideoDirectoryPage() {
           name: item.name,
           description: `${item.bestFor} ${item.result}`,
           url: videoWorkspaceUrl(item.id),
-        })),
-      },
-      {
-        '@type': 'ItemList',
-        '@id': 'https://learn.nexscope.ai/video/#apis',
-        name: 'Nexscope Video & Image APIs',
-        numberOfItems: videoApis.entries.length,
-        itemListElement: videoApis.entries.map((item, index) => ({
-          '@type': 'ListItem',
-          position: index + 1,
-          name: item.name,
-          url: `https://www.nexscope.ai/api-docs/${item.slug}?view=playground&co-from=learn`,
         })),
       },
       {
@@ -154,8 +140,8 @@ export default function VideoDirectoryPage() {
               <a href="#comparison" className={styles.secondary}>
                 Compare all workflows <ArrowRight size={15} />
               </a>
-              <a href="#apis" className={styles.secondary}>
-                Browse Video & Image APIs <ArrowRight size={15} />
+              <a href="/video-apis/" className={styles.secondary}>
+                Browse Video &amp; Image APIs <ArrowRight size={15} />
               </a>
             </div>
             <ul className={styles.benefits}>
@@ -376,22 +362,21 @@ export default function VideoDirectoryPage() {
             ))}
           </div>
         </section>
-        <VideoApiDirectory />
         <aside className={styles.developer}>
           <Code2 size={25} />
           <div>
-            <h2>Building a video integration?</h2>
+            <h2>Building with video or image models?</h2>
             <p>
-              Explore the model library and its documented inputs. API
-              integration is a separate path from these guided workflows.
+              Browse the separate Video &amp; Image API catalog to compare
+              published models and open their official documentation.
             </p>
           </div>
           <a
-            href={videoWorkspaceUrl('api')}
-            data-track
-            data-track-tool="video-model-library"
+            href="/video-apis/"
+            data-track-tool="video-api-directory"
+            data-cta-placement="video-workflow-directory"
           >
-            Explore models <ArrowUpRight size={16} />
+            Explore Video &amp; Image APIs <ArrowRight size={16} />
           </a>
         </aside>
       </main>

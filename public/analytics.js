@@ -38,7 +38,9 @@
   window.gtag('config', id, {
     page_location: page.href, page_title: document.title, page_referrer: referrer,
     cookie_domain: 'nexscope.ai',
-    linker: { domains: ['learn.nexscope.ai', 'www.nexscope.ai', 'nexscope.ai'], decorate_forms: false },
+    // Only decorate links that leave Learn for the main site. Learn pages share
+    // the nexscope.ai cookie domain, so same-site navigation needs no _gl.
+    linker: { domains: ['www.nexscope.ai', 'nexscope.ai'], decorate_forms: false },
     send_page_view: false,
     content_group: 'learn', site_surface: 'learn',
     landing_source: traffic.trafficSource || 'direct_or_unknown',

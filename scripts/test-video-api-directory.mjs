@@ -25,7 +25,7 @@ test('related workflow options resolve only to currently published APIs or model
 test('directory measurement reports result counts without search text, credentials or extra page views', () => {
   const calls = [];
   const target = {
-    location: { pathname: '/video/' },
+    location: { pathname: '/video-apis/' },
     gtag: (...args) => calls.push(args),
   };
   trackDirectoryAction(
@@ -41,7 +41,7 @@ test('directory measurement reports result counts without search text, credentia
   trackDirectoryAction('page_view', {}, target);
   assert.equal(calls.length, 1);
   assert.equal(calls[0][1], 'video_api_search');
-  assert.equal(calls[0][2].source_page, '/video/');
+  assert.equal(calls[0][2].source_page, '/video-apis/');
   assert.equal(calls[0][2].result_count, 2);
   assert.equal(JSON.stringify(calls).includes('private@example.com'), false);
   assert.equal(JSON.stringify(calls).includes('secret'), false);

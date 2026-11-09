@@ -7,6 +7,7 @@ import {
   Check,
   Code2,
   ClipboardCheck,
+  Clapperboard,
   Database,
   Globe2,
   PackagePlus,
@@ -23,6 +24,7 @@ import pricingSnapshot from '@/lib/pricing-snapshot.json';
 import creditSnapshot from '@/lib/data-credit-snapshot.json';
 import homeProductSnapshot from '@/lib/home-product-snapshot.json';
 import socialCatalog from '@/lib/social-api-directory.json';
+import videoApiCatalog from '@/lib/video-api-directory.json';
 import { pricingMoney } from '@/lib/pricing-content.mjs';
 import {
   entrySubscription,
@@ -39,9 +41,9 @@ const submit = `${gallery}submit/`;
 const publishedProduct = homeProductSnapshot.product;
 const homeTitle = 'Nexscope Learn | Ecommerce APIs, AI Videos & Product Growth';
 const homeDescription =
-  'Explore Nexscope ecommerce and social media APIs, AI product video workflows, human-reviewed growth reports and free product listings. Find your next workflow.';
+  'Explore Nexscope ecommerce, social media, video and image APIs, AI product video workflows, human-reviewed growth reports and free product listings.';
 const summary =
-  'Nexscope Learn helps developers build with ecommerce and social media APIs, and operators create AI product videos. Explore documented endpoints and video examples, request a human-reviewed Product Growth Report for one product and market, or submit accurate product facts to the completely free Product Gallery.';
+  'Nexscope Learn helps developers build with ecommerce, social media, video and image APIs, and operators create AI product videos. Explore documented endpoints and video examples, request a human-reviewed Product Growth Report for one product and market, or submit accurate product facts to the completely free Product Gallery.';
 const platforms = [
   ['amazon', 'Amazon'],
   ['tiktok', 'TikTok'],
@@ -57,7 +59,7 @@ const faqs = [
   },
   {
     q: 'What is available for ecommerce developers?',
-    a: 'Explore ecommerce Data APIs for marketplace research and Social APIs for profiles, posts, comments, search and transcripts. Choose an endpoint by platform and task, then open its official playground to inspect required inputs and responses. API requests use your own credentials and follow the selected operation’s requirements.',
+    a: 'Explore ecommerce Data APIs, Social APIs, and Video & Image APIs for creative integrations. Choose an endpoint by platform, model or task, then open its official playground to inspect required inputs and responses. API requests use your own credentials and follow the selected operation’s requirements.',
   },
   {
     q: 'Is the Product Growth Report the same as a free Gallery listing?',
@@ -163,12 +165,18 @@ export default function Home() {
                     {
                       '@type': 'ListItem',
                       position: 4,
+                      name: 'Video and Image API directory',
+                      url: 'https://learn.nexscope.ai/video-apis/',
+                    },
+                    {
+                      '@type': 'ListItem',
+                      position: 5,
                       name: 'Product Growth Report and free Product Gallery',
                       url: 'https://learn.nexscope.ai/#product-growth',
                     },
                     {
                       '@type': 'ListItem',
-                      position: 5,
+                      position: 6,
                       name: 'Nexscope subscriptions',
                       url: 'https://learn.nexscope.ai/pricing/',
                     },
@@ -202,10 +210,10 @@ export default function Home() {
             <em>Build for ecommerce.</em>
           </h1>
           <p className={styles.heroLead}>
-            Build ecommerce workflows with marketplace and social media APIs.
-            Turn product photos and links into AI videos. Get a human-reviewed
-            Product Growth Report, or list your product in the completely free
-            Product Gallery.
+            Build ecommerce workflows with marketplace, social media, video
+            and image APIs. Turn product photos and links into AI videos. Get a
+            human-reviewed Product Growth Report, or list your product in the
+            completely free Product Gallery.
           </p>
           <nav
             className={styles.quickNav}
@@ -217,7 +225,7 @@ export default function Home() {
               </span>
               <span className={styles.quickCopy}>
                 <strong>For ecommerce developers</strong>
-                <span>Build with ecommerce and social media APIs.</span>
+                <span>Build with ecommerce, social, video and image APIs.</span>
               </span>
               <ArrowDownRight
                 className={styles.quickArrow}
@@ -334,10 +342,10 @@ export default function Home() {
               </h2>
             </div>
             <p className={styles.moduleIntro}>
-              Bring marketplace research into your apps, internal tools and AI
-              workflows. Find an operation by platform and task, then inspect
-              its documented inputs and results. For profiles, posts and
-              comments, explore the{' '}
+              Bring marketplace research and creative capabilities into your
+              apps, internal tools and AI workflows. Find an operation by
+              platform, model or task, then inspect its documented inputs and
+              results. For profiles, posts and comments, explore the{' '}
               <a href="/social/" data-track-tool="social-directory">
                 Social API directory
               </a>
@@ -523,6 +531,33 @@ export default function Home() {
                 integrating.
               </p>
             </div>
+          </section>
+          <section
+            className={styles.videoApiFeature}
+            aria-labelledby="home-video-api-title"
+          >
+            <span className={styles.videoApiIcon}>
+              <Clapperboard size={23} aria-hidden="true" />
+            </span>
+            <div className={styles.videoApiCopy}>
+              <p className={styles.valueEyebrow}>VIDEO &amp; IMAGE APIS</p>
+              <h3 id="home-video-api-title">
+                Build creative workflows with model APIs.
+              </h3>
+              <p>
+                Browse {videoApiCatalog.entries.length} image generation,
+                video generation and multimodal APIs. Filter by capability and
+                open the official playground for each model.
+              </p>
+            </div>
+            <a
+              href="/video-apis/"
+              data-track-tool="video-api-directory"
+              data-cta-placement="home-developers-video-apis"
+            >
+              Explore Video &amp; Image APIs{' '}
+              <ArrowRight size={16} aria-hidden="true" />
+            </a>
           </section>
           {entry && dataCount !== null && (
             <div className={styles.valueStrip}>

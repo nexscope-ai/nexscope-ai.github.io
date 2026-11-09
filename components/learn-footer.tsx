@@ -12,6 +12,9 @@ export default function LearnFooter() {
         <nav className={styles.footerlinks} aria-label="Footer">
           <a href="/data/">Data APIs</a>
           <a href="/social/">Social APIs</a>
+          <a href="/video-apis/" data-track-tool="video-api-directory">
+            Video &amp; Image APIs
+          </a>
           <a href="/video/" data-track-tool="video-directory">
             Video workflows
           </a>

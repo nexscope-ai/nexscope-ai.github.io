@@ -33,6 +33,7 @@ export const routeSlugs = [
   'tools',
   'pricing',
   'video',
+  'video-apis',
   'social',
   'product-growth-report',
   ...interactiveWorkflowSlugs.map((slug) => `tools/${slug}`),

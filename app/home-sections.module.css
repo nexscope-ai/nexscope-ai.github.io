@@ -649,10 +649,79 @@
   border-top: 1px solid #e5ddef;
   font-size: 11px;
 }
+.videoApiFeature {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-top: 18px;
+  padding: 22px 26px;
+  border: 1px solid #e2d7ee;
+  border-radius: 18px;
+  background: linear-gradient(115deg, #f5f0fc, #fff 78%);
+}
+.videoApiIcon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 48px;
+  width: 48px;
+  height: 48px;
+  border-radius: 13px;
+  background: #ede7f7;
+  color: #7853be;
+}
+.videoApiCopy {
+  flex: 1;
+  min-width: 0;
+}
+.videoApiCopy .valueEyebrow {
+  margin: 0 0 5px;
+  color: #7950b7;
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: 1.3px;
+}
+.videoApiCopy h3 {
+  margin: 0 0 5px;
+  font-size: 18px;
+  line-height: 1.35;
+  letter-spacing: -0.25px;
+}
+.videoApiCopy > p:last-child {
+  margin: 0;
+  color: #706179;
+  font-size: 12px;
+  line-height: 1.65;
+}
+.videoApiFeature > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: none;
+  min-height: 44px;
+  padding: 0 15px;
+  border-radius: 9px;
+  background: #f0e9fb;
+  color: #7049a4;
+  font-size: 12px;
+  font-weight: 650;
+}
 @media (max-width: 760px) {
   .socialFeature {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+  .videoApiFeature {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 14px;
+  }
+  .videoApiCopy {
+    flex-basis: calc(100% - 64px);
+  }
+  .videoApiFeature > a {
+    margin-left: 62px;
   }
 }
 .dataCopy {

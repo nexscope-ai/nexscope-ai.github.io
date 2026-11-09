@@ -73,8 +73,8 @@ async function addAnalytics(directory) {
           '<script src="/traffic-attribution.js?v=1" defer></script>',
         );
       }
-      if (!html.includes('src="/analytics.js?v=11"')) {
-        scripts.push('<script src="/analytics.js?v=11" defer></script>');
+      if (!html.includes('src="/analytics.js?v=12"')) {
+        scripts.push('<script src="/analytics.js?v=12" defer></script>');
       }
       if (!html.includes('src="https://analytics.ahrefs.com/analytics.js"')) {
         scripts.push(

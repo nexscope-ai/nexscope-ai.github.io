@@ -8,7 +8,7 @@ import styles from './marketing-header.module.css';
 import { videoWorkspaceUrl } from '@/lib/video-directory';
 
 type MarketingHeaderProps = {
-  active?: 'tools' | 'pricing' | 'video' | 'social' | 'growth';
+  active?: 'tools' | 'pricing' | 'video' | 'video-apis' | 'social' | 'growth';
   campaign: string;
   explorePath?: '/apis' | '/';
   productReviewCta?: boolean;
@@ -76,7 +76,9 @@ export default function MarketingHeader({
               <details>
                 <summary
                   aria-current={
-                    active === 'tools' || active === 'social' ? 'page' : undefined
+                    active === 'tools' || active === 'social' || active === 'video-apis'
+                      ? 'page'
+                      : undefined
                   }
                 >
                   APIs <ChevronDown aria-hidden="true" size={14} />
@@ -98,6 +100,15 @@ export default function MarketingHeader({
                       aria-current={active === 'social' ? 'page' : undefined}
                     >
                       Social APIs
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/video-apis/"
+                      data-track-tool="video-api-directory"
+                      aria-current={active === 'video-apis' ? 'page' : undefined}
+                    >
+                      Video &amp; Image APIs
                     </a>
                   </li>
                 </ul>
