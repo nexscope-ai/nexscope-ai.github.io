@@ -647,6 +647,9 @@
 .developers {
   padding-top: 62px;
 }
+.developers .moduleHeading {
+  row-gap: 20px;
+}
 .developers .moduleLabel {
   color: #8266b5;
 }
@@ -978,30 +981,226 @@
   color: #a294ac;
   max-width: 360px;
 }
-.mcpInset {
-  max-width: 480px;
-  margin-top: 16px;
-  padding: 12px 14px 10px;
-  border: 1px solid #e7e0ed;
-  border-radius: 10px;
-  background: #fff;
-  scroll-margin-top: 24px;
-}
-.mcpInset p {
+.mcpBanner {
+  position: relative;
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, auto) auto;
+  align-items: center;
+  gap: 12px 18px;
+  min-width: 0;
   margin: 0;
-  color: #5f5468;
-  font-size: 12.5px;
-  line-height: 1.6;
+  padding: 12px 14px 12px 16px;
+  border: 1px solid #e3d6f0;
+  border-radius: 16px;
+  background: linear-gradient(105deg, #f8f4fd 0%, #f3eefb 54%, #f2f6f3 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  scroll-margin-top: 28px;
+  transition:
+    border-color 0.16s ease,
+    box-shadow 0.16s ease;
 }
-.mcpInset a {
-  color: #7049a4;
-  font-weight: 600;
+.mcpBanner:hover {
+  border-color: #d3c0e8;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 10px 26px rgba(109, 72, 176, 0.08);
 }
-.mcpInset .mcpInsetLinks {
+.mcpLead {
   display: flex;
-  flex-wrap: wrap;
-  gap: 4px 14px;
-  margin-top: 8px;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.mcpMark {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: #ede7f7;
+  color: #8562c4;
+}
+.mcpPill {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: #ece3f8;
+  color: #694199;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.15px;
+}
+.mcpLeadText {
+  min-width: 0;
+}
+.mcpHeadline {
+  margin: 0;
+  color: #2c2433;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.25px;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+.mcpSubline {
+  margin: 2px 0 0;
+  color: #746484;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.mcpEndpoint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  max-width: 100%;
+  padding: 4px 4px 4px 12px;
+  border: 1px solid #e3d6ef;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+.mcpEndpoint[data-copied='true'] {
+  border-color: #b7d7c4;
+  background: #f7fbf8;
+}
+.mcpEndpoint code {
+  min-width: 0;
+  overflow: hidden;
+  color: #3c3148;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.mcpCopy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-shrink: 0;
+  min-width: 78px;
+  margin: 0;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 999px;
+  background: #f3ecfb;
+  color: #694199;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background 0.16s ease,
+    color 0.16s ease;
+}
+.mcpCopy:hover {
+  background: #e6daf6;
+  color: #57368a;
+}
+.mcpEndpoint[data-copied='true'] .mcpCopy {
+  background: #e5f4eb;
+  color: #2f6b49;
+}
+.mcpEndpoint[data-copied='true'] .mcpCopy:hover {
+  background: #d7eddf;
+  color: #24553a;
+}
+.mcpActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  flex-shrink: 0;
+}
+.mcpConnect {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #7950cd;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.16s ease;
+}
+.mcpConnect:hover {
+  background: #6840be;
+  color: #fff;
+}
+.mcpGuide {
+  color: #7a6494;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.mcpGuide:hover {
+  color: #5d4180;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.mcpCopy:focus-visible,
+.mcpConnect:focus-visible,
+.mcpGuide:focus-visible {
+  outline: 3px solid #7951d4;
+  outline-offset: 3px;
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+@media (max-width: 980px) {
+  .mcpBanner {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: stretch;
+    gap: 12px;
+    padding: 14px;
+  }
+  .mcpEndpoint {
+    width: 100%;
+  }
+  .mcpEndpoint code {
+    flex: 1 1 auto;
+  }
+  .mcpActions {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+  }
+}
+@media (max-width: 700px) {
+  .mcpBanner {
+    margin-top: 18px;
+  }
+  .mcpHeadline {
+    font-size: 14.5px;
+  }
+  .mcpLead {
+    display: grid;
+    grid-template-columns: auto auto minmax(0, 1fr);
+    align-items: center;
+    column-gap: 8px;
+    row-gap: 7px;
+  }
+  .mcpLeadText {
+    grid-column: 1 / -1;
+  }
 }
 .codeCard {
   min-width: 0;
