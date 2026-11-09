@@ -611,39 +611,19 @@
 }
 .videoApiGrid {
   grid-template-columns: 1fr 1fr;
-  grid-template-areas: 'panel copy';
-}
-.videoApiGrid > .dataCopy {
-  grid-area: copy;
-}
-.videoApiGrid > .videoApiPanel {
-  grid-area: panel;
 }
 .socialFeature {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: 'copy panel';
-  gap: 48px;
+  display: block;
   margin-top: 44px;
   padding-top: 42px;
   border-top: 1px solid #e8e0eb;
   scroll-margin-top: 26px;
 }
+.socialFeature .moduleHeading {
+  margin-bottom: 34px;
+}
 .socialFeatureIntro {
-  grid-area: copy;
-  padding: 16px 0;
-}
-.socialFeatureIntro h3 {
-  margin: 12px 0 16px;
-  max-width: 490px;
-  font-size: clamp(25px, 3vw, 32px);
-  line-height: 1.2;
-  letter-spacing: -0.8px;
-}
-.socialFeatureIntro > p:not(:first-child) {
-  font-size: 14px;
-  color: #706179;
-  line-height: 1.8;
+  min-width: 0;
 }
 .socialTasks {
   display: flex;
@@ -652,7 +632,7 @@
   padding: 22px 27px 8px;
 }
 .socialApiPanel {
-  grid-area: panel;
+  min-width: 0;
 }
 .socialTasks .socialPanelLabel {
   margin: 0 0 4px;
@@ -714,14 +694,7 @@
   scroll-margin-top: 26px;
 }
 .videoApiModule .moduleHeading {
-  margin-bottom: 30px;
-}
-.videoApiModule .moduleLabel > span {
-  width: auto;
-  padding: 0 8px;
-  border-radius: 999px;
-  font-size: 8px;
-  letter-spacing: 0.6px;
+  margin-bottom: 34px;
 }
 .videoApiCategories {
   padding: 26px 27px 23px;
@@ -785,15 +758,14 @@
   white-space: nowrap;
 }
 @media (max-width: 760px) {
-  .socialFeature {
+  .developerGrid {
     grid-template-columns: 1fr;
-    grid-template-areas: 'copy' 'panel';
     gap: 22px;
-    padding-top: 32px;
   }
-  .videoApiGrid {
-    grid-template-columns: 1fr;
-    grid-template-areas: 'copy' 'panel';
+  .socialFeature,
+  .videoApiModule {
+    margin-top: 34px;
+    padding-top: 32px;
   }
   .socialTasks {
     padding: 20px 20px 6px;
@@ -804,9 +776,9 @@
     height: 27px;
     padding: 4px;
   }
-  .videoApiModule {
-    margin-top: 34px;
-    padding-top: 32px;
+  .videoApiModule .moduleHeading,
+  .socialFeature .moduleHeading {
+    margin-bottom: 26px;
   }
   .videoApiCategories {
     padding: 22px 20px 18px;

@@ -398,10 +398,7 @@ export default function Home() {
           <div className={styles.moduleHeading}>
             <div>
               <p className={styles.moduleLabel}>
-                <span className={styles.moduleIndex}>
-                  01 / 03
-                </span>{' '}
-                FOR ECOMMERCE DEVELOPERS
+                <span className={styles.moduleIndex}>01 / 03</span> DATA APIS
               </p>
               <h2 id="developers-title">
                 The data behind
@@ -410,8 +407,9 @@ export default function Home() {
               </h2>
             </div>
             <p className={styles.moduleIntro}>
-              Explore marketplace, social and creative APIs by platform, model
-              or task. Inspect documented inputs and responses before you build.
+              For ecommerce developers building research tools and AI workflows:
+              explore marketplace data by platform, compare documented inputs
+              and outputs, then open the official tester.
             </p>
           </div>
           <div className={styles.developerGrid} id="data-apis">
@@ -519,7 +517,8 @@ export default function Home() {
             <div className={styles.moduleHeading}>
               <div>
                 <p className={styles.moduleLabel}>
-                  <span>VIDEO</span> IMAGE &amp; VIDEO APIS
+                  <span className={styles.moduleIndex}>02 / 03</span> VIDEO
+                  &amp; IMAGE APIS
                 </p>
                 <h2 id="home-video-api-title">
                   Creative models for
@@ -675,115 +674,140 @@ export default function Home() {
           </section>
           <section
             className={styles.socialFeature}
+            id="social-apis"
             aria-labelledby="home-social-title"
           >
-            <div className={styles.socialFeatureIntro}>
-              <p className={styles.valueEyebrow}>SOCIAL & CONTENT DATA APIS</p>
-              <h3 id="home-social-title">
-                Build with the conversations behind the market.
-              </h3>
-              <p>
-                Bring social profiles, posts, comments, search results and
-                transcripts into your research tools and apps. Explore{' '}
-                {socialCatalog.entries.length} published operations and choose
-                the endpoint that fits your platform and task.
-              </p>
-              <div
-                className={styles.platforms}
-                aria-label="Social platform examples"
-              >
-                {[
-                  ['Instagram', '/assets/video-channels/instagram.svg'],
-                  ['TikTok', '/assets/video-channels/tiktok.webp'],
-                  ['YouTube', '/assets/video-channels/youtube.svg'],
-                  ['Reddit', '/assets/social-platforms/reddit.svg'],
-                  ['LinkedIn', '/assets/social-platforms/linkedin.svg'],
-                  ['X / Twitter', '/assets/social-platforms/x.svg'],
-                ].map(([name, logo]) => (
-                  <span key={name}>
-                    <img
-                      src={logo}
-                      alt=""
-                      width="20"
-                      height="20"
-                      loading="lazy"
-                    />
-                    {name}
-                  </span>
-                ))}
-              </div>
-              <a
-                className={styles.primary}
-                href="/social/"
-                data-track-tool="social-directory"
-                data-cta-placement="home-developers-social"
-              >
-                Explore Social APIs <ArrowRight size={16} aria-hidden="true" />
-              </a>
-            </div>
-            <div className={`${styles.codeCard} ${styles.socialApiPanel}`}>
-              <div className={styles.codeTop}>
-                <span>
-                  <i />
-                  <i />
-                  <i />
-                </span>
-                <span>CHOOSE A SOCIAL API</span>
-                <Users size={17} aria-hidden="true" />
-              </div>
-              <div className={styles.socialTasks}>
-                <p className={styles.socialPanelLabel}>EXPLORE BY WORKFLOW</p>
-                {socialApiWorkflows.map(({ title, description, channels }) => (
-                  <div key={title}>
-                    <span
-                      className={styles.socialChannelStack}
-                      role="img"
-                      aria-label={`${channels
-                        .map(([channel]) => channel)
-                        .join(', ')} APIs`}
-                    >
-                      {channels.map(([channel, logo]) => (
-                        <img
-                          key={channel}
-                          src={logo}
-                          alt=""
-                          title={channel}
-                          width="23"
-                          height="23"
-                          loading="lazy"
-                        />
-                      ))}
-                    </span>
-                    <div>
-                      <h4>{title}</h4>
-                      <p>{description}</p>
-                    </div>
-                  </div>
-                ))}
-                <p className={styles.socialScope}>
-                  Coverage and available fields vary by endpoint. Check the
-                  official playground before integrating.
+            <div className={styles.moduleHeading}>
+              <div>
+                <p className={styles.moduleLabel}>
+                  <span className={styles.moduleIndex}>03 / 03</span> SOCIAL
+                  APIS
                 </p>
+                <h2 id="home-social-title">
+                  Build with the conversations
+                  <br />
+                  <em>behind the market.</em>
+                </h2>
               </div>
-              <ol className={styles.apiSteps}>
-                <li>
-                  <span>1</span>Choose a platform
-                </li>
-                <li>
-                  <span>2</span>Find profiles, posts or discussions
-                </li>
-                <li>
-                  <span>3</span>Inspect the documented response
-                </li>
-              </ol>
-              <a
-                href="/social/"
-                data-track-tool="social-directory"
-                data-cta-placement="home-social-api-panel"
+              <p className={styles.moduleIntro}>
+                Bring public profiles, posts, comments, search results and
+                transcripts into your research tools. Browse{' '}
+                {socialCatalog.entries.length} Social API operations by platform
+                and workflow.
+              </p>
+            </div>
+            <div className={`${styles.developerGrid} ${styles.socialApiGrid}`}>
+              <div
+                className={`${styles.dataCopy} ${styles.socialFeatureIntro}`}
               >
-                Browse all {socialCatalog.entries.length} Social APIs
-                <ArrowUpRight size={15} aria-hidden="true" />
-              </a>
+                <span className={styles.dataIcon}>
+                  <Users size={24} aria-hidden="true" />
+                </span>
+                <h3>Bring public social signals into your workflows.</h3>
+                <p>
+                  Find creator profiles, posts, comments, discussions and
+                  transcripts across supported platforms.
+                </p>
+                <div
+                  className={styles.platforms}
+                  aria-label="Social platform examples"
+                >
+                  {[
+                    ['Instagram', '/assets/video-channels/instagram.svg'],
+                    ['TikTok', '/assets/video-channels/tiktok.webp'],
+                    ['YouTube', '/assets/video-channels/youtube.svg'],
+                    ['Reddit', '/assets/social-platforms/reddit.svg'],
+                    ['LinkedIn', '/assets/social-platforms/linkedin.svg'],
+                    ['X / Twitter', '/assets/social-platforms/x.svg'],
+                  ].map(([name, logo]) => (
+                    <span key={name}>
+                      <img
+                        src={logo}
+                        alt=""
+                        width="20"
+                        height="20"
+                        loading="lazy"
+                      />
+                      {name}
+                    </span>
+                  ))}
+                </div>
+                <a
+                  className={styles.primary}
+                  href="/social/"
+                  data-track-tool="social-directory"
+                  data-cta-placement="home-developers-social"
+                >
+                  Explore Social APIs{' '}
+                  <ArrowRight size={16} aria-hidden="true" />
+                </a>
+              </div>
+              <div className={`${styles.codeCard} ${styles.socialApiPanel}`}>
+                <div className={styles.codeTop}>
+                  <span>
+                    <i />
+                    <i />
+                    <i />
+                  </span>
+                  <span>CHOOSE A SOCIAL API</span>
+                  <Users size={17} aria-hidden="true" />
+                </div>
+                <div className={styles.socialTasks}>
+                  <p className={styles.socialPanelLabel}>EXPLORE BY WORKFLOW</p>
+                  {socialApiWorkflows.map(
+                    ({ title, description, channels }) => (
+                      <div key={title}>
+                        <span
+                          className={styles.socialChannelStack}
+                          role="img"
+                          aria-label={`${channels
+                            .map(([channel]) => channel)
+                            .join(', ')} APIs`}
+                        >
+                          {channels.map(([channel, logo]) => (
+                            <img
+                              key={channel}
+                              src={logo}
+                              alt=""
+                              title={channel}
+                              width="23"
+                              height="23"
+                              loading="lazy"
+                            />
+                          ))}
+                        </span>
+                        <div>
+                          <h4>{title}</h4>
+                          <p>{description}</p>
+                        </div>
+                      </div>
+                    ),
+                  )}
+                  <p className={styles.socialScope}>
+                    Coverage and available fields vary by endpoint. Check the
+                    official playground before integrating.
+                  </p>
+                </div>
+                <ol className={styles.apiSteps}>
+                  <li>
+                    <span>1</span>Choose a platform
+                  </li>
+                  <li>
+                    <span>2</span>Find profiles, posts or discussions
+                  </li>
+                  <li>
+                    <span>3</span>Inspect the documented response
+                  </li>
+                </ol>
+                <a
+                  href="/social/"
+                  data-track-tool="social-directory"
+                  data-cta-placement="home-social-api-panel"
+                >
+                  Browse all {socialCatalog.entries.length} Social APIs
+                  <ArrowUpRight size={15} aria-hidden="true" />
+                </a>
+              </div>
             </div>
           </section>
           {entry && dataCount !== null && (
@@ -836,12 +860,7 @@ export default function Home() {
         >
           <div className={styles.moduleHeading}>
             <div>
-              <p className={styles.moduleLabel}>
-                <span className={styles.moduleIndex}>
-                  02 / 03
-                </span>{' '}
-                FOR ECOMMERCE OPERATORS
-              </p>
+              <p className={styles.moduleLabel}>FOR ECOMMERCE OPERATORS</p>
               <h2 id="operators-title">
                 Make your next
                 <br />
@@ -944,12 +963,7 @@ export default function Home() {
         >
           <div className={styles.moduleHeading}>
             <div>
-              <p className={styles.moduleLabel}>
-                <span className={styles.moduleIndex}>
-                  03 / 03
-                </span>{' '}
-                FOR PRODUCT TEAMS
-              </p>
+              <p className={styles.moduleLabel}>FOR PRODUCT TEAMS</p>
               <h2 id="growth-title">
                 The next step for
                 <br />
