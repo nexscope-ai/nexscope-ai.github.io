@@ -10,7 +10,6 @@ import {
   Clapperboard,
   Database,
   Globe2,
-  Image,
   PackagePlus,
   Sparkles,
   MessageCircle,
@@ -84,19 +83,34 @@ const videoApiCategories = [
     id: 'image-generation-models',
     name: 'Image generation',
     summary: 'Create and edit product visuals',
-    Icon: Image,
+    channels: [
+      ['Google Gemini', 'nano-banana.webp'],
+      ['OpenAI', 'gpt-image.webp'],
+      ['ByteDance', 'seedream-seedance.webp'],
+      ['Alibaba', 'wan.webp'],
+    ],
   },
   {
     id: 'video-generation-models',
     name: 'Video generation',
     summary: 'Turn product assets into motion',
-    Icon: Clapperboard,
+    channels: [
+      ['ByteDance', 'seedream-seedance.webp'],
+      ['Kuaishou', 'kling.webp'],
+      ['Alibaba', 'wan.webp'],
+      ['MiniMax', 'minimax.webp'],
+    ],
   },
   {
     id: 'multimodal-ai',
     name: 'Multimodal AI',
     summary: 'Explore image and video workflows',
-    Icon: Sparkles,
+    channels: [
+      ['Google Gemini', 'nano-banana.webp'],
+      ['OpenAI', 'gpt-image.webp'],
+      ['ByteDance', 'seedream-seedance.webp'],
+      ['Alibaba', 'wan.webp'],
+    ],
   },
 ] as const;
 
@@ -471,6 +485,168 @@ export default function Home() {
             </div>
           </div>
           <section
+            className={styles.videoApiModule}
+            id="video-image-apis"
+            aria-labelledby="home-video-api-title"
+          >
+            <div className={styles.moduleHeading}>
+              <div>
+                <p className={styles.moduleLabel}>
+                  <span>VIDEO</span> IMAGE &amp; VIDEO APIS
+                </p>
+                <h2 id="home-video-api-title">
+                  Creative models for
+                  <br />
+                  <em>your next workflow.</em>
+                </h2>
+              </div>
+              <p className={styles.moduleIntro}>
+                Browse image generation, video generation and multimodal APIs
+                in one place. Compare model capabilities, review the required
+                inputs, then open the official playground to try an endpoint.
+              </p>
+            </div>
+            <div className={styles.developerGrid}>
+              <div className={styles.dataCopy}>
+                <span className={styles.dataIcon}>
+                  <Clapperboard size={24} aria-hidden="true" />
+                </span>
+                <h3>Find the right image or video API.</h3>
+                <p>
+                  Create product visuals, turn images into videos and explore
+                  multimodal models for creative applications.
+                </p>
+                <div
+                  className={styles.platforms}
+                  aria-label="Video and image API categories"
+                >
+                  {videoApiCategories.map(({ id, name, channels }) => (
+                    <span key={id}>
+                      <span
+                        className={styles.videoChannelStack}
+                        role="img"
+                        aria-label={`${channels
+                          .map(([channel]) => channel)
+                          .join(', ')} model channels`}
+                      >
+                        {channels.slice(0, 4).map(([channel, logo]) => (
+                          <img
+                            key={channel}
+                            src={`/assets/video-models/${logo}`}
+                            alt=""
+                            title={channel}
+                            width="20"
+                            height="20"
+                            loading="lazy"
+                          />
+                        ))}
+                      </span>
+                      {name}
+                    </span>
+                  ))}
+                </div>
+                <p className={styles.videoChannelNote}>
+                  Channel logos show example models in this collection.
+                </p>
+                <ul className={styles.benefits}>
+                  <li>
+                    <Check size={16} />
+                    Browse {videoApiCatalog.entries.length} published APIs by
+                    capability
+                  </li>
+                  <li>
+                    <Check size={16} />
+                    Compare model inputs and supported workflows
+                  </li>
+                  <li>
+                    <Check size={16} />
+                    Open official docs and playgrounds
+                  </li>
+                </ul>
+                <a
+                  className={styles.primary}
+                  href="/video-apis/"
+                  data-track-tool="video-api-directory"
+                  data-cta-placement="home-developers-video-apis"
+                >
+                  Explore Video &amp; Image APIs <ArrowRight size={16} />
+                </a>
+                <p className={styles.dataNote}>
+                  Browse model options and check each API&apos;s documentation
+                  for supported inputs and credit requirements.
+                </p>
+              </div>
+              <div className={`${styles.codeCard} ${styles.videoApiPanel}`}>
+                <div className={styles.codeTop}>
+                  <span>
+                    <i />
+                    <i />
+                    <i />
+                  </span>
+                  <span>CHOOSE A CREATIVE API</span>
+                  <Clapperboard size={17} aria-hidden="true" />
+                </div>
+                <div className={styles.videoApiCategories}>
+                  <p>EXPLORE BY CAPABILITY</p>
+                  {videoApiCategories.map(({ id, name, summary, channels }) => {
+                    const count = videoApiCatalog.entries.filter(
+                      (item) => item.category === id,
+                    ).length;
+                    return (
+                      <div className={styles.videoApiCategory} key={id}>
+                        <span
+                          className={styles.videoApiChannelStack}
+                          role="img"
+                          aria-label={`${channels
+                            .map(([channel]) => channel)
+                            .join(', ')} model channels`}
+                        >
+                          {channels.slice(0, 4).map(([channel, logo]) => (
+                            <img
+                              key={channel}
+                              src={`/assets/video-models/${logo}`}
+                              alt=""
+                              title={channel}
+                              width="23"
+                              height="23"
+                              loading="lazy"
+                            />
+                          ))}
+                        </span>
+                        <span className={styles.videoApiCategoryCopy}>
+                          <strong>{name}</strong>
+                          <small>{summary}</small>
+                        </span>
+                        <span className={styles.videoApiCategoryCount}>
+                          {count}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+                <ol className={styles.apiSteps}>
+                  <li>
+                    <span>1</span>Choose a task or model
+                  </li>
+                  <li>
+                    <span>2</span>Check inputs and outputs
+                  </li>
+                  <li>
+                    <span>3</span>Open its official playground
+                  </li>
+                </ol>
+                <a
+                  href="/video-apis/"
+                  data-track-tool="video-api-directory"
+                  data-cta-placement="home-video-api-panel"
+                >
+                  Browse all {videoApiCatalog.entries.length} APIs
+                  <ArrowUpRight size={15} aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+          </section>
+          <section
             className={styles.socialFeature}
             aria-labelledby="home-social-title"
           >
@@ -551,131 +727,6 @@ export default function Home() {
                 endpoint. Inspect a response in the official playground before
                 integrating.
               </p>
-            </div>
-          </section>
-          <section
-            className={styles.videoApiModule}
-            id="video-image-apis"
-            aria-labelledby="home-video-api-title"
-          >
-            <div className={styles.moduleHeading}>
-              <div>
-                <p className={styles.moduleLabel}>
-                  <span>VIDEO</span> IMAGE &amp; VIDEO APIS
-                </p>
-                <h2 id="home-video-api-title">
-                  Creative models for
-                  <br />
-                  <em>your next workflow.</em>
-                </h2>
-              </div>
-              <p className={styles.moduleIntro}>
-                Browse image generation, video generation and multimodal APIs
-                in one place. Compare model capabilities, review the required
-                inputs, then open the official playground to try an endpoint.
-              </p>
-            </div>
-            <div className={styles.developerGrid}>
-              <div className={styles.dataCopy}>
-                <span className={styles.dataIcon}>
-                  <Clapperboard size={24} aria-hidden="true" />
-                </span>
-                <h3>Find the right image or video API.</h3>
-                <p>
-                  Create product visuals, turn images into videos and explore
-                  multimodal models for creative applications.
-                </p>
-                <div
-                  className={styles.platforms}
-                  aria-label="Video and image API categories"
-                >
-                  {videoApiCategories.map(({ id, name, Icon }) => (
-                    <span key={id}>
-                      <Icon size={17} aria-hidden="true" />
-                      {name}
-                    </span>
-                  ))}
-                </div>
-                <ul className={styles.benefits}>
-                  <li>
-                    <Check size={16} />
-                    Browse {videoApiCatalog.entries.length} published APIs by
-                    capability
-                  </li>
-                  <li>
-                    <Check size={16} />
-                    Compare model inputs and supported workflows
-                  </li>
-                  <li>
-                    <Check size={16} />
-                    Open official docs and playgrounds
-                  </li>
-                </ul>
-                <a
-                  className={styles.primary}
-                  href="/video-apis/"
-                  data-track-tool="video-api-directory"
-                  data-cta-placement="home-developers-video-apis"
-                >
-                  Explore Video &amp; Image APIs <ArrowRight size={16} />
-                </a>
-                <p className={styles.dataNote}>
-                  Browse model options and check each API&apos;s documentation
-                  for supported inputs and credit requirements.
-                </p>
-              </div>
-              <div className={`${styles.codeCard} ${styles.videoApiPanel}`}>
-                <div className={styles.codeTop}>
-                  <span>
-                    <i />
-                    <i />
-                    <i />
-                  </span>
-                  <span>CHOOSE A CREATIVE API</span>
-                  <Clapperboard size={17} aria-hidden="true" />
-                </div>
-                <div className={styles.videoApiCategories}>
-                  <p>EXPLORE BY CAPABILITY</p>
-                  {videoApiCategories.map(({ id, name, summary, Icon }) => {
-                    const count = videoApiCatalog.entries.filter(
-                      (item) => item.category === id,
-                    ).length;
-                    return (
-                      <div className={styles.videoApiCategory} key={id}>
-                        <span className={styles.videoApiCategoryIcon}>
-                          <Icon size={18} aria-hidden="true" />
-                        </span>
-                        <span className={styles.videoApiCategoryCopy}>
-                          <strong>{name}</strong>
-                          <small>{summary}</small>
-                        </span>
-                        <span className={styles.videoApiCategoryCount}>
-                          {count}
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
-                <ol className={styles.apiSteps}>
-                  <li>
-                    <span>1</span>Choose a task or model
-                  </li>
-                  <li>
-                    <span>2</span>Check inputs and outputs
-                  </li>
-                  <li>
-                    <span>3</span>Open its official playground
-                  </li>
-                </ol>
-                <a
-                  href="/video-apis/"
-                  data-track-tool="video-api-directory"
-                  data-cta-placement="home-video-api-panel"
-                >
-                  Browse all {videoApiCatalog.entries.length} APIs
-                  <ArrowUpRight size={15} aria-hidden="true" />
-                </a>
-              </div>
             </div>
           </section>
           {entry && dataCount !== null && (
