@@ -13,6 +13,7 @@ import {
 import MarketingHeader from '@/components/marketing-header';
 import LearnFooter from '@/components/learn-footer';
 import HomeExampleCard from '@/components/home-example-card';
+import HomeMcpBanner from '@/components/home-mcp-banner';
 import HomeVideoExamples from '@/components/home-video-examples';
 import exampleSnapshot from '@/lib/home-video-examples.json';
 import pricingSnapshot from '@/lib/pricing-snapshot.json';
@@ -390,6 +391,7 @@ export default function Home() {
               Marketplace, social, and creative APIs. The samples show the
               documented request and the fields a response can include.
             </p>
+            <HomeMcpBanner endpointUrl={mcpUrl} setupUrl={mcpSetupUrl} />
           </div>
           <div className={styles.developerGrid} id="data-apis">
             <div className={styles.dataCopy}>
@@ -446,27 +448,6 @@ export default function Home() {
                 Free to browse. API requests follow the selected operation’s
                 access and credit requirements.
               </p>
-              <div className={styles.mcpInset} id="mcp">
-                <p>
-                  The same ecommerce data is available via MCP at{' '}
-                  <a href={mcpUrl}>{mcpUrl}</a> for Claude, Cursor, and Codex
-                  agents.
-                </p>
-                <p className={styles.mcpInsetLinks}>
-                  <a
-                    href={mcpSetupUrl}
-                    target="_blank"
-                    rel="noopener"
-                    data-track
-                    data-cta-placement="home-mcp"
-                  >
-                    Connect MCP
-                  </a>
-                  <a href="/ecommerce-ai-tools/ecommerce-mcp-server/">
-                    MCP setup guide
-                  </a>
-                </p>
-              </div>
             </div>
             <HomeExampleCard
               kicker="EXAMPLE · AMAZON PRODUCT DETAIL"
