@@ -1,4 +1,4 @@
-import { writeFile, rename } from 'node:fs/promises';
+import { readFile, writeFile, rename } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 
 const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -8,6 +8,65 @@ const clean = (value) =>
     .replace(/\bAPI\s*(?:or|and|\/)\s*MCP\b/gi, 'API')
     .replace(/\bMCP\b/gi, 'API')
     .trim();
+const creativeCategories = new Set([
+  'image-generation-models',
+  'video-generation-models',
+  'multimodal-ai',
+]);
+
+export function projectVideoApisFromCatalog(payload, sitemap) {
+  const catalog = payload?.data ?? payload;
+  if (
+    catalog?.source !== 'server' ||
+    !Array.isArray(catalog.skills) ||
+    !Array.isArray(catalog.categories)
+  ) {
+    throw new Error('Official Video & Image catalog is unavailable');
+  }
+  const categories = new Map(
+    catalog.categories.map((item) => [item.slug, item.name]),
+  );
+  const published = new Set(
+    [
+      ...sitemap.matchAll(
+        /<loc>https:\/\/www\.nexscope\.ai\/api-docs\/([a-z0-9-]+)\/?<\/loc>/g,
+      ),
+    ].map((match) => match[1]),
+  );
+  const entries = catalog.skills
+    .filter(
+      (item) =>
+        creativeCategories.has(item.categorySlug) &&
+        item.apiReady !== false &&
+        published.has(item.slug),
+    )
+    .map((item) => {
+      if (
+        !slugPattern.test(item.slug) ||
+        !categories.has(item.categorySlug)
+      ) {
+        throw new Error('Invalid Video & Image API: ' + item.slug);
+      }
+      const name = clean(item.name);
+      const description = clean(item.description || item.summary);
+      if (!name || !description)
+        throw new Error('Missing Video & Image API copy: ' + item.slug);
+      return {
+        slug: item.slug,
+        name,
+        description,
+        category: item.categorySlug,
+        categoryName: categories.get(item.categorySlug),
+      };
+    });
+  if (
+    !entries.length ||
+    new Set(entries.map((item) => item.slug)).size !== entries.length
+  ) {
+    throw new Error('Official Video & Image membership is empty or duplicated');
+  }
+  return { entries };
+}
 
 export function projectVideoApis(html, sitemap) {
   const script = html.match(
@@ -103,18 +162,43 @@ export async function refreshVideoApis() {
       }
     }
   };
-  const [html, sitemap] = await Promise.all([
-    read('https://www.nexscope.ai/api-docs?tab=creative'),
-    read('https://www.nexscope.ai/sitemap.xml'),
-  ]);
-  const snapshot = projectVideoApis(html, sitemap);
   const file = new URL('../lib/video-api-directory.json', import.meta.url);
-  const temporary = new URL(file.href + '.tmp');
-  await writeFile(temporary, JSON.stringify(snapshot, null, 2) + '\n');
-  await rename(temporary, file);
-  console.log(
-    `Refreshed ${snapshot.entries.length} official Video & Image APIs.`,
-  );
+  try {
+    const [catalogText, sitemap] = await Promise.all([
+      read('https://www.nexscope.ai/api/skill-api/catalog'),
+      read('https://www.nexscope.ai/sitemap.xml'),
+    ]);
+    const snapshot = projectVideoApisFromCatalog(
+      JSON.parse(catalogText),
+      sitemap,
+    );
+    const temporary = new URL(file.href + '.tmp');
+    await writeFile(temporary, JSON.stringify(snapshot, null, 2) + '\n');
+    await rename(temporary, file);
+    console.log(
+      `Refreshed ${snapshot.entries.length} official Video & Image APIs.`,
+    );
+  } catch (error) {
+    // The official page may temporarily change its server-rendered payload.
+    // Keep the last published directory so an upstream markup change cannot
+    // block an otherwise valid static-site deployment.
+    const previous = JSON.parse(await readFile(file, 'utf8'));
+    if (
+      !Array.isArray(previous.entries) ||
+      !previous.entries.length ||
+      previous.entries.some(
+        (entry) =>
+          !slugPattern.test(entry.slug) ||
+          typeof entry.name !== 'string' ||
+          typeof entry.description !== 'string',
+      )
+    ) {
+      throw error;
+    }
+    console.warn(
+      `Official Video & Image directory refresh failed; retained ${previous.entries.length} previously published APIs.`,
+    );
+  }
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href)
