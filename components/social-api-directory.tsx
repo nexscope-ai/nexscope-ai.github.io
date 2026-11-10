@@ -106,6 +106,7 @@ export default function SocialApiDirectory() {
         <span className={styles.apiSearchLabel}>Search social APIs</span>
         <input
           type="search"
+          data-learn-search
           value={query}
           onChange={(e) => {
             setQuery(e.target.value);
@@ -121,6 +122,8 @@ export default function SocialApiDirectory() {
         <button
           type="button"
           aria-pressed={platform === 'all'}
+          data-learn-action="filter_platform"
+          data-learn-item="all"
           onClick={() => {
             setPlatform('all');
             setExpanded(false);
@@ -133,6 +136,8 @@ export default function SocialApiDirectory() {
             key={g.id}
             type="button"
             aria-pressed={platform === g.id}
+            data-learn-action="filter_platform"
+            data-learn-item={g.id}
             onClick={() => {
               setPlatform(g.id);
               setExpanded(false);
@@ -154,6 +159,7 @@ export default function SocialApiDirectory() {
         {(platform !== 'all' || query) && (
           <button
             type="button"
+            data-learn-action="clear_filters"
             onClick={() => {
               setPlatform('all');
               setQuery('');
@@ -206,6 +212,7 @@ export default function SocialApiDirectory() {
             type="button"
             aria-expanded={expanded}
             aria-controls="social-api-results"
+            data-learn-action={expanded ? 'collapse_results' : 'expand_results'}
             onClick={() => {
               setExpanded(!expanded);
               if (expanded)

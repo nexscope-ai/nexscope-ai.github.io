@@ -111,7 +111,7 @@ export default function GrowthReportExample() {
       <p className={styles.eyebrow}>
         SEE THE FINDING, THE EVIDENCE AND THE NEXT ACTION
       </p>
-      <h2 id="example-title">A product report, unpacked.</h2>
+      <h2 id="example-title" data-learn-section="growth-report-example">A product report, unpacked.</h2>
       <div className={styles.sampleIntro}>
         <img
           src="/assets/growth-report/pciqute-product-reference.jpg"
@@ -152,7 +152,7 @@ export default function GrowthReportExample() {
       </p>
       <div className={styles.sampleSections}>
         {sections.map((section, index) => (
-          <details key={section.anchor} open={index === 0}>
+          <details key={section.anchor} open={index === 0} data-learn-detail={section.anchor}>
             <summary>
               <span>0{index + 1}</span>
               {section.title}
@@ -195,6 +195,7 @@ export default function GrowthReportExample() {
               target="_blank"
               rel="noopener"
               aria-label={`View ${preview.title} in the full report`}
+              data-cta-placement="growth-example-image"
             >
               <img
                 src={`/assets/growth-report/${preview.file}`}

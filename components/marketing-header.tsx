@@ -139,6 +139,7 @@ function NavigationDropdown({
                 <a
                   href={item.href}
                   data-track-tool={item.trackTool}
+                  data-cta-placement={item.trackTool ? 'primary-navigation' : undefined}
                   aria-current={item.current ? 'page' : undefined}
                 >
                   {item.label}

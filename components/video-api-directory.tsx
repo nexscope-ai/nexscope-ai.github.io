@@ -111,6 +111,7 @@ export default function VideoApiDirectory() {
         <input
           id="api-search"
           type="search"
+          data-learn-search
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           onBlur={() => {
@@ -132,6 +133,8 @@ export default function VideoApiDirectory() {
           type="button"
           aria-pressed={category === 'all'}
           onClick={() => chooseCategory('all')}
+          data-learn-action="filter_api_category"
+          data-learn-item="all"
         >
           All APIs ({catalog.entries.length})
         </button>
@@ -141,6 +144,8 @@ export default function VideoApiDirectory() {
             type="button"
             aria-pressed={category === id}
             onClick={() => chooseCategory(id)}
+            data-learn-action="filter_api_category"
+            data-learn-item={id}
           >
             {name} (
             {catalog.entries.filter((item) => item.category === id).length})

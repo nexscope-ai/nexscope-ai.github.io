@@ -48,6 +48,8 @@ export default function VideoWorkflowDirectory() {
           type="button"
           aria-pressed={material === 'all'}
           onClick={() => setMaterial('all')}
+          data-learn-action="filter_workflow"
+          data-learn-item="all"
         >
           All workflows
         </button>
@@ -57,6 +59,8 @@ export default function VideoWorkflowDirectory() {
             key={item.id}
             aria-pressed={material === item.material}
             onClick={() => setMaterial(item.material)}
+            data-learn-action="filter_workflow"
+            data-learn-item={item.id}
           >
             {item.label}
           </button>
@@ -120,7 +124,7 @@ export default function VideoWorkflowDirectory() {
                   <dd>{item.result}</dd>
                 </div>
               </dl>
-              <details className={styles.workflowDetails}>
+              <details className={styles.workflowDetails} data-learn-detail={item.id}>
                 <summary>
                   What to prepare & how it works{' '}
                   <ArrowRight size={14} aria-hidden="true" />

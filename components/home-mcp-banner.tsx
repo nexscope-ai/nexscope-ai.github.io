@@ -57,6 +57,7 @@ export default function HomeMcpBanner({
         <button
           type="button"
           className={styles.mcpCopy}
+          data-learn-action="copy_mcp_endpoint_click"
           onClick={copyEndpoint}
           aria-label={copied ? 'Copied' : 'Copy MCP endpoint'}
         >

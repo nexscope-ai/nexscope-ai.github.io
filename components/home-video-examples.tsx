@@ -69,6 +69,8 @@ export default function HomeVideoExamples({
               type="button"
               className={styles.preview}
               aria-label={`Preview ${example.title}`}
+              data-learn-action="open_video_preview"
+              data-learn-item={workflow}
               onClick={() => {
                 firstPlay.current = false;
                 setFailed(false);

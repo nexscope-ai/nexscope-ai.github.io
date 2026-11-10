@@ -18,6 +18,8 @@ export default function VideoDirectoryExamples() {
             type="button"
             key={item.id}
             aria-pressed={active === item.id}
+            data-learn-action="filter_video_examples"
+            data-learn-item={item.id}
             onClick={() => {
               setActive(item.id);
               trackDirectoryAction('video_example_workflow_filter', {

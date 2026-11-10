@@ -330,6 +330,7 @@ export default function Home() {
               className={styles.primary}
               href="/data/"
               data-track-tool="data-directory"
+              data-cta-placement="home-hero-data"
             >
               Explore Data APIs <ArrowRight size={16} aria-hidden="true" />
             </a>
@@ -349,6 +350,7 @@ export default function Home() {
               target="_blank"
               rel="noopener"
               data-track-tool="image-to-video"
+              data-cta-placement="home-hero-video"
             >
               Try Image to Video <ArrowUpRight size={15} aria-hidden="true" />
             </a>
@@ -382,7 +384,7 @@ export default function Home() {
                 <span className={styles.moduleIndex}>01 / 03</span> DATA, SOCIAL,
                 AND CREATIVE APIS
               </p>
-              <h2 id="developers-title">
+              <h2 id="developers-title" data-learn-section="home-developers">
                 One example for
                 <br />
                 <em>each API collection.</em>
@@ -442,6 +444,7 @@ export default function Home() {
                 className={styles.primary}
                 href="/data/"
                 data-track-tool="data-directory"
+                data-cta-placement="home-developers-data"
               >
                 Explore Data APIs <ArrowRight size={16} />
               </a>
@@ -661,7 +664,7 @@ export default function Home() {
                 <span className={styles.moduleIndex}>02 / 03</span> FOR
                 ECOMMERCE OPERATORS
               </p>
-              <h2 id="operators-title">
+              <h2 id="operators-title" data-learn-section="home-operators">
                 Product video
                 <br />
                 <em>workflows.</em>
@@ -672,7 +675,7 @@ export default function Home() {
                 Preview official examples, then open a workflow with your own
                 product photo or link.
               </p>
-              <a href="/video/" data-track-tool="video-directory">
+              <a href="/video/" data-track-tool="video-directory" data-cta-placement="home-operators-video">
                 Compare video workflows <ArrowRight size={16} />
               </a>
             </div>
@@ -759,7 +762,7 @@ export default function Home() {
                 <span className={styles.moduleIndex}>03 / 03</span> FOR PRODUCT
                 TEAMS
               </p>
-              <h2 id="growth-title">
+              <h2 id="growth-title" data-learn-section="home-growth">
                 The next step for
                 <br />
                 <em>your product.</em>
@@ -851,7 +854,7 @@ export default function Home() {
               <a href={submit} data-showcase-submit-cta="root-home-feature">
                 List your product for free <ArrowRight size={15} />
               </a>
-              <a href={gallery}>
+              <a href={gallery} data-cta-placement="home-gallery">
                 Browse the Product Gallery <ArrowRight size={14} />
               </a>
             </div>
@@ -932,7 +935,7 @@ export default function Home() {
         >
           <div>
             <p className={styles.eyebrow}>SUBSCRIPTIONS</p>
-            <h2 id="home-pricing-title">Plans, credits, and what stays free.</h2>
+            <h2 id="home-pricing-title" data-learn-section="home-pricing">Plans, credits, and what stays free.</h2>
             <p>
               Monthly and yearly plans share credits across API calls and video
               creation. Product Gallery submission, review, and approved display

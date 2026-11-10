@@ -222,7 +222,7 @@ export default function ProductGrowthReport() {
             >
               Choose your services <ArrowUpRight size={18} aria-hidden="true" />
             </a>
-            <a className={styles.textLink} href="#report-example">
+            <a className={styles.textLink} href="#report-example" data-cta-placement="growth-hero">
               Explore a report example{' '}
               <ArrowRight size={16} aria-hidden="true" />
             </a>
@@ -271,12 +271,12 @@ export default function ProductGrowthReport() {
           <span>Expected delivery within 24 hours</span>
         </div>
         <nav className={styles.sectionNav} aria-label="Product report guide">
-          <a href="#report-example">Report example</a>
-          <a href="#audience">Is it for me?</a>
-          <a href="#services">Choose services</a>
-          <a href="#which-option">Compare options</a>
-          <a href="#process">How it works</a>
-          <a href="#questions">Questions</a>
+          <a href="#report-example" data-cta-placement="growth-section-nav">Report example</a>
+          <a href="#audience" data-cta-placement="growth-section-nav">Is it for me?</a>
+          <a href="#services" data-cta-placement="growth-section-nav">Choose services</a>
+          <a href="#which-option" data-cta-placement="growth-section-nav">Compare options</a>
+          <a href="#process" data-cta-placement="growth-section-nav">How it works</a>
+          <a href="#questions" data-cta-placement="growth-section-nav">Questions</a>
         </nav>
         <GrowthReportExample />
         <section
@@ -412,7 +412,7 @@ export default function ProductGrowthReport() {
           aria-labelledby="services-title"
         >
           <p className={styles.eyebrow}>CHOOSE YOUR SCOPE</p>
-          <h2 id="services-title">Buy the help you need.</h2>
+          <h2 id="services-title" data-learn-section="growth-report-services">Buy the help you need.</h2>
           <p className={styles.intro}>
             Select at least one service. Add another only when it answers a
             question or produces something your team needs.
@@ -519,8 +519,8 @@ export default function ProductGrowthReport() {
           <p className={styles.eyebrow}>BEFORE YOU SUBMIT</p>
           <h2 id="faq-title">Your questions, answered.</h2>
           <div className={styles.faq}>
-            {faqs.map(({ q, a }) => (
-              <details key={q}>
+            {faqs.map(({ q, a }, index) => (
+              <details key={q} data-learn-detail={`faq-${index + 1}`}>
                 <summary>{q}</summary>
                 <p>{a}</p>
               </details>
