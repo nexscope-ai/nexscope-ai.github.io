@@ -394,9 +394,9 @@ export const campaigns = {
   },
   'ai-video-generator': {
     slug: 'ai-video-generator',
-    title: 'AI Product Video Generator for Ecommerce | Nexscope',
+    title: 'Turn Product Photos into Videos | Nexscope AI Video Generator',
     description:
-      "Create ecommerce product videos from images with Nexscope's AI product video generator. Choose a model and start with 1,000 free credits.",
+      'Turn a product photo into a short video with Nexscope. Open the generator, choose a model and check the credit estimate before your first take.',
     ogDescription:
       'One product photo. A new creative direction. Explore image-to-video generation with 1,000 free credits for new users.',
     twitterDescription:
@@ -408,17 +408,15 @@ export const campaigns = {
     audience: 'Built for ecommerce creatives',
     headline: (
       <>
-        AI product video generator.
+        Turn a product photo
         <br />
-        Your product.
-        <br />
-        <em>In its next scene.</em>
+        <em>into a video.</em>
       </>
     ),
-    lead: "Give your product photo a new creative direction. Use Nexscope's AI video generator to turn an image and a motion prompt into a video concept for your store, social feed or next ad test.",
+    lead: "Start with a sharp product photo and one motion prompt. In Nexscope's AI video generator, choose a model and output format, then review the credit estimate before creating a clip for your store, social feed or ad.",
     cta: {
-      label: 'Try the AI video generator',
-      href: tracked('/tools/ai-video-generator', 'ai-video-generator'),
+      label: 'Create a product video',
+      href: `${tracked('/tools/ai-video-generator', 'ai-video-generator')}#generator`,
     },
     ctaNote: (
       <>
@@ -528,6 +526,11 @@ export const campaigns = {
     closing: {
       title: 'Turn your product photo into a video concept.',
       text: 'Open the generator, choose your model and give your product a new scene.',
+      resource: {
+        prefix: 'Have a clip ready to review? ',
+        label: 'Use the product video quality checklist.',
+        href: '/ecommerce-ai-tools/ai-video-generator/#review-the-result-before-publishing',
+      },
       note: '1,000 free credits for new users · Usage varies by model and settings',
     },
     footerExtra: {
