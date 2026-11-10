@@ -328,9 +328,14 @@
   text-align: center;
   padding: 65px 20px;
 }
+.final h2 {
+  margin-bottom: 14px;
+}
 .final p:not(.eyebrow) {
   font-size: 14px;
+  line-height: 1.6;
   color: #786983;
+  margin: 0 0 20px;
 }
 .final small {
   display: block;
