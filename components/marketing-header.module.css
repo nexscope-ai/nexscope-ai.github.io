@@ -2,7 +2,7 @@
   position: relative;
   z-index: 12;
   background: #fbf9f4;
-  border-bottom: 1px solid #211f261a;
+  border-bottom: 1px solid #e7e1eb;
   color: #211f26;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -12,7 +12,7 @@
   justify-content: space-between;
   gap: 24px;
   width: min(1200px, calc(100% - 64px));
-  min-height: 90px;
+  min-height: 76px;
   margin-inline: auto;
 }
 .brand {
@@ -25,20 +25,25 @@
   height: 32px;
   object-fit: contain;
 }
+.navigation {
+  flex: 1;
+}
 .navigation > ul {
   display: flex;
   align-items: center;
-  gap: clamp(10px, 1.1vw, 16px);
+  gap: 4px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.navigation a,
+.navigation > ul > li > a,
 .navigation .dropdownTrigger {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  color: inherit;
+  padding: 0 12px;
+  border-radius: 10px;
+  color: #504759;
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
@@ -46,7 +51,6 @@
 }
 .navigation .dropdownTrigger {
   border: 0;
-  padding: 0;
   background: transparent;
   font-family: inherit;
   gap: 5px;
@@ -56,36 +60,44 @@
   flex: none;
   transition: transform 0.18s ease;
 }
-.navigation .dropdownTrigger[data-popup-open='true'] svg {
+.navigation .dropdownTrigger[aria-expanded='true'] svg {
   transform: rotate(180deg);
 }
-.navigation a:hover,
-.navigation a[aria-current],
+.navigation > ul > li > a:hover,
 .navigation .dropdownTrigger:hover,
+.navigation .dropdownTrigger[aria-expanded='true'] {
+  background: #f0ebf8;
+  color: #4d34aa;
+}
+.navigation > ul > li > a[aria-current],
 .navigation .dropdownTrigger[aria-current] {
-  color: #6250e9;
+  background: #eee7fc;
+  color: #4d34aa;
+}
+.dropdownPositioner {
+  z-index: 50;
 }
 .dropdownMenu {
   display: grid;
   gap: 2px;
   padding: 8px;
-  border: 1px solid #ddd8e8;
+  border: 1px solid #e1d9ea;
   border-radius: 14px;
   background: #fff;
-  box-shadow: 0 14px 30px rgb(33 31 38 / 12%);
+  box-shadow: 0 12px 32px rgb(36 25 62 / 12%);
 }
 .dropdownMenu[data-slot='dropdown-menu-content'] {
-  width: 200px;
-  min-width: 190px;
+  width: min(220px, calc(100vw - 36px));
+  min-width: 0;
 }
 .dropdownItem {
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: 40px;
+  min-height: 44px;
   padding: 0 12px;
   border-radius: 8px;
-  color: inherit;
+  color: #504759;
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
@@ -93,22 +105,23 @@
 }
 .dropdownItem:hover,
 .dropdownItem:focus-visible,
+.dropdownItem[data-highlighted],
 .dropdownItem[aria-current] {
-  background: #f4f0ff;
-  color: #6250e9;
+  background: #eee7fc;
+  color: #4d34aa;
 }
-.navigation .cta {
+.navigation > ul > li > .cta {
   justify-content: center;
-  padding: 0 20px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  padding: 0 18px;
+  border-radius: 12px;
+  background: linear-gradient(110deg, #285cd6, #6e3bd7);
   color: #fff;
   font-weight: 700;
-  box-shadow: 0 8px 24px rgb(59 130 246 / 18%);
+  box-shadow: 0 4px 12px rgb(79 57 195 / 16%);
 }
-.navigation .cta:hover {
+.navigation > ul > li > .cta:hover {
   color: #fff;
-  background: linear-gradient(135deg, #2f72eb, #7549e7);
+  background: linear-gradient(110deg, #224db8, #5e2dc6);
 }
 .toggle {
   display: none;
@@ -121,7 +134,17 @@
   outline-offset: 3px;
 }
 
-@media (max-width: 1180px) {
+@media (min-width: 1051px) {
+  .navigation > ul > li:first-child,
+  .navigation > ul > li:last-child {
+    margin-inline-start: auto;
+  }
+  .navigation > ul > li:last-child {
+    padding-inline-start: 20px;
+  }
+}
+
+@media (max-width: 1050px) {
   .inner {
     width: calc(100% - 36px);
     min-height: 72px;
@@ -163,6 +186,8 @@
     top: 100%;
     left: 0;
     right: 0;
+    max-height: calc(100dvh - 72px);
+    overflow-y: auto;
     padding: 12px 18px 20px;
     border-bottom: 1px solid #ddd8e8;
     background: #fbf9f4;
@@ -179,7 +204,7 @@
     max-width: 1200px;
     margin-inline: auto;
   }
-  .navigation a {
+  .navigation > ul > li > a {
     width: 100%;
     min-height: 48px;
     padding: 0 14px;
@@ -190,7 +215,7 @@
     min-height: 48px;
     padding: 0 14px;
   }
-  .navigation .cta {
+  .navigation > ul > li > .cta {
     margin-top: 8px;
   }
 }

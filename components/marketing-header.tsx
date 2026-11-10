@@ -123,7 +123,7 @@ function NavigationDropdown({
           ref={triggerRef}
           className={styles.dropdownTrigger}
           aria-controls={menuId}
-          aria-current={current ? 'page' : undefined}
+          aria-current={current ? 'location' : undefined}
           aria-expanded={open}
         >
           {label} <ChevronDown aria-hidden="true" size={14} />
@@ -131,9 +131,10 @@ function NavigationDropdown({
         <DropdownMenuContent
           id={menuId}
           className={styles.dropdownMenu}
+          positionerClassName={styles.dropdownPositioner}
           align="start"
           side="bottom"
-          sideOffset={24}
+          sideOffset={6}
         >
           {items.map((item) => (
             <DropdownMenuItem
@@ -177,7 +178,7 @@ export default function MarketingHeader({
   useEffect(() => {
     if (!menuOpen) return;
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
+      if (event.key === 'Escape' && !event.defaultPrevented) {
         setMenuOpen(false);
         toggleRef.current?.focus();
       }
@@ -233,16 +234,16 @@ export default function MarketingHeader({
                   current: active === 'tools',
                 },
                 {
-                  href: '/video-apis/',
-                  label: 'Video & Image APIs',
-                  trackTool: 'video-api-directory',
-                  current: active === 'video-apis',
-                },
-                {
                   href: '/social/',
                   label: 'Social APIs',
                   trackTool: 'social-directory',
                   current: active === 'social',
+                },
+                {
+                  href: '/video-apis/',
+                  label: 'Video & Image APIs',
+                  trackTool: 'video-api-directory',
+                  current: active === 'video-apis',
                 },
               ]}
             />
