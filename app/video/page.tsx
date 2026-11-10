@@ -108,8 +108,6 @@ export default function VideoDirectoryPage() {
       <MarketingHeader
         active="video"
         campaign="video-directory"
-        homepageFocus
-        videoCta
       />
       <main className={styles.wrap}>
         <section className={styles.hero} aria-labelledby="video-title">

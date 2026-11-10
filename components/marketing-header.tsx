@@ -12,15 +12,10 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import styles from './marketing-header.module.css';
-import { videoWorkspaceUrl } from '@/lib/video-directory';
 
 type MarketingHeaderProps = {
   active?: 'tools' | 'pricing' | 'video' | 'video-apis' | 'social' | 'growth';
   campaign: string;
-  explorePath?: '/apis' | '/';
-  productReviewCta?: boolean;
-  homepageFocus?: boolean;
-  videoCta?: boolean;
 };
 
 type NavigationDropdownItem = {
@@ -160,10 +155,6 @@ function NavigationDropdown({
 export default function MarketingHeader({
   active,
   campaign: _campaign,
-  explorePath = '/',
-  productReviewCta = false,
-  homepageFocus = false,
-  videoCta = false,
 }: MarketingHeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
@@ -173,7 +164,6 @@ export default function MarketingHeader({
     setNavPath(pathname);
     setMenuOpen(false);
   }
-  const tracking = '?co-from=learn';
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -221,17 +211,12 @@ export default function MarketingHeader({
           <ul>
             <NavigationDropdown
               label="APIs"
-              current={
-                active === 'tools' ||
-                active === 'social' ||
-                active === 'video-apis'
-              }
+              current={active === 'social' || active === 'video-apis'}
               items={[
                 {
                   href: '/data/',
                   label: 'Data APIs',
                   trackTool: 'data-directory',
-                  current: active === 'tools',
                 },
                 {
                   href: '/social/',
@@ -287,27 +272,10 @@ export default function MarketingHeader({
             <li>
               <a
                 className={styles.cta}
-                data-track={videoCta || !productReviewCta ? true : undefined}
-                data-track-tool={videoCta ? 'image-to-video' : undefined}
-                data-cta-placement={videoCta ? 'video-navigation' : undefined}
-                data-showcase-submit-cta={
-                  productReviewCta && !videoCta ? 'root-navigation' : undefined
-                }
-                href={
-                  videoCta
-                    ? videoWorkspaceUrl('image-to-video')
-                    : productReviewCta
-                      ? '/ecommerce-ai-tools/product-showcase/submit/'
-                      : `https://www.nexscope.ai${explorePath}${tracking}`
-                }
+                data-showcase-submit-cta="root-navigation"
+                href="/ecommerce-ai-tools/product-showcase/submit/"
               >
-                {videoCta
-                  ? 'Create a video ↗'
-                  : productReviewCta
-                    ? homepageFocus
-                      ? 'List a product free →'
-                      : 'Get free feedback →'
-                    : 'Explore Nexscope ↗'}
+                List a product free →
               </a>
             </li>
           </ul>

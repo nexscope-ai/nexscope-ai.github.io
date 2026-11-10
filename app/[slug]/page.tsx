@@ -158,7 +158,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
           __html: JSON.stringify(articleJsonLd).replaceAll('<', '\\u003c'),
         }}
       />
-      <MarketingHeader campaign={guide.slug} explorePath="/apis" />
+      <MarketingHeader campaign={guide.slug} />
 
       <header className="detail-hero">
         <div className="container">

@@ -155,8 +155,6 @@ export default function PricingPage() {
       </a>
       <MarketingHeader
         campaign="learn-pricing"
-        homepageFocus
-        productReviewCta
         active="pricing"
       />
       <main id="main">

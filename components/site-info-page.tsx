@@ -36,7 +36,7 @@ export default function SiteInfoPage({
       <a className={styles.skip} href="#main-content">
         Skip to content
       </a>
-      <MarketingHeader campaign={campaign} explorePath="/apis" />
+      <MarketingHeader campaign={campaign} />
       <main id="main-content">
         <header className={styles.hero}>
           <div className={styles.wrap}>

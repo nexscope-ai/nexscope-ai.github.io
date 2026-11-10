@@ -309,7 +309,7 @@ export default function Home() {
       <a className={styles.skip} href="#main">
         Skip to content
       </a>
-      <MarketingHeader campaign="homepage" homepageFocus productReviewCta />
+      <MarketingHeader campaign="homepage" />
       <main id="main">
         <section className={styles.hero}>
           <p className={styles.eyebrow}>

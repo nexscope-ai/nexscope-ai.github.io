@@ -111,7 +111,6 @@ export default function SocialPage() {
       <MarketingHeader
         active="social"
         campaign="social-directory"
-        homepageFocus
       />
       <main className={styles.wrap}>
         <section className={social.hero}>

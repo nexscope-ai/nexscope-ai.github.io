@@ -91,7 +91,6 @@ export default function VideoApisPage() {
       <MarketingHeader
         active="video-apis"
         campaign="video-api-directory"
-        homepageFocus
       />
       <main className={styles.wrap}>
         <section className={styles.apiHero} aria-labelledby="video-apis-title">
