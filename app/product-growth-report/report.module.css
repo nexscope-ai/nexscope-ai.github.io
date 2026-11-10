@@ -109,52 +109,30 @@
   letter-spacing: 0.5px;
   color: #3d2f46;
 }
-.outlineLabel {
+.outlineEvidence {
   border-top: 1px solid #eee7f3;
-  margin: 24px 0 8px;
-  padding-top: 16px;
-  font-size: 9px;
-  letter-spacing: 1px;
-  color: #91809e;
-}
-.outlineRow {
-  display: grid;
-  grid-template-columns: 30px 1fr;
-  gap: 8px;
-  padding: 16px 0;
-}
-.outlineRow > span {
-  font-size: 11px;
-  color: #9c7cba;
-}
-.outlineRow strong {
-  font-size: 14px;
-  font-weight: 600;
-}
-.lines {
-  grid-column: 2;
-  display: grid;
-  gap: 7px;
-  margin-top: 4px;
-}
-.lines i {
-  display: block;
-  background: #f0eaf5;
-  height: 7px;
-  border-radius: 3px;
-}
-.lines i:last-child {
-  width: 66%;
-}
-.review {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #4b785b;
-  font-size: 11px;
   margin: 20px 0 0;
   padding-top: 18px;
-  border-top: 1px solid #eee7f3;
+}
+.outlineEvidence dt {
+  font-size: 14px;
+  font-weight: 700;
+}
+.outlineEvidence dd {
+  margin: 5px 0 15px;
+  color: #695b73;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.outlineLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #634094;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 .facts {
   display: flex;

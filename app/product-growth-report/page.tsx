@@ -25,9 +25,9 @@ import GrowthReportExample, {
 
 const configure =
   'https://www.nexscope.ai/product-growth-report?co-from=learn#request';
-const title = 'Product Growth Report for Ecommerce Sellers | Nexscope';
+const title = 'Ecommerce Product Page Audit & Growth Report | Nexscope';
 const description =
-  'Get a human-reviewed Nexscope Product Growth Report. Choose AI mentions, competitors, keywords, copy or ad images; SEO and GEO are included with paid services.';
+  'Submit an Amazon listing or store product URL for a human-reviewed audit. Get prioritized fixes with supporting evidence. See an example and check your credit quote.';
 const services = [
   {
     icon: MessagesSquare,
@@ -135,7 +135,7 @@ export default function ProductGrowthReport() {
         url: 'https://learn.nexscope.ai/product-growth-report/',
         name: title,
         description,
-        dateModified: '2026-11-06',
+        dateModified: '2026-11-10',
         citation: {
           '@type': 'DigitalDocument',
           name: 'PCIQUTE condensed report example',
@@ -201,15 +201,14 @@ export default function ProductGrowthReport() {
             <h1>
               Product Growth Report.
               <br />
-              <em className={gradientTitle.text}>Know what to improve next.</em>
+              <em className={gradientTitle.text}>Know what to fix first.</em>
             </h1>
             <p className={styles.lead}>
-              Nexscope Product Growth Report is a one-time, human-reviewed
-              analysis for one product and target market. Choose AI mention
-              analysis, competitors, keywords, copy or advertising images. SEO
-              and GEO analyses are included with your paid selection. Receive
-              findings, available evidence and recommended changes; your team
-              applies the improvements.
+              Send one Amazon listing or online store product URL. Get a
+              human-reviewed action plan with findings, supporting evidence
+              where available, and changes in priority order. Choose what to
+              focus on, from AI visibility and competitors to keywords,
+              listing copy, or ad images.
             </p>
             <a
               className={styles.primary}
@@ -220,49 +219,52 @@ export default function ProductGrowthReport() {
               target="_blank"
               rel="noopener"
             >
-              Choose your services <ArrowUpRight size={18} aria-hidden="true" />
+              Build your report &amp; see the quote{' '}
+              <ArrowUpRight size={18} aria-hidden="true" />
             </a>
             <a className={styles.textLink} href="#report-example" data-cta-placement="growth-hero">
-              Explore a report example{' '}
+              See a real report example{' '}
               <ArrowRight size={16} aria-hidden="true" />
             </a>
             <p className={styles.small}>
-              One product · One target market · Credit quote before submission
+              One product · One market · Review your credit quote before submitting
             </p>
           </div>
           <aside
             className={styles.reportOutline}
-            aria-label="Report structure illustration, not a customer report"
+            aria-label="Finding from the PCIQUTE public report example"
           >
             <div className={styles.outlineHeader}>
               <ClipboardCheck size={26} aria-hidden="true" />
               <span>
-                FROM A PRODUCT LINK
+                FROM THE PUBLIC REPORT
                 <br />
-                <strong>TO A CLEARER ACTION PLAN</strong>
+                <strong>PCIQUTE PAINT ROLLER SET · AMAZON UK</strong>
               </span>
             </div>
-            <p className={styles.outlineLabel}>
-              REPORT STRUCTURE · ILLUSTRATION
-            </p>
-            {[
-              'What we observed',
-              'What the evidence supports',
-              'What to change first',
-            ].map((label, i) => (
-              <div className={styles.outlineRow} key={label}>
-                <span>0{i + 1}</span>
-                <strong>{label}</strong>
-                <div className={styles.lines}>
-                  <i />
-                  <i />
-                </div>
-              </div>
-            ))}
-            <p className={styles.review}>
-              <Check size={16} aria-hidden="true" /> Human review before
-              delivery
-            </p>
+            <dl className={styles.outlineEvidence}>
+              <dt>What the report found</dt>
+              <dd>
+                The saved listing gives a working length of about 60–160 cm
+                with the roller attached.
+              </dd>
+              <dt>What to fix first</dt>
+              <dd>
+                Show where that measurement starts and ends. Use the same
+                range in the title, bullets, FAQ and a measured setup image.
+              </dd>
+            </dl>
+            <a
+              className={styles.outlineLink}
+              href={`${reportExampleUrl}?co-from=learn#module-seo`}
+              data-track
+              data-cta-placement="growth-hero-evidence"
+              target="_blank"
+              rel="noopener"
+            >
+              Read the finding in the report{' '}
+              <ArrowUpRight size={14} aria-hidden="true" />
+            </a>
           </aside>
         </section>
         <div className={styles.facts}>

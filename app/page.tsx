@@ -780,13 +780,13 @@ export default function Home() {
               </p>
               <h3>
                 One product link.
-                <br />A plan you can act on.
+                <br />Know what to fix first.
               </h3>
               <p>
-                Choose AI mention analysis, competitor research, keywords,
-                product copy or advertising images. Receive a report reviewed by
-                a person before delivery, with findings, available evidence and
-                recommended changes.
+                Send an Amazon listing or store product URL. Get a
+                human-reviewed action plan with prioritized fixes and
+                supporting evidence where available. Choose a focus such as AI
+                visibility, competitors, keywords, listing copy, or ad images.
               </p>
               <div className={styles.growthTags}>
                 <span>SEO & GEO included</span>
@@ -808,25 +808,36 @@ export default function Home() {
               </p>
             </div>
             <div className={styles.growthOutline}>
-              <span>FROM PRODUCT PAGE TO NEXT ACTION</span>
+              <span>FROM THE PUBLIC REPORT · AMAZON UK</span>
               <ol>
                 <li>
-                  <strong>Your product & market</strong>
+                  <strong>Product reviewed</strong>
+                  <p>PCIQUTE 17-piece paint roller set.</p>
+                </li>
+                <li>
+                  <strong>What the report found</strong>
                   <p>
-                    Start with an Amazon listing or public store product page.
+                    The listing gives a working length of about 60–160 cm with
+                    the roller attached.
                   </p>
                 </li>
                 <li>
-                  <strong>Your chosen analysis or creative services</strong>
-                  <p>Focus on the questions and materials you need.</p>
-                </li>
-                <li>
-                  <strong>A reviewed, downloadable delivery</strong>
+                  <strong>What to fix first</strong>
                   <p>
-                    Read your HTML report and download purchased PNG images.
+                    Show where the measurement starts and ends. Use the same
+                    range across the listing.
                   </p>
                 </li>
               </ol>
+              <a
+                className={styles.growthExampleLink}
+                href="/product-growth-report/#report-example"
+                data-track-tool="product-growth-report"
+                data-cta-placement="home-growth-report-example"
+              >
+                See the report example{' '}
+                <ArrowRight size={14} aria-hidden="true" />
+              </a>
             </div>
           </div>
           <div className={styles.galleryBanner} id="free-product-listings">

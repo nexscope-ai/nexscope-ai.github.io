@@ -1731,6 +1731,17 @@
   font-size: 12px;
   margin: 6px 0 0;
 }
+.growthExampleLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  color: #634094;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 @media (max-width: 900px) {
   .growthFeature {
     grid-template-columns: 1fr;
