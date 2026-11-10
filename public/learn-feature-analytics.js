@@ -72,6 +72,16 @@
         return;
       }
       if (destination.protocol !== 'https:' || !mainHosts.has(destination.hostname)) return;
+      if (link.hasAttribute('data-subscription-offer') && path === '/pricing') {
+        emit('subscription_offer_click', {
+          offer_id: 'first_subscription_50_off',
+          discount_percent: 50,
+          cta_placement: placement,
+          destination_host: destination.hostname,
+          destination_path: destination.pathname,
+          co_from: destination.searchParams.get('co-from') === 'learn' ? 'learn' : undefined,
+        });
+      }
       if (path === '/privacy' || path === '/terms') return;
       let action = 'open_main_site';
       if (path === '/product-growth-report') action = 'open_report_request';
@@ -113,6 +123,20 @@
 
   document.addEventListener('click', trackClick, true);
   document.addEventListener('auxclick', trackClick, true);
+  const offer = document.querySelector('[data-subscription-offer]');
+  if (offer && typeof IntersectionObserver === 'function') {
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some(entry => entry.intersectionRatio >= 0.5)) return;
+      observer.disconnect();
+      emit('subscription_offer_view', {
+        offer_id: 'first_subscription_50_off',
+        discount_percent: 50,
+        cta_placement: 'subscription-banner',
+        destination_path: '/pricing',
+      });
+    }, { threshold: 0.5 });
+    observer.observe(offer);
+  }
   document.addEventListener('change', (event) => {
     const input = event.target;
     const feature = featureFor(cleanPath(location.pathname));

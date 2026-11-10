@@ -159,6 +159,7 @@
     if (name) window.gtag('event', name, {
       link_domain: url.hostname, link_path: url.pathname,
       co_from: url.searchParams.get('co-from') || undefined,
+      cta_placement: reviewPlacement,
       source_page: location.pathname, transport_type: 'beacon',
     });
   });
