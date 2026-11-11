@@ -16,12 +16,18 @@ export default function HomeExampleCard({
   response,
   responseLabel = 'Example response shape',
   mcp,
+  exampleId,
+  outcome,
+  playground,
 }: {
   kicker: string;
   request: string;
   response: string;
   responseLabel?: string;
   mcp?: string;
+  exampleId: string;
+  outcome: string;
+  playground: string;
 }) {
   const panels: ExamplePanel[] = [
     {
@@ -46,7 +52,8 @@ export default function HomeExampleCard({
     });
   }
 
-  const [tab, setTab] = useState(panels[0].id);
+  const [tab, setTab] = useState('response');
+  const [copyStatus, setCopyStatus] = useState('');
   const baseId = useId();
   const noteId = `${baseId}-note`;
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
@@ -76,7 +83,11 @@ export default function HomeExampleCard({
   }
 
   return (
-    <div className={styles.codeCard}>
+    <div
+      className={styles.codeCard}
+      data-cta-placement={`home-example-${exampleId}`}
+      data-learn-section={`example-${exampleId}`}
+    >
       <div className={styles.codeTop}>
         <span aria-hidden="true">
           <i />
@@ -85,6 +96,7 @@ export default function HomeExampleCard({
         </span>
         <span>{kicker}</span>
       </div>
+      <p className={styles.exampleOutcome}>{outcome}</p>
       <div
         className={styles.exampleTabs}
         role="tablist"
@@ -106,6 +118,8 @@ export default function HomeExampleCard({
               id={tabId}
               aria-selected={selected}
               aria-controls={`${baseId}-${panel.id}-panel`}
+              data-learn-action="inspect_example"
+              data-learn-item={`${exampleId}-${panel.id}`}
               tabIndex={selected ? 0 : -1}
               onClick={() => setTab(panel.id)}
               onKeyDown={onTabKeyDown}
@@ -136,6 +150,37 @@ export default function HomeExampleCard({
             </div>
           );
         })}
+      </div>
+      <div className={styles.exampleActions}>
+        <button
+          type="button"
+          data-learn-action="copy_example"
+          data-learn-item={exampleId}
+          onClick={async () => {
+            try {
+              await navigator.clipboard.writeText(request);
+              setCopyStatus(
+                'Request copied. Replace YOUR_API_KEY before running.',
+              );
+            } catch {
+              setCopyStatus(
+                'Copy unavailable. Select and copy the Request tab manually.',
+              );
+            }
+          }}
+        >
+          Copy example request
+        </button>
+        <a
+          href={playground}
+          target="_blank"
+          rel="noopener"
+          data-track="start_using"
+          data-cta-placement={`home-example-${exampleId}`}
+        >
+          Test this API ↗
+        </a>
+        <output aria-live="polite">{copyStatus}</output>
       </div>
       <p id={noteId} className={styles.codeComment}>
         Illustrative sample from the public API docs. Not a live response.

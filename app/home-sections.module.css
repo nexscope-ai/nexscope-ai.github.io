@@ -1198,7 +1198,7 @@
 }
 .codeCard {
   min-width: 0;
-  max-height: 420px;
+  max-height: 520px;
   background: #292232;
   border-radius: 17px;
   color: #d8c9e7;
@@ -1755,4 +1755,58 @@
   .growthFeature h3 {
     font-size: 28px;
   }
+}
+
+.exampleOutcome {
+  margin: 0;
+  padding: 16px 20px 8px;
+  color: #e4daee;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.exampleActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
+  padding: 14px 20px;
+  border-top: 1px solid #ffffff18;
+}
+.exampleActions button,
+.exampleActions a {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #ffffff30;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background: #ffffff0d;
+  color: #f6f1fb;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+.exampleActions a {
+  background: #7950c6;
+  border-color: transparent;
+}
+.exampleActions button:focus-visible,
+.exampleActions a:focus-visible {
+  outline: 2px solid #e4d4fb;
+  outline-offset: 3px;
+}
+.exampleActions output {
+  flex-basis: 100%;
+  font-size: 11px;
+  color: #d6c5e8;
+}
+.exampleActions output:empty {
+  display: none;
+}
+
+.exampleOutcome,
+.exampleActions {
+  flex-shrink: 0;
 }

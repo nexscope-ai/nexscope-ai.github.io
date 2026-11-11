@@ -318,12 +318,14 @@ export default function Home() {
           <h1>
             Ecommerce data APIs.
             <br />
-            <em className={gradientTitle.text}>MCP for AI agents. AI image and video.</em>
+            <em className={gradientTitle.text}>
+              MCP for AI agents. AI image and video.
+            </em>
           </h1>
           <p className={styles.heroLead}>
             Look up marketplace products, connect Codex, Claude, or Cursor to
-            the Nexscope MCP server, and generate product images and video.
-            Each section below shows one example request and the response shape.
+            the Nexscope MCP server, and generate product images and video. Each
+            section below shows one example request and the response shape.
           </p>
           <nav className={styles.heroActions} aria-label="Primary actions">
             <a
@@ -381,8 +383,8 @@ export default function Home() {
           <div className={styles.moduleHeading}>
             <div>
               <p className={styles.moduleLabel}>
-                <span className={styles.moduleIndex}>01 / 03</span> DATA, SOCIAL,
-                AND CREATIVE APIS
+                <span className={styles.moduleIndex}>01 / 03</span> DATA,
+                SOCIAL, AND CREATIVE APIS
               </p>
               <h2 id="developers-title" data-learn-section="home-developers">
                 One example for
@@ -455,6 +457,9 @@ export default function Home() {
             </div>
             <HomeExampleCard
               kicker="EXAMPLE · AMAZON PRODUCT DETAIL"
+              exampleId="amazon-product"
+              outcome="See the product identity, title, brand and price fields available for your listing comparison."
+              playground="https://www.nexscope.ai/api-docs/amazon-product-detail?view=documentation&co-from=learn#online-test"
               request={dataExample}
               response={dataResponse}
               mcp={mcpExample}
@@ -542,6 +547,9 @@ export default function Home() {
               </div>
               <HomeExampleCard
                 kicker="EXAMPLE · SEEDANCE VIDEO"
+                exampleId="seedance-video"
+                outcome="Submit an image and motion prompt, then use the returned task ID to check generation progress."
+                playground="https://www.nexscope.ai/api-docs/seedance-2-0-video-generation?view=documentation&co-from=learn#online-test"
                 request={videoExample}
                 response={videoResponse}
               />
@@ -605,6 +613,9 @@ export default function Home() {
               </div>
               <HomeExampleCard
                 kicker="EXAMPLE · INSTAGRAM PROFILE"
+                exampleId="instagram-profile"
+                outcome="Check the returned profile status before using it in creator research. This sample illustrates a profile-not-found result."
+                playground="https://www.nexscope.ai/api-docs/social-instagram-profile?view=documentation&co-from=learn#online-test"
                 request={socialExample}
                 response={socialResponse}
               />
@@ -675,7 +686,11 @@ export default function Home() {
                 Preview official examples, then open a workflow with your own
                 product photo or link.
               </p>
-              <a href="/video/" data-track-tool="video-directory" data-cta-placement="home-operators-video">
+              <a
+                href="/video/"
+                data-track-tool="video-directory"
+                data-cta-placement="home-operators-video"
+              >
                 Compare video workflows <ArrowRight size={16} />
               </a>
             </div>
@@ -780,13 +795,14 @@ export default function Home() {
               </p>
               <h3>
                 One product link.
-                <br />Know what to fix first.
+                <br />
+                Know what to fix first.
               </h3>
               <p>
                 Send an Amazon listing or store product URL. Get a
-                human-reviewed action plan with prioritized fixes and
-                supporting evidence where available. Choose a focus such as AI
-                visibility, competitors, keywords, listing copy, or ad images.
+                human-reviewed action plan with prioritized fixes and supporting
+                evidence where available. Choose a focus such as AI visibility,
+                competitors, keywords, listing copy, or ad images.
               </p>
               <div className={styles.growthTags}>
                 <span>SEO & GEO included</span>
@@ -946,12 +962,13 @@ export default function Home() {
         >
           <div>
             <p className={styles.eyebrow}>SUBSCRIPTIONS</p>
-            <h2 id="home-pricing-title" data-learn-section="home-pricing">Plans, credits, and what stays free.</h2>
+            <h2 id="home-pricing-title" data-learn-section="home-pricing">
+              Plans, credits, and what stays free.
+            </h2>
             <p>
               Monthly and yearly plans share credits across API calls and video
               creation. Product Gallery submission, review, and approved display
-              stay free.{' '}
-              <a href="/pricing/">See plan details</a>
+              stay free. <a href="/pricing/">See plan details</a>
             </p>
           </div>
         </section>

@@ -111,7 +111,52 @@ export default function GrowthReportExample() {
       <p className={styles.eyebrow}>
         SEE THE FINDING, THE EVIDENCE AND THE NEXT ACTION
       </p>
-      <h2 id="example-title" data-learn-section="growth-report-example">A product report, unpacked.</h2>
+      <h2 id="example-title" data-learn-section="growth-report-example">
+        A product report, unpacked.
+      </h2>
+      <div
+        className={styles.actionPreview}
+        aria-label="One finding turned into a next step"
+      >
+        <div>
+          <span>01 · Product fact</span>
+          <h3>What does 60–160 cm measure?</h3>
+          <p>
+            The saved listing describes working length with the roller attached.
+          </p>
+        </div>
+        <div>
+          <span>02 · Recommended change</span>
+          <h3>Show the measurement.</h3>
+          <p>
+            Label both endpoints in an image and use the same range in the
+            title, bullets and FAQ.
+          </p>
+        </div>
+        <div>
+          <span>03 · Your next action</span>
+          <h3>Verify, then update.</h3>
+          <p>
+            Measure the assembled kit before applying the copy. The report
+            provides the plan; your team makes the changes.
+          </p>
+        </div>
+      </div>
+      <p className={styles.sampleNote}>
+        This is a recommendation from the public example, not a measured
+        improvement in sales or AI visibility.
+      </p>
+      <a
+        className={styles.sourceLink}
+        href="https://www.nexscope.ai/product-growth-report?co-from=learn#request"
+        target="_blank"
+        rel="noopener"
+        data-track="start_using"
+        data-cta-placement="growth-example-next-action"
+      >
+        Choose a focus for my product{' '}
+        <ArrowUpRight size={16} aria-hidden="true" />
+      </a>
       <div className={styles.sampleIntro}>
         <img
           src="/assets/growth-report/pciqute-product-reference.jpg"
@@ -152,7 +197,11 @@ export default function GrowthReportExample() {
       </p>
       <div className={styles.sampleSections}>
         {sections.map((section, index) => (
-          <details key={section.anchor} open={index === 0} data-learn-detail={section.anchor}>
+          <details
+            key={section.anchor}
+            open={index === 0}
+            data-learn-detail={section.anchor}
+          >
             <summary>
               <span>0{index + 1}</span>
               {section.title}

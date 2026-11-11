@@ -650,3 +650,38 @@
     padding: 0 18px 20px;
   }
 }
+
+.actionPreview {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 28px 0 16px;
+}
+.actionPreview > div {
+  padding: 24px;
+  border: 1px solid #e4dcf2;
+  border-radius: 16px;
+  background: #fff;
+}
+.actionPreview span {
+  color: #7950b7;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.actionPreview h3 {
+  font-size: 20px;
+  line-height: 1.35;
+  margin: 14px 0 10px;
+}
+.actionPreview p {
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0;
+}
+@media (max-width: 760px) {
+  .actionPreview {
+    grid-template-columns: 1fr;
+  }
+}
