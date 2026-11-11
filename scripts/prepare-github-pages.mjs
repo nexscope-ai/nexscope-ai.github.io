@@ -76,8 +76,8 @@ async function addAnalytics(directory) {
       if (!html.includes('src="/analytics.js?v=14"')) {
         scripts.push('<script src="/analytics.js?v=14" defer></script>');
       }
-      if (!html.includes('src="/learn-feature-analytics.js?v=2"')) {
-        scripts.push('<script src="/learn-feature-analytics.js?v=2" defer></script>');
+      if (!html.includes('src="/learn-feature-analytics.js?v=3"')) {
+        scripts.push('<script src="/learn-feature-analytics.js?v=3" defer></script>');
       }
       if (!html.includes('src="https://analytics.ahrefs.com/analytics.js"')) {
         scripts.push(

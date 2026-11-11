@@ -191,7 +191,7 @@ export default function MarketingHeader({
       >
         <span className={styles.offerBadge}>Limited-time offer</span>
         <span className={styles.offerMessage}>
-          <strong>50% off</strong> your first subscription
+          <strong>50% off</strong> your first year on an annual plan
         </span>
         <span className={styles.offerAction}>View plans <span aria-hidden="true">→</span></span>
       </a>

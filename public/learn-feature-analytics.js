@@ -74,7 +74,7 @@
       if (destination.protocol !== 'https:' || !mainHosts.has(destination.hostname)) return;
       if (link.hasAttribute('data-subscription-offer') && path === '/pricing') {
         emit('subscription_offer_click', {
-          offer_id: 'first_subscription_50_off',
+          offer_id: 'first_annual_year_50_off',
           discount_percent: 50,
           cta_placement: placement,
           destination_host: destination.hostname,
@@ -129,7 +129,7 @@
       if (!entries.some(entry => entry.intersectionRatio >= 0.5)) return;
       observer.disconnect();
       emit('subscription_offer_view', {
-        offer_id: 'first_subscription_50_off',
+        offer_id: 'first_annual_year_50_off',
         discount_percent: 50,
         cta_placement: 'subscription-banner',
         destination_path: '/pricing',

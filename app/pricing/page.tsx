@@ -35,8 +35,8 @@ const faqs = [
     a: 'Yearly plans are paid upfront for the full year. The large monthly amount is the yearly total divided by 12, not a monthly payment. Credits are allocated monthly. The card also shows the first-year total and the subsequent yearly renewal price when an introductory offer applies.',
   },
   {
-    q: 'Who can use the first-subscription offer?',
-    a: 'The displayed introductory prices apply to eligible new subscribers. The main Nexscope site determines eligibility and confirms the final payable amount. After the introductory period, the subscription renews at the standard price shown on the card.',
+    q: 'Who can get 50% off the first year?',
+    a: 'Eligible new subscribers get 50% off the first year on an annual plan, paid upfront. Monthly plans are billed at the standard monthly rate. Nexscope confirms eligibility and the amount due at checkout. Annual plans renew at the standard yearly rate shown on the card.',
   },
   {
     q: 'Do unused subscription credits roll over?',
