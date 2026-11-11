@@ -1,8 +1,8 @@
 export const DEFAULT_SOCIAL_IMAGE = {
-  url: 'https://learn.nexscope.ai/og-default.png',
+  url: 'https://learn.nexscope.ai/og-default.png?v=2',
   width: 1200,
   height: 630,
-  alt: 'Nexscope ecommerce research, tools and evidence-based workflows',
+  alt: 'Nexscope Learn — practical guides for ecommerce teams',
 } as const;
 
 export const HOME_SOCIAL_IMAGE = {
