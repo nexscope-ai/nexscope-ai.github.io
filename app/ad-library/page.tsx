@@ -21,7 +21,7 @@ export default function AdLibraryPage() {
       <main className={styles.wrap}>
         <header className={styles.hero}>
           <h1>
-            TikTok <em className={gradient.text}>Ad Library</em>
+            <em className={gradient.text}>Ad Library</em>
           </h1>
           <p>
             Find product video ideas by browsing real TikTok ads from Germany,
