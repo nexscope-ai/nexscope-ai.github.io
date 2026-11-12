@@ -40,7 +40,7 @@ export default function NotFound() {
       <a className={homeStyles.skip} href="#main">
         Skip to content
       </a>
-      <MarketingHeader campaign="404_recovery" />
+      <MarketingHeader campaign="404_recovery" explorePath="/apis" />
 
       <main id="main" className={styles.main}>
         <section className={styles.hero} aria-labelledby="not-found-title">

@@ -12,10 +12,12 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import styles from './marketing-header.module.css';
+import { videoWorkspaceUrl } from '@/lib/video-directory';
 
 type MarketingHeaderProps = {
   active?: 'tools' | 'pricing' | 'video' | 'video-apis' | 'social' | 'growth';
   campaign: string;
+  explorePath?: '/' | '/apis';
 };
 
 type NavigationDropdownItem = {
@@ -156,7 +158,9 @@ function NavigationDropdown({
 export default function MarketingHeader({
   active,
   campaign: _campaign,
+  explorePath = '/',
 }: MarketingHeaderProps) {
+  const isVideoPage = active === 'video';
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
@@ -273,10 +277,14 @@ export default function MarketingHeader({
             <li>
               <a
                 className={styles.cta}
-                data-showcase-submit-cta="root-navigation"
-                href="/ecommerce-ai-tools/product-showcase/submit/"
+                data-track="start_using"
+                data-track-tool={isVideoPage ? 'image-to-video' : undefined}
+                data-cta-placement={isVideoPage ? 'video-navigation' : 'navigation'}
+                href={isVideoPage
+                  ? videoWorkspaceUrl('image-to-video')
+                  : `https://www.nexscope.ai${explorePath}?co-from=learn`}
               >
-                List a product free →
+                {isVideoPage ? 'Create a video ↗' : 'Explore Nexscope ↗'}
               </a>
             </li>
           </ul>
