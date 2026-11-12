@@ -237,14 +237,26 @@ export default function MarketingHeader({
                 },
               ]}
             />
-            <NavigationDropdown
-              label="Video"
-              current={active === 'video' || active === 'ad-library'}
-              items={[
-                { href: '/video/', label: 'Video workflows', trackTool: 'video-directory', current: active === 'video' },
-                { href: '/ad-library/', label: 'Ad Library', trackTool: 'ad-library', current: active === 'ad-library' },
-              ]}
-            />
+            <li>
+              <a
+                href="/video/"
+                data-track-tool="video-directory"
+                data-cta-placement="primary-navigation"
+                aria-current={active === 'video' ? 'page' : undefined}
+              >
+                Video workflows
+              </a>
+            </li>
+            <li>
+              <a
+                href="/ad-library/"
+                data-track-tool="ad-library"
+                data-cta-placement="primary-navigation"
+                aria-current={active === 'ad-library' ? 'page' : undefined}
+              >
+                Ad Library
+              </a>
+            </li>
             <NavigationDropdown
               label="Product Growth"
               current={active === 'growth'}

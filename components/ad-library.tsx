@@ -1,7 +1,7 @@
 'use client';
 
 /* oxlint-disable next/no-img-element */
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { ArrowUpRight, Play, Search, X } from 'lucide-react';
 import styles from '@/app/ad-library/ad-library.module.css';
 
@@ -45,6 +45,7 @@ export function AdLibrary({
   const [videoFailed, setVideoFailed] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
   const loadMore = useRef<HTMLButtonElement>(null);
+  const masonry = useRef<HTMLDivElement>(null);
   const search = query.trim().toLowerCase();
   const topics = [...new Set(catalog.ads.map((ad) => ad.topic))].sort();
   const results = catalog.ads
@@ -63,11 +64,33 @@ export function AdLibrary({
         : b.maxReach - a.maxReach,
     );
   const visible = results.slice(0, limit);
-  const batches = Array.from(
-    { length: Math.ceil(visible.length / pageSize) },
-    (_, index) => visible.slice(index * pageSize, (index + 1) * pageSize),
-  );
+  const visibleCount = visible.length;
   const hasMore = visible.length < results.length;
+
+  useLayoutEffect(() => {
+    const grid = masonry.current;
+    if (!grid || !('ResizeObserver' in window)) return;
+
+    const cards = Array.from(grid.children) as HTMLElement[];
+    const pack = () => {
+      const style = getComputedStyle(grid);
+      const unit = Number.parseFloat(style.getPropertyValue('--masonry-unit'));
+      const gap = Number.parseFloat(style.columnGap);
+      // Measure all cards before writing spans so a resize needs only one layout pass.
+      const spans = cards.map((card) =>
+        Math.ceil((card.getBoundingClientRect().height + gap) / unit),
+      );
+      cards.forEach((card, index) => {
+        card.style.setProperty('--masonry-span', String(spans[index]));
+      });
+      grid.dataset.packed = 'true';
+    };
+    pack();
+    const observer = new ResizeObserver(pack);
+    cards.forEach((card) => observer.observe(card));
+    observer.observe(grid);
+    return () => observer.disconnect();
+  }, [visibleCount, query, market, topic, sort]);
 
   useEffect(() => {
     if (selected && dialog.current && !dialog.current.open)
@@ -81,7 +104,7 @@ export function AdLibrary({
       ([entry]) => {
         if (entry?.isIntersecting) {
           observer.disconnect();
-          setLimit((current) => current + pageSize);
+          setLimit(limit + pageSize);
         }
       },
       { rootMargin: '0px 0px 240px' },
@@ -159,9 +182,9 @@ export function AdLibrary({
           ? `Showing ${visible.length} of ${results.length} ads`
           : 'No ads match your filters.'}
       </output>
-      {batches.map((batch) => (
-        <div className={styles.masonry} key={batch[0].id}>
-          {batch.map((ad) => (
+      {visibleCount > 0 && (
+        <div className={styles.masonry} ref={masonry}>
+          {visible.map((ad) => (
             <article className={styles.card} key={ad.id}>
               <button
                 type="button"
@@ -201,7 +224,7 @@ export function AdLibrary({
             </article>
           ))}
         </div>
-      ))}
+      )}
       {hasMore && (
         <button
           type="button"

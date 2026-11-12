@@ -97,20 +97,33 @@
 }
 
 .masonry {
-  columns: 4;
-  column-gap: 16px;
+  --masonry-columns: 4;
+  --masonry-gap: 16px;
+  --masonry-unit: 4px;
+  display: grid;
+  grid-template-columns: repeat(var(--masonry-columns), minmax(0, 1fr));
+  align-items: start;
+  gap: var(--masonry-gap);
+}
+
+@media (min-width: 371px) {
+  .masonry[data-packed] {
+    grid-auto-flow: row dense;
+    grid-auto-rows: var(--masonry-unit);
+    row-gap: 0;
+  }
+
+  .masonry[data-packed] > .card {
+    grid-row-end: span var(--masonry-span, 1);
+  }
 }
 
 .card {
-  display: inline-block;
-  width: 100%;
-  margin-bottom: 16px;
+  min-width: 0;
   overflow: hidden;
-  break-inside: avoid;
   border: 1px solid #e5dfeb;
   border-radius: 16px;
   background: #fff;
-  vertical-align: top;
 }
 
 .poster {
@@ -280,7 +293,7 @@
 
 @media (max-width: 1080px) {
   .masonry {
-    columns: 3;
+    --masonry-columns: 3;
   }
 }
 
@@ -289,11 +302,8 @@
     width: calc(100% - 28px);
   }
   .masonry {
-    columns: 2;
-    column-gap: 10px;
-  }
-  .card {
-    margin-bottom: 10px;
+    --masonry-columns: 2;
+    --masonry-gap: 10px;
   }
   .filters label {
     flex: 1 1 140px;
@@ -302,6 +312,6 @@
 
 @media (max-width: 370px) {
   .masonry {
-    columns: 1;
+    --masonry-columns: 1;
   }
 }
