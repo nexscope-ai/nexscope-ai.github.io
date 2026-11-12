@@ -180,21 +180,6 @@ export default function MarketingHeader({
 
   return (
     <header className={styles.header}>
-      <a
-        className={styles.subscriptionOffer}
-        href="https://www.nexscope.ai/pricing?co-from=learn"
-        data-track="start_using"
-        data-subscription-offer=""
-        data-cta-placement="subscription-banner"
-        target="_blank"
-        rel="noopener"
-      >
-        <span className={styles.offerBadge}>Limited-time offer</span>
-        <span className={styles.offerMessage}>
-          <strong>50% off</strong> your first year on an annual plan
-        </span>
-        <span className={styles.offerAction}>View plans <span aria-hidden="true">→</span></span>
-      </a>
       <div className={styles.inner}>
         <a
           className={styles.brand}

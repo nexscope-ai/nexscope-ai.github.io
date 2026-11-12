@@ -79,54 +79,6 @@ function consentDefaults(dataLayer) {
   return dataLayer.filter((args) => args[0] === 'consent' && args[1] === 'default');
 }
 
-void test('subscription banner reports visibility and clicks on home, directory and article pages', () => {
-  const featureScript = readFileSync(new URL('../public/learn-feature-analytics.js', import.meta.url), 'utf8');
-  for (const path of ['/', '/data/1688-sourcing/', '/ecommerce-ai-tools/guides/temu-product-research-api/']) {
-    const events = [];
-    const listeners = new Map();
-    let observeVisibility;
-    let disconnected = false;
-    const link = {
-      href: 'https://www.nexscope.ai/pricing?co-from=learn',
-      hasAttribute: (name) => name === 'data-subscription-offer',
-      getAttribute: (name) => name === 'data-cta-placement' ? 'subscription-banner' : null,
-    };
-    const context = {
-      URL,
-      location: new URL(`https://learn.nexscope.ai${path}`),
-      window: {
-        gtag: (...args) => events.push(args),
-        nexscopeTrafficAttribution: { trafficSource: 'chatgpt.com', trafficMedium: 'ai_referral' },
-      },
-      document: {
-        addEventListener: (name, listener) => listeners.set(name, listener),
-        querySelector: () => link,
-        querySelectorAll: () => [],
-      },
-      IntersectionObserver: class {
-        constructor(callback) { observeVisibility ??= callback; }
-        observe() {}
-        disconnect() { disconnected = true; }
-      },
-    };
-    runInNewContext(featureScript, context);
-    runInNewContext(featureScript, context);
-    observeVisibility([{ intersectionRatio: 0.2 }]);
-    assert.equal(events.length, 0);
-    observeVisibility([{ intersectionRatio: 0.5 }]);
-    assert.equal(disconnected, true);
-    assert.equal(events[0][1], 'subscription_offer_view');
-    listeners.get('click')({ type: 'click', target: { closest: () => link } });
-    const clicks = events.filter((event) => event[1] === 'subscription_offer_click');
-    assert.equal(clicks.length, 1);
-    assert.equal(clicks[0][2].source_page, path);
-    assert.equal(clicks[0][2].cta_placement, 'subscription-banner');
-    assert.equal(clicks[0][2].traffic_source, 'chatgpt.com');
-    assert.equal(clicks[0][2].co_from, 'learn');
-    assert.equal(clicks[0][2].destination_path, '/pricing');
-  }
-});
-
 void test('seller CTA clicks preserve the acquisition source without tracking unrelated links or sensitive query strings', () => {
   const { window, listeners } = loadAnalytics('granted', {
     trafficSource: 'outreach_email',
