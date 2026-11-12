@@ -4,13 +4,12 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import {
   ArrowUpRight,
-  Link2,
-  Pause,
+  Copy,
+  Download,
   Play,
   Search,
   Star,
-  Volume2,
-  VolumeX,
+  Users,
   X,
 } from 'lucide-react';
 import styles from '@/app/ad-library/ad-library.module.css';
@@ -37,13 +36,8 @@ type Ad = {
   posterHeight: number;
 };
 
-type Catalog = { origin: string; capturedOn: string; ads: Ad[] };
+type Catalog = { origin: string; ads: Ad[] };
 const savedAdsKey = 'nexscope-ad-library-saved';
-const cardDate = new Intl.DateTimeFormat('en-US', {
-  month: 'short',
-  day: 'numeric',
-  timeZone: 'UTC',
-});
 
 function adSource(id: string) {
   return `https://library.tiktok.com/ads/detail/?ad_id=${id}`;
@@ -66,30 +60,8 @@ function AdCard({
   onSave: () => void;
   onDetails: () => void;
 }) {
-  const video = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
-  const [muted, setMuted] = useState(true);
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
-  const [pinned, setPinned] = useState(false);
-
-  const toggle = () => {
-    if (!active) {
-      setPinned(true);
-      setReady(false);
-      setMuted(true);
-      onPreview(true);
-      return;
-    }
-    const player = video.current;
-    if (!player) return;
-    if (player.paused) {
-      setPinned(true);
-      void player.play().catch(() => setFailed(true));
-    } else {
-      player.pause();
-    }
-  };
 
   return (
     <article className={styles.card}>
@@ -100,13 +72,11 @@ function AdCard({
         onPointerEnter={(event) => {
           if (event.pointerType !== 'mouse' || failed || active) return;
           if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-          setPinned(false);
-          setMuted(true);
           setReady(false);
           onPreview(true);
         }}
         onPointerLeave={(event) => {
-          if (event.pointerType === 'mouse' && !pinned) onPreview(false);
+          if (event.pointerType === 'mouse') onPreview(false);
         }}
       >
         <img
@@ -121,22 +91,16 @@ function AdCard({
         {active && !failed && (
           /* oxlint-disable-next-line jsx-a11y/media-has-caption -- Source ads do not supply caption tracks. */
           <video
-            ref={video}
             src={origin + ad.video}
-            muted={muted}
+            muted
             autoPlay
             playsInline
             aria-hidden="true"
-            onPlaying={() => {
-              setPlaying(true);
-              setReady(true);
-            }}
-            onPause={() => setPlaying(false)}
+            onPlaying={() => setReady(true)}
             onEnded={() => onPreview(false)}
             onError={() => {
               setFailed(true);
               setReady(false);
-              setPlaying(false);
             }}
           />
         )}
@@ -149,72 +113,18 @@ function AdCard({
         <button
           type="button"
           className={styles.play}
-          aria-label={`${active && playing ? 'Pause' : 'Play'} ad by ${ad.advertiser}`}
-          onClick={failed ? onDetails : toggle}
+          aria-label={`Open ad by ${ad.advertiser}`}
+          aria-haspopup="dialog"
+          onClick={onDetails}
         >
-          {active && playing ? (
-            <Pause size={18} fill="currentColor" aria-hidden="true" />
-          ) : (
-            <Play size={22} fill="currentColor" aria-hidden="true" />
-          )}
+          <Play size={22} fill="currentColor" aria-hidden="true" />
         </button>
-        {active && ready && (
-          <button
-            type="button"
-            className={styles.sound}
-            aria-label={muted ? 'Unmute ad' : 'Mute ad'}
-            onClick={() => {
-              if (video.current) video.current.muted = !muted;
-              setMuted(!muted);
-            }}
-          >
-            {muted ? (
-              <VolumeX size={17} aria-hidden="true" />
-            ) : (
-              <Volume2 size={17} aria-hidden="true" />
-            )}
-          </button>
-        )}
-      </div>
-      <dl className={styles.stats}>
-        <div>
-          <dt>Reach</dt>
-          <dd>{ad.reach}</dd>
-        </div>
-        <div>
-          <dt>First shown</dt>
-          <dd>
-            <time dateTime={ad.firstShown}>
-              {cardDate.format(new Date(ad.firstShown))}
-            </time>
-          </dd>
-        </div>
-        <div>
-          <dt>Last shown</dt>
-          <dd>
-            <time dateTime={ad.lastShown}>
-              {cardDate.format(new Date(ad.lastShown))}
-            </time>
-          </dd>
-        </div>
-      </dl>
-      <div className={styles.cardActions}>
-        <button type="button" className={styles.adDetails} onClick={onDetails}>
-          Ad details
-        </button>
-        <div>
-          <a
-            href={adSource(ad.id)}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open original TikTok ad"
-          >
-            <Link2 size={19} aria-hidden="true" />
-          </a>
+        <div className={styles.cardActions}>
           <button
             type="button"
             aria-pressed={saved}
             aria-label="Save ad"
+            title="Save ad"
             onClick={onSave}
           >
             <Star
@@ -225,16 +135,173 @@ function AdCard({
           </button>
         </div>
       </div>
+      <p className={styles.stats} title={`Reported reach: ${ad.reach}`}>
+        <Users size={16} aria-hidden="true" />
+        <span className="sr-only">Reported reach: </span>
+        {ad.reach}
+      </p>
     </article>
+  );
+}
+
+function AdPreview({
+  ad,
+  origin,
+  cloneUrl,
+  onClose,
+}: {
+  ad: Ad;
+  origin: string;
+  cloneUrl: string;
+  onClose: () => void;
+}) {
+  const videoUrl = origin + ad.video;
+  const [videoFailed, setVideoFailed] = useState(false);
+  const [copyStatus, setCopyStatus] = useState<'copied' | 'failed'>();
+  const [downloadStatus, setDownloadStatus] = useState<'loading' | 'failed'>();
+
+  const copyVideoLink = async () => {
+    try {
+      await navigator.clipboard.writeText(videoUrl);
+      setCopyStatus('copied');
+    } catch {
+      setCopyStatus('failed');
+    }
+  };
+
+  const downloadVideo = async () => {
+    setDownloadStatus('loading');
+    try {
+      const response = await fetch(videoUrl);
+      if (!response.ok) throw new Error('Video download failed');
+      const file = await response.blob();
+      const objectUrl = URL.createObjectURL(file);
+      const link = document.createElement('a');
+      link.href = objectUrl;
+      link.download = `tiktok-ad-${ad.id}.mp4`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(objectUrl), 30_000);
+      setDownloadStatus(undefined);
+    } catch {
+      setDownloadStatus('failed');
+    }
+  };
+
+  return (
+    <div className={styles.previewLayout}>
+      <div className={styles.previewMedia}>
+        {videoFailed ? (
+          <p className={styles.videoError}>This video could not be loaded.</p>
+        ) : (
+          /* oxlint-disable-next-line jsx-a11y/media-has-caption -- Third-party ads have no supplied caption tracks. */
+          <video
+            controls
+            autoPlay
+            playsInline
+            src={videoUrl}
+            poster={origin + ad.poster}
+            onError={() => setVideoFailed(true)}
+          />
+        )}
+      </div>
+      <div className={styles.previewInfo}>
+        <header className={styles.dialogHeader}>
+          <div>
+            <p className={styles.market}>
+              {markets[ad.market]} · {ad.topic}
+            </p>
+            <h2 id="ad-preview-title">{ad.advertiser}</h2>
+          </div>
+          <button type="button" aria-label="Close ad preview" onClick={onClose}>
+            <X size={22} aria-hidden="true" />
+          </button>
+        </header>
+        <dl className={styles.details}>
+          <div>
+            <dt>Reported reach</dt>
+            <dd>{ad.reach}</dd>
+          </div>
+          <div>
+            <dt>First shown</dt>
+            <dd>
+              <time dateTime={ad.firstShown}>{ad.firstShown}</time>
+            </dd>
+          </div>
+          <div>
+            <dt>Last shown</dt>
+            <dd>
+              <time dateTime={ad.lastShown}>{ad.lastShown}</time>
+            </dd>
+          </div>
+        </dl>
+        <div className={styles.previewLinks}>
+          <button type="button" onClick={() => void copyVideoLink()}>
+            <Copy size={16} aria-hidden="true" /> Copy video link
+          </button>
+          <a href={adSource(ad.id)} target="_blank" rel="noopener noreferrer">
+            View on TikTok <ArrowUpRight size={15} aria-hidden="true" />
+          </a>
+        </div>
+        <footer className={styles.previewFooter}>
+          {copyStatus === 'failed' && (
+            <input
+              className={styles.copyFallback}
+              aria-label="Video link"
+              readOnly
+              value={videoUrl}
+              onFocus={(event) => event.currentTarget.select()}
+            />
+          )}
+          <output className={styles.previewTip}>
+            {copyStatus === 'copied' && 'Video link copied. '}
+            {copyStatus === 'failed' &&
+              'Select the video link above to copy it. '}
+            Download the MP4 and upload it as a reference in Video Clone.
+          </output>
+          {downloadStatus === 'failed' && (
+            <output className={styles.downloadError}>
+              Download failed. Try again or{' '}
+              <a href={videoUrl} target="_blank" rel="noopener noreferrer">
+                open the MP4
+              </a>
+              .
+            </output>
+          )}
+          <div className={styles.actions}>
+            <button
+              type="button"
+              disabled={downloadStatus === 'loading'}
+              onClick={() => void downloadVideo()}
+            >
+              <Download size={16} aria-hidden="true" />
+              {downloadStatus === 'loading' ? 'Downloading…' : 'Download'}
+            </button>
+            <a
+              href={cloneUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.create}
+              data-track-tool="video-replication"
+              data-cta-placement="ad-library-preview"
+              onClick={() => void copyVideoLink()}
+            >
+              Go to Video Clone <ArrowUpRight size={16} aria-hidden="true" />
+            </a>
+          </div>
+        </footer>
+      </div>
+    </div>
   );
 }
 
 export function AdLibrary({
   catalog,
-  createUrl,
+  cloneUrl,
 }: {
   catalog: Catalog;
-  createUrl: string;
+  cloneUrl: string;
 }) {
   const [query, setQuery] = useState('');
   const [limit, setLimit] = useState(pageSize);
@@ -242,7 +309,6 @@ export function AdLibrary({
   const [savedAds, setSavedAds] = useState<string[]>([]);
   const [savedOnly, setSavedOnly] = useState(false);
   const [selected, setSelected] = useState<Ad | null>(null);
-  const [videoFailed, setVideoFailed] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
   const loadMore = useRef<HTMLButtonElement>(null);
   const masonry = useRef<HTMLDivElement>(null);
@@ -387,7 +453,6 @@ export function AdLibrary({
               onDetails={() => {
                 setPreview(null);
                 setSelected(ad);
-                setVideoFailed(false);
               }}
             />
           ))}
@@ -403,10 +468,6 @@ export function AdLibrary({
           Load more ads
         </button>
       )}
-      <p className={styles.source}>
-        Source: TikTok Commercial Content Library · Snapshot from{' '}
-        {catalog.capturedOn}
-      </p>
       <dialog
         className={styles.dialog}
         ref={dialog}
@@ -414,63 +475,13 @@ export function AdLibrary({
         onClose={() => setSelected(null)}
       >
         {selected && (
-          <>
-            <div className={styles.dialogHeader}>
-              <div>
-                <span className={styles.market}>
-                  {markets[selected.market]} · {selected.topic}
-                </span>
-                <h2 id="ad-preview-title">{selected.advertiser}</h2>
-              </div>
-              <button
-                type="button"
-                aria-label="Close ad preview"
-                onClick={() => dialog.current?.close()}
-              >
-                <X size={22} aria-hidden="true" />
-              </button>
-            </div>
-            {videoFailed ? (
-              <p className={styles.videoError}>
-                This video could not be loaded.
-              </p>
-            ) : (
-              /* oxlint-disable-next-line jsx-a11y/media-has-caption -- Third-party ads have no supplied caption tracks. */
-              <video
-                key={selected.id}
-                controls
-                autoPlay
-                playsInline
-                src={catalog.origin + selected.video}
-                poster={catalog.origin + selected.poster}
-                onError={() => setVideoFailed(true)}
-              />
-            )}
-            <p className={styles.details}>
-              Reported reach {selected.reach} · First shown{' '}
-              {selected.firstShown}
-            </p>
-            <div className={styles.actions}>
-              <a
-                href={adSource(selected.id)}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View on TikTok <ArrowUpRight size={15} aria-hidden="true" />
-              </a>
-              <a
-                href={createUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.create}
-                data-track-tool="image-to-video"
-                data-cta-placement="ad-library-preview"
-              >
-                Create from a product image{' '}
-                <ArrowUpRight size={16} aria-hidden="true" />
-              </a>
-            </div>
-          </>
+          <AdPreview
+            key={selected.id}
+            ad={selected}
+            origin={catalog.origin}
+            cloneUrl={cloneUrl}
+            onClose={() => dialog.current?.close()}
+          />
         )}
       </dialog>
     </>

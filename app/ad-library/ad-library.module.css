@@ -24,9 +24,7 @@
 }
 
 .hero p,
-.results,
-.source,
-.details {
+.results {
   color: #625a72;
 }
 
@@ -195,106 +193,56 @@
   inset: 0;
 }
 
-.poster[data-previewing='true'] .play,
-.sound {
-  position: absolute;
-  bottom: 8px;
-  left: 8px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-}
-
-.sound {
-  left: 58px;
-  display: grid;
-  place-items: center;
-  background: #181322a8;
-  color: #fff;
-  cursor: pointer;
-}
-
-.play:hover,
-.sound:hover {
+.play:hover {
   background: #181322e8;
 }
 
 .stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 4px;
-  margin: 0;
-  padding: 15px 0 10px;
-  text-align: center;
-}
-
-.stats div {
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 3px;
-}
-.stats dt {
-  color: #625a72;
-  font-size: 0.6875rem;
-}
-.stats dd {
-  margin: 0;
-  font-size: clamp(0.75rem, 1.3vw, 1rem);
-  font-weight: 750;
-}
-
-.cardActions,
-.cardActions > div {
   display: flex;
   align-items: center;
+  gap: 7px;
+  margin: 0;
+  padding: 9px 2px 0;
+  color: #625a72;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
 }
 
 .cardActions {
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 2px;
+  position: absolute;
+  z-index: 2;
+  inset: 6px 6px auto;
+  display: flex;
+  justify-content: flex-end;
+  pointer-events: none;
 }
-.cardActions > div > :is(a, button) {
+
+.cardActions button {
   display: grid;
   place-items: center;
   width: 44px;
   height: 44px;
-  color: #625a72;
   border-radius: 50%;
+  background: #181322a8;
+  color: #fff;
   cursor: pointer;
+  pointer-events: auto;
 }
 
-.cardActions > div > :is(a, button):hover,
+.cardActions button:hover,
+.cardActions button:focus-visible {
+  background: #181322e8;
+}
+
 .cardActions button[aria-pressed='true'] {
-  color: #5733be;
-  background: #eee7fc;
-}
-
-.adDetails {
-  min-height: 44px;
-  padding: 0 10px;
-  border: 1px solid #7959cf;
-  border-radius: 999px;
-  color: #5733be;
-  font-size: 0.75rem;
-  font-weight: 650;
-  cursor: pointer;
-}
-
-.adDetails:hover {
-  background: #eee7fc;
+  color: #ffe08a;
 }
 .market {
   color: #66527f;
   font-size: 0.75rem;
   text-transform: capitalize;
 }
-.source {
-  margin-top: 20px;
-  font-size: 0.75rem;
-  text-align: center;
-}
-
 .more {
   display: block;
   min-height: 44px;
@@ -308,10 +256,10 @@
 }
 
 .dialog {
-  width: min(520px, calc(100% - 24px));
+  width: min(940px, calc(100% - 24px));
   max-height: calc(100dvh - 24px);
   margin: auto;
-  padding: 16px;
+  padding: 0;
   overflow: auto;
   border: 1px solid #e5dfeb;
   border-radius: 16px;
@@ -322,17 +270,38 @@
 .dialog::backdrop {
   background: #171222b5;
 }
+
+.previewLayout {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+}
+
+.previewMedia {
+  display: grid;
+  align-items: center;
+  background: #181322;
+}
+
+.previewInfo {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(16px, 3vw, 28px);
+}
+
 .dialogHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 }
 .dialogHeader h2 {
   margin: 0;
-  font-size: 1.125rem;
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
   font-weight: 700;
+  overflow-wrap: anywhere;
 }
 .dialogHeader button {
   display: grid;
@@ -348,39 +317,127 @@
 .dialog video {
   display: block;
   width: 100%;
-  height: min(56dvh, 540px);
-  background: #181322;
-  border-radius: 10px;
+  height: min(70dvh, 640px);
+  object-fit: contain;
 }
 .videoError {
   padding: 20px;
-  background: #faf8f5;
+  color: #fff;
+  text-align: center;
 }
 .details {
-  margin: 12px 0;
+  margin: 0 0 12px;
   font-size: 0.875rem;
 }
+
+.details div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid #eee9f3;
+}
+
+.details dt,
+.previewTip {
+  color: #625a72;
+}
+.details dd {
+  margin: 0;
+  font-weight: 650;
+}
+
+.previewLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  font-size: 0.8125rem;
+  color: #5534b7;
+}
+
+.previewLinks > :is(a, button) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.previewLinks > :is(a, button):hover {
+  text-decoration: underline;
+}
+
+.previewFooter {
+  margin-top: auto;
+  padding-top: 14px;
+}
+.previewTip,
+.downloadError {
+  display: block;
+  font-size: 0.8125rem;
+  margin: 0 0 12px;
+}
+.downloadError {
+  color: #943145;
+}
+.downloadError a {
+  text-decoration: underline;
+}
+.copyFallback {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 7px 9px;
+  border: 1px solid #dcd5e7;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+}
+
 .actions {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   flex-wrap: wrap;
   gap: 8px;
 }
-.actions a {
+.actions > :is(a, button) {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   min-height: 44px;
+  padding-inline: 12px;
+  border: 1px solid #dcd5e7;
+  border-radius: 9px;
   font-size: 0.8125rem;
   font-weight: 650;
   color: #5534b7;
+  cursor: pointer;
+}
+.actions button:disabled {
+  opacity: 0.65;
+  cursor: wait;
 }
 .actions .create {
-  padding-inline: 12px;
-  border-radius: 9px;
+  border-color: #633cd2;
   background: #633cd2;
   color: #fff;
+}
+
+.usageGuide {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid #e5dfeb;
+  font-size: 0.875rem;
+  color: #625a72;
+}
+.usageGuide h2 {
+  margin: 0 0 8px;
+  color: #4d3a65;
+  font-size: 1rem;
+  font-weight: 650;
+}
+.usageGuide p {
+  max-width: 70ch;
+  margin: 0 0 8px;
 }
 
 @media (max-width: 1080px) {
@@ -390,6 +447,26 @@
 }
 
 @media (max-width: 720px) {
+  .previewLayout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .dialog video {
+    height: min(43dvh, 380px);
+  }
+  .previewInfo {
+    padding-top: 12px;
+  }
+  .dialogHeader button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 44px;
+    background: #181322c9;
+    color: #fff;
+  }
+  .dialogHeader button:hover {
+    background: #181322;
+  }
   .wrap {
     width: calc(100% - 28px);
   }
