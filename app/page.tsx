@@ -549,7 +549,7 @@ export default function Home() {
                 kicker="EXAMPLE · SEEDANCE VIDEO"
                 exampleId="seedance-video"
                 outcome="Submit an image and motion prompt, then use the returned task ID to check generation progress."
-                playground="https://www.nexscope.ai/api-docs/seedance-2-0-video-generation?view=documentation&co-from=learn#online-test"
+                playground="https://www.nexscope.ai/api-docs/seedance-2-0-video-generation?view=playground&co-from=learn"
                 request={videoExample}
                 response={videoResponse}
               />
