@@ -3,17 +3,27 @@ import MarketingHeader from '@/components/marketing-header';
 import LearnFooter from '@/components/learn-footer';
 import { AdLibrary } from '@/components/ad-library';
 import catalog from '@/lib/ad-library-catalog.json';
+import pricingSnapshot from '@/lib/pricing-snapshot.json';
 import { videoWorkspaceUrl } from '@/lib/video-directory';
 import {
   DEFAULT_SOCIAL_IMAGE,
   NEXSCOPE_ORGANIZATION,
 } from '@/lib/site-metadata';
-import gradient from '@/app/gradient-title.module.css';
 import styles from './ad-library.module.css';
 
-const title = 'TikTok Ad Library for Ecommerce Video Inspiration | Nexscope';
+const title = 'Remix TikTok Product Ads | Nexscope Ad Library';
 const description =
-  'Explore TikTok ad examples, compare reported reach, and download a reference clip to adapt its style to your own product in Nexscope Video Clone.';
+  'Browse TikTok product ads by keyword, compare plays and likes, and use an original TikTok video as a reference in Nexscope Video Clone.';
+const annualPlans = pricingSnapshot.plans.filter(
+  (plan) => plan.billingPeriod === 12,
+);
+const showAnnualOffer =
+  annualPlans.length > 0 &&
+  annualPlans.every(
+    (plan) =>
+      plan.introductoryPrice !== null &&
+      plan.introductoryPrice * 2 === plan.price,
+  );
 
 export const metadata: Metadata = {
   title,
@@ -56,17 +66,10 @@ export default function AdLibraryPage() {
             __html: JSON.stringify(pageSchema).replace(/</g, '\\u003c'),
           }}
         />
-        <header className={styles.hero}>
-          <h1>
-            <em className={gradient.text}>Ad Library</em>
-          </h1>
-          <p>
-            Pick an ad you like and recreate the style for your own product.
-          </p>
-        </header>
         <AdLibrary
           catalog={catalog}
           cloneUrl={videoWorkspaceUrl('video-replication')}
+          showAnnualOffer={showAnnualOffer}
         />
         <section
           className={styles.usageGuide}
@@ -76,14 +79,14 @@ export default function AdLibraryPage() {
             How to use a TikTok ad as a video reference
           </h2>
           <p>
-            Search by advertiser or keyword and open an ad to see how it
-            introduces the product. Compare the opening shot, demonstration and
-            call to action before choosing a reference.
+            Search by product, advertiser or keyword and watch an ad on TikTok
+            to see how it introduces the product. Compare the opening shot,
+            demonstration and call to action before choosing a reference.
           </p>
           <p>
-            Download the clip, then upload it and add your product images in
-            Video Clone. Reported reach estimates how many people saw the
-            original ad. Use the reach range to compare exposure across ads.
+            Select Remix to copy the original TikTok link. Paste it into Video
+            Clone as a reference, then add images of your own product. Plays and
+            likes help you compare the original videos.
           </p>
         </section>
       </main>
