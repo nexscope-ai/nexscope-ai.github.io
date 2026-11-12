@@ -2,7 +2,17 @@
 
 /* oxlint-disable next/no-img-element */
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { ArrowUpRight, Play, Search, X } from 'lucide-react';
+import {
+  ArrowUpRight,
+  Link2,
+  Pause,
+  Play,
+  Search,
+  Star,
+  Volume2,
+  VolumeX,
+  X,
+} from 'lucide-react';
 import styles from '@/app/ad-library/ad-library.module.css';
 
 const pageSize = 24;
@@ -28,6 +38,196 @@ type Ad = {
 };
 
 type Catalog = { origin: string; capturedOn: string; ads: Ad[] };
+const savedAdsKey = 'nexscope-ad-library-saved';
+const cardDate = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  day: 'numeric',
+  timeZone: 'UTC',
+});
+
+function adSource(id: string) {
+  return `https://library.tiktok.com/ads/detail/?ad_id=${id}`;
+}
+
+function AdCard({
+  ad,
+  origin,
+  active,
+  saved,
+  onPreview,
+  onSave,
+  onDetails,
+}: {
+  ad: Ad;
+  origin: string;
+  active: boolean;
+  saved: boolean;
+  onPreview: (active: boolean) => void;
+  onSave: () => void;
+  onDetails: () => void;
+}) {
+  const video = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+  const [muted, setMuted] = useState(true);
+  const [ready, setReady] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const [pinned, setPinned] = useState(false);
+
+  const toggle = () => {
+    if (!active) {
+      setPinned(true);
+      setReady(false);
+      setMuted(true);
+      onPreview(true);
+      return;
+    }
+    const player = video.current;
+    if (!player) return;
+    if (player.paused) {
+      setPinned(true);
+      void player.play().catch(() => setFailed(true));
+    } else {
+      player.pause();
+    }
+  };
+
+  return (
+    <article className={styles.card}>
+      <div
+        className={styles.poster}
+        data-previewing={active && ready}
+        style={{ aspectRatio: `${ad.posterWidth} / ${ad.posterHeight}` }}
+        onPointerEnter={(event) => {
+          if (event.pointerType !== 'mouse' || failed || active) return;
+          if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+          setPinned(false);
+          setMuted(true);
+          setReady(false);
+          onPreview(true);
+        }}
+        onPointerLeave={(event) => {
+          if (event.pointerType === 'mouse' && !pinned) onPreview(false);
+        }}
+      >
+        <img
+          src={origin + ad.poster}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          onError={(event) => {
+            event.currentTarget.hidden = true;
+          }}
+        />
+        {active && !failed && (
+          /* oxlint-disable-next-line jsx-a11y/media-has-caption -- Source ads do not supply caption tracks. */
+          <video
+            ref={video}
+            src={origin + ad.video}
+            muted={muted}
+            autoPlay
+            playsInline
+            aria-hidden="true"
+            onPlaying={() => {
+              setPlaying(true);
+              setReady(true);
+            }}
+            onPause={() => setPlaying(false)}
+            onEnded={() => onPreview(false)}
+            onError={() => {
+              setFailed(true);
+              setReady(false);
+              setPlaying(false);
+            }}
+          />
+        )}
+        <div className={styles.posterInfo}>
+          <span>
+            {markets[ad.market]} · {ad.topic}
+          </span>
+          <h2>{ad.advertiser}</h2>
+        </div>
+        <button
+          type="button"
+          className={styles.play}
+          aria-label={`${active && playing ? 'Pause' : 'Play'} ad by ${ad.advertiser}`}
+          onClick={failed ? onDetails : toggle}
+        >
+          {active && playing ? (
+            <Pause size={18} fill="currentColor" aria-hidden="true" />
+          ) : (
+            <Play size={22} fill="currentColor" aria-hidden="true" />
+          )}
+        </button>
+        {active && ready && (
+          <button
+            type="button"
+            className={styles.sound}
+            aria-label={muted ? 'Unmute ad' : 'Mute ad'}
+            onClick={() => {
+              if (video.current) video.current.muted = !muted;
+              setMuted(!muted);
+            }}
+          >
+            {muted ? (
+              <VolumeX size={17} aria-hidden="true" />
+            ) : (
+              <Volume2 size={17} aria-hidden="true" />
+            )}
+          </button>
+        )}
+      </div>
+      <dl className={styles.stats}>
+        <div>
+          <dt>Reach</dt>
+          <dd>{ad.reach}</dd>
+        </div>
+        <div>
+          <dt>First shown</dt>
+          <dd>
+            <time dateTime={ad.firstShown}>
+              {cardDate.format(new Date(ad.firstShown))}
+            </time>
+          </dd>
+        </div>
+        <div>
+          <dt>Last shown</dt>
+          <dd>
+            <time dateTime={ad.lastShown}>
+              {cardDate.format(new Date(ad.lastShown))}
+            </time>
+          </dd>
+        </div>
+      </dl>
+      <div className={styles.cardActions}>
+        <button type="button" className={styles.adDetails} onClick={onDetails}>
+          Ad details
+        </button>
+        <div>
+          <a
+            href={adSource(ad.id)}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Open original TikTok ad"
+          >
+            <Link2 size={19} aria-hidden="true" />
+          </a>
+          <button
+            type="button"
+            aria-pressed={saved}
+            aria-label="Save ad"
+            onClick={onSave}
+          >
+            <Star
+              size={19}
+              fill={saved ? 'currentColor' : 'none'}
+              aria-hidden="true"
+            />
+          </button>
+        </div>
+      </div>
+    </article>
+  );
+}
 
 export function AdLibrary({
   catalog,
@@ -37,32 +237,26 @@ export function AdLibrary({
   createUrl: string;
 }) {
   const [query, setQuery] = useState('');
-  const [market, setMarket] = useState('');
-  const [topic, setTopic] = useState('');
-  const [sort, setSort] = useState('reach');
   const [limit, setLimit] = useState(pageSize);
+  const [preview, setPreview] = useState<string | null>(null);
+  const [savedAds, setSavedAds] = useState<string[]>([]);
+  const [savedOnly, setSavedOnly] = useState(false);
   const [selected, setSelected] = useState<Ad | null>(null);
   const [videoFailed, setVideoFailed] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
   const loadMore = useRef<HTMLButtonElement>(null);
   const masonry = useRef<HTMLDivElement>(null);
   const search = query.trim().toLowerCase();
-  const topics = [...new Set(catalog.ads.map((ad) => ad.topic))].sort();
   const results = catalog.ads
     .filter(
       (ad) =>
-        (!market || ad.market === market) &&
-        (!topic || ad.topic === topic) &&
+        (!savedOnly || savedAds.includes(ad.id)) &&
         (!search ||
           [ad.advertiser, ad.topic, markets[ad.market], ad.id].some((value) =>
             value?.toLowerCase().includes(search),
           )),
     )
-    .sort((a, b) =>
-      sort === 'newest'
-        ? b.firstShown.localeCompare(a.firstShown) || b.maxReach - a.maxReach
-        : b.maxReach - a.maxReach,
-    );
+    .sort((a, b) => b.maxReach - a.maxReach);
   const visible = results.slice(0, limit);
   const visibleCount = visible.length;
   const hasMore = visible.length < results.length;
@@ -90,7 +284,22 @@ export function AdLibrary({
     cards.forEach((card) => observer.observe(card));
     observer.observe(grid);
     return () => observer.disconnect();
-  }, [visibleCount, query, market, topic, sort]);
+  }, [visibleCount, query, savedOnly, savedAds]);
+
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      try {
+        const stored: unknown = JSON.parse(
+          localStorage.getItem(savedAdsKey) ?? '[]',
+        );
+        if (Array.isArray(stored))
+          setSavedAds(stored.filter((value) => typeof value === 'string'));
+      } catch {
+        // Browsing and session saves still work if storage is disabled.
+      }
+    });
+    return () => cancelAnimationFrame(frame);
+  }, []);
 
   useEffect(() => {
     if (selected && dialog.current && !dialog.current.open)
@@ -111,7 +320,7 @@ export function AdLibrary({
     );
     observer.observe(button);
     return () => observer.disconnect();
-  }, [hasMore, limit, query, market, topic, sort]);
+  }, [hasMore, limit, query, savedOnly]);
 
   return (
     <>
@@ -126,102 +335,61 @@ export function AdLibrary({
             onChange={(event) => {
               setQuery(event.target.value);
               setLimit(pageSize);
+              setPreview(null);
             }}
           />
         </label>
-        <div className={styles.filters}>
-          <label>
-            Market
-            <select
-              value={market}
-              onChange={(event) => {
-                setMarket(event.target.value);
-                setLimit(pageSize);
-              }}
-            >
-              <option value="">All markets</option>
-              {Object.entries(markets).map(([code, name]) => (
-                <option key={code} value={code}>
-                  {name}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Keyword
-            <select
-              value={topic}
-              onChange={(event) => {
-                setTopic(event.target.value);
-                setLimit(pageSize);
-              }}
-            >
-              <option value="">All keywords</option>
-              {topics.map((value) => (
-                <option key={value}>{value}</option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Sort by
-            <select
-              value={sort}
-              onChange={(event) => {
-                setSort(event.target.value);
-                setLimit(pageSize);
-              }}
-            >
-              <option value="reach">Highest reach</option>
-              <option value="newest">Most recently first shown</option>
-            </select>
-          </label>
+        <div className={styles.resultsBar}>
+          <output className={styles.results}>
+            {results.length
+              ? `Showing ${visible.length} of ${results.length} ads`
+              : savedOnly && savedAds.length === 0
+                ? 'You haven’t saved any ads yet.'
+                : 'No ads match your search.'}
+          </output>
+          <button
+            className={styles.savedFilter}
+            type="button"
+            aria-pressed={savedOnly}
+            onClick={() => {
+              setSavedOnly(!savedOnly);
+              setLimit(pageSize);
+              setPreview(null);
+            }}
+          >
+            <Star size={16} aria-hidden="true" /> Saved ads
+          </button>
         </div>
       </section>
-      <output className={styles.results}>
-        {results.length
-          ? `Showing ${visible.length} of ${results.length} ads`
-          : 'No ads match your filters.'}
-      </output>
       {visibleCount > 0 && (
         <div className={styles.masonry} ref={masonry}>
           {visible.map((ad) => (
-            <article className={styles.card} key={ad.id}>
-              <button
-                type="button"
-                className={styles.poster}
-                style={{
-                  aspectRatio: `${ad.posterWidth} / ${ad.posterHeight}`,
-                }}
-                aria-label={`Play ad by ${ad.advertiser}`}
-                onClick={() => {
-                  setSelected(ad);
-                  setVideoFailed(false);
-                }}
-              >
-                <img
-                  src={catalog.origin + ad.poster}
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  onError={(event) => {
-                    event.currentTarget.hidden = true;
-                  }}
-                />
-                <span className={styles.play}>
-                  <Play fill="currentColor" size={22} aria-hidden="true" />
-                </span>
-              </button>
-              <div className={styles.cardBody}>
-                <span className={styles.market}>
-                  {markets[ad.market]} · {ad.topic}
-                </span>
-                <h2>{ad.advertiser}</h2>
-                <dl>
-                  <dt>Reported reach</dt>
-                  <dd>{ad.reach}</dd>
-                </dl>
-              </div>
-            </article>
+            <AdCard
+              key={ad.id}
+              ad={ad}
+              origin={catalog.origin}
+              active={preview === ad.id}
+              saved={savedAds.includes(ad.id)}
+              onPreview={(active) =>
+                setPreview((current) =>
+                  active ? ad.id : current === ad.id ? null : current,
+                )
+              }
+              onSave={() => {
+                const next = savedAds.includes(ad.id)
+                  ? savedAds.filter((id) => id !== ad.id)
+                  : [...savedAds, ad.id];
+                setSavedAds(next);
+                try {
+                  localStorage.setItem(savedAdsKey, JSON.stringify(next));
+                } catch {}
+              }}
+              onDetails={() => {
+                setPreview(null);
+                setSelected(ad);
+                setVideoFailed(false);
+              }}
+            />
           ))}
         </div>
       )}
@@ -284,7 +452,7 @@ export function AdLibrary({
             </p>
             <div className={styles.actions}>
               <a
-                href={`https://library.tiktok.com/ads/detail/?ad_id=${selected.id}`}
+                href={adSource(selected.id)}
                 target="_blank"
                 rel="noopener noreferrer"
               >
