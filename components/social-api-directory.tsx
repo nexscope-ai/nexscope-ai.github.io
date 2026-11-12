@@ -91,16 +91,7 @@ export default function SocialApiDirectory() {
       className={social.directory}
       aria-labelledby="social-api-title"
     >
-      <div className={styles.sectionHeading}>
-        <div>
-          <p className={styles.eyebrow}>Browse by platform and task</p>
-          <h2 id="social-api-title">Find your next social data API.</h2>
-        </div>
-        <p>
-          Search for profiles, posts, comments, search results or transcripts.
-          Available fields and inputs depend on the endpoint.
-        </p>
-      </div>
+      <h2 id="social-api-title" className={styles.apiSearchLabel}>Browse social media APIs</h2>
       <label className={styles.apiSearch}>
         <Search size={19} aria-hidden="true" />
         <span className={styles.apiSearchLabel}>Search social APIs</span>

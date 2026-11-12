@@ -48,17 +48,9 @@ export default function HomepagePricing({ plans }: { plans: Plan[] }) {
             <Sparkles size={15} aria-hidden="true" />
             {cycle === 12 ? 'FIRST YEAR' : 'FIRST MONTH'} <strong>50% OFF</strong>
           </p>
-        ) : (
-          <p className={styles.eyebrow}>NEXSCOPE PLANS</p>
-        )}
-        <h2 id="subscription-title">
-          {halfOff
-            ? cycle === 12
-              ? 'Save 50% on your first year.'
-              : 'Save 50% on your first month.'
-            : 'More possibilities. A plan for your next step.'}
-        </h2>
-        <p>One subscription for ecommerce data, images and videos.</p>
+        ) : null}
+        <h1 id="subscription-title">Nexscope pricing</h1>
+        <p>Compare plans for ecommerce data, image and video generation.</p>
       </div>
       {plans.length > 0 && (
         <fieldset className={styles.toggle}>

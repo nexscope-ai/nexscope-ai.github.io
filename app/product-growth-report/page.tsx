@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import {
   ArrowRight,
   ArrowUpRight,
-  Check,
   ClipboardCheck,
   MessagesSquare,
   ScanSearch,
@@ -197,18 +196,11 @@ export default function ProductGrowthReport() {
       <main id="main" className={styles.main}>
         <section className={styles.hero}>
           <div>
-            <p className={styles.eyebrow}>NEXSCOPE PRODUCT GROWTH REPORT</p>
             <h1>
-              Product Growth Report.
-              <br />
-              <em className={gradientTitle.text}>Know what to fix first.</em>
+              Product Growth <em className={gradientTitle.text}>Report</em>
             </h1>
             <p className={styles.lead}>
-              Send one Amazon listing or online store product URL. Get a
-              human-reviewed action plan with findings, supporting evidence
-              where available, and changes in priority order. Choose what to
-              focus on, from AI visibility and competitors to keywords,
-              listing copy, or ad images.
+              Send one product link. Get a human-reviewed plan that shows what to fix first and why.
             </p>
             <a
               className={styles.primary}
@@ -226,9 +218,6 @@ export default function ProductGrowthReport() {
               See a real report example{' '}
               <ArrowRight size={16} aria-hidden="true" />
             </a>
-            <p className={styles.small}>
-              One product · One market · Review your credit quote before submitting
-            </p>
           </div>
           <aside
             className={styles.reportOutline}

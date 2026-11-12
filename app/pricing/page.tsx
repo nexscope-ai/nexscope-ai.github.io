@@ -94,10 +94,6 @@ export default function PricingPage() {
     url: string;
   })[] = pricingRows(pricingSnapshot.plans);
   const checkedAt = pricingSnapshot.checkedAt;
-  const monthly = rows.filter((plan) => plan.billingPeriod === 1);
-  const answer = monthly.length
-    ? `Nexscope subscriptions combine ecommerce Data APIs with AI image and video creation. Standard monthly plans range from ${pricingMoney(Math.min(...monthly.map((plan) => plan.price)))} to ${pricingMoney(Math.max(...monthly.map((plan) => plan.price)))} USD. Yearly plans are paid upfront; monthly credits renew without rollover. Compare standard rates separately from eligible first-subscription discounts. Product Gallery submission and approved display remain free.`
-    : 'Nexscope subscriptions combine ecommerce Data APIs with AI image and video creation. Yearly plans are paid upfront; monthly credits renew without rollover. Check the official pricing page for current rates and introductory offer eligibility. Product Gallery submission and approved display remain free.';
   return (
     <div className={styles.page}>
       <script
@@ -112,7 +108,7 @@ export default function PricingPage() {
                 '@type': 'WebPage',
                 '@id': 'https://learn.nexscope.ai/pricing/#webpage',
                 name: 'Nexscope Pricing',
-                description: answer,
+                description,
                 inLanguage: 'en',
                 url: 'https://learn.nexscope.ai/pricing/',
                 publisher: { '@id': 'https://www.nexscope.ai/#organization' },
@@ -158,26 +154,6 @@ export default function PricingPage() {
         active="pricing"
       />
       <main id="main">
-        <section className={styles.hero}>
-          <nav aria-label="Breadcrumb">
-            <a href="/">Nexscope Learn</a>
-            <span>/</span>
-            <span aria-current="page">Pricing</span>
-          </nav>
-          <p className={styles.eyebrow}>NEXSCOPE SUBSCRIPTION PRICING</p>
-          <h1>
-            Nexscope pricing for
-            <br />
-            <em>ecommerce APIs & AI video.</em>
-          </h1>
-          <p>{answer}</p>
-          <div className={styles.jumpLinks} aria-label="Pricing sections">
-            <a href="#subscription-title">Subscription plans</a>
-            <a href="#compare-plans">Compare standard prices</a>
-            <a href="#choose-plan">Choose a plan</a>
-            <a href="#pricing-faq-title">Billing questions</a>
-          </div>
-        </section>
         <HomepagePricing plans={pricingSnapshot.plans} />
         <section
           className={styles.comparison}

@@ -1,7 +1,7 @@
 .hero {
-  padding: 70px 0 42px;
-  border-bottom: 1px solid #e6e1eb;
+  padding: 40px 0 12px;
 }
+.hero p { margin-bottom: 0; }
 .hero h1 {
   font-size: clamp(40px, 5vw, 66px);
   letter-spacing: -0.055em;
@@ -35,7 +35,7 @@
   margin: 8px 0 0;
 }
 .directory {
-  padding: 44px 0;
+  padding: 12px 0 36px;
 }
 .platforms button {
   display: inline-flex;

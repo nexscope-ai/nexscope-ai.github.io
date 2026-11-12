@@ -1,7 +1,7 @@
 /* oxlint-disable next/no-html-link-for-pages, next/no-img-element */
 /* oxlint-disable jsx-a11y/no-noninteractive-tabindex -- The horizontal table scroller needs keyboard focus on narrow screens. */
 import type { Metadata } from 'next';
-import { ArrowRight, ArrowUpRight, Play, Check, Code2 } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Play, Code2 } from 'lucide-react';
 import MarketingHeader from '@/components/marketing-header';
 import LearnFooter from '@/components/learn-footer';
 import VideoDirectoryExamples from '@/components/video-directory-examples';
@@ -112,19 +112,11 @@ export default function VideoDirectoryPage() {
       <main className={styles.wrap}>
         <section className={styles.hero} aria-labelledby="video-title">
           <div className={styles.heroCopy}>
-            <p className={styles.eyebrow}>Nexscope video workflow directory</p>
             <h1 id="video-title">
-              AI product videos.
-              <br />
-              <em className={gradientTitle.text}>Start with what you have.</em>
+              AI product videos <em className={gradientTitle.text}>from a photo.</em>
             </h1>
             <p className={styles.lead}>
-              Nexscope offers five AI product video workflows for ecommerce
-              sellers and creative teams: Image to Video, URL to Video, Avatar
-              Video, Video Clone and Bulk Video. Choose by the material you
-              already have, compare the outputs below, then open the matching
-              workspace to review settings and credit estimates before
-              generating.
+              Animate a product photo for your store or ads. See what a finished clip can look like.
             </p>
             <div className={styles.heroActions}>
               <a
@@ -139,23 +131,7 @@ export default function VideoDirectoryPage() {
               <a href="#comparison" className={styles.secondary}>
                 Compare all workflows <ArrowRight size={15} />
               </a>
-              <a href="/video-apis/" className={styles.secondary}>
-                Browse Video &amp; Image APIs <ArrowRight size={15} />
-              </a>
             </div>
-            <ul className={styles.benefits}>
-              <li>
-                <Check size={15} />5 focused workflows
-              </li>
-              <li>
-                <Check size={15} />
-                Review scripts and settings
-              </li>
-              <li>
-                <Check size={15} />
-                Check credits before generating
-              </li>
-            </ul>
           </div>
           <div className={styles.heroVisual}>
             <a

@@ -1,6 +1,6 @@
 /* oxlint-disable next/no-html-link-for-pages */
 import type { Metadata } from 'next';
-import { ArrowRight, Code2, Check } from 'lucide-react';
+import { ArrowRight, Code2 } from 'lucide-react';
 import MarketingHeader from '@/components/marketing-header';
 import LearnFooter from '@/components/learn-footer';
 import VideoApiDirectory from '@/components/video-api-directory';
@@ -94,37 +94,12 @@ export default function VideoApisPage() {
       />
       <main className={styles.wrap}>
         <section className={styles.apiHero} aria-labelledby="video-apis-title">
-          <p className={styles.eyebrow}>Nexscope Video &amp; Image API directory</p>
           <h1 id="video-apis-title">
-            Video &amp; image APIs.
-            <br />
-            <em className={gradientTitle.text}>Find the model for your next build.</em>
+            Video &amp; <em className={gradientTitle.text}>image APIs</em>
           </h1>
           <p className={styles.lead}>
-            Browse {catalog.entries.length} published APIs across image
-            generation, video generation and multimodal AI. Search by model or
-            task, compare capabilities, then open the official playground to
-            review inputs, outputs and current credit estimates.
+            Find a model to generate product images or videos, then try it in the API playground.
           </p>
-          <nav className={styles.heroActions} aria-label="Video API page links">
-            <a className={styles.primary} href="#apis">
-              Browse all APIs <ArrowRight size={16} aria-hidden="true" />
-            </a>
-            <a className={styles.secondary} href="/video/">
-              Compare seller workflows <ArrowRight size={15} aria-hidden="true" />
-            </a>
-          </nav>
-          <ul className={styles.benefits}>
-            <li>
-              <Check size={15} aria-hidden="true" /> Search by model or task
-            </li>
-            <li>
-              <Check size={15} aria-hidden="true" /> Open official API playgrounds
-            </li>
-            <li>
-              <Check size={15} aria-hidden="true" /> Review supported inputs and costs
-            </li>
-          </ul>
         </section>
         <VideoApiDirectory />
         <aside className={styles.developer}>

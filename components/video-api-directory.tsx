@@ -54,57 +54,7 @@ export default function VideoApiDirectory() {
       className={styles.section}
       aria-labelledby="video-api-title"
     >
-      <div className={styles.sectionHeading}>
-        <div>
-          <p className={styles.eyebrow}>For developers & creative teams</p>
-          <h2 id="video-api-title">Video & Image APIs</h2>
-        </div>
-        <p>
-          Explore {catalog.entries.length} APIs from Nexscope&apos;s Video &
-          Image collection. Compare image generation, video models and
-          multimodal tools, then open the matching API documentation.
-        </p>
-      </div>
-      <div className={styles.apiChoices}>
-        {videoApiChoices
-          .filter((choice) => relatedVideoApi(choice.id, catalog.entries))
-          .map((choice) => (
-            <article key={choice.id}>
-              <h3>{choice.title}</h3>
-              <dl>
-                <div>
-                  <dt>You bring</dt>
-                  <dd>{choice.input}</dd>
-                </div>
-                <div>
-                  <dt>You get</dt>
-                  <dd>{choice.output}</dd>
-                </div>
-              </dl>
-              {choice.slug ? (
-                <a
-                  href={`https://www.nexscope.ai/api-docs/${choice.slug}?view=playground&co-from=learn`}
-                  data-track
-                  data-track-tool={choice.slug}
-                  data-cta-placement="video-task-start"
-                >
-                  {choice.label} <ArrowUpRight size={16} />
-                </a>
-              ) : (
-                <a
-                  href="#api-search"
-                  onClick={() => {
-                    setQuery('');
-                    chooseCategory(choice.category || 'all', '');
-                  }}
-                >
-                  {choice.label} →
-                </a>
-              )}
-              <a href={choice.guide}>Read the preparation guide →</a>
-            </article>
-          ))}
-      </div>
+      <h2 id="video-api-title" className={styles.apiSearchLabel}>Browse video and image APIs</h2>
       <label className={styles.apiSearch}>
         <Search size={19} aria-hidden="true" />
         <span className={styles.apiSearchLabel}>Search Video & Image APIs</span>
@@ -152,6 +102,49 @@ export default function VideoApiDirectory() {
           </button>
         ))}
       </fieldset>
+      <details className={styles.apiTaskGuide}>
+        <summary>See example API workflows</summary>
+        <div className={styles.apiChoices}>
+          {videoApiChoices
+            .filter((choice) => relatedVideoApi(choice.id, catalog.entries))
+            .map((choice) => (
+              <article key={choice.id}>
+                <h3>{choice.title}</h3>
+                <dl>
+                  <div>
+                    <dt>You bring</dt>
+                    <dd>{choice.input}</dd>
+                  </div>
+                  <div>
+                    <dt>You get</dt>
+                    <dd>{choice.output}</dd>
+                  </div>
+                </dl>
+                {choice.slug ? (
+                  <a
+                    href={`https://www.nexscope.ai/api-docs/${choice.slug}?view=playground&co-from=learn`}
+                    data-track
+                    data-track-tool={choice.slug}
+                    data-cta-placement="video-task-start"
+                  >
+                    {choice.label} <ArrowUpRight size={16} />
+                  </a>
+                ) : (
+                  <a
+                    href="#api-search"
+                    onClick={() => {
+                      setQuery('');
+                      chooseCategory(choice.category || 'all', '');
+                    }}
+                  >
+                    {choice.label} →
+                  </a>
+                )}
+                <a href={choice.guide}>Read the preparation guide →</a>
+              </article>
+            ))}
+        </div>
+      </details>
       <output className={styles.count} aria-live="polite">
         {visible.length} {visible.length === 1 ? 'API' : 'APIs'} found
       </output>

@@ -1,13 +1,7 @@
 /* oxlint-disable next/no-html-link-for-pages */
 /* oxlint-disable jsx-a11y/no-noninteractive-tabindex -- The named comparison region needs keyboard focus for horizontal scrolling. */
 import type { Metadata } from 'next';
-import {
-  ArrowRight,
-  Code2,
-  MessageCircle,
-  Search,
-  UserRound,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import MarketingHeader from '@/components/marketing-header';
 import LearnFooter from '@/components/learn-footer';
 import SocialApiDirectory from '@/components/social-api-directory';
@@ -43,7 +37,6 @@ export const metadata: Metadata = {
   },
 };
 export default function SocialPage() {
-  const platforms = new Set(catalog.entries.map((e) => e.platform)).size;
   const guide = socialGuide(catalog.entries);
   const schema = {
     '@context': 'https://schema.org',
@@ -114,68 +107,12 @@ export default function SocialPage() {
       />
       <main className={styles.wrap}>
         <section className={social.hero}>
-          <p className={styles.eyebrow}>Nexscope social & content data APIs</p>
-          <h1>
-            Social media APIs.
-            <br />
-            <em className={gradientTitle.text}>Find the right data for your next build.</em>
-          </h1>
+          <h1>Social media <em className={gradientTitle.text}>APIs</em></h1>
           <p className={styles.lead}>
-            Nexscope provides platform-specific social media APIs for profiles,
-            posts, comments, search results and transcripts. Explore{' '}
-            {catalog.entries.length} published operations across {platforms}{' '}
-            platform and tool groups. Choose the platform and task, check the
-            required input, then inspect a response in the matching official
-            playground.
+            Find APIs for social profiles, posts, comments, ads and transcripts.
           </p>
-          <nav
-            className={social.sectionLinks}
-            aria-label="Social API page sections"
-          >
-            <a href="#platforms">Compare platforms</a>
-            <a href="#workflows">Choose a workflow</a>
-            <a href="#apis">Browse all APIs</a>
-            <a href="#social-faq">API questions</a>
-          </nav>
-          <div className={styles.heroActions}>
-            <a className={styles.primary} href="#apis">
-              Explore social APIs <ArrowRight size={17} />
-            </a>
-            <a className={styles.secondary} href="/data/">
-              Looking for ecommerce data? <ArrowRight size={15} />
-            </a>
-          </div>
-          <div className={social.taskGrid}>
-            {[
-              {
-                Icon: UserRound,
-                title: 'Research creators',
-                text: 'Find profile, content and creator-related endpoints.',
-              },
-              {
-                Icon: MessageCircle,
-                title: 'Understand conversations',
-                text: 'Explore posts, comments and replies where supported.',
-              },
-              {
-                Icon: Search,
-                title: 'Discover content',
-                text: 'Compare platform search and transcript APIs.',
-              },
-              {
-                Icon: Code2,
-                title: 'Build your workflow',
-                text: 'Inspect inputs and responses before integrating.',
-              },
-            ].map(({ Icon, title, text }) => (
-              <div key={title}>
-                <Icon size={21} aria-hidden="true" />
-                <strong>{title}</strong>
-                <p>{text}</p>
-              </div>
-            ))}
-          </div>
         </section>
+        <SocialApiDirectory />
         <section
           id="platforms"
           className={social.guideSection}
@@ -284,7 +221,6 @@ export default function SocialPage() {
             ))}
           </div>
         </section>
-        <SocialApiDirectory />
         <section
           id="social-faq"
           className={social.guideSection}

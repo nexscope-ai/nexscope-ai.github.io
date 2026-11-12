@@ -20,13 +20,12 @@
   grid-template-columns: 1.2fr 1fr;
   align-items: center;
   gap: 72px;
-  padding: 70px 0 76px;
+  padding: 42px 0 48px;
   border-bottom: 1px solid #e6e1eb;
 }
 .apiHero {
   max-width: 980px;
-  padding: 62px 0 48px;
-  border-bottom: 1px solid #e6e1eb;
+  padding: 40px 0 16px;
 }
 .apiHero h1 {
   max-width: 900px;
@@ -38,9 +37,18 @@
 }
 .apiHero .lead {
   max-width: 790px;
+  margin-bottom: 0;
 }
-.apiHero .benefits {
-  margin-top: 22px;
+.apiHero + .section {
+  padding-top: 8px;
+}
+.apiTaskGuide {
+  margin: 16px 0;
+}
+.apiTaskGuide summary {
+  padding-block: 10px;
+  color: #6844a4;
+  cursor: pointer;
 }
 .eyebrow {
   font-size: 11px !important;

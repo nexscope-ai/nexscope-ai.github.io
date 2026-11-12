@@ -1,9 +1,8 @@
 .section {
   max-width: 1200px;
   width: calc(100% - 64px);
-  margin: 24px auto 0;
-  padding: 58px 0 48px;
-  border-top: 1px solid #e7e0ed;
+  margin: 0 auto;
+  padding: 38px 0 48px;
 }
 .heading {
   text-align: center;
@@ -35,7 +34,7 @@
   font-size: 11px;
   letter-spacing: 1.8px;
 }
-.heading h2 {
+.heading h1 {
   margin: 0;
   font-size: clamp(26px, 3vw, 36px);
   font-weight: 600;
