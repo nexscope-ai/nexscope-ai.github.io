@@ -159,7 +159,13 @@ export default async function WorkflowPage({ params }: WorkflowPageProps) {
               <a className="wf-primary" href="#workflow-title">
                 Start the workflow <span aria-hidden="true">↘</span>
               </a>
-              <span>Only selected API requests use credits.</span>
+              {tool.mode === 'sourcing' ? (
+                <a href="/ecommerce-ai-tools/api-evidence/portable-blender-amazon-1688/#sample-results">
+                  View sample results (no API key)
+                </a>
+              ) : (
+                <span>Only selected API requests use credits.</span>
+              )}
             </div>
           </div>
           <div
