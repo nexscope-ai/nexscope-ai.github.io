@@ -33,6 +33,7 @@ export const routeSlugs = [
   'tools',
   'pricing',
   'video',
+  'ad-library',
   'video-apis',
   'social',
   'product-growth-report',

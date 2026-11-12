@@ -15,7 +15,7 @@ import styles from './marketing-header.module.css';
 import { videoWorkspaceUrl } from '@/lib/video-directory';
 
 type MarketingHeaderProps = {
-  active?: 'tools' | 'pricing' | 'video' | 'video-apis' | 'social' | 'growth';
+  active?: 'tools' | 'pricing' | 'video' | 'video-apis' | 'social' | 'growth' | 'ad-library';
   campaign: string;
   explorePath?: '/' | '/apis';
 };
@@ -237,31 +237,22 @@ export default function MarketingHeader({
                 },
               ]}
             />
-            <li>
-              <a
-                href="/video/"
-                data-track-tool="video-directory"
-                aria-current={active === 'video' ? 'page' : undefined}
-              >
-                Video workflows
-              </a>
-            </li>
-            <li>
-              <a
-                href="/ecommerce-ai-tools/product-showcase/"
-                data-track-tool="product-gallery"
-              >
-                Product Gallery
-              </a>
-            </li>
-            <li>
-              <a
-                href="/product-growth-report/"
-                aria-current={active === 'growth' ? 'page' : undefined}
-              >
-                Product Growth Report
-              </a>
-            </li>
+            <NavigationDropdown
+              label="Video"
+              current={active === 'video' || active === 'ad-library'}
+              items={[
+                { href: '/video/', label: 'Video workflows', trackTool: 'video-directory', current: active === 'video' },
+                { href: '/ad-library/', label: 'Ad Library', trackTool: 'ad-library', current: active === 'ad-library' },
+              ]}
+            />
+            <NavigationDropdown
+              label="Product Growth"
+              current={active === 'growth'}
+              items={[
+                { href: '/ecommerce-ai-tools/product-showcase/', label: 'Product Gallery', trackTool: 'product-gallery' },
+                { href: '/product-growth-report/', label: 'Product Growth Report', trackTool: 'product-growth-report', current: active === 'growth' },
+              ]}
+            />
             <NavigationDropdown
               label="Resources"
               current={active === 'pricing'}
