@@ -1,394 +1,394 @@
 {
   "entries": [
     {
-      "slug": "ai-apparel-image-set-photography-v3",
-      "name": "AI Apparel Image Set & Photography API v3",
-      "description": "Generate coordinated apparel marketing and product-photography image sets. Review authentication, request parameters, and response fields.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "ai-background-generator",
-      "name": "AI Background Generator API",
-      "description": "Generate an ecommerce scene image from a text prompt. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "ai-clothes-changer-for-tops-bottoms",
-      "name": "AI Clothes Changer API for Tops & Bottoms",
-      "description": "Generate virtual try-on images for separate upper and lower garments. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "ai-hand-repair",
-      "name": "AI Hand Repair API",
-      "description": "Repair distorted or malformed hands in an image. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "ai-model-pose-generation",
-      "name": "AI Model Pose Generation API",
-      "description": "Generate new pose variations from an existing model image. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "ai-model-scene-background-replacement",
-      "name": "AI Model Scene & Background Replacement API",
-      "description": "Place a model image into a new scene or background. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "ai-model-swap",
-      "name": "AI Model Swap API",
-      "description": "Place an ecommerce product image onto a target model. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "ai-model-swap-2-0",
-      "name": "AI Model Swap API 2.0",
-      "description": "Swap a product image onto a fixed model reference with the version 2.0 workflow. Review request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "ai-product-marketing-image-set-v4",
-      "name": "AI Product Marketing Image Set API v4",
-      "description": "Generate coordinated product marketing image sets with the version 4 workflow. Review authentication, request parameters, and response fields.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "ai-suit-virtual-try-on",
-      "name": "AI Suit Virtual Try-On API",
-      "description": "Generate virtual try-on images for one-piece outfits. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "ai-video-reclone",
-      "name": "AI Video Reclone API",
-      "description": "Recreate a product marketing video from reference assets. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "background-remover",
-      "name": "Background Remover API",
-      "description": "Automatically remove an image background for clean product cutouts. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "banana-2-1-image-generation",
-      "name": "Nano Banana 2.1 Image Generation",
-      "description": "Generate ecommerce images with the fixed Nano Banana 2.1 model from reference assets and prompts, with documented asynchronous result retrieval.",
-      "category": "image-generation-models",
-      "categoryName": "Image Generation Models"
-    },
-    {
-      "slug": "banana-2-image-generation",
-      "name": "Nano Banana 2 Image Generation",
-      "description": "Generate ecommerce images with the fixed Nano Banana 2 model from reference assets and prompts, with documented asynchronous result retrieval.",
-      "category": "image-generation-models",
-      "categoryName": "Image Generation Models"
-    },
-    {
-      "slug": "banana-2-lite-image-generation",
-      "name": "Nano Banana 2 Lite Image Generation",
-      "description": "Generate ecommerce images with the fixed Nano Banana 2 Lite model from reference assets and prompts, then retrieve completed task results.",
-      "category": "image-generation-models",
-      "categoryName": "Image Generation Models"
-    },
-    {
       "slug": "banana-image-generation",
       "name": "Nano Banana Image Generation",
-      "description": "Generate ecommerce images with the fixed Nano Banana model from reference images and a prompt, with documented task-result and API workflows.",
+      "description": "Generate ecommerce images with the Nano Banana base image model. The model is fixed by this API, so provider must not be supplied in the request.",
       "category": "image-generation-models",
       "categoryName": "Image Generation Models"
     },
     {
       "slug": "banana-pro-image-generation",
       "name": "Nano Banana Pro Image Generation",
-      "description": "Generate higher-resolution ecommerce images with the fixed Nano Banana Pro model, reference images, prompts, and asynchronous task results.",
+      "description": "Generate higher-resolution ecommerce images with the Nano Banana Pro model. The model is fixed by this API, so provider must not be supplied in the request.",
       "category": "image-generation-models",
       "categoryName": "Image Generation Models"
     },
     {
-      "slug": "fine-cutout-image-segmentation",
-      "name": "Fine Cutout Image Segmentation API",
-      "description": "Create a precision image cutout and return the completed result. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "gpt-image-2-5-flare-generation",
-      "name": "GPT Image 2.5 Flare",
-      "description": "Create and edit ecommerce visuals with GPT Image 2.5 Flare using detailed prompt following, flexible visual styles, dependable text, and 1K, 2K, or 4K output.",
+      "slug": "banana-2-image-generation",
+      "name": "Nano Banana 2 Image Generation",
+      "description": "Generate ecommerce images with the Nano Banana 2 model. The model is fixed by this API, so provider must not be supplied in the request.",
       "category": "image-generation-models",
       "categoryName": "Image Generation Models"
     },
     {
-      "slug": "gpt-image-2-5-generation",
-      "name": "GPT Image 2.5 Sunburst",
-      "description": "Create and edit ecommerce visuals with GPT Image 2.5 Sunburst using precise prompt following, broad visual styles, reliable text, and 1K, 2K, or 4K output.",
+      "slug": "banana-2-1-image-generation",
+      "name": "Nano Banana 2.1 Image Generation",
+      "description": "Generate and edit ecommerce images with Nano Banana 2.1, with improved text layout and consistency across editing rounds. The model is fixed by this API, so provider must not be supplied in the request.",
+      "category": "image-generation-models",
+      "categoryName": "Image Generation Models"
+    },
+    {
+      "slug": "banana-2-lite-image-generation",
+      "name": "Nano Banana 2 Lite Image Generation",
+      "description": "Generate ecommerce images with the Nano Banana 2 Lite model. The model is fixed by this API, so provider must not be supplied in the request.",
+      "category": "image-generation-models",
+      "categoryName": "Image Generation Models"
+    },
+    {
+      "slug": "wan-2-7-image-generation",
+      "name": "Wan 2.7 Image Generation",
+      "description": "Generate ecommerce images with the Wan 2.7 image model. The model is fixed by this API, so provider must not be supplied in the request.",
+      "category": "image-generation-models",
+      "categoryName": "Image Generation Models"
+    },
+    {
+      "slug": "seedream-5-pro-image-generation",
+      "name": "Seedream 5 Pro Image Generation",
+      "description": "Generate ecommerce images with the Seedream 5 Pro image model. The model is fixed by this API, so provider must not be supplied in the request.",
       "category": "image-generation-models",
       "categoryName": "Image Generation Models"
     },
     {
       "slug": "gpt-image-2-generation",
       "name": "GPT Image 2 Generation",
-      "description": "Generate ecommerce images with the fixed GPT Image 2 model, selectable quality and resolution, and asynchronous task results.",
+      "description": "Generate ecommerce images with the GPT Image 2 model and optional quality control. The model is fixed by this API, so provider must not be supplied in the request.",
       "category": "image-generation-models",
       "categoryName": "Image Generation Models"
     },
     {
-      "slug": "hailuo-2-3-video-generation",
-      "name": "Hailuo 2.3 Video Generation",
-      "description": "Generate adaptive-aspect-ratio ecommerce videos with Hailuo 2.3 from a required primary image at supported durations and resolutions.",
+      "slug": "gpt-image-2-5-generation",
+      "name": "GPT Image 2.5 Sunburst",
+      "description": "Create and edit ecommerce visuals with precise instruction following, broad visual-style support, world-knowledge grounding, and reliable text rendering through the GPT Image 2.5 Sunburst route. The model is fixed by this API, so provider must not be supplied in the request.",
+      "category": "image-generation-models",
+      "categoryName": "Image Generation Models"
+    },
+    {
+      "slug": "gpt-image-2-5-flare-generation",
+      "name": "GPT Image 2.5 Flare",
+      "description": "Create and edit ecommerce visuals with detailed instruction following, flexible visual styles, world-knowledge grounding, and dependable text rendering through the GPT Image 2.5 Flare route. The model is fixed by this API, so provider must not be supplied in the request.",
+      "category": "image-generation-models",
+      "categoryName": "Image Generation Models"
+    },
+    {
+      "slug": "seedance-2-0-video-generation",
+      "name": "Seedance 2.0 Video Generation",
+      "description": "Generate a video with Seedance 2.0 using a primary image, up to 9 reference images, or a reference video. The model is fixed by this API, so videoType must not be supplied in the request.",
       "category": "video-generation-models",
       "categoryName": "Video Generation Models"
-    },
-    {
-      "slug": "handheld-product-mockup",
-      "name": "Handheld Product Mockup API",
-      "description": "Place a product naturally into a handheld scene or mockup. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "happy-horse-2-video-generation",
-      "name": "Happy Horse 2 Video Generation",
-      "description": "Generate ecommerce videos with Happy Horse 2 from one to nine required reference images, then retrieve the completed Nexscope-hosted result.",
-      "category": "video-generation-models",
-      "categoryName": "Video Generation Models"
-    },
-    {
-      "slug": "image-captioning",
-      "name": "Image Captioning API",
-      "description": "Extract a reusable text prompt from an input image. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "image-inpainting",
-      "name": "Image Inpainting API",
-      "description": "Redraw a masked area of an image with AI inpainting. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "image-text-editing",
-      "name": "Image Text Editing API",
-      "description": "Remove or edit text inside an image. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "image-translation",
-      "name": "Image Translation API",
-      "description": "Translate text contained inside an image. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "image-upscale",
-      "name": "Image Upscale API",
-      "description": "Upscale and enhance image resolution for clearer ecommerce visuals. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "jewelry-text-design",
-      "name": "Jewelry Text Design API",
-      "description": "Generate linked text designs for jewelry or accessory products. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "kling-2-6-video-generation",
-      "name": "Kling 2.6 Video Generation",
-      "description": "Generate ecommerce videos with Kling 2.6 using first-frame, first-and-last-frame, or multi-image references and retrieve task results.",
-      "category": "video-generation-models",
-      "categoryName": "Video Generation Models"
-    },
-    {
-      "slug": "kling-3-omni-video-generation",
-      "name": "Kling 3 Omni Video Generation",
-      "description": "Generate ecommerce videos with Kling 3 Omni from first-and-last-frame or multi-image references and retrieve completed Nexscope task outputs.",
-      "category": "video-generation-models",
-      "categoryName": "Video Generation Models"
-    },
-    {
-      "slug": "minimax-h3-lite-video-generation",
-      "name": "MiniMax H3 Lite Video Generation",
-      "description": "Generate 768p ecommerce videos with MiniMax H3 Lite from one to nine required reference images and supported aspect ratios.",
-      "category": "video-generation-models",
-      "categoryName": "Video Generation Models"
-    },
-    {
-      "slug": "minimax-h3-video-generation",
-      "name": "MiniMax H3 Video Generation",
-      "description": "Generate 768p or 2K ecommerce videos with MiniMax H3 from one to nine required reference images and supported aspect ratios.",
-      "category": "video-generation-models",
-      "categoryName": "Video Generation Models"
-    },
-    {
-      "slug": "object-eraser-image-object-removal",
-      "name": "Object Eraser & Image Object Removal API",
-      "description": "Remove masked objects from an image and reconstruct the cleared area. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "one-click-image-recoloring-v2",
-      "name": "One-Click Image Recoloring API v2",
-      "description": "Change product colors in an image with the version 2 workflow. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "print-pattern-extraction",
-      "name": "Print & Pattern Extraction API",
-      "description": "Extract printed artwork or patterns from an input image. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "product-image-enhancement",
-      "name": "Product Image Enhancement API",
-      "description": "Retouch and enhance a product image for cleaner ecommerce presentation. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "product-logo-detection-removal",
-      "name": "Product Logo Detection & Removal API",
-      "description": "Detect and remove logos from product images. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "product-replacement",
-      "name": "Product Replacement API",
-      "description": "Replace a selected product region in an ecommerce image. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "product-scene-variations",
-      "name": "Product Scene Variations API",
-      "description": "Create multiple product-scene variations from an input image. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
-    },
-    {
-      "slug": "sales-talking-video",
-      "name": "Sales Talking Video API",
-      "description": "Generate a talking sales video for ecommerce promotion. Review authentication, request parameters, response fields, and API usage.",
-      "category": "multimodal-ai",
-      "categoryName": "Multimodal AI"
     },
     {
       "slug": "seedance-2-0-fast-video-generation",
       "name": "Seedance 2.0 Fast Video Generation",
-      "description": "Generate ecommerce videos faster with Seedance 2.0 Fast using primary or multi-image references, then retrieve the completed Nexscope-hosted result.",
+      "description": "Generate a faster Seedance 2.0 video using a primary image, up to 9 reference images, or a reference video. The model is fixed by this API, so videoType must not be supplied in the request.",
       "category": "video-generation-models",
       "categoryName": "Video Generation Models"
     },
     {
       "slug": "seedance-2-0-mini-video-generation",
       "name": "Seedance 2.0 Mini Video Generation",
-      "description": "Generate compact ecommerce videos with Seedance 2.0 Mini from primary or multi-image references and retrieve the completed Nexscope-hosted result.",
-      "category": "video-generation-models",
-      "categoryName": "Video Generation Models"
-    },
-    {
-      "slug": "seedance-2-0-video-generation",
-      "name": "Seedance 2.0 Video Generation",
-      "description": "Generate ecommerce videos with Seedance 2.0 from a primary image or multi-image references, then retrieve completed Nexscope-hosted task results.",
+      "description": "Generate a compact Seedance 2.0 video using a primary image, up to 9 reference images, or a reference video. The model is fixed by this API, so videoType must not be supplied in the request.",
       "category": "video-generation-models",
       "categoryName": "Video Generation Models"
     },
     {
       "slug": "seedance-2-5-video-generation",
       "name": "Seedance 2.5 Video Generation",
-      "description": "Generate ecommerce videos with Seedance 2.5 from primary or multi-image references, including up to 30 images and supported 30-second outputs.",
+      "description": "Generate a Seedance 2.5 video using a primary image, up to 30 reference images, or a reference video. The model is fixed by this API, so videoType must not be supplied in the request.",
       "category": "video-generation-models",
       "categoryName": "Video Generation Models"
     },
     {
-      "slug": "seedream-5-pro-image-generation",
-      "name": "Seedream 5 Pro Image Generation",
-      "description": "Generate ecommerce images with the fixed Seedream 5 Pro model at supported resolutions, then retrieve Nexscope-hosted task outputs.",
-      "category": "image-generation-models",
-      "categoryName": "Image Generation Models"
+      "slug": "kling-2-6-video-generation",
+      "name": "Kling 2.6 Video Generation",
+      "description": "Generate a Kling 2.6 video using a first frame, first/last frames, or up to 2 reference images. The model is fixed by this API, so videoType must not be supplied in the request.",
+      "category": "video-generation-models",
+      "categoryName": "Video Generation Models"
     },
     {
-      "slug": "similar-image-variations",
-      "name": "Similar Image Variations API",
-      "description": "Create visually similar image variations from an input image. Review authentication, request parameters, response fields, and API usage.",
+      "slug": "kling-3-omni-video-generation",
+      "name": "Kling 3 Omni Video Generation",
+      "description": "Generate a Kling 3 Omni video using first/last frames or up to 7 reference images. The model is fixed by this API, so videoType must not be supplied in the request.",
+      "category": "video-generation-models",
+      "categoryName": "Video Generation Models"
+    },
+    {
+      "slug": "wan-2-6-video-generation",
+      "name": "Wan 2.6 Video Generation",
+      "description": "Generate a Wan 2.6 video from a required primary image with optional camera control. The model is fixed by this API, so videoType must not be supplied in the request.",
+      "category": "video-generation-models",
+      "categoryName": "Video Generation Models"
+    },
+    {
+      "slug": "hailuo-2-3-video-generation",
+      "name": "Hailuo 2.3 Video Generation",
+      "description": "Generate a Hailuo 2.3 video from a required primary image; the aspect ratio is adaptive. The model is fixed by this API, so videoType must not be supplied in the request.",
+      "category": "video-generation-models",
+      "categoryName": "Video Generation Models"
+    },
+    {
+      "slug": "happy-horse-2-video-generation",
+      "name": "Happy Horse 2 Video Generation",
+      "description": "Generate a Happy Horse 2 video from 1 to 9 required reference images. The model is fixed by this API, so videoType must not be supplied in the request.",
+      "category": "video-generation-models",
+      "categoryName": "Video Generation Models"
+    },
+    {
+      "slug": "wan-3-video-generation",
+      "name": "Wan 3 Video Generation",
+      "description": "Generate a Wan 3 video from up to 10 image references, first and final frames, or a reference video. The model is fixed by this API, so videoType must not be supplied in the request.",
+      "category": "video-generation-models",
+      "categoryName": "Video Generation Models"
+    },
+    {
+      "slug": "minimax-h3-video-generation",
+      "name": "MiniMax H3 Video Generation",
+      "description": "Generate a MiniMax H3 video from 1 to 9 required reference images. The model is fixed by this API, so videoType must not be supplied in the request.",
+      "category": "video-generation-models",
+      "categoryName": "Video Generation Models"
+    },
+    {
+      "slug": "minimax-h3-lite-video-generation",
+      "name": "MiniMax H3 Lite Video Generation",
+      "description": "Generate a MiniMax H3 Lite video from 1 to 9 required reference images. The model is fixed by this API, so videoType must not be supplied in the request.",
+      "category": "video-generation-models",
+      "categoryName": "Video Generation Models"
+    },
+    {
+      "slug": "ai-model-swap",
+      "name": "AI Model Swap API",
+      "description": "Generate model images by combining a source product image with a model head image, optional masks, scene references, and prompt guidance.",
       "category": "multimodal-ai",
       "categoryName": "Multimodal AI"
     },
     {
-      "slug": "smart-image-edit-manipulation-v3",
-      "name": "Smart Image Edit & Manipulation API v3",
-      "description": "Edit and manipulate an image from a natural-language instruction prompt. Review authentication, request parameters, response fields, and API usage.",
+      "slug": "ai-model-swap-2-0",
+      "name": "AI Model Swap API 2.0",
+      "description": "Generate model images from a product image and a full model reference image with optional segmentation and scene controls.",
       "category": "multimodal-ai",
       "categoryName": "Multimodal AI"
     },
     {
-      "slug": "smart-image-outpainting",
-      "name": "Smart Image Outpainting API",
-      "description": "Expand an image canvas with AI-generated surrounding content. Review authentication, request parameters, response fields, and API usage.",
+      "slug": "ai-model-scene-background-replacement",
+      "name": "AI Model Scene & Background Replacement API",
+      "description": "Generate scene variants for a model image using either a scene reference image or a text scene prompt.",
       "category": "multimodal-ai",
       "categoryName": "Multimodal AI"
     },
     {
-      "slug": "smart-multi-image-editing-v3",
-      "name": "Smart Multi-Image Editing API v3",
-      "description": "Fuse and edit multiple images with a natural-language instruction prompt. Review authentication, request parameters, and response fields.",
+      "slug": "ai-clothes-changer-for-tops-bottoms",
+      "name": "AI Clothes Changer API for Tops & Bottoms",
+      "description": "Dress a model image with upper and/or lower garment assets, supporting optional masks and original garment references.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "ai-suit-virtual-try-on",
+      "name": "AI Suit Virtual Try-On API",
+      "description": "Dress a model image with a one-piece outfit or suit image, supporting optional garment and model masks.",
       "category": "multimodal-ai",
       "categoryName": "Multimodal AI"
     },
     {
       "slug": "virtual-try-on",
       "name": "Virtual Try-On API",
-      "description": "Place a product naturally onto a person or model image. Review authentication, request parameters, response fields, and API usage.",
+      "description": "Generate wearable-product imagery from a source person image and target product image.",
       "category": "multimodal-ai",
       "categoryName": "Multimodal AI"
     },
     {
-      "slug": "wan-2-6-video-generation",
-      "name": "Wan 2.6 Video Generation",
-      "description": "Generate ecommerce videos with Wan 2.6 from a required primary image, supported duration and resolution settings, and single or multi camera control.",
-      "category": "video-generation-models",
-      "categoryName": "Video Generation Models"
+      "slug": "product-replacement",
+      "name": "Product Replacement API",
+      "description": "Use source and target product references to replace product content while preserving scene consistency.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
     },
     {
-      "slug": "wan-2-7-image-generation",
-      "name": "Wan 2.7 Image Generation",
-      "description": "Generate ecommerce images with the fixed Wan 2.7 model using reference images and prompts, with asynchronous task-result retrieval.",
-      "category": "image-generation-models",
-      "categoryName": "Image Generation Models"
+      "slug": "product-scene-variations",
+      "name": "Product Scene Variations API",
+      "description": "Generate multiple ecommerce scene variants from a product image, optional segmentation, and prompt guidance.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
     },
     {
-      "slug": "wan-3-video-generation",
-      "name": "Wan 3 Video Generation",
-      "description": "Generate ecommerce videos with Wan 3 from image references, first and final frames, or a reference video at supported durations and resolutions.",
-      "category": "video-generation-models",
-      "categoryName": "Video Generation Models"
+      "slug": "ai-background-generator",
+      "name": "AI Background Generator API",
+      "description": "Create product or lifestyle scene images from text prompts and optional reference images.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "similar-image-variations",
+      "name": "Similar Image Variations API",
+      "description": "Generate similar ecommerce images from a reference image with optional prompt and strength controls.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "background-remover",
+      "name": "Background Remover API",
+      "description": "Cut out products, people, or clothing from a source image using an upstream background-removal model.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "fine-cutout-image-segmentation",
+      "name": "Fine Cutout Image Segmentation API",
+      "description": "Run the Nexscope interactive cutout create/info flow as one Skill API call. The point list marks foreground/background guidance points.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "image-upscale",
+      "name": "Image Upscale API",
+      "description": "Increase image resolution and optionally enhance visual quality.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "smart-image-outpainting",
+      "name": "Smart Image Outpainting API",
+      "description": "Generate an expanded image around the original content using target width, height, and optional prompt.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "image-translation",
+      "name": "Image Translation API",
+      "description": "Translate image text from a source language to a target language for ecommerce localization.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "ai-hand-repair",
+      "name": "AI Hand Repair API",
+      "description": "Improve hand appearance in generated model or lifestyle images.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "image-inpainting",
+      "name": "Image Inpainting API",
+      "description": "Repair or regenerate a local image region using a mask and prompt.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "print-pattern-extraction",
+      "name": "Print & Pattern Extraction API",
+      "description": "Extract visible print or pattern elements from product imagery.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "object-eraser-image-object-removal",
+      "name": "Object Eraser & Image Object Removal API",
+      "description": "Remove selected objects or regions using a mask image.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "jewelry-text-design",
+      "name": "Jewelry Text Design API",
+      "description": "Create decorative linked-word imagery using font, size, and prompt controls.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "handheld-product-mockup",
+      "name": "Handheld Product Mockup API",
+      "description": "Generate natural hand-held product imagery from a person image and target product asset.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "image-captioning",
+      "name": "Image Captioning API",
+      "description": "Extract descriptive prompts or selling-point text from one or more images.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "product-image-enhancement",
+      "name": "Product Image Enhancement API",
+      "description": "Improve product presentation quality in a single ecommerce image.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "image-text-editing",
+      "name": "Image Text Editing API",
+      "description": "Use an image mask to remove or edit text regions in an ecommerce image.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "smart-image-edit-manipulation-v3",
+      "name": "Smart Image Edit & Manipulation API v3",
+      "description": "Perform general image editing with provider, prompt, resolution, aspect ratio, and quality controls.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "smart-multi-image-editing-v3",
+      "name": "Smart Multi-Image Editing API v3",
+      "description": "Create an edited output from multiple source images using prompt, provider, resolution, and quality controls.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
     },
     {
       "slug": "whitebg-image",
       "name": "White Background Product Image API",
-      "description": "Generate a white-background product image with GPT Image 2. Review reference image requirements, authentication, credit usage, and asynchronous results.",
+      "description": "Generate one square white-background product image from one or two references of the same product using GPT Image 2. Submit one approved target per request. Review product identity and listing suitability before use; this endpoint does not perform reference inspection, image-set planning, or marketplace compliance certification. Generation consumes Nexscope credits.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "ai-video-reclone",
+      "name": "AI Video Reclone API",
+      "description": "Generate a product marketing video using a reference video, reference images, and model-specific generation settings.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "ai-product-marketing-image-set-v4",
+      "name": "AI Product Marketing Image Set API v4",
+      "description": "Create ecommerce product marketing materials such as selling-point images and A+ style visuals from product images and brief inputs.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "ai-apparel-image-set-photography-v3",
+      "name": "AI Apparel Image Set & Photography API v3",
+      "description": "Create apparel ecommerce image sets from clothing images with optional model and scene references.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "ai-model-pose-generation",
+      "name": "AI Model Pose Generation API",
+      "description": "Generate model pose variations from an input image and either a pose prompt or posture reference image.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "sales-talking-video",
+      "name": "Sales Talking Video API",
+      "description": "Create a product-selling video from prompt and product image references.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "product-logo-detection-removal",
+      "name": "Product Logo Detection & Removal API",
+      "description": "Detect and optionally remove a specified brand logo from a product image.",
+      "category": "multimodal-ai",
+      "categoryName": "Multimodal AI"
+    },
+    {
+      "slug": "one-click-image-recoloring-v2",
+      "name": "One-Click Image Recoloring API v2",
+      "description": "Recolor the requested subject using one or more target colors.",
       "category": "multimodal-ai",
       "categoryName": "Multimodal AI"
     }

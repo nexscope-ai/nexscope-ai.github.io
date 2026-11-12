@@ -2,7 +2,7 @@
 
 /* oxlint-disable next/no-html-link-for-pages */
 import { useEffect, useState } from 'react';
-import { ArrowUpRight, Bot, Check, Copy } from 'lucide-react';
+import { ArrowUpRight, Check, Copy } from 'lucide-react';
 import styles from '@/app/home-sections.module.css';
 
 const guideUrl = '/ecommerce-ai-tools/ecommerce-mcp-server/';
@@ -40,9 +40,6 @@ export default function HomeMcpBanner({
       aria-labelledby="mcp-banner-title"
     >
       <div className={styles.mcpLead}>
-        <span className={styles.mcpMark} aria-hidden="true">
-          <Bot size={16} />
-        </span>
         <span className={styles.mcpPill}>MCP</span>
         <div className={styles.mcpLeadText}>
           <p id="mcp-banner-title" className={styles.mcpHeadline}>
