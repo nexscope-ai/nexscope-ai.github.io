@@ -270,9 +270,10 @@ function RemixDialog({
         <p id="ad-remix-description">
           {isLibraryLink ? (
             <>
-              Copy the original TikTok Ads Library link. To use this ad in Video
-              Clone, <a href={adDownloadUrl(ad)}>download the MP4</a> and upload
-              it as a reference.
+              Download the MP4, then choose Upload video in Video Clone.
+              {' '}<a href={ad.sourceUrl} target="_blank" rel="noopener noreferrer">
+                View original ad on TikTok
+              </a>
             </>
           ) : (
             'Copy the original TikTok video link and paste it into Video Clone as a reference.'
@@ -311,12 +312,17 @@ function RemixDialog({
         <button type="button" onClick={onClose}>
           Cancel
         </button>
-        {canOpenManually ? (
+        {isLibraryLink && (
+          <a href={adDownloadUrl(ad)} className={styles.create}>
+            <Download size={16} aria-hidden="true" /> Download MP4
+          </a>
+        )}
+        {isLibraryLink || canOpenManually ? (
           <a
             href={cloneUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className={styles.create}
+            className={isLibraryLink ? undefined : styles.create}
             data-track-tool="video-replication"
             data-cta-placement="ad-library-preview"
           >
