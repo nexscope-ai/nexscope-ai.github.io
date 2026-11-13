@@ -2,6 +2,17 @@
   padding: 40px 0 12px;
 }
 .hero p { margin-bottom: 0; }
+.hero .trial {
+  margin: 16px 0 0;
+  color: #5e526b;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.trial a {
+  color: #5630a6;
+  font-weight: 650;
+  text-decoration: underline;
+}
 .hero h1 {
   font-size: clamp(40px, 5vw, 66px);
   letter-spacing: -0.055em;

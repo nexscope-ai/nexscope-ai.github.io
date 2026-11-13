@@ -26,7 +26,7 @@ const configure =
   'https://www.nexscope.ai/product-growth-report?co-from=learn#request';
 const title = 'Ecommerce Product Page Audit & Growth Report | Nexscope';
 const description =
-  'Submit an Amazon listing or store product URL for a human-reviewed audit. Get prioritized fixes with supporting evidence. See an example and check your credit quote.';
+  'Get a human-reviewed audit for an Amazon or store product page. SEO and GEO analyses are included free when you select at least one paid service.';
 const services = [
   {
     icon: MessagesSquare,
@@ -218,6 +218,10 @@ export default function ProductGrowthReport() {
               See a real report example{' '}
               <ArrowRight size={16} aria-hidden="true" />
             </a>
+            <p className={styles.includedAnalyses}>
+              <strong>Free SEO and GEO analyses</strong> with any paid report service.
+              See what may be holding back your product in search and AI answers.
+            </p>
           </div>
           <aside
             className={styles.reportOutline}

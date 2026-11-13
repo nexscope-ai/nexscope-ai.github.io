@@ -16,7 +16,7 @@ import styles from '@/app/video/video.module.css';
 import social from './social.module.css';
 const title = 'Social Media APIs for Profiles, Posts & Video | Nexscope';
 const description =
-  'Find Nexscope social media APIs for profiles, posts, comments and video transcripts. Compare platforms and test the right endpoint in its official playground.';
+  'Explore social media APIs for profiles, comments and transcripts. Open the Nexscope Playground and see free trial terms for new accounts.';
 export const metadata: Metadata = {
   title,
   description,
@@ -118,6 +118,17 @@ export default function SocialPage() {
               </a>
             </div>
           )}
+          <p className={social.trial}>
+            <strong>1,000 free trial credits for new Nexscope accounts.</strong>{' '}
+            Valid for 3 days. Check access and credit cost for the endpoint you
+            want to try.{' '}
+            <a
+              href="https://www.nexscope.ai/pricing?co-from=learn"
+              data-cta-placement="social-hero-free-trial"
+            >
+              See free trial details ↗
+            </a>
+          </p>
         </section>
         <SocialApiDirectory />
         <section

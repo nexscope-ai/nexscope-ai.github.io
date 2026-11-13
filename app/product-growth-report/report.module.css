@@ -57,6 +57,15 @@
   line-height: 1.85;
   margin: 0 0 28px;
 }
+.includedAnalyses {
+  margin: 16px 0 0;
+  color: #5e526b;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.includedAnalyses strong {
+  color: #5630a6;
+}
 .primary {
   display: inline-flex;
   align-items: center;
