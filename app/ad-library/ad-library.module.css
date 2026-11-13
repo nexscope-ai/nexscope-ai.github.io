@@ -277,18 +277,33 @@ video.player {
   top: 12px;
   right: 12px;
   min-height: 44px;
-  padding-inline: 9px;
-  border: 1px solid #e0d4f3;
-  border-radius: 8px;
-  background: #fff;
-  font-size: 0.8125rem;
-  font-weight: 700;
-  color: #5036a1;
+  padding-inline: 12px;
+  border: 1px solid rgb(255 255 255 / 36%);
+  border-radius: 999px;
+  background: rgb(27 20 40 / 84%);
+  box-shadow: 0 2px 12px rgb(0 0 0 / 24%);
+  font-size: 0.75rem;
+  font-weight: 650;
+  line-height: 1;
+  color: #fff;
   cursor: pointer;
+  transition: background-color 160ms ease, opacity 160ms ease;
 }
 
-.remix:hover {
-  background: #f3ecff;
+.remix:hover,
+.remix:focus-visible {
+  background: #633cd2;
+}
+
+.remix:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .remix {
+    transition: none;
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {

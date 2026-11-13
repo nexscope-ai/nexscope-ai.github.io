@@ -5,40 +5,10 @@
       "advertiser": "On AG",
       "market": "DE",
       "topic": "Schuhe",
-      "product": "Entdecke Schuhe f�r die, die immer alles geben.",
+      "product": "Entdecke Schuhe für die, die immer alles geben.",
       "reach": "10K-100K",
       "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4349c16a-19c9-4b60-8ab8-0193007f373c.jpg",
       "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/bfcc5491-65e5-486d-af90-177d9b2d9bf1.mp4"
-    },
-    {
-      "id": "1881038689932738",
-      "advertiser": "On AG",
-      "market": "DE",
-      "topic": "Schuhe",
-      "product": "Entdecke Schuhe f�r die, die immer alles geben.",
-      "reach": "10K-100K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/167c0732-1e45-4d03-b8dd-38fd74b30802.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/54374137-244d-4cb4-8cbc-a1d7f2d42862.mp4"
-    },
-    {
-      "id": "1881038684950930",
-      "advertiser": "On AG",
-      "market": "DE",
-      "topic": "Schuhe",
-      "product": "Entdecke Schuhe f�r die, die immer alles geben.",
-      "reach": "10K-100K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/3e6fecd7-457b-479e-8523-4fd05b08ed2a.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/e1f28b6a-1f92-449e-b079-5a684edbfeb3.mp4"
-    },
-    {
-      "id": "1881038701280450",
-      "advertiser": "On AG",
-      "market": "DE",
-      "topic": "Schuhe",
-      "product": "Entdecke Schuhe f�r die, die immer alles geben.",
-      "reach": "10K-100K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/43619d16-ec77-4fb2-b92f-23743cfe4c00.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/a953ac2d-c719-4ac0-832a-adffdec2cd33.mp4"
     },
     {
       "id": "1880507851760658",
@@ -61,154 +31,34 @@
       "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/aa83ab68-3d40-4572-94ab-8b1cf2b88f2c.mp4"
     },
     {
-      "id": "1881038668318754",
-      "advertiser": "On AG",
+      "id": "1881419606195201",
+      "advertiser": "bodybeautyzp",
       "market": "DE",
-      "topic": "Schuhe",
-      "product": "Entdecke Schuhe f�r die, die immer alles geben.",
+      "topic": "Hautpflege",
+      "product": "#kosmetikstudio #hautpflege #gesundehaut #skincaretips #beautygeheimnis",
       "reach": "1K-10K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/74ae5a96-0088-44ee-b4a0-244885b6d9e5.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/09ea703c-3444-4f24-b5a1-0a228080c0ec.mp4"
-    },
-    {
-      "id": "1881035846935009",
-      "advertiser": "On AG",
-      "market": "DE",
-      "topic": "Schuhe",
-      "product": "Entdecke Schuhe f�r die, die immer alles geben.",
-      "reach": "1K-10K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4fd34a97-1b12-4a98-9934-6a25fecb0636.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/7288472d-e0f4-47db-a4c0-40b60b25b5b4.mp4"
-    },
-    {
-      "id": "1881038723249665",
-      "advertiser": "On AG",
-      "market": "DE",
-      "topic": "Schuhe",
-      "product": "Entdecke Schuhe f�r die, die immer alles geben.",
-      "reach": "1K-10K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/1a0c4009-beb7-4358-a660-45274e9f3f17.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/19880fce-9f5a-42f4-8ea6-8eb3e8c07297.mp4"
-    },
-    {
-      "id": "1881038726754674",
-      "advertiser": "On AG",
-      "market": "DE",
-      "topic": "Schuhe",
-      "product": "Entdecke Schuhe f�r die, die immer alles geben.",
-      "reach": "1K-10K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/c467973d-8adc-4aeb-bdd9-1e0fbc3662ba.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/fc380330-dc3d-4b19-b38f-e98a6e95ee96.mp4"
-    },
-    {
-      "id": "1881038735177009",
-      "advertiser": "On AG",
-      "market": "DE",
-      "topic": "Schuhe",
-      "product": "Entdecke Schuhe f�r die, die immer alles geben.",
-      "reach": "1K-10K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/e06974b9-8474-41fb-bc8d-8d34e366c889.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/2df87da0-db30-40c6-a995-df9aa784bd60.mp4"
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/82960aed-46d3-4f47-bcae-9c447c9b000e.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/02a56530-8a89-4124-a86a-7aee99290ef8.mp4"
     },
     {
       "id": "1881038684744786",
       "advertiser": "On AG",
       "market": "DE",
       "topic": "Schuhe",
-      "product": "Entdecke Schuhe f�r die, die immer alles geben.",
+      "product": "Entdecke Schuhe für die, die immer alles geben.",
       "reach": "1K-10K",
       "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/9fd5d70f-bafc-4ece-b7ce-5b88f96d698a.jpg",
       "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/02f382d3-118c-430f-8dcd-e05cccd88810.mp4"
     },
     {
-      "id": "1881419606195201",
-      "advertiser": "bodybeautyzp",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "#kosmetikstudio &#8203;#hautpflege &#8203;#gesundehaut &#8203;#skincaretips &#8203;#beautygeheimnis   &#8203; &#8203;",
-      "reach": "1K-10K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/82960aed-46d3-4f47-bcae-9c447c9b000e.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/02a56530-8a89-4124-a86a-7aee99290ef8.mp4"
-    },
-    {
       "id": "1881503887432769",
       "advertiser": "Monsieur TSHIRT",
       "market": "FR",
-      "topic": "coque t�l�phone",
-      "product": "POV : t�as enfin trouv� LA coque parfaite",
+      "topic": "coque téléphone",
+      "product": "POV : t’as enfin trouvé LA coque parfaite",
       "reach": "1K-10K",
       "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/9599b09f-1166-47e5-8a59-3cb889a6a211.jpg",
       "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/10430cb9-5c8c-4386-b01c-18829d857336.mp4"
-    },
-    {
-      "id": "1881503887873026",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "FR",
-      "topic": "coque t�l�phone",
-      "product": "POV : t�as enfin trouv� LA coque parfaite",
-      "reach": "1K-10K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/1b6df08c-c6c2-4784-b1ec-28f21a733075.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/ba70783a-17ea-4948-9bd6-59c7674db2e5.mp4"
-    },
-    {
-      "id": "1881503500762210",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "FR",
-      "topic": "coque t�l�phone",
-      "product": "Je crois que j�ai trouv� LA coque parfaite�",
-      "reach": "1K-10K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/8f978a8c-c393-4958-a91b-ecaa66162632.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/47519d72-1f36-45c3-940b-d6d89829d66a.mp4"
-    },
-    {
-      "id": "1881503887432785",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "FR",
-      "topic": "coque t�l�phone",
-      "product": "Je crois que j�ai trouv� LA coque parfaite�",
-      "reach": "1K-10K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4d14abe9-5f72-40e2-91ce-be770431ee25.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/e647c01a-833d-4b93-b8c0-2f90ee0dee58.mp4"
-    },
-    {
-      "id": "1881503887873042",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "FR",
-      "topic": "chaussures",
-      "product": "Je crois que j�ai trouv� LA coque parfaite�",
-      "reach": "1K-10K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/9fdc8587-1b37-4a20-9098-6dbd5e9ec354.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/6e4d17c7-d824-4c90-b0b7-8417904ed861.mp4"
-    },
-    {
-      "id": "1880507848773858",
-      "advertiser": "RED KEEP S.R.L.",
-      "market": "IT",
-      "topic": "accessori cucina",
-      "product": "OHMYLOVE Fondotinta Lumi-Matte, il fondotinta che si prende cura della pelle.",
-      "reach": "1K-10K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0b71523b-ca1c-466a-92ff-4373d7e99989.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/63087810-406a-4f4c-a58e-6895fb512fac.mp4"
-    },
-    {
-      "id": "1880507853352033",
-      "advertiser": "RED KEEP S.R.L.",
-      "market": "IT",
-      "topic": "accessori cucina",
-      "product": "OHMYLOVE Fondotinta Lumi-Matte, il fondotinta che si prende cura della pelle.",
-      "reach": "1K-10K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/05d09dd1-e311-4be2-bafe-ee97bf058bcb.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/5f7fffa9-9b12-4873-ae0a-355444ec6fc3.mp4"
-    },
-    {
-      "id": "1880507855427602",
-      "advertiser": "RED KEEP S.R.L.",
-      "market": "IT",
-      "topic": "accessori cucina",
-      "product": "OHMYLOVE Fondotinta Lumi-Matte, il fondotinta che si prende cura della pelle.",
-      "reach": "1K-10K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/b228fbac-ee8a-40e9-a473-2f0582d5923f.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/1fd44f35-7169-41cf-a77a-8e1f16c33e27.mp4"
     },
     {
       "id": "1880507848937153",
@@ -225,7 +75,7 @@
       "advertiser": "arredamentialtea",
       "market": "IT",
       "topic": "cover telefono",
-      "product": "#flyp&#12471; #neiperteee #alteaarredamenti #cucina #promozione",
+      "product": "#flypシ #neiperteee #alteaarredamenti #cucina #promozione",
       "reach": "1K-10K",
       "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/58f07e9c-b375-41b6-9176-e6e48516fa55.jpg",
       "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/cd476995-9162-4a22-99d2-6f379fc8fdd4.mp4"
@@ -235,40 +85,20 @@
       "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
       "market": "IT",
       "topic": "cover telefono",
-      "product": "Giochi retr� sul telefono",
+      "product": "Giochi retrò sul telefono",
       "reach": "1K-10K",
       "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/01e24917-40f3-4ab0-a3fe-800819884fd7.jpg",
       "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/1d30d9ae-1db6-4c39-a047-b1f2e8ba358d.mp4"
-    },
-    {
-      "id": "1880346781534417",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Giochi retr� sul telefono",
-      "reach": "1K-10K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/cc42bb3f-a96a-4f4d-861c-2a657eb40933.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4a2ef214-9837-441c-9f25-09f77e7ca701.mp4"
     },
     {
       "id": "1879455325018209",
       "advertiser": "BEAUTYCOM",
       "market": "FR",
       "topic": "soins visage",
-      "product": "Cr�me riche, fluide SPF ou gel-cr�me : d�couvrez les soins visage Respire.",
+      "product": "Crème riche, fluide SPF ou gel-crème : découvrez les soins visage Respire.",
       "reach": "1K-10K",
       "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/bbf975cb-08d7-4e3f-80c5-4d919dc05123.jpg",
       "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/bbb53135-ba83-486d-9fe5-69a6a34f2bbe.mp4"
-    },
-    {
-      "id": "1879749537887634",
-      "advertiser": "BEAUTYCOM",
-      "market": "FR",
-      "topic": "soins visage",
-      "product": "Cr�me riche, fluide SPF ou gel-cr�me : d�couvrez les soins visage Respire.",
-      "reach": "1K-10K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0d7271a1-0604-4d7a-a1c9-8124e780d79d.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/e8175963-2299-4633-b7bb-c938e30781e5.mp4"
     },
     {
       "id": "1875863285526834",
@@ -281,24 +111,24 @@
       "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4911a0f8-e744-4ed6-af5a-f1aa45a7f01f.mp4"
     },
     {
-      "id": "1878026780098786",
-      "advertiser": "Unisport A/S",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Le nuove scarpe da calcio sono arrivate",
+      "id": "1881503887873026",
+      "advertiser": "Monsieur TSHIRT",
+      "market": "FR",
+      "topic": "coque téléphone",
+      "product": "POV : t’as enfin trouvé LA coque parfaite",
       "reach": "1K-10K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/5b9958b7-27e6-4939-9b09-f29a20cc8702.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/70482c7f-f3ba-4562-8c06-b584ab196c78.mp4"
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/1b6df08c-c6c2-4784-b1ec-28f21a733075.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/ba70783a-17ea-4948-9bd6-59c7674db2e5.mp4"
     },
     {
-      "id": "1875756927803553",
-      "advertiser": "Unisport A/S",
+      "id": "1880346781534417",
+      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
       "market": "IT",
       "topic": "scarpe",
-      "product": "Le nuove scarpe da calcio sono arrivate",
+      "product": "Giochi retrò sul telefono",
       "reach": "1K-10K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/65bab0ff-e869-4605-9670-2edc436a536f.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/7ea0da03-0caf-4a03-9ad6-f6a2c9767d81.mp4"
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/cc42bb3f-a96a-4f4d-861c-2a657eb40933.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4a2ef214-9837-441c-9f25-09f77e7ca701.mp4"
     },
     {
       "id": "1876918350732770",
@@ -311,494 +141,34 @@
       "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/e8288dbc-bd5b-4d65-bcfa-85344e6926a8.mp4"
     },
     {
-      "id": "1881503068903650",
+      "id": "1881503500762210",
       "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "POV: Du hast endlich DIE perfekte Handyh�lle gefunden",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/9d7dd217-87cf-49d8-8b47-ef4d4a42c577.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/5303ca8e-05c8-4891-8549-6049709cac27.mp4"
-    },
-    {
-      "id": "1881502763391233",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "POV: Du hast endlich DIE perfekte Handyh�lle gefunden",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/6711c594-4c80-4ba7-8744-2c1c409dbeeb.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/39e9df96-0238-471f-8b8b-1325baa5950e.mp4"
-    },
-    {
-      "id": "1881502763389953",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "Ich glaube, ich hab DIE perfekte Handyh�lle gefunden�",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/b12e9761-f04c-43ec-a621-a5ccd418be25.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/1b9e55b0-7517-48d3-bb48-23553162e140.mp4"
-    },
-    {
-      "id": "1881503070810369",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "Ich glaube, ich hab DIE perfekte Handyh�lle gefunden�",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/32a02681-11e8-42f4-a2b2-cbf73af66083.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/2fe5891f-e5eb-471b-8a75-ecb3724198f4.mp4"
-    },
-    {
-      "id": "1881502763392017",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "POV: Du hast endlich DIE perfekte Handyh�lle gefunden",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/55b19ee2-5ce5-41f5-92a7-cc70cfe36c50.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0d94ab83-f286-4fb0-baa6-7eb5b1198973.mp4"
-    },
-    {
-      "id": "1881506393265265",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "Ich glaube, ich hab DIE perfekte Handyh�lle gefunden�",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/5d8f5ec9-74be-46b3-a57b-da3d4bc116aa.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/a62004cf-5690-45cc-8022-d31f57288048.mp4"
-    },
-    {
-      "id": "1881502763389985",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "Ich glaube, ich hab DIE perfekte Handyh�lle gefunden�",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/c045604a-3a58-4720-8f64-7bb6780a71e3.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/2ba29d4a-9519-4d5b-90d5-a856af59d511.mp4"
-    },
-    {
-      "id": "1881502763392001",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "Ich glaube, ich hab DIE perfekte Handyh�lle gefunden�",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4b43293c-dc0b-4f5a-85cb-a2f5e00df54f.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0a16bf7a-f151-4514-9318-00a169f6d3c3.mp4"
-    },
-    {
-      "id": "1881503070811521",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "Ich glaube, ich hab DIE perfekte Handyh�lle gefunden�",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/2a0df6a4-ce42-453d-aad0-a3b6bb706698.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/77fff3cc-4da2-41d6-be8c-1222e69b6c55.mp4"
-    },
-    {
-      "id": "1881502763390001",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "Ich glaube, ich hab DIE perfekte Handyh�lle gefunden�",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/d9bfdab5-e748-4f55-8e67-7145c95e3474.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/be539e5b-279f-4e27-9302-dcca78b83a98.mp4"
-    },
-    {
-      "id": "1881503068903634",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "Ich glaube, ich hab DIE perfekte Handyh�lle gefunden�",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/1799b5aa-b60b-46c1-a790-dde9e2bc653e.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0198979b-e3fd-44e4-b3e6-bf6d116eac30.mp4"
-    },
-    {
-      "id": "1881503068902450",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "Ich glaube, ich hab DIE perfekte Handyh�lle gefunden�",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/b46ba35a-ee48-43b5-83bf-c2f5f87d3308.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/641c284e-277d-4dd6-88c7-863343c63c41.mp4"
-    },
-    {
-      "id": "1881503069966354",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "Ich glaube, ich hab DIE perfekte Handyh�lle gefunden�",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/bd2e3c18-567b-488a-9246-855a84dadd92.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/e128af3c-d5fb-4c57-98f9-89e15ab6e711.mp4"
-    },
-    {
-      "id": "1881502763391281",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "POV: Du hast endlich DIE perfekte Handyh�lle gefunden",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/82d8d262-fb95-47ac-ae56-da2ae683fc48.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/246e5745-1e51-4d06-be7c-c1f873f626aa.mp4"
-    },
-    {
-      "id": "1881503069966338",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "Ich glaube, ich hab DIE perfekte Handyh�lle gefunden�",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/391aa6bf-c045-42d6-80a1-2cea91acc87a.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/92aea6ae-173e-4400-b682-aeab69892bb3.mp4"
-    },
-    {
-      "id": "1881502763391249",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "Ich glaube, ich hab DIE perfekte Handyh�lle gefunden�",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/9f7c1611-5d76-4540-87e6-8f9a320321cc.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/6a0595f8-5b91-45b1-bacb-e6d3494b6fd1.mp4"
-    },
-    {
-      "id": "1881503070811537",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "Ich glaube, ich hab DIE perfekte Handyh�lle gefunden�",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/bd04c15e-59a8-4590-a17f-36650babe11d.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/efb262e1-6f1a-492e-88e9-f54e4988fcab.mp4"
-    },
-    {
-      "id": "1881502763389969",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "POV: Du hast endlich DIE perfekte Handyh�lle gefunden",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/5bb355c8-e0b4-4129-889e-bdb528a6cc2e.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/634c7220-6903-4f42-8edf-ab78929e93ba.mp4"
-    },
-    {
-      "id": "1881503068903666",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "POV: Du hast endlich DIE perfekte Handyh�lle gefunden",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/7955706b-c8e4-4091-8add-2701b3265c7f.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/68544e44-898d-4477-884e-4cec5f392379.mp4"
-    },
-    {
-      "id": "1881503069963570",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "Ich glaube, ich hab DIE perfekte Handyh�lle gefunden�",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/81a657e1-edbf-4889-9f8c-8900daa6c38b.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/f07ec13a-cb51-4a32-9af8-0ab5d3644760.mp4"
-    },
-    {
-      "id": "1881502763391265",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "POV: Du hast endlich DIE perfekte Handyh�lle gefunden",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/8cad4e46-f5a2-4909-87ad-7ff62ccc687e.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/167e76bc-cedd-493f-ba57-629dc82c8109.mp4"
-    },
-    {
-      "id": "1881506393265249",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "POV: Du hast endlich DIE perfekte Handyh�lle gefunden",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/f5782396-73ac-4f4f-8b36-8161d274c581.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/bed31893-2e54-413f-9814-d368067ba1bb.mp4"
-    },
-    {
-      "id": "1881578462818338",
-      "advertiser": "On AG",
-      "market": "DE",
-      "topic": "Schuhe",
-      "product": "Entdecke Schuhe f�r die, die immer alles geben.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/d420b0d5-46ba-434b-8662-6357bf49d734.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0daea28c-5d0b-427f-8420-9ca811bdd2a8.mp4"
-    },
-    {
-      "id": "1881038693463042",
-      "advertiser": "On AG",
-      "market": "DE",
-      "topic": "Schuhe",
-      "product": "Entdecke Schuhe f�r die, die immer alles geben.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/bcc6dd89-33c6-4226-b07d-d0ffd7c2c8d4.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/1fd810f0-5f6f-4b0f-8c85-bd2ea1e87423.mp4"
-    },
-    {
-      "id": "1881578464421138",
-      "advertiser": "On AG",
-      "market": "DE",
-      "topic": "Schuhe",
-      "product": "Entdecke Schuhe f�r die, die immer alles geben.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0484658d-a83e-467a-b859-1870d22a071f.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0b88f767-72e8-4b14-843d-97b587acf76d.mp4"
-    },
-    {
-      "id": "1881510153320497",
-      "advertiser": "On AG",
-      "market": "DE",
-      "topic": "Schuhe",
-      "product": "Entdecke Schuhe f�r die, die immer alles geben.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/65dd009d-9dc9-44ec-8d43-65686663f503.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/74d3e659-ff49-411e-bfb4-73e1f940130d.mp4"
-    },
-    {
-      "id": "1881510152995298",
-      "advertiser": "On AG",
-      "market": "DE",
-      "topic": "Schuhe",
-      "product": "Entdecke Schuhe f�r die, die immer alles geben.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/764a129b-2e0d-429e-af93-3e28befd3c97.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/d1cccc8f-0e57-4d36-b2bb-561ce3d45e88.mp4"
-    },
-    {
-      "id": "1881038723248193",
-      "advertiser": "On AG",
-      "market": "DE",
-      "topic": "Schuhe",
-      "product": "Entdecke Schuhe f�r die, die immer alles geben.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/922839e4-39a1-49f5-a2ca-b012706f2734.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/18a2c061-b569-4e75-9cf9-97bd3e4de9dd.mp4"
-    },
-    {
-      "id": "1881038668319906",
-      "advertiser": "On AG",
-      "market": "DE",
-      "topic": "Schuhe",
-      "product": "Entdecke Schuhe f�r die, die immer alles geben.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/d908d748-7f66-479a-a12b-3288ec98b221.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/428a37f0-1834-4076-8bc1-95e4675026cf.mp4"
-    },
-    {
-      "id": "1881592164288977",
-      "advertiser": "On AG",
-      "market": "DE",
-      "topic": "Schuhe",
-      "product": "Entdecke Schuhe f�r die, die immer alles geben.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/6a69749d-e375-4f90-98cb-6fb0e243d101.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/36c29c7b-611a-46b6-b1c6-52b2cd4033d4.mp4"
-    },
-    {
-      "id": "1881578462818322",
-      "advertiser": "On AG",
-      "market": "DE",
-      "topic": "Schuhe",
-      "product": "Entdecke Schuhe f�r die, die immer alles geben.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4a4248c5-cd03-42a8-b909-59d7963633f4.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/53deb35d-f2fd-49a7-a42b-e62ed5e1c539.mp4"
-    },
-    {
-      "id": "1881510150801521",
-      "advertiser": "On AG",
-      "market": "DE",
-      "topic": "Schuhe",
-      "product": "Entdecke Schuhe f�r die, die immer alles geben.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/73c6bea2-7794-4b90-87b2-a24b68dd6b7b.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/60658258-002f-420b-a0bb-5e0aef2af0f5.mp4"
-    },
-    {
-      "id": "1881496016626721",
-      "advertiser": "On AG",
-      "market": "DE",
-      "topic": "Schuhe",
-      "product": "Entdecke Schuhe f�r die, die immer alles geben.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/af11f905-1ff2-45a8-bc89-7370d6baf0ba.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/acea4992-d86b-419e-ab1e-a8abaeb6f0a1.mp4"
+      "market": "FR",
+      "topic": "coque téléphone",
+      "product": "Je crois que j’ai trouvé LA coque parfaite",
+      "reach": "1K-10K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/8f978a8c-c393-4958-a91b-ecaa66162632.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/47519d72-1f36-45c3-940b-d6d89829d66a.mp4"
     },
     {
       "id": "1881585884886081",
       "advertiser": "nelsmileglow",
       "market": "FR",
       "topic": "soins visage",
-      "product": "PROMO SUR LES SOINS VISAGE &#129293;.     R�serve ta s�ance de soin du visage d�s maintenant, actuellement en promotion chez NelSmileGlow ! &#10024;.    #pourtoiii #foryoupag&#1077; #hydrafacial #beaut� #CapCut",
+      "product": "PROMO SUR LES SOINS VISAGE 🤍. Réserve ta séance de soin du visage dès maintenant, actuellement en promotion chez NelSmileGlow ! ✨. #pourtoiii #foryoupagе #hydrafacial #beauté #CapCut",
       "reach": "0-1K",
       "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/b5fcfa7c-b668-4843-a355-30d3ee600010.jpg",
       "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4aaad0d7-b3f8-4eab-9c7c-9093b6567341.mp4"
-    },
-    {
-      "id": "1881503887432817",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "FR",
-      "topic": "coque t�l�phone",
-      "product": "POV : t�as enfin trouv� LA coque parfaite",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/3034c733-ee95-4aaf-801c-3e6a3ebed85a.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/df9e30aa-1955-40da-af9b-9205ddfcc622.mp4"
-    },
-    {
-      "id": "1881600267019617",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "FR",
-      "topic": "coque t�l�phone",
-      "product": "POV : t�as enfin trouv� LA coque parfaite",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/373e4789-949a-4b2b-b7a3-9e8d598c498d.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/972d675c-d50c-4838-89c3-36f909922547.mp4"
-    },
-    {
-      "id": "1881502787388753",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "FR",
-      "topic": "coque t�l�phone",
-      "product": "POV : t�as enfin trouv� LA coque parfaite",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/b04d404e-e8e0-4762-be43-ab67d904151a.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/9df84132-37c7-42fd-b57c-c26f145cbd7c.mp4"
-    },
-    {
-      "id": "1881600267019601",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "FR",
-      "topic": "coque t�l�phone",
-      "product": "POV : t�as enfin trouv� LA coque parfaite",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/92311b70-856d-4897-8414-c5d02f5d6564.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/99d99196-ec3a-4521-9bc4-931862c803a5.mp4"
-    },
-    {
-      "id": "1881503500762194",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "FR",
-      "topic": "coque t�l�phone",
-      "product": "Je crois que j�ai trouv� LA coque parfaite�",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/535fe933-d7eb-45d9-a055-2dccb3ad9d68.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/bb3bc201-d3ba-4a2c-81a6-81ef92a39877.mp4"
-    },
-    {
-      "id": "1881503500761138",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "FR",
-      "topic": "coque t�l�phone",
-      "product": "Je crois que j�ai trouv� LA coque parfaite�",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/10c29c3a-1f6b-45ab-af05-fcf9612477bb.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/110655d9-b29b-43eb-993f-49bf2909afcf.mp4"
-    },
-    {
-      "id": "1881503887432801",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "FR",
-      "topic": "coque t�l�phone",
-      "product": "Je crois que j�ai trouv� LA coque parfaite�",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/5cead9c5-47b1-4981-89af-67c26cedd47d.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/6d59bda4-ec6d-44ea-aa4f-68cf6a3e2a26.mp4"
-    },
-    {
-      "id": "1881502787388769",
-      "advertiser": "Monsieur TSHIRT",
-      "market": "FR",
-      "topic": "coque t�l�phone",
-      "product": "Je crois que j�ai trouv� LA coque parfaite�",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/70b0613b-2c3d-4bbd-8c03-c9cfa6bd63d2.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/26b5fd2a-b049-42ae-a2b0-b98916599d6c.mp4"
     },
     {
       "id": "1881545502246466",
       "advertiser": "Palatore",
       "market": "FR",
       "topic": "chaussures",
-      "product": "Protection, style, l�g�ret�. Coque aluminium pour iPhone avec MagSafe renforc�.",
+      "product": "Protection, style, légèreté. Coque aluminium pour iPhone avec MagSafe renforcé.",
       "reach": "0-1K",
       "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/322c9aa8-d99a-4fde-9078-492b367e83c9.jpg",
       "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/6f9243c2-2b40-4601-ae83-d3bccc27c8ac.mp4"
-    },
-    {
-      "id": "1881545504152753",
-      "advertiser": "Palatore",
-      "market": "FR",
-      "topic": "chaussures",
-      "product": "Coque aluminium premium pour iPhone. MagSafe renforc�, l�g�re et �l�gante.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0e1d72bd-0308-40e0-ad05-4615daa52733.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/6f00fb53-8e74-43e7-81a2-9c802b5f5cd6.mp4"
-    },
-    {
-      "id": "1881545504154833",
-      "advertiser": "Palatore",
-      "market": "FR",
-      "topic": "chaussures",
-      "product": "Coque aluminium premium pour iPhone. MagSafe renforc�, l�g�re et �l�gante.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/9a3254cb-6e07-4bdf-bcd4-e9de9579a990.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/45082d2a-e378-4dd3-95ea-993fa062a010.mp4"
-    },
-    {
-      "id": "1881545502247410",
-      "advertiser": "Palatore",
-      "market": "FR",
-      "topic": "chaussures",
-      "product": "Coque aluminium premium pour iPhone. MagSafe renforc�, l�g�re et �l�gante.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/5c276f68-5c80-490f-8d05-bf0b797034b2.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/f872666d-e625-4906-97a3-15b0f8c6e4f7.mp4"
-    },
-    {
-      "id": "1880507851476114",
-      "advertiser": "RED KEEP S.R.L.",
-      "market": "IT",
-      "topic": "accessori cucina",
-      "product": "Bellezza e cura della pelle si incontrano in OHMYLOVE Fondotinta Lumi-Matte.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/1766e46f-1662-41d8-8dd4-a2c8cbe52283.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/004711a7-472a-45d2-912a-173360d5cb78.mp4"
-    },
-    {
-      "id": "1880507853352049",
-      "advertiser": "RED KEEP S.R.L.",
-      "market": "IT",
-      "topic": "accessori cucina",
-      "product": "OHMYLOVE Fondotinta Lumi-Matte, il fondotinta che si prende cura della pelle.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/fd69ce2e-3d5a-499e-804e-96eb363e4c4b.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/de447eb0-529c-422e-a172-c34a84bdfe41.mp4"
-    },
-    {
-      "id": "1880507853356130",
-      "advertiser": "RED KEEP S.R.L.",
-      "market": "IT",
-      "topic": "accessori cucina",
-      "product": "Bellezza e cura della pelle si incontrano in OHMYLOVE Fondotinta Lumi-Matte.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/3b7a7cba-091e-4263-af18-67650f582fa6.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/9fb12598-0e72-4736-a563-1064801eaf41.mp4"
     },
     {
       "id": "1855331959579762",
@@ -811,54 +181,14 @@
       "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/9e93ce80-64b4-4a8b-bb6a-d345435c2e52.mp4"
     },
     {
-      "id": "1881570423023649",
-      "advertiser": "Unisport A/S",
-      "market": "IT",
-      "topic": "gioielli",
-      "product": "Scarpe da calcio nuove ogni giorno? Quale paio scegli?",
+      "id": "1881503068903650",
+      "advertiser": "Monsieur TSHIRT",
+      "market": "DE",
+      "topic": "Handyhülle",
+      "product": "POV: Du hast endlich DIE perfekte Handyhülle gefunden",
       "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/8d6ea162-5035-4343-bd9f-73c3ae25f47c.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/860a4a8f-71c0-4e45-b3c7-9a637afb0ea1.mp4"
-    },
-    {
-      "id": "1881264666039362",
-      "advertiser": "Unisport A/S",
-      "market": "IT",
-      "topic": "gioielli",
-      "product": "Scarpe da calcio nuove ogni giorno? Quale paio scegli?",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/166d2ec5-85cb-498a-bb54-fc695aab4de0.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/a5b341a6-537f-41f6-af54-dfc6bf63ad04.mp4"
-    },
-    {
-      "id": "1881533340396818",
-      "advertiser": "Unisport A/S",
-      "market": "IT",
-      "topic": "gioielli",
-      "product": "Scarpe da calcio nuove ogni giorno? Quale paio scegli?",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/b380f7ca-d1d3-438f-907f-8dcc68e011d5.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/d133dfe5-4f1f-4c2c-8318-0c7e14873005.mp4"
-    },
-    {
-      "id": "1881550520488161",
-      "advertiser": "Unisport A/S",
-      "market": "IT",
-      "topic": "gioielli",
-      "product": "Scarpe da calcio nuove ogni giorno? Quale paio scegli?",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/01112cae-8a36-47c7-a17f-fbc4d4a90299.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/ff1b4ee8-4313-4ada-a796-6aabe1b9b4e6.mp4"
-    },
-    {
-      "id": "1881542737307906",
-      "advertiser": "Unisport A/S",
-      "market": "IT",
-      "topic": "gioielli",
-      "product": "Scarpe da calcio nuove ogni giorno? Quale paio scegli?",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/cf653f67-dd1d-49e1-b17d-adfc22e822d8.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/89473702-2c39-4206-8e9e-e45cae2024de.mp4"
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/9d7dd217-87cf-49d8-8b47-ef4d4a42c577.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/5303ca8e-05c8-4891-8549-6049709cac27.mp4"
     },
     {
       "id": "1881398440350769",
@@ -869,56 +199,6 @@
       "reach": "0-1K",
       "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/6d66f8d9-82f7-4f81-a3d1-59bb19ff8fdf.jpg",
       "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/998cc5af-eeb7-4863-94de-dbe7c297b890.mp4"
-    },
-    {
-      "id": "1881398454867122",
-      "advertiser": "VF International Sagl",
-      "market": "IT",
-      "topic": "abbigliamento",
-      "product": "Abbigliamento antivento pronto a qualsiasi sfida.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/249e2211-b20c-48f0-ac67-098343cd8002.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/56affa14-e0da-4b92-afd8-7e45b9fdce6b.mp4"
-    },
-    {
-      "id": "1881398516008994",
-      "advertiser": "VF International Sagl",
-      "market": "IT",
-      "topic": "abbigliamento",
-      "product": "Abbigliamento antivento pronto a qualsiasi sfida.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0bd5f3c0-b4e0-472f-9651-b8f3a73d13f9.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/6f4dc34d-fbe8-42dd-8028-2524cb5d3ac6.mp4"
-    },
-    {
-      "id": "1881398444722305",
-      "advertiser": "VF International Sagl",
-      "market": "IT",
-      "topic": "abbigliamento",
-      "product": "Abbigliamento antivento pronto a qualsiasi sfida.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/36b5fcee-c6b6-4ccf-866c-ecf4061828d2.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/58eb25ef-331b-458a-84a0-e7272cf5af33.mp4"
-    },
-    {
-      "id": "1881398440352817",
-      "advertiser": "VF International Sagl",
-      "market": "IT",
-      "topic": "abbigliamento",
-      "product": "Abbigliamento antivento pronto a qualsiasi sfida.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/43ebf767-a2d0-4e6f-980e-f5a18f371fad.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0914d7a9-c0aa-4dc1-ad05-106b9f745067.mp4"
-    },
-    {
-      "id": "1881396783875089",
-      "advertiser": "&#30343;&#37528;&#36031;&#26131;&#26377;&#38480;&#20844;&#21496;",
-      "market": "FR",
-      "topic": "soins visage",
-      "product": "soins en maison de retraite",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/1a4b3a37-a9f3-4540-8747-a9e65feaa958.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/3d04da8a-d800-45a6-ace2-4063696c359c.mp4"
     },
     {
       "id": "1881351275434050",
@@ -935,7 +215,7 @@
       "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
       "market": "IT",
       "topic": "cover telefono",
-      "product": "Giochi retr� sul telefono",
+      "product": "Giochi retrò sul telefono",
       "reach": "0-1K",
       "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/f5a22c98-2816-4b89-bc51-ac661af47308.jpg",
       "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/6793ba0d-0a6f-4189-b5d4-336f3cec7d45.mp4"
@@ -945,60 +225,10 @@
       "advertiser": "HERMES DIGITAL OU",
       "market": "DE",
       "topic": "Hautpflege",
-      "product": "Allgemeines Wissen �ber Gesundheitssoftware f�r Hautpflege",
+      "product": "Allgemeines Wissen über Gesundheitssoftware für Hautpflege",
       "reach": "0-1K",
       "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/3466b1b7-f936-427f-87de-10dfeff3c64a.jpg",
       "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/294bd285-3ba5-4196-827c-d2be3e203da9.mp4"
-    },
-    {
-      "id": "1881276962053457",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "Allgemeines Wissen �ber Gesundheitssoftware f�r Hautpflege",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/c5035224-237c-468c-8f96-41f76ac4682d.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/d6b3baf4-9f40-4fa3-881c-d1aed43fe31d.mp4"
-    },
-    {
-      "id": "1881260998333585",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "FR",
-      "topic": "soins visage",
-      "product": "Connaissances g�n�rales sur les soins de sant� Acc�l�rer les soins",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/82c5ddc3-4a60-4650-bdd0-1b048242eb28.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/1b9d040b-6db7-478a-95ff-938e4710c6bf.mp4"
-    },
-    {
-      "id": "1881260998333601",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "FR",
-      "topic": "soins visage",
-      "product": "Connaissances g�n�rales sur les soins de sant� Acc�l�rer les soins",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/9f8f431d-e761-4c40-a956-9d76bfe5c4c8.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4474c031-e82a-4081-bfdd-6040ce7dc8e8.mp4"
-    },
-    {
-      "id": "1881260998333569",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "FR",
-      "topic": "soins visage",
-      "product": "Connaissances g�n�rales sur les soins de sant� Acc�l�rer les soins",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4e2708f2-a805-4102-8f52-0073ed9f7e50.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/10e01fca-ace7-43b7-a930-d34a17db534e.mp4"
-    },
-    {
-      "id": "1881387753852225",
-      "advertiser": "&#30343;&#37528;&#36031;&#26131;&#26377;&#38480;&#20844;&#21496;",
-      "market": "FR",
-      "topic": "soins visage",
-      "product": "soins en maison de retraite",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/19268a11-be40-4d77-898e-8108e453d55a.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/6993b948-c584-45f0-9fda-1962f54e4b07.mp4"
     },
     {
       "id": "1881351590173330",
@@ -1011,146 +241,6 @@
       "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/071b471e-eed5-403f-87cb-387025e804fd.mp4"
     },
     {
-      "id": "1881351075571777",
-      "advertiser": "&#30343;&#37528;&#36031;&#26131;&#26377;&#38480;&#20844;&#21496;",
-      "market": "FR",
-      "topic": "soins visage",
-      "product": "soins en maison de retraite",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/fda4e4bb-ddda-48d3-9fe6-decb6b8e5c9d.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/41f6ff36-9914-48ff-a52c-37656e1bce46.mp4"
-    },
-    {
-      "id": "1881241154770946",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "cura della pelle",
-      "product": "Conoscenze generali del software sanitario per la cura della pelle",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/8fb9350a-7d55-4b82-b8b7-0b964f3c6df6.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/c371a974-a7b4-4280-894f-2197f48363fd.mp4"
-    },
-    {
-      "id": "1881277242672482",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "gioielli",
-      "product": "Scopri ulteriori informazioni sulla rivendita di scarpe Business Home",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/600f90d7-b59c-4b14-8a14-0f1336a23907.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/e23508a5-5a46-4b28-894d-6240fd0b70a3.mp4"
-    },
-    {
-      "id": "1881277243488290",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "gioielli",
-      "product": "Scopri ulteriori informazioni sulla rivendita di scarpe Business Home",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/7da696d9-518c-435a-b71c-6a009cb9d1a6.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/8c75bf0b-faf2-4cd0-9de4-318a3754d7a6.mp4"
-    },
-    {
-      "id": "1881277242672514",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "gioielli",
-      "product": "Scopri ulteriori informazioni sulla rivendita di scarpe Business Home",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/61db3203-0f2b-4b24-8f31-1ee95587796c.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/c7795a34-0890-4120-b65e-f428e3c576dc.mp4"
-    },
-    {
-      "id": "1880639271796769",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "Allgemeines Wissen �ber Laborausstattung und Hautpflege-Tests",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/7f6a939f-2f88-4915-8ed2-9d5529417b0a.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/5620edde-9ec7-4834-8ec3-2236a61fbc6f.mp4"
-    },
-    {
-      "id": "1880346779137058",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Giochi retr� sul telefono",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/b5504412-0a13-43b4-96a7-53d2b7d3a98e.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/dc953006-5da3-4613-8ccf-cb69a823d0a2.mp4"
-    },
-    {
-      "id": "1881120726974610",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "abbigliamento",
-      "product": "Scopri ulteriori informazioni sul marchio di abbigliamento Start: Abbigliamento",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/89b33f8c-657f-4af7-bd67-011f86a8be23.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/1a54b7ee-1663-473d-8b75-f4fd984da018.mp4"
-    },
-    {
-      "id": "1881120729389378",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "abbigliamento",
-      "product": "Scopri ulteriori informazioni sul marchio di abbigliamento Start: Abbigliamento",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4487e913-f0a6-4a58-804e-a06dafc115c9.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/cdb3e67e-a850-4bf3-8c60-318eee0e4e3a.mp4"
-    },
-    {
-      "id": "1881120729389394",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "abbigliamento",
-      "product": "Scopri ulteriori informazioni sul marchio di abbigliamento Start: Abbigliamento",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4732863b-e331-485d-9945-554695480c33.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/aa9cf1a8-bfcf-4ff5-9fa9-eee74dd65925.mp4"
-    },
-    {
-      "id": "1881120746126673",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "abbigliamento",
-      "product": "Scopri ulteriori informazioni sul marchio di abbigliamento Start: Abbigliamento",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/de553fe5-76cc-4666-98a1-f87f13bcc4c7.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/710a819b-c9e9-4e65-9cbf-0656cba343fc.mp4"
-    },
-    {
-      "id": "1881120746125601",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "abbigliamento",
-      "product": "Scopri ulteriori informazioni sul marchio di abbigliamento Start: Abbigliamento",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/37571b85-2e5f-4329-a140-43261f448d2f.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/5f24df5d-c23f-437a-9b53-44fa48705ff9.mp4"
-    },
-    {
-      "id": "1881120746130466",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "abbigliamento",
-      "product": "Scopri ulteriori informazioni sul marchio di abbigliamento Start: Abbigliamento",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/6b58b46b-e8e7-4764-b7e0-094b641f4317.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/7d9dd42d-d85d-4586-8b47-8fb347f4e7b5.mp4"
-    },
-    {
-      "id": "1881120726975490",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "abbigliamento",
-      "product": "Scopri ulteriori informazioni sul marchio di abbigliamento Start: Abbigliamento",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/afacaa18-e878-4ed5-b049-69561f9e7c99.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/abba3edf-ed3f-4fb9-b4a2-a12cbebd8297.mp4"
-    },
-    {
       "id": "1881200916957233",
       "advertiser": "roiclub",
       "market": "IT",
@@ -1159,96 +249,6 @@
       "reach": "0-1K",
       "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/13681250-e2fa-4e44-8c7a-ec7deb597bef.jpg",
       "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/a901ced8-4756-4d3a-aef3-f91c8ddf8b77.mp4"
-    },
-    {
-      "id": "1881120726975506",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "abbigliamento",
-      "product": "Scopri ulteriori informazioni sul marchio di abbigliamento Start: Abbigliamento",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/2c96c45e-5266-4e72-a1ca-e82f53f31a07.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/65e54eee-d06d-4582-967e-6339946d4b01.mp4"
-    },
-    {
-      "id": "1880953272105538",
-      "advertiser": "&#30343;&#37528;&#36031;&#26131;&#26377;&#38480;&#20844;&#21496;",
-      "market": "FR",
-      "topic": "soins visage",
-      "product": "soins en maison de retraite",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/a11c8d9d-c09b-4ccd-99bd-0fea5e6e612d.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/ccca9aa7-9abf-4a19-9484-fc1f9585a470.mp4"
-    },
-    {
-      "id": "1880915609663521",
-      "advertiser": "&#30343;&#37528;&#36031;&#26131;&#26377;&#38480;&#20844;&#21496;",
-      "market": "FR",
-      "topic": "soins visage",
-      "product": "soins en maison de retraite",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/976b180a-294d-4332-a28c-38142de8a54e.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/7ac2c257-cc0c-49b4-9390-9ebcd921a149.mp4"
-    },
-    {
-      "id": "1880769920643761",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "FR",
-      "topic": "soins visage",
-      "product": "Connaissances g�n�rales sur les soins rapides apr�s un lifting complet du visage",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/d34b3428-04b4-4233-a3b3-7da63db3b944.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/99d1e9ae-5fb1-4ccf-a15f-af4d7a34481e.mp4"
-    },
-    {
-      "id": "1880813087026466",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "FR",
-      "topic": "soins visage",
-      "product": "Connaissances g�n�rales sur les soins rapides apr�s un lifting complet du visage",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/3fa6697d-e968-42b0-9295-1b3aab77d096.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/bdb6fe46-da24-43ea-b704-46af0c03f47b.mp4"
-    },
-    {
-      "id": "1880824294536994",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "FR",
-      "topic": "soins visage",
-      "product": "Connaissances g�n�rales sur les soins rapides apr�s un lifting complet du visage",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/b4669d1f-e3f3-4386-aa83-d63d0fede4b4.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/6ea86ec1-728a-4e41-a2d4-3bff4a0bd45d.mp4"
-    },
-    {
-      "id": "1880813086982194",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "FR",
-      "topic": "soins visage",
-      "product": "Connaissances g�n�rales sur les soins rapides apr�s un lifting complet du visage",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4501df0c-6a17-4176-ad83-c0a9834a02a4.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/fbaeabfa-97d4-4dd9-b849-33e4c7a7f010.mp4"
-    },
-    {
-      "id": "1880824179531090",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "FR",
-      "topic": "soins visage",
-      "product": "D�couvrez plus d'informations sur les soins rapides pour un lifting complet du visage",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/a093dc46-7ccd-48f7-a286-20c9731736e0.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/89bf43b8-2bb2-4164-9489-18e2eedf5485.mp4"
-    },
-    {
-      "id": "1880915602886866",
-      "advertiser": "&#30343;&#37528;&#36031;&#26131;&#26377;&#38480;&#20844;&#21496;",
-      "market": "FR",
-      "topic": "soins visage",
-      "product": "soins en maison de retraite",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/41cb7fee-c6cb-4e87-ae07-a6364437d53a.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/00c5529c-1f1c-45db-b57c-7cbd0874b230.mp4"
     },
     {
       "id": "1880915557476561",
@@ -1261,14 +261,124 @@
       "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/df8ce472-4b96-4f7f-ac29-9c52f527b205.mp4"
     },
     {
-      "id": "1880914702031217",
+      "id": "1877316846448834",
+      "advertiser": "Peak Focus LLC",
+      "market": "DE",
+      "topic": "Schuhe",
+      "product": "Allgemeines Wissen über Produktmarketing für Masters Schuhe",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0710311a-ecaa-4187-b9e8-6f84f45883ee.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/bbeab220-2be8-4f47-8802-58e0bdabb95d.mp4"
+    },
+    {
+      "id": "1878615058393137",
+      "advertiser": "NICHE BEAUTY LAB SOCIEDAD LIMITADA.",
+      "market": "DE",
+      "topic": "Hautpflege",
+      "product": "Skincare meets science. Entdecke innovative Hautpflege mit TERAMYDE.",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/bf34399d-cfe1-4c16-a5ad-ad6ba18e20b8.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/72d8fe9d-875f-4d26-9707-647b9894144f.mp4"
+    },
+    {
+      "id": "1879989117215938",
+      "advertiser": "Dutchies",
+      "market": "DE",
+      "topic": "Handyhülle",
+      "product": "Neue Handyhülle mit Rabatt? Trag dich ein: 25% auf alles am 8.11., Code per E-Mail.",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/11dd4291-1684-4220-9558-da4ca68532c7.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/25dffa03-3ed5-4ec5-9f66-07d8bbcfca7c.mp4"
+    },
+    {
+      "id": "1879639102451858",
+      "advertiser": "arredamentocaputo",
+      "market": "IT",
+      "topic": "cover telefono",
+      "product": "#cucina #perte #3295950059",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4650e706-a67a-42d0-b710-ba21f4504dd0.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0c9b3687-48bd-45da-a902-d9d0a6a058ff.mp4"
+    },
+    {
+      "id": "1879740427293026",
+      "advertiser": "Unisport A/S",
+      "market": "IT",
+      "topic": "scarpe",
+      "product": "Le nuove scarpe da calcio sono arrivate",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/5f9582fc-63d3-40a9-8c47-0811015353b7.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/070eaed4-6e3e-4c6f-9b7b-6e85e3a1540d.mp4"
+    },
+    {
+      "id": "1879555462742417",
+      "advertiser": "VB&G E-Commerce V.O.F",
+      "market": "DE",
+      "topic": "Hautpflege",
+      "product": "1. Doppelte Hautpflege, einfacher Preis!",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4a7a14ad-a825-479c-89d7-d8840fe120e0.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/67d37e85-fcee-4f17-9fd2-96462d641fe1.mp4"
+    },
+    {
+      "id": "1881502763391233",
+      "advertiser": "Monsieur TSHIRT",
+      "market": "DE",
+      "topic": "Handyhülle",
+      "product": "POV: Du hast endlich DIE perfekte Handyhülle gefunden",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/6711c594-4c80-4ba7-8744-2c1c409dbeeb.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/39e9df96-0238-471f-8b8b-1325baa5950e.mp4"
+    },
+    {
+      "id": "1881545504154833",
+      "advertiser": "Palatore",
+      "market": "FR",
+      "topic": "chaussures",
+      "product": "Coque aluminium premium pour iPhone. MagSafe renforcé, légère et élégante.",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/9a3254cb-6e07-4bdf-bcd4-e9de9579a990.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/45082d2a-e378-4dd3-95ea-993fa062a010.mp4"
+    },
+    {
+      "id": "1881398454867122",
+      "advertiser": "VF International Sagl",
+      "market": "IT",
+      "topic": "abbigliamento",
+      "product": "Abbigliamento antivento pronto a qualsiasi sfida.",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/249e2211-b20c-48f0-ac67-098343cd8002.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/56affa14-e0da-4b92-afd8-7e45b9fdce6b.mp4"
+    },
+    {
+      "id": "1881387753852225",
       "advertiser": "&#30343;&#37528;&#36031;&#26131;&#26377;&#38480;&#20844;&#21496;",
       "market": "FR",
       "topic": "soins visage",
       "product": "soins en maison de retraite",
       "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/6674098d-ab20-4380-b6f6-4ac3e3fd1b5b.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0584b866-c07e-4f06-9112-d5871fff0185.mp4"
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/19268a11-be40-4d77-898e-8108e453d55a.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/6993b948-c584-45f0-9fda-1962f54e4b07.mp4"
+    },
+    {
+      "id": "1880346779137058",
+      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
+      "market": "IT",
+      "topic": "scarpe",
+      "product": "Giochi retrò sul telefono",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/b5504412-0a13-43b4-96a7-53d2b7d3a98e.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/dc953006-5da3-4613-8ccf-cb69a823d0a2.mp4"
+    },
+    {
+      "id": "1881276962053457",
+      "advertiser": "HERMES DIGITAL OU",
+      "market": "DE",
+      "topic": "Hautpflege",
+      "product": "Allgemeines Wissen über Gesundheitssoftware für Hautpflege",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/c5035224-237c-468c-8f96-41f76ac4682d.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/d6b3baf4-9f40-4fa3-881c-d1aed43fe31d.mp4"
     },
     {
       "id": "1880916319926561",
@@ -1279,6 +389,376 @@
       "reach": "0-1K",
       "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/9db8e428-5c0c-4836-b755-06b18ad95000.jpg",
       "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/3af8f329-3fcd-4b46-91cf-d6961bd54cf9.mp4"
+    },
+    {
+      "id": "1879829899829426",
+      "advertiser": "Dutchies",
+      "market": "DE",
+      "topic": "Handyhülle",
+      "product": "Neue Handyhülle mit Rabatt? Trag dich ein: 25% auf alles am 8.11., Code per E-Mail.",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/8156cd55-3295-4cf7-8fac-f53e3a930f8c.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/5a6de5c4-6bff-48f8-809c-c8413f4d81a6.mp4"
+    },
+    {
+      "id": "1879555462259826",
+      "advertiser": "VB&G E-Commerce V.O.F",
+      "market": "DE",
+      "topic": "Hautpflege",
+      "product": "1. Doppelte Hautpflege, einfacher Preis!",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/1646a12e-b7aa-41a7-bf38-4c67746c38de.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/8c910297-1607-45b0-8b39-9641a4dea87d.mp4"
+    },
+    {
+      "id": "1881502763389953",
+      "advertiser": "Monsieur TSHIRT",
+      "market": "DE",
+      "topic": "Handyhülle",
+      "product": "Ich glaube, ich hab DIE perfekte Handyhülle gefunden",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/b12e9761-f04c-43ec-a621-a5ccd418be25.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/1b9e55b0-7517-48d3-bb48-23553162e140.mp4"
+    },
+    {
+      "id": "1881545502247410",
+      "advertiser": "Palatore",
+      "market": "FR",
+      "topic": "chaussures",
+      "product": "Coque aluminium premium pour iPhone. MagSafe renforcé, légère et élégante.",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/5c276f68-5c80-490f-8d05-bf0b797034b2.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/f872666d-e625-4906-97a3-15b0f8c6e4f7.mp4"
+    },
+    {
+      "id": "1881351075571777",
+      "advertiser": "&#30343;&#37528;&#36031;&#26131;&#26377;&#38480;&#20844;&#21496;",
+      "market": "FR",
+      "topic": "soins visage",
+      "product": "soins en maison de retraite",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/fda4e4bb-ddda-48d3-9fe6-decb6b8e5c9d.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/41f6ff36-9914-48ff-a52c-37656e1bce46.mp4"
+    },
+    {
+      "id": "1880520133889026",
+      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
+      "market": "IT",
+      "topic": "scarpe",
+      "product": "Giochi retrò sul telefono",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/524a3373-3b67-4154-8ac4-6f0fd98bb8d6.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/282aa107-35bb-4c82-8384-177d7a35b1b3.mp4"
+    },
+    {
+      "id": "1881260998333585",
+      "advertiser": "HERMES DIGITAL OU",
+      "market": "FR",
+      "topic": "soins visage",
+      "product": "Connaissances générales sur les soins de santé Accélérer les soins",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/82c5ddc3-4a60-4650-bdd0-1b048242eb28.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/1b9d040b-6db7-478a-95ff-938e4710c6bf.mp4"
+    },
+    {
+      "id": "1879672811964721",
+      "advertiser": "roiclub",
+      "market": "IT",
+      "topic": "abbigliamento",
+      "product": "Sneakers iconiche e abbigliamento da scoprire.",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/62c80d80-3e88-4c24-a9d3-3efb07bbebc9.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/f4693e93-4df2-4c4e-961f-9b852f6c8660.mp4"
+    },
+    {
+      "id": "1879555462883746",
+      "advertiser": "VB&G E-Commerce V.O.F",
+      "market": "DE",
+      "topic": "Hautpflege",
+      "product": "1. Doppelte Hautpflege, einfacher Preis!",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/a2cf5a94-c76d-484f-8453-3108c8247db0.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4998b809-2e2b-4fd2-9107-91961ff6840b.mp4"
+    },
+    {
+      "id": "1881503070810369",
+      "advertiser": "Monsieur TSHIRT",
+      "market": "DE",
+      "topic": "Handyhülle",
+      "product": "Ich glaube, ich hab DIE perfekte Handyhülle gefunden",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/32a02681-11e8-42f4-a2b2-cbf73af66083.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/2fe5891f-e5eb-471b-8a75-ecb3724198f4.mp4"
+    },
+    {
+      "id": "1880260326208289",
+      "advertiser": "Palatore",
+      "market": "FR",
+      "topic": "chaussures",
+      "product": "Protection, style, légèreté. Coque aluminium pour iPhone avec MagSafe renforcé.",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/dfadc7a6-c237-4111-baff-61aef782097a.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/e14d4f3c-7ecf-4f9e-b0e5-fb704b0bf4e6.mp4"
+    },
+    {
+      "id": "1880953272105538",
+      "advertiser": "&#30343;&#37528;&#36031;&#26131;&#26377;&#38480;&#20844;&#21496;",
+      "market": "FR",
+      "topic": "soins visage",
+      "product": "soins en maison de retraite",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/a11c8d9d-c09b-4ccd-99bd-0fea5e6e612d.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/ccca9aa7-9abf-4a19-9484-fc1f9585a470.mp4"
+    },
+    {
+      "id": "1880542067458657",
+      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
+      "market": "IT",
+      "topic": "scarpe",
+      "product": "Giochi retrò sul telefono",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/caa3b79b-fcad-4311-8b8b-6d6f151314b7.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/fd083bb5-e4de-4fee-a6d3-ac73c1d878d2.mp4"
+    },
+    {
+      "id": "1881260998333601",
+      "advertiser": "HERMES DIGITAL OU",
+      "market": "FR",
+      "topic": "soins visage",
+      "product": "Connaissances générales sur les soins de santé Accélérer les soins",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/9f8f431d-e761-4c40-a956-9d76bfe5c4c8.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4474c031-e82a-4081-bfdd-6040ce7dc8e8.mp4"
+    },
+    {
+      "id": "1879555463219378",
+      "advertiser": "VB&G E-Commerce V.O.F",
+      "market": "DE",
+      "topic": "Hautpflege",
+      "product": "1. Doppelte Hautpflege, einfacher Preis!",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/146829af-25b4-40b9-a79d-4100d1512808.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/59804b29-0296-4f30-955a-b52616a6384b.mp4"
+    },
+    {
+      "id": "1881502763392001",
+      "advertiser": "Monsieur TSHIRT",
+      "market": "DE",
+      "topic": "Handyhülle",
+      "product": "Ich glaube, ich hab DIE perfekte Handyhülle gefunden",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4b43293c-dc0b-4f5a-85cb-a2f5e00df54f.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0a16bf7a-f151-4514-9318-00a169f6d3c3.mp4"
+    },
+    {
+      "id": "1880915609663521",
+      "advertiser": "&#30343;&#37528;&#36031;&#26131;&#26377;&#38480;&#20844;&#21496;",
+      "market": "FR",
+      "topic": "soins visage",
+      "product": "soins en maison de retraite",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/976b180a-294d-4332-a28c-38142de8a54e.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/7ac2c257-cc0c-49b4-9390-9ebcd921a149.mp4"
+    },
+    {
+      "id": "1880426676095441",
+      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
+      "market": "IT",
+      "topic": "cover telefono",
+      "product": "Giochi retrò sul telefono",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/f7f55816-c777-41ab-b894-a973b08597e2.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/83fbee25-e5ed-4852-8f65-a659dcac9918.mp4"
+    },
+    {
+      "id": "1881277242672482",
+      "advertiser": "HERMES DIGITAL OU",
+      "market": "IT",
+      "topic": "gioielli",
+      "product": "Scopri ulteriori informazioni sulla rivendita di scarpe Business Home",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/600f90d7-b59c-4b14-8a14-0f1336a23907.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/e23508a5-5a46-4b28-894d-6240fd0b70a3.mp4"
+    },
+    {
+      "id": "1881503068902450",
+      "advertiser": "Monsieur TSHIRT",
+      "market": "DE",
+      "topic": "Handyhülle",
+      "product": "Ich glaube, ich hab DIE perfekte Handyhülle gefunden",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/b46ba35a-ee48-43b5-83bf-c2f5f87d3308.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/641c284e-277d-4dd6-88c7-863343c63c41.mp4"
+    },
+    {
+      "id": "1880915602886866",
+      "advertiser": "&#30343;&#37528;&#36031;&#26131;&#26377;&#38480;&#20844;&#21496;",
+      "market": "FR",
+      "topic": "soins visage",
+      "product": "soins en maison de retraite",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/41cb7fee-c6cb-4e87-ae07-a6364437d53a.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/00c5529c-1f1c-45db-b57c-7cbd0874b230.mp4"
+    },
+    {
+      "id": "1880426676094049",
+      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
+      "market": "IT",
+      "topic": "cover telefono",
+      "product": "Giochi retrò sul telefono",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0b203321-2318-46d8-85b1-237a892bb610.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/fea2ae03-8948-437e-8905-cf1693fa8ed3.mp4"
+    },
+    {
+      "id": "1881277243488290",
+      "advertiser": "HERMES DIGITAL OU",
+      "market": "IT",
+      "topic": "gioielli",
+      "product": "Scopri ulteriori informazioni sulla rivendita di scarpe Business Home",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/7da696d9-518c-435a-b71c-6a009cb9d1a6.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/8c75bf0b-faf2-4cd0-9de4-318a3754d7a6.mp4"
+    },
+    {
+      "id": "1880914702031217",
+      "advertiser": "&#30343;&#37528;&#36031;&#26131;&#26377;&#38480;&#20844;&#21496;",
+      "market": "FR",
+      "topic": "soins visage",
+      "product": "soins en maison de retraite",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/6674098d-ab20-4380-b6f6-4ac3e3fd1b5b.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0584b866-c07e-4f06-9112-d5871fff0185.mp4"
+    },
+    {
+      "id": "1880346779029794",
+      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
+      "market": "IT",
+      "topic": "scarpe",
+      "product": "Giochi retrò sul telefono",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/083570fb-f2a3-425d-8ff3-c18aefecc3ec.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/96703a94-93be-4eb3-b8fc-ef3a6eb0a889.mp4"
+    },
+    {
+      "id": "1880639271796769",
+      "advertiser": "HERMES DIGITAL OU",
+      "market": "DE",
+      "topic": "Hautpflege",
+      "product": "Allgemeines Wissen über Laborausstattung und Hautpflege-Tests",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/7f6a939f-2f88-4915-8ed2-9d5529417b0a.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/5620edde-9ec7-4834-8ec3-2236a61fbc6f.mp4"
+    },
+    {
+      "id": "1880346782423041",
+      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
+      "market": "IT",
+      "topic": "scarpe",
+      "product": "Giochi retrò sul telefono",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/f56b3ee2-1d31-4fcb-9494-cf997f82e124.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/d3e2efa2-f035-46b0-bda4-c0bc9a296735.mp4"
+    },
+    {
+      "id": "1881120726974610",
+      "advertiser": "HERMES DIGITAL OU",
+      "market": "IT",
+      "topic": "abbigliamento",
+      "product": "Scopri ulteriori informazioni sul marchio di abbigliamento Start: Abbigliamento",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/89b33f8c-657f-4af7-bd67-011f86a8be23.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/1a54b7ee-1663-473d-8b75-f4fd984da018.mp4"
+    },
+    {
+      "id": "1880426676094033",
+      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
+      "market": "IT",
+      "topic": "scarpe",
+      "product": "Giochi retrò sul telefono",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/e633147f-f075-485c-bb17-b6a571d5cd87.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/334431a1-0545-4530-80b7-2b62f42327bd.mp4"
+    },
+    {
+      "id": "1881120729389394",
+      "advertiser": "HERMES DIGITAL OU",
+      "market": "IT",
+      "topic": "abbigliamento",
+      "product": "Scopri ulteriori informazioni sul marchio di abbigliamento Start: Abbigliamento",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4732863b-e331-485d-9945-554695480c33.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/aa9cf1a8-bfcf-4ff5-9fa9-eee74dd65925.mp4"
+    },
+    {
+      "id": "1880426676097217",
+      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
+      "market": "IT",
+      "topic": "scarpe",
+      "product": "Giochi retrò sul telefono",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0c2250ff-c6b0-4ed3-925c-85ea806fcc7d.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/6d034b9e-29e8-42ae-abbb-0b659c7eba52.mp4"
+    },
+    {
+      "id": "1881120746126673",
+      "advertiser": "HERMES DIGITAL OU",
+      "market": "IT",
+      "topic": "abbigliamento",
+      "product": "Scopri ulteriori informazioni sul marchio di abbigliamento Start: Abbigliamento",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/de553fe5-76cc-4666-98a1-f87f13bcc4c7.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/710a819b-c9e9-4e65-9cbf-0656cba343fc.mp4"
+    },
+    {
+      "id": "1880346781533217",
+      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
+      "market": "IT",
+      "topic": "cover telefono",
+      "product": "Giochi retrò sul telefono",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/a86fe248-ec47-446a-b18d-08b9fcdf6f6f.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0669387c-d8ed-4622-bcff-92f37e1c21c3.mp4"
+    },
+    {
+      "id": "1880769920643761",
+      "advertiser": "HERMES DIGITAL OU",
+      "market": "FR",
+      "topic": "soins visage",
+      "product": "Connaissances générales sur les soins rapides après un lifting complet du visage",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/d34b3428-04b4-4233-a3b3-7da63db3b944.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/99d1e9ae-5fb1-4ccf-a15f-af4d7a34481e.mp4"
+    },
+    {
+      "id": "1880346779029810",
+      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
+      "market": "IT",
+      "topic": "cover telefono",
+      "product": "Giochi retrò sul telefono",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/8310e274-fee6-4fdd-9d2a-cfe863b2727b.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/b22d4526-3f78-4286-8893-a2ac5fe249fe.mp4"
+    },
+    {
+      "id": "1880813086982194",
+      "advertiser": "HERMES DIGITAL OU",
+      "market": "FR",
+      "topic": "soins visage",
+      "product": "Connaissances générales sur les soins rapides après un lifting complet du visage",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4501df0c-6a17-4176-ad83-c0a9834a02a4.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/fbaeabfa-97d4-4dd9-b849-33e4c7a7f010.mp4"
+    },
+    {
+      "id": "1880346779030802",
+      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
+      "market": "IT",
+      "topic": "scarpe",
+      "product": "Giochi retrò sul telefono",
+      "reach": "0-1K",
+      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/08174a1b-bf69-484e-b450-3915a90bee2a.jpg",
+      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/acfa44e5-c8ae-4885-92a5-40926cd27820.mp4"
     },
     {
       "id": "1880483296794049",
@@ -1311,26 +791,6 @@
       "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/cd4dc9eb-0e80-44a8-9fb7-732422f03dca.mp4"
     },
     {
-      "id": "1880485864444002",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "cura della pelle",
-      "product": "Conoscenza generale dei prodotti per la cura della pelle all'ingrosso",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/9c495b68-9077-4879-a514-e1670338abf5.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/b9ff8c51-e0e3-4710-8390-78e1e1583c91.mp4"
-    },
-    {
-      "id": "1880485864489570",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "cura della pelle",
-      "product": "Conoscenza generale dei prodotti per la cura della pelle all'ingrosso",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/db8b0011-aa21-4ce1-8ca1-9b2131f29610.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/7302db60-2301-4b0b-b2e7-57054bd3c424.mp4"
-    },
-    {
       "id": "1880483296791697",
       "advertiser": "HERMES DIGITAL OU",
       "market": "IT",
@@ -1339,726 +799,6 @@
       "reach": "0-1K",
       "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/d3d85d03-3d33-46ed-83c8-cbaa3e8d9770.jpg",
       "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/cc5ac3f1-03a3-46b3-a768-2822b8af5abd.mp4"
-    },
-    {
-      "id": "1880485863329794",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "cura della pelle",
-      "product": "Conoscenza generale dei prodotti per la cura della pelle all'ingrosso",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4e4ef344-fdc2-4730-ab83-07988d9a8912.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/470ef243-a239-4917-b76b-1df8c812a6d2.mp4"
-    },
-    {
-      "id": "1880485864722674",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "cura della pelle",
-      "product": "Conoscenza generale dei prodotti per la cura della pelle all'ingrosso",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/26e84ebe-a4d3-4eaf-ba36-8ddd629ca5f2.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/47efcd3f-2082-4e1b-af2d-fed1a5a58a13.mp4"
-    },
-    {
-      "id": "1880483296791729",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "cura della pelle",
-      "product": "Conoscenza generale dei prodotti per la cura della pelle all'ingrosso",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/710fb216-ccf1-44fd-b1f2-37c61eb99246.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/25a8745e-0954-45f1-a3fc-b884a7d4d965.mp4"
-    },
-    {
-      "id": "1880485864713793",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "cura della pelle",
-      "product": "Scopri ulteriori informazioni sui prodotti per la cura della pelle all'ingrosso",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/3e295fd4-9ab5-4cfb-890c-0129484e6f17.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/7d353ef5-6aa1-4a5d-89df-d27065bdd9fd.mp4"
-    },
-    {
-      "id": "1880485864754690",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "accessori cucina",
-      "product": "Scopri ulteriori informazioni sui prodotti per la cura della pelle all'ingrosso",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/55dab1e0-3a86-46d3-8c95-7e785e167d56.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/cc7b70b5-846d-498a-b2d2-2dae36dd2b30.mp4"
-    },
-    {
-      "id": "1880483296791713",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "accessori cucina",
-      "product": "Scopri ulteriori informazioni sui prodotti per la cura della pelle all'ingrosso",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/be6f8786-6ac0-4418-a614-ab8f1690fb7c.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/7f4e6904-9239-433e-a6be-06a308acdea4.mp4"
-    },
-    {
-      "id": "1880485864741921",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "accessori cucina",
-      "product": "Scopri ulteriori informazioni sui prodotti per la cura della pelle all'ingrosso",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/c1ae69b8-fb48-4026-b384-539e825dbdb6.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4286469d-6c1d-4fca-8320-b79951297eca.mp4"
-    },
-    {
-      "id": "1880485864476993",
-      "advertiser": "HERMES DIGITAL OU",
-      "market": "IT",
-      "topic": "accessori cucina",
-      "product": "Scopri ulteriori informazioni sui prodotti per la cura della pelle all'ingrosso",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/fb26f12a-54e4-4f6b-9249-e285710818ba.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/8aa0c3e2-0b58-4736-9d57-5c30be7c6a6f.mp4"
-    },
-    {
-      "id": "1880673924010337",
-      "advertiser": "roiclub",
-      "market": "IT",
-      "topic": "abbigliamento",
-      "product": "Sneakers iconiche e abbigliamento da scoprire.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/c5e1c96f-9e42-4b98-8cf0-d92a96c8dec6.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/84ffbbc3-5b1b-437a-9deb-5dddcee59e6c.mp4"
-    },
-    {
-      "id": "1880520133889026",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Giochi retr� sul telefono",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/524a3373-3b67-4154-8ac4-6f0fd98bb8d6.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/282aa107-35bb-4c82-8384-177d7a35b1b3.mp4"
-    },
-    {
-      "id": "1880542067458657",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Giochi retr� sul telefono",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/caa3b79b-fcad-4311-8b8b-6d6f151314b7.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/fd083bb5-e4de-4fee-a6d3-ac73c1d878d2.mp4"
-    },
-    {
-      "id": "1880346781534401",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "cover telefono",
-      "product": "Giochi retr� sul telefono",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/a846d8a2-6825-4a12-a9a0-8a09a4b5d133.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/9a9b032f-a236-4642-8efb-0b15ecca195e.mp4"
-    },
-    {
-      "id": "1880426676095441",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "cover telefono",
-      "product": "Giochi retr� sul telefono",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/f7f55816-c777-41ab-b894-a973b08597e2.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/83fbee25-e5ed-4852-8f65-a659dcac9918.mp4"
-    },
-    {
-      "id": "1880346779030786",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "cover telefono",
-      "product": "Giochi retr� sul telefono",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/e5bb815b-a46f-4be9-9703-f6de8f18f0fb.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/166472c5-5281-4b43-8c3f-a3a0b8bfb178.mp4"
-    },
-    {
-      "id": "1880426676094049",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "cover telefono",
-      "product": "Giochi retr� sul telefono",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0b203321-2318-46d8-85b1-237a892bb610.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/fea2ae03-8948-437e-8905-cf1693fa8ed3.mp4"
-    },
-    {
-      "id": "1880346782423089",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "cover telefono",
-      "product": "Giochi retr� sul telefono",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/23200ccd-2986-4e3b-8cbc-f28dfa1f0569.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/5109bdf4-0625-4048-94d9-f95e8a3bc7d3.mp4"
-    },
-    {
-      "id": "1880426676119105",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "cover telefono",
-      "product": "Giochi retr� sul telefono",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/12e5eebd-803b-4362-bb7e-625c826876bc.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/8bfea1da-40a3-41cb-8ca6-38debae24a9d.mp4"
-    },
-    {
-      "id": "1880346781533185",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "cover telefono",
-      "product": "Giochi retr� sul telefono",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4ef2ccda-8baa-441c-afc5-9bd4eac846f9.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/3157174c-f117-4ec7-9f2d-32a3cd26465b.mp4"
-    },
-    {
-      "id": "1880346782424433",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Giochi retr� sul telefono",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/11e34854-c9b2-4cc1-806d-2280353ec0c1.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/2fe31e94-0a4d-46f0-b24c-94fbe381dd73.mp4"
-    },
-    {
-      "id": "1880346779029794",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Giochi retr� sul telefono",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/083570fb-f2a3-425d-8ff3-c18aefecc3ec.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/96703a94-93be-4eb3-b8fc-ef3a6eb0a889.mp4"
-    },
-    {
-      "id": "1880346779030818",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Giochi retr� sul telefono",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/f68e36b8-0841-48ae-b54c-26106a361c4a.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/9a150caf-72dd-4c2b-936b-468d98c8d622.mp4"
-    },
-    {
-      "id": "1880346782423041",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Giochi retr� sul telefono",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/f56b3ee2-1d31-4fcb-9494-cf997f82e124.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/d3e2efa2-f035-46b0-bda4-c0bc9a296735.mp4"
-    },
-    {
-      "id": "1880426676094033",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Giochi retr� sul telefono",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/e633147f-f075-485c-bb17-b6a571d5cd87.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/334431a1-0545-4530-80b7-2b62f42327bd.mp4"
-    },
-    {
-      "id": "1880426676097217",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Giochi retr� sul telefono",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0c2250ff-c6b0-4ed3-925c-85ea806fcc7d.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/6d034b9e-29e8-42ae-abbb-0b659c7eba52.mp4"
-    },
-    {
-      "id": "1880260326176898",
-      "advertiser": "Palatore",
-      "market": "FR",
-      "topic": "chaussures",
-      "product": "Protection, style, l�g�ret�. Coque aluminium pour iPhone avec MagSafe renforc�.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/5ae19e21-56f7-4d7d-8011-ab1f7305b31b.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/edf9584f-66fc-4e45-b60e-ee60e254dec2.mp4"
-    },
-    {
-      "id": "1880260326208289",
-      "advertiser": "Palatore",
-      "market": "FR",
-      "topic": "chaussures",
-      "product": "Protection, style, l�g�ret�. Coque aluminium pour iPhone avec MagSafe renforc�.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/dfadc7a6-c237-4111-baff-61aef782097a.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/e14d4f3c-7ecf-4f9e-b0e5-fb704b0bf4e6.mp4"
-    },
-    {
-      "id": "1880346781533217",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "cover telefono",
-      "product": "Giochi retr� sul telefono",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/a86fe248-ec47-446a-b18d-08b9fcdf6f6f.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0669387c-d8ed-4622-bcff-92f37e1c21c3.mp4"
-    },
-    {
-      "id": "1880346779029810",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "cover telefono",
-      "product": "Giochi retr� sul telefono",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/8310e274-fee6-4fdd-9d2a-cfe863b2727b.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/b22d4526-3f78-4286-8893-a2ac5fe249fe.mp4"
-    },
-    {
-      "id": "1880365871365538",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "cover telefono",
-      "product": "Giochi retr� sul telefono",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/a4fe3fe5-c0d6-49e6-900e-3b3ebd09c551.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/ab0d607c-86a8-4fce-b43e-f27692c584c0.mp4"
-    },
-    {
-      "id": "1880346779030802",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Giochi retr� sul telefono",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/08174a1b-bf69-484e-b450-3915a90bee2a.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/acfa44e5-c8ae-4885-92a5-40926cd27820.mp4"
-    },
-    {
-      "id": "1880346781533201",
-      "advertiser": "VOLIO VIET NAM COMPANY LIMITED",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Giochi retr� sul telefono",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/dba4b787-04c5-434f-8961-ff1aa69ae2d3.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/9b8eda86-7877-4396-95c1-b58d4d12431d.mp4"
-    },
-    {
-      "id": "1877316846448834",
-      "advertiser": "Peak Focus LLC",
-      "market": "DE",
-      "topic": "Schuhe",
-      "product": "Allgemeines Wissen �ber Produktmarketing f�r Masters Schuhe",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0710311a-ecaa-4187-b9e8-6f84f45883ee.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/bbeab220-2be8-4f47-8802-58e0bdabb95d.mp4"
-    },
-    {
-      "id": "1878615058393137",
-      "advertiser": "NICHE BEAUTY LAB SOCIEDAD LIMITADA.",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "Skincare meets science. Entdecke innovative Hautpflege mit TERAMYDE.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/bf34399d-cfe1-4c16-a5ad-ad6ba18e20b8.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/72d8fe9d-875f-4d26-9707-647b9894144f.mp4"
-    },
-    {
-      "id": "1878615061443121",
-      "advertiser": "NICHE BEAUTY LAB SOCIEDAD LIMITADA.",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "Entdecke TERAMYDE. Innovative Hautpflege trifft auf hochwirksame Inhaltsstoffe.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/c87fd008-5ee5-4943-839c-6093119c6cf5.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/50bec392-7e51-4cf9-ab65-2c779e4d93e7.mp4"
-    },
-    {
-      "id": "1878615054326226",
-      "advertiser": "NICHE BEAUTY LAB SOCIEDAD LIMITADA.",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "Entdecke TERAMYDE. Innovative Hautpflege trifft auf hochwirksame Inhaltsstoffe.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/17fd90f9-0d82-4e36-82ad-43be2d22609b.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/413c53e2-fc00-4ede-8dcb-a56ae1fc1c14.mp4"
-    },
-    {
-      "id": "1878615116515442",
-      "advertiser": "NICHE BEAUTY LAB SOCIEDAD LIMITADA.",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "Skincare meets science. Entdecke innovative Hautpflege mit TERAMYDE.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/8b2b87e3-030c-47ff-8a32-7ffb672223cc.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/1ea818a8-59c6-43ac-8fff-0588752a59de.mp4"
-    },
-    {
-      "id": "1879989117215938",
-      "advertiser": "Dutchies",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "Neue Handyh�lle mit Rabatt? Trag dich ein: 25% auf alles am 8.11., Code per E-Mail.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/11dd4291-1684-4220-9558-da4ca68532c7.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/25dffa03-3ed5-4ec5-9f66-07d8bbcfca7c.mp4"
-    },
-    {
-      "id": "1878615098723729",
-      "advertiser": "NICHE BEAUTY LAB SOCIEDAD LIMITADA.",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "Entdecke TERAMYDE. Innovative Hautpflege trifft auf hochwirksame Inhaltsstoffe.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/6b5459ca-c351-4517-be1c-aa5e52e60133.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/944aa296-dee5-426d-a8bb-ad6a1bfd8a47.mp4"
-    },
-    {
-      "id": "1878615098723745",
-      "advertiser": "NICHE BEAUTY LAB SOCIEDAD LIMITADA.",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "Skincare meets science. Entdecke innovative Hautpflege mit TERAMYDE.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/d597bada-904c-450e-83c3-c26275003ab8.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/c517edac-55b9-40b7-9f8b-64cae38281bb.mp4"
-    },
-    {
-      "id": "1878615070744017",
-      "advertiser": "NICHE BEAUTY LAB SOCIEDAD LIMITADA.",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "Entdecke TERAMYDE. Innovative Hautpflege trifft auf hochwirksame Inhaltsstoffe.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/c92258f4-3509-48bf-b479-1759642dbfa3.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/b960aa32-bc57-4574-ac48-9ff1a3f893d4.mp4"
-    },
-    {
-      "id": "1878615061444033",
-      "advertiser": "NICHE BEAUTY LAB SOCIEDAD LIMITADA.",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "Skincare meets science. Entdecke innovative Hautpflege mit TERAMYDE.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/47724798-222f-49c1-86ce-8102a2bed942.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0566c6ed-800d-45c1-8da3-aaf0813e375a.mp4"
-    },
-    {
-      "id": "1878615133976801",
-      "advertiser": "NICHE BEAUTY LAB SOCIEDAD LIMITADA.",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "Entdecke TERAMYDE. Innovative Hautpflege trifft auf hochwirksame Inhaltsstoffe.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/bc315dc2-ecc9-47fd-add6-31e69a53d5a2.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/08fccea6-f635-475e-b7dc-b116cd68bb10.mp4"
-    },
-    {
-      "id": "1879829899829426",
-      "advertiser": "Dutchies",
-      "market": "DE",
-      "topic": "Handyh�lle",
-      "product": "Neue Handyh�lle mit Rabatt? Trag dich ein: 25% auf alles am 8.11., Code per E-Mail.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/8156cd55-3295-4cf7-8fac-f53e3a930f8c.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/5a6de5c4-6bff-48f8-809c-c8413f4d81a6.mp4"
-    },
-    {
-      "id": "1879639102451858",
-      "advertiser": "arredamentocaputo",
-      "market": "IT",
-      "topic": "cover telefono",
-      "product": "#cucina #perte #3295950059",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4650e706-a67a-42d0-b710-ba21f4504dd0.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0c9b3687-48bd-45da-a902-d9d0a6a058ff.mp4"
-    },
-    {
-      "id": "1879749537270194",
-      "advertiser": "BEAUTYCOM",
-      "market": "FR",
-      "topic": "soins visage",
-      "product": "Cr�me riche, fluide SPF ou gel-cr�me : d�couvrez les soins visage Respire.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/035e8bdc-bc54-4fd9-b1ab-c6c917ca9c59.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/791190a3-b4e9-44c9-8ae1-4dc535624571.mp4"
-    },
-    {
-      "id": "1878043708867826",
-      "advertiser": "Unisport A/S",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Le nuove scarpe da calcio sono arrivate",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/28d86de9-952b-4adf-b121-71ed35b3161d.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/2e038671-f1a8-4cf5-b0b6-dfca317e1296.mp4"
-    },
-    {
-      "id": "1879740427293026",
-      "advertiser": "Unisport A/S",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Le nuove scarpe da calcio sono arrivate",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/5f9582fc-63d3-40a9-8c47-0811015353b7.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/070eaed4-6e3e-4c6f-9b7b-6e85e3a1540d.mp4"
-    },
-    {
-      "id": "1878427587632738",
-      "advertiser": "Unisport A/S",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Le nuove scarpe da calcio sono arrivate",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/ea801fe2-a879-4970-8828-425dfd01475d.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/e07b0b0f-8f5a-4d28-a069-12782a0382aa.mp4"
-    },
-    {
-      "id": "1879737641323890",
-      "advertiser": "Unisport A/S",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Le nuove scarpe da calcio sono arrivate",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/30596a9b-5fb0-446a-9b86-1d8ec47dee01.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/beaa2110-2022-4db4-a7d8-da1de7fd32ce.mp4"
-    },
-    {
-      "id": "1876918350766241",
-      "advertiser": "Unisport A/S",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Le nuove scarpe da calcio sono arrivate",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/e9d240fd-2e5a-46af-bc11-a35bd24ec046.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/c931f57d-1d1e-4dd9-a740-010272c67599.mp4"
-    },
-    {
-      "id": "1878427587427537",
-      "advertiser": "Unisport A/S",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Le nuove scarpe da calcio sono arrivate",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/11984a1c-bda5-4a10-80d5-476dcc6a46dc.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/5d059e41-c974-4854-afe7-92047650a18a.mp4"
-    },
-    {
-      "id": "1879026883360369",
-      "advertiser": "Unisport A/S",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Le nuove scarpe da calcio sono arrivate",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/80aeb13f-0683-4843-8ee7-ecb04c6bbf2c.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/32662ac3-e80a-4c8e-8a1f-30ba5896e65b.mp4"
-    },
-    {
-      "id": "1878446819753202",
-      "advertiser": "Unisport A/S",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Le nuove scarpe da calcio sono arrivate",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0dfdafec-3cd9-4247-85d4-530415a7d86b.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/3def0103-592a-460c-9c98-89ac5383606a.mp4"
-    },
-    {
-      "id": "1879026887383506",
-      "advertiser": "Unisport A/S",
-      "market": "IT",
-      "topic": "gioielli",
-      "product": "Scarpe da calcio nuove ogni giorno? Quale paio scegli?",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/c2fbdc3f-1498-4ba0-8e5b-fdc4113aa316.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0db79516-88b0-427f-82bf-48ab78994775.mp4"
-    },
-    {
-      "id": "1878446819709186",
-      "advertiser": "Unisport A/S",
-      "market": "IT",
-      "topic": "gioielli",
-      "product": "Scarpe da calcio nuove ogni giorno? Quale paio scegli?",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/9e112679-c4e5-498e-917e-f7df233a54ba.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/2a069df7-ad18-4e49-8eb5-f2d52346f784.mp4"
-    },
-    {
-      "id": "1879738130412865",
-      "advertiser": "Unisport A/S",
-      "market": "IT",
-      "topic": "gioielli",
-      "product": "Scarpe da calcio nuove ogni giorno? Quale paio scegli?",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/18ebff69-2a95-4130-b8e4-8a0033fa9cd2.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/22f79a18-1869-436b-b53e-68aca23ce847.mp4"
-    },
-    {
-      "id": "1879672811964721",
-      "advertiser": "roiclub",
-      "market": "IT",
-      "topic": "abbigliamento",
-      "product": "Sneakers iconiche e abbigliamento da scoprire.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/62c80d80-3e88-4c24-a9d3-3efb07bbebc9.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/f4693e93-4df2-4c4e-961f-9b852f6c8660.mp4"
-    },
-    {
-      "id": "1879498407740433",
-      "advertiser": "roiclub",
-      "market": "IT",
-      "topic": "abbigliamento",
-      "product": "Sneakers iconiche e abbigliamento da scoprire.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/7bfd830d-1fb2-449c-9acd-7cb59054a487.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/17c6eede-52dc-4f8a-8788-d4b09a1733de.mp4"
-    },
-    {
-      "id": "1879555462742417",
-      "advertiser": "VB&G E-Commerce V.O.F",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "1. Doppelte Hautpflege, einfacher Preis!",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4a7a14ad-a825-479c-89d7-d8840fe120e0.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/67d37e85-fcee-4f17-9fd2-96462d641fe1.mp4"
-    },
-    {
-      "id": "1879555462259826",
-      "advertiser": "VB&G E-Commerce V.O.F",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "1. Doppelte Hautpflege, einfacher Preis!",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/1646a12e-b7aa-41a7-bf38-4c67746c38de.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/8c910297-1607-45b0-8b39-9641a4dea87d.mp4"
-    },
-    {
-      "id": "1879555462883746",
-      "advertiser": "VB&G E-Commerce V.O.F",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "1. Doppelte Hautpflege, einfacher Preis!",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/a2cf5a94-c76d-484f-8453-3108c8247db0.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/4998b809-2e2b-4fd2-9107-91961ff6840b.mp4"
-    },
-    {
-      "id": "1879555462805730",
-      "advertiser": "VB&G E-Commerce V.O.F",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "1. Doppelte Hautpflege, einfacher Preis!",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/8f5c5fc6-c060-44c5-8d21-8029c89b302a.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/707cf1a5-870c-43d4-82ef-9a5d8240ffec.mp4"
-    },
-    {
-      "id": "1879555463219378",
-      "advertiser": "VB&G E-Commerce V.O.F",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "1. Doppelte Hautpflege, einfacher Preis!",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/146829af-25b4-40b9-a79d-4100d1512808.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/59804b29-0296-4f30-955a-b52616a6384b.mp4"
-    },
-    {
-      "id": "1879555462846706",
-      "advertiser": "VB&G E-Commerce V.O.F",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "1. Doppelte Hautpflege, einfacher Preis!",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/c1e7b595-0928-4179-9bf5-48c08a673d0b.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/fcf2e64e-2054-44f2-acef-d278d2fb91c2.mp4"
-    },
-    {
-      "id": "1879555467034945",
-      "advertiser": "VB&G E-Commerce V.O.F",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "1. Doppelte Hautpflege, einfacher Preis!",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/d30bfd5a-bb0c-485f-bcbd-eb6af368b817.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/3f73cf29-c8c2-40d3-a5bf-96f9160f0724.mp4"
-    },
-    {
-      "id": "1879555463414002",
-      "advertiser": "VB&G E-Commerce V.O.F",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "1. Doppelte Hautpflege, einfacher Preis!",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/a0dc19b9-5a1a-4f9d-9ec1-e4052f148076.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/0ab380a4-074e-479c-a53b-6b8565fcbc7e.mp4"
-    },
-    {
-      "id": "1879555459554386",
-      "advertiser": "VB&G E-Commerce V.O.F",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "1. Doppelte Hautpflege, einfacher Preis!",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/a25c4d05-0c41-4998-8b6b-f737b3f7f359.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/ffca5435-9658-4241-be07-fcca70aa9d10.mp4"
-    },
-    {
-      "id": "1879555463266658",
-      "advertiser": "VB&G E-Commerce V.O.F",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "1. Doppelte Hautpflege, einfacher Preis!",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/973784b1-7711-4453-9da8-e2282a23a22b.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/077af2b4-d370-49bf-b4df-dc8da64f2c6f.mp4"
-    },
-    {
-      "id": "1879555461942994",
-      "advertiser": "VB&G E-Commerce V.O.F",
-      "market": "DE",
-      "topic": "Hautpflege",
-      "product": "1. Doppelte Hautpflege, einfacher Preis!",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/cc3a5998-f962-407a-b38e-03d57a4b6c69.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/ca1314ce-ba92-4ebd-a35b-15d634ec47ea.mp4"
-    },
-    {
-      "id": "1879554538527313",
-      "advertiser": "Unisport A/S",
-      "market": "IT",
-      "topic": "scarpe",
-      "product": "Le nuove scarpe da calcio sono arrivate",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/569ad58b-4bdb-4459-8641-b925e28bd17e.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/e55f9ab3-48b4-4ec8-bf39-520866320096.mp4"
-    },
-    {
-      "id": "1879367605433633",
-      "advertiser": "BEAUTYCOM",
-      "market": "FR",
-      "topic": "soins visage",
-      "product": "Cr�me riche, fluide SPF ou gel-cr�me : d�couvrez les soins visage Respire.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/bfa1d2a8-f7da-4b79-8739-8d6348301304.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/735a2e68-0a19-4c26-9bd0-8491e585c78d.mp4"
-    },
-    {
-      "id": "1879385818561665",
-      "advertiser": "BEAUTYCOM",
-      "market": "FR",
-      "topic": "soins visage",
-      "product": "Cr�me riche, fluide SPF ou gel-cr�me : d�couvrez les soins visage Respire.",
-      "reach": "0-1K",
-      "cover": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/c7206f63-07d6-4fd2-89c8-c3201b8e93c0.jpg",
-      "video": "https://store.nexscope.ai/skill-api/input/95379668800110951/seedance-2-5-video-generation/20261113/be943259-4f43-4d75-b8ae-bc1efe623c20.mp4"
     }
   ]
 }
