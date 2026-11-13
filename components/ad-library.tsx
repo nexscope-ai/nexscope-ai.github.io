@@ -37,20 +37,40 @@ type Catalog = { ads: Ad[] };
 function AdCard({
   ad,
   playing,
+  canPreview,
   onPlay,
   onRemix,
 }: {
   ad: Ad;
   playing: boolean;
+  canPreview: boolean;
   onPlay: () => void;
   onRemix: () => void;
 }) {
   const [hostedFailed, setHostedFailed] = useState(false);
+  const [previewing, setPreviewing] = useState(false);
+  const [previewReady, setPreviewReady] = useState(false);
+  const stopPreview = () => {
+    setPreviewing(false);
+    setPreviewReady(false);
+  };
   const downloadUrl = `https://www.nexscope.ai/api/video-download?url=${encodeURIComponent(ad.video)}&filename=tiktok-ad-${ad.id}.mp4`;
 
   return (
     <article className={styles.card}>
-      <div className={styles.media}>
+      <div
+        className={styles.media}
+        onPointerEnter={(event) => {
+          if (
+            canPreview &&
+            event.pointerType === 'mouse' &&
+            !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          ) {
+            setPreviewing(true);
+          }
+        }}
+        onPointerLeave={stopPreview}
+      >
         {ad.cover && (
           <img
             src={ad.cover}
@@ -60,6 +80,22 @@ function AdCard({
             onError={(event) => {
               event.currentTarget.hidden = true;
             }}
+          />
+        )}
+        {canPreview && previewing && (
+          // Muted decorative preview. The playback button opens the full player.
+          // oxlint-disable-next-line jsx-a11y/media-has-caption
+          <video
+            className={`${styles.player} ${styles.hoverPreview}`}
+            src={ad.video}
+            data-ready={previewReady}
+            aria-hidden="true"
+            muted
+            autoPlay
+            loop
+            playsInline
+            onPlaying={() => setPreviewReady(true)}
+            onError={stopPreview}
           />
         )}
         {playing ? (
@@ -92,7 +128,10 @@ function AdCard({
             type="button"
             className={styles.playMark}
             aria-label={`Play ${ad.product}`}
-            onClick={onPlay}
+            onClick={() => {
+              stopPreview();
+              onPlay();
+            }}
           >
             <Play size={22} fill="currentColor" aria-hidden="true" />
           </button>
@@ -166,15 +205,14 @@ function RemixDialog({
   return (
     <div className={styles.confirmation}>
       <header className={styles.dialogHeader}>
-        <span className={styles.remixMark}><Sparkles size={19} aria-hidden="true" /></span>
+        <h2 id="ad-remix-title">Remix this ad for your product</h2>
         <button type="button" aria-label="Close" onClick={onClose}>
           <X size={22} aria-hidden="true" />
         </button>
+        <p id="ad-remix-description">
+          Copy this video’s link, then paste it into Video Clone as a reference.
+        </p>
       </header>
-      <h2 id="ad-remix-title">Remix this ad for your product</h2>
-      <p id="ad-remix-description">
-        Copy this video’s link, then paste it into Video Clone as a reference.
-      </p>
       <div className={styles.remixReference}>
         {ad.cover && <img src={ad.cover} alt="" width={48} height={58} />}
         <div>
@@ -308,14 +346,24 @@ export function AdLibrary({
   return (
     <>
       <section className={styles.hero} aria-labelledby="ad-library-title">
-        <div>
-          <h1 id="ad-library-title">
-            Remix a TikTok ad <em className={gradient.text}>you like</em>
-          </h1>
-          <p>
-            Browse product ads for inspiration, then use a video as a reference
-            to make your own in Nexscope Video Clone.
-          </p>
+        <div className={styles.heroIntro}>
+          <div>
+            <h1 id="ad-library-title" className={gradient.text}>
+              Ad Library
+            </h1>
+            <p>Find a TikTok ad you like and use it as a reference for your own product video.</p>
+          </div>
+          <a
+            className={styles.pricing}
+            href="https://www.nexscope.ai/pricing?co-from=learn"
+            data-track-tool="pricing"
+            data-cta-placement="ad-library-hero"
+          >
+            {showAnnualOffer && <strong>50% off your first year</strong>}
+            <span>
+              View pricing <ArrowUpRight size={15} aria-hidden="true" />
+            </span>
+          </a>
         </div>
         <div className={styles.heroActions}>
           <label className={styles.search}>
@@ -332,17 +380,7 @@ export function AdLibrary({
               }}
             />
           </label>
-          <a
-            className={styles.pricing}
-            href="https://www.nexscope.ai/pricing?co-from=learn"
-            data-track-tool="pricing"
-            data-cta-placement="ad-library-hero"
-          >
-            {showAnnualOffer && <strong>50% off your first year</strong>}
-            <span>
-              View pricing <ArrowUpRight size={15} aria-hidden="true" />
-            </span>
-          </a>
+          <a className={styles.faqLink} href="#ad-library-faq">How it works <span aria-hidden="true">↓</span></a>
         </div>
       </section>
       {visibleCount === 0 && (
@@ -355,6 +393,7 @@ export function AdLibrary({
               key={ad.id}
               ad={ad}
               playing={playingId === ad.id}
+              canPreview={!playingId && !selected}
               onPlay={() => setPlayingId(playingId === ad.id ? null : ad.id)}
               onRemix={() => {
                 setPlayingId(null);

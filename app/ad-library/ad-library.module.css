@@ -11,22 +11,22 @@
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
-  align-items: center;
-  gap: 24px;
-  padding: clamp(16px, 2.6vw, 32px);
-  margin-bottom: 14px;
-  border: 1px solid #e5ddf2;
-  border-radius: 18px;
-  background:
-    radial-gradient(ellipse at top left, #e9edff, transparent 63%),
-    linear-gradient(115deg, #f6f2ff, #fffaf5);
+  margin-bottom: 24px;
+}
+
+.heroIntro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  padding-block: clamp(8px, 2vw, 24px) 24px;
 }
 
 .hero h1 {
-  margin: 0 0 7px;
-  font-size: clamp(2.15rem, 4vw, 3.35rem);
+  display: block;
+  width: fit-content;
+  margin: 0 0 10px;
+  font-size: clamp(2.75rem, 5.5vw, 4.75rem);
   font-weight: 750;
   letter-spacing: -0.055em;
   line-height: 1.07;
@@ -39,6 +39,8 @@
 
 .hero p {
   margin: 0;
+  max-width: 56ch;
+  line-height: 1.55;
 }
 
 .search {
@@ -95,7 +97,30 @@
 }
 
 .heroActions {
-  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 3vw, 32px);
+  padding-top: 16px;
+  border-top: 1px solid #e5dfeb;
+}
+
+.heroActions .search {
+  flex: 1;
+}
+
+.faqLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  color: #5036a1;
+  font-size: 0.875rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.faqLink:hover {
+  text-decoration: underline;
 }
 
 .pricing {
@@ -105,6 +130,7 @@
   align-items: center;
   gap: 4px 10px;
   min-height: 44px;
+  justify-content: flex-end;
   color: #5036a1;
   font-size: 0.8125rem;
 }
@@ -175,6 +201,11 @@
 video.player {
   background: #181322;
   object-fit: contain;
+}
+
+video.hoverPreview {
+  object-fit: cover;
+  pointer-events: none;
 }
 
 .playerStatus {
@@ -331,7 +362,8 @@ video.player {
 }
 
 .dialog {
-  width: min(460px, calc(100% - 24px));
+  width: min(600px, calc(100% - 24px));
+  max-width: none;
   max-height: calc(100dvh - 24px);
   margin: auto;
   padding: 0;
@@ -353,26 +385,20 @@ video.player {
 }
 
 .dialogHeader {
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 14px;
+  gap: 4px 12px;
+  margin-bottom: 16px;
 }
 
-.remixMark,
 .dialogHeader button {
   display: grid;
   place-items: center;
   width: 44px;
   height: 44px;
   border-radius: 50%;
-}
-
-.remixMark {
-  background: #efe7ff;
-  color: #633cd2;
-}
-.dialogHeader button {
+  align-self: start;
   cursor: pointer;
   color: #514761;
 }
@@ -380,21 +406,22 @@ video.player {
   background: #f3eefb;
 }
 
-.confirmation h2 {
-  margin: 0 0 8px;
+.dialogHeader h2 {
+  margin: 0;
   font-size: clamp(1.25rem, 3vw, 1.5rem);
   font-weight: 750;
   line-height: 1.2;
 }
 
-.confirmation p,
+.dialogHeader p,
 .previewTip {
   color: #625a72;
   font-size: 0.875rem;
 }
 
-.confirmation p {
-  margin: 0 0 16px;
+.dialogHeader p {
+  grid-column: 1 / -1;
+  margin: 0;
 }
 
 .remixReference {
@@ -483,22 +510,8 @@ video.player {
   color: #fff;
 }
 
-.usageGuide {
-  margin-top: 32px;
-  padding-top: 20px;
-  border-top: 1px solid #e5dfeb;
-  font-size: 0.875rem;
-  color: #625a72;
-}
-.usageGuide h2 {
-  margin: 0 0 8px;
-  color: #4d3a65;
-  font-size: 1rem;
-  font-weight: 650;
-}
-.usageGuide p {
-  max-width: 70ch;
-  margin: 0 0 8px;
+.faqSection {
+  scroll-margin-top: 96px;
 }
 
 @media (max-width: 1080px) {
@@ -508,9 +521,21 @@ video.player {
 }
 
 @media (max-width: 720px) {
-  .hero {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 14px;
+  .heroIntro {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 10px;
+  }
+  .pricing {
+    justify-content: flex-start;
+  }
+  .heroActions {
+    flex-wrap: wrap;
+    gap: 4px 14px;
+  }
+  .heroActions .search {
+    flex-basis: 100%;
   }
   .wrap {
     width: calc(100% - 28px);
