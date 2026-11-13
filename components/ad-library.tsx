@@ -1,7 +1,7 @@
 'use client';
 
 /* oxlint-disable next/no-img-element */
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowUpRight,
   Check,
@@ -34,7 +34,7 @@ type Ad = {
 };
 
 type Catalog = { ads: Ad[] };
-function AdCard({
+const AdCard = memo(function AdCard({
   ad,
   playing,
   canPreview,
@@ -44,13 +44,16 @@ function AdCard({
   ad: Ad;
   playing: boolean;
   canPreview: boolean;
-  onPlay: () => void;
-  onRemix: () => void;
+  onPlay: (id: string) => void;
+  onRemix: (ad: Ad) => void;
 }) {
   const [hostedFailed, setHostedFailed] = useState(false);
   const [previewing, setPreviewing] = useState(false);
   const [previewReady, setPreviewReady] = useState(false);
+  const previewTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  useEffect(() => () => clearTimeout(previewTimer.current), []);
   const stopPreview = () => {
+    clearTimeout(previewTimer.current);
     setPreviewing(false);
     setPreviewReady(false);
   };
@@ -66,7 +69,7 @@ function AdCard({
             event.pointerType === 'mouse' &&
             !window.matchMedia('(prefers-reduced-motion: reduce)').matches
           ) {
-            setPreviewing(true);
+            previewTimer.current = setTimeout(() => setPreviewing(true), 180);
           }
         }}
         onPointerLeave={stopPreview}
@@ -118,7 +121,7 @@ function AdCard({
               type="button"
               className={styles.closePlayer}
               aria-label="Close video"
-              onClick={onPlay}
+              onClick={() => onPlay(ad.id)}
             >
               <X size={19} aria-hidden="true" />
             </button>
@@ -130,7 +133,7 @@ function AdCard({
             aria-label={`Play ${ad.product}`}
             onClick={() => {
               stopPreview();
-              onPlay();
+              onPlay(ad.id);
             }}
           >
             <Play size={22} fill="currentColor" aria-hidden="true" />
@@ -150,7 +153,10 @@ function AdCard({
         type="button"
         className={styles.remix}
         aria-haspopup="dialog"
-        onClick={onRemix}
+        onClick={() => {
+          stopPreview();
+          onRemix(ad);
+        }}
       >
         <Sparkles size={15} aria-hidden="true" /> Remix
       </button>
@@ -173,7 +179,7 @@ function AdCard({
       </footer>
     </article>
   );
-}
+});
 
 function RemixDialog({
   ad,
@@ -284,15 +290,23 @@ export function AdLibrary({
   const dialog = useRef<HTMLDialogElement>(null);
   const loadMore = useRef<HTMLButtonElement>(null);
   const masonry = useRef<HTMLDivElement>(null);
+  const onPlay = useCallback((id: string) => {
+    setPlayingId((current) => current === id ? null : id);
+  }, []);
+  const onRemix = useCallback((ad: Ad) => {
+    setPlayingId(null);
+    setSelected(ad);
+  }, []);
   const search = query.trim().toLowerCase();
-  const results = catalog.ads
-    .filter(
+  const results = useMemo(
+    () => !search ? catalog.ads : catalog.ads.filter(
       (ad) =>
-        !search ||
         [ad.advertiser, ad.product, ad.topic, markets[ad.market], ad.id].some(
           (value) => value?.toLowerCase().includes(search),
         ),
-    );
+    ),
+    [catalog.ads, search],
+  );
   const visible = results.slice(0, limit);
   const visibleCount = visible.length;
   const hasMore = visible.length < results.length;
@@ -302,23 +316,27 @@ export function AdLibrary({
     if (!grid || !('ResizeObserver' in window)) return;
 
     const cards = Array.from(grid.children) as HTMLElement[];
-    const pack = () => {
+    const pack = (changedCards: readonly HTMLElement[]) => {
+      if (changedCards.length === 0) return;
       const style = getComputedStyle(grid);
       const unit = Number.parseFloat(style.getPropertyValue('--masonry-unit'));
       const gap = Number.parseFloat(style.columnGap);
       // Measure all cards before writing spans so a resize needs only one layout pass.
-      const spans = cards.map((card) =>
+      const spans = changedCards.map((card) =>
         Math.ceil((card.getBoundingClientRect().height + gap) / unit),
       );
-      cards.forEach((card, index) => {
-        card.style.setProperty('--masonry-span', String(spans[index]));
+      changedCards.forEach((card, index) => {
+        const span = String(spans[index]);
+        if (card.style.getPropertyValue('--masonry-span') !== span)
+          card.style.setProperty('--masonry-span', span);
       });
       grid.dataset.packed = 'true';
     };
-    pack();
-    const observer = new ResizeObserver(pack);
+    pack(cards);
+    const observer = new ResizeObserver((entries) => {
+      pack(entries.map(({ target }) => target as HTMLElement));
+    });
     cards.forEach((card) => observer.observe(card));
-    observer.observe(grid);
     return () => observer.disconnect();
   }, [visibleCount, query]);
 
@@ -333,6 +351,12 @@ export function AdLibrary({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) {
+          // A jump to the guide can leave the load button just above the viewport.
+          const guide = location.hash === '#ad-library-guide'
+            ? document.getElementById('ad-library-guide')
+            : null;
+          if (guide && guide.getBoundingClientRect().top < window.innerHeight)
+            return;
           observer.disconnect();
           setLimit(limit + pageSize);
         }
@@ -359,9 +383,12 @@ export function AdLibrary({
             data-track-tool="pricing"
             data-cta-placement="ad-library-hero"
           >
-            {showAnnualOffer && <strong>50% off your first year</strong>}
-            <span>
-              View pricing <ArrowUpRight size={15} aria-hidden="true" />
+            <img src="/ad-library-pricing.webp" width={80} height={80} alt="" decoding="async" />
+            <span className={styles.pricingCopy}>
+              {showAnnualOffer && <strong>50% off your first year</strong>}
+              <span className={styles.pricingAction}>
+                View pricing <ArrowUpRight size={15} aria-hidden="true" />
+              </span>
             </span>
           </a>
         </div>
@@ -380,7 +407,21 @@ export function AdLibrary({
               }}
             />
           </label>
-          <a className={styles.faqLink} href="#ad-library-guide">How it works <span aria-hidden="true">↓</span></a>
+          <a
+            className={styles.faqLink}
+            href="#ad-library-guide"
+            onClick={(event) => {
+              const guide = document.getElementById('ad-library-guide');
+              if (!guide || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+              event.preventDefault();
+              if (location.hash !== event.currentTarget.hash)
+                history.pushState(null, '', event.currentTarget.hash);
+              guide.focus({ preventScroll: true });
+              guide.scrollIntoView({ behavior: 'instant' });
+            }}
+          >
+            How it works <span aria-hidden="true">↓</span>
+          </a>
         </div>
       </section>
       {visibleCount === 0 && (
@@ -394,11 +435,8 @@ export function AdLibrary({
               ad={ad}
               playing={playingId === ad.id}
               canPreview={!playingId && !selected}
-              onPlay={() => setPlayingId(playingId === ad.id ? null : ad.id)}
-              onRemix={() => {
-                setPlayingId(null);
-                setSelected(ad);
-              }}
+              onPlay={onPlay}
+              onRemix={onRemix}
             />
           ))}
         </div>

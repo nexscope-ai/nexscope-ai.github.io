@@ -112,6 +112,7 @@ export default function AdLibraryPage() {
           id="ad-library-guide"
           className={styles.jumpTarget}
           aria-labelledby="ad-library-guide-title"
+          tabIndex={-1}
         >
           <div className={videoStyles.checklist}>
             <div>
