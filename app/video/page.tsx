@@ -296,6 +296,9 @@ export default function VideoDirectoryPage() {
             >
               Read the product video guide →
             </a>
+            <a className={styles.guide} href="/ad-library/">
+              Browse the TikTok Ad Library →
+            </a>
           </div>
           <ol>
             <li>

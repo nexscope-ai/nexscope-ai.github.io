@@ -1,20 +1,25 @@
 import { videoLandingUrl } from '@/lib/video-directory';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import MarketingHeader from '@/components/marketing-header';
 import LearnFooter from '@/components/learn-footer';
 import { AdLibrary } from '@/components/ad-library';
 import catalog from '@/lib/ad-library-catalog.json';
 import pricingSnapshot from '@/lib/pricing-snapshot.json';
-import {
-  DEFAULT_SOCIAL_IMAGE,
-  NEXSCOPE_ORGANIZATION,
-} from '@/lib/site-metadata';
+import { NEXSCOPE_ORGANIZATION } from '@/lib/site-metadata';
 import styles from './ad-library.module.css';
 import videoStyles from '@/app/video/video.module.css';
 
-const title = 'Remix TikTok Product Ads | Nexscope Ad Library';
+const title = 'TikTok Ad Library for Ecommerce Videos | Nexscope';
 const description =
-  'Search and preview TikTok product ads, compare reported reach, and use an ad as a reference for your own product video in Nexscope Video Clone.';
+  'Search TikTok ads by product, advertiser or keyword. Preview ecommerce videos, compare reported reach, and use a reference to create your own ad with Nexscope.';
+const pageUrl = 'https://learn.nexscope.ai/ad-library/';
+const socialImage = {
+  url: 'https://learn.nexscope.ai/og-ad-library.jpg',
+  width: 1200,
+  height: 630,
+  alt: 'Nexscope TikTok Ad Library with two illustrated product video previews',
+};
 const annualPlans = pricingSnapshot.plans.filter(
   (plan) => plan.billingPeriod === 12,
 );
@@ -36,22 +41,23 @@ export const metadata: Metadata = {
     url: '/ad-library/',
     type: 'website',
     siteName: 'Nexscope',
-    images: [DEFAULT_SOCIAL_IMAGE],
+    images: [socialImage],
   },
   twitter: {
     card: 'summary_large_image',
     title,
     description,
-    images: [DEFAULT_SOCIAL_IMAGE],
+    images: [socialImage],
   },
 };
 
 const pageSchema = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
-  url: 'https://learn.nexscope.ai/ad-library/',
-  name: 'Nexscope Ad Library',
+  url: pageUrl,
+  name: title,
   description,
+  image: socialImage.url,
   inLanguage: 'en',
   publisher: NEXSCOPE_ORGANIZATION,
 };
@@ -59,7 +65,7 @@ const pageSchema = {
 const faqs = [
   {
     q: 'What is the Nexscope Ad Library?',
-    a: 'The Nexscope Ad Library is a collection of TikTok ads you can browse and preview for product video ideas. Search by product, advertiser or keyword to find examples of how brands open an ad, demonstrate a product and ask viewers to take action.',
+    a: 'The Nexscope Ad Library is a curated collection of TikTok ads from Germany, France and Italy. Search the collection by product, advertiser or keyword to find examples of how brands open an ad, demonstrate a product and ask viewers to take action.',
   },
   {
     q: 'How do I use a TikTok ad as a reference for my own video?',
@@ -67,7 +73,7 @@ const faqs = [
   },
   {
     q: 'What does reported reach mean on an ad card?',
-    a: 'Reported reach is the range of unique viewers reported for the original ad. It helps you compare how widely the ads were seen. Use it alongside the video itself when choosing a reference for your product.',
+    a: 'Reported reach is the audience range reported for the original ad, such as 1K–10K. It helps compare how widely ads were seen. Choose your reference based on how well the hook, demonstration and pacing fit your product.',
   },
   {
     q: 'How do I preview or download an ad?',
@@ -78,7 +84,7 @@ const faqs = [
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  '@id': 'https://learn.nexscope.ai/ad-library/#ad-library-faq',
+  '@id': `${pageUrl}#ad-library-faq`,
   mainEntity: faqs.map(({ q, a }) => ({
     '@type': 'Question',
     name: q,
@@ -103,8 +109,49 @@ export default function AdLibraryPage() {
           showAnnualOffer={showAnnualOffer}
         />
         <section
+          id="ad-library-guide"
+          className={styles.jumpTarget}
+          aria-labelledby="ad-library-guide-title"
+        >
+          <div className={videoStyles.checklist}>
+            <div>
+              <h2 id="ad-library-guide-title">
+                How to turn a TikTok ad into a product video brief
+              </h2>
+              <p className={videoStyles.costNote}>
+                Pick a reference that demonstrates your type of product. For a kitchen
+                scale, look for a clear close-up of the display and a quick demo of
+                someone weighing an ingredient.
+              </p>
+              <Link className={videoStyles.guide} href="/video/">
+                Compare Nexscope video workflows →
+              </Link>
+            </div>
+            <ol>
+              <li>
+                <strong>Identify the hook</strong>
+                <p>Write down what the opening shot shows and the problem it introduces.</p>
+              </li>
+              <li>
+                <strong>Plan your own shots</strong>
+                <p>
+                  Use the reference for pacing and shot order. Show your actual product
+                  and use footage, images and music you have permission to use.
+                </p>
+              </li>
+              <li>
+                <strong>Review before publishing</strong>
+                <p>
+                  Check that the generated video shows the right product, keeps packaging
+                  text legible and makes claims you can support.
+                </p>
+              </li>
+            </ol>
+          </div>
+        </section>
+        <section
           id="ad-library-faq"
-          className={`${videoStyles.section} ${styles.faqSection}`}
+          className={`${videoStyles.section} ${styles.jumpTarget}`}
           aria-labelledby="ad-library-faq-title"
         >
           <div className={videoStyles.sectionHeading}>

@@ -351,7 +351,7 @@ export function AdLibrary({
             <h1 id="ad-library-title" className={gradient.text}>
               Ad Library
             </h1>
-            <p>Find a TikTok ad you like and use it as a reference for your own product video.</p>
+            <p>Browse TikTok product ads and pick a video to use as a reference for your own.</p>
           </div>
           <a
             className={styles.pricing}
@@ -380,7 +380,7 @@ export function AdLibrary({
               }}
             />
           </label>
-          <a className={styles.faqLink} href="#ad-library-faq">How it works <span aria-hidden="true">↓</span></a>
+          <a className={styles.faqLink} href="#ad-library-guide">How it works <span aria-hidden="true">↓</span></a>
         </div>
       </section>
       {visibleCount === 0 && (

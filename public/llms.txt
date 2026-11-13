@@ -47,6 +47,7 @@ Language: English
 
 - https://learn.nexscope.ai/ecommerce-seo-ai-search-visibility/ — ecommerce SEO and AI-search visibility audit
 - https://learn.nexscope.ai/ai-product-videos/ — AI product-video workflows
+- https://learn.nexscope.ai/ad-library/ — browse TikTok product ads, compare reported reach, and choose a video reference for Nexscope Video Clone
 - https://learn.nexscope.ai/ai-video-generator/ — image-to-video workflow and review checklist
 
 ## Evidence and limitations
