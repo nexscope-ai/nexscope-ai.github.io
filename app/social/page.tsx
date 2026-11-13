@@ -107,7 +107,7 @@ export default function SocialPage() {
       />
       <main className={styles.wrap}>
         <section className={social.hero}>
-          <h1>Social media <em className={gradientTitle.text}>APIs</em></h1>
+          <h1><span className={gradientTitle.text}>Social media</span> APIs</h1>
           <p className={styles.lead}>
             Find APIs for social profiles, posts, comments, ads and transcripts.
           </p>

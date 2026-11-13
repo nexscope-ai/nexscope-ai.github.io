@@ -95,7 +95,7 @@ export default function VideoApisPage() {
       <main className={styles.wrap}>
         <section className={styles.apiHero} aria-labelledby="video-apis-title">
           <h1 id="video-apis-title">
-            Video &amp; <em className={gradientTitle.text}>image APIs</em>
+            <span className={gradientTitle.text}>Video &amp; image</span> APIs
           </h1>
           <p className={styles.lead}>
             Find a model to generate product images or videos, then try it in the API playground.

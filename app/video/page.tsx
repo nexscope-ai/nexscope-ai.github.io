@@ -113,7 +113,7 @@ export default function VideoDirectoryPage() {
         <section className={styles.hero} aria-labelledby="video-title">
           <div className={styles.heroCopy}>
             <h1 id="video-title">
-              AI product videos <em className={gradientTitle.text}>from a photo.</em>
+              <span className={gradientTitle.text}>AI product videos</span> from a photo.
             </h1>
             <p className={styles.lead}>
               Animate a product photo for your store or ads. See what a finished clip can look like.

@@ -197,7 +197,7 @@ export default function ProductGrowthReport() {
         <section className={styles.hero}>
           <div>
             <h1>
-              Product Growth <em className={gradientTitle.text}>Report</em>
+              <span className={gradientTitle.text}>Product Growth</span> Report
             </h1>
             <p className={styles.lead}>
               Send one product link. Get a human-reviewed plan that shows what to fix first and why.
