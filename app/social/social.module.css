@@ -1,9 +1,11 @@
 .hero {
-  padding: 40px 0 12px;
+  display: grid;
+  row-gap: clamp(16px, 2vw, 24px);
+  padding: 40px 0 clamp(16px, 2vw, 24px);
 }
-.hero p { margin-bottom: 0; }
+.hero > p { margin: 0; }
 .hero .trial {
-  margin: 16px 0 0;
+  max-width: 780px;
   color: #5e526b;
   font-size: 0.875rem;
   line-height: 1.6;
@@ -17,7 +19,7 @@
   font-size: clamp(40px, 5vw, 66px);
   letter-spacing: -0.055em;
   line-height: 1.06;
-  margin: 0 0 24px;
+  margin: 0;
 }
 .taskGrid {
   display: grid;
