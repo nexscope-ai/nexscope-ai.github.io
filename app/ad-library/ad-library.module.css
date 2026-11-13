@@ -115,16 +115,14 @@
   background: #ece2fb;
 }
 
-.pricing span,
-.watch {
+.pricing span {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   font-weight: 650;
 }
 
-.pricing:hover span,
-.videoLink:hover .watch {
+.pricing:hover span {
   text-decoration: underline;
 }
 
@@ -136,34 +134,84 @@
   background: #fff;
 }
 
-.videoLink {
+.cardDetails {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
   padding: 14px;
-  border-radius: 14px 14px 0 0;
-  background: linear-gradient(150deg, #f2ecff, #fff 75%);
   color: inherit;
 }
 
-.videoLink:hover {
-  background: linear-gradient(150deg, #ece2ff, #fff 85%);
-}
-
-.playMark {
+.media {
+  position: relative;
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 11px;
-  background: #e7daf9;
-  color: #5732a8;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 13px 13px 0 0;
+  background: linear-gradient(145deg, #392b51, #1a1427);
+}
+
+.media img,
+.player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.media img {
+  object-fit: cover;
+}
+.media img[hidden] {
+  display: none;
+}
+.player[data-ready='false'] {
+  visibility: hidden;
+}
+
+video.player {
+  background: #181322;
+  object-fit: contain;
+}
+
+.playerStatus {
+  z-index: 1;
+  max-width: calc(100% - 24px);
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #1a1427e8;
+  color: #fff;
+  text-align: center;
+  font-size: 0.8125rem;
+}
+
+.playMark,
+.closePlayer {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #181322cf;
+  color: #fff;
+  cursor: pointer;
+}
+
+.closePlayer {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
 }
 
 .cardTopic,
 .advertiser,
-.watch,
 .stats {
   font-size: 0.75rem;
   color: #625a72;
@@ -173,15 +221,12 @@
 .cardTopic {
   text-transform: capitalize;
 }
-.videoLink h2 {
+.cardDetails h2 {
   margin: 0;
   font-size: 0.9375rem;
   font-weight: 700;
   line-height: 1.3;
   overflow-wrap: anywhere;
-}
-.watch {
-  color: #5036a1;
 }
 
 .cardFooter,
@@ -194,8 +239,24 @@
 
 .cardFooter {
   justify-content: flex-end;
+  min-height: 44px;
   padding: 0 14px;
   border-top: 1px solid #eee8f5;
+}
+
+.download {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin-inline-start: -6px;
+  border-radius: 8px;
+  color: #5036a1;
+}
+
+.download:hover,
+.download:focus-visible {
+  background: #efe7ff;
 }
 
 .stats {
@@ -212,6 +273,7 @@
 }
 .remix {
   position: absolute;
+  z-index: 2;
   top: 12px;
   right: 12px;
   min-height: 44px;
@@ -266,11 +328,13 @@
 }
 
 .dialog::backdrop {
-  background: #171222b5;
+  background: #17122299;
+  backdrop-filter: blur(3px);
 }
 
 .confirmation {
-  padding: clamp(18px, 4vw, 28px);
+  padding: clamp(20px, 4vw, 30px);
+  background: linear-gradient(150deg, #f6f0ff, #fff 60%);
 }
 
 .dialogHeader {
@@ -286,7 +350,7 @@
   place-items: center;
   width: 44px;
   height: 44px;
-  border-radius: 10px;
+  border-radius: 50%;
 }
 
 .remixMark {
@@ -295,6 +359,7 @@
 }
 .dialogHeader button {
   cursor: pointer;
+  color: #514761;
 }
 .dialogHeader button:hover {
   background: #f3eefb;
@@ -314,11 +379,54 @@
 }
 
 .confirmation p {
-  margin: 0 0 18px;
+  margin: 0 0 16px;
 }
+
+.remixReference {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding: 10px;
+  border: 1px solid #e9e1f2;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.remixReference img {
+  flex: none;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.remixReference span,
+.remixReference strong {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+
+.remixReference span {
+  margin-bottom: 2px;
+  color: #625a72;
+  font-size: 0.75rem;
+}
+
+.remixReference strong {
+  font-size: 0.875rem;
+}
+
 .previewTip {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   margin-bottom: 12px;
+}
+
+.previewTip[data-copied='true'] {
+  color: #12624a;
 }
 
 .copyFallback {

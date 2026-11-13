@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { ArrowUpRight, Play, X } from 'lucide-react';
 import styles from './home-video-examples.module.css';
-import { videoWorkspaceUrl, type VideoWorkflowId } from '@/lib/video-directory';
+import { videoLandingUrl, type VideoWorkflowId } from '@/lib/video-directory';
 
 type Example = {
   title: string;
@@ -28,7 +28,7 @@ export default function HomeVideoExamples({
   exampleLabel?: string;
   showWorkflowCta?: boolean;
 }) {
-  const destination = videoWorkspaceUrl(workflow);
+  const destination = videoLandingUrl(workflow);
   const headingId = useId();
   const [active, setActive] = useState<Example | null>(null);
   const [failed, setFailed] = useState(false);

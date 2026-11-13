@@ -9,10 +9,15 @@
     ['/social', 'social_apis'],
     ['/video-apis', 'video_image_apis'],
     ['/video', 'video_workflows'],
+    ['/ad-library', 'ad_library'],
     [gallery, 'product_gallery'],
     ['/product-growth-report', 'product_growth_report'],
   ]);
   const mainHosts = new Set(['nexscope.ai', 'www.nexscope.ai']);
+  const videoLandingPaths = new Set([
+    '/image-to-video', '/url-to-video', '/ai-ugc-video-generator',
+    '/video-clone', '/bulk-video-generator', '/apis/creatives',
+  ]);
   const cleanPath = (path) => path.replace(/\/+$/, '') || '/';
   const featureFor = (path) => paths.get(path)
     || (path.startsWith('/data/') ? 'data_apis' : undefined)
@@ -77,10 +82,11 @@
       if (path === '/product-growth-report') action = 'open_report_request';
       else if (path === '/reports/product-growth-example-en.html') action = 'open_report_example';
       else if (path === '/api-docs' || path.startsWith('/api-docs/')) action = 'open_api';
+      else if (videoLandingPaths.has(path)) action = 'open_video_landing';
       else if (path.startsWith('/seller/video-generation/')) action = 'open_video_workspace';
       else if (path === '/seller/billing' || path === '/pricing') action = 'open_pricing';
       else if (path === '/mcp-data') action = 'open_mcp_setup';
-      if (!feature && !action.startsWith('open_report_')) return;
+      if (!feature && action !== 'open_video_landing' && !action.startsWith('open_report_')) return;
       if (action === 'open_main_site' && !link.hasAttribute('data-track')) return;
       emit('learn_feature_outbound_click', {
         learn_feature: action.startsWith('open_report_') ? 'product_growth_report' : feature,

@@ -289,7 +289,7 @@ export const campaigns = {
     lead: 'Turn product images and creative direction into AI-generated product videos. Explore showcases, UGC-style talking videos and reference-led concepts for your next campaign.',
     cta: {
       label: 'Create a product video',
-      href: tracked('/seller/video-generation', 'ai-product-videos'),
+      href: tracked('/image-to-video', 'ai-product-videos'),
     },
     ctaNote: 'Opens Nexscope · Account and credits may be required',
     visual: 'video',

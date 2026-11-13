@@ -1,3 +1,4 @@
+import { videoLandingUrl } from '@/lib/video-directory';
 /* oxlint-disable next/no-html-link-for-pages */
 /* oxlint-disable jsx-a11y/no-noninteractive-tabindex -- The named table region needs keyboard focus for horizontal scrolling. */
 import type { Metadata } from 'next';
@@ -293,7 +294,7 @@ export default function PricingPage() {
                 own product before committing to a year.
               </p>
               <a
-                href="https://www.nexscope.ai/seller/video-generation/image-to-video?co-from=learn"
+                href={videoLandingUrl('image-to-video')}
                 target="_blank"
                 rel="noopener"
               >

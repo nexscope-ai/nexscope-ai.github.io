@@ -11,7 +11,7 @@ import examples from '@/lib/home-video-examples.json';
 import {
   videoDirectory,
   videoDirectoryFaqs,
-  videoWorkspaceUrl,
+  videoLandingUrl,
 } from '@/lib/video-directory';
 import { VIDEO_SOCIAL_IMAGE, NEXSCOPE_ORGANIZATION } from '@/lib/site-metadata';
 import gradientTitle from '@/app/gradient-title.module.css';
@@ -67,7 +67,7 @@ export default function VideoDirectoryPage() {
           position: index + 1,
           name: item.name,
           description: `${item.bestFor} ${item.result}`,
-          url: videoWorkspaceUrl(item.id),
+          url: videoLandingUrl(item.id),
         })),
       },
       {
@@ -120,7 +120,7 @@ export default function VideoDirectoryPage() {
             </p>
             <div className={styles.heroActions}>
               <a
-                href={videoWorkspaceUrl('image-to-video')}
+                href={videoLandingUrl('image-to-video')}
                 className={styles.primary}
                 data-track
                 data-track-tool="image-to-video"
@@ -221,7 +221,7 @@ export default function VideoDirectoryPage() {
                   <tr key={item.id}>
                     <th scope="row">
                       <a
-                        href={videoWorkspaceUrl(item.id)}
+                        href={videoLandingUrl(item.id)}
                         data-track
                         data-track-tool={item.id}
                         data-cta-placement="video-comparison"
@@ -258,8 +258,8 @@ export default function VideoDirectoryPage() {
             </div>
             <p>
               Browse official Inspiration clips and production demos by
-              workflow. Preview a result, then open the matching workspace for
-              your product.
+              workflow. Preview a result, then open the matching product page
+              to see how to create a video for your product.
             </p>
           </div>
           <VideoDirectoryExamples />

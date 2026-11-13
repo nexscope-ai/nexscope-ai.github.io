@@ -1,10 +1,12 @@
 'use client';
 
+/* oxlint-disable next/no-img-element */
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import {
   ArrowUpRight,
+  Check,
+  Download,
   Eye,
-  Heart,
   Play,
   Search,
   Sparkles,
@@ -26,27 +28,77 @@ type Ad = {
   market: string;
   topic: string;
   product: string;
-  url: string;
-  plays: number;
-  likes: number;
+  reach: string;
+  cover: string;
+  video: string;
 };
 
 type Catalog = { ads: Ad[] };
-const compactNumber = new Intl.NumberFormat('en-US', { notation: 'compact' });
-const fullNumber = new Intl.NumberFormat('en-US');
+function AdCard({
+  ad,
+  playing,
+  onPlay,
+  onRemix,
+}: {
+  ad: Ad;
+  playing: boolean;
+  onPlay: () => void;
+  onRemix: () => void;
+}) {
+  const [hostedFailed, setHostedFailed] = useState(false);
+  const downloadUrl = `https://www.nexscope.ai/api/video-download?url=${encodeURIComponent(ad.video)}&filename=tiktok-ad-${ad.id}.mp4`;
 
-function AdCard({ ad, onRemix }: { ad: Ad; onRemix: () => void }) {
   return (
     <article className={styles.card}>
-      <a
-        className={styles.videoLink}
-        href={ad.url}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span className={styles.playMark}>
-          <Play size={21} fill="currentColor" aria-hidden="true" />
-        </span>
+      <div className={styles.media}>
+        {ad.cover && (
+          <img
+            src={ad.cover}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            onError={(event) => {
+              event.currentTarget.hidden = true;
+            }}
+          />
+        )}
+        {playing ? (
+          <>
+            {!hostedFailed ? (
+              // The source ads do not provide separate caption files.
+              // oxlint-disable-next-line jsx-a11y/media-has-caption
+              <video
+                className={styles.player}
+                src={ad.video}
+                controls
+                autoPlay
+                playsInline
+                onError={() => setHostedFailed(true)}
+              />
+            ) : (
+              <output className={styles.playerStatus}>Video preview unavailable.</output>
+            )}
+            <button
+              type="button"
+              className={styles.closePlayer}
+              aria-label="Close video"
+              onClick={onPlay}
+            >
+              <X size={19} aria-hidden="true" />
+            </button>
+          </>
+        ) : (
+          <button
+            type="button"
+            className={styles.playMark}
+            aria-label={`Play ${ad.product}`}
+            onClick={onPlay}
+          >
+            <Play size={22} fill="currentColor" aria-hidden="true" />
+          </button>
+        )}
+      </div>
+      <div className={styles.cardDetails}>
         <span className={styles.cardTopic}>
           {markets[ad.market]} · {ad.topic}
         </span>
@@ -54,10 +106,7 @@ function AdCard({ ad, onRemix }: { ad: Ad; onRemix: () => void }) {
         {ad.advertiser && (
           <span className={styles.advertiser}>{ad.advertiser}</span>
         )}
-        <span className={styles.watch}>
-          Watch on TikTok <ArrowUpRight size={15} aria-hidden="true" />
-        </span>
-      </a>
+      </div>
       <button
         type="button"
         className={styles.remix}
@@ -67,16 +116,19 @@ function AdCard({ ad, onRemix }: { ad: Ad; onRemix: () => void }) {
         <Sparkles size={15} aria-hidden="true" /> Remix
       </button>
       <footer className={styles.cardFooter}>
+        <a
+          className={styles.download}
+          href={downloadUrl}
+          aria-label={`Download ${ad.product}`}
+          title="Download MP4"
+        >
+          <Download size={16} aria-hidden="true" />
+        </a>
         <div className={styles.stats}>
-          <span title={`${fullNumber.format(ad.plays)} plays`}>
+          <span title={`Reported reach: ${ad.reach}`}>
             <Eye size={15} aria-hidden="true" />
-            <span className="sr-only">{fullNumber.format(ad.plays)} plays</span>
-            <span aria-hidden="true">{compactNumber.format(ad.plays)}</span>
-          </span>
-          <span title={`${fullNumber.format(ad.likes)} likes`}>
-            <Heart size={15} aria-hidden="true" />
-            <span className="sr-only">{fullNumber.format(ad.likes)} likes</span>
-            <span aria-hidden="true">{compactNumber.format(ad.likes)}</span>
+            <span className="sr-only">Reported reach: </span>
+            {ad.reach}
           </span>
         </div>
       </footer>
@@ -85,21 +137,28 @@ function AdCard({ ad, onRemix }: { ad: Ad; onRemix: () => void }) {
 }
 
 function RemixDialog({
-  videoUrl,
+  ad,
   cloneUrl,
   onClose,
 }: {
-  videoUrl: string;
+  ad: Ad;
   cloneUrl: string;
   onClose: () => void;
 }) {
   const [copyStatus, setCopyStatus] = useState<'copied' | 'failed'>();
+  const videoUrl = ad.video;
 
   const copyVideoLink = async () => {
+    let nextTab: Window | null = null;
     try {
-      await navigator.clipboard.writeText(videoUrl);
+      const copying = navigator.clipboard.writeText(videoUrl);
+      nextTab = window.open('about:blank', '_blank');
+      if (nextTab) nextTab.opener = null;
+      await copying;
       setCopyStatus('copied');
+      nextTab?.location.replace(cloneUrl);
     } catch {
+      nextTab?.close();
       setCopyStatus('failed');
     }
   };
@@ -107,18 +166,22 @@ function RemixDialog({
   return (
     <div className={styles.confirmation}>
       <header className={styles.dialogHeader}>
-        <span className={styles.remixMark}>
-          <Sparkles size={22} aria-hidden="true" />
-        </span>
+        <span className={styles.remixMark}><Sparkles size={19} aria-hidden="true" /></span>
         <button type="button" aria-label="Close" onClick={onClose}>
           <X size={22} aria-hidden="true" />
         </button>
       </header>
-      <h2 id="ad-remix-title">Want to make this ad your own?</h2>
+      <h2 id="ad-remix-title">Remix this ad for your product</h2>
       <p id="ad-remix-description">
-        Use this TikTok video as a reference to make an ad for your own product.
-        Paste the copied link into Video Clone to get started.
+        Copy this video’s link, then paste it into Video Clone as a reference.
       </p>
+      <div className={styles.remixReference}>
+        {ad.cover && <img src={ad.cover} alt="" width={48} height={58} />}
+        <div>
+          <span>{ad.advertiser || markets[ad.market]}</span>
+          <strong>{ad.product}</strong>
+        </div>
+      </div>
       {copyStatus === 'failed' && (
         <input
           className={styles.copyFallback}
@@ -129,7 +192,8 @@ function RemixDialog({
         />
       )}
       {copyStatus && (
-        <output className={styles.previewTip}>
+        <output className={styles.previewTip} data-copied={copyStatus === 'copied'}>
+          {copyStatus === 'copied' && <Check size={16} aria-hidden="true" />}
           {copyStatus === 'copied'
             ? 'Video link copied.'
             : 'Select the video link above to copy it.'}
@@ -139,17 +203,28 @@ function RemixDialog({
         <button type="button" onClick={onClose}>
           Cancel
         </button>
-        <a
-          href={cloneUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.create}
-          data-track-tool="video-replication"
-          data-cta-placement="ad-library-preview"
-          onClick={() => void copyVideoLink()}
-        >
-          Go to Video Clone <ArrowUpRight size={16} aria-hidden="true" />
-        </a>
+        {copyStatus ? (
+          <a
+            href={cloneUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.create}
+            data-track-tool="video-replication"
+            data-cta-placement="ad-library-preview"
+          >
+            Open Video Clone <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+        ) : (
+          <button
+            type="button"
+            className={styles.create}
+            data-learn-action="copy_and_open_video_clone"
+            data-learn-item="video-replication"
+            onClick={() => void copyVideoLink()}
+          >
+            Copy link &amp; open Video Clone <ArrowUpRight size={16} aria-hidden="true" />
+          </button>
+        )}
       </div>
     </div>
   );
@@ -167,6 +242,7 @@ export function AdLibrary({
   const [query, setQuery] = useState('');
   const [limit, setLimit] = useState(pageSize);
   const [selected, setSelected] = useState<Ad | null>(null);
+  const [playingId, setPlayingId] = useState<string | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const loadMore = useRef<HTMLButtonElement>(null);
   const masonry = useRef<HTMLDivElement>(null);
@@ -178,8 +254,7 @@ export function AdLibrary({
         [ad.advertiser, ad.product, ad.topic, markets[ad.market], ad.id].some(
           (value) => value?.toLowerCase().includes(search),
         ),
-    )
-    .sort((a, b) => b.plays - a.plays);
+    );
   const visible = results.slice(0, limit);
   const visibleCount = visible.length;
   const hasMore = visible.length < results.length;
@@ -253,6 +328,7 @@ export function AdLibrary({
               onChange={(event) => {
                 setQuery(event.target.value);
                 setLimit(pageSize);
+                setPlayingId(null);
               }}
             />
           </label>
@@ -275,7 +351,16 @@ export function AdLibrary({
       {visibleCount > 0 && (
         <div className={styles.masonry} ref={masonry}>
           {visible.map((ad) => (
-            <AdCard key={ad.id} ad={ad} onRemix={() => setSelected(ad)} />
+            <AdCard
+              key={ad.id}
+              ad={ad}
+              playing={playingId === ad.id}
+              onPlay={() => setPlayingId(playingId === ad.id ? null : ad.id)}
+              onRemix={() => {
+                setPlayingId(null);
+                setSelected(ad);
+              }}
+            />
           ))}
         </div>
       )}
@@ -299,7 +384,7 @@ export function AdLibrary({
         {selected && (
           <RemixDialog
             key={selected.id}
-            videoUrl={selected.url}
+            ad={selected}
             cloneUrl={cloneUrl}
             onClose={() => dialog.current?.close()}
           />

@@ -1,10 +1,10 @@
+import { videoLandingUrl } from '@/lib/video-directory';
 import type { Metadata } from 'next';
 import MarketingHeader from '@/components/marketing-header';
 import LearnFooter from '@/components/learn-footer';
 import { AdLibrary } from '@/components/ad-library';
 import catalog from '@/lib/ad-library-catalog.json';
 import pricingSnapshot from '@/lib/pricing-snapshot.json';
-import { videoWorkspaceUrl } from '@/lib/video-directory';
 import {
   DEFAULT_SOCIAL_IMAGE,
   NEXSCOPE_ORGANIZATION,
@@ -13,7 +13,7 @@ import styles from './ad-library.module.css';
 
 const title = 'Remix TikTok Product Ads | Nexscope Ad Library';
 const description =
-  'Browse TikTok product ads by keyword, compare plays and likes, and use an original TikTok video as a reference in Nexscope Video Clone.';
+  'Browse TikTok product ads by keyword, compare reported reach, and use an original TikTok video as a reference in Nexscope Video Clone.';
 const annualPlans = pricingSnapshot.plans.filter(
   (plan) => plan.billingPeriod === 12,
 );
@@ -68,7 +68,7 @@ export default function AdLibraryPage() {
         />
         <AdLibrary
           catalog={catalog}
-          cloneUrl={videoWorkspaceUrl('video-replication')}
+          cloneUrl={videoLandingUrl('video-replication')}
           showAnnualOffer={showAnnualOffer}
         />
         <section
@@ -79,14 +79,14 @@ export default function AdLibraryPage() {
             How to use a TikTok ad as a video reference
           </h2>
           <p>
-            Search by product, advertiser or keyword and watch an ad on TikTok
+            Search by product, advertiser or keyword and play an ad
             to see how it introduces the product. Compare the opening shot,
             demonstration and call to action before choosing a reference.
           </p>
           <p>
-            Select Remix to copy the original TikTok link. Paste it into Video
-            Clone as a reference, then add images of your own product. Plays and
-            likes help you compare the original videos.
+            Select Remix to copy the video link. Paste it into Video
+            Clone as a reference, then add images of your own product. Reported
+            reach shows the range of unique viewers for each original ad.
           </p>
         </section>
       </main>

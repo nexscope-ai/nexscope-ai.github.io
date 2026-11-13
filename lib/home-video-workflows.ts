@@ -57,6 +57,3 @@ export const videoWorkflows = [
     input: 'Model + inputs → generation',
   },
 ] as const;
-
-export const workflowUrl = (path: string) =>
-  `https://www.nexscope.ai/seller/video-generation/${path}?co-from=learn`;

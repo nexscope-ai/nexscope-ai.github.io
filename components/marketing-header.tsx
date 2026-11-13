@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import styles from './marketing-header.module.css';
-import { videoWorkspaceUrl } from '@/lib/video-directory';
+import { videoLandingUrl } from '@/lib/video-directory';
 
 type MarketingHeaderProps = {
   active?: 'tools' | 'pricing' | 'video' | 'video-apis' | 'social' | 'growth' | 'ad-library';
@@ -284,7 +284,7 @@ export default function MarketingHeader({
                 data-track-tool={isVideoPage ? 'image-to-video' : undefined}
                 data-cta-placement={isVideoPage ? 'video-navigation' : 'navigation'}
                 href={isVideoPage
-                  ? videoWorkspaceUrl('image-to-video')
+                  ? videoLandingUrl('image-to-video')
                   : `https://www.nexscope.ai${explorePath}?co-from=learn`}
               >
                 {isVideoPage ? 'Create a video ↗' : 'Explore Nexscope ↗'}

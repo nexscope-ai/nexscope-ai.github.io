@@ -123,8 +123,17 @@ export const videoDirectory = [
 
 export type VideoWorkflowId = (typeof videoDirectory)[number]['id'];
 
-export const videoWorkspaceUrl = (id: VideoWorkflowId | 'api') =>
-  `https://www.nexscope.ai/seller/video-generation/${id}?co-from=learn`;
+const videoLandingPaths: Record<VideoWorkflowId | 'api', string> = {
+  'image-to-video': '/image-to-video',
+  'url-to-video': '/url-to-video',
+  'product-talking-video': '/ai-ugc-video-generator',
+  'video-replication': '/video-clone',
+  'bulk-video': '/bulk-video-generator',
+  api: '/apis/creatives',
+};
+
+export const videoLandingUrl = (id: keyof typeof videoLandingPaths) =>
+  `https://www.nexscope.ai${videoLandingPaths[id]}?co-from=learn`;
 
 export const videoDirectoryFaqs = [
   {
@@ -141,7 +150,7 @@ export const videoDirectoryFaqs = [
   },
   {
     q: 'Does this page generate videos?',
-    a: 'This is a workflow selection guide. Each Start button opens the matching Nexscope workspace, where you sign in, provide your materials, review available settings and check the credit estimate before generating.',
+    a: 'This is a workflow selection guide. Each Start button opens the matching Nexscope product page, where you can see examples and continue to the workspace to generate a video.',
   },
   {
     q: 'Are all models and settings available in every workflow?',

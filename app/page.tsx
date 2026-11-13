@@ -28,7 +28,8 @@ import {
   historicalAverage,
   publicCostExamples,
 } from '@/lib/home-value.mjs';
-import { videoWorkflows, workflowUrl } from '@/lib/home-video-workflows';
+import { videoWorkflows } from '@/lib/home-video-workflows';
+import { videoLandingUrl } from '@/lib/video-directory';
 import { HOME_SOCIAL_IMAGE, NEXSCOPE_ORGANIZATION } from '@/lib/site-metadata';
 import gradientTitle from './gradient-title.module.css';
 import styles from './home-sections.module.css';
@@ -348,7 +349,7 @@ export default function Home() {
             </a>
             <a
               className={styles.secondaryCta}
-              href={workflowUrl('image-to-video')}
+              href={videoLandingUrl('image-to-video')}
               target="_blank"
               rel="noopener"
               data-track-tool="image-to-video"
@@ -747,7 +748,7 @@ export default function Home() {
               ({ name, path, icon: Icon, description, input }) => (
                 <a
                   className={styles.workflowCard}
-                  href={workflowUrl(path)}
+                  href={videoLandingUrl(path)}
                   key={path}
                   target="_blank"
                   rel="noopener"
