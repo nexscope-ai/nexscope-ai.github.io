@@ -540,6 +540,11 @@ video.player {
   scroll-margin-top: 96px;
 }
 
+.dialogHeader p a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 @media (max-width: 1080px) {
   .adGrid {
     --ad-columns: 3;

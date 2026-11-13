@@ -68,7 +68,7 @@ const faqs = [
   },
   {
     q: 'How do I use a TikTok ad as a reference for my own video?',
-    a: 'Select Remix on an ad, then choose “Copy link & open Video Clone.” Paste the copied video link into Video Clone as a reference, then add your own product images. You can use the ad’s pacing or structure as inspiration for your own creative.',
+    a: 'Select Remix and choose “Copy link & open Video Clone” to copy the original TikTok link. Paste a TikTok video post link into Video Clone. If the original is a TikTok Ads Library page, download the MP4 from the card and upload it as your reference.',
   },
   {
     q: 'What does reported reach mean on an ad card?',

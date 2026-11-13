@@ -32,9 +32,14 @@ type Ad = {
   views?: number;
   cover: string;
   video: string;
+  sourceUrl: string;
 };
 
 type Catalog = { ads: Ad[] };
+
+function adDownloadUrl(ad: Ad) {
+  return `https://www.nexscope.ai/api/video-download?url=${encodeURIComponent(ad.video)}&filename=tiktok-ad-${ad.id}.mp4`;
+}
 
 const AdCard = memo(function AdCard({
   ad,
@@ -61,7 +66,6 @@ const AdCard = memo(function AdCard({
     setPreviewReady(false);
   };
   const active = playing || (canPreview && previewing);
-  const downloadUrl = `https://www.nexscope.ai/api/video-download?url=${encodeURIComponent(ad.video)}&filename=tiktok-ad-${ad.id}.mp4`;
 
   return (
     <article className={styles.card}>
@@ -173,7 +177,7 @@ const AdCard = memo(function AdCard({
       <footer className={styles.cardFooter}>
         <a
           className={styles.download}
-          href={downloadUrl}
+          href={adDownloadUrl(ad)}
           aria-label={`Download ${ad.product}`}
           title="Download MP4"
         >
@@ -218,7 +222,7 @@ function RemixDialog({
   const [copyStatus, setCopyStatus] = useState<
     'copying' | 'opening' | 'opened' | 'blocked' | 'failed'
   >();
-  const videoUrl = ad.video;
+  const isLibraryLink = new URL(ad.sourceUrl).hostname === 'library.tiktok.com';
 
   useEffect(() => {
     if (copyStatus !== 'opening') return;
@@ -240,7 +244,7 @@ function RemixDialog({
   const copyVideoLink = async () => {
     setCopyStatus('copying');
     try {
-      await navigator.clipboard.writeText(videoUrl);
+      await navigator.clipboard.writeText(ad.sourceUrl);
       setCopyStatus('opening');
     } catch {
       setCopyStatus('failed');
@@ -264,7 +268,15 @@ function RemixDialog({
           <X size={22} aria-hidden="true" />
         </button>
         <p id="ad-remix-description">
-          Copy this video’s link, then paste it into Video Clone as a reference.
+          {isLibraryLink ? (
+            <>
+              Copy the original TikTok Ads Library link. To use this ad in Video
+              Clone, <a href={adDownloadUrl(ad)}>download the MP4</a> and upload
+              it as a reference.
+            </>
+          ) : (
+            'Copy the original TikTok video link and paste it into Video Clone as a reference.'
+          )}
         </p>
       </header>
       <div className={styles.remixReference}>
@@ -277,9 +289,9 @@ function RemixDialog({
       {copyStatus === 'failed' && (
         <input
           className={styles.copyFallback}
-          aria-label="Video link"
+          aria-label="Original TikTok link"
           readOnly
-          value={videoUrl}
+          value={ad.sourceUrl}
           onFocus={(event) => event.currentTarget.select()}
         />
       )}
@@ -287,12 +299,12 @@ function RemixDialog({
         <output className={styles.previewTip} data-copied={copied}>
           {copied && <Check size={16} aria-hidden="true" />}
           {copyStatus === 'opening' &&
-            'Video link copied. Opening Video Clone…'}
+            'TikTok link copied. Opening Video Clone…'}
           {copyStatus === 'opened' &&
-            'Video link copied. Paste it into Video Clone.'}
+            'TikTok link copied.'}
           {copyStatus === 'blocked' &&
-            'Video link copied. Select Open Video Clone to continue.'}
-          {copyStatus === 'failed' && 'Select the video link above to copy it.'}
+            'TikTok link copied. Select Open Video Clone to continue.'}
+          {copyStatus === 'failed' && 'Select the TikTok link above to copy it.'}
         </output>
       )}
       <div className={styles.actions}>
