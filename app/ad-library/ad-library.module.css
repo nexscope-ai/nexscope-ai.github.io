@@ -174,10 +174,6 @@
   pointer-events: none;
 }
 
-.cardDetails[data-playing='true'] {
-  opacity: 0;
-}
-
 .media {
   position: relative;
   display: grid;
@@ -210,32 +206,25 @@
 
 video.player {
   background: #181322;
-  object-fit: contain;
-}
-
-video.hoverPreview {
   object-fit: cover;
   pointer-events: none;
 }
 
-.playerStatus {
-  z-index: 1;
-  max-width: calc(100% - 24px);
-  padding: 8px 12px;
-  border-radius: 8px;
-  background: #1a1427e8;
-  color: #fff;
-  text-align: center;
-  font-size: 0.8125rem;
-}
-
-.playbackSurface {
-  position: absolute;
-  inset: 0;
+.loadingPreview,
+.playMark {
   display: grid;
   place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #181322cf;
   color: #fff;
-  text-shadow: 0 1px 6px #000;
+}
+
+.loadingPreview {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .spinner {
@@ -248,61 +237,22 @@ video.hoverPreview {
   }
 }
 
-.playerControls {
-  position: absolute;
-  inset: auto 0 0;
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  padding: 12px 8px 4px;
-  background: linear-gradient(transparent, #100c1cee);
-  color: #fff;
-}
-
-.playerControls button {
-  display: grid;
-  flex: 0 0 40px;
-  min-height: 44px;
-  place-items: center;
-}
-
-.playerControls input {
-  flex: 1;
-  min-width: 0;
-  accent-color: #d8c6ff;
-}
-
-.playbackSurface,
-.playerControls button {
-  cursor: pointer;
-}
-
-.playbackSurface:focus-visible,
-.playerControls :focus-visible {
-  outline: 2px solid #fff;
-  outline-offset: -3px;
-}
-
-.playMark,
-.closePlayer {
+.playMark {
   position: relative;
-  display: grid;
-  place-items: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: #181322cf;
-  color: #fff;
+  z-index: 1;
   cursor: pointer;
 }
 
-.closePlayer {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  z-index: 2;
-  width: 44px;
-  height: 44px;
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .playMark:not([aria-pressed='true']) {
+    cursor: default;
+  }
+
+  .playMark[data-previewing='true']:not([aria-pressed='true']):not(
+      :focus-visible
+    ) {
+    opacity: 0;
+  }
 }
 
 .cardTopic,

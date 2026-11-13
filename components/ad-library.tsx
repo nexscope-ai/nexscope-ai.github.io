@@ -8,12 +8,9 @@ import {
   Download,
   Eye,
   LoaderCircle,
-  Pause,
   Play,
   Search,
   Sparkles,
-  Volume2,
-  VolumeX,
   X,
 } from 'lucide-react';
 import styles from '@/app/ad-library/ad-library.module.css';
@@ -31,139 +28,13 @@ type Ad = {
   market: string;
   topic: string;
   product: string;
-  reach: string;
+  reach?: string;
+  views?: number;
   cover: string;
   video: string;
 };
 
 type Catalog = { ads: Ad[] };
-
-function AdPlayer({ ad, onClose }: { ad: Ad; onClose: () => void }) {
-  const video = useRef<HTMLVideoElement>(null);
-  const [muted, setMuted] = useState(true);
-  const [paused, setPaused] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [failed, setFailed] = useState(false);
-  const [duration, setDuration] = useState(0);
-  const [position, setPosition] = useState(0);
-  const togglePlayback = () => {
-    const player = video.current;
-    if (!player) return;
-    if (!player.paused) {
-      player.pause();
-      return;
-    }
-    void player.play().catch(() => {
-      setLoading(false);
-      setPaused(true);
-    });
-  };
-
-  return (
-    <>
-      {/* The source ads do not provide separate caption files. */}
-      {/* oxlint-disable-next-line jsx-a11y/media-has-caption */}
-      <video
-        ref={video}
-        className={styles.player}
-        src={ad.video}
-        poster={ad.cover}
-        muted={muted}
-        autoPlay
-        playsInline
-        onPlaying={() => {
-          setLoading(false);
-          setPaused(false);
-        }}
-        onWaiting={() => setLoading(true)}
-        onPause={() => {
-          setLoading(false);
-          setPaused(true);
-        }}
-        onEnded={onClose}
-        onLoadedMetadata={(event) => {
-          const seconds = event.currentTarget.duration;
-          setDuration(Number.isFinite(seconds) ? seconds : 0);
-        }}
-        onTimeUpdate={(event) => setPosition(event.currentTarget.currentTime)}
-        onError={() => setFailed(true)}
-      />
-      {failed ? (
-        <output className={styles.playerStatus}>
-          Video preview unavailable.
-        </output>
-      ) : (
-        <>
-          <button
-            type="button"
-            className={styles.playbackSurface}
-            aria-label={paused ? 'Resume video' : 'Pause video'}
-            onClick={togglePlayback}
-          >
-            {loading ? (
-              <LoaderCircle
-                className={styles.spinner}
-                size={30}
-                aria-hidden="true"
-              />
-            ) : (
-              paused && (
-                <Play size={30} fill="currentColor" aria-hidden="true" />
-              )
-            )}
-          </button>
-          <div className={styles.playerControls}>
-            <button
-              type="button"
-              aria-label={paused ? 'Resume playback' : 'Pause playback'}
-              onClick={togglePlayback}
-            >
-              {paused ? (
-                <Play size={17} aria-hidden="true" />
-              ) : (
-                <Pause size={17} aria-hidden="true" />
-              )}
-            </button>
-            <button
-              type="button"
-              aria-label={muted ? 'Unmute video' : 'Mute video'}
-              onClick={() => setMuted(!muted)}
-            >
-              {muted ? (
-                <VolumeX size={17} aria-hidden="true" />
-              ) : (
-                <Volume2 size={17} aria-hidden="true" />
-              )}
-            </button>
-            <input
-              type="range"
-              aria-label="Video position"
-              min={0}
-              max={duration || 1}
-              step={0.1}
-              value={position}
-              disabled={!duration}
-              onChange={(event) => {
-                if (!video.current) return;
-                const seconds = event.currentTarget.valueAsNumber;
-                video.current.currentTime = seconds;
-                setPosition(seconds);
-              }}
-            />
-          </div>
-        </>
-      )}
-      <button
-        type="button"
-        className={styles.closePlayer}
-        aria-label="Close video"
-        onClick={onClose}
-      >
-        <X size={18} aria-hidden="true" />
-      </button>
-    </>
-  );
-}
 
 const AdCard = memo(function AdCard({
   ad,
@@ -189,6 +60,7 @@ const AdCard = memo(function AdCard({
     setPreviewing(false);
     setPreviewReady(false);
   };
+  const active = playing || (canPreview && previewing);
   const downloadUrl = `https://www.nexscope.ai/api/video-download?url=${encodeURIComponent(ad.video)}&filename=tiktok-ad-${ad.id}.mp4`;
 
   return (
@@ -204,7 +76,9 @@ const AdCard = memo(function AdCard({
             previewTimer.current = setTimeout(() => setPreviewing(true), 180);
           }
         }}
-        onPointerLeave={stopPreview}
+        onPointerLeave={() => {
+          if (!playing) stopPreview();
+        }}
       >
         {ad.cover && (
           <img
@@ -217,39 +91,65 @@ const AdCard = memo(function AdCard({
             }}
           />
         )}
-        {canPreview &&
-          previewing && (
-            // Muted decorative preview. The playback button opens the full player.
-            // oxlint-disable-next-line jsx-a11y/media-has-caption
-            <video
-              className={`${styles.player} ${styles.hoverPreview}`}
-              src={ad.video}
-              data-ready={previewReady}
-              aria-hidden="true"
-              muted
-              autoPlay
-              loop
-              playsInline
-              onPlaying={() => setPreviewReady(true)}
-              onError={stopPreview}
-            />
-          )}
-        {playing ? (
-          <AdPlayer ad={ad} onClose={() => onPlay(ad.id)} />
-        ) : (
-          <button
-            type="button"
-            className={styles.playMark}
-            aria-label={`Play ${ad.product}`}
-            onClick={() => {
+        {active && (
+          // The source ads do not provide separate caption files.
+          // oxlint-disable-next-line jsx-a11y/media-has-caption
+          <video
+            className={styles.player}
+            src={ad.video}
+            data-ready={previewReady}
+            muted
+            autoPlay
+            loop
+            playsInline
+            onPlaying={() => setPreviewReady(true)}
+            onError={() => {
               stopPreview();
-              onPlay(ad.id);
+              if (playing) onPlay(ad.id);
             }}
-          >
-            <Play size={28} fill="currentColor" aria-hidden="true" />
-          </button>
+          />
         )}
-        <div className={styles.cardDetails} data-playing={playing}>
+        {active && !previewReady && (
+          <output
+            className={styles.loadingPreview}
+            aria-label="Loading video preview"
+          >
+            <LoaderCircle
+              className={styles.spinner}
+              size={26}
+              aria-hidden="true"
+            />
+          </output>
+        )}
+        <button
+          type="button"
+          className={styles.playMark}
+          data-previewing={active}
+          aria-label={`Preview ${ad.product}`}
+          aria-pressed={playing}
+          onClick={(event) => {
+            // A mouse click should leave the current hover preview alone.
+            if (
+              !playing &&
+              event.detail &&
+              event.nativeEvent instanceof PointerEvent &&
+              event.nativeEvent.pointerType === 'mouse' &&
+              !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+            )
+              return;
+            clearTimeout(previewTimer.current);
+            setPreviewing(false);
+            if (playing) setPreviewReady(false);
+            onPlay(ad.id);
+          }}
+        >
+          {playing ? (
+            <X size={23} aria-hidden="true" />
+          ) : (
+            <Play size={26} fill="currentColor" aria-hidden="true" />
+          )}
+        </button>
+        <div className={styles.cardDetails}>
           <span className={styles.cardTopic}>
             {markets[ad.market]} · {ad.topic}
           </span>
@@ -279,13 +179,28 @@ const AdCard = memo(function AdCard({
         >
           <Download size={16} aria-hidden="true" />
         </a>
-        <div className={styles.stats}>
-          <span title={`Reported reach: ${ad.reach}`}>
-            <Eye size={15} aria-hidden="true" />
-            <span className="sr-only">Reported reach: </span>
-            {ad.reach}
-          </span>
-        </div>
+        {(ad.reach || typeof ad.views === 'number') && (
+          <div className={styles.stats}>
+            {typeof ad.views === 'number' ? (
+              <span
+                title={`Reported video views: ${ad.views.toLocaleString('en-US')}`}
+              >
+                <Eye size={15} aria-hidden="true" />
+                <span className="sr-only">Reported video views: </span>
+                {new Intl.NumberFormat('en-US', {
+                  notation: 'compact',
+                  maximumFractionDigits: 1,
+                }).format(ad.views)}
+              </span>
+            ) : (
+              <span title={`Reported reach: ${ad.reach}`}>
+                <Eye size={15} aria-hidden="true" />
+                <span className="sr-only">Reported reach: </span>
+                {ad.reach}
+              </span>
+            )}
+          </div>
+        )}
       </footer>
     </article>
   );
@@ -300,23 +215,46 @@ function RemixDialog({
   cloneUrl: string;
   onClose: () => void;
 }) {
-  const [copyStatus, setCopyStatus] = useState<'copied' | 'failed'>();
+  const [copyStatus, setCopyStatus] = useState<
+    'copying' | 'opening' | 'opened' | 'blocked' | 'failed'
+  >();
   const videoUrl = ad.video;
 
+  useEffect(() => {
+    if (copyStatus !== 'opening') return;
+
+    const timer = window.setTimeout(() => {
+      const nextTab = window.open('about:blank', '_blank');
+      if (!nextTab) {
+        setCopyStatus('blocked');
+        return;
+      }
+      nextTab.opener = null;
+      nextTab.location.replace(cloneUrl);
+      setCopyStatus('opened');
+    }, 1500);
+
+    return () => window.clearTimeout(timer);
+  }, [cloneUrl, copyStatus]);
+
   const copyVideoLink = async () => {
-    let nextTab: Window | null = null;
+    setCopyStatus('copying');
     try {
-      const copying = navigator.clipboard.writeText(videoUrl);
-      nextTab = window.open('about:blank', '_blank');
-      if (nextTab) nextTab.opener = null;
-      await copying;
-      setCopyStatus('copied');
-      nextTab?.location.replace(cloneUrl);
+      await navigator.clipboard.writeText(videoUrl);
+      setCopyStatus('opening');
     } catch {
-      nextTab?.close();
       setCopyStatus('failed');
     }
   };
+
+  const copied =
+    copyStatus === 'opening' ||
+    copyStatus === 'opened' ||
+    copyStatus === 'blocked';
+  const canOpenManually =
+    copyStatus === 'opened' ||
+    copyStatus === 'blocked' ||
+    copyStatus === 'failed';
 
   return (
     <div className={styles.confirmation}>
@@ -345,22 +283,23 @@ function RemixDialog({
           onFocus={(event) => event.currentTarget.select()}
         />
       )}
-      {copyStatus && (
-        <output
-          className={styles.previewTip}
-          data-copied={copyStatus === 'copied'}
-        >
-          {copyStatus === 'copied' && <Check size={16} aria-hidden="true" />}
-          {copyStatus === 'copied'
-            ? 'Video link copied.'
-            : 'Select the video link above to copy it.'}
+      {copyStatus && copyStatus !== 'copying' && (
+        <output className={styles.previewTip} data-copied={copied}>
+          {copied && <Check size={16} aria-hidden="true" />}
+          {copyStatus === 'opening' &&
+            'Video link copied. Opening Video Clone…'}
+          {copyStatus === 'opened' &&
+            'Video link copied. Paste it into Video Clone.'}
+          {copyStatus === 'blocked' &&
+            'Video link copied. Select Open Video Clone to continue.'}
+          {copyStatus === 'failed' && 'Select the video link above to copy it.'}
         </output>
       )}
       <div className={styles.actions}>
         <button type="button" onClick={onClose}>
           Cancel
         </button>
-        {copyStatus ? (
+        {canOpenManually ? (
           <a
             href={cloneUrl}
             target="_blank"
@@ -377,6 +316,7 @@ function RemixDialog({
             className={styles.create}
             data-learn-action="copy_and_open_video_clone"
             data-learn-item="video-replication"
+            disabled={copyStatus === 'copying' || copyStatus === 'opening'}
             onClick={() => void copyVideoLink()}
           >
             Copy link &amp; open Video Clone{' '}

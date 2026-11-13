@@ -72,11 +72,11 @@ const faqs = [
   },
   {
     q: 'What does reported reach mean on an ad card?',
-    a: 'Reported reach is the audience range reported for the original ad, such as 1K–10K. It helps compare how widely ads were seen. Choose your reference based on how well the hook, demonstration and pacing fit your product.',
+    a: 'Reported reach is the audience range reported for the original ad, such as 1K–10K. Some cards show total video views, which can include repeat views. Choose your reference based on how well the hook, demonstration and pacing fit your product.',
   },
   {
     q: 'How do I preview or download an ad?',
-    a: 'On desktop, hover over a video to preview it without sound. Select the play button for playback controls, including on touch devices. Use the download icon below the card to save the reference video.',
+    a: 'Hover over a video to preview it without sound. On touch devices or when using a keyboard, select the preview button to start or stop playback. Use the download icon below the card to save the reference video.',
   },
 ];
 
