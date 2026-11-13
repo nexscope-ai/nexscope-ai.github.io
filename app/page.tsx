@@ -338,7 +338,7 @@ export default function Home() {
               Explore Data APIs <ArrowRight size={16} aria-hidden="true" />
             </a>
             <a
-              className={styles.primary}
+              className={styles.secondaryCta}
               href={mcpSetupUrl}
               target="_blank"
               rel="noopener"
@@ -349,13 +349,17 @@ export default function Home() {
             </a>
             <a
               className={styles.secondaryCta}
-              href={videoLandingUrl('image-to-video')}
+              href="https://www.nexscope.ai/tools/ai-video-generator?co-from=learn#generator"
+              data-track
               target="_blank"
               rel="noopener"
-              data-track-tool="image-to-video"
+              data-track-tool="ai-video-generator"
               data-cta-placement="home-hero-video"
             >
-              Try Image to Video <ArrowUpRight size={15} aria-hidden="true" />
+              Create a video <ArrowUpRight size={15} aria-hidden="true" />
+            </a>
+            <a className={styles.secondaryCta} href="https://www.nexscope.ai/tools/ai-image-generator?co-from=learn#generator" data-track data-track-tool="ai-image-generator" data-cta-placement="home-hero-image">
+              Create an image <ArrowUpRight size={15} aria-hidden="true" />
             </a>
           </nav>
           <p className={styles.priceTerms}>

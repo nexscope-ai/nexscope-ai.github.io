@@ -19,6 +19,7 @@ type SiteInfoPageProps = {
   supportingLinks: readonly SupportingLink[];
   lastReviewed: string;
   children: ReactNode;
+  heroActions?: ReactNode;
 };
 
 export default function SiteInfoPage({
@@ -30,6 +31,7 @@ export default function SiteInfoPage({
   supportingLinks,
   lastReviewed,
   children,
+  heroActions,
 }: SiteInfoPageProps) {
   return (
     <div className={styles.page}>
@@ -43,6 +45,7 @@ export default function SiteInfoPage({
             <p className={styles.eyebrow}>{eyebrow}</p>
             <h1>{title}</h1>
             <p className={styles.lead}>{lead}</p>
+            {heroActions && <nav aria-label="Get started" className={styles.heroActions}>{heroActions}</nav>}
           </div>
         </header>
 

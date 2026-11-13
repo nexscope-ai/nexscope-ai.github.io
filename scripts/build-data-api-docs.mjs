@@ -64,6 +64,12 @@ export async function buildDataApiDocs() {
     join(legacy, 'index.html'),
     '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=/data/"><link rel="canonical" href="https://learn.nexscope.ai/data/"><title>Data API categories | Nexscope</title></head><body><a href="/data/">Explore Data API categories</a><script>location.replace("/data/"+location.search+location.hash)</script></body></html>',
   );
+  const docsAlias = join(root, 'dist/client/api-docs');
+  await mkdir(docsAlias, { recursive: true });
+  await writeFile(
+    join(docsAlias, 'index.html'),
+    '<!doctype html><html lang="en" data-legacy-redirect><head><meta charset="utf-8"><meta name="robots" content="noindex,follow"><meta http-equiv="refresh" content="0;url=https://www.nexscope.ai/api-docs?co-from=learn"><title>Nexscope API Docs</title></head><body><a href="https://www.nexscope.ai/api-docs?co-from=learn">Open the official Nexscope API Docs</a><script>const target=new URL("https://www.nexscope.ai/api-docs");target.search=location.search;target.searchParams.set("co-from","learn");target.hash=location.hash;location.replace(target.href)</script></body></html>',
+  );
   console.log(`Generated ${paths.length} root Data API pages.`);
   return paths;
 }

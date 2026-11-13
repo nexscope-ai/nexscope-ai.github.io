@@ -111,6 +111,13 @@ export default function SocialPage() {
           <p className={styles.lead}>
             Find APIs for social profiles, posts, comments, ads and transcripts.
           </p>
+          {catalog.entries.some((entry) => entry.slug === 'social-youtube-transcript') && (
+            <div className={styles.heroActions}>
+              <a className={styles.primary} href="https://www.nexscope.ai/api-docs/social-youtube-transcript?view=playground&co-from=learn" data-track-tool="social-youtube-transcript" data-cta-placement="social-hero-transcript">
+                Try the YouTube Transcript API <ArrowRight size={16} aria-hidden="true" />
+              </a>
+            </div>
+          )}
         </section>
         <SocialApiDirectory />
         <section
@@ -171,7 +178,7 @@ export default function SocialPage() {
           </section>
           <p className={styles.caption}>
             Source:{' '}
-            <a href="https://www.nexscope.ai/api-docs?tab=data&co-from=learn">
+            <a href="https://www.nexscope.ai/api-docs?tab=social&co-from=learn">
               Nexscope official API catalog
             </a>
             . The full directory below also includes content, music, community

@@ -120,10 +120,10 @@ export default function VideoDirectoryPage() {
             </p>
             <div className={styles.heroActions}>
               <a
-                href={videoLandingUrl('image-to-video')}
+                href="https://www.nexscope.ai/tools/ai-video-generator?co-from=learn#generator"
                 className={styles.primary}
                 data-track
-                data-track-tool="image-to-video"
+                data-track-tool="ai-video-generator"
                 data-cta-placement="video-hero"
               >
                 Animate a product photo <ArrowUpRight size={17} />

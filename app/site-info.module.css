@@ -23,6 +23,25 @@
   width: min(1120px, calc(100% - 64px));
   margin-inline: auto;
 }
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.heroActions a {
+  padding: 0.55rem 0.85rem;
+  border: 1px solid #d9cfee;
+  border-radius: 0.6rem;
+  color: #5630a6;
+  font-weight: 650;
+}
+
+.heroActions a:hover {
+  background: #f1eafd;
+}
+
 .hero {
   padding: 92px 0 78px;
   border-bottom: 1px solid #211f261a;

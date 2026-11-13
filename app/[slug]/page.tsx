@@ -171,6 +171,11 @@ export default async function GuidePage({ params }: GuidePageProps) {
               </div>
               <h1>{guide.title}</h1>
               <p className="detail-summary">{guide.summary}</p>
+              {slug === 'ecommerce-product-demand-validation' && (
+                <p><a className="button-primary" href="/tools/amazon-niche-opportunity-evaluator/" data-cta-placement="demand-validation-hero">
+                  Evaluate an Amazon niche <ArrowUpRight size={16} aria-hidden="true" />
+                </a></p>
+              )}
               <p>
                 By the <a href="/ecommerce-ai-tools/about/">Nexscope team</a> ·
                 Editorial review {guide.lastReviewed}.{' '}

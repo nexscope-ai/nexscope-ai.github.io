@@ -113,6 +113,13 @@ export default function AboutPage() {
         eyebrow="ABOUT NEXSCOPE"
         title="About Nexscope"
         lead="Nexscope helps ecommerce teams use marketplace data to find opportunities, then turn those insights into clearer listings, product images and videos. Sellers can work in browser tools, while developers can connect documented REST APIs and MCP tools."
+        heroActions={
+          <>
+            <a href="/data/" data-cta-placement="about-hero-data">Find an ecommerce API</a>
+            <a href="https://www.nexscope.ai/tools/ai-image-generator?co-from=learn#generator" data-cta-placement="about-hero-image">Create a product image</a>
+            <a href="https://www.nexscope.ai/tools/ai-video-generator?co-from=learn#generator" data-cta-placement="about-hero-video">Create a product video</a>
+          </>
+        }
         supportingTitle="Verify current Nexscope information"
         supportingLinks={supportingLinks}
         lastReviewed="October 23, 2026"
