@@ -1,19 +1,22 @@
 'use client';
 
 /* oxlint-disable next/no-img-element */
-import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowUpRight,
   Check,
   Download,
   Eye,
+  LoaderCircle,
+  Pause,
   Play,
   Search,
   Sparkles,
+  Volume2,
+  VolumeX,
   X,
 } from 'lucide-react';
 import styles from '@/app/ad-library/ad-library.module.css';
-import gradient from '@/app/gradient-title.module.css';
 
 const pageSize = 24;
 const markets: Record<string, string> = {
@@ -34,6 +37,134 @@ type Ad = {
 };
 
 type Catalog = { ads: Ad[] };
+
+function AdPlayer({ ad, onClose }: { ad: Ad; onClose: () => void }) {
+  const video = useRef<HTMLVideoElement>(null);
+  const [muted, setMuted] = useState(true);
+  const [paused, setPaused] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [failed, setFailed] = useState(false);
+  const [duration, setDuration] = useState(0);
+  const [position, setPosition] = useState(0);
+  const togglePlayback = () => {
+    const player = video.current;
+    if (!player) return;
+    if (!player.paused) {
+      player.pause();
+      return;
+    }
+    void player.play().catch(() => {
+      setLoading(false);
+      setPaused(true);
+    });
+  };
+
+  return (
+    <>
+      {/* The source ads do not provide separate caption files. */}
+      {/* oxlint-disable-next-line jsx-a11y/media-has-caption */}
+      <video
+        ref={video}
+        className={styles.player}
+        src={ad.video}
+        poster={ad.cover}
+        muted={muted}
+        autoPlay
+        playsInline
+        onPlaying={() => {
+          setLoading(false);
+          setPaused(false);
+        }}
+        onWaiting={() => setLoading(true)}
+        onPause={() => {
+          setLoading(false);
+          setPaused(true);
+        }}
+        onEnded={onClose}
+        onLoadedMetadata={(event) => {
+          const seconds = event.currentTarget.duration;
+          setDuration(Number.isFinite(seconds) ? seconds : 0);
+        }}
+        onTimeUpdate={(event) => setPosition(event.currentTarget.currentTime)}
+        onError={() => setFailed(true)}
+      />
+      {failed ? (
+        <output className={styles.playerStatus}>
+          Video preview unavailable.
+        </output>
+      ) : (
+        <>
+          <button
+            type="button"
+            className={styles.playbackSurface}
+            aria-label={paused ? 'Resume video' : 'Pause video'}
+            onClick={togglePlayback}
+          >
+            {loading ? (
+              <LoaderCircle
+                className={styles.spinner}
+                size={30}
+                aria-hidden="true"
+              />
+            ) : (
+              paused && (
+                <Play size={30} fill="currentColor" aria-hidden="true" />
+              )
+            )}
+          </button>
+          <div className={styles.playerControls}>
+            <button
+              type="button"
+              aria-label={paused ? 'Resume playback' : 'Pause playback'}
+              onClick={togglePlayback}
+            >
+              {paused ? (
+                <Play size={17} aria-hidden="true" />
+              ) : (
+                <Pause size={17} aria-hidden="true" />
+              )}
+            </button>
+            <button
+              type="button"
+              aria-label={muted ? 'Unmute video' : 'Mute video'}
+              onClick={() => setMuted(!muted)}
+            >
+              {muted ? (
+                <VolumeX size={17} aria-hidden="true" />
+              ) : (
+                <Volume2 size={17} aria-hidden="true" />
+              )}
+            </button>
+            <input
+              type="range"
+              aria-label="Video position"
+              min={0}
+              max={duration || 1}
+              step={0.1}
+              value={position}
+              disabled={!duration}
+              onChange={(event) => {
+                if (!video.current) return;
+                const seconds = event.currentTarget.valueAsNumber;
+                video.current.currentTime = seconds;
+                setPosition(seconds);
+              }}
+            />
+          </div>
+        </>
+      )}
+      <button
+        type="button"
+        className={styles.closePlayer}
+        aria-label="Close video"
+        onClick={onClose}
+      >
+        <X size={18} aria-hidden="true" />
+      </button>
+    </>
+  );
+}
+
 const AdCard = memo(function AdCard({
   ad,
   playing,
@@ -47,10 +178,11 @@ const AdCard = memo(function AdCard({
   onPlay: (id: string) => void;
   onRemix: (ad: Ad) => void;
 }) {
-  const [hostedFailed, setHostedFailed] = useState(false);
   const [previewing, setPreviewing] = useState(false);
   const [previewReady, setPreviewReady] = useState(false);
-  const previewTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const previewTimer = useRef<ReturnType<typeof setTimeout> | undefined>(
+    undefined,
+  );
   useEffect(() => () => clearTimeout(previewTimer.current), []);
   const stopPreview = () => {
     clearTimeout(previewTimer.current);
@@ -85,47 +217,25 @@ const AdCard = memo(function AdCard({
             }}
           />
         )}
-        {canPreview && previewing && (
-          // Muted decorative preview. The playback button opens the full player.
-          // oxlint-disable-next-line jsx-a11y/media-has-caption
-          <video
-            className={`${styles.player} ${styles.hoverPreview}`}
-            src={ad.video}
-            data-ready={previewReady}
-            aria-hidden="true"
-            muted
-            autoPlay
-            loop
-            playsInline
-            onPlaying={() => setPreviewReady(true)}
-            onError={stopPreview}
-          />
-        )}
+        {canPreview &&
+          previewing && (
+            // Muted decorative preview. The playback button opens the full player.
+            // oxlint-disable-next-line jsx-a11y/media-has-caption
+            <video
+              className={`${styles.player} ${styles.hoverPreview}`}
+              src={ad.video}
+              data-ready={previewReady}
+              aria-hidden="true"
+              muted
+              autoPlay
+              loop
+              playsInline
+              onPlaying={() => setPreviewReady(true)}
+              onError={stopPreview}
+            />
+          )}
         {playing ? (
-          <>
-            {!hostedFailed ? (
-              // The source ads do not provide separate caption files.
-              // oxlint-disable-next-line jsx-a11y/media-has-caption
-              <video
-                className={styles.player}
-                src={ad.video}
-                controls
-                autoPlay
-                playsInline
-                onError={() => setHostedFailed(true)}
-              />
-            ) : (
-              <output className={styles.playerStatus}>Video preview unavailable.</output>
-            )}
-            <button
-              type="button"
-              className={styles.closePlayer}
-              aria-label="Close video"
-              onClick={() => onPlay(ad.id)}
-            >
-              <X size={19} aria-hidden="true" />
-            </button>
-          </>
+          <AdPlayer ad={ad} onClose={() => onPlay(ad.id)} />
         ) : (
           <button
             type="button"
@@ -136,18 +246,18 @@ const AdCard = memo(function AdCard({
               onPlay(ad.id);
             }}
           >
-            <Play size={22} fill="currentColor" aria-hidden="true" />
+            <Play size={28} fill="currentColor" aria-hidden="true" />
           </button>
         )}
-      </div>
-      <div className={styles.cardDetails}>
-        <span className={styles.cardTopic}>
-          {markets[ad.market]} · {ad.topic}
-        </span>
-        <h2>{ad.product}</h2>
-        {ad.advertiser && (
-          <span className={styles.advertiser}>{ad.advertiser}</span>
-        )}
+        <div className={styles.cardDetails} data-playing={playing}>
+          <span className={styles.cardTopic}>
+            {markets[ad.market]} · {ad.topic}
+          </span>
+          <h2>{ad.product}</h2>
+          {ad.advertiser && (
+            <span className={styles.advertiser}>{ad.advertiser}</span>
+          )}
+        </div>
       </div>
       <button
         type="button"
@@ -236,7 +346,10 @@ function RemixDialog({
         />
       )}
       {copyStatus && (
-        <output className={styles.previewTip} data-copied={copyStatus === 'copied'}>
+        <output
+          className={styles.previewTip}
+          data-copied={copyStatus === 'copied'}
+        >
           {copyStatus === 'copied' && <Check size={16} aria-hidden="true" />}
           {copyStatus === 'copied'
             ? 'Video link copied.'
@@ -266,7 +379,8 @@ function RemixDialog({
             data-learn-item="video-replication"
             onClick={() => void copyVideoLink()}
           >
-            Copy link &amp; open Video Clone <ArrowUpRight size={16} aria-hidden="true" />
+            Copy link &amp; open Video Clone{' '}
+            <ArrowUpRight size={16} aria-hidden="true" />
           </button>
         )}
       </div>
@@ -289,9 +403,8 @@ export function AdLibrary({
   const [playingId, setPlayingId] = useState<string | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const loadMore = useRef<HTMLButtonElement>(null);
-  const masonry = useRef<HTMLDivElement>(null);
   const onPlay = useCallback((id: string) => {
-    setPlayingId((current) => current === id ? null : id);
+    setPlayingId((current) => (current === id ? null : id));
   }, []);
   const onRemix = useCallback((ad: Ad) => {
     setPlayingId(null);
@@ -299,46 +412,23 @@ export function AdLibrary({
   }, []);
   const search = query.trim().toLowerCase();
   const results = useMemo(
-    () => !search ? catalog.ads : catalog.ads.filter(
-      (ad) =>
-        [ad.advertiser, ad.product, ad.topic, markets[ad.market], ad.id].some(
-          (value) => value?.toLowerCase().includes(search),
-        ),
-    ),
+    () =>
+      !search
+        ? catalog.ads
+        : catalog.ads.filter((ad) =>
+            [
+              ad.advertiser,
+              ad.product,
+              ad.topic,
+              markets[ad.market],
+              ad.id,
+            ].some((value) => value?.toLowerCase().includes(search)),
+          ),
     [catalog.ads, search],
   );
   const visible = results.slice(0, limit);
   const visibleCount = visible.length;
   const hasMore = visible.length < results.length;
-
-  useLayoutEffect(() => {
-    const grid = masonry.current;
-    if (!grid || !('ResizeObserver' in window)) return;
-
-    const cards = Array.from(grid.children) as HTMLElement[];
-    const pack = (changedCards: readonly HTMLElement[]) => {
-      if (changedCards.length === 0) return;
-      const style = getComputedStyle(grid);
-      const unit = Number.parseFloat(style.getPropertyValue('--masonry-unit'));
-      const gap = Number.parseFloat(style.columnGap);
-      // Measure all cards before writing spans so a resize needs only one layout pass.
-      const spans = changedCards.map((card) =>
-        Math.ceil((card.getBoundingClientRect().height + gap) / unit),
-      );
-      changedCards.forEach((card, index) => {
-        const span = String(spans[index]);
-        if (card.style.getPropertyValue('--masonry-span') !== span)
-          card.style.setProperty('--masonry-span', span);
-      });
-      grid.dataset.packed = 'true';
-    };
-    pack(cards);
-    const observer = new ResizeObserver((entries) => {
-      pack(entries.map(({ target }) => target as HTMLElement));
-    });
-    cards.forEach((card) => observer.observe(card));
-    return () => observer.disconnect();
-  }, [visibleCount, query]);
 
   useEffect(() => {
     if (selected && dialog.current && !dialog.current.open)
@@ -352,9 +442,10 @@ export function AdLibrary({
       ([entry]) => {
         if (entry?.isIntersecting) {
           // A jump to the guide can leave the load button just above the viewport.
-          const guide = location.hash === '#ad-library-guide'
-            ? document.getElementById('ad-library-guide')
-            : null;
+          const guide =
+            location.hash === '#ad-library-guide'
+              ? document.getElementById('ad-library-guide')
+              : null;
           if (guide && guide.getBoundingClientRect().top < window.innerHeight)
             return;
           observer.disconnect();
@@ -372,10 +463,11 @@ export function AdLibrary({
       <section className={styles.hero} aria-labelledby="ad-library-title">
         <div className={styles.heroIntro}>
           <div>
-            <h1 id="ad-library-title" className={gradient.text}>
-              Ad Library
-            </h1>
-            <p>Browse TikTok product ads and pick a video to use as a reference for your own.</p>
+            <h1 id="ad-library-title">Ad Library</h1>
+            <p>
+              Explore real TikTok ads. Turn a creative you like into a reference
+              for your next product video.
+            </p>
           </div>
           <a
             className={styles.pricing}
@@ -383,7 +475,13 @@ export function AdLibrary({
             data-track-tool="pricing"
             data-cta-placement="ad-library-hero"
           >
-            <img src="/ad-library-pricing.webp" width={80} height={80} alt="" decoding="async" />
+            <img
+              src="/ad-library-pricing.webp"
+              width={80}
+              height={80}
+              alt=""
+              decoding="async"
+            />
             <span className={styles.pricingCopy}>
               {showAnnualOffer && <strong>50% off your first year</strong>}
               <span className={styles.pricingAction}>
@@ -412,7 +510,14 @@ export function AdLibrary({
             href="#ad-library-guide"
             onClick={(event) => {
               const guide = document.getElementById('ad-library-guide');
-              if (!guide || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+              if (
+                !guide ||
+                event.metaKey ||
+                event.ctrlKey ||
+                event.shiftKey ||
+                event.altKey
+              )
+                return;
               event.preventDefault();
               if (location.hash !== event.currentTarget.hash)
                 history.pushState(null, '', event.currentTarget.hash);
@@ -428,7 +533,7 @@ export function AdLibrary({
         <output className={styles.empty}>No ads match your search.</output>
       )}
       {visibleCount > 0 && (
-        <div className={styles.masonry} ref={masonry}>
+        <div className={styles.adGrid}>
           {visible.map((ad) => (
             <AdCard
               key={ad.id}

@@ -1,6 +1,5 @@
 import { videoLandingUrl } from '@/lib/video-directory';
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import MarketingHeader from '@/components/marketing-header';
 import LearnFooter from '@/components/learn-footer';
 import { AdLibrary } from '@/components/ad-library';
@@ -124,9 +123,11 @@ export default function AdLibraryPage() {
                 scale, look for a clear close-up of the display and a quick demo of
                 someone weighing an ingredient.
               </p>
-              <Link className={videoStyles.guide} href="/video/">
+              {/* Use document navigation for this link in the static export. */}
+              {/* oxlint-disable-next-line next/no-html-link-for-pages */}
+              <a className={videoStyles.guide} href="/video/">
                 Compare Nexscope video workflows →
-              </Link>
+              </a>
             </div>
             <ol>
               <li>
