@@ -109,175 +109,128 @@ export default function GrowthReportExample() {
       id="report-example"
       aria-labelledby="example-title"
     >
-      <p className={styles.eyebrow}>
-        SEE THE FINDING, THE EVIDENCE AND THE NEXT ACTION
-      </p>
       <h2 id="example-title" data-learn-section="growth-report-example">
-        A product report, unpacked.
+        Inside a real report
       </h2>
-      <div
-        className={styles.actionPreview}
-        aria-label="One finding turned into a next step"
-      >
+      <p className={styles.intro}>PCIQUTE paint roller set · Amazon UK · 5 November 2026</p>
+      <div className={styles.actionPreview}>
         <div>
-          <span>01 · Product fact</span>
-          <h3>What does 60–160 cm measure?</h3>
-          <p>
-            The saved listing describes working length with the roller attached.
-          </p>
+          <h3>What the report found</h3>
+          <p>The listing gave a 60–160 cm working length with the roller attached.</p>
         </div>
         <div>
-          <span>02 · Recommended change</span>
-          <h3>Show the measurement.</h3>
-          <p>
-            Label both endpoints in an image and use the same range in the
-            title, bullets and FAQ.
-          </p>
-        </div>
-        <div>
-          <span>03 · Your next action</span>
-          <h3>Verify, then update.</h3>
-          <p>
-            Measure the assembled kit before applying the copy. The report
-            provides the plan; your team makes the changes.
-          </p>
+          <h3>What to change first</h3>
+          <p>Show where that measurement starts and ends, then use the same range throughout the listing.</p>
         </div>
       </div>
-      <p className={styles.sampleNote}>
-        This is a recommendation from the public example, not a measured
-        improvement in sales or AI visibility.
-      </p>
-      <a
-        className={styles.sourceLink}
-        href={reportRequestHref('growth-example-next-action')}
-        target="_blank"
-        rel="noopener"
-        data-track="start_using"
-        data-cta-placement="growth-example-next-action"
-      >
-        Choose a focus for my product{' '}
-        <ArrowUpRight size={16} aria-hidden="true" />
-      </a>
-      <div className={styles.sampleIntro}>
-        <img
-          src="/assets/growth-report/pciqute-product-reference.jpg"
-          alt="PCIQUTE 17-piece paint roller set — product reference from the public example"
-          width="320"
-          height="320"
-          loading="lazy"
-        />
-        <div>
-          <h3>PCIQUTE 17-piece paint roller set</h3>
-          <p>
-            Amazon UK · ASIN B0HDC7BHX5 · Saved report dated 5 November 2026
-          </p>
-          <p>
-            The useful starting point was not “add more keywords.” It was to
-            explain the assembled working length, strengthen product evidence
-            and investigate a connection-related buyer account before making
-            durability claims.
-          </p>
-          <a
-            className={styles.sourceLink}
-            href={`${reportExampleUrl}?co-from=learn`}
-            target="_blank"
-            rel="noopener"
-            data-track
-            data-cta-placement="growth-example-full"
-          >
-            Open the complete public example{' '}
-            <ArrowUpRight size={16} aria-hidden="true" />
-          </a>
-        </div>
+      <div className={styles.exampleActions}>
+        <a
+          className={styles.sourceLink}
+          href={`${reportExampleUrl}?co-from=learn`}
+          target="_blank"
+          rel="noopener"
+          data-track
+          data-cta-placement="growth-example-full"
+        >
+          Open the full report <ArrowUpRight size={16} aria-hidden="true" />
+        </a>
+        <a
+          className={styles.sourceLink}
+          href={reportRequestHref('growth-example-next-action')}
+          target="_blank"
+          rel="noopener"
+          data-track="start_using"
+          data-cta-placement="growth-example-next-action"
+        >
+          Build one for my product <ArrowUpRight size={16} aria-hidden="true" />
+        </a>
       </div>
-      <p className={styles.sampleNote}>
-        This is a condensed reference example published by Nexscope, not a
-        customer success story or a fresh live audit. Its counts, findings and
-        selected services describe this sample only; they are not a fixed
-        package or a promise of better rankings or sales.
-      </p>
-      <div className={styles.sampleSections}>
-        {sections.map((section, index) => (
-          <details
-            key={section.anchor}
-            open={index === 0}
-            data-learn-detail={section.anchor}
-          >
-            <summary>
-              <span>0{index + 1}</span>
-              {section.title}
-            </summary>
-            <div className={styles.sampleDetails}>
-              <dl>
-                <div>
-                  <dt>Observed evidence</dt>
-                  <dd>{section.evidence}</dd>
-                </div>
-                <div>
-                  <dt>Recommended action</dt>
-                  <dd>{section.action}</dd>
-                </div>
-                <div>
-                  <dt>What to verify</dt>
-                  <dd>{section.check}</dd>
-                </div>
-              </dl>
+      <details className={styles.moreExample} data-learn-detail="growth-example-details">
+        <summary>Explore all findings and creative previews</summary>
+        <p className={styles.sampleNote}>
+          This is a saved reference report. The findings are specific to the example product.
+        </p>
+        <div className={styles.sampleSections}>
+          {sections.map((section) => (
+            <details
+              key={section.anchor}
+              data-learn-detail={section.anchor}
+            >
+              <summary>
+                {section.title}
+              </summary>
+              <div className={styles.sampleDetails}>
+                <dl>
+                  <div>
+                    <dt>Observed evidence</dt>
+                    <dd>{section.evidence}</dd>
+                  </div>
+                  <div>
+                    <dt>Recommended action</dt>
+                    <dd>{section.action}</dd>
+                  </div>
+                  <div>
+                    <dt>What to verify</dt>
+                    <dd>{section.check}</dd>
+                  </div>
+                </dl>
+                <a
+                  className={styles.sourceLink}
+                  href={`${reportExampleUrl}?co-from=learn#${section.anchor}`}
+                  target="_blank"
+                  rel="noopener"
+                  data-track
+                  data-cta-placement={`growth-example-${section.anchor}`}
+                >
+                  Read this section and its sources{' '}
+                  <ArrowUpRight size={15} aria-hidden="true" />
+                </a>
+              </div>
+            </details>
+          ))}
+        </div>
+        <div className={styles.previewGrid}>
+          {previews.map((preview) => (
+            <figure key={preview.file}>
               <a
-                className={styles.sourceLink}
-                href={`${reportExampleUrl}?co-from=learn#${section.anchor}`}
+                href={`${reportExampleUrl}?co-from=learn#module-ad_images`}
                 target="_blank"
                 rel="noopener"
-                data-track
-                data-cta-placement={`growth-example-${section.anchor}`}
+                aria-label={`View ${preview.title} in the full report`}
+                data-cta-placement="growth-example-image"
               >
-                Read this section and its sources{' '}
-                <ArrowUpRight size={15} aria-hidden="true" />
+                <img
+                  src={`/assets/growth-report/${preview.file}`}
+                  alt={preview.alt}
+                  width={preview.width}
+                  height={preview.height}
+                  loading="lazy"
+                />
               </a>
-            </div>
-          </details>
-        ))}
-      </div>
-      <div className={styles.previewGrid}>
-        {previews.map((preview) => (
-          <figure key={preview.file}>
-            <a
-              href={`${reportExampleUrl}?co-from=learn#module-ad_images`}
-              target="_blank"
-              rel="noopener"
-              aria-label={`View ${preview.title} in the full report`}
-              data-cta-placement="growth-example-image"
-            >
-              <img
-                src={`/assets/growth-report/${preview.file}`}
-                alt={preview.alt}
-                width={preview.width}
-                height={preview.height}
-                loading="lazy"
-              />
-            </a>
-            <figcaption>
-              {preview.title}
-              <span>Advertising concept preview</span>
-            </figcaption>
-          </figure>
-        ))}
-      </div>
-      <p className={styles.sampleNote}>
-        The images above are the small previews embedded in the public report.
-        Original delivery dimensions are not verified here. Check product
-        accuracy and placement requirements before using generated creative.
-      </p>
-      <a
-        className={styles.sourceLink}
-        href={`${reportExampleUrl}?co-from=learn#actions`}
-        target="_blank"
-        rel="noopener"
-        data-track
-        data-cta-placement="growth-example-actions"
-      >
-        See the prioritised action plan{' '}
-        <ArrowUpRight size={16} aria-hidden="true" />
-      </a>
+              <figcaption>
+                {preview.title}
+                <span>Advertising concept preview</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <p className={styles.sampleNote}>
+          The images above are the small previews embedded in the public report.
+          Original delivery dimensions are not verified here. Check product
+          accuracy and placement requirements before using generated creative.
+        </p>
+        <a
+          className={styles.sourceLink}
+          href={`${reportExampleUrl}?co-from=learn#actions`}
+          target="_blank"
+          rel="noopener"
+          data-track
+          data-cta-placement="growth-example-actions"
+        >
+          See the prioritised action plan{' '}
+          <ArrowUpRight size={16} aria-hidden="true" />
+        </a>
+      </details>
     </section>
   );
 }

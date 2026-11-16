@@ -1,4 +1,4 @@
-/* oxlint-disable next/no-html-link-for-pages */
+/* oxlint-disable next/no-html-link-for-pages, next/no-img-element */
 import type { Metadata } from 'next';
 import {
   ArrowRight,
@@ -30,41 +30,11 @@ const title = 'Ecommerce Product Page Audit & Growth Report | Nexscope';
 const description =
   'Get a human-reviewed audit for an Amazon or store product page. SEO and GEO analyses are included free when you select at least one paid service.';
 const services = [
-  {
-    icon: MessagesSquare,
-    name: 'AI mentions & recommendations',
-    question: 'Does your product appear in the answers you test?',
-    text: 'Review sampled buying questions and answers. Distinguish brand mentions, product identification and explicit recommendations, with available evidence and sampling scope.',
-    deliverable: 'Questions, observed answers and supporting evidence',
-  },
-  {
-    icon: ScanSearch,
-    name: 'Competitor analysis',
-    question: 'What alternatives might a buyer consider?',
-    text: 'Review relevant alternatives, source links and observable differences. Use the findings to clarify how your product fits a particular buyer or situation.',
-    deliverable: 'Relevant alternatives and observable differences',
-  },
-  {
-    icon: Search,
-    name: 'Keyword optimization',
-    question: 'How might buyers look for your product?',
-    text: 'Get product, use-case and purchase-intent keyword directions, with suggested placement and reasons. Search volume is not invented when valid sources are unavailable.',
-    deliverable: 'Keyword directions, placement and rationale',
-  },
-  {
-    icon: FileText,
-    name: 'Product copy rewriting',
-    question: 'How could your page explain the product more clearly?',
-    text: 'Get suggested titles, selling points, descriptions and FAQs based on supported product facts. Apply the recommendations in your own listing or store.',
-    deliverable: 'Suggested product copy grounded in your facts',
-  },
-  {
-    icon: ImageIcon,
-    name: 'Product advertising images',
-    question: 'What creative assets do you need next?',
-    text: 'Choose 1–20 images, an overall creative direction and requirements for each image. Use Auto sizing or enter custom dimensions. Images are reviewed before delivery.',
-    deliverable: 'Previewable, downloadable PNG images · priced per image',
-  },
+  { icon: MessagesSquare, name: 'AI mentions', deliverable: 'See how AI answers describe your product.' },
+  { icon: ScanSearch, name: 'Competitors', deliverable: 'Compare your listing with relevant alternatives.' },
+  { icon: Search, name: 'Keywords', deliverable: 'Find useful phrases and where to place them.' },
+  { icon: FileText, name: 'Listing copy', deliverable: 'Get suggested titles, bullets and FAQs.' },
+  { icon: ImageIcon, name: 'Ad images', deliverable: 'Choose 1–20 downloadable PNGs, priced per image.' },
 ];
 const faqs = [
   {
@@ -202,137 +172,131 @@ export default function ProductGrowthReport() {
               <span className={gradientTitle.text}>Product Growth</span> Report
             </h1>
             <p className={styles.lead}>
-              Share one Amazon or store product link. Get a human-reviewed report
-              with prioritized fixes for search and AI visibility.
+              Find what to fix first on one Amazon or store product page.
+              Get prioritized recommendations reviewed by our team.
             </p>
-            <a
-              className={styles.primary}
-              href={reportRequestHref('growth-hero')}
-              data-track
-              data-track-tool="product-growth-report"
-              data-cta-placement="growth-hero"
-              target="_blank"
-              rel="noopener"
-            >
-              Build your report &amp; see the quote{' '}
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </a>
-            <a className={styles.textLink} href="#report-example" data-cta-placement="growth-hero">
-              See a real report example{' '}
-              <ArrowRight size={16} aria-hidden="true" />
-            </a>
-            <p className={styles.includedAnalyses}>
-              See your credit total before signing in. <strong>SEO and GEO analyses</strong>
-              {' '}are included when you choose a paid service.
-            </p>
-          </div>
-          <aside
-            className={styles.reportOutline}
-            aria-label="Finding from the PCIQUTE public report example"
-          >
-            <div className={styles.outlineHeader}>
-              <ClipboardCheck size={26} aria-hidden="true" />
-              <span>
-                FROM THE PUBLIC REPORT
-                <br />
-                <strong>PCIQUTE PAINT ROLLER SET · AMAZON UK</strong>
-              </span>
+            <div className={styles.heroActions}>
+              <a
+                className={styles.primary}
+                href={reportRequestHref('growth-hero')}
+                data-track
+                data-track-tool="product-growth-report"
+                data-cta-placement="growth-hero"
+                target="_blank"
+                rel="noopener"
+              >
+                Build a report &amp; see the quote
+                <ArrowUpRight size={18} aria-hidden="true" />
+              </a>
+              <a className={styles.textLink} href="#report-example" data-cta-placement="growth-hero">
+                See a real example <ArrowRight size={16} aria-hidden="true" />
+              </a>
             </div>
-            <dl className={styles.outlineEvidence}>
-              <dt>What the report found</dt>
-              <dd>
-                The saved listing gives a working length of about 60–160 cm
-                with the roller attached.
-              </dd>
-              <dt>What to fix first</dt>
-              <dd>
-                Show where that measurement starts and ends. Use the same
-                range in the title, bullets, FAQ and a measured setup image.
-              </dd>
-            </dl>
-            <a
-              className={styles.outlineLink}
-              href={`${reportExampleUrl}?co-from=learn#module-seo`}
-              data-track
-              data-cta-placement="growth-hero-evidence"
-              target="_blank"
-              rel="noopener"
-            >
-              Read the finding in the report{' '}
-              <ArrowUpRight size={14} aria-hidden="true" />
-            </a>
+            <p className={styles.includedAnalyses}>See your credit total before signing in.</p>
+            <ul className={styles.heroFacts}>
+              <li>One product · One market</li>
+              <li>Expected within 24 hours</li>
+            </ul>
+          </div>
+          <aside className={styles.reportOutline} aria-label="Finding from the public report example">
+            <div className={styles.outlineHeader}>
+              <ClipboardCheck size={18} aria-hidden="true" />
+              <span>From a real report · Amazon UK</span>
+            </div>
+            <div className={styles.outlineBody}>
+              <img
+                className={styles.outlineImage}
+                src="/assets/growth-report/pciqute-product-reference.jpg"
+                width={320}
+                height={320}
+                alt="PCIQUTE paint roller set from the sample report"
+              />
+              <div>
+                <p className={styles.outlineFinding}>Show how the roller measures 60–160 cm.</p>
+                <p className={styles.outlineAction}>Add both measurement points to a product image, then use the same range in your listing.</p>
+                <a
+                  className={styles.outlineLink}
+                  href={`${reportExampleUrl}?co-from=learn#module-seo`}
+                  data-track
+                  data-cta-placement="growth-hero-evidence"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Read the finding <ArrowUpRight size={15} aria-hidden="true" />
+                </a>
+              </div>
+            </div>
           </aside>
         </section>
-        <div className={styles.facts}>
-          <span>Amazon & public store product pages</span>
-          <span>SEO & GEO included with paid services</span>
-          <span>Expected delivery within 24 hours</span>
-        </div>
         <nav className={styles.sectionNav} aria-label="Product report guide">
-          <a href="#report-example" data-cta-placement="growth-section-nav">Report example</a>
-          <a href="#audience" data-cta-placement="growth-section-nav">Is it for me?</a>
-          <a href="#services" data-cta-placement="growth-section-nav">Choose services</a>
-          <a href="#which-option" data-cta-placement="growth-section-nav">Compare options</a>
+          <a href="#services" data-cta-placement="growth-section-nav">What you get</a>
+          <a href="#report-example" data-cta-placement="growth-section-nav">Example</a>
           <a href="#process" data-cta-placement="growth-section-nav">How it works</a>
-          <a href="#questions" data-cta-placement="growth-section-nav">Questions</a>
+          <a href="#questions" data-cta-placement="growth-section-nav">FAQ</a>
         </nav>
+        <section
+          className={styles.section}
+          id="services"
+          aria-labelledby="services-title"
+        >
+          <h2 id="services-title" data-learn-section="growth-report-services">What you can get</h2>
+          <p className={styles.intro}>Choose the services you need for your product.</p>
+          <div className={styles.services}>
+            {services.map(({ icon: Icon, name, deliverable }) => (
+              <article key={name}>
+                <Icon size={20} aria-hidden="true" />
+                <div>
+                  <h3>{name}</h3>
+                  <p>{deliverable}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+          <p className={styles.included}>
+            <strong>SEO and GEO analyses included</strong> when you select a paid service.
+          </p>
+        </section>
         <GrowthReportExample />
+        <section
+          className={styles.section}
+          id="process"
+          aria-labelledby="process-title"
+        >
+          <h2 id="process-title">How it works</h2>
+          <ol className={styles.steps}>
+            <li>
+              <span>01</span>
+              <h3>Add a product link</h3>
+              <p>
+                Choose a market, report language and services.
+              </p>
+            </li>
+            <li>
+              <span>02</span>
+              <h3>Check the quote</h3>
+              <p>
+                Review the total, then sign in to submit.
+              </p>
+            </li>
+            <li>
+              <span>03</span>
+              <h3>Get your report</h3>
+              <p>
+                Read it online or download it with any images you ordered.
+              </p>
+            </li>
+          </ol>
+        </section>
         <section
           className={styles.section}
           id="audience"
           aria-labelledby="audience-title"
         >
-          <p className={styles.eyebrow}>FOR OPERATORS AND DEVELOPERS</p>
-          <h2 id="audience-title">Less guesswork around one product.</h2>
-          <div className={styles.audiences}>
-            <article>
-              <h3>For product and marketing teams</h3>
-              <p>
-                Turn a page you want to improve into a focused review, copy
-                suggestions or creative assets. Choose a service for your next
-                launch, listing revision or campaign brief.
-              </p>
-            </article>
-            <article>
-              <h3>For developers and teams building commerce tools</h3>
-              <p>
-                Get a reviewed product-level brief to inform content
-                requirements and implementation priorities. You receive a
-                report; this service does not change your application or
-                automate website updates.
-              </p>
-            </article>
-          </div>
-          <div className={styles.fitGrid}>
-            <div>
-              <h3>A useful fit when…</h3>
-              <ul>
-                <li>
-                  You are reviewing a product page before a launch or revision.
-                </li>
-                <li>
-                  You need evidence and priorities for a specific product and
-                  market.
-                </li>
-                <li>
-                  You want selected copy or image assets alongside the analysis.
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3>Choose another approach when…</h3>
-              <ul>
-                <li>
-                  You need ongoing monitoring, live attribution or ad-account
-                  management.
-                </li>
-                <li>
-                  You need someone to implement website changes or guarantee
-                  rankings and sales.
-                </li>
-              </ul>
-            </div>
-          </div>
+          <h2 id="audience-title">Who it’s for</h2>
+          <p className={styles.intro}>
+            For sellers preparing a launch or updating a listing, and teams
+            deciding what to improve on a specific product page.
+          </p>
         </section>
         <section
           className={styles.section}
@@ -403,93 +367,6 @@ export default function ProductGrowthReport() {
               </tbody>
             </table>
           </div>
-        </section>
-        <section
-          className={styles.section}
-          id="services"
-          aria-labelledby="services-title"
-        >
-          <p className={styles.eyebrow}>CHOOSE YOUR SCOPE</p>
-          <h2 id="services-title" data-learn-section="growth-report-services">Buy the help you need.</h2>
-          <p className={styles.intro}>
-            Select at least one service. Add another only when it answers a
-            question or produces something your team needs.
-          </p>
-          <div className={styles.services}>
-            {services.map(
-              ({ icon: Icon, name, question, text, deliverable }) => (
-                <article key={name}>
-                  <Icon size={24} aria-hidden="true" />
-                  <h3>{name}</h3>
-                  <strong>{question}</strong>
-                  <p>{text}</p>
-                  <span>{deliverable}</span>
-                </article>
-              ),
-            )}
-          </div>
-          <div className={styles.included}>
-            <div>
-              <p className={styles.eyebrow}>
-                INCLUDED WITH YOUR SELECTED SERVICES
-              </p>
-              <h3>A clearer foundation for search and AI.</h3>
-            </div>
-            <div>
-              <p>
-                <strong>Search visibility analysis (SEO)</strong>
-                <br />
-                Review accessible page structure, metadata and content gaps.
-              </p>
-              <p>
-                <strong>AI search readiness analysis (GEO)</strong>
-                <br />
-                Identify gaps in product identity, use cases, answers and
-                supporting facts.
-              </p>
-              <small>
-                Included analyses cannot be requested alone. They are not proof
-                of Google indexing or a guarantee of AI recommendations.
-              </small>
-            </div>
-          </div>
-        </section>
-        <section
-          className={styles.section}
-          id="process"
-          aria-labelledby="process-title"
-        >
-          <p className={styles.eyebrow}>
-            A CLEAR START AND A TANGIBLE DELIVERY
-          </p>
-          <h2 id="process-title">From link to reviewed recommendations.</h2>
-          <ol className={styles.steps}>
-            <li>
-              <span>01</span>
-              <h3>Tell us about the product</h3>
-              <p>
-                Provide a public product URL, target market and report language.
-                Add your priorities and choose services or image requirements.
-              </p>
-            </li>
-            <li>
-              <span>02</span>
-              <h3>Confirm your credit quote</h3>
-              <p>
-                Review the current total, sign in and confirm. Credits are
-                deducted on successful submission. Image quantity affects your
-                total.
-              </p>
-            </li>
-            <li>
-              <span>03</span>
-              <h3>Review and use your delivery</h3>
-              <p>
-                Check status without keeping the page open. After human review,
-                read and download your HTML report and purchased PNG images.
-              </p>
-            </li>
-          </ol>
         </section>
         <section className={styles.gallery}>
           <div>
