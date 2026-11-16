@@ -97,8 +97,12 @@ for (let attempt = 0; attempt < 3; attempt++) {
       try {
         collections.social = await fetchCurrentSocialApis();
       } catch (error) {
+        const generatedSocial = join(root, 'lib/social-api-directory.json');
+        const cachedSocial = existsSync(generatedSocial)
+          ? generatedSocial
+          : join(root, 'lib/social-api-directory.fallback.json');
         const previous = JSON.parse(
-          await readFile(join(root, 'lib/social-api-directory.json'), 'utf8'),
+          await readFile(cachedSocial, 'utf8'),
         );
         if (!Array.isArray(previous.entries) || !previous.entries.length) {
           throw error;
