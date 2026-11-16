@@ -2,6 +2,7 @@ import { existsSync } from 'node:fs';
 import { mkdir, writeFile, readFile } from 'node:fs/promises';
 import { resolve, join, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { addTryExamples } from './data-api-try-examples.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 export async function buildDataApiDocs() {
@@ -51,6 +52,32 @@ export async function buildDataApiDocs() {
     throw new Error(
       'Only the Data category square and category pages may be published',
     );
+  // The shared generator also serves the content site. On Learn, send catalog
+  // visitors straight to the main site's tester while preserving the API slug.
+  await Promise.all(paths.map(async (path) => {
+    const file = join(root, 'dist/client', path.slice(1), 'index.html');
+    const html = path === '/data/' ? generatedIndex : await readFile(file, 'utf8');
+    const withTesterLinks = html.replace(
+      /<a\b[^>]*\bdata-api-slug="[a-z0-9-]+"[^>]*>/g,
+      (link) => {
+        const placement = link.includes('data-cta-placement=')
+          ? ''
+          : ' data-cta-placement="data-api-card-tester"';
+        return link.replace(
+          /href="(https:\/\/www\.nexscope\.ai\/api-docs\/[a-z0-9-]+)\?co-from=learn"/,
+          `href="$1?co-from=learn#online-test"${placement}`,
+        );
+      },
+    );
+    await writeFile(
+      file,
+      addTryExamples(
+        withTesterLinks.replaceAll('View API docs <span', 'Try this API <span'),
+        path,
+        snapshot.entries,
+      ),
+    );
+  }));
   // Preserve the previously published directory address as a static alias.
   const legacy = join(root, 'dist/client/api');
   const socialAlias = join(root, 'dist/client/data/social-data');

@@ -10,7 +10,7 @@ import {
   Layers3,
   ArrowRight,
 } from 'lucide-react';
-import { videoDirectory, videoLandingUrl } from '@/lib/video-directory';
+import { videoDirectory, videoWorkflowUrl } from '@/lib/video-directory';
 import examples from '@/lib/video-directory-examples.json';
 import styles from '@/app/video/video.module.css';
 
@@ -83,7 +83,7 @@ export default function VideoWorkflowDirectory() {
               {example && (
                 <a
                   className={styles.workflowPreview}
-                  href={videoLandingUrl(item.id)}
+                  href={videoWorkflowUrl(item.id)}
                   data-track
                   data-track-tool={item.id}
                   data-cta-placement="video-workflow-preview"
@@ -143,7 +143,7 @@ export default function VideoWorkflowDirectory() {
               <div className={styles.cardActions}>
                 <a
                   className={styles.primary}
-                  href={videoLandingUrl(item.id)}
+                  href={videoWorkflowUrl(item.id)}
                   data-track
                   data-track-tool={item.id}
                   data-cta-placement={`video-directory-${index + 1}`}

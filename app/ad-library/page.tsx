@@ -1,4 +1,3 @@
-import { videoLandingUrl } from '@/lib/video-directory';
 import type { Metadata } from 'next';
 import MarketingHeader from '@/components/marketing-header';
 import LearnFooter from '@/components/learn-footer';
@@ -6,6 +5,7 @@ import { AdLibrary } from '@/components/ad-library';
 import catalog from '@/lib/ad-library-catalog.json';
 import pricingSnapshot from '@/lib/pricing-snapshot.json';
 import { NEXSCOPE_ORGANIZATION } from '@/lib/site-metadata';
+import { videoWorkflowUrl } from '@/lib/video-directory';
 import styles from './ad-library.module.css';
 import videoStyles from '@/app/video/video.module.css';
 
@@ -104,7 +104,7 @@ export default function AdLibraryPage() {
         />
         <AdLibrary
           catalog={catalog}
-          cloneUrl={videoLandingUrl('video-replication')}
+          cloneUrl={videoWorkflowUrl('video-replication')}
           showAnnualOffer={showAnnualOffer}
         />
         <section

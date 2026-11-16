@@ -11,7 +11,7 @@ import examples from '@/lib/home-video-examples.json';
 import {
   videoDirectory,
   videoDirectoryFaqs,
-  videoLandingUrl,
+  videoWorkflowUrl,
 } from '@/lib/video-directory';
 import { VIDEO_SOCIAL_IMAGE, NEXSCOPE_ORGANIZATION } from '@/lib/site-metadata';
 import gradientTitle from '@/app/gradient-title.module.css';
@@ -67,7 +67,7 @@ export default function VideoDirectoryPage() {
           position: index + 1,
           name: item.name,
           description: `${item.bestFor} ${item.result}`,
-          url: videoLandingUrl(item.id),
+          url: videoWorkflowUrl(item.id),
         })),
       },
       {
@@ -221,7 +221,7 @@ export default function VideoDirectoryPage() {
                   <tr key={item.id}>
                     <th scope="row">
                       <a
-                        href={videoLandingUrl(item.id)}
+                        href={videoWorkflowUrl(item.id)}
                         data-track
                         data-track-tool={item.id}
                         data-cta-placement="video-comparison"

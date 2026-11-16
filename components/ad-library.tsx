@@ -167,6 +167,7 @@ const AdCard = memo(function AdCard({
         type="button"
         className={styles.remix}
         aria-haspopup="dialog"
+        data-learn-action="open_remix"
         onClick={() => {
           stopPreview();
           onRemix(ad);
@@ -180,6 +181,7 @@ const AdCard = memo(function AdCard({
           href={adDownloadUrl(ad)}
           aria-label={`Download ${ad.product}`}
           title="Download MP4"
+          data-cta-placement="ad-library-card-download"
         >
           <Download size={16} aria-hidden="true" />
         </a>
@@ -222,6 +224,7 @@ function RemixDialog({
   const [copyStatus, setCopyStatus] = useState<
     'copying' | 'opening' | 'opened' | 'blocked' | 'failed'
   >();
+  const [downloadRequested, setDownloadRequested] = useState(false);
   const isLibraryLink = new URL(ad.sourceUrl).hostname === 'library.tiktok.com';
 
   useEffect(() => {
@@ -235,6 +238,7 @@ function RemixDialog({
       }
       nextTab.opener = null;
       nextTab.location.replace(cloneUrl);
+      document.dispatchEvent(new Event('ad-library-clone-open'));
       setCopyStatus('opened');
     }, 1500);
 
@@ -270,13 +274,14 @@ function RemixDialog({
         <p id="ad-remix-description">
           {isLibraryLink ? (
             <>
-              Download the MP4, then choose Upload video in Video Clone.
+              Download the MP4, then choose Upload video in Video Clone to add
+              it as a reference. Add photos of your own product to continue.
               {' '}<a href={ad.sourceUrl} target="_blank" rel="noopener noreferrer">
                 View original ad on TikTok
               </a>
             </>
           ) : (
-            'Copy the original TikTok video link and paste it into Video Clone as a reference.'
+            'Copy the TikTok link, then paste it into the TikTok link tab in Video Clone.'
           )}
         </p>
       </header>
@@ -308,12 +313,22 @@ function RemixDialog({
           {copyStatus === 'failed' && 'Select the TikTok link above to copy it.'}
         </output>
       )}
+      {downloadRequested && (
+        <p role="status" className={styles.previewTip}>
+          Once the MP4 is saved, open Video Clone to upload it.
+        </p>
+      )}
       <div className={styles.actions}>
         <button type="button" onClick={onClose}>
           Cancel
         </button>
         {isLibraryLink && (
-          <a href={adDownloadUrl(ad)} className={styles.create}>
+          <a
+            href={adDownloadUrl(ad)}
+            className={downloadRequested ? undefined : styles.create}
+            data-cta-placement="ad-library-remix-download"
+            onClick={() => setDownloadRequested(true)}
+          >
             <Download size={16} aria-hidden="true" /> Download MP4
           </a>
         )}
@@ -322,9 +337,11 @@ function RemixDialog({
             href={cloneUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className={isLibraryLink ? undefined : styles.create}
+            className={isLibraryLink && !downloadRequested ? undefined : styles.create}
             data-track-tool="video-replication"
-            data-cta-placement="ad-library-preview"
+            data-cta-placement={isLibraryLink
+              ? 'ad-library-remix-upload'
+              : 'ad-library-remix-link'}
           >
             Open Video Clone <ArrowUpRight size={16} aria-hidden="true" />
           </a>

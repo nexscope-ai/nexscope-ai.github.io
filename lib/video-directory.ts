@@ -123,17 +123,17 @@ export const videoDirectory = [
 
 export type VideoWorkflowId = (typeof videoDirectory)[number]['id'];
 
-const videoLandingPaths: Record<VideoWorkflowId | 'api', string> = {
-  'image-to-video': '/image-to-video',
-  'url-to-video': '/url-to-video',
-  'product-talking-video': '/ai-ugc-video-generator',
-  'video-replication': '/video-clone',
-  'bulk-video': '/bulk-video-generator',
+const videoWorkflowPaths: Record<VideoWorkflowId | 'api', string> = {
+  'image-to-video': '/seller/video-generation/image-to-video',
+  'url-to-video': '/seller/video-generation/url-to-video',
+  'product-talking-video': '/seller/video-generation/product-talking-video',
+  'video-replication': '/seller/video-generation/video-replication',
+  'bulk-video': '/seller/video-generation/bulk-video',
   api: '/apis/creatives',
 };
 
-export const videoLandingUrl = (id: keyof typeof videoLandingPaths) =>
-  `https://www.nexscope.ai${videoLandingPaths[id]}?co-from=learn`;
+export const videoWorkflowUrl = (id: keyof typeof videoWorkflowPaths) =>
+  `https://www.nexscope.ai${videoWorkflowPaths[id]}?co-from=learn`;
 
 export const videoDirectoryFaqs = [
   {

@@ -84,10 +84,17 @@
       }
       if (destination.protocol !== 'https:' || !mainHosts.has(destination.hostname)) return;
       if (path === '/privacy' || path === '/terms') return;
+      if (feature === 'ad_library' && path === '/api/video-download') {
+        interaction(feature, 'download_reference', undefined, placement);
+        return;
+      }
       let action = 'open_main_site';
       if (path === '/product-growth-report') action = 'open_report_request';
       else if (path === '/reports/product-growth-example-en.html') action = 'open_report_example';
-      else if (path === '/api-docs' || path.startsWith('/api-docs/')) action = 'open_api';
+      else if (path === '/api-docs' || path.startsWith('/api-docs/')) {
+        action = section === 'online-test' || destination.searchParams.get('view') === 'playground'
+          ? 'open_api_tester' : 'open_api';
+      }
       else if (path === '/tools/ai-image-generator') action = 'open_image_generator';
       else if (path === '/tools/ai-video-generator') action = 'open_video_generator';
       else if (videoLandingPaths.has(path)) action = 'open_video_landing';
@@ -101,7 +108,9 @@
         learn_feature: action.startsWith('open_report_') ? 'product_growth_report' : feature,
         source_feature: feature,
         feature_action: action,
-        feature_item: token(link.getAttribute('data-track-tool')) || (action === 'open_report_example' ? section : undefined),
+        feature_item: token(link.getAttribute('data-track-tool'))
+          || (action.startsWith('open_api') ? token(path.split('/')[2]) : undefined)
+          || (action === 'open_report_example' ? section : undefined),
         destination_path: destination.pathname,
         cta_placement: placement,
         co_from: destination.searchParams.get('co-from') === 'learn' ? 'learn' : undefined,
@@ -130,6 +139,37 @@
 
   document.addEventListener('click', trackClick, true);
   document.addEventListener('auxclick', trackClick, true);
+  document.addEventListener('ad-library-clone-open', () => {
+    if (cleanPath(location.pathname) !== '/ad-library') return;
+    emit('learn_feature_outbound_click', {
+      learn_feature: 'ad_library',
+      source_feature: 'ad_library',
+      feature_action: 'open_video_workspace',
+      feature_item: 'video-replication',
+      destination_path: '/seller/video-generation/video-replication',
+      cta_placement: 'ad-library-remix-copy-open',
+      co_from: 'learn',
+    });
+  });
+  const copyButtons = featureFor(cleanPath(location.pathname)) === 'data_apis'
+    && navigator.clipboard?.writeText
+    ? document.querySelectorAll('[data-copy-api-example]')
+    : [];
+  for (const button of copyButtons) {
+    const example = button.closest('[data-api-example]');
+    const code = example.querySelector('code');
+    const status = example.querySelector('[data-api-example-status]');
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(code.textContent);
+        status.textContent = 'Example copied.';
+        interaction('data_apis', 'copy_request_example', token(example.dataset.apiExample), 'data-first-request');
+      } catch {
+        status.textContent = 'Select and copy the JSON above.';
+      }
+    });
+  }
   document.addEventListener('change', (event) => {
     const input = event.target;
     const feature = featureFor(cleanPath(location.pathname));
