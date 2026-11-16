@@ -37,11 +37,15 @@ await copyFile(
   new URL('../dist/client/.nojekyll', import.meta.url),
 );
 
-// GitHub Pages cannot return an HTTP 301 from static files. Keep the remaining
-// established legacy URL usable while its external links are migrated.
-const campaignRoutes = ['ecommerce-ai-agents'];
+// GitHub Pages cannot return an HTTP 301 from static files. Keep
+// established legacy URLs usable while their external links are migrated.
+const legacyFlatRoutes = [
+  'ecommerce-ai-agents',
+  'ai-product-videos',
+  'amazon-research',
+];
 await Promise.all(
-  campaignRoutes.map(async (slug) => {
+  legacyFlatRoutes.map(async (slug) => {
     const target = `/${slug}/`;
     const html = `<!doctype html><html lang="en" data-legacy-redirect><head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=${target}"><link rel="canonical" href="https://learn.nexscope.ai${target}"><title>Page moved | Nexscope</title><script>location.replace(${JSON.stringify(target)} + location.search + location.hash)</script></head><body><p>This page has moved to <a href="${target}">${target}</a>.</p></body></html>`;
     await writeFile(new URL(`${slug}.html`, clientDirectory), html);
