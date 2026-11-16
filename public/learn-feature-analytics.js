@@ -142,7 +142,7 @@
       const demo = token(video.getAttribute?.('data-learn-demo'));
       if (!demo || seen.has(video)) return;
       seen.add(video);
-      interaction('product_video_demo', action, demo, placement);
+      interaction('product_video_demo', action, demo, demo === 'sandals-remake' ? placement.replace('product-demo-video', 'product-demo-remake') : placement);
     }, true);
   }
   document.addEventListener('change', (event) => {

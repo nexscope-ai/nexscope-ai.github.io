@@ -130,7 +130,7 @@ export default function AdLibraryPage() {
               </a>
               {/* oxlint-disable-next-line next/no-html-link-for-pages -- Navigate between static exports. */}
               <a className={videoStyles.guide} href="/product-video-demo/" data-cta-placement="ad-library-guide">
-                Watch a 12-second product demo →
+                Compare a reference ad and its AI remake →
               </a>
             </div>
             <ol>
