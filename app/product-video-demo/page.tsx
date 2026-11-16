@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import MarketingHeader from '@/components/marketing-header';
 import LearnFooter from '@/components/learn-footer';
-import { videoLandingUrl } from '@/lib/video-directory';
+import CreateProductVideoLink from './create-product-video-link';
 import gradientTitle from '@/app/gradient-title.module.css';
 import styles from './product-video-demo.module.css';
 
@@ -13,7 +13,6 @@ const description =
 const media = '/product-video-demo-media';
 const poster = `${media}/portable-blender.webp`;
 const video = `${media}/portable-blender.mp4`;
-const cloneUrl = videoLandingUrl('video-replication');
 
 export const metadata: Metadata = {
   title,
@@ -39,9 +38,7 @@ export default function ProductVideoDemoPage() {
             <h1 id="demo-title">Create a <em className={gradientTitle.text}>TikTok-style product demo</em> for your store.</h1>
             <p>Watch a portable blender go from fruit to smoothie in 12 seconds. Then make your own version with your product photos and a reference video you have permission to use.</p>
             <div className={styles.actions}>
-              <a className={styles.primary} href={cloneUrl} data-track="" data-track-tool="video-replication" data-cta-placement="product-demo-hero">
-                Create my product video <ArrowUpRight size={18} aria-hidden />
-              </a>
+              <CreateProductVideoLink placement="product-demo-hero" />
               <a className={styles.textLink} href="#shot-plan">See the shot plan <ArrowRight size={16} aria-hidden /></a>
             </div>
           </div>
@@ -78,11 +75,9 @@ export default function ProductVideoDemoPage() {
         <section className={styles.next} aria-labelledby="make-title">
           <div>
             <h2 id="make-title">Try the same format with your product</h2>
-            <p>Bring clear product photos and a short clip you have permission to use. In Video Clone, choose <strong>Create your ad</strong>, add your reference, and describe what should happen in each shot.</p>
+            <p>Bring clear product photos and a short clip you have permission to use. In Video Clone, add your reference, upload your product photos, and describe what should happen in each shot.</p>
           </div>
-          <a className={styles.primary} href={cloneUrl} data-track="" data-track-tool="video-replication" data-cta-placement="product-demo-shot-plan">
-            Create my product video <ArrowUpRight size={18} aria-hidden />
-          </a>
+          <CreateProductVideoLink placement="product-demo-shot-plan" />
         </section>
         <p className={styles.source}>
           Creative reference: Crew Supply Co.’s hands-on ASMR demo for its Old Fashioned Infusion Kit reached nearly 1.5 million views, according to TikTok. <a href="https://ads.tiktok.com/business/en-US/inspiration/crew-supply-co.-585">Read the TikTok case study <ArrowUpRight size={14} aria-hidden /></a>
