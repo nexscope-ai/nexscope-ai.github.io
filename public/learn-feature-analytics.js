@@ -12,7 +12,6 @@
     ['/about', 'about'],
     ['/ecommerce-product-demand-validation', 'demand_validation'],
     ['/ad-library', 'ad_library'],
-    ['/product-video-demo', 'product_video_demo'],
     [gallery, 'product_gallery'],
     ['/product-growth-report', 'product_growth_report'],
   ]);
@@ -131,20 +130,6 @@
 
   document.addEventListener('click', trackClick, true);
   document.addEventListener('auxclick', trackClick, true);
-  for (const [mediaEvent, action, placement] of [
-    ['playing', 'play_demo', 'product-demo-video-play'],
-    ['ended', 'complete_demo', 'product-demo-video-complete'],
-  ]) {
-    const seen = new WeakSet();
-    document.addEventListener(mediaEvent, (event) => {
-      if (cleanPath(location.pathname) !== '/product-video-demo') return;
-      const video = event.target;
-      const demo = token(video.getAttribute?.('data-learn-demo'));
-      if (!demo || seen.has(video)) return;
-      seen.add(video);
-      interaction('product_video_demo', action, demo, demo === 'sandals-remake' ? placement.replace('product-demo-video', 'product-demo-remake') : placement);
-    }, true);
-  }
   document.addEventListener('change', (event) => {
     const input = event.target;
     const feature = featureFor(cleanPath(location.pathname));

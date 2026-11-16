@@ -34,7 +34,6 @@ export const routeSlugs = [
   'pricing',
   'video',
   'ad-library',
-  'product-video-demo',
   'video-apis',
   'social',
   'product-growth-report',
