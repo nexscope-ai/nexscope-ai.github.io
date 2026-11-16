@@ -73,7 +73,7 @@ let collections;
 let socialDirectorySnapshot;
 for (let attempt = 0; attempt < 3; attempt++) {
   try {
-    const snapshot = await refreshSnapshot(source);
+    const snapshot = await refreshSnapshot(source, { allowCached: true });
     // The official Data feed intentionally excludes the separate Social
     // collection. When it does not include Social entries, refresh Ecommerce
     // from the live feed and retain the published Social snapshot below.
