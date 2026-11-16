@@ -23,6 +23,14 @@ void test('hydration observer preserves acquisition when React inserts new offic
   const inserted = new Anchor('https://www.nexscope.ai/api-docs?utm_campaign=old&view=api');
   observe([{type: 'childList', addedNodes: [inserted]}]);
   assert.equal(inserted.href, 'https://www.nexscope.ai/api-docs?view=api&co-from=learn');
+  const report = new Anchor(
+    'https://www.nexscope.ai/product-growth-report?co-from=learn&report_entry=growth-hero#request',
+  );
+  observe([{ type: 'childList', addedNodes: [report] }]);
+  const destination = new URL(report.href);
+  assert.equal(destination.searchParams.get('report_entry'), 'growth-hero');
+  assert.deepEqual(destination.searchParams.getAll('co-from'), ['learn']);
+  assert.equal(destination.hash, '#request');
 });
 
 void test('runtime handoffs preserve acquisition and do not mark legal links as tool starts', () => {
@@ -59,4 +67,34 @@ void test('runtime handoffs preserve acquisition and do not mark legal links as 
   assert.equal(links[0].attributes['data-track'], 'start_using');
   assert.equal(links[1].attributes['data-track'], undefined);
   assert.equal(links[2].href, '/tools/');
+});
+
+void test('reports the Learn request entry only for recognized report application links', () => {
+  const code = readFileSync(new URL('../public/learn-feature-analytics.js', import.meta.url), 'utf8');
+  const location = new URL('https://learn.nexscope.ai/product-growth-report/');
+  const listeners = new Map();
+  const events = [];
+  runInNewContext(code, {
+    URL,
+    location,
+    window: { gtag: (...args) => events.push(args) },
+    document: { addEventListener: (name, callback) => listeners.set(name, callback) },
+  });
+  const click = (href) => {
+    const link = { href, getAttribute: () => null, closest: () => null };
+    listeners.get('click')({ type: 'click', target: { closest: () => link } });
+    return events.at(-1);
+  };
+  const [command, name, properties] = click(
+    'https://www.nexscope.ai/product-growth-report?co-from=learn&report_entry=growth-hero#request',
+  );
+  assert.equal(command, 'event');
+  assert.equal(name, 'learn_feature_outbound_click');
+  assert.equal(properties.feature_action, 'open_report_request');
+  assert.equal(properties.report_entry, 'growth-hero');
+  assert.equal(properties.co_from, 'learn');
+  assert.equal(click('https://www.nexscope.ai/product-growth-report?report_entry=unknown')[2].report_entry, undefined);
+  assert.equal(click('https://www.nexscope.ai/reports/product-growth-example-en.html?report_entry=growth-hero')[2].report_entry, undefined);
+  location.pathname = '/';
+  assert.equal(click('https://www.nexscope.ai/product-growth-report?report_entry=growth-hero')[2].report_entry, undefined);
 });

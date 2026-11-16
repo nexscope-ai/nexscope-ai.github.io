@@ -1,5 +1,6 @@
 /* oxlint-disable next/no-img-element */
 import { ArrowUpRight } from 'lucide-react';
+import { reportRequestHref } from '@/lib/growth-report-links';
 import styles from '@/app/product-growth-report/report.module.css';
 
 // Facts selected from the public example, not package entitlements or live data.
@@ -148,7 +149,7 @@ export default function GrowthReportExample() {
       </p>
       <a
         className={styles.sourceLink}
-        href="https://www.nexscope.ai/product-growth-report?co-from=learn#request"
+        href={reportRequestHref('growth-example-next-action')}
         target="_blank"
         rel="noopener"
         data-track="start_using"

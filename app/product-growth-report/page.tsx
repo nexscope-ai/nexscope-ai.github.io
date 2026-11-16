@@ -21,9 +21,11 @@ import styles from './report.module.css';
 import GrowthReportExample, {
   reportExampleUrl,
 } from '@/components/growth-report-example';
+import {
+  productGrowthReportUrl,
+  reportRequestHref,
+} from '@/lib/growth-report-links';
 
-const configure =
-  'https://www.nexscope.ai/product-growth-report?co-from=learn#request';
 const title = 'Ecommerce Product Page Audit & Growth Report | Nexscope';
 const description =
   'Get a human-reviewed audit for an Amazon or store product page. SEO and GEO analyses are included free when you select at least one paid service.';
@@ -152,7 +154,7 @@ export default function ProductGrowthReport() {
         serviceType: 'Product analysis and creative services',
         provider: { '@id': NEXSCOPE_ORGANIZATION['@id'] },
         description,
-        url: configure,
+        url: productGrowthReportUrl,
       },
       {
         '@type': 'BreadcrumbList',
@@ -200,11 +202,12 @@ export default function ProductGrowthReport() {
               <span className={gradientTitle.text}>Product Growth</span> Report
             </h1>
             <p className={styles.lead}>
-              Send one product link. Get a human-reviewed plan that shows what to fix first and why.
+              Share one Amazon or store product link. Get a human-reviewed report
+              with prioritized fixes for search and AI visibility.
             </p>
             <a
               className={styles.primary}
-              href={configure}
+              href={reportRequestHref('growth-hero')}
               data-track
               data-track-tool="product-growth-report"
               data-cta-placement="growth-hero"
@@ -219,8 +222,8 @@ export default function ProductGrowthReport() {
               <ArrowRight size={16} aria-hidden="true" />
             </a>
             <p className={styles.includedAnalyses}>
-              <strong>Free SEO and GEO analyses</strong> with any paid report service.
-              See what may be holding back your product in search and AI answers.
+              See your credit total before signing in. <strong>SEO and GEO analyses</strong>
+              {' '}are included when you choose a paid service.
             </p>
           </div>
           <aside
@@ -355,7 +358,7 @@ export default function ProductGrowthReport() {
                   </th>
                   <td>
                     <a
-                      href={configure}
+                      href={reportRequestHref('growth-comparison-report')}
                       data-track
                       data-cta-placement="growth-comparison-report"
                     >
@@ -526,19 +529,18 @@ export default function ProductGrowthReport() {
           <p className={styles.eyebrow}>START WITH ONE PRODUCT</p>
           <h2>Choose a clearer next step.</h2>
           <p>
-            See the available services and your current credit quote on Nexscope
-            before committing.
+            Choose the services you need and see your credit total before signing in.
           </p>
           <a
             className={styles.primary}
-            href={configure}
+            href={reportRequestHref('growth-bottom')}
             data-track
             data-track-tool="product-growth-report"
             data-cta-placement="growth-bottom"
             target="_blank"
             rel="noopener"
           >
-            Build your report request{' '}
+            Build your report &amp; see the quote{' '}
             <ArrowUpRight size={18} aria-hidden="true" />
           </a>
           <small>

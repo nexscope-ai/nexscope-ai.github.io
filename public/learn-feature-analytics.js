@@ -27,6 +27,10 @@
       ? 'product_gallery' : undefined);
   const token = (value) => /^[a-z0-9_-]{1,80}$/i.test(value || '') ? value : undefined;
 
+  const reportEntries = new Set([
+    'growth-hero', 'growth-example-next-action', 'growth-comparison-report', 'growth-bottom',
+  ]);
+
   function emit(name, properties) {
     if (typeof window.gtag !== 'function') return;
     const traffic = window.nexscopeTrafficAttribution || {};
@@ -92,6 +96,7 @@
       else if (path === '/mcp-data') action = 'open_mcp_setup';
       if (!feature && action !== 'open_video_landing' && !action.startsWith('open_report_')) return;
       if (action === 'open_main_site' && !link.hasAttribute('data-track')) return;
+      const reportEntry = destination.searchParams.get('report_entry');
       emit('learn_feature_outbound_click', {
         learn_feature: action.startsWith('open_report_') ? 'product_growth_report' : feature,
         source_feature: feature,
@@ -100,6 +105,8 @@
         destination_path: destination.pathname,
         cta_placement: placement,
         co_from: destination.searchParams.get('co-from') === 'learn' ? 'learn' : undefined,
+        report_entry: source === '/product-growth-report' && action === 'open_report_request'
+          && reportEntries.has(reportEntry) ? reportEntry : undefined,
       });
       return;
     }
