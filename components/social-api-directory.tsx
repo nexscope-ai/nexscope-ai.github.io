@@ -74,6 +74,7 @@ export default function SocialApiDirectory() {
   const [query, setQuery] = useState('');
   const [expanded, setExpanded] = useState(false);
   const resultsRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
   const previewLimit = 12;
   const words = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
   const entries = catalog.entries.filter(
@@ -88,15 +89,16 @@ export default function SocialApiDirectory() {
   return (
     <section
       id="apis"
-      className={social.directory}
+      className={`catalog-directory ${social.directory}`}
       aria-labelledby="social-api-title"
     >
       <h2 id="social-api-title" className={styles.apiSearchLabel}>Browse social media APIs</h2>
-      <label className={styles.apiSearch}>
+      <label className="catalog-search">
         <Search size={19} aria-hidden="true" />
         <span className={styles.apiSearchLabel}>Search social APIs</span>
         <input
           type="search"
+          ref={searchRef}
           data-learn-search
           value={query}
           onChange={(e) => {
@@ -107,7 +109,7 @@ export default function SocialApiDirectory() {
         />
       </label>
       <fieldset
-        className={`${styles.filters} ${social.platforms}`}
+        className="catalog-filters"
         aria-label="Filter social APIs by platform"
       >
         <button
@@ -140,12 +142,9 @@ export default function SocialApiDirectory() {
           </button>
         ))}
       </fieldset>
-      <div className={social.resultBar} ref={resultsRef}>
+      <div className={`catalog-results ${social.resultBar}`} ref={resultsRef}>
         <output className={styles.count} aria-live="polite">
-          {entries.length} {entries.length === 1 ? 'API' : 'APIs'}{' '}
-          {platform !== 'all' || query
-            ? 'matching your selection'
-            : 'available'}
+          {entries.length} {entries.length === 1 ? 'API' : 'APIs'} found
         </output>
         {(platform !== 'all' || query) && (
           <button
@@ -155,6 +154,7 @@ export default function SocialApiDirectory() {
               setPlatform('all');
               setQuery('');
               setExpanded(false);
+              searchRef.current?.focus();
             }}
           >
             Clear filters
@@ -221,7 +221,7 @@ export default function SocialApiDirectory() {
       )}
       {!entries.length && (
         <p className={social.empty}>
-          No APIs match these filters. Try a different platform or search term.
+          No matching APIs. Try another search or clear your filters.
         </p>
       )}
     </section>

@@ -7,7 +7,7 @@ import LearnFooter from '@/components/learn-footer';
 import SocialApiDirectory from '@/components/social-api-directory';
 import catalog from '@/lib/social-api-directory.json';
 import { socialGuide, socialFaqs } from '@/lib/social-guide.mjs';
-import gradientTitle from '@/app/gradient-title.module.css';
+import ApiCatalogHero from '@/components/api-catalog-hero';
 import {
   SOCIAL_API_SOCIAL_IMAGE,
   NEXSCOPE_ORGANIZATION,
@@ -105,31 +105,18 @@ export default function SocialPage() {
         active="social"
         campaign="social-directory"
       />
-      <main className={styles.wrap}>
-        <section className={social.hero}>
-          <h1><span className={gradientTitle.text}>Social media</span> APIs</h1>
-          <p className={styles.lead}>
-            Find APIs for social profiles, posts, comments, ads and transcripts.
-          </p>
-          {catalog.entries.some((entry) => entry.slug === 'social-youtube-transcript') && (
-            <div className={styles.heroActions}>
-              <a className={styles.primary} href="https://www.nexscope.ai/api-docs/social-youtube-transcript?view=playground&co-from=learn" data-track-tool="social-youtube-transcript" data-cta-placement="social-hero-transcript">
-                Try the YouTube Transcript API <ArrowRight size={16} aria-hidden="true" />
-              </a>
-            </div>
-          )}
-          <p className={social.trial}>
-            <strong>1,000 free trial credits for new Nexscope accounts.</strong>{' '}
-            Valid for 3 days. Check access and credit cost for the endpoint you
-            want to try.{' '}
-            <a
-              href="https://www.nexscope.ai/pricing?co-from=learn"
-              data-cta-placement="social-hero-free-trial"
-            >
-              See free trial details ↗
-            </a>
-          </p>
-        </section>
+      <main className="catalog-page">
+        <ApiCatalogHero
+          title="Social media"
+          description="Find APIs for social profiles, posts, comments, ads and transcripts."
+          size={`${catalog.entries.length} APIs across ${new Set(catalog.entries.map(entry => entry.platform)).size} platforms`}
+          catalog="social"
+          example={catalog.entries.some(entry => entry.slug === 'social-youtube-transcript') ? {
+            slug: 'social-youtube-transcript',
+            label: 'Try YouTube transcripts',
+            placement: 'social-hero-transcript',
+          } : undefined}
+        />
         <SocialApiDirectory />
         <section
           id="platforms"

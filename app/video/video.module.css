@@ -23,25 +23,6 @@
   padding: 42px 0 48px;
   border-bottom: 1px solid #e6e1eb;
 }
-.apiHero {
-  max-width: 980px;
-  padding: 40px 0 16px;
-}
-.apiHero h1 {
-  max-width: 900px;
-  font-size: clamp(42px, 5.5vw, 68px);
-  line-height: 1.04;
-  letter-spacing: -0.055em;
-  font-weight: 700;
-  margin: 0 0 22px;
-}
-.apiHero .lead {
-  max-width: 790px;
-  margin-bottom: 0;
-}
-.apiHero + .section {
-  padding-top: 8px;
-}
 .apiTaskGuide {
   margin: 16px 0;
 }
@@ -735,12 +716,6 @@
     padding: 38px 0;
     gap: 30px;
   }
-  .apiHero {
-    padding: 40px 0 34px;
-  }
-  .apiHero h1 {
-    font-size: clamp(38px, 11vw, 48px);
-  }
   .hero h1 {
     font-size: 48px;
   }
@@ -790,16 +765,6 @@
     padding: 9px 12px;
     font-size: 11px;
   }
-}
-.apiSearch {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  border: 1px solid #ded9ec;
-  border-radius: 14px;
-  background: #fff;
-  margin-bottom: 20px;
 }
 .apiChoices {
   display: grid;
@@ -860,19 +825,6 @@
   .apiChoices {
     grid-template-columns: 1fr;
   }
-}
-.apiSearch input {
-  min-width: 0;
-  width: 100%;
-  border: 0;
-  background: transparent;
-  font: inherit;
-  font-size: 16px;
-  padding: 4px;
-}
-.apiSearch:focus-within {
-  outline: 2px solid #7955ff;
-  outline-offset: 2px;
 }
 .apiSearchLabel {
   position: absolute;
@@ -1030,11 +982,8 @@
   border-bottom: 1px solid #e6e1eb;
 }
 .channelStrip.channelStripCompact {
-  padding: 4px 0;
+  padding: 0 0 16px;
   border-bottom: 0;
-}
-.channelStripCompact + .section {
-  padding-top: 22px;
 }
 .channelStripCompact .channelItem {
   min-width: 132px;
@@ -1123,12 +1072,6 @@
   }
 }
 @media (max-width: 700px) {
-  .apiHero:has(+ .channelStripCompact) {
-    padding-bottom: 14px;
-  }
-  .channelStripCompact + .section {
-    padding-top: 16px;
-  }
   .channelStrip {
     padding: 24px 0;
   }

@@ -7,7 +7,7 @@ import VideoApiDirectory from '@/components/video-api-directory';
 import VideoChannelStrip from '@/components/video-channel-strip';
 import catalog from '@/lib/video-api-directory.json';
 import { VIDEO_SOCIAL_IMAGE, NEXSCOPE_ORGANIZATION } from '@/lib/site-metadata';
-import gradientTitle from '@/app/gradient-title.module.css';
+import ApiCatalogHero from '@/components/api-catalog-hero';
 import styles from '@/app/video/video.module.css';
 
 const title = 'Video & Image Generation APIs for Ecommerce | Nexscope';
@@ -93,15 +93,18 @@ export default function VideoApisPage() {
         active="video-apis"
         campaign="video-api-directory"
       />
-      <main className={styles.wrap}>
-        <section className={styles.apiHero} aria-labelledby="video-apis-title">
-          <h1 id="video-apis-title">
-            <span className={gradientTitle.text}>Video &amp; image</span> APIs
-          </h1>
-          <p className={styles.lead}>
-            Find a model to generate product images or videos, then try it in the API playground.
-          </p>
-        </section>
+      <main className="catalog-page">
+        <ApiCatalogHero
+          title="Video & image"
+          description="Find a model to generate product images or videos, then try it in the API playground."
+          size={`${catalog.entries.length} APIs across ${new Set(catalog.entries.map(entry => entry.category)).size} categories`}
+          catalog="video"
+          example={catalog.entries.some(entry => entry.slug === 'banana-image-generation') ? {
+            slug: 'banana-image-generation',
+            label: 'Try Nano Banana',
+            placement: 'video-hero-example',
+          } : undefined}
+        />
         <VideoChannelStrip compact />
         <VideoApiDirectory />
         <aside className={styles.developer}>

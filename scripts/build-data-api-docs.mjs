@@ -56,7 +56,9 @@ export async function buildDataApiDocs() {
   // visitors straight to the main site's tester while preserving the API slug.
   await Promise.all(paths.map(async (path) => {
     const file = join(root, 'dist/client', path.slice(1), 'index.html');
-    const html = path === '/data/' ? generatedIndex : await readFile(file, 'utf8');
+    const html = path === '/data/'
+      ? generatedIndex.replace('</head>', '<link rel="stylesheet" href="/api-catalog.css"></head>')
+      : await readFile(file, 'utf8');
     const withTesterLinks = html.replace(
       /<a\b[^>]*\bdata-api-slug="[a-z0-9-]+"[^>]*>/g,
       (link) => {
