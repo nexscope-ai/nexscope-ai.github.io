@@ -1029,6 +1029,23 @@
   padding: 30px 0 36px;
   border-bottom: 1px solid #e6e1eb;
 }
+.channelStrip.channelStripCompact {
+  padding: 4px 0;
+  border-bottom: 0;
+}
+.channelStripCompact + .section {
+  padding-top: 22px;
+}
+.channelStripCompact .channelItem {
+  min-width: 132px;
+  padding: 10px 16px;
+  gap: 9px;
+  font-size: 13px;
+}
+.channelStripCompact .channelItem img {
+  width: 23px;
+  height: 23px;
+}
 .channelHeading {
   display: flex;
   align-items: center;
@@ -1106,6 +1123,12 @@
   }
 }
 @media (max-width: 700px) {
+  .apiHero:has(+ .channelStripCompact) {
+    padding-bottom: 14px;
+  }
+  .channelStripCompact + .section {
+    padding-top: 16px;
+  }
   .channelStrip {
     padding: 24px 0;
   }

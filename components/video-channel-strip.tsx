@@ -10,20 +10,36 @@ const channels = [
   { name: 'Happy Horse', logo: 'happy-horse.webp' },
 ];
 
-export default function VideoChannelStrip() {
+const imageChannels = [
+  { name: 'Nano Banana', logo: 'nano-banana.webp' },
+  { name: 'GPT Image', logo: 'gpt-image.webp' },
+  { name: 'Seedream', logo: 'seedream-seedance.webp' },
+];
+
+export default function VideoChannelStrip({
+  compact = false,
+}: { compact?: boolean }) {
+  const items = compact ? [...imageChannels, ...channels] : channels;
+  const className = compact
+    ? `${styles.channelStrip} ${styles.channelStripCompact}`
+    : styles.channelStrip;
   return (
     <section
-      className={styles.channelStrip}
-      aria-label="Video generation models"
+      className={className}
+      aria-label={
+        compact ? 'Image and video generation models' : 'Video generation models'
+      }
     >
-      <div className={styles.channelHeading}>
-        <div>
-          <p className={styles.eyebrow}>Explore video generation models.</p>
-          <p className={styles.channelCaption}>
-            Compare video models, then open the matching API playground.
-          </p>
+      {!compact && (
+        <div className={styles.channelHeading}>
+          <div>
+            <p className={styles.eyebrow}>Explore video generation models.</p>
+            <p className={styles.channelCaption}>
+              Compare video models, then open the matching API playground.
+            </p>
+          </div>
         </div>
-      </div>
+      )}
       <div className={styles.channelViewport}>
         <div className={styles.channelTrack}>
           {[0, 1].map((copy) => (
@@ -32,7 +48,7 @@ export default function VideoChannelStrip() {
               key={copy}
               aria-hidden={copy === 1 ? true : undefined}
             >
-              {channels.map((channel) => (
+              {items.map((channel) => (
                 <li key={channel.name} className={styles.channelItem}>
                   <img
                     src={`/assets/video-models/${channel.logo}`}

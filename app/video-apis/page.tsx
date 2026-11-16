@@ -4,6 +4,7 @@ import { ArrowRight, Code2 } from 'lucide-react';
 import MarketingHeader from '@/components/marketing-header';
 import LearnFooter from '@/components/learn-footer';
 import VideoApiDirectory from '@/components/video-api-directory';
+import VideoChannelStrip from '@/components/video-channel-strip';
 import catalog from '@/lib/video-api-directory.json';
 import { VIDEO_SOCIAL_IMAGE, NEXSCOPE_ORGANIZATION } from '@/lib/site-metadata';
 import gradientTitle from '@/app/gradient-title.module.css';
@@ -101,6 +102,7 @@ export default function VideoApisPage() {
             Find a model to generate product images or videos, then try it in the API playground.
           </p>
         </section>
+        <VideoChannelStrip compact />
         <VideoApiDirectory />
         <aside className={styles.developer}>
           <Code2 size={25} aria-hidden="true" />

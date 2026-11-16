@@ -45,7 +45,7 @@ export function addTryExamples(html, path, entries) {
     : `<section class="api-task-section api-try-examples" aria-labelledby="api-try-title" data-learn-section="data-first-request"><h2 id="api-try-title">Try your first request</h2>${body}</section>`;
   const directory = /<div\b[^>]*\sdata-data-directory(?=\s|>)[^>]*>/;
   if (!directory.test(html)) throw new Error(`Could not locate the API directory on ${path}`);
-  return html
-    .replace('</head>', '<link rel="stylesheet" href="/data-api-try-examples.css"></head>')
-    .replace(directory, (markup) => section + markup);
+  const withStyles = html.replace('</head>', '<link rel="stylesheet" href="/data-api-try-examples.css"></head>');
+  if (path === '/data/') return withStyles.replace('</main>', section + '</main>');
+  return withStyles.replace(directory, (markup) => section + markup);
 }
