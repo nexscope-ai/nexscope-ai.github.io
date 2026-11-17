@@ -151,3 +151,80 @@
 @media (max-width: 700px) {
   .catalog-hero { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* Platform shortcuts below the directory */
+.catalog-page .api-intent-navigation[aria-label="Common ecommerce data tasks"] {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-block: 24px 32px;
+  scroll-margin-top: 100px;
+}
+.catalog-page .api-intent-navigation[aria-label="Common ecommerce data tasks"] a {
+  --shortcut-tint: #f4edfb;
+  --shortcut-icon: none;
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) 18px;
+  align-items: center;
+  gap: 12px;
+  min-height: 64px;
+  padding: 11px 14px;
+  border: 1px solid #e2daed;
+  border-radius: 14px;
+  background: #fff;
+  color: #403150;
+  box-shadow: 0 2px 6px #26163e0a;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.35;
+  text-decoration: none;
+  transition: background-color 160ms, border-color 160ms, box-shadow 160ms;
+}
+.catalog-page .api-intent-navigation[aria-label="Common ecommerce data tasks"] a::before {
+  content: "";
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--shortcut-icon) center / 23px 23px no-repeat var(--shortcut-tint);
+}
+.catalog-page .api-intent-navigation[aria-label="Common ecommerce data tasks"] a::after {
+  content: "";
+  box-sizing: border-box;
+  width: 8px;
+  height: 8px;
+  justify-self: center;
+  border-block-start: 2px solid #653cb0;
+  border-inline-end: 2px solid #653cb0;
+  transform: rotate(45deg);
+}
+.catalog-page .api-intent-navigation a[data-data-category="data-amazon-front-data"] {
+  --shortcut-icon: url("/data/logos/amazon.webp");
+  --shortcut-tint: #fff4e3;
+}
+.catalog-page .api-intent-navigation a[data-data-category="data-1688-sourcing"] {
+  --shortcut-icon: url("/data/logos/1688.webp");
+  --shortcut-tint: #fff1eb;
+}
+.catalog-page .api-intent-navigation a[data-data-category="data-fm-tiktok"] {
+  --shortcut-icon: url("/data/logos/tiktok.webp");
+  --shortcut-tint: #edf7f8;
+}
+.catalog-page .api-intent-navigation[aria-label="Common ecommerce data tasks"] a:hover {
+  background: #faf7ff;
+  border-color: #a990d8;
+  box-shadow: 0 4px 10px #3f24571a;
+}
+.catalog-page .api-intent-navigation[aria-label="Common ecommerce data tasks"] a:focus-visible {
+  outline: 2px solid #7955ff;
+  outline-offset: 3px;
+}
+@media (max-width: 760px) {
+  .catalog-page .api-intent-navigation[aria-label="Common ecommerce data tasks"] {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    margin-block: 20px 26px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .catalog-page .api-intent-navigation[aria-label="Common ecommerce data tasks"] a { transition: none; }
+}

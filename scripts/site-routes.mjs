@@ -35,6 +35,7 @@ export const routeSlugs = [
   'video',
   'ad-library',
   'tiktok-shop-bestsellers',
+  'amazon-best-sellers',
   'video-apis',
   'social',
   'product-growth-report',

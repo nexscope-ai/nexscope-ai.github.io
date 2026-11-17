@@ -57,7 +57,14 @@ export async function buildDataApiDocs() {
   await Promise.all(paths.map(async (path) => {
     const file = join(root, 'dist/client', path.slice(1), 'index.html');
     const html = path === '/data/'
-      ? generatedIndex.replace('</head>', '<link rel="stylesheet" href="/api-catalog.css"></head>')
+      ? generatedIndex
+          .replace('</head>', '<link rel="stylesheet" href="/api-catalog.css"></head>')
+          .replace(
+            /(<nav class="api-intent-navigation" aria-label="Common ecommerce data tasks">)([^]*?)(<\/nav>)/,
+            (_, opening, links, closing) =>
+              opening.replace('<nav ', '<nav id="platform-shortcuts" ') +
+              links.replaceAll(' →</a>', '</a>') + closing,
+          )
       : await readFile(file, 'utf8');
     const withTesterLinks = html.replace(
       /<a\b[^>]*\bdata-api-slug="[a-z0-9-]+"[^>]*>/g,

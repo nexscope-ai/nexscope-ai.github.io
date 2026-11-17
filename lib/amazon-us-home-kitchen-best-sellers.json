@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-17",
+  "market": "United States",
+  "category": "Home & Kitchen",
+  "source": "https://www.amazon.com/Best-Sellers-Home-Kitchen/zgbs/home-garden",
+  "products": [
+    {
+      "rank": 1,
+      "asin": "B00Q7OAW1U",
+      "name": "Amazon Basics Microfiber Bed Sheet Set",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/61I0wbY1FUL._AC_UL600_SR600,400_.jpg",
+      "price": 11.26,
+      "rating": 4.5,
+      "ratings": 482591
+    },
+    {
+      "rank": 2,
+      "asin": "B00FXNAAW2",
+      "name": "Amazon Basics Velvet Hangers, 50-Pack",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/81Cn1+lUraL._AC_UL600_SR600,400_.jpg",
+      "price": 17.99,
+      "rating": 4.8,
+      "ratings": 239534
+    },
+    {
+      "rank": 3,
+      "asin": "B08QRFZ6TH",
+      "name": "Barossa Design Shower Curtain Liner",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/7136-eapqKL._AC_UL600_SR600,400_.jpg",
+      "price": 8.95,
+      "rating": 4.5,
+      "ratings": 103049
+    },
+    {
+      "rank": 4,
+      "asin": "B0FK1LF5PM",
+      "name": "Owala FreeSip Stainless Steel Water Bottle",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/411VuaxGFsL._AC_UL600_SR600,400_.jpg",
+      "price": 28,
+      "rating": 4.6,
+      "ratings": 146125
+    },
+    {
+      "rank": 5,
+      "asin": "B01M16WBW1",
+      "name": "Queen Size 4-Piece Cooling Sheet Set",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/71zGC0oAIXL._AC_UL600_SR600,400_.jpg",
+      "price": 24.99,
+      "rating": 4.5,
+      "ratings": 464844
+    },
+    {
+      "rank": 6,
+      "asin": "B0BQR2BQYZ",
+      "name": "upsimples 11 × 14 Picture Frame",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/71Si2QlAb3L._AC_UL600_SR600,400_.jpg",
+      "price": 6.99,
+      "rating": 4.4,
+      "ratings": 45284
+    },
+    {
+      "rank": 7,
+      "asin": "B0F3DPXQP1",
+      "name": "Yankee Candle Balsam & Cedar, 22 oz",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/71Z42Yzlc5L._AC_UL600_SR600,400_.jpg",
+      "price": 14.99,
+      "rating": 4.6,
+      "ratings": 2920
+    },
+    {
+      "rank": 8,
+      "asin": "B0C1NM42PN",
+      "name": "BEDLORE Waterproof Mattress Protector",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/71tUP9hEL+L._AC_UL600_SR600,400_.jpg",
+      "price": 26.99,
+      "rating": 4.6,
+      "ratings": 29726
+    },
+    {
+      "rank": 9,
+      "asin": "B0C3FTCYZL",
+      "name": "Zevo Flying Insect Trap Refills, 4-Pack",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/81-MlCMPFSL._AC_UL600_SR600,400_.jpg",
+      "price": 14.97,
+      "rating": 4.8,
+      "ratings": 39011
+    },
+    {
+      "rank": 10,
+      "asin": "B0C6FCKQML",
+      "name": "DREO Portable Space Heater",
+      "image": "https://images-na.ssl-images-amazon.com/images/I/81Ha7nqu+bL._AC_UL600_SR600,400_.jpg",
+      "price": 39.99,
+      "rating": 4.6,
+      "ratings": 22104
+    }
+  ]
+}
