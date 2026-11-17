@@ -1,0 +1,117 @@
+{
+  "week": "2026-46",
+  "start": "2026-11-09",
+  "end": "2026-11-15",
+  "products": [
+    {
+      "id": "1732052189676081387",
+      "name": "medicube Smooth & Clear Body Care Set",
+      "shop": "medicube US Store",
+      "category": "Beauty & Personal Care",
+      "image": "https://agent-files.linkfox.com/fastmoss_images/fc0fc4b6484d9c29facc0c96d1df7cba.webp",
+      "price": 30,
+      "maxPrice": 71,
+      "units": 91510,
+      "gmv": 2745300
+    },
+    {
+      "id": "1731528580940468633",
+      "name": "Bare Anatomy Rosemary & Rice Water",
+      "shop": "Bare Anatomy Haircare",
+      "category": "Beauty & Personal Care",
+      "image": "https://agent-files.linkfox.com/fastmoss_images/cb66c0cccf3f0258f5bda564cd5e0b39.jpg",
+      "price": 10.5,
+      "maxPrice": 10.5,
+      "units": 59756,
+      "gmv": 626005.5
+    },
+    {
+      "id": "1732293553906094315",
+      "name": "medicube NAD+ EGF Firming Serum",
+      "shop": "medicube US Store",
+      "category": "Beauty & Personal Care",
+      "image": "https://agent-files.linkfox.com/fastmoss_images/616b2fb6c3f0bee4973e738ecad6feb1.webp",
+      "price": 15,
+      "maxPrice": 15,
+      "units": 52963,
+      "gmv": 850623
+    },
+    {
+      "id": "1729471510999109867",
+      "name": "medicube Zero Pore Pads",
+      "shop": "medicube US Store",
+      "category": "Beauty & Personal Care",
+      "image": "https://agent-files.linkfox.com/fastmoss_images/516954097a2a8ae583e7de72384a6379.webp",
+      "price": 15,
+      "maxPrice": 40,
+      "units": 40902,
+      "gmv": 785181.9
+    },
+    {
+      "id": "1729679758111249333",
+      "name": "Loaded Tea Single Packet",
+      "shop": "Caffeine, Candles & Chaos",
+      "category": "Food & Beverages",
+      "image": "https://agent-files.linkfox.com/fastmoss_images/0a447876f70fbbeff6dd12eef377f6ae.webp",
+      "price": 1.5,
+      "maxPrice": 1.5,
+      "units": 39092,
+      "gmv": 58638
+    },
+    {
+      "id": "1729583305380172048",
+      "name": "EPAIS Essential Eyelash Growth Serum",
+      "shop": "epais",
+      "category": "Beauty & Personal Care",
+      "image": "https://agent-files.linkfox.com/fastmoss_images/6a370369da78ab16e8c5d3948561a5eb.webp",
+      "price": 16.6,
+      "maxPrice": 29,
+      "units": 35143,
+      "gmv": 601886.5
+    },
+    {
+      "id": "1729405850428937058",
+      "name": "Wonderskin 1440 Longwear Eyeliner",
+      "shop": "Wonderskin",
+      "category": "Beauty & Personal Care",
+      "image": "https://agent-files.linkfox.com/fastmoss_images/a8004d91e8bbe9ffbe324558611f8560.webp",
+      "price": 12.6,
+      "maxPrice": 12.6,
+      "units": 31584,
+      "gmv": 353411.1
+    },
+    {
+      "id": "1731575642312446358",
+      "name": "LumaCore Foldable LED Lanterns, 4-Pack",
+      "shop": "LumaCore",
+      "category": "Kitchenware",
+      "image": "https://agent-files.linkfox.com/fastmoss_images/6aae96fd32090e6d7f7e773d90ff5610.webp",
+      "price": 23.8,
+      "maxPrice": 27,
+      "units": 28801,
+      "gmv": 702521
+    },
+    {
+      "id": "1732352660592628585",
+      "name": "KKPeople Easy-Off Shapewear Bodysuit",
+      "shop": "KKpeople Shapewear",
+      "category": "Womenswear & Underwear",
+      "image": "https://agent-files.linkfox.com/fastmoss_images/1bc0b3bc7cc25d4a2eff1974aacbc940.jpg",
+      "price": 25.1,
+      "maxPrice": 38.7,
+      "units": 28581,
+      "gmv": 712705.7
+    },
+    {
+      "id": "1729471514529403115",
+      "name": "medicube Collagen Niacinamide Jelly Cream",
+      "shop": "medicube US Store",
+      "category": "Beauty & Personal Care",
+      "image": "https://agent-files.linkfox.com/fastmoss_images/16c894d36daa7a4bbd2af89c0e069cec.webp",
+      "price": 10,
+      "maxPrice": 15,
+      "units": 27288,
+      "gmv": 284125
+    }
+  ]
+}
