@@ -32,6 +32,23 @@ await Promise.all(
   routeSlugs.map((slug) => unlink(new URL(`${slug}.html`, clientDirectory))),
 );
 
+// Keep the prerendered Video API directory readable if a browser cannot load
+// one of the modules needed by Vinext hydration.
+const videoApiPage = new URL('video-apis/index.html', clientDirectory);
+const videoApiHtml = await readFile(videoApiPage, 'utf8');
+const hydrationEntry =
+  /<script\b(?=[^>]*\bid="_R_")(?=[^>]*\btype="module")(?=[^>]*\bsrc="(\/_next\/static\/chunks\/[\w.-]+\.js)")[^>]*><\/script>/;
+if (!hydrationEntry.test(videoApiHtml)) {
+  throw new Error('Video API directory is missing its Vinext hydration entry');
+}
+await writeFile(
+  videoApiPage,
+  videoApiHtml.replace(
+    hydrationEntry,
+    '<script type="module" src="/video-api-hydration.js" data-entry="$1"></script>',
+  ),
+);
+
 await copyFile(
   new URL('../public/.nojekyll', import.meta.url),
   new URL('../dist/client/.nojekyll', import.meta.url),
