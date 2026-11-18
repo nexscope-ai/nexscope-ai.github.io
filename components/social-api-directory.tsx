@@ -3,72 +3,17 @@
 import { useRef, useState } from 'react';
 import {
   ArrowUpRight,
-  Globe2,
   Search,
-  Compass,
-  Link2,
-  Contact,
-  MessageCircle,
-  Video,
-  Users,
   ChevronDown,
   ChevronUp,
 } from 'lucide-react';
 import catalog from '@/lib/social-api-directory.json';
+import { groupSocialPlatforms } from '@/lib/social-directory.mjs';
+import { SocialPlatformIcon } from '@/components/social-platform-icon';
 import styles from '@/app/video/video.module.css';
 import social from '@/app/social/social.module.css';
-const logos: Record<string, string> = {
-  tiktok: '/assets/video-channels/tiktok.webp',
-  instagram: '/assets/video-channels/instagram.svg',
-  youtube: '/assets/video-channels/youtube.svg',
-  amazon: '/assets/video-channels/amazon.webp',
-  facebook: '/assets/social-platforms/facebook.svg',
-  reddit: '/assets/social-platforms/reddit.svg',
-  twitter: '/assets/social-platforms/x.svg',
-  github: '/assets/social-platforms/github.svg',
-  'apple-music': '/assets/social-platforms/apple-music.svg',
-  bluesky: '/assets/social-platforms/bluesky.svg',
-  google: '/assets/social-platforms/google.webp',
-  kick: '/assets/social-platforms/kick.svg',
-  pinterest: '/assets/social-platforms/pinterest.svg',
-  rumble: '/assets/social-platforms/rumble.svg',
-  snapchat: '/assets/social-platforms/snapchat.svg',
-  soundcloud: '/assets/social-platforms/soundcloud.svg',
-  spotify: '/assets/social-platforms/spotify.svg',
-  telegram: '/assets/social-platforms/telegram.svg',
-  threads: '/assets/social-platforms/threads.svg',
-  twitch: '/assets/social-platforms/twitch.svg',
-  linktree: '/assets/social-platforms/linktree.svg',
-  linkedin: '/assets/social-platforms/linkedin.svg',
-};
-const platformIcons: Record<string, typeof Globe2> = {
-  cosmos: Compass,
-  komi: Link2,
-  linkbio: Contact,
-  linkme: Link2,
-  truthsocial: MessageCircle,
-  kwai: Video,
-  'creator-tools': Users,
-};
-function PlatformIcon({ platform }: { platform: string }) {
-  const Icon = platformIcons[platform] || Globe2;
-  return logos[platform] ? (
-    <img src={logos[platform]} alt="" width="28" height="28" loading="lazy" />
-  ) : (
-    <Icon size={23} aria-hidden="true" />
-  );
-}
-const groups = [
-  ...new Map(
-    catalog.entries.map((e) => [e.platform, e.platformName]),
-  ).entries(),
-]
-  .map(([id, name]) => ({
-    id,
-    name,
-    count: catalog.entries.filter((e) => e.platform === id).length,
-  }))
-  .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+const groups = groupSocialPlatforms(catalog.entries);
+
 export default function SocialApiDirectory() {
   const [platform, setPlatform] = useState('all');
   const [query, setQuery] = useState('');
@@ -136,7 +81,7 @@ export default function SocialApiDirectory() {
               setExpanded(false);
             }}
           >
-            <PlatformIcon platform={g.id} />
+            <SocialPlatformIcon platform={g.id} />
             {g.name}
             <span>{g.count}</span>
           </button>

@@ -64,6 +64,9 @@ const fetchCurrentSocialApis = async () => {
   if (!social.length) throw new Error('No published Social APIs found');
   return social;
 };
+const { dataPlatforms } = await import(
+  pathToFileURL(join(source, 'scripts/build_api_docs.mjs')).href
+);
 const { refreshSnapshot } = await import(
   pathToFileURL(join(source, 'scripts/refresh-data-api-snapshot.mjs')).href
 );
@@ -128,7 +131,11 @@ const credits = JSON.parse(
 );
 await writeFile(
   join(root, 'lib/ecommerce-directory-snapshot.json'),
-  JSON.stringify(ecommerce, null, 2) + '\n',
+  JSON.stringify(
+    { ...ecommerce, platforms: dataPlatforms(ecommerce.entries) },
+    null,
+    2,
+  ) + '\n',
 );
 await writeFile(
   join(root, 'lib/social-api-directory.json'),

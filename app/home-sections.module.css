@@ -909,6 +909,12 @@
   border-radius: 7px;
   color: #706179;
 }
+.platforms > [role="listitem"] > :is(img, svg) {
+  flex: 0 0 20px;
+}
+.platforms > [role="listitem"] > svg {
+  color: #8562c4;
+}
 .platforms .videoChannelStack {
   display: inline-flex;
   align-items: center;

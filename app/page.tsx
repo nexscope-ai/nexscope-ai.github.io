@@ -6,8 +6,12 @@ import {
   Check,
   Clapperboard,
   Database,
+  FileCheck,
+  FileSearch,
+  Globe,
   Globe2,
   PackagePlus,
+  ShieldCheck,
   Users,
 } from 'lucide-react';
 import MarketingHeader from '@/components/marketing-header';
@@ -19,7 +23,10 @@ import exampleSnapshot from '@/lib/home-video-examples.json';
 import pricingSnapshot from '@/lib/pricing-snapshot.json';
 import creditSnapshot from '@/lib/data-credit-snapshot.json';
 import homeProductSnapshot from '@/lib/home-product-snapshot.json';
+import dataCatalog from '@/lib/ecommerce-directory-snapshot.json';
 import socialCatalog from '@/lib/social-api-directory.json';
+import { groupSocialPlatforms } from '@/lib/social-directory.mjs';
+import { SocialPlatformIcon } from '@/components/social-platform-icon';
 import videoApiCatalog from '@/lib/video-api-directory.json';
 import { pricingMoney } from '@/lib/pricing-content.mjs';
 import {
@@ -45,15 +52,13 @@ const summary =
   'Nexscope Learn shows ecommerce data APIs, an MCP server for AI agents, social APIs, and AI image and video generation. Each section includes an example request and response shape. A human-reviewed Product Growth Report and the free Product Gallery remain available.';
 const mcpUrl = 'https://api.nexscope.ai/mcp';
 const mcpSetupUrl = 'https://www.nexscope.ai/mcp-data?co-from=learn';
-const platforms = [
-  ['amazon', 'Amazon'],
-  ['tiktok', 'TikTok Shop'],
-  ['1688', '1688'],
-  ['shopify', 'Shopify'],
-  ['shopee', 'Shopee'],
-  ['walmart', 'Walmart'],
-  ['ozon', 'Ozon'],
-] as const;
+const dataPlatformIcons: Record<string, typeof Database> = {
+  detection: ShieldCheck,
+  jev: FileCheck,
+  patent: FileSearch,
+  'web-search': Globe,
+};
+const socialPlatforms = groupSocialPlatforms(socialCatalog.entries);
 const dataExample = `curl -X POST 'https://api.nexscope.ai/amazon/product/detail' \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
@@ -418,20 +423,28 @@ export default function Home() {
               </p>
               <div
                 className={styles.platforms}
-                aria-label="Marketplace examples"
+                role="list"
+                aria-label="Data API platforms"
               >
-                {platforms.map(([slug, name]) => (
-                  <span key={slug}>
-                    <img
-                      src={`/data/logos/${slug}.webp`}
-                      alt=""
-                      width="20"
-                      height="20"
-                      loading="lazy"
-                    />
-                    {name}
-                  </span>
-                ))}
+                {dataCatalog.platforms.map(({ kind, label, logo }) => {
+                  const Icon = dataPlatformIcons[kind] ?? Database;
+                  return (
+                    <span key={kind} role="listitem" data-platform={kind}>
+                      {logo ? (
+                        <img
+                          src={`/data/logos/${logo}`}
+                          alt=""
+                          width="20"
+                          height="20"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <Icon size={20} aria-hidden="true" />
+                      )}
+                      {label}
+                    </span>
+                  );
+                })}
               </div>
               <ul className={styles.benefits}>
                 <li>
@@ -584,24 +597,12 @@ export default function Home() {
                 </p>
                 <div
                   className={styles.platforms}
-                  aria-label="Social platform examples"
+                  role="list"
+                  aria-label="Social API platforms"
                 >
-                  {[
-                    ['Instagram', '/assets/video-channels/instagram.svg'],
-                    ['TikTok', '/assets/video-channels/tiktok.webp'],
-                    ['YouTube', '/assets/video-channels/youtube.svg'],
-                    ['Reddit', '/assets/social-platforms/reddit.svg'],
-                    ['LinkedIn', '/assets/social-platforms/linkedin.svg'],
-                    ['X / Twitter', '/assets/social-platforms/x.svg'],
-                  ].map(([name, logo]) => (
-                    <span key={name}>
-                      <img
-                        src={logo}
-                        alt=""
-                        width="20"
-                        height="20"
-                        loading="lazy"
-                      />
+                  {socialPlatforms.map(({ id, name }) => (
+                    <span key={id} role="listitem" data-platform={id}>
+                      <SocialPlatformIcon platform={id} size={20} />
                       {name}
                     </span>
                   ))}
