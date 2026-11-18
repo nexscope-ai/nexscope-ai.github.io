@@ -109,7 +109,7 @@ export default function SocialApiDirectory() {
         />
       </label>
       <fieldset
-        className="catalog-filters"
+        className="catalog-filters catalog-platform-filters"
         aria-label="Filter social APIs by platform"
       >
         <button
