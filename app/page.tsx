@@ -6,12 +6,8 @@ import {
   Check,
   Clapperboard,
   Database,
-  FileCheck,
-  FileSearch,
-  Globe,
   Globe2,
   PackagePlus,
-  ShieldCheck,
   Users,
 } from 'lucide-react';
 import MarketingHeader from '@/components/marketing-header';
@@ -52,13 +48,10 @@ const summary =
   'Nexscope Learn shows ecommerce data APIs, an MCP server for AI agents, social APIs, and AI image and video generation. Each section includes an example request and response shape. A human-reviewed Product Growth Report and the free Product Gallery remain available.';
 const mcpUrl = 'https://api.nexscope.ai/mcp';
 const mcpSetupUrl = 'https://www.nexscope.ai/mcp-data?co-from=learn';
-const dataPlatformIcons: Record<string, typeof Database> = {
-  detection: ShieldCheck,
-  jev: FileCheck,
-  patent: FileSearch,
-  'web-search': Globe,
-};
-const socialPlatforms = groupSocialPlatforms(socialCatalog.entries);
+const dataPlatforms = dataCatalog.platforms.filter(({ logo }) => logo);
+const socialPlatforms = groupSocialPlatforms(socialCatalog.entries).filter(
+  ({ id }) => id !== 'creator-tools',
+);
 const dataExample = `curl -X POST 'https://api.nexscope.ai/amazon/product/detail' \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
@@ -426,25 +419,18 @@ export default function Home() {
                 role="list"
                 aria-label="Data API platforms"
               >
-                {dataCatalog.platforms.map(({ kind, label, logo }) => {
-                  const Icon = dataPlatformIcons[kind] ?? Database;
-                  return (
-                    <span key={kind} role="listitem" data-platform={kind}>
-                      {logo ? (
-                        <img
-                          src={`/data/logos/${logo}`}
-                          alt=""
-                          width="20"
-                          height="20"
-                          loading="lazy"
-                        />
-                      ) : (
-                        <Icon size={20} aria-hidden="true" />
-                      )}
-                      {label}
-                    </span>
-                  );
-                })}
+                {dataPlatforms.map(({ kind, label, logo }) => (
+                  <span key={kind} role="listitem" data-platform={kind}>
+                    <img
+                      src={`/data/logos/${logo}`}
+                      alt=""
+                      width="20"
+                      height="20"
+                      loading="lazy"
+                    />
+                    {label}
+                  </span>
+                ))}
               </div>
               <ul className={styles.benefits}>
                 <li>
