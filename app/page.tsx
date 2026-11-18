@@ -49,8 +49,16 @@ const summary =
 const mcpUrl = 'https://api.nexscope.ai/mcp';
 const mcpSetupUrl = 'https://www.nexscope.ai/mcp-data?co-from=learn';
 const dataPlatforms = dataCatalog.platforms.filter(({ logo }) => logo);
+const hiddenHomeSocialPlatforms = new Set([
+  'creator-tools',
+  'kwai',
+  'truthsocial',
+  'komi',
+  'linkbio',
+  'linkme',
+]);
 const socialPlatforms = groupSocialPlatforms(socialCatalog.entries).filter(
-  ({ id }) => id !== 'creator-tools',
+  ({ id }) => !hiddenHomeSocialPlatforms.has(id),
 );
 const dataExample = `curl -X POST 'https://api.nexscope.ai/amazon/product/detail' \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
