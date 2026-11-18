@@ -122,7 +122,7 @@ export default function SocialApiDirectory() {
             >
               <div className={styles.apiCardTop}>
                 <span className={social.platformIcon}>
-                  <PlatformIcon platform={e.platform} />
+                  <SocialPlatformIcon platform={e.platform} />
                 </span>
               </div>
               <span className={styles.apiCategory}>{e.platformName}</span>
