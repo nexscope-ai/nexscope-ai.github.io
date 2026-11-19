@@ -1,6 +1,5 @@
 import { access, readFile, writeFile } from 'node:fs/promises';
 import { execFileSync } from 'node:child_process';
-import { futureDirectionSlugs } from './site-routes.mjs';
 
 const origin = 'https://learn.nexscope.ai';
 const escapeXml = (value) =>
@@ -43,15 +42,6 @@ export async function generateSitemap(directory, paths) {
     const source =
       path === '/' ? 'app/page.tsx' : `app/${path.slice(1)}page.tsx`;
     let sources = [source];
-    if (futureDirectionSlugs.includes(path.slice(1, -1))) {
-      sources.push(
-        'lib/future-directions.ts',
-        'components/future-direction-page.tsx',
-        'components/direction-preview.tsx',
-        'components/direction-scenes.ts',
-        'components/future-directions.module.css',
-      );
-    }
     if (path === '/product-growth-report/') {
       sources.push(
         'components/growth-report-example.tsx',

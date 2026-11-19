@@ -15,11 +15,6 @@
     [gallery, 'product_gallery'],
     ['/product-growth-report', 'product_growth_report'],
   ]);
-  const followedDirections = new Map([
-    ['/product-opportunity-radar', 'product_opportunity_radar'],
-    ['/product-growth-workspace', 'product_growth_workspace'],
-    ['/product-creative-workspace', 'product_creative_workspace'],
-  ]);
   const mainHosts = new Set(['nexscope.ai', 'www.nexscope.ai']);
   const videoLandingPaths = new Set([
     '/image-to-video', '/url-to-video', '/ai-ugc-video-generator',
@@ -144,15 +139,6 @@
 
   document.addEventListener('click', trackClick, true);
   document.addEventListener('auxclick', trackClick, true);
-  document.addEventListener('nexscope:direction-follow', (event) => {
-    const feature = followedDirections.get(cleanPath(location.pathname));
-    if (feature && event.detail === feature) {
-      emit('learn_direction_follow', {
-        learn_feature: feature,
-        cta_placement: 'direction-hero',
-      });
-    }
-  });
   document.addEventListener('ad-library-clone-open', () => {
     if (cleanPath(location.pathname) !== '/ad-library') return;
     emit('learn_feature_outbound_click', {
