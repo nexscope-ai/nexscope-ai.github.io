@@ -1,5 +1,13 @@
 const examples = [
   {
+    category: 'data-amazon-front-data',
+    path: '/data/amazon-front-data/',
+    slug: 'amazon-product-detail',
+    title: 'Look up an Amazon product by ASIN',
+    request: { amazonDomain: 'amazon.com', asins: 'B072MQ5BRX' },
+    result: 'Check the returned ASIN, title, current price and currency before comparing offers.',
+  },
+  {
     category: 'data-js',
     path: '/data/amazon-keyword-sales-research/',
     slug: 'amazon-keyword-expansion',
