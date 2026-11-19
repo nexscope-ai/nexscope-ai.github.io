@@ -220,12 +220,12 @@
 .steps {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 36px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
   padding: 0;
-  margin: 32px 0 0;
+  margin: 26px 0 0;
 }
-.steps li > span {
+.stepNumber {
   display: inline-flex;
   background: #ede4f7;
   color: #8053b6;
@@ -236,7 +236,7 @@
 .steps h3 {
   font-size: 18px;
   line-height: 1.3;
-  margin: 18px 0 12px;
+  margin: 12px 0 8px;
 }
 .steps p {
   font-size: 13px;
@@ -566,5 +566,189 @@
 @media (max-width: 600px) {
   .actionPreview {
     grid-template-columns: 1fr;
+  }
+}
+.steps li {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid #e5dce9;
+  border-radius: 18px;
+  background: #fff;
+}
+.stepPreview,
+.reportPreview {
+  box-sizing: border-box;
+  height: 194px;
+  margin: 12px 12px 0;
+  padding: 22px 18px;
+  border-radius: 11px;
+  background: #f4f0fa;
+}
+.previewLabel {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #67527e;
+  font-size: 12px;
+  font-weight: 600;
+}
+.urlPreview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: 19px;
+  padding: 12px 10px;
+  border: 1px solid #e4dced;
+  border-radius: 8px;
+  background: white;
+  color: #51445e;
+  font-size: 11px;
+}
+.urlPreview span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.urlPreview svg,
+.quoteRow svg {
+  flex: none;
+  color: #448063;
+}
+.previewPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.previewPills span {
+  padding: 4px 8px;
+  border-radius: 5px;
+  background: #e9e0f3;
+  color: #6a507d;
+  font-size: 10px;
+}
+.quoteRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 11px;
+  color: #665674;
+}
+.quoteRow > span + span {
+  font-size: 10px;
+  color: #80708b;
+}
+.previewButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px;
+  margin-top: 14px;
+  border-radius: 7px;
+  background: #7a50bc;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+}
+.reportPreview {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  background: #edf3ef;
+  transition: background 0.2s;
+}
+.reportPreview > img {
+  width: 98px;
+  height: 124px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.reportPreviewCopy {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+.reportPreviewCopy strong {
+  color: #2c3e34;
+  font-size: 16px;
+  line-height: 1.35;
+}
+.reportPreviewCopy > span:last-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #4b6c57;
+  font-size: 11px;
+}
+.reportPreview:hover {
+  background: #e4eee7;
+}
+.reportPreview:focus-visible {
+  outline: 3px solid #7950b7;
+  outline-offset: 3px;
+}
+.stepCopy {
+  padding: 20px 22px 22px;
+}
+.steps p {
+  margin: 0;
+}
+.audienceCards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.audienceCards article {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 20px;
+  border: 1px solid #e5dce9;
+  border-radius: 14px;
+  background: white;
+}
+.audienceCards svg {
+  flex: none;
+  margin-top: 2px;
+  color: #8053b6;
+}
+.audienceCards h3 {
+  font-size: 15px;
+  margin: 0 0 6px;
+  line-height: 1.35;
+}
+.audienceCards p {
+  margin: 0;
+  color: #786983;
+  font-size: 13px;
+  line-height: 1.6;
+}
+@media (max-width: 900px) {
+  .steps,
+  .audienceCards {
+    grid-template-columns: 1fr;
+  }
+  .steps li {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+  }
+  .stepPreview,
+  .reportPreview {
+    margin: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .steps li {
+    display: block;
+  }
+  .stepPreview,
+  .reportPreview {
+    height: 178px;
   }
 }

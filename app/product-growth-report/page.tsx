@@ -4,6 +4,11 @@ import {
   ArrowRight,
   ArrowUpRight,
   ClipboardCheck,
+  Link2,
+  Check,
+  Rocket,
+  RefreshCw,
+  Package,
   MessagesSquare,
   ScanSearch,
   Search,
@@ -30,11 +35,31 @@ const title = 'Ecommerce Product Page Audit & Growth Report | Nexscope';
 const description =
   'Get a human-reviewed audit for an Amazon or store product page. SEO and GEO analyses are included free when you select at least one paid service.';
 const services = [
-  { icon: MessagesSquare, name: 'AI mentions', deliverable: 'See how AI answers describe your product.' },
-  { icon: ScanSearch, name: 'Competitors', deliverable: 'Compare your listing with relevant alternatives.' },
-  { icon: Search, name: 'Keywords', deliverable: 'Find useful phrases and where to place them.' },
-  { icon: FileText, name: 'Listing copy', deliverable: 'Get suggested titles, bullets and FAQs.' },
-  { icon: ImageIcon, name: 'Ad images', deliverable: 'Choose 1–20 downloadable PNGs, priced per image.' },
+  {
+    icon: MessagesSquare,
+    name: 'AI mentions',
+    deliverable: 'See how AI answers describe your product.',
+  },
+  {
+    icon: ScanSearch,
+    name: 'Competitors',
+    deliverable: 'Compare your listing with relevant alternatives.',
+  },
+  {
+    icon: Search,
+    name: 'Keywords',
+    deliverable: 'Find useful phrases and where to place them.',
+  },
+  {
+    icon: FileText,
+    name: 'Listing copy',
+    deliverable: 'Get suggested titles, bullets and FAQs.',
+  },
+  {
+    icon: ImageIcon,
+    name: 'Ad images',
+    deliverable: 'Choose 1–20 downloadable PNGs, priced per image.',
+  },
 ];
 const faqs = [
   {
@@ -172,8 +197,8 @@ export default function ProductGrowthReport() {
               <span className={gradientTitle.text}>Product Growth</span> Report
             </h1>
             <p className={styles.lead}>
-              Find what to fix first on one Amazon or store product page.
-              Get prioritized recommendations reviewed by our team.
+              Find what to fix first on one Amazon or store product page. Get
+              prioritized recommendations reviewed by our team.
             </p>
             <div className={styles.heroActions}>
               <a
@@ -188,17 +213,26 @@ export default function ProductGrowthReport() {
                 Build a report &amp; see the quote
                 <ArrowUpRight size={18} aria-hidden="true" />
               </a>
-              <a className={styles.textLink} href="#report-example" data-cta-placement="growth-hero">
+              <a
+                className={styles.textLink}
+                href="#report-example"
+                data-cta-placement="growth-hero"
+              >
                 See a real example <ArrowRight size={16} aria-hidden="true" />
               </a>
             </div>
-            <p className={styles.includedAnalyses}>See your credit total before signing in.</p>
+            <p className={styles.includedAnalyses}>
+              See your credit total before signing in.
+            </p>
             <ul className={styles.heroFacts}>
               <li>One product · One market</li>
               <li>Expected within 24 hours</li>
             </ul>
           </div>
-          <aside className={styles.reportOutline} aria-label="Finding from the public report example">
+          <aside
+            className={styles.reportOutline}
+            aria-label="Finding from the public report example"
+          >
             <div className={styles.outlineHeader}>
               <ClipboardCheck size={18} aria-hidden="true" />
               <span>From a real report · Amazon UK</span>
@@ -212,8 +246,13 @@ export default function ProductGrowthReport() {
                 alt="PCIQUTE paint roller set from the sample report"
               />
               <div>
-                <p className={styles.outlineFinding}>Show how the roller measures 60–160 cm.</p>
-                <p className={styles.outlineAction}>Add both measurement points to a product image, then use the same range in your listing.</p>
+                <p className={styles.outlineFinding}>
+                  Show how the roller measures 60–160 cm.
+                </p>
+                <p className={styles.outlineAction}>
+                  Add both measurement points to a product image, then use the
+                  same range in your listing.
+                </p>
                 <a
                   className={styles.outlineLink}
                   href={`${reportExampleUrl}?co-from=learn#module-seo`}
@@ -229,18 +268,30 @@ export default function ProductGrowthReport() {
           </aside>
         </section>
         <nav className={styles.sectionNav} aria-label="Product report guide">
-          <a href="#services" data-cta-placement="growth-section-nav">What you get</a>
-          <a href="#report-example" data-cta-placement="growth-section-nav">Example</a>
-          <a href="#process" data-cta-placement="growth-section-nav">How it works</a>
-          <a href="#questions" data-cta-placement="growth-section-nav">FAQ</a>
+          <a href="#services" data-cta-placement="growth-section-nav">
+            What you get
+          </a>
+          <a href="#report-example" data-cta-placement="growth-section-nav">
+            Example
+          </a>
+          <a href="#process" data-cta-placement="growth-section-nav">
+            How it works
+          </a>
+          <a href="#questions" data-cta-placement="growth-section-nav">
+            FAQ
+          </a>
         </nav>
         <section
           className={styles.section}
           id="services"
           aria-labelledby="services-title"
         >
-          <h2 id="services-title" data-learn-section="growth-report-services">What you can get</h2>
-          <p className={styles.intro}>Choose the services you need for your product.</p>
+          <h2 id="services-title" data-learn-section="growth-report-services">
+            What you can get
+          </h2>
+          <p className={styles.intro}>
+            Choose the services you need for your product.
+          </p>
           <div className={styles.services}>
             {services.map(({ icon: Icon, name, deliverable }) => (
               <article key={name}>
@@ -253,7 +304,8 @@ export default function ProductGrowthReport() {
             ))}
           </div>
           <p className={styles.included}>
-            <strong>SEO and GEO analyses included</strong> when you select a paid service.
+            <strong>SEO and GEO analyses included</strong> when you select a
+            paid service.
           </p>
         </section>
         <GrowthReportExample />
@@ -265,25 +317,81 @@ export default function ProductGrowthReport() {
           <h2 id="process-title">How it works</h2>
           <ol className={styles.steps}>
             <li>
-              <span>01</span>
-              <h3>Add a product link</h3>
-              <p>
-                Choose a market, report language and services.
-              </p>
+              <div className={styles.stepPreview} aria-hidden="true">
+                <div className={styles.previewLabel}>
+                  <Link2 size={16} /> Product link
+                </div>
+                <div className={styles.urlPreview}>
+                  <span>amazon.com/dp/your-product</span>
+                  <Check size={16} />
+                </div>
+                <div className={styles.previewPills}>
+                  <span>Market</span>
+                  <span>Language</span>
+                  <span>Services</span>
+                </div>
+              </div>
+              <div className={styles.stepCopy}>
+                <span className={styles.stepNumber}>01</span>
+                <h3>Add a product link</h3>
+                <p>Choose a market, report language and services.</p>
+              </div>
             </li>
             <li>
-              <span>02</span>
-              <h3>Check the quote</h3>
-              <p>
-                Review the total, then sign in to submit.
-              </p>
+              <div className={styles.stepPreview} aria-hidden="true">
+                <div className={styles.previewLabel}>
+                  <ClipboardCheck size={16} /> Your selection
+                </div>
+                <div className={styles.quoteRow}>
+                  <span>Selected services</span>
+                  <Check size={15} />
+                </div>
+                <div className={styles.quoteRow}>
+                  <span>Credit total</span>
+                  <span>Review before submitting</span>
+                </div>
+                <div className={styles.previewButton}>
+                  Check the quote <ArrowRight size={13} />
+                </div>
+              </div>
+              <div className={styles.stepCopy}>
+                <span className={styles.stepNumber}>02</span>
+                <h3>Check the quote</h3>
+                <p>Review the total, then sign in to submit.</p>
+              </div>
             </li>
             <li>
-              <span>03</span>
-              <h3>Get your report</h3>
-              <p>
-                Read it online or download it with any images you ordered.
-              </p>
+              <a
+                className={styles.reportPreview}
+                href={reportExampleUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open the example Product Growth Report"
+              >
+                <img
+                  src="/assets/growth-report/pciqute-square-preview.jpg"
+                  width="480"
+                  height="480"
+                  loading="lazy"
+                  alt="Product creative from the example growth report"
+                />
+                <div className={styles.reportPreviewCopy}>
+                  <span className={styles.previewLabel}>
+                    <FileText size={16} /> Product report
+                  </span>
+                  <strong>Findings &amp; next steps</strong>
+                  <span>
+                    Explore the real example <ArrowUpRight size={13} />
+                  </span>
+                </div>
+              </a>
+              <div className={styles.stepCopy}>
+                <span className={styles.stepNumber}>03</span>
+                <h3>Get your report</h3>
+                <p>
+                  Read it online or download it with any images you ordered.
+                </p>
+              </div>
             </li>
           </ol>
         </section>
@@ -293,10 +401,29 @@ export default function ProductGrowthReport() {
           aria-labelledby="audience-title"
         >
           <h2 id="audience-title">Who it’s for</h2>
-          <p className={styles.intro}>
-            For sellers preparing a launch or updating a listing, and teams
-            deciding what to improve on a specific product page.
-          </p>
+          <div className={styles.audienceCards}>
+            <article>
+              <Rocket size={25} aria-hidden="true" />
+              <div>
+                <h3>Launching a product</h3>
+                <p>Plan your listing, copy and creative before launch.</p>
+              </div>
+            </article>
+            <article>
+              <RefreshCw size={25} aria-hidden="true" />
+              <div>
+                <h3>Refreshing a listing</h3>
+                <p>Find what to improve on an existing product page.</p>
+              </div>
+            </article>
+            <article>
+              <Package size={25} aria-hidden="true" />
+              <div>
+                <h3>Planning with your team</h3>
+                <p>Turn one product review into clear next steps.</p>
+              </div>
+            </article>
+          </div>
         </section>
         <section
           className={styles.section}
@@ -406,7 +533,8 @@ export default function ProductGrowthReport() {
           <p className={styles.eyebrow}>START WITH ONE PRODUCT</p>
           <h2>Choose a clearer next step.</h2>
           <p>
-            Choose the services you need and see your credit total before signing in.
+            Choose the services you need and see your credit total before
+            signing in.
           </p>
           <a
             className={styles.primary}
