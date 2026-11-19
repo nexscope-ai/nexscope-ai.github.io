@@ -17,7 +17,13 @@ export const interactiveWorkflowSlugs = [
   'tiktok-shop-bestseller-momentum',
   '1688-amazon-demand-matcher',
 ];
+export const futureDirectionSlugs = [
+  'product-opportunity-radar',
+  'product-growth-workspace',
+  'product-creative-workspace',
+];
 export const routeSlugs = [
+  ...futureDirectionSlugs,
   'ecommerce-product-demand-validation',
   'shopify-competitor-product-research',
   'ecommerce-seo-ai-search-visibility',
