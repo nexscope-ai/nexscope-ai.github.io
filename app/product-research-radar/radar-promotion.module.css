@@ -100,31 +100,13 @@
 }
 
 .preview {
-  overflow: hidden;
-  margin: 0;
+  display: block;
+  width: 100%;
+  height: auto;
   border: 1px solid #38304c;
   border-radius: 19px;
   background: #111122;
   box-shadow: 0 24px 56px #25144229;
-}
-
-.preview img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.preview figcaption {
-  padding: 12px 18px;
-  border-top: 1px solid #332945;
-  color: #d5c9e3;
-  font-size: 13px;
-}
-
-.preview a {
-  color: #f0e5ff;
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
 }
 
 .access a,

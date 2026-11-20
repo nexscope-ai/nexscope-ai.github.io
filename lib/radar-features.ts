@@ -80,11 +80,11 @@ export const radarScreens = {
     'Sample data. TikTok Shop loads reviews in batches. You can request more at the end of the list.',
   ),
   tiktokVideos: screenshot(
-    'tiktok-product-videos',
+    'tiktok-product-videos-with-previews',
     870,
     408,
-    'TikTok Shop product video results with creator handles, views, units sold and a link to Video Clone.',
-    'Sample data. Product videos can be opened on TikTok or passed to Video Clone as a reference.',
+    'TikTok Shop product video results with three dog-toy previews, creator handles, views, units sold and links to Video Clone.',
+    'Sample data with frames from a Nexscope demo video. Open videos on TikTok or use their links as references in Video Clone.',
   ),
   imageSearch: screenshot(
     '1688-image-search',

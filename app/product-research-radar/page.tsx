@@ -82,24 +82,15 @@ export default function RadarPromotionPage() {
               Data credits. <a href="/pricing/">See Data plans</a>.
             </p>
           </div>
-          <figure className={styles.preview}>
-            <img
-              src={radarSocialImage}
-              width={shareImage.width}
-              height={shareImage.height}
-              alt={shareImage.alt}
-              fetchPriority="high"
-              decoding="async"
-            />
-            <figcaption>
-              <a
-                href={radarSocialImage}
-                download="nexscope-product-research-radar.png"
-              >
-                Download the Nexscope promotional image
-              </a>
-            </figcaption>
-          </figure>
+          <img
+            className={styles.preview}
+            src={radarSocialImage}
+            width={shareImage.width}
+            height={shareImage.height}
+            alt={shareImage.alt}
+            fetchPriority="high"
+            decoding="async"
+          />
         </section>
         <section
           id="research-workflow"
