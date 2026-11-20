@@ -1,16 +1,12 @@
+import { radarScreens, type RadarFigure } from './radar-features';
+
 type RadarGuideSection = {
   id: string;
   title: string;
   paragraphs: string[];
   checklist?: string[];
   table?: { headers: string[]; rows: string[][] };
-  figure?: {
-    src: string;
-    alt: string;
-    caption: string;
-    width: number;
-    height: number;
-  };
+  figures?: RadarFigure[];
 };
 
 export type RadarGuide = {
@@ -25,6 +21,7 @@ export type RadarGuide = {
   sections: RadarGuideSection[];
   sources: { href: string; label: string }[];
   nextStep: { href: string; label: string };
+  questions: { question: string; answer: string }[];
 };
 
 export const radarGuides: RadarGuide[] = [
@@ -41,7 +38,7 @@ export const radarGuides: RadarGuide[] = [
     ],
     updated: '2026-11-20',
     summary:
-      'Start with a category ranking in one country. Compare two completed weeks, then check how a product sells and what buyers say before planning a test.',
+      'To find trending products on TikTok Shop, start with a category ranking in the country where you plan to sell. Compare the same listings across two completed weeks. Open their sales channels, linked videos and recent reviews to choose a product demonstration you can test.',
     takeaways: [
       'Shortlist products in the country you plan to sell in and record the same dates for every listing.',
       'Compare how much a product sold with how quickly its sales changed.',
@@ -51,6 +48,7 @@ export const radarGuides: RadarGuide[] = [
       {
         id: 'build-a-shortlist',
         title: 'Start with a market and category',
+        figures: [radarScreens.tiktokRankings],
         paragraphs: [
           'Choose the country you can ship to, then narrow your scan to a category you can demonstrate on video. A strong US kitchen listing is a reasonable lead for a US seller. Research the United Kingdom separately if that is where the product will launch.',
           'Browse TikTok Shop best sellers in Seller Center or start with a dated ranking. Collect five to ten comparable products, including a newer listing. Record the product and shop names, the price you observed, reported units sold and the dates covered. Keep bundle sizes and variant differences in the same note so you can compare like with like.',
@@ -86,17 +84,21 @@ export const radarGuides: RadarGuide[] = [
       {
         id: 'check-sales-channels',
         title: 'Find out where the sales came from',
+        figures: [radarScreens.tiktokSales, radarScreens.tiktokVideos],
         paragraphs: [
           'Open a candidate’s sales details and look at the reported video, livestream and marketplace sales amounts and shares. A video-heavy product invites a content test. Start by looking for demonstrations you can reproduce with your own product and footage, such as showing how a board stays steady on a wet counter.',
           'Check the associated videos and creators when those counts are available. Inspect several videos and record the buyer question each one answers. A good brief specifies the demonstration, the audience and the claim you can verify. Views, reported units and creator counts describe different parts of that decision.',
+          'Use Product videos to open individual examples. Compare views and reported units together. If a video answers a customer question you can demonstrate, open its link or send it to Video Clone as a reference for your own material.',
           'If you plan to work with creators, capture the currently displayed commission and confirm applicable terms in your own Seller Center. Add the cost of samples, content and fulfillment to your test budget before deciding how much you can afford to spend.',
         ],
       },
       {
         id: 'run-a-small-test',
         title: 'Turn reviews into one testable change',
+        figures: [radarScreens.tiktokReviews],
         paragraphs: [
           'Read a batch of recent reviews for each shortlisted listing. Tag recurring complaints by issue, such as confusing dimensions, a loose handle or awkward cleaning. Log the variant when it is available and check whether similar comments appear across independent listings.',
+          'Choose Customer reviews and select Load reviews for the first page. Use Load more reviews only when you want to read another batch. Each requested page is a live lookup.',
           'Pick one change you can deliver and show. A listing can demonstrate exact dimensions and cleaning in a short clip. A product change may need a supplier sample to prove it. Give your test a fixed budget and duration, then record what would make you continue, adjust or stop.',
         ],
         checklist: [
@@ -124,6 +126,23 @@ export const radarGuides: RadarGuide[] = [
       label: 'Compare TikTok Shop sales momentum',
       href: '/tools/tiktok-shop-bestseller-momentum/',
     },
+    questions: [
+      {
+        question: 'Should I start with seven or 30 days of TikTok Shop sales?',
+        answer:
+          'Check seven days for recent activity and 30 days for context. Use two completed weeks of equal length to compare week-over-week momentum.',
+      },
+      {
+        question: 'Does a high view count mean the video sells more products?',
+        answer:
+          'Check reported units sold alongside views. High reach can help you choose a format to study. Reported units are the closer measure when your goal is sales.',
+      },
+      {
+        question: 'What should I check before testing a trending product?',
+        answer:
+          'Confirm that it sells in your target market, identify the channel generating sales, and find a repeatable buyer problem you can demonstrate or solve.',
+      },
+    ],
   },
   {
     slug: 'amazon-product-research',
@@ -139,7 +158,7 @@ export const radarGuides: RadarGuide[] = [
     ],
     updated: '2026-11-20',
     summary:
-      'Use a search trend to pick a product idea, then check whether matching Amazon listings sell at a price you can support and where you can improve the offer.',
+      'To research a new Amazon product, choose one marketplace and look up the phrases shoppers use. Shortlist listings with a similar size, material and price. Check reported units, price history and recent reviews to decide whether your product can solve a recurring buyer problem at a viable price.',
     takeaways: [
       'Capture the marketplace and the exact search phrases buyers use.',
       'Compare similar variants in the same category and separate seasonal spikes from typical demand.',
@@ -149,23 +168,18 @@ export const radarGuides: RadarGuide[] = [
       {
         id: 'start-with-search-intent',
         title: 'Turn a search trend into a product brief',
+        figures: [radarScreens.keywordSearch, radarScreens.keywordPhrases],
         paragraphs: [
           'Google’s Holiday 100, published November 9, 2026, identified “ski mug” as a breakout search. Treat that as a lead for Amazon product research. Decide whether your buyer wants a winter gift, a ceramic drinking mug or a travel cup with a lid before you build a shortlist.',
           'Pick one marketplace and search for a specific phrase, such as “ceramic ski mug gift.” Use a related-phrase lookup to see which sizes, materials and use cases shoppers actually include. Inspect the results for each phrase you keep. You can have relevant search demand even when the largest query in the list is too broad for your product.',
+          'In Radar, choose Amazon and open Find products. Enable Also find related search phrases if you want estimated monthly searches and recent changes. Expand a phrase to check the other available indicators, then compare the actual search results to your idea.',
           'Keep Google search interest, Amazon keyword estimates and reported Amazon units in distinct columns. The sources describe different behavior. When checking keyword change, compare the same phrase and marketplace across comparable periods. Record the date and expect holidays to affect the comparison.',
         ],
       },
       {
         id: 'pick-comparable-listings',
         title: 'Compare listings that serve the same shopper',
-        figure: {
-          src: '/product-research-radar/amazon-market-research.webp',
-          width: 1536,
-          height: 1024,
-          alt: 'The Radar shows Amazon and Pet Supplies filters, the United States highlighted on the globe, and a list of ranked products.',
-          caption:
-            'Product Research Radar example for Amazon US Pet Supplies. Rankings shown are dated November 20, 2026.',
-        },
+        figures: [radarScreens.rankings, radarScreens.amazonSales],
         paragraphs: [
           'Create a shortlist of about six comparable ASINs. Start from matching keyword results and browse Amazon Best Sellers for category context. Note each product’s size, material, price, rating count and whether the listing is a set. A single mug and a two-piece gift set have different prices, shipping costs and buyer expectations.',
           'Best Sellers Rank helps place a listing within its category. Compare the same category and note when listings belong to different subcategories. Check monthly units where reported, the historical price range and the dates of any ranking moves. A sudden rank improvement during a price cut is a reason to check what happened at a typical price.',
@@ -196,8 +210,10 @@ export const radarGuides: RadarGuide[] = [
       {
         id: 'read-reviews-for-design',
         title: 'Use reviews to choose what to improve',
+        figures: [radarScreens.amazonReviews],
         paragraphs: [
           'Start with recent low-star reviews and read a set of higher ratings for context. Verify which variant the review describes and whether the same issue appears on more than one ASIN. For a ceramic gift mug, take note when reviews consistently mention shipping damage, unclear capacity or packaging that cannot be used as a gift.',
+          'Choose Customer reviews, select a star rating and load its latest reviews. Start with the rating most likely to answer your question. Review lookups use Data credits, and costs can depend on the number requested.',
           'Turn the issue into a checkable requirement. A packaging requirement could specify how the handle is protected and how a sample should arrive after shipping. A listing requirement could specify an image that shows usable capacity next to a familiar object. Check whether an issue appears across buyers or stems from an individual preference.',
         ],
       },
@@ -238,6 +254,23 @@ export const radarGuides: RadarGuide[] = [
       label: 'Explore Amazon research tools',
       href: '/amazon-research/',
     },
+    questions: [
+      {
+        question: 'What does monthly search volume mean in Radar?',
+        answer:
+          'It estimates how often buyers searched for the exact phrase on the selected Amazon marketplace. Compare it with matching listings and reported sales when assessing demand.',
+      },
+      {
+        question: 'Can I use category rank to measure unit sales?',
+        answer:
+          'Category rank places a listing relative to others in the same category. Use the reported monthly units separately when the data is available.',
+      },
+      {
+        question: 'How do I use reviews when planning a new SKU?',
+        answer:
+          'Find a recurring complaint across comparable listings. Turn it into a requirement you can verify with a supplier sample or demonstrate in the listing.',
+      },
+    ],
   },
   {
     slug: '1688-image-search-supplier-guide',
@@ -253,7 +286,7 @@ export const radarGuides: RadarGuide[] = [
     ],
     updated: '2026-11-20',
     summary:
-      'Start with a clear product photo. Open the closest 1688 offers and compare the price and order terms for the same variant before ordering samples.',
+      'To find 1688 suppliers by image, start with a clear reference photo and shortlist visually similar listings. Open each offer to compare the exact variant, minimum order, quantity pricing and dispatch details. Request written quotes for the same specification and order a sample before buying stock.',
     takeaways: [
       'Prepare the photo and exact specifications before searching.',
       'Verify the variant, order minimum, price tiers and carton details for each offer.',
@@ -263,6 +296,7 @@ export const radarGuides: RadarGuide[] = [
       {
         id: 'prepare-the-image',
         title: 'Search with a photo and a sourcing brief',
+        figures: [radarScreens.imageSearch],
         paragraphs: [
           '1688 image search helps you find listings that look like the product in a reference photo. Use a clear photo of the item by itself. If you have both a front view and a photo showing the detail that matters, start with the more specific one and keep the second available for a follow-up.',
           'Write down the features the photo cannot establish. A stainless steel chopping board, one of the kitchen products tracked by FastMoss in November 2026, could match many results with different dimensions, edge finish or material. Capture the size, thickness, edge treatment, surface finish and packaging your target customer needs.',
@@ -272,6 +306,7 @@ export const radarGuides: RadarGuide[] = [
       {
         id: 'check-the-offer',
         title: 'Compare prices for the same variant and quantity',
+        figures: [radarScreens.orderTerms],
         paragraphs: [
           'Record the 1688 offer link and selected SKU. Check whether the first quoted price belongs to the size and material you need, and whether the minimum applies per SKU, per colour or to the full order. If the listing gives a price tier, match it with the quantity you can realistically buy.',
           'Request a written quotation for the same specification and delivery destination from each serious candidate. Ask how many sellable items come in a carton, how the item is packed and when production can start. Confirm the quote currency. Include packaging and labelling requirements when asking for the price so that the quotes cover the same work.',
@@ -340,5 +375,23 @@ export const radarGuides: RadarGuide[] = [
       label: 'Try the Amazon to 1688 Supplier Finder',
       href: '/tools/amazon-to-1688-supplier-finder/',
     },
+    questions: [
+      {
+        question: 'Which product photo should I use for 1688 image search?',
+        answer:
+          'Start with a clear photo of the item by itself. Choose a view that shows the shape or feature you need the supplier to match.',
+      },
+      {
+        question:
+          'Does a visual match confirm the same product specifications?',
+        answer:
+          'Ask the supplier to confirm the material, dimensions, finish and selected variant in writing. Check these against the sample before approving a production order.',
+      },
+      {
+        question: 'What should I compare before placing a 1688 order?',
+        answer:
+          'Use the same variant, quantity and destination for each quote. Compare minimum orders, tier prices, landed costs and lead times, then check the exact variant on a sample.',
+      },
+    ],
   },
 ];

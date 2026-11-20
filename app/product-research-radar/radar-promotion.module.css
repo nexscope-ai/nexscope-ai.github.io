@@ -121,6 +121,19 @@
   font-size: 13px;
 }
 
+.preview a {
+  color: #f0e5ff;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.access a,
+.featureJump a {
+  color: #61399c;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
 .section {
   padding: 40px 0 70px;
   border-top: 1px solid var(--radar-line);
@@ -146,7 +159,6 @@
   color: var(--radar-muted);
 }
 
-.workflow,
 .guideGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -156,7 +168,6 @@
   list-style: none;
 }
 
-.workflow li,
 .guideGrid a {
   height: 100%;
   padding: 22px;
@@ -165,12 +176,6 @@
   background: #fffdfa;
 }
 
-.workflow svg {
-  margin-bottom: 12px;
-  color: #6843a2;
-}
-
-.workflow h3,
 .guideGrid h3 {
   margin: 0;
   color: var(--radar-ink);
@@ -179,12 +184,88 @@
   line-height: 1.3;
 }
 
-.workflow p,
 .guideGrid p {
   margin: 9px 0 0;
   color: var(--radar-muted);
   font-size: 15px;
   line-height: 1.6;
+}
+
+.featureJump ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.featureJump a {
+  display: block;
+  padding: 6px 11px;
+  border: 1px solid var(--radar-line);
+  border-radius: 8px;
+  background: #fffdfa;
+  font-size: 13px;
+}
+
+.features {
+  margin-top: 30px;
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  align-items: start;
+  gap: clamp(18px, 4vw, 48px);
+  padding: 28px 0;
+  border-top: 1px solid var(--radar-line);
+  scroll-margin-top: 6rem;
+}
+
+.featureCopy h3 {
+  margin: 0;
+  color: var(--radar-ink);
+  font-size: clamp(21px, 3vw, 29px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.featureCopy p,
+.questions dd {
+  margin: 12px 0 0;
+  color: var(--radar-muted);
+  line-height: 1.65;
+}
+
+.featureImages {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.featureImages .articleFigure {
+  margin: 0;
+}
+
+.questions {
+  max-width: 740px;
+  margin: 0;
+}
+
+.questions > div {
+  padding: 15px 0;
+  border-top: 1px solid var(--radar-line);
+}
+
+.questions dt {
+  font-weight: 700;
+}
+
+.questions dd {
+  margin-top: 6px;
 }
 
 .guideGrid a {
@@ -246,12 +327,9 @@
 }
 
 .homeVisual {
-  align-self: stretch;
+  align-self: center;
   width: 100%;
-  height: 100%;
-  max-height: 275px;
-  object-fit: cover;
-  object-position: center 43%;
+  height: auto;
 }
 
 .articleHero {
@@ -406,6 +484,15 @@
   height: auto;
 }
 
+.articleFigure a {
+  display: block;
+  cursor: zoom-in;
+}
+
+.articleFigure a:focus-visible {
+  outline-offset: -4px;
+}
+
 .articleFigure figcaption {
   padding: 11px 14px;
   color: var(--radar-muted);
@@ -419,7 +506,7 @@
     width: calc(100% - 32px);
   }
   .hero,
-  .workflow,
+  .feature,
   .guideGrid,
   .articleLayout {
     grid-template-columns: minmax(0, 1fr);
@@ -432,9 +519,6 @@
   }
   .homeModule {
     grid-template-columns: minmax(0, 1fr);
-  }
-  .homeVisual {
-    max-height: 180px;
   }
   .toc {
     position: static;

@@ -1,8 +1,8 @@
 /* oxlint-disable next/no-html-link-for-pages, next/no-img-element */
 import { ArrowRight } from 'lucide-react';
 import {
-  radarDemoImage,
   radarPromotionPath,
+  radarSocialImage,
   radarTitle,
 } from '@/lib/radar-promotion';
 import styles from '@/app/product-research-radar/radar-promotion.module.css';
@@ -32,9 +32,9 @@ export default function RadarHomeModule() {
       </div>
       <img
         className={styles.homeVisual}
-        src={radarDemoImage}
-        width={945}
-        height={844}
+        src={radarSocialImage}
+        width={1200}
+        height={628}
         alt=""
         loading="lazy"
         decoding="async"

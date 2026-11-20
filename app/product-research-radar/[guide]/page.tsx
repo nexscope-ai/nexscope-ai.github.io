@@ -9,13 +9,12 @@ import {
   liveRadarUrl,
   radarGuidePath,
   radarPromotionPath,
+  radarSocialImage,
   radarTitle,
 } from '@/lib/radar-promotion';
-import {
-  DEFAULT_SOCIAL_IMAGE,
-  NEXSCOPE_ORGANIZATION,
-} from '@/lib/site-metadata';
+import { NEXSCOPE_ORGANIZATION } from '@/lib/site-metadata';
 import styles from '../radar-promotion.module.css';
+import RadarScreenshot from '../radar-screenshot';
 
 type Props = { params: Promise<{ guide: string }> };
 
@@ -33,6 +32,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!guide) notFound();
   const path = radarGuidePath(guide.slug);
   const title = `${guide.title} | Nexscope Learn`;
+  const social = {
+    url: `https://learn.nexscope.ai${radarSocialImage}`,
+    width: 1200,
+    height: 628,
+    alt: 'Nexscope Product Research Radar for Amazon and TikTok Shop.',
+  };
   return {
     title,
     description: guide.description,
@@ -46,13 +51,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: path,
       publishedTime: guide.updated,
       modifiedTime: guide.updated,
-      images: [DEFAULT_SOCIAL_IMAGE],
+      images: [social],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description: guide.description,
-      images: [DEFAULT_SOCIAL_IMAGE],
+      images: [social],
     },
   };
 }
@@ -78,6 +83,9 @@ export default async function RadarGuidePage({ params }: Props) {
     mainEntityOfPage: url,
     inLanguage: 'en',
     citation: guide.sources.map((source) => source.href),
+    image: guide.sections.flatMap(({ figures = [] }) =>
+      figures.map(({ src }) => `https://learn.nexscope.ai${src}`),
+    ),
   };
 
   return (
@@ -117,6 +125,9 @@ export default async function RadarGuidePage({ params }: Props) {
                     <a href={`#${section.id}`}>{section.title}</a>
                   </li>
                 ))}
+                <li>
+                  <a href="#guide-questions">Frequently asked questions</a>
+                </li>
               </ol>
             </nav>
             <div className={styles.articleBody}>
@@ -137,19 +148,9 @@ export default async function RadarGuidePage({ params }: Props) {
                   {section.paragraphs.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
                   ))}
-                  {section.figure && (
-                    <figure className={styles.articleFigure}>
-                      <img
-                        src={section.figure.src}
-                        width={section.figure.width}
-                        height={section.figure.height}
-                        alt={section.figure.alt}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                      <figcaption>{section.figure.caption}</figcaption>
-                    </figure>
-                  )}
+                  {section.figures?.map((figure) => (
+                    <RadarScreenshot key={figure.src} figure={figure} />
+                  ))}
                   {section.table && (
                     <div className={styles.tableWrap}>
                       <table>
@@ -188,6 +189,20 @@ export default async function RadarGuidePage({ params }: Props) {
                 </section>
               ))}
               <section
+                id="guide-questions"
+                aria-labelledby="guide-questions-title"
+              >
+                <h2 id="guide-questions-title">Frequently asked questions</h2>
+                <dl className={styles.questions}>
+                  {guide.questions.map(({ question, answer }) => (
+                    <div key={question}>
+                      <dt>{question}</dt>
+                      <dd>{answer}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </section>
+              <section
                 className={styles.articleCta}
                 aria-labelledby="guide-next-step"
               >
@@ -204,6 +219,13 @@ export default async function RadarGuidePage({ params }: Props) {
                 <a href={`${radarPromotionPath}#guides`}>
                   Browse all Radar guides
                 </a>
+                {radarGuides
+                  .filter(({ slug }) => slug !== guide.slug)
+                  .map(({ slug, title }) => (
+                    <a key={slug} href={radarGuidePath(slug)}>
+                      {title}
+                    </a>
+                  ))}
               </section>
               <section aria-labelledby="guide-sources">
                 <h2 id="guide-sources">Sources</h2>
