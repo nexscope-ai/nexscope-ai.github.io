@@ -4,6 +4,13 @@ type RadarGuideSection = {
   paragraphs: string[];
   checklist?: string[];
   table?: { headers: string[]; rows: string[][] };
+  figure?: {
+    src: string;
+    alt: string;
+    caption: string;
+    width: number;
+    height: number;
+  };
 };
 
 export type RadarGuide = {
@@ -151,6 +158,14 @@ export const radarGuides: RadarGuide[] = [
       {
         id: 'pick-comparable-listings',
         title: 'Compare listings that serve the same shopper',
+        figure: {
+          src: '/product-research-radar/amazon-market-research.webp',
+          width: 1536,
+          height: 1024,
+          alt: 'The Radar shows Amazon and Pet Supplies filters, the United States highlighted on the globe, and a list of ranked products.',
+          caption:
+            'Product Research Radar example for Amazon US Pet Supplies. Rankings shown are dated November 20, 2026.',
+        },
         paragraphs: [
           'Create a shortlist of about six comparable ASINs. Start from matching keyword results and browse Amazon Best Sellers for category context. Note each product’s size, material, price, rating count and whether the listing is a set. A single mug and a two-piece gift set have different prices, shipping costs and buyer expectations.',
           'Best Sellers Rank helps place a listing within its category. Compare the same category and note when listings belong to different subcategories. Check monthly units where reported, the historical price range and the dates of any ranking moves. A sudden rank improvement during a price cut is a reason to check what happened at a typical price.',

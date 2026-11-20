@@ -15,6 +15,7 @@ import {
   radarDemoImage,
   radarGuidePath,
   radarPromotionPath,
+  radarSocialImage,
   radarTitle,
 } from '@/lib/radar-promotion';
 import gradientTitle from '../gradient-title.module.css';
@@ -22,11 +23,11 @@ import styles from './radar-promotion.module.css';
 
 const description =
   'Research Amazon and TikTok Shop products by market. Compare sales and customer reviews, then find similar 1688 suppliers by product photo.';
-const previewImage = {
-  url: `https://learn.nexscope.ai${radarDemoImage}`,
-  width: 945,
-  height: 844,
-  alt: 'Product Research Radar globe with the United States selected.',
+const shareImage = {
+  url: `https://learn.nexscope.ai${radarSocialImage}`,
+  width: 1200,
+  height: 628,
+  alt: 'Nexscope Product Research Radar. See what sells by market on Amazon and TikTok Shop.',
 };
 
 export const metadata: Metadata = {
@@ -38,13 +39,13 @@ export const metadata: Metadata = {
     description,
     url: radarPromotionPath,
     type: 'website',
-    images: [previewImage],
+    images: [shareImage],
   },
   twitter: {
     card: 'summary_large_image',
     title: radarTitle,
     description,
-    images: [previewImage],
+    images: [shareImage],
   },
 };
 

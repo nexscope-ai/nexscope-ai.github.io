@@ -1,4 +1,4 @@
-/* oxlint-disable next/no-html-link-for-pages */
+/* oxlint-disable next/no-html-link-for-pages, next/no-img-element */
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ArrowUpRight } from 'lucide-react';
@@ -137,6 +137,19 @@ export default async function RadarGuidePage({ params }: Props) {
                   {section.paragraphs.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
                   ))}
+                  {section.figure && (
+                    <figure className={styles.articleFigure}>
+                      <img
+                        src={section.figure.src}
+                        width={section.figure.width}
+                        height={section.figure.height}
+                        alt={section.figure.alt}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>{section.figure.caption}</figcaption>
+                    </figure>
+                  )}
                   {section.table && (
                     <div className={styles.tableWrap}>
                       <table>

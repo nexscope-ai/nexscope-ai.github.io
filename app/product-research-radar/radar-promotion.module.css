@@ -392,6 +392,27 @@
   background: #f2ecf9;
 }
 
+.articleFigure {
+  overflow: hidden;
+  margin: 20px 0;
+  border: 1px solid var(--radar-line);
+  border-radius: 12px;
+  background: #fffdfa;
+}
+
+.articleFigure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.articleFigure figcaption {
+  padding: 11px 14px;
+  color: var(--radar-muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
 @media (max-width: 760px) {
   .wrap,
   .homeModule {
