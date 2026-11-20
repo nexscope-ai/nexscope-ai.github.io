@@ -39,6 +39,10 @@ export const routeSlugs = [
   'video-apis',
   'social',
   'product-growth-report',
+  'product-research-radar',
+  'product-research-radar/tiktok-shop-trending-products',
+  'product-research-radar/amazon-product-research',
+  'product-research-radar/1688-image-search-supplier-guide',
   ...interactiveWorkflowSlugs.map((slug) => `tools/${slug}`),
 ];
 export const publishedPaths = ['/', ...routeSlugs.map((slug) => `/${slug}/`)];

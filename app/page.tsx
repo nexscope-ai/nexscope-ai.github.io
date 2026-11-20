@@ -15,6 +15,7 @@ import LearnFooter from '@/components/learn-footer';
 import HomeExampleCard from '@/components/home-example-card';
 import HomeMcpBanner from '@/components/home-mcp-banner';
 import HomeVideoExamples from '@/components/home-video-examples';
+import RadarHomeModule from '@/components/radar-home-module';
 import exampleSnapshot from '@/lib/home-video-examples.json';
 import pricingSnapshot from '@/lib/pricing-snapshot.json';
 import creditSnapshot from '@/lib/data-credit-snapshot.json';
@@ -385,6 +386,8 @@ export default function Home() {
             card required. Trial videos stay in the app.
           </p>
         </section>
+
+        <RadarHomeModule />
 
         <section
           className={`${styles.module} ${styles.developers}`}
