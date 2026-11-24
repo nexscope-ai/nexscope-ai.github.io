@@ -258,14 +258,6 @@ export default function MarketingHeader({
               </a>
             </li>
             <NavigationDropdown
-              label="Product Growth"
-              current={active === 'growth'}
-              items={[
-                { href: '/ecommerce-ai-tools/product-showcase/', label: 'Product Gallery', trackTool: 'product-gallery' },
-                { href: '/product-growth-report/', label: 'Product Growth Report', trackTool: 'product-growth-report', current: active === 'growth' },
-              ]}
-            />
-            <NavigationDropdown
               label="Resources"
               current={active === 'pricing'}
               items={[

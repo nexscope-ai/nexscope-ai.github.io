@@ -77,9 +77,7 @@ export default function NotFound() {
           <a href="/ecommerce-ai-tools/guides/">
             Guides <span aria-hidden="true">↗</span>
           </a>
-          <a href="/ecommerce-ai-tools/product-showcase/">
-            Product Gallery <span aria-hidden="true">↗</span>
-          </a>
+
           <a href="/ecommerce-ai-tools/community/">
             Community <span aria-hidden="true">↗</span>
           </a>

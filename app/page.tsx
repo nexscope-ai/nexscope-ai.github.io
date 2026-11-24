@@ -7,7 +7,6 @@ import {
   Clapperboard,
   Database,
   Globe2,
-  PackagePlus,
   Users,
 } from 'lucide-react';
 import MarketingHeader from '@/components/marketing-header';
@@ -19,7 +18,6 @@ import RadarHomeModule from '@/components/radar-home-module';
 import exampleSnapshot from '@/lib/home-video-examples.json';
 import pricingSnapshot from '@/lib/pricing-snapshot.json';
 import creditSnapshot from '@/lib/data-credit-snapshot.json';
-import homeProductSnapshot from '@/lib/home-product-snapshot.json';
 import dataCatalog from '@/lib/ecommerce-directory-snapshot.json';
 import socialCatalog from '@/lib/social-api-directory.json';
 import { groupSocialPlatforms } from '@/lib/social-directory.mjs';
@@ -38,15 +36,12 @@ import { HOME_SOCIAL_IMAGE, NEXSCOPE_ORGANIZATION } from '@/lib/site-metadata';
 import gradientTitle from './gradient-title.module.css';
 import styles from './home-sections.module.css';
 
-const gallery = '/ecommerce-ai-tools/product-showcase/';
-const submit = `${gallery}submit/`;
-const publishedProduct = homeProductSnapshot.product;
 const homeTitle =
   'Nexscope Learn | Ecommerce Data APIs, MCP, and AI Image & Video';
 const homeDescription =
   'See Nexscope ecommerce data APIs, the MCP server for AI agents, social APIs, and AI image and video generation, with an example request and response shape for each.';
 const summary =
-  'Nexscope Learn shows ecommerce data APIs, an MCP server for AI agents, social APIs, and AI image and video generation. Each section includes an example request and response shape. A human-reviewed Product Growth Report and the free Product Gallery remain available.';
+  'Nexscope Learn shows ecommerce data APIs, an MCP server for AI agents, social APIs, and AI image and video generation. Each section includes an example request and response shape.';
 const mcpUrl = 'https://api.nexscope.ai/mcp';
 const mcpSetupUrl = 'https://www.nexscope.ai/mcp-data?co-from=learn';
 const dataPlatforms = dataCatalog.platforms.filter(({ logo }) => logo);
@@ -138,18 +133,6 @@ const faqs = [
   {
     q: 'What is available for ecommerce developers?',
     a: 'Use ecommerce Data APIs, the MCP server at https://api.nexscope.ai/mcp, Social APIs, and Video and Image APIs. The homepage shows one example request and response shape for each. Live calls use your own credentials and follow the selected operation’s requirements.',
-  },
-  {
-    q: 'Is the Product Growth Report the same as a free Gallery listing?',
-    a: 'No. The growth report is a separately quoted credit-based service for one product and target market, reviewed before delivery. Choose at least one paid service; SEO and GEO analyses are included. Gallery submission, review and approved display remain completely free.',
-  },
-  {
-    q: 'Is listing my product completely free?',
-    a: 'Yes. Product submission, editorial review, and approved product listing and display are completely free. You do not need to pay or connect a store account to submit. Save the private management link after submission to check status, read feedback and edit your details.',
-  },
-  {
-    q: 'Does a Product Gallery listing guarantee AI recommendations?',
-    a: 'An approved listing gives search and AI systems a public source of product facts, images and your store link. It supports AI discovery and GEO, but does not guarantee indexing, recommendations, traffic or sales. Purchases take place on your original store.',
   },
   {
     q: 'Where can I compare subscriptions and API credits?',
@@ -286,12 +269,6 @@ export default function Home() {
                       position: 5,
                       name: 'Video and Image API directory',
                       url: 'https://learn.nexscope.ai/video-apis/',
-                    },
-                    {
-                      '@type': 'ListItem',
-                      position: 6,
-                      name: 'Product Growth Report and free Product Gallery',
-                      url: 'https://learn.nexscope.ai/#product-growth',
                     },
                     {
                       '@type': 'ListItem',
@@ -770,196 +747,6 @@ export default function Home() {
         </section>
 
         <section
-          className={`${styles.module} ${styles.growthModule}`}
-          id="product-growth"
-          aria-labelledby="growth-title"
-        >
-          <div className={styles.moduleHeading}>
-            <div>
-              <p className={styles.moduleLabel}>
-                <span className={styles.moduleIndex}>03 / 03</span> FOR PRODUCT
-                TEAMS
-              </p>
-              <h2 id="growth-title" data-learn-section="home-growth">
-                The next step for
-                <br />
-                <em>your product.</em>
-              </h2>
-            </div>
-            <p className={styles.moduleIntro}>
-              Get a human-reviewed action plan for one product and market, or
-              publish a free listing with verified product facts.
-            </p>
-          </div>
-          <div className={styles.growthFeature}>
-            <div>
-              <p className={styles.eyebrow}>
-                PRODUCT GROWTH REPORT · PAID SERVICES
-              </p>
-              <h3>
-                One product link.
-                <br />
-                Know what to fix first.
-              </h3>
-              <p>
-                Send an Amazon listing or store product URL. Get a
-                human-reviewed action plan with prioritized fixes and supporting
-                evidence where available. Choose a focus such as AI visibility,
-                competitors, keywords, listing copy, or ad images.
-              </p>
-              <div className={styles.growthTags}>
-                <span>SEO & GEO included</span>
-                <span>Human review before delivery</span>
-                <span>Expected within 24 hours</span>
-              </div>
-              <a
-                className={styles.primary}
-                href="/product-growth-report/"
-                data-track-tool="product-growth-report"
-                data-cta-placement="home-growth-report"
-              >
-                Explore the growth report{' '}
-                <ArrowRight size={16} aria-hidden="true" />
-              </a>
-              <p className={styles.dataNote}>
-                Choose at least one paid service. Review your credit quote
-                before submitting. You apply the recommendations.
-              </p>
-            </div>
-            <div className={styles.growthOutline}>
-              <span>FROM THE PUBLIC REPORT · AMAZON UK</span>
-              <ol>
-                <li>
-                  <strong>Product reviewed</strong>
-                  <p>PCIQUTE 17-piece paint roller set.</p>
-                </li>
-                <li>
-                  <strong>What the report found</strong>
-                  <p>
-                    The listing gives a working length of about 60–160 cm with
-                    the roller attached.
-                  </p>
-                </li>
-                <li>
-                  <strong>What to fix first</strong>
-                  <p>
-                    Show where the measurement starts and ends. Use the same
-                    range across the listing.
-                  </p>
-                </li>
-              </ol>
-              <a
-                className={styles.growthExampleLink}
-                href="/product-growth-report/#report-example"
-                data-track-tool="product-growth-report"
-                data-cta-placement="home-growth-report-example"
-              >
-                See the report example{' '}
-                <ArrowRight size={14} aria-hidden="true" />
-              </a>
-            </div>
-          </div>
-          <div className={styles.galleryBanner} id="free-product-listings">
-            <div className={styles.galleryIcon}>
-              <PackagePlus size={31} aria-hidden="true" />
-            </div>
-            <div className={styles.galleryCopy}>
-              <p className={styles.freeBadge}>100% FREE LISTING & DISPLAY</p>
-              <h3>
-                A clearer page for your product.
-                <br />
-                Another source for AI discovery.
-              </h3>
-              <p>
-                Publish reviewed product facts, images and your store link in
-                the Product Gallery. Submission, review and approved display are
-                completely free.
-              </p>
-              <small>
-                Keep your existing checkout. Indexing, AI recommendations and
-                traffic are not guaranteed.
-              </small>
-            </div>
-            <div className={styles.galleryActions}>
-              <a href={submit} data-showcase-submit-cta="root-home-feature">
-                List your product for free <ArrowRight size={15} />
-              </a>
-              <a href={gallery} data-cta-placement="home-gallery">
-                Browse the Product Gallery <ArrowRight size={14} />
-              </a>
-            </div>
-          </div>
-          <div
-            className={styles.galleryExample}
-            aria-labelledby="gallery-example-title"
-          >
-            <div className={styles.galleryJourney}>
-              <p className={styles.eyebrow}>SEE WHAT YOU GET</p>
-              <h3 id="gallery-example-title">
-                From product facts to a public Gallery page.
-              </h3>
-              <ol>
-                <li>
-                  <strong>You provide</strong>
-                  <span>
-                    Your product link, accurate details and a clear product
-                    image. No store connection required.
-                  </span>
-                </li>
-                <li>
-                  <strong>We review</strong>
-                  <span>
-                    Read editorial feedback on your private management page.
-                    Publication follows approval.
-                  </span>
-                </li>
-                <li>
-                  <strong>Your product gets a public page</strong>
-                  <span>
-                    Approved listings bring product facts, images and a link to
-                    your original store together in one crawlable page.
-                  </span>
-                </li>
-              </ol>
-              <p className={styles.galleryExampleNote}>
-                Submission, review and approved display are completely free. A
-                clearer source of product facts can support AI discovery;
-                indexing, recommendations and traffic are not guaranteed.
-              </p>
-              <a href={submit} data-showcase-submit-cta="home-gallery-example">
-                Create your free product page <ArrowRight size={15} />
-              </a>
-            </div>
-            {publishedProduct && (
-              <article className={styles.publishedExample}>
-                <a
-                  href={publishedProduct.href}
-                  aria-label={`View ${publishedProduct.title}`}
-                >
-                  <img
-                    src={publishedProduct.image}
-                    alt={publishedProduct.title}
-                    width="420"
-                    height="320"
-                    loading="lazy"
-                  />
-                </a>
-                <div>
-                  <span className={styles.publishedBadge}>
-                    PUBLISHED GALLERY EXAMPLE
-                  </span>
-                  <h4>{publishedProduct.title}</h4>
-                  <p>{publishedProduct.description}</p>
-                  <a href={publishedProduct.href}>
-                    See the real product page <ArrowUpRight size={14} />
-                  </a>
-                </div>
-              </article>
-            )}
-          </div>
-        </section>
-
-        <section
           className={styles.pricingStrip}
           aria-labelledby="home-pricing-title"
         >
@@ -970,8 +757,7 @@ export default function Home() {
             </h2>
             <p>
               Monthly and yearly plans share credits across API calls and video
-              creation. Product Gallery submission, review, and approved display
-              stay free. <a href="/pricing/">See plan details</a>
+              creation. <a href="/pricing/">See plan details</a>
             </p>
           </div>
         </section>

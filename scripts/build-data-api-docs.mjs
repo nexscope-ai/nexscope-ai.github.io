@@ -34,7 +34,6 @@ export async function buildDataApiDocs() {
   );
   const sharedNavigationMarkers = [
     'class="nav-dropdown"',
-    'href="/product-growth-report/"',
     'href="/pricing/"',
   ];
   const missingNavigationMarkers = sharedNavigationMarkers.filter(

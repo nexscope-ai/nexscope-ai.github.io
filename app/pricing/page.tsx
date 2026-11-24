@@ -49,7 +49,7 @@ const faqs = [
   },
   {
     q: 'Do I need a subscription to list a product?',
-    a: 'No. Product Gallery submission, editorial review, and approved listing and display are completely free. A subscription is not required to submit a product for review.',
+    a: 'No. New product submissions and updates are temporarily unavailable. Existing submission details remain available to view.',
   },
 ];
 
@@ -370,15 +370,10 @@ export default function PricingPage() {
         <section className={styles.freeGallery}>
           <PackagePlus size={24} />
           <p>
-            <strong>Product Gallery is completely free.</strong> Submission,
-            review and approved display require no subscription.
+            <strong>Product submissions are temporarily unavailable.</strong> Existing
+            submission details remain available to view.
           </p>
-          <a
-            href="/ecommerce-ai-tools/product-showcase/submit/"
-            data-showcase-submit-cta="pricing-gallery"
-          >
-            List a product free <ArrowRight size={14} />
-          </a>
+
         </section>
         <section className={styles.faq} aria-labelledby="pricing-faq-title">
           <div>

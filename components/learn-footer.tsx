@@ -18,14 +18,6 @@ export default function LearnFooter() {
           <a href="/video/" data-track-tool="video-directory">
             Video workflows
           </a>
-          <a href="/ecommerce-ai-tools/product-showcase/">Product Gallery</a>
-          <a
-            href="/ecommerce-ai-tools/product-showcase/submit/"
-            data-showcase-submit-cta="root-home-footer"
-          >
-            List a product free
-          </a>
-          <a href="/product-growth-report/">Product Growth Report</a>
           <a href="/tools/">Tools</a>
           <a href="/pricing/">Pricing</a>
           <a href="/ecommerce-ai-tools/">Learning library</a>
@@ -38,8 +30,7 @@ export default function LearnFooter() {
           <a href="#analytics-preferences">Cookie settings</a>
         </nav>
         <p className={styles.disclosure}>
-          Nexscope publishes this directory and Product Gallery. Product
-          submission, review and approved display are free. API access and
+          Nexscope publishes this directory. API access and
           credits follow the selected operation’s official documentation.
         </p>
       </footer>

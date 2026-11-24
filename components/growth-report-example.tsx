@@ -134,16 +134,7 @@ export default function GrowthReportExample() {
         >
           Open the full report <ArrowUpRight size={16} aria-hidden="true" />
         </a>
-        <a
-          className={styles.sourceLink}
-          href={reportRequestHref('growth-example-next-action')}
-          target="_blank"
-          rel="noopener"
-          data-track="start_using"
-          data-cta-placement="growth-example-next-action"
-        >
-          Build one for my product <ArrowUpRight size={16} aria-hidden="true" />
-        </a>
+        
       </div>
       <details className={styles.moreExample} data-learn-detail="growth-example-details">
         <summary>Explore all findings and creative previews</summary>

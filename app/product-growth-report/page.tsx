@@ -201,18 +201,7 @@ export default function ProductGrowthReport() {
               prioritized recommendations reviewed by our team.
             </p>
             <div className={styles.heroActions}>
-              <a
-                className={styles.primary}
-                href={reportRequestHref('growth-hero')}
-                data-track
-                data-track-tool="product-growth-report"
-                data-cta-placement="growth-hero"
-                target="_blank"
-                rel="noopener"
-              >
-                Build a report &amp; see the quote
-                <ArrowUpRight size={18} aria-hidden="true" />
-              </a>
+              
               <a
                 className={styles.textLink}
                 href="#report-example"
@@ -448,13 +437,7 @@ export default function ProductGrowthReport() {
                     Decide what to improve on one product page
                   </th>
                   <td>
-                    <a
-                      href={reportRequestHref('growth-comparison-report')}
-                      data-track
-                      data-cta-placement="growth-comparison-report"
-                    >
-                      Product Growth Report
-                    </a>
+                    
                     <small>Credit quote before submission</small>
                   </td>
                   <td>
@@ -479,12 +462,7 @@ export default function ProductGrowthReport() {
                     Give your product another public source of facts
                   </th>
                   <td>
-                    <a
-                      href="/ecommerce-ai-tools/product-showcase/submit/"
-                      data-showcase-submit-cta="growth-comparison-gallery"
-                    >
-                      Free Product Gallery
-                    </a>
+                    
                     <small>
                       Submission, review and approved display are free
                     </small>
@@ -505,13 +483,7 @@ export default function ProductGrowthReport() {
               display are completely free. A growth report is not required.
             </p>
           </div>
-          <a
-            href="/ecommerce-ai-tools/product-showcase/submit/"
-            data-showcase-submit-cta="growth-report-gallery"
-          >
-            List your product for free{' '}
-            <ArrowRight size={17} aria-hidden="true" />
-          </a>
+          
         </section>
         <section
           className={styles.section}
@@ -536,18 +508,7 @@ export default function ProductGrowthReport() {
             Choose the services you need and see your credit total before
             signing in.
           </p>
-          <a
-            className={styles.primary}
-            href={reportRequestHref('growth-bottom')}
-            data-track
-            data-track-tool="product-growth-report"
-            data-cta-placement="growth-bottom"
-            target="_blank"
-            rel="noopener"
-          >
-            Build your report &amp; see the quote{' '}
-            <ArrowUpRight size={18} aria-hidden="true" />
-          </a>
+          
           <small>
             Recommendations and materials for your team to apply. No guaranteed
             rankings, AI recommendations or sales outcomes.

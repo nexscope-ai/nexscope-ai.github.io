@@ -6,6 +6,7 @@ import {
   unlink,
   writeFile,
 } from 'node:fs/promises';
+import { stripPausedServiceLinks } from './paused-service-links.mjs';
 
 import {
   interactiveWorkflowSlugs,
@@ -140,7 +141,7 @@ async function attributeOfficialLinks(directory) {
     if (!entry.name.endsWith('.html')) continue;
     pageCount += 1;
     const original = await readFile(file, 'utf8');
-    const updated = original.replace(
+    const updated = stripPausedServiceLinks(original).replace(
       officialAnchor,
       (whole, prefix, quote, rawHref) => {
         const href = decodeAttribute(rawHref);

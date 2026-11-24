@@ -8,5 +8,3 @@ const { refreshVideoDirectoryExamples } =
 await refreshVideoDirectoryExamples();
 const { refreshVideoApis } = await import('./refresh-video-api-directory.mjs');
 await refreshVideoApis();
-const { refreshHomeProduct } = await import('./refresh-home-product.mjs');
-await refreshHomeProduct();
