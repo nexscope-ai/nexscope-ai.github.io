@@ -28,7 +28,6 @@ import GrowthReportExample, {
 } from '@/components/growth-report-example';
 import {
   productGrowthReportUrl,
-  reportRequestHref,
 } from '@/lib/growth-report-links';
 
 const title = 'Ecommerce Product Page Audit & Growth Report | Nexscope';
@@ -201,7 +200,7 @@ export default function ProductGrowthReport() {
               prioritized recommendations reviewed by our team.
             </p>
             <div className={styles.heroActions}>
-              
+
               <a
                 className={styles.textLink}
                 href="#report-example"
@@ -437,7 +436,7 @@ export default function ProductGrowthReport() {
                     Decide what to improve on one product page
                   </th>
                   <td>
-                    
+
                     <small>Credit quote before submission</small>
                   </td>
                   <td>
@@ -462,7 +461,7 @@ export default function ProductGrowthReport() {
                     Give your product another public source of facts
                   </th>
                   <td>
-                    
+
                     <small>
                       Submission, review and approved display are free
                     </small>
@@ -483,7 +482,7 @@ export default function ProductGrowthReport() {
               display are completely free. A growth report is not required.
             </p>
           </div>
-          
+
         </section>
         <section
           className={styles.section}
@@ -508,7 +507,7 @@ export default function ProductGrowthReport() {
             Choose the services you need and see your credit total before
             signing in.
           </p>
-          
+
           <small>
             Recommendations and materials for your team to apply. No guaranteed
             rankings, AI recommendations or sales outcomes.

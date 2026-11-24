@@ -1,6 +1,5 @@
 /* oxlint-disable next/no-img-element */
 import { ArrowUpRight } from 'lucide-react';
-import { reportRequestHref } from '@/lib/growth-report-links';
 import styles from '@/app/product-growth-report/report.module.css';
 
 // Facts selected from the public example, not package entitlements or live data.
@@ -134,7 +133,7 @@ export default function GrowthReportExample() {
         >
           Open the full report <ArrowUpRight size={16} aria-hidden="true" />
         </a>
-        
+
       </div>
       <details className={styles.moreExample} data-learn-detail="growth-example-details">
         <summary>Explore all findings and creative previews</summary>
